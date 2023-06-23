@@ -1,0 +1,306 @@
+/*------------------------------
+Hero Banner Area
+-------------------------------*/
+
+.herobannerarea {
+    background: var(--darkdeep1);
+    padding-top: 115px;
+    padding-bottom: 170px;
+    position: relative;
+    @media #{$device-md} {
+        padding-top: 80px;
+    }
+    @media #{$device-sm} {
+        padding-top: 50px;
+        padding-bottom: 205px;
+    }
+    &.herobannerarea__2 {
+        background: var(--lightGrey11);
+        padding-top: 155px;
+        padding-bottom: 250px;
+        @media #{$device-md} {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        @media #{$device-sm} {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .container {
+            @media #{$device-xxl} {
+                max-width: 1370px;
+            }
+        }
+        .herobannerarea__content__wraper {
+            padding-right: 135px;
+            @media #{$device-xl} {
+                padding-right: 0px;
+            }
+            @media #{$device-lg} {
+                padding-right: 0px;
+            }
+            @media #{$device-md} {
+                padding-right: 0px;
+            }
+            @media #{$device-sm} {
+                padding-right: 0px;
+            }
+        }
+    }
+    .row {
+        align-items: center;
+    }
+}
+
+.herobannerarea__text {
+    &.herobannerarea__text__2 {
+        p {
+            color: var(--blackColor);
+        }
+    }
+    p {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 30px;
+        color: var(--whiteColor);
+        @media #{$device-sm} {
+            font-size: 15px;
+            line-height: 22px;
+        }
+    }
+}
+
+.hreobannerarea__button {
+    margin-top: 45px;
+    a {
+        &.herobannerarea__button__1 {
+            padding: 17px 30px;
+            background: var(--whiteColor);
+            box-shadow: 0px 4px 13px 1px rgba(95, 45, 237, 0.16);
+            border-radius: var(--borderRadius);
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            color: var(--darkdeep2);
+            border: 1px solid var(--whiteColor);
+            margin-right: 30px;
+            @media #{$device-sm} {
+                padding: 12px 20px;
+                font-size: 14px;
+                line-height: 14px;
+                margin-right: 6px;
+            }
+            &:hover {
+                border: 1px solid var(--whiteColor);
+                color: var(--whiteColor);
+                background: var(--darkblack)
+            }
+        }
+    }
+    .herobannerarea__button__2 {
+        background: none;
+        color: var(--whiteColor);
+        box-shadow: none;
+        &:hover {
+            color: var(--secondaryColor);
+        }
+    }
+}
+
+.herobannerarea__icon {
+    .hero__icon__1 {
+        left: 50%;
+        bottom: 15%;
+        animation: cir-anim 6s linear 0s infinite alternate;
+        @media #{$device-sm} {
+            left: 40%;
+            bottom: 54%;
+        }
+    }
+    .hero__icon__2 {
+        top: 10%;
+        left: 5%;
+        animation: dot-anim-2 3s linear 0s infinite alternate;
+        @media #{$device-md} {
+            top: 4%;
+            left: 42%;
+        }
+        @media #{$device-sm} {
+            top: 1%;
+            left: 65%;
+        }
+    }
+    .hero__icon__3 {
+        top: 5%;
+        left: 45%;
+    }
+    .hero__icon__4 {
+        bottom: 15%;
+        right: 5%;
+    }
+    img {
+        position: absolute;
+    }
+}
+
+.aboutarea__img__2 {
+    img {
+        width: 100%;
+    }
+}
+
+.hreobannerarea__button__2 {
+    margin-top: 30px;
+    .hreobannerarea__button__3 {
+        background: var(--secondaryColor);
+        border: 1px solid var(--secondaryColor);
+        color: var(--whiteColor);
+        margin-left: 28px;
+        @media #{$device-sm} {
+            margin-left: 0px;
+        }
+        &:hover {
+            border: 1px solid var(--secondaryColor);
+            color: var(--secondaryColor);
+            background: var(--whiteColor);
+        }
+    }
+}
+
+.herobannerarea__icon__2 {
+    .herobanner__common__img {
+        position: absolute;
+        &.herobanner__img__1 {
+            left: 40px;
+            bottom: 233px;
+            opacity: 0.33;
+            animation: 3s linear 0s infinite normal none running move5;
+            @media #{$device-xl} {
+                bottom: 112px;
+            }
+            @media #{$device-lg} {
+                bottom: 112px;
+            }
+            @media #{$device-md} {
+                left: 248px;
+                bottom: 143px;
+            }
+        }
+        &.herobanner__img__2 {
+            top: 110px;
+            left: 50px;
+            animation: cir-anim 6s linear 0s infinite alternate;
+            @media #{$device-xl} {
+                top: 64px;
+            }
+            @media #{$device-lg} {
+                top: 75px;
+                left: 30px;
+            }
+            @media #{$device-sm} {
+                top: 0px;
+                left: 0px;
+            }
+        }
+        &.herobanner__img__3 {
+            top: 70px;
+            left: 285px;
+            animation: 3s linear 0s infinite alternate none running dot-anim;
+            @media #{$device-sm} {
+                left: 140px;
+            }
+        }
+        &.herobanner__img__4 {
+            top: 80px;
+            left: 872px;
+            animation: dot-anim-2 3s linear 0s infinite alternate;
+            @media #{$device-lg} {
+                left: 595px;
+            }
+        }
+        &.herobanner__img__5 {
+            top: 100px;
+            right: 110px;
+            animation: 3s linear 0s infinite alternate none running dot-anim-2;
+            @media #{$device-xl} {
+                right: 82px;
+            }
+            @media #{$device-lg} {
+                top: 13px;
+                right: 90px;
+            }
+            @media #{$device-sm} {
+                top: 0px;
+                right: 0px;
+            }
+        }
+    }
+}
+
+.herobannerarea__box {
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 10px rgba(95, 45, 237, 0.05);
+    @media #{$device-lg} {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    @media #{$device-md} {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    @media #{$device-sm} {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.herobannerarea__title {
+    .herobannerarea__small__title {
+        margin-bottom: 15px;
+        @media #{$device-sm} {
+            margin-bottom: 5px;
+        }
+        span {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            letter-spacing: 0.64px;
+            text-transform: uppercase;
+            color: var(--secondaryColor);
+        }
+    }
+    .herobannerarea__title__heading__2 {
+        &.herobannerarea__title__heading__3 {
+            h2 {
+                font-size: 65px;
+                line-height: 72px;
+                color: var(--blackColor);
+                @media #{$device-lg} {
+                    font-size: 48px;
+                    line-height: 60px;
+                }
+                @media #{$device-sm} {
+                    font-size: 35px;
+                    line-height: 42px;
+                }
+            }
+        }
+        h2 {
+            font-size: 60px;
+            line-height: 72px;
+            letter-spacing: 0.5px;
+            color: var(--whiteColor);
+            @media #{$device-lg} {
+                font-size: 50px;
+                line-height: 62px;
+            }
+            @media #{$device-sm} {
+                font-size: 30px;
+                line-height: 40px;
+            }
+        }
+    }
+}
