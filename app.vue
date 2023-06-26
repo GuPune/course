@@ -10,5 +10,11 @@
   /* Your component-specific styles */
   </style>
   
-  
+  <script>
+  export default {
+    mounted() {
+      console.log(this.$store.state.count);
+    },
+  };
+</script>
   

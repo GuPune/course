@@ -9,6 +9,9 @@ export default defineNuxtConfig({
   ,'~/assets/css/owl.carousel.min.css'
   ,'~/assets/css/slick.css'
  ],
+ modules: [
+  'nuxt3-vuex-module',
+],
   plugins: [
     // { src: '~/plugins/main.js' ,mode: 'client'},
     // { src: '~/plugins/plugins.js',mode: 'client' },
@@ -32,7 +35,6 @@ export default defineNuxtConfig({
     // { src: '~/plugins/client-only.js', mode: 'client' }, // only on client side
     // { src: '~/plugins/server-only.js', mode: 'server' } // only on server side
   ],
-
 
 
 

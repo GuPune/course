@@ -9,7 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^0.0.1",
     "@types/node": "^18",
     "nuxt": "^3.5.2",
     "sass": "^1.63.6"
@@ -18,6 +18,8 @@
     "jquery": "^3.7.0",
     "nuxi": "^3.6.0",
     "popper": "^1.0.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "vuex": "^4.0.2",
+    "nuxt3-vuex-module": "^1.0.11"
   }
 }
