@@ -1,0 +1,23 @@
+
+<script lang="ts" setup>
+import Banner from '@/components/layout/Banner.vue';
+import Populer from '@/components/layout/Populer.vue';
+import Course from '@/components/layout/Course.vue';
+import Contact from '@/components/layout/Contact.vue';
+import Teacher from '@/components/layout/Teacher.vue';
+import Testimonial from '@/components/layout/Testimonial.vue';
+import Blog from '@/components/layout/Blog.vue';
+</script>
+<template>
+  <div>
+    <Banner></Banner>
+          <Populer></Populer>
+  <Course></Course>
+  <Contact></Contact>
+  <Teacher></Teacher>
+      <Testimonial></Testimonial>
+         <Blog></Blog>
+    Page: foo
+  </div>
+</template>
+<style scoped></style>

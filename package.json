@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "jquery": "^3.7.0",
+    "nuxi": "^3.6.0",
     "popper": "^1.0.1",
     "slick-carousel": "^1.8.1"
   }
