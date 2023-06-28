@@ -2,8 +2,11 @@
     <div>
       <NuxtLayout/>
 
-      
-  
+      <p v-if="posts" v-for="post in posts" :key="post.id">
+    {{ post.title }}
+      <p>{{ post.body }}</p>
+    </p>
+
     </div>
   </template>
   <style lang="scss">
@@ -12,9 +15,22 @@
   /* Your component-specific styles */
   </style>
   
-  <script>
-  export default {
 
-  };
+  
+  <script lang="ts" setup>
+
+
+import { useRoute } from 'vue-router'
+  import { storeToRefs } from 'pinia'
+
+  import { usePostStore } from '@/stores/post'
+
+
+  const { posts, loading, error } = storeToRefs(usePostStore())
+  const { fetchPosts } = usePostStore()
+
+
+
+
 </script>
   
