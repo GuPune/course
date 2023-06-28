@@ -2,12 +2,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   
-  css: ["~/assets/scss/style.scss",'~/assets/css/main.css','~/assets/css/responsive.css','~/assets/css/bootstrap.min.css','~/assets/css/animate.min.css'
+  css: ['~/assets/css/main.css','~/assets/css/responsive.css','~/assets/css/bootstrap.min.css','~/assets/css/animate.min.css'
     ,'~/assets/css/icofont.min.css'
   ,'~/assets/css/magnific-popup.css'
   ,'~/assets/css/meanmenu.css'
   ,'~/assets/css/owl.carousel.min.css'
-  ,'~/assets/css/slick.css'
+  ,'~/assets/css/slick.css',
+  '@/assets/scss/style.scss'
  ],
  modules: [
   'nuxt3-vuex-module',

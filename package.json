@@ -15,11 +15,12 @@
     "sass": "^1.63.6"
   },
   "dependencies": {
+    "@typescript-eslint/typescript-estree": "^5.60.1",
     "jquery": "^3.7.0",
     "nuxi": "^3.6.0",
+    "nuxt3-vuex-module": "^1.0.11",
     "popper": "^1.0.1",
     "slick-carousel": "^1.8.1",
-    "vuex": "^4.0.2",
-    "nuxt3-vuex-module": "^1.0.11"
+    "vuex": "^4.0.2"
   }
 }
