@@ -17,6 +17,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "@typescript-eslint/typescript-estree": "^5.60.1",
+    "axios": "^1.4.0",
     "jquery": "^3.7.0",
     "nuxi": "^3.6.0",
     "nuxt3-vuex-module": "^1.0.11",

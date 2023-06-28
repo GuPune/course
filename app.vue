@@ -1,7 +1,8 @@
 <template>
     <div>
       <NuxtLayout/>
-
+      <p v-if="loading">Loading posts...</p>
+    <p v-if="error">{{ error.message }}</p>
       <p v-if="posts" v-for="post in posts" :key="post.id">
     {{ post.title }}
       <p>{{ post.body }}</p>
@@ -28,6 +29,8 @@ import { useRoute } from 'vue-router'
 
   const { posts, loading, error } = storeToRefs(usePostStore())
   const { fetchPosts } = usePostStore()
+
+  fetchPosts();
 
 
 
