@@ -7,6 +7,7 @@ import Contact from '@/components/layout/Contact.vue';
 import Teacher from '@/components/layout/Teacher.vue';
 import Testimonial from '@/components/layout/Testimonial.vue';
 import Blog from '@/components/layout/Blog.vue';
+import News from '@/components/layout/News.vue';
 </script>
 <template>
   <div>
@@ -17,7 +18,8 @@ import Blog from '@/components/layout/Blog.vue';
   <Teacher></Teacher>
       <Testimonial></Testimonial>
          <Blog></Blog>
-    Page: foo
+         <News></News>
+
   </div>
 </template>
 <style scoped></style>

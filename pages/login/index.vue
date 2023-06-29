@@ -1,26 +1,33 @@
 
-
+  
 
 <template>
     <div>
+
+ 
       <div class="loginarea sp_top_100 sp_bottom_100">
               <div class="container">
                   <div class="row">
+                                 <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="alertlogin.status">
+                                    <div class="alert alert-danger" role="alert">
+                                     {{alertlogin.message}}
+                            </div>
+                        </div>
                       <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up">
                           <ul class="nav  tab__button__wrap text-center" id="myTab" role="tablist">
                               <li class="nav-item" role="presentation">
-                                  <button class="single__tab__link" v-bind:class="{ active: isActive }" @click="toggleActiveClass()" data-bs-toggle="tab" data-bs-target="#projects__one" type="button">Login</button>
+                                  <button class="single__tab__link" v-bind:class="{ active: getisActive }"  @click="store.toggleActiveClass()" data-bs-toggle="tab" data-bs-target="#projects__one" type="button">Login {{ getisActive }}</button>
                               </li>
                               <li class="nav-item" role="presentation">
-                                  <button class="single__tab__link" data-bs-toggle="tab" v-bind:class="{ active: !isActive }" @click="toggleActiveClass(d)" data-bs-target="#projects__two" type="button">Sing up</button>
+                                  <button class="single__tab__link" data-bs-toggle="tab" v-bind:class="{ active: !getisActive }" @click="store.toggleActiveClass()" data-bs-target="#projects__two" type="button">Sing up {{ getisActive }}</button>
                               </li>
                           </ul>
                       </div>
   
   
                       <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
-  
-                          <div class="tab-pane fade active show" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
+
+                          <div class="tab-pane fade" v-bind:class="{ active: getisActive , show:getisActive }" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
                               <div class="col-xl-8 col-md-8 offset-md-2">
                                   <div class="loginarea__wraper">
                                       <div class="login__heading">
@@ -30,12 +37,36 @@
                                       <form action="#">
                                           <div class="login__form">
                                               <label class="form__label">Username or email</label>
-                                              <input class="common__login__input" type="text" placeholder="Your username or email">
+                                              <input class="common__login__input" type="text" placeholder="Your username or email"     v-model="formData.email"
+                                              
+                                                    :class="{
+                'border-red-500 focus:border-red-500': v$.email.$error,
+                'border-[#42d392] ': !v$.email.$invalid,
+              }"
+              @change="v$.email.$touch"
+              autocomplete="off"
+                                              >
+
+                                                 <span class="text-xs text-red-500" style="color:red" v-if="v$.email.$error">{{
+            v$.email.$errors[0].$message
+          }}</span>
   
                                           </div>
                                           <div class="login__form">
                                               <label class="form__label">Password</label>
-                                              <input class="common__login__input" type="password" placeholder="Password">
+                                              <input class="common__login__input" type="password" placeholder="Password"
+                                               v-model="formData.password"
+              id="password"
+              name="password"
+               :class="{
+                ' border-red-500 focus:border-red-500': v$.password.$error,
+                'border-[#42d392]': !v$.password.$invalid,
+              }"
+              @change="v$.password.$touch"
+                                              >
+                                               <span class="text-xs text-red-500" style="color:red" v-if="v$.password.$error">{{
+            v$.password.$errors[0].$message
+          }}</span>
   
                                           </div>
                                           <div class="login__form d-flex justify-content-between flex-wrap gap-2">
@@ -47,26 +78,27 @@
                                                   <a href="#">Forgot your password?</a>
                                               </div>
                                           </div>
-                                          <div class="login__button">
-                                              <a class="default__button" href="#">Log In</a>
+                                          <div class="login__button" @click="login()">
+                                              <a class="default__button">Log In</a>
                                           </div>
+                                         
                                       </form>
   
                                       <div class="login__social__option">
                                           <p>or Log-in with</p>
   
-                                          <ul class="login__social__btn">
-                                              <li><a class="default__button login__button__1" href="#"><i class="icofont-facebook"></i> Gacebook</a></li>
-                                              <li><a class="default__button" href="#"><i class="icofont-google-plus"></i> Google</a></li>
-                                          </ul>
+                                
                                       </div>
+                                      <div class="login__button"  @click="login()">
+                                              <a class="default__button" style="width: 100%;">OTP</a>
+                                          </div>
   
   
                                   </div>
                               </div>
                           </div>
   
-                          <div class="tab-pane fade" id="projects__two" role="tabpanel" aria-labelledby="projects__two">
+                          <div class="tab-pane fade"  v-bind:class="{ active: !getisActive , show:!getisActive }" id="projects__two" role="tabpanel" aria-labelledby="projects__two">
                               <div class="col-xl-8 offset-md-2">
                                   <div class="loginarea__wraper">
                                       <div class="login__heading">
@@ -129,7 +161,7 @@
   
                                           </div>
                                           <div class="login__button">
-                                              <a class="default__button" href="#">Log In</a>
+                                              <a class="default__button" href="#">Log In </a>
                                           </div>
                                       </form>
   
@@ -159,35 +191,75 @@
           </div>
     </div>
   </template>
-  
-  <script>
-  export default {
-      data: () => ({
-          isActive :true,
-          isActiveSig :false,
-          form: {
-              email: "",
-              password: "",
-          },
-        }),
-    mounted() {
-      console.log(this.$store.state.count);
+
+
+
+
+
+
+<script setup>
+import { storeToRefs } from 'pinia';
+import { defineComponent } from 'vue';
+import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
+import { useRoute } from 'vue-router'
+import { useLogin } from '@/stores/login'
+import { useVuelidate } from '@vuelidate/core';
+import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+
+
+const store = useLogin()
+const useError = useAuthStore()
+
+const { getisActive } = storeToRefs(store);
+const { alertlogin } = storeToRefs(useError);
+
+
+const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
+const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
+
+const formData = reactive({
+  email: '',
+  password: '',
+  confirmPassword: null,
+});
+
+
+
+const rules = computed(() => {
+  return {
+    email: {
+      required: helpers.withMessage('The email field is required', required),
+      email: helpers.withMessage('Invalid email format', email),
     },
-    created(){
-  
+    password: {
+      required: helpers.withMessage('The password field is required', required),
+      minLength: minLength(6),
     },
-    methods: {
-      activeattibute() {
-  
-      },
-      toggleActiveClass(){
-          if (!this.isActive) {
-      this.isActive = true;
-    } else {
-      this.isActive = false;
-    }
-  
-      }
-    }
   };
-  </script>
+});
+
+const v$ = useVuelidate(rules, formData);
+
+
+
+const login = async () => {
+
+
+
+    v$.value.$validate();
+  if (!v$.value.$error) {
+    alert('ผ่าน');
+  }
+   
+ //  v$.value.$validate();
+  //await authenticateUser(formData); // call authenticateUser and pass the user object
+};
+
+
+
+
+</script>
+<!-- const formData = reactive({
+  username: 'kminchelle',
+  password: '0lelplR',
+}); -->

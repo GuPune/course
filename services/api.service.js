@@ -5,7 +5,5 @@ const apiClient = axios.create({
     // Other Axios configuration options can be added here
   });
 
-
-
 export default apiClient;
 
