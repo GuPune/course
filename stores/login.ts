@@ -8,7 +8,7 @@ export const useLogin = defineStore({
     isActive :true,
     isActiveSig :false,
     form: {
-        email: "",
+        username: "",
         password: "",
     },
   }),

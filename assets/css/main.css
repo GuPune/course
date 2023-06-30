@@ -807,6 +807,15 @@ Header Area
   position: relative;
   color: var(--blackColor);
 }
+
+.headerarea__main__menu1 nav ul > li a {
+  padding: 40px 20px;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  color: var(--blackColor);
+}
 @media (min-width: 1366px) and (max-width: 1499px) {
   .headerarea__main__menu nav ul > li a {
     padding: 30px 15px;
@@ -862,6 +871,16 @@ Header Area
   height: 100%;
   align-items: center;
 }
+
+
+.headerarea__chat {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  align-items: center;
+}
+
 .headerarea__right .header__cart {
   padding: 0 20px;
   position: relative;

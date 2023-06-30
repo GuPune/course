@@ -19,7 +19,6 @@ export const useAuthStore = defineStore('auth', {
       status:false,
       message:"Login ไม่สำเร็จ"
     },
-    count:11
   }),
   getters: {
     load(state) {
@@ -27,36 +26,30 @@ export const useAuthStore = defineStore('auth', {
     },
     alertlogin: (state) => {
       return state.error;
-    }
+    },
   },
   
   actions: {
     async authenticateUser({ username, password }: UserPayloadInterface) {
       // useFetch from nuxt 3
 
-this.error.status = true;
-      // const { error, data, statusCode }: any = await useFetch('https://dummyjson.com/auth/login', {
-      //   method: 'post',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: {
-      //     username,
-      //     password,
-      //   },
-      // });
-      // if (data.value) {
-      //   const token = useCookie('token'); // useCookie new hook in nuxt 3
-      //   token.value = data?.value?.token; // set token to cookie
-      //   this.authenticated = true; // set authenticated  state value to true
-      // }
-      // if (!data.value) {
-      //   this.loading = true;
-      // }
 
- 
-
- 
- 
-
+      const { error, data, statusCode }: any = await useFetch('https://dummyjson.com/auth/login', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: {
+          username,
+          password,
+        },
+      });
+      if (data.value) {
+        const token = useCookie('token'); // useCookie new hook in nuxt 3
+        token.value = data?.value?.token; // set token to cookie
+        this.authenticated = true; // set authenticated  state value to true
+      }
+      if (!data.value) {
+        this.error.status = true;
+      }
     },
     logUserOut() {
       const token = useCookie('token'); // useCookie new hook in nuxt 3
@@ -64,9 +57,6 @@ this.error.status = true;
       token.value = null; // clear the token cookie
       this.loading = false;
     },
-    ab() {
-      this.loading = true;
-     },
   },
 });
 

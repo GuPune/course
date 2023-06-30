@@ -5,7 +5,7 @@
     <div>
 
  
-      <div class="loginarea sp_top_100 sp_bottom_100">
+      <div class="loginarea">
               <div class="container">
                   <div class="row">
                                  <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="alertlogin.status">
@@ -37,18 +37,18 @@
                                       <form action="#">
                                           <div class="login__form">
                                               <label class="form__label">Username or email</label>
-                                              <input class="common__login__input" type="text" placeholder="Your username or email"     v-model="formData.email"
+                                              <input class="common__login__input" type="text" placeholder="Your username or email"     v-model="formData.username"
                                               
                                                     :class="{
-                'border-red-500 focus:border-red-500': v$.email.$error,
-                'border-[#42d392] ': !v$.email.$invalid,
+                'border-red-500 focus:border-red-500': v$.username.$error,
+                'border-[#42d392] ': !v$.username.$invalid,
               }"
-              @change="v$.email.$touch"
+              @change="v$.username.$touch"
               autocomplete="off"
                                               >
 
-                                                 <span class="text-xs text-red-500" style="color:red" v-if="v$.email.$error">{{
-            v$.email.$errors[0].$message
+                                                 <span class="text-xs text-red-500" style="color:red" v-if="v$.username.$error">{{
+            v$.username.$errors[0].$message
           }}</span>
   
                                           </div>
@@ -198,6 +198,7 @@
 
 
 <script setup>
+
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
@@ -206,7 +207,7 @@ import { useLogin } from '@/stores/login'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 
-
+const router = useRouter();
 const store = useLogin()
 const useError = useAuthStore()
 
@@ -217,19 +218,26 @@ const { alertlogin } = storeToRefs(useError);
 const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 
+// const formData = reactive({
+//   email: '',
+//   password: '',
+//   confirmPassword: null,
+// });
+
+
 const formData = reactive({
-  email: '',
-  password: '',
+  username: 'kminchelle',
+  password: '0lelplR',
   confirmPassword: null,
 });
 
 
-
 const rules = computed(() => {
   return {
-    email: {
+    username: {
       required: helpers.withMessage('The email field is required', required),
-      email: helpers.withMessage('Invalid email format', email),
+    //   email: helpers.withMessage('Invalid email format', email),
+      minLength: minLength(6),
     },
     password: {
       required: helpers.withMessage('The password field is required', required),
@@ -248,7 +256,10 @@ const login = async () => {
 
     v$.value.$validate();
   if (!v$.value.$error) {
-    alert('ผ่าน');
+    await authenticateUser(formData); 
+      if (authenticated) {
+        router.push('/');
+      }
   }
    
  //  v$.value.$validate();
@@ -259,7 +270,3 @@ const login = async () => {
 
 
 </script>
-<!-- const formData = reactive({
-  username: 'kminchelle',
-  password: '0lelplR',
-}); -->
