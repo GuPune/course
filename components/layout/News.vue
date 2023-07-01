@@ -186,3 +186,15 @@
             </div>
         </div>
 </template>
+
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+import { defineComponent } from 'vue';
+import { useNews } from '@/stores/news'
+
+const store = useNews()
+const useError = useAuthStore()
+
+const { getisActiveNews } = storeToRefs(store);
+
+</script>
