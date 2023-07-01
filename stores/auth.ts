@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import apiClient from '~/services/api.service';
-
+import { useEnvStore } from '@/stores/env'
 
 interface UserPayloadInterface {
   username: string;
@@ -10,7 +9,10 @@ interface UserPayloadInterface {
 
 
 
+
+
 export const useAuthStore = defineStore('auth', {
+ 
   state: () => ({
     authenticated: false,
     loading: false,
@@ -30,18 +32,21 @@ export const useAuthStore = defineStore('auth', {
   },
   
   actions: {
+    
     async authenticateUser({ username, password }: UserPayloadInterface) {
       // useFetch from nuxt 3
-
-
-      const { error, data, statusCode }: any = await useFetch('https://dummyjson.com/auth/login', {
+   
+      const BASE_URL = useRuntimeConfig().public.BASE_API_URL;
+      const { error, data, statusCode }: any = await useFetch('/auth/login', {
         method: 'post',
+        baseURL:useEnvStore().apidev,
         headers: { 'Content-Type': 'application/json' },
         body: {
           username,
           password,
         },
       });
+    
       if (data.value) {
         const token = useCookie('token'); // useCookie new hook in nuxt 3
         token.value = data?.value?.token; // set token to cookie

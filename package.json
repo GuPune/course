@@ -16,6 +16,7 @@
     "sass": "^1.63.6"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "@pinia/nuxt": "^0.4.11",
     "@typescript-eslint/typescript-estree": "^5.60.1",
     "@vuelidate/core": "^2.0.0-alpha.44",

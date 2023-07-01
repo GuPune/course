@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   
+  
   css: ['~/assets/css/main.css','~/assets/css/responsive.css','~/assets/css/bootstrap.min.css','~/assets/css/animate.min.css'
     ,'~/assets/css/icofont.min.css'
   ,'~/assets/css/magnific-popup.css'
@@ -13,10 +14,27 @@ export default defineNuxtConfig({
  modules: [
   '@pinia/nuxt','nuxt-icon'
 ],
+//  nitro: {
+//             devProxy: {
+//                 "/auth": {
+//                     target:"https://dummyjson.com",
+//                     changeOrigin: true,
+//                     prependPath: true,
+//                 }
+//             }
+//         },
 
+runtimeConfig: {
+  // Config within public will be also exposed to the client
+  public: {
+    BASE_API_URL: "https://dummyjson.com",
+
+  }
+},
 imports: {
   dirs: ['./stores'],
 },
+
 
   plugins: [
 
