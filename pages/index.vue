@@ -10,8 +10,10 @@ import Blog from '@/components/layout/Blog.vue';
 import News from '@/components/layout/News.vue';
 
 definePageMeta({
-    middleware: 'guest' // this should match the name of the file inside the middleware directory 
+    middleware: ['guest'] // this should match the name of the file inside the middleware directory 
 })
+
+
 </script>
 <template>
   <div>

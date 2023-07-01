@@ -294,9 +294,6 @@ import { useLogin } from '@/stores/login'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 
-definePageMeta({
-    middleware: 'guest' // this should match the name of the file inside the middleware directory 
-})
 
 
 const router = useRouter();

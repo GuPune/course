@@ -1,12 +1,11 @@
 import { defineStore } from 'pinia'
-import axios from 'axios';
-import apiClient from '~/services/api.service';
 
 
-export const NewsPostStore = defineStore({
+
+export const newsPostStore = defineStore({
   id: 'news',
   state: () => ({
-    isActiveNews,
+    isActiveNews:true
   }),
   getters: {
     getisActiveNews: (state) => {
@@ -29,3 +28,5 @@ export const NewsPostStore = defineStore({
   
   }
 })
+
+
