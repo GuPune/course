@@ -144,7 +144,9 @@
                                                         <h4><a href="event-details.html">Forging relationships between national</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">Read More <i class="icofont-simple-right"></i></a>
+
+                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
+                                                        <!-- <a href="event-details.html">Read More <i class="icofont-simple-right"></i></a> -->
                                                     </div>
                                                 </div>
                                             </div>
