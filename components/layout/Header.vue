@@ -25,7 +25,7 @@
 
                                         <li><a class="headerarea__has__dropdown">
                                       
-                                            <nuxt-link to="/about">หลักสูตรทั้งหมด</nuxt-link>
+                                            <nuxt-link to="/course">หลักสูตรทั้งหมด</nuxt-link>
 
                                     </a>
 

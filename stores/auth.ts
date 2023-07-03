@@ -36,7 +36,7 @@ export const useAuthStore = defineStore('auth', {
     async authenticateUser({ username, password }: UserPayloadInterface) {
       // useFetch from nuxt 3
    
-      const BASE_URL = useRuntimeConfig().public.BASE_API_URL;
+
       const { error, data, statusCode }: any = await useFetch('/auth/login', {
         method: 'post',
         baseURL:useEnvStore().apidev,

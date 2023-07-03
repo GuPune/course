@@ -39,7 +39,7 @@
                                                         <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">ข่าวต่อ <i class="icofont-simple-right"></i></a>
+                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -54,7 +54,7 @@
                                                         <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">ข่าวต่อ <i class="icofont-simple-right"></i></a>
+                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,7 +69,7 @@
                                                         <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">ข่าวต่อ<i class="icofont-simple-right"></i></a>
+                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,7 +84,8 @@
                                                         <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">ข่าวต่อ<i class="icofont-simple-right"></i></a>
+                                                   
+                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,7 +115,7 @@
                                                         <h4><a href="event-details.html">Forging relationships between national</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">Read More <i class="icofont-simple-right"></i></a>
+                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +130,7 @@
                                                         <h4><a href="event-details.html">Lorem ipsum dolor sit amet conse ctetur.</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">Read More <i class="icofont-simple-right"></i></a>
+                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,7 +162,7 @@
                                                         <h4><a href="event-details.html">Lorem ipsum dolor sit amet conse ctetur.</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <a href="event-details.html">Read More <i class="icofont-simple-right"></i></a>
+                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
