@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   '@/assets/scss/style.scss'
  ],
  modules: [
-  '@pinia/nuxt','nuxt-icon'
+  '@pinia/nuxt','nuxt-icon',
 ],
 //  nitro: {
 //             devProxy: {
@@ -37,8 +37,6 @@ imports: {
 
 
   plugins: [
-
-  
     // { src: '~/plugins/main.js' ,mode: 'client'},
     // { src: '~/plugins/plugins.js',mode: 'client' },
     // { src: '~/plugins/wow.min.js',mode: 'client' },

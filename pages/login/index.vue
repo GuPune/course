@@ -16,10 +16,10 @@
                       <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up">
                           <ul class="nav  tab__button__wrap text-center" id="myTab" role="tablist">
                               <li class="nav-item" role="presentation">
-                                  <button class="single__tab__link" v-bind:class="{ active: getisActive }"  @click="store.toggleActiveClass()" data-bs-toggle="tab" data-bs-target="#projects__one" type="button">Login {{ getisActive }}</button>
+                                  <button class="single__tab__link" v-bind:class="{ active: getisActive }"  @click="store.toggleActiveClass()" data-bs-toggle="tab" data-bs-target="#projects__one" type="button">Login</button>
                               </li>
                               <li class="nav-item" role="presentation">
-                                  <button class="single__tab__link" data-bs-toggle="tab" v-bind:class="{ active: !getisActive }" @click="store.toggleActiveClass()" data-bs-target="#projects__two" type="button">Sing up {{ getisActive }}</button>
+                                  <button class="single__tab__link" data-bs-toggle="tab" v-bind:class="{ active: !getisActive }" @click="store.toggleActiveClass()" data-bs-target="#projects__two" type="button">Sign up</button>
                               </li>
                           </ul>
                       </div>
@@ -27,155 +27,15 @@
   
                       <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
 
-                          <div class="tab-pane fade" v-bind:class="{ active: getisActive , show:getisActive }" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
-                              <div class="col-xl-8 col-md-8 offset-md-2">
-                                  <div class="loginarea__wraper">
-                                      <div class="login__heading">
-                                          <h5 class="login__title">Login</h5>
-                                          <p class="login__description">Don't have an account yet? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Sign up for free</a></p>
-                                      </div>
-                                      <form action="#">
-                                          <div class="login__form">
-                                              <label class="form__label">Username or email</label>
-                                              <input class="common__login__input" type="text" placeholder="Your username or email"     v-model="formData.username"
-                                              
-                                                    :class="{
-                'border-red-500 focus:border-red-500': v$.username.$error,
-                'border-[#42d392] ': !v$.username.$invalid,
-              }"
-              @change="v$.username.$touch"
-              autocomplete="off"
-                                              >
-
-                                                 <span class="text-xs text-red-500" style="color:red" v-if="v$.username.$error">{{
-            v$.username.$errors[0].$message
-          }}</span>
-  
-                                          </div>
-                                          <div class="login__form">
-                                              <label class="form__label">Password</label>
-                                              <input class="common__login__input" type="password" placeholder="Password"
-                                               v-model="formData.password"
-              id="password"
-              name="password"
-               :class="{
-                ' border-red-500 focus:border-red-500': v$.password.$error,
-                'border-[#42d392]': !v$.password.$invalid,
-              }"
-              @change="v$.password.$touch"
-                                              >
-                                               <span class="text-xs text-red-500" style="color:red" v-if="v$.password.$error">{{
-            v$.password.$errors[0].$message
-          }}</span>
-  
-                                          </div>
-                                          <div class="login__form d-flex justify-content-between flex-wrap gap-2">
-                                              <div class="form__check">
-                                                  <input id="forgot" type="checkbox">
-                                                  <label for="forgot"> Remember me</label>
-                                              </div>
-                                              <div class="text-end login__form__link">
-                                                  <a href="#">Forgot your password?</a>
-                                              </div>
-                                          </div>
-                                          <div class="login__button" @click="login()">
-                                              <a class="default__button">Log In</a>
-                                          </div>
-                                         
-                                      </form>
-  
-                                      <div class="login__social__option">
-                                          <p>or Log-in with</p>
-  
-                                
-                                      </div>
-                                      <div class="login__button"  @click="login()">
-                                              <a class="default__button" style="width: 100%;">OTP</a>
-                                          </div>
-  
-  
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="tab-pane fade"  v-bind:class="{ active: !getisActive , show:!getisActive }" id="projects__two" role="tabpanel" aria-labelledby="projects__two">
-                              <div class="col-xl-8 offset-md-2">
-                                  <div class="loginarea__wraper">
-                                      <div class="login__heading">
-                                          <h5 class="login__title">Sing Up</h5>
-                                          <p class="login__description">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Log In</a></p>
-                                      </div>
-  
-  
-  
-                                      <form action="#">
-                                          <div class="row">
-                                              <div class="col-xl-6">
-                                                  <div class="login__form">
-                                                      <label class="form__label">First Name</label>
-                                                      <input class="common__login__input" type="text" placeholder="First Name">
-  
-                                                  </div>
-                                              </div>
-                                              <div class="col-xl-6">
-                                                  <div class="login__form">
-                                                      <label class="form__label">Last Name</label>
-                                                      <input class="common__login__input" type="password" placeholder="Last Name">
-  
-                                                  </div>
-                                              </div>
-                                              <div class="col-xl-6">
-                                                  <div class="login__form">
-                                                      <label class="form__label">Username</label>
-                                                      <input class="common__login__input" type="password" placeholder="Username">
-  
-                                                  </div>
-                                              </div>
-                                              <div class="col-xl-6">
-                                                  <div class="login__form">
-                                                      <label class="form__label">Email</label>
-                                                      <input class="common__login__input" type="password" placeholder="Your Email">
-  
-                                                  </div>
-                                              </div>
-                                              <div class="col-xl-6">
-                                                  <div class="login__form">
-                                                      <label class="form__label">Password</label>
-                                                      <input class="common__login__input" type="password" placeholder="Password">
-  
-                                                  </div>
-                                              </div>
-                                              <div class="col-xl-6">
-                                                  <div class="login__form">
-                                                      <label class="form__label">Re-Enter Password</label>
-                                                      <input class="common__login__input" type="password" placeholder="Re-Enter Password">
-  
-                                                  </div>
-                                              </div>
-                                          </div>
-  
-                                          <div class="login__form d-flex justify-content-between flex-wrap gap-2">
-                                              <div class="form__check">
-                                                  <input id="accept_pp" type="checkbox"> <label for="accept_pp">Accept the Terms and Privacy Policy</label>
-                                              </div>
-  
-                                          </div>
-                                          <div class="login__button">
-                                              <a class="default__button" href="#">Log In </a>
-                                          </div>
-                                      </form>
-  
-  
-  
-  
-                                  </div>
-                              </div>
-  
-                          </div>
-  
+              <Login></Login>
+              
+  <Register></Register>
   
   
                       </div>
+
+   <Loading v-if="getisLoading"></Loading>
+  
   
                   </div>
   
@@ -185,7 +45,8 @@
                       <img class="hero__shape hero__shape__3" src="img/education/hero_shape4.png" alt="Shape">
                       <img class="hero__shape hero__shape__4" src="img/education/hero_shape5.png" alt="Shape">
                   </div>
-  
+
+
   
               </div>
           </div>
@@ -199,20 +60,29 @@
 
 <script setup>
 
+import Login from '@/components/auth/Login.vue';
+import Register from '@/components/auth/Register.vue';
+import Loading from '@/components/button/loading.vue';
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import { useRoute } from 'vue-router'
 import { useLogin } from '@/stores/login'
+import { RegisterStore } from '@/stores/register'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 
 const router = useRouter();
 const store = useLogin()
+const registerload = RegisterStore()
 const useError = useAuthStore()
 
 const { getisActive } = storeToRefs(store);
+
 const { alertlogin } = storeToRefs(useError);
+
+const { getisLoading } = storeToRefs(registerload);
+
 
 
 const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
@@ -270,3 +140,35 @@ const login = async () => {
 
 
 </script>
+
+
+
+<style scoped>
+.loading-page {
+  position: fixed;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem;
+  text-align: center;
+  font-size: 3rem;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loading {
+  display: inline-block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 4px solid rgba(9, 133, 81, 0.705);
+  border-radius: 50%;
+  border-top-color: #158876;
+  animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+</style>

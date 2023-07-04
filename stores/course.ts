@@ -35,16 +35,10 @@ export const CoursePostStore = defineStore({
    
 
     try {
-
-    
-
-
     const { error, data, statusCode }: any = await useFetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'get',
       headers: { 'Content-Type': 'application/json' },
     });
-
-  
     this.Coursecategories = data.value
     
     } catch (error) {

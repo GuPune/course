@@ -7,6 +7,7 @@ export const useLogin = defineStore({
   state: () => ({
     isActive :true,
     isActiveSig :false,
+    isLoading :false,
     form: {
         username: "",
         password: "",
@@ -16,10 +17,13 @@ export const useLogin = defineStore({
     getisActive: (state) => {
       return state.isActive;
     },
-
-  
+    getisLoading: (state) => {
+      return state.isLoading;
+    },
   }, 
   actions: {
+
+    
     async fetchLog() {
 
 

@@ -5,10 +5,10 @@
                     <div class="col-xl-12" data-aos="fade-up">
                         <ul class="nav  about__button__wrap" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="single__tab__link"  v-bind:class="{ active: getisActiveNews }"  @click="store.toggleActiveClass()" data-bs-toggle="tab" data-bs-target="#projects__one" type="button">กรมข่นส่ง {{getisActiveNews}}</button>
+                                <button class="single__tab__link"     :class="{'active': getselectNews === 't'}"  @click="fill('t')" data-bs-toggle="tab" data-bs-target="#projects__one" type="button">กรมข่นส่ง</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="single__tab__link" v-bind:class="{ active: !getisActiveNews }"  @click="store.toggleActiveClass()" data-bs-toggle="tab" data-bs-target="#projects__two" type="button">กรมโยธา {{getisActiveNews}}</button>
+                                <button class="single__tab__link"  :class="{'active': getselectNews === 'c'}"  @click="fill('c')"  data-bs-toggle="tab" data-bs-target="#projects__two" type="button">กรมโยธา</button>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
                                 <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__three" type="button">awards</button>
@@ -25,7 +25,7 @@
 
                     <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
 
-                        <div class="tab-pane fade" id="projects__one" v-bind:class="{ active: getisActiveNews , show:getisActiveNews }" role="tabpanel" aria-labelledby="projects__one">
+                        <div class="tab-pane fade" id="projects__one"   :class="{'active': getselectNews === 't' , 'show': getselectNews === 't'}"  role="tabpanel" aria-labelledby="projects__one">
                        <div class="col-xl-12">
                                 <div class="aboutarea__content__tap__wraper">
                                     <div class="row">
@@ -100,7 +100,7 @@
 
              
 
-                        <div class="tab-pane fade" id="projects__three" v-bind:class="{ active: !getisActiveNews , show:!getisActiveNews }" role="tabpanel" aria-labelledby="projects__three">
+                        <div class="tab-pane fade" id="projects__three"   :class="{'active': getselectNews === 'c' , 'show': getselectNews === 'c'}" role="tabpanel" aria-labelledby="projects__three">
                             <div class="col-xl-12">
                                 <div class="aboutarea__content__tap__wraper">
 
@@ -199,5 +199,27 @@ const store = newsPostStore()
 
 
 const { getisActiveNews } = storeToRefs(store);
+const { getselectNews } = storeToRefs(store);
+
+const { toggleActiveClassselect } = newsPostStore();
+
+
+
+// const toggleActiveClass = async (x) => {
+
+// alert('x');
+// };
+
+
+async function fill(x) {
+
+    const formnew = reactive({
+    selectnew: x,
+    });
+
+    await toggleActiveClassselect(formnew); 
+}
+
+
 
 </script>

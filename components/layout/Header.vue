@@ -18,7 +18,19 @@
                                 <nav>
                                     <ul>
                                         <li><a class="headerarea__has__dropdown">
-                                      <nuxt-link to="/">หน้าหลัก</nuxt-link>
+                                      <nuxt-link to="/">{{ $t('home') }}</nuxt-link>
+                        
+                                      <div>
+ 
+    <!-- <form>
+      <label for="locale-select">{{ $t('language') }}: </label>
+      <select id="locale-select" v-model="$i18n.locale">
+        <option value="en">en</option>
+        <option value="th">th</option>
+
+      </select>
+    </form> -->
+   </div>
                               </a>
 
                                   </li>
@@ -57,13 +69,15 @@
                                 <div class="headerarea__left__logo">
 
                                     <div style="padding-top: 3px;" class="pull-right">
-<a style="padding-left: 10px;padding-right:10px;" href="https://www.jib.co.th/web/lswitcher/switchlang/th">
+<a style="padding-left: 10px;padding-right:10px;" @click="changeLocale('en')">
     <img src="../../assets/thai.png" alt="My Image">
 </a>
-<a href="https://www.jib.co.th/web/lswitcher/switchlang/en">
+<a  @click="changeLocale('th')">
     <img src="../../assets/thai.png" alt="My Image">
 </a>
 </div>
+
+
  </div>
                                 <!-- <div class="headerarea__button">
                                     <a href="#">Get Started Free</a>
@@ -293,7 +307,7 @@ import { useRoute } from 'vue-router'
 import { useLogin } from '@/stores/login'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
-
+import { useI18n } from "vue-i18n";
 
 
 const router = useRouter();
@@ -319,11 +333,29 @@ const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth
 
 
 const Logout = async () => {
-
-
-
     await logUserOut(); 
 }
+
+
+
+
+
+
+async function leag(x) {
+
+    this.$i18n.locales.filter("th")
+
+
+}
+
+const { locale, setLocale } = useI18n();
+
+const changeLocale = (newLocale) => {
+   // $i18n.locale = 'th';
+//  setLocale(newLocale);
+// setLocale('th')
+console.log(locale);
+};
 
 
 
