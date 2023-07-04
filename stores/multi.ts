@@ -1,14 +1,8 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useLocaleStore = defineStore('locale', {
+  // a function that returns a fresh state
   state: () => ({
-    currentLocale: 'en', // Set your default locale here
+    locale: 'en',
   }),
-  actions: {
-    setLocale(locale: string) {
-     
-      this.currentLocale = locale
-      console.log(this.currentLocale);
-    },
-  },
-})
+});

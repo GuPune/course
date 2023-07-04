@@ -19,9 +19,7 @@
                                     <ul>
                                         <li><a class="headerarea__has__dropdown">
                                       <nuxt-link to="/">{{ $t('home') }}</nuxt-link>
-                        
                                       <div>
- 
     <!-- <form>
       <label for="locale-select">{{ $t('language') }}: </label>
       <select id="locale-select" v-model="$i18n.locale">
@@ -37,16 +35,16 @@
 
                                         <li><a class="headerarea__has__dropdown">
                                       
-                                            <nuxt-link to="/course">หลักสูตรทั้งหมด</nuxt-link>
+                                            <nuxt-link to="/course">{{ $t('courses') }}</nuxt-link>
 
                                     </a>
 
                                         </li>
-                                        <li><a href="contact.html">ฝึกทำข้อสอบ</a>
+                                        <li><a href="contact.html">{{ $t('exam') }}</a>
 
 </li>
 
-                                        <li><a href="contact.html">นัดหมาย</a>
+                                        <li><a href="contact.html">{{ $t('appointment') }}</a>
 
 </li>
 
@@ -79,6 +77,8 @@
 
 
  </div>
+
+     
                                 <!-- <div class="headerarea__button">
                                     <a href="#">Get Started Free</a>
                                 </div> -->
@@ -98,10 +98,10 @@
                         <div class="col-xl-3 col-lg-3 col-md-6">
                             <div class="headerarea__right" v-if="!authenticated">
                                 <div class="headerarea__login">
-                                    <nuxt-link to="/login">Login {{ authenticated }}</nuxt-link>
+                                    <nuxt-link to="/login">{{ $t('login') }}</nuxt-link>
                                 </div>
                                 <div class="headerarea__button">
-                                    <a href="#">Register Now</a>
+                                    <a href="#">{{ $t('register') }}</a>
                                 </div>
                             </div>
                             <!-- <div class="headerarea__right" v-if="authenticated">
@@ -341,20 +341,12 @@ const Logout = async () => {
 
 
 
-async function leag(x) {
 
-    this.$i18n.locales.filter("th")
-
-
-}
 
 const { locale, setLocale } = useI18n();
 
 const changeLocale = (newLocale) => {
-   // $i18n.locale = 'th';
-//  setLocale(newLocale);
-// setLocale('th')
-console.log(locale);
+locale.value = newLocale;
 };
 
 

@@ -1,4 +1,18 @@
 {
-    "home": "home",
-    "language": "Language"
-}
+    "home": "Home",
+    "courses": "Courses",
+    "exam": "Exam",
+    "appointment": "Appointment",
+    "language": "Language",
+    "message": "hello i18n !!",
+    "article": {
+      "title": "Get Started",
+      "info": "Vue I18n is internationalization plugin for Vue.js"
+    },
+    "EN": "EN",
+    "ZH": "ZH",
+    "logo": "logo",
+    "login": "Login",
+    "register": "Register"
+  }
+  
