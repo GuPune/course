@@ -1,19 +1,25 @@
 import { defineStore } from 'pinia'
-
+import ApiService from '../services/api.service';
 
 
 export const CoursePostStore = defineStore({
   id: 'courseall',
   state: () => ({
     isActiveCourse:false,
-    Coursecategories:[]
+    coursecategories:[],
+    listcourse:[],
+    formsearchcourse: {
+      page: 1,
+      per_page: 10,
+      search: '',
+    },
   }),
   getters: {
     getisActiveCourse: (state) => {
       return state.isActiveCourse;
     },
     getCoursecategories: (state) => {
-      return state.Coursecategories;
+      return state.coursecategories;
     },
    
   }, 
@@ -27,25 +33,21 @@ export const CoursePostStore = defineStore({
     },
 
     async fetchCourse() {
-      this.Coursecategories = []
-     
-
+      this.coursecategories = []
    // this.posts = await myService.fetchData();
-
-   
-
     try {
-    const { error, data, statusCode }: any = await useFetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    this.Coursecategories = data.value
-    
+    const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
+      this.coursecategories = response.data.data 
+      console.log(response.data.data);
+     });
     } catch (error) {
     
     } finally {
      
     }
+    },
+    async fetchCourseall() {
+
     },
     
   }

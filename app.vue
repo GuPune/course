@@ -29,7 +29,7 @@ import { useRoute } from 'vue-router'
   const { posts, loading, error } = storeToRefs(usePostStore())
   const { fetchPosts } = usePostStore()
 
-  fetchPosts();
+ // fetchPosts();
 
 
 
