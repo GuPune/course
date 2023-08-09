@@ -104,14 +104,13 @@
 
 <div class="blogsidebar__content__wraper__2" data-aos="fade-up">
 
-    <h4 class="sidebar__title">categories</h4>
+    <h4 class="sidebar__title">Categories</h4>
     <ul class="categorie__list">
         <li>
             <NuxtLink to="/news/transport">Transport Set<span>{{ store.newstranscount }}</span></NuxtLink>
         </li>
         <li> 
             <NuxtLink to="/news/civil">Civil Set  <span>{{ store.newscivilcount }}</span></NuxtLink>
-        
       </li>
     </ul>
 
@@ -145,11 +144,7 @@ await store.FetchNesTrans();
 await store.FetchNesCivil();
 
 const route = useRoute();
-console.log('current name', route.name)
-// const toggleActiveClass = async (x) => {
 
-// alert('x');
-// };
 
 
 async function fill(x) {

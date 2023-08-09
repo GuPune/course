@@ -5,17 +5,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-                        <div class="blog__content__wraper__2" data-aos="fade-up">
+                        <div class="blog__content__wraper__2" data-aos="fade-up"  v-for="(item, index) in store.newstran" :key="item.news_id">
                             <div class="blogarae__img__2">
                                 <img src="../../../assets/img/blog/blog_6.png" alt="blog">
-                                <div class="blogarea__date__2">
-                                    <span>24</span>
-                                    <span class="blogarea__month">Feb</span>
-                                </div>
+                        
                             </div>
                             <div class="blogarea__text__wraper__2">
                                 <div class="blogarea__heading__2">
-                                    <h3><a href="blog-details.html">Delivering What Consumers Really Value?</a></h3>
+                                    <h3><a href="blog-details.html">{{item.news_title}}</a></h3>
                                 </div>
                                 <div class="blogarea__list__2">
                                     <ul>
@@ -54,175 +51,9 @@
                                 </div>
                             </div>
 
-
                         </div>
-                        <div class="blog__content__wraper__2" data-aos="fade-up">
-                            <div class="blogarae__img__2">
-                                <img src="../../../assets/img/blog/blog_7.png" alt="blog">
-                                <div class="blogarea__date__2">
-                                    <span>24</span>
-                                    <span class="blogarea__month">Feb</span>
-                                </div>
-                                <div class="registerarea__content course__details__video">
-                                    <div class="registerarea__video">
-                                        <div class="video__pop__btn">
-                                            <a class="video-btn" href="https://www.youtube.com/watch?v=vHdclsdkp28"> <img src="img/icon/video.png" alt=""></a>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blogarea__text__wraper__2">
-                                <div class="blogarea__heading__2">
-                                    <h3><a href="blog-details.html">Here at First Baptist Cape Coral we believe!</a></h3>
-                                </div>
-                                <div class="blogarea__list__2">
-                                    <ul>
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-business-man-alt-2"></i> Mirnsdo.H
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-speech-comments"></i> 0 Comments
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-eraser-alt"></i> Association
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="blogarea__paragraph">
-                                    <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of On the other hand, organizations have the need for integrating in IT departments</p>
-                                </div>
-                                <div class="blogarea__button__2">
-                                    <a href="blog-details.html">READ MORE
-                                        <i class="icofont-double-right"></i>
-                                     </a>
-                                    <a href="#">
-                                        <div class="blogarea__icon__2">
-                                            <i class="icofont-share"></i>
-                                            <i class="icofont-heart"></i>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="blog__content__wraper__2" data-aos="fade-up">
-                            <div class="blogarae__img__2">
-                                <img src="../../../assets/img/blog/blog_8.png" alt="blog">
-                                <div class="blogarea__date__2">
-                                    <span>24</span>
-                                    <span class="blogarea__month">Feb</span>
-                                </div>
-                            </div>
-                            <div class="blogarea__text__wraper__2">
-                                <div class="blogarea__heading__2">
-                                    <h3><a href="blog-details.html">We are praying for our community and for.</a></h3>
-                                </div>
-                                <div class="blogarea__list__2">
-                                    <ul>
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-business-man-alt-2"></i> Mirnsdo.H
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-speech-comments"></i> 0 Comments
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-eraser-alt"></i> Association
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="blogarea__paragraph">
-                                    <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of On the other hand, organizations have the need for integrating in IT departments</p>
-                                </div>
-                                <div class="blogarea__button__2">
-                                    <a href="blog-details.html">READ MORE
-                                <i class="icofont-double-right"></i>
-                            </a>
-                                    <a href="#">
-                                        <div class="blogarea__icon__2">
-                                            <i class="icofont-share"></i>
-                                            <i class="icofont-heart"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="blog__content__wraper__2" data-aos="fade-up">
-                            <div class="blogarae__img__2">
-                                <img src="../../../assets/img/blog/blog_9.png" alt="blog">
-                                <div class="blogarea__date__2">
-                                    <span>24</span>
-                                    <span class="blogarea__month">Feb</span>
-                                </div>
-                            </div>
-                            <div class="blogarea__text__wraper__2">
-                                <div class="blogarea__heading__2">
-                                    <h3><a href="blog-details.html">Delivering What Consumers Really Value?</a></h3>
-                                </div>
-                                <div class="blogarea__list__2">
-                                    <ul>
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-business-man-alt-2"></i> Mirnsdo.H
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-speech-comments"></i> 0 Comments
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="blog-details.html">
-                                                <i class="icofont-eraser-alt"></i> Association
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="blogarea__paragraph">
-                                    <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of On the other hand, organizations have the need for integrating in IT departments</p>
-                                </div>
-                                <div class="blogarea__button__2">
-                                    <a href="blog-details.html">READ MORE
-                                <i class="icofont-double-right"></i>
-                            </a>
-                                    <a href="#">
-                                        <div class="blogarea__icon__2">
-                                            <i class="icofont-share"></i>
-                                            <i class="icofont-heart"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="main__pagination__wrapper" data-aos="fade-up">
+                       
+                        <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
                             <ul class="main__page__pagination">
                                 <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
                                 <li><a class="active" href="#">1</a></li>
@@ -230,21 +61,19 @@
                                 <li><a href="#">3</a></li>
                                 <li><a href="#"><i class="icofont-double-right"></i></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-
                         <div class="blogsidebar__content__wraper__2" data-aos="fade-up">
-
-                            <h4 class="sidebar__title">categories</h4>
+                            <h4 class="sidebar__title">Categories</h4>
                             <ul class="categorie__list">
                                 <li>
-                                  
-                                    <NuxtLink to="/news/civil">Civil Set     <span>04</span></NuxtLink>
+                            
+                                    <NuxtLink to="/news/civil">Transport Set     <span>{{ store.newstranscount }}</span></NuxtLink>
                                 </li>
                                 <li>
                                   
-                                  <NuxtLink to="/news/transport">Transport Set     <span>03</span></NuxtLink>
+                                  <NuxtLink to="/news/transport">Civil Set     <span>{{ store.newscivilcount }}</span></NuxtLink>
                               </li>
                             </ul>
 
@@ -264,4 +93,40 @@
 
   </div>
 </template>
+
+
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+import { defineComponent } from 'vue';
+import { newsPostStore } from '@/stores/news';
+import { useRoute } from "vue-router";
+const store = newsPostStore()
+const { getisActiveNews } = storeToRefs(store);
+const { getselectNews } = storeToRefs(store);
+
+const { FetchNesTrans } = newsPostStore();//Action
+const { toggleActiveClassselect } = newsPostStore();
+
+await store.FetchNesTrans();
+await store.FetchNesCivil();
+
+const route = useRoute();
+
+
+
+
+function image(i) {
+  var x = null;
+  if (i) {
+    const usingSplit = i.split(',');
+    var x = usingSplit[0];
+  } else {
+    var x = 'static/upload/2023/7/files-1689561047889.jpg';
+  }
+  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
+}
+
+
+
+</script>
 <style scoped></style>
