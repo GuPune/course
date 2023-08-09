@@ -240,7 +240,7 @@
                             <ul class="categorie__list">
                                 <li>
                                   
-                                    <NuxtLink to="/news/civil">Civil Set     <span>03</span></NuxtLink>
+                                    <NuxtLink to="/news/civil">Civil Set     <span>04</span></NuxtLink>
                                 </li>
                                 <li>
                                   

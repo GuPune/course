@@ -10,14 +10,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="single__tab__link"  :class="{'active': getselectNews === 'c'}"  @click="fill('c')"  data-bs-toggle="tab" data-bs-target="#projects__two" type="button">กรมโยธา</button>
                             </li>
-                            <!-- <li class="nav-item" role="presentation">
-                                <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__three" type="button">awards</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__four" type="button">education</button>
-                            </li> -->
-
-
+            
                         </ul>
                     </div>
 
@@ -29,67 +22,24 @@
                        <div class="col-xl-12">
                                 <div class="aboutarea__content__tap__wraper">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12" v-for="(item, index) in store.newstran.slice(0, 4)" :key="item.news_id">
                                             <div class="single__event__wraper single__award" data-aos="fade-up">
                                                 <div class="eventarea__img">
-                                                    <img src="img/about/award-1.jpg" alt="event">
+                                                    <img :src="image(item.news_cover)" alt="event" width="160" height="110" >
                                                 </div>
                                                 <div class="eventarea__content__wraper">
                                                     <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
+                                                        <h4><a href="event-details.html">{{ item.news_title }}</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
+                                                        <NuxtLink  :to="{ name: 'news-transport-id', params: { id: item.news_id } }">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                            <div class="single__event__wraper single__award" data-aos="fade-up">
-                                                <div class="eventarea__img">
-                                                    <img src="img/about/award-2.jpg" alt="event">
-                                                </div>
-                                                <div class="eventarea__content__wraper">
-                                                    <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
-                                                    </div>
-                                                    <div class="single__event__button">
-                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                            <div class="single__event__wraper single__award" data-aos="fade-up">
-                                                <div class="eventarea__img">
-                                                    <img src="img/about/award-3.jpg" alt="event">
-                                                </div>
-                                                <div class="eventarea__content__wraper">
-                                                    <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
-                                                    </div>
-                                                    <div class="single__event__button">
-                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                            <div class="single__event__wraper single__award" data-aos="fade-up">
-                                                <div class="eventarea__img">
-                                                    <img src="img/about/award-4.jpg" alt="event">
-                                                </div>
-                                                <div class="eventarea__content__wraper">
-                                                    <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">ทดสอบระบบ กรมขนส่ง</a></h4>
-                                                    </div>
-                                                    <div class="single__event__button">
-                                                   
-                                                        <NuxtLink to="/news/transport/1">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
+                                     
+                                
                                     </div>
 
 
@@ -100,69 +50,21 @@
 
              
 
-                        <div class="tab-pane fade" id="projects__three"   :class="{'active': getselectNews === 'c' , 'show': getselectNews === 'c'}" role="tabpanel" aria-labelledby="projects__three">
+                        <div class="tab-pane fade" id="projects__three" :class="{'active': getselectNews === 'c' , 'show': getselectNews === 'c'}" role="tabpanel" aria-labelledby="projects__three">
                             <div class="col-xl-12">
                                 <div class="aboutarea__content__tap__wraper">
-
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12" v-for="(civil, index) in store.newscivil.slice(0, 4)" :key="civil.news_id">
                                             <div class="single__event__wraper single__award" data-aos="fade-up">
                                                 <div class="eventarea__img">
-                                                    <img src="img/about/award-1.jpg" alt="event">
+                                                    <img :src="image(civil.news_cover)" alt="event" width="160" height="110" >
                                                 </div>
                                                 <div class="eventarea__content__wraper">
                                                     <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">Forging relationships between national</a></h4>
+                                                        <h4><a href="event-details.html">{{ civil.news_title }}</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
-                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                            <div class="single__event__wraper single__award" data-aos="fade-up">
-                                                <div class="eventarea__img">
-                                                    <img src="img/about/award-2.jpg" alt="event">
-                                                </div>
-                                                <div class="eventarea__content__wraper">
-                                                    <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">Lorem ipsum dolor sit amet conse ctetur.</a></h4>
-                                                    </div>
-                                                    <div class="single__event__button">
-                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                            <div class="single__event__wraper single__award" data-aos="fade-up">
-                                                <div class="eventarea__img">
-                                                    <img src="img/about/award-3.jpg" alt="event">
-                                                </div>
-                                                <div class="eventarea__content__wraper">
-                                                    <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">Forging relationships between national</a></h4>
-                                                    </div>
-                                                    <div class="single__event__button">
-
-                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
-                                                        <!-- <a href="event-details.html">Read More <i class="icofont-simple-right"></i></a> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                            <div class="single__event__wraper single__award" data-aos="fade-up">
-                                                <div class="eventarea__img">
-                                                    <img src="img/about/award-4.jpg" alt="event">
-                                                </div>
-                                                <div class="eventarea__content__wraper">
-                                                    <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">Lorem ipsum dolor sit amet conse ctetur.</a></h4>
-                                                    </div>
-                                                    <div class="single__event__button">
-                                                        <NuxtLink to="/news/civil/1">Read More!<i class="icofont-simple-right"></i></NuxtLink>
+                                                        <NuxtLink  :to="{ name: 'news-civil-id', params: { id: civil.news_id } }">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,7 +103,11 @@ const store = newsPostStore()
 const { getisActiveNews } = storeToRefs(store);
 const { getselectNews } = storeToRefs(store);
 
+const { FetchNesTrans } = newsPostStore();//Action
 const { toggleActiveClassselect } = newsPostStore();
+
+await store.FetchNesTrans();
+await store.FetchNesCivil();
 
 
 
@@ -212,12 +118,21 @@ const { toggleActiveClassselect } = newsPostStore();
 
 
 async function fill(x) {
-
     const formnew = reactive({
     selectnew: x,
     });
-
     await toggleActiveClassselect(formnew); 
+}
+
+function image(i) {
+  var x = null;
+  if (i) {
+    const usingSplit = i.split(',');
+    var x = usingSplit[0];
+  } else {
+    var x = 'static/upload/2023/7/files-1689561047889.jpg';
+  }
+  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
 }
 
 

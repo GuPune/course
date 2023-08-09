@@ -107,10 +107,11 @@
     <h4 class="sidebar__title">categories</h4>
     <ul class="categorie__list">
         <li>
-            <NuxtLink to="/news/civil">Civil Set     <span>03</span></NuxtLink>
+            <NuxtLink to="/news/transport">Transport Set<span>{{ store.newstranscount }}</span></NuxtLink>
         </li>
         <li> 
-          <NuxtLink to="/news/transport">Transport Set     <span>03</span></NuxtLink>
+            <NuxtLink to="/news/civil">Civil Set  <span>{{ store.newscivilcount }}</span></NuxtLink>
+        
       </li>
     </ul>
 
@@ -125,4 +126,51 @@
 
   </div>
 </template>
+
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+import { defineComponent } from 'vue';
+import { newsPostStore } from '@/stores/news';
+import { useRoute } from "vue-router";
+const store = newsPostStore()
+
+
+const { getisActiveNews } = storeToRefs(store);
+const { getselectNews } = storeToRefs(store);
+
+const { FetchNesTrans } = newsPostStore();//Action
+const { toggleActiveClassselect } = newsPostStore();
+
+await store.FetchNesTrans();
+await store.FetchNesCivil();
+
+const route = useRoute();
+console.log('current name', route.name)
+// const toggleActiveClass = async (x) => {
+
+// alert('x');
+// };
+
+
+async function fill(x) {
+    const formnew = reactive({
+    selectnew: x,
+    });
+    await toggleActiveClassselect(formnew); 
+}
+
+function image(i) {
+  var x = null;
+  if (i) {
+    const usingSplit = i.split(',');
+    var x = usingSplit[0];
+  } else {
+    var x = 'static/upload/2023/7/files-1689561047889.jpg';
+  }
+  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
+}
+
+
+
+</script>
 <style scoped></style>
