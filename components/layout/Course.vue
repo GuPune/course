@@ -30,9 +30,9 @@
 
         <div class="row grid" data-aos="fade-up">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3"  v-for="(item, index) in store.coursecategories" :key="index">
-                <div class="gridarea__wraper">
+                <div class="gridarea__wraper" @click="SelectCourse(index)">
                     <div class="gridarea__img">
-                        <a href="course-details.html">
+                        <a>
                             <img :src="image(item.course_cover)" alt="grid"></a>
                         <div class="gridarea__small__button">
                             <!-- <div class="grid__badge">Data & Tech</div> -->
@@ -47,11 +47,11 @@
                           
                         </div>
                         <div class="gridarea__heading">
-                            <h3><a href="course-details.html">{{ item.course_name }}</a></h3>
+                            <h3><a>{{ item.course_name }}</a></h3>
                         </div>
                      
                         <div class="gridarea__bottom">
-                            <a href="instructor-details.html">
+                            <a>
                                 <div class="gridarea__small__img">
                                     <img :src="image(item.course_cover)" alt="grid">
                                     <div class="gridarea__small__content">
@@ -82,6 +82,10 @@ import { CoursePostStore } from '@/stores/course'; // import the auth store we j
 const store = CoursePostStore()
 store.fetchCourse()
 
+
+const SelectCourse = async (id) => {
+ alert(id);
+};
 
 function image(i) {
   var x = null;

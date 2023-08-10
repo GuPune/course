@@ -106,7 +106,7 @@ const { toggleActiveClassselect } = newsPostStore();
 
 await store.FetchNesTrans();
 await store.FetchNesCivil();
-await store.FetchNewsCivilId(route.params.id);
+await store.FetchNewTransId(route.params.id);
 
 
 

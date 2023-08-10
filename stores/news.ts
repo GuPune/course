@@ -73,6 +73,7 @@ export const newsPostStore = defineStore({
     async FetchNewsCivilId(id) {
       for (var i = 0, len = this.newscivil.length; i < len; i++) {
         if(this.newscivil[i].new_id = id){
+          
           this.newscivilone = this.newscivil[i]
           break;
         }

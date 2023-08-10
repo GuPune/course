@@ -14,15 +14,6 @@ export default defineNuxtConfig({
  modules: [
   '@pinia/nuxt','nuxt-icon',
 ],
-//  nitro: {
-//             devProxy: {
-//                 "/auth": {
-//                     target:"https://dummyjson.com",
-//                     changeOrigin: true,
-//                     prependPath: true,
-//                 }
-//             }
-//         },
 
 runtimeConfig: {
   // Config within public will be also exposed to the client
@@ -37,6 +28,7 @@ imports: {
 
 
   plugins: [
+    
     // { src: '~/plugins/main.js' ,mode: 'client'},
     // { src: '~/plugins/plugins.js',mode: 'client' },
     // { src: '~/plugins/wow.min.js',mode: 'client' },

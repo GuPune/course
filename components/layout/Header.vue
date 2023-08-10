@@ -7,8 +7,7 @@
                         <div class="col-xl-2 col-lg-2 col-md-6">
                             <div class="headerarea__left">
                                 <div class="headerarea__left__logo">
-
-                               <img src="/img/logo/logo_1.png" alt="logo">
+                                    <img src="/img/logo/logo_1.png" alt="logo">
                                 </div>
 
                             </div>
@@ -18,9 +17,9 @@
                                 <nav>
                                     <ul>
                                         <li><a class="headerarea__has__dropdown">
-                                      <nuxt-link to="/">{{ $t('home') }}</nuxt-link>
-                                      <div>
-    <!-- <form>
+                                                <nuxt-link to="/">{{ $t('home') }}</nuxt-link>
+                                                <div>
+                                                    <!-- <form>
       <label for="locale-select">{{ $t('language') }}: </label>
       <select id="locale-select" v-model="$i18n.locale">
         <option value="en">en</option>
@@ -28,32 +27,37 @@
 
       </select>
     </form> -->
-   </div>
-                              </a>
-
-                                  </li>
-
-                                        <li><a class="headerarea__has__dropdown">
-                                      
-                                            <nuxt-link to="/course">{{ $t('courses') }}</nuxt-link>
-
-                                    </a>
+                                                </div>
+                                            </a>
 
                                         </li>
-                                        <li><a href="contact.html">{{ $t('exam') }}</a>
 
-</li>
+                                        <li><a class="headerarea__has__dropdown">
+
+                                                <nuxt-link to="/course">{{ $t('courses') }}</nuxt-link>
+
+                                            </a>
+
+                                        </li>
+                                        <li>
+                                            <a class="headerarea__has__dropdown">
+
+                                                <nuxt-link to="/exam">{{ $t('exam') }}</nuxt-link>
+
+                                            </a>
+
+                                        </li>
 
                                         <li><a href="contact.html">{{ $t('appointment') }}</a>
 
-</li>
+                                        </li>
 
 
 
 
 
 
-                                    
+
                                     </ul>
                                 </nav>
                             </div>
@@ -67,24 +71,24 @@
                                 <div class="headerarea__left__logo">
 
                                     <div style="padding-top: 3px;" class="pull-right">
-<a style="padding-left: 10px;padding-right:10px;" @click="changeLocale('en')">
-    <img src="../../assets/thai.png" alt="My Image">
-</a>
-<a  @click="changeLocale('th')">
-    <img src="../../assets/thai.png" alt="My Image">
-</a>
-</div>
+                                        <a style="padding-left: 10px;padding-right:10px;" @click="changeLocale('en')">
+                                            <img src="../../assets/thai.png" alt="My Image">
+                                        </a>
+                                        <a @click="changeLocale('th')">
+                                            <img src="../../assets/thai.png" alt="My Image">
+                                        </a>
+                                    </div>
 
 
- </div>
+                                </div>
 
-     
+
                                 <!-- <div class="headerarea__button">
                                     <a href="#">Get Started Free</a>
                                 </div> -->
                             </div>
                         </div>
-              
+
                         <!-- <div class="col-xl-2 col-lg-2 col-md-6">  
                             <div style="padding-top: 3px;" class="pull-right">
 <a style="padding-left: 5px;padding-right:5px;" href="https://www.jib.co.th/web/lswitcher/switchlang/th">
@@ -114,29 +118,30 @@
                               
                             </div> -->
 
-                            <div class="headerarea__main__menu .headerarea__login headerarea__right"  v-if="authenticated" >
+                            <div class="headerarea__main__menu .headerarea__login headerarea__right" v-if="authenticated">
                                 <nav>
                                     <ul>
-<li><a class="headerarea__has__dropdown headerarea__login" href="#"  style="padding: 8px 15px;border: 1px solid var(--borderColor1);"
-> <i class="icofont-heart-alt"></i> บัญชีของฉัน {{ authenticated }}
-                                    </a>
+                                        <li><a class="headerarea__has__dropdown headerarea__login" href="#"
+                                                style="padding: 8px 15px;border: 1px solid var(--borderColor1);"> <i
+                                                    class="icofont-heart-alt"></i> บัญชีของฉัน {{ authenticated }}
+                                            </a>
                                             <ul class="headerarea__submenu">
                                                 <li><a @click="Logout()">Logout</a></li>
-                                                
+
                                             </ul>
                                         </li>
 
 
 
 
-                                    
+
                                     </ul>
                                 </nav>
                             </div>
                         </div>
 
-      
- 
+
+
 
                     </div>
 
@@ -333,7 +338,7 @@ const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth
 
 
 const Logout = async () => {
-    await logUserOut(); 
+    await logUserOut();
 }
 
 
@@ -346,7 +351,7 @@ const Logout = async () => {
 const { locale, setLocale } = useI18n();
 
 const changeLocale = (newLocale) => {
-locale.value = newLocale;
+    locale.value = newLocale;
 };
 
 

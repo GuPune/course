@@ -19,6 +19,9 @@
                       </ul>
                   </div>
               </div>
+  
+  
+  
           </div>
       </div>
   </div>
@@ -38,9 +41,17 @@
                 <div class="row">
                     <div class="col-xl-12">
              <CourseSel></CourseSel>
+
                     </div>
+                    <!-- <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+                      <Search></Search>
+                      
+                    </div> -->
+
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+
                         <CourseAll></CourseAll>
+
                         <div class="main__pagination__wrapper" data-aos="fade-up">
                             <ul class="main__page__pagination">
                                 <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
