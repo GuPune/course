@@ -63,7 +63,7 @@
 
                          <div class="main__pagination__wrapper" data-aos="fade-up">
                             <ul class="main__page__pagination">
-                                <li  ><a><i class="icofont-double-left"></i></a></li>
+                                <li  @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
                           
                                 <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
                             </ul>

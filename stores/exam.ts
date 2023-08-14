@@ -11,7 +11,7 @@ export const ExamPostStore = defineStore({
     listexamqu:[],
     examquest:[],
     listttt:[],
-    aaaa:1,
+    aaaa:0,
     formsearchcourse: {
       page: 1,
       per_page: 10,
@@ -87,16 +87,22 @@ console.log(this.listttt);
 
     async Next(index) {
       
- 
+      this.aaaa++
       this.listttt = [];
       this.listttt.push(this.listexamqu[this.aaaa])
       let obj = this.listexamqu.find(item => item.eq_id === index);
       console.log(obj);
-      this.aaaa++
+     
+      console.log(this.aaaa);
     },
     async Previod(index) {
-const a = index + 1;
-this.aaaa = 1;
+
+this.aaaa--;
+console.log(this.aaaa);
+this.listttt = [];
+this.listttt.push(this.listexamqu[this.aaaa])
+let obj = this.listexamqu.find(item => item.eq_id === index);
+console.log(obj);
 
 
     },
