@@ -3,25 +3,43 @@
         <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
             role="tabpanel" aria-labelledby="projects__one">
             <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="item in 8">
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="item in store.listexam">
                     <div class="gridarea__wraper gridarea__wraper__2">
                         <div class="gridarea__img">
-                            <a href="course-details.html"><img src="img/grid/grid_1.png" alt="grid"></a>
+                            <a href="course-details.html"><img :src="coverimage(item.em_cover)" alt="grid"></a>
                         </div>
                         <div class="gridarea__content">
                             <div class="gridarea__list">
                                 <ul>
                                     <li>
-                                        <i class="icofont-book-alt"></i> 23 Lesson
+                                        <i class="icofont-book-alt"></i> {{ item.em_random_amount }}
                                     </li>
                                     <li>
-                                        <i class="icofont-clock-time"></i> 1 hr 30 min
+                                        <i class="icofont-clock-time"></i> {{ item.em_time }}
                                     </li>
                                 </ul>
                             </div>
                             <div class="gridarea__heading">
-                                <h3><a href="course-details.html">Foundation course to under stand
-                                        about softwere</a></h3>
+                                <h3><a href="course-details.html">{{ item.em_name }}</a></h3>
+                            </div>
+                            <div class="gridarea__bottom">
+
+                                <a href="instructor-details.html">
+                                    <div class="gridarea__small__img">
+                                        <img src="img/grid/grid_small_1.jpg" alt="grid">
+                                        <div class="gridarea__small__content">
+                                            <h6>{{ item.user_create }}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="gridarea__star">
+                                    <i class="icofont-star"></i>
+                                    <i class="icofont-star"></i>
+                                    <i class="icofont-star"></i>
+                                    <i class="icofont-star"></i>
+                                    <span>(44)</span>
+                                </div>
                             </div>
                             <div class="gridarea__bottom">
                                 <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;">
@@ -47,4 +65,15 @@ import { CoursePostStore } from '@/stores/course';
 const store = ExamPostStore()
 const { getisActiveCourse } = storeToRefs(store);
 
+
+await store.fetchExam()
+
+function coverimage(i) {
+    let result = i.slice(0, 6);
+    if (result === 'static') {
+        return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
+    } else {
+        return i;
+    }
+}
 </script>

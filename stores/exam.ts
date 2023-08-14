@@ -6,8 +6,8 @@ export const ExamPostStore = defineStore({
   id: 'examlist',
   state: () => ({
     isActiveCourse:true,
-    coursecategories:[],
-    listcourse:[],
+  
+    listexam:[],
     formsearchcourse: {
       page: 1,
       per_page: 10,
@@ -18,9 +18,7 @@ export const ExamPostStore = defineStore({
     getisActiveCourse: (state) => {
       return state.isActiveCourse;
     },
-    getCoursecategories: (state) => {
-      return state.coursecategories;
-    },
+  
    
   }, 
   actions: {
@@ -32,16 +30,15 @@ export const ExamPostStore = defineStore({
       }
     },
 
-    async fetchCourse() {
-      this.coursecategories = []
-   // this.posts = await myService.fetchData();
+    async fetchExam() {
     try {
-    const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
-      this.coursecategories = response.data.data 
+    const data = await ApiService.post('/exam/main/list', this.formsearchcourse).then(response => {
       console.log(response.data.data);
+      this.listexam = response.data.data;
      });
+    return true
     } catch (error) {
-    
+    return false;
     } finally {
      
     }
