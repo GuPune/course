@@ -1,115 +1,186 @@
 <template>
-    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent">
-        <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
-            role="tabpanel" aria-labelledby="projects__one">
-            <div class="row">
-                <div class="blogarea__2 sp_top_100 sp_bottom_100">
+  <div
+    class="tab-content tab__content__wrapper with__sidebar__content"
+    id="myTabContent"
+  >
+    <div
+      class="tab-pane fade"
+      v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }"
+      id="projects__one"
+      role="tabpanel"
+      aria-labelledby="projects__one"
+    >
+      <div class="row">
+        <div class="blogarea__2 sp_top_100 sp_bottom_100">
+          {{ store.listttt }}
 
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="blog__details__content__wraper">
-                                <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">หลักสูตร : รถยนต์ (อังกฤษ)</h4>
-                                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
-                                    <ul v-for="(a, x) in 4" @click="choosechoice(x);">
-                                        <li>
-                                         {{x+1}}.
-                                        
-                                        </li>
-                                        <hr>
-                                        <span>No stopping within the cross-hatched lines.</span>
-                                        <hr v-if="number % 2 === 0">
-                                    </ul>
+             {{ store.listexamqu }}
+          
+          <div class="row">
+            <div class="col-xl-8 col-lg-8">
+              <!-- <div class="blog__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
+                            <div class="blogarea__text__wraper__2">
+                                <div class="blogarea__heading__2">
+                                    <h3><a href="blog-details.html">Delivering What Consumers Really Value?</a></h3>
                                 </div>
-
-
-
-
-
-
-
-
-
-
-                            </div>
-                        </div>
-
-                        <div class="col-xl-4 col-lg-4">
-                            <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
-                                <ul class="recent__list">
-                                    <li>
-                                        <div class="recent__img">
-                                            <a href="#">
-                                                <img src="../../assets/img/blog/blog_11.png" alt="sidbar">
-                                            </a>
-                                        </div>
-                                        <div class="recent__text">
-                                            <div class="recent__date">
-                                                <a>ชื่อจริง: ร้อยตรี ครรชิต ชัยกิจ</a>
-                                            </div>
-                                            <div class="recent__date">
-                                                <a>รหัสบัตร ประชาชน: 0812630907</a>
-                                            </div>
-                                            <div class="recent__date">
-                                                <a>สถานะการทำข้อสอบ: ทดลองสอบ</a>
-                                            </div>
-                                        </div>
-
-                                    </li>
-
-
-                                </ul>
-                                <div class="populer__tag__list">
-                                    <ul>
-                                        <li style="width: 47%;"><a>วิธีทำ</a></li>
-                                        <li style="width: 47%;"><a>สรุป/ส่งคำตอบ</a></li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-6" v-for="(x, index) in 50">
-                                        ข้อ {{index+1}}  <del style="color: red;"> {{index+1}} </del>
-                                    </div>
+                                <div class="blogarea__paragraph">
+                                    <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of On the other hand, organizations have the need for integrating in IT departments</p>
                                 </div>
                             </div>
-
-                        </div>
-                    </div>
-
+                        </div> -->
+                     
+              <div
+                class="blog__details__content__wraper"
+                v-if="store.listttt"
+                v-for="(x, index) in store.listttt"
+              >
+                <h4
+                  class="sidebar__title aos-init aos-animate"
+                  data-aos="fade-up"
+                >
+                  หลักสูตร : รถยนต์ (อังกฤษ)
+                </h4>
+                <div
+                  class="course__details__wraper aos-init aos-animate"
+                  data-aos="fade-up"
+                >
+                  <ul style="width: 100%">
+                    <h2>{{ x.eq_name }} {{x.eq_id}}</h2>
+                  </ul>
                 </div>
 
+                <div
+                  class="course__details__wraper aos-init aos-animate"
+                  data-aos="fade-up"
+                >
+                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_index === x.answer }"  @click="choosechoice(a.ec_index, x.eq_id)">
+                    <li>{{ ins + 1 }}.</li>
+                    <hr />
+                    <span>{{ a.ec_name }}</span>
+                    <hr v-if="number % 2 === 0" />
+                  </ul>
+                </div>
+
+                         <div class="main__pagination__wrapper" data-aos="fade-up">
+                            <ul class="main__page__pagination">
+                                <li  ><a><i class="icofont-double-left"></i></a></li>
+                          
+                                <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
+                            </ul>
+                        </div>
+                
+              </div>
+       
             </div>
+
+            <div class="col-xl-4 col-lg-4">
+              <div
+                class="blogsidebar__content__wraper__2 aos-init aos-animate"
+                data-aos="fade-up"
+              >
+                <ul class="recent__list">
+                  <li>
+                    <div class="recent__img">
+                      <a href="#">
+                        <img
+                          src="../../assets/img/blog/blog_11.png"
+                          alt="sidbar"
+                        />
+                      </a>
+                    </div>
+                    <div class="recent__text">
+                      <div class="recent__date">
+                        <a>ชื่อจริง: ร้อยตรี ครรชิต ชัยกิจ</a>
+                      </div>
+                      <div class="recent__date">
+                        <a>รหัสบัตร ประชาชน: 0812630907</a>
+                      </div>
+                      <div class="recent__date">
+                        <a>สถานะการทำข้อสอบ: ทดลองสอบ</a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="populer__tag__list">
+                  <ul>
+                    <li style="width: 47%"><a>วิธีทำ</a></li>
+                    <li style="width: 47%"><a>สรุป/ส่งคำตอบ</a></li>
+                  </ul>
+                </div>
+                <hr />
+                <div class="row">
+                  <div
+                    class="col-6"
+                    v-if="store.listexamqu"
+                    v-for="(x, index) in store.listexamqu"
+                  >
+                    ข้อ {{ index + 1 }}
+                    <del style="color: red" v-if="x.answer">
+                      {{ x.answer }}
+                    </del>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia';
-import { defineComponent } from 'vue';
-import { CoursePostStore } from '@/stores/course';
+import { storeToRefs } from "pinia";
+import { defineComponent } from "vue";
+import { CoursePostStore } from "@/stores/course";
+import { ExamPostStore } from "@/stores/exam";
 
-const store = ExamPostStore()
+const store = ExamPostStore();
 const { getisActiveCourse } = storeToRefs(store);
 
+const { Updatechoice } = ExamPostStore(); //Action
+const { Next } = ExamPostStore(); //Action
+const { Previod } = ExamPostStore(); //Action
 
-await store.fetchExam()
+await store.fetchExam();
 
 function coverimage(i) {
-    let result = i.slice(0, 6);
-    if (result === 'static') {
-        return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
-    } else {
-        return i;
-    }
+  let result = i.slice(0, 6);
+  if (result === "static") {
+    return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
+  } else {
+    return i;
+  }
 }
 
-const choosechoice = async (x) => {
-    alert(x);
- };
+const choosechoice = async (choices, eq_id) => {
+ 
+  await Updatechoice(choices, eq_id);
+};
+const previodd = async (index) => {
+   await Previod(index);
+};
+const nextt = async (index) => {
+ 
+   await Next(index);
+};
+
+
 </script>
 
 <style>
 .xt3e5 {
-    padding: 30px 50px 10px 10px;
+  padding: 30px 50px 10px 10px;
+}
+
+.hover-button:hover {
+  border: 2px solid #b217b4;
+  padding: 5px 40px;
+}
+
+.sec-l {
+  border-style: groove !important;
+  border-color: red !important;
 }
 </style>
