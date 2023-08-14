@@ -7421,11 +7421,11 @@ Course
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
-.course__details__wraper ul {
+/* .course__details__wraper ul {
   width: 50%;
   border-right: 2px solid var(--borderColor);
   padding: 55px 70px 55px 50px;
-}
+} */
 @media (min-width: 992px) and (max-width: 1365px) {
   .course__details__wraper ul {
     padding: 35px 30px 35px 30px;
