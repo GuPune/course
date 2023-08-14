@@ -3,10 +3,10 @@
 <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent">
 <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse , show:getisActiveCourse }" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
     <div class="row">
-        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="(item, index ) in 8" @click="SelectCourse(item)">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
             <div class="gridarea__wraper gridarea__wraper__2">
                 <div class="gridarea__img">
-                    <a><img src="img/grid/grid_1.png" alt="grid"></a>
+                    <a><img :src="coverimage(item.course_cover)" alt="grid" width="340" height="212"></a>
                     <!-- <div class="gridarea__small__button">
                         <div class="grid__badge">Data & Tech</div>
                     </div>
@@ -16,10 +16,18 @@
 
                 </div>
                 <div class="gridarea__content">
-               
+                    <div class="gridarea__list">
+                <ul>
+                    <li v-if="item.lesson">
+                        <i class="icofont-book-alt"></i> {{item.lesson.length}}
+                    </li>
+                    <li>
+                        <i class="icofont-clock-time"></i> รหัส {{ item.course_code }}
+                    </li>
+                </ul>
+            </div>
                     <div class="gridarea__heading">
-                        <h3><a>Foundation course to under stand
-                                about softwere</a></h3>
+                        <h3><a>{{item.course_name}}</a></h3>
                     </div>
                     <!-- <div class="gridarea__price">
                         $32.00 <del>/ $67.00</del>
@@ -32,7 +40,7 @@
                             <div class="gridarea__small__img">
                                 <img src="img/grid/grid_small_1.jpg" alt="grid">
                                 <div class="gridarea__small__content">
-                                    <h6>Mirnsdo .H</h6>
+                                    <h6>{{item.user_create}}</h6>
                                 </div>
                             </div>
                         </a>
@@ -52,12 +60,10 @@
     </div>
 
 </div>
-
-
 <div class="tab-pane fade" id="projects__two" role="tabpanel" v-bind:class="{ active: !getisActiveCourse , show:!getisActiveCourse }" aria-labelledby="projects__two">
-    <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in 8" @click="SelectCourse(item)">
+    <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
         <div class="gridarea__img">
-            <a><img src="img/grid/grid_1.png" alt="grid"></a>
+            <a><img :src="coverimage(item.course_cover)" alt="grid"></a>
             <!-- <div class="gridarea__small__button">
                 <div class="grid__badge">Data & Tech</div>
             </div>
@@ -69,23 +75,21 @@
         <div class="gridarea__content">
             <div class="gridarea__list">
                 <ul>
-                    <li>
-                        <i class="icofont-book-alt"></i> 23 Lesson
+                    <li  v-if="item.lesson">
+                        <i class="icofont-book-alt"></i> {{item.lesson.length}}
                     </li>
                     <li>
-                        <i class="icofont-clock-time"></i> 1 hr 30 min
+                        <i class="icofont-clock-time"></i> รหัส {{ item.course_code }}
                     </li>
                 </ul>
             </div>
             <div class="gridarea__heading">
-                <h3><a>Become a product Manager learn the
-                                skills & job.
+                <h3><a>{{item.course_name}}
                             </a></h3>
             </div>
             <div class="gridarea__price">
-                $32.00 <del>/ $67.00</del>
-                <span>Free.</span>
-
+                {{item.course_description}}
+             
             </div>
             <div class="gridarea__bottom">
                 <div class="gridarea__bottom__left">
@@ -93,7 +97,7 @@
                         <div class="gridarea__small__img">
                             <img src="img/grid/grid_small_1.jpg" alt="grid">
                             <div class="gridarea__small__content">
-                                <h6>Mirnsdo .H</h6>
+                                <h6>{{item.user_create}}</h6>
                             </div>
                         </div>
                     </a>
@@ -108,7 +112,7 @@
                 </div>
 
                 <div class="gridarea__details">
-                    <a>Know Details
+                    <a>ดูรายละเอียดเพิ่มเติม
                                 <i class="icofont-arrow-right"></i>
                             </a>
                 </div>
@@ -132,10 +136,22 @@ import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
 const router = useRouter();
 const store = CoursePostStore()
-const SelectCourse = async (id) => {
+let course = await store.fetchCourse();
+
+const SelectCourse = async (item) => {
+ const id = item.course_id;
  router.push({ path: '/course-detail/'+id})
 };
 
 const { getisActiveCourse } = storeToRefs(store);
+
+function coverimage(i) {
+  let result = i.slice(0, 6);
+  if (result === 'static') {
+    return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
+  } else {
+    return i;
+  }
+}
 
 </script>
