@@ -14,7 +14,7 @@ export const ExamPostStore = defineStore({
     examquest:[],
     listttt:[],
     counting:false,
-    aaaa:0,
+    ind:0,
     seconds:"",
     hours:"",
     minutes:"",
@@ -63,7 +63,7 @@ export const ExamPostStore = defineStore({
 
     async fetchExamq() {
       this.listexamqu = [];
-      this.aaaa = 0;
+      this.ind = 0;
       try {
       const data = await ApiService.post('/exam/question/5/list', this.formsearchcourse).then(response => {
         this.listexamqu = response.data.data;
@@ -96,17 +96,17 @@ this.listttt[0].answer = choices
     },
 
     async Next(index) {
-      this.aaaa++
+      this.ind++
       this.listttt = [];
-      this.listttt.push(this.listexamqu[this.aaaa])
+      this.listttt.push(this.listexamqu[this.ind])
       let obj = this.listexamqu.find(item => item.eq_id === index);
     },
     async Previod(index) {
 
-this.aaaa--;
+this.ind--;
 
 this.listttt = [];
-this.listttt.push(this.listexamqu[this.aaaa])
+this.listttt.push(this.listexamqu[this.ind])
 let obj = this.listexamqu.find(item => item.eq_id === index);
 
 

@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
-                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_index === x.answer }"
+                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_index === x.answer }" style="border-style: groove;"
                     @click="choosechoice(a.ec_index, x.eq_id,index)">
                     <li>{{ ins + 1 }}.</li>
                     <hr />
