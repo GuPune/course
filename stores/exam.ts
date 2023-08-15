@@ -6,7 +6,7 @@ export const ExamPostStore = defineStore({
   id: 'examlist',
   state: () => ({
     timerEnabled: true,
-    timerCount: 70,
+    timerCount: 140,
     isActiveCourse:true,  
     isActive:false, 
     listexam:[],
@@ -129,7 +129,7 @@ let obj = this.listexamqu.find(item => item.eq_id === index);
  
   },
   async Start(){
-    this.timerCount = 70;
+    this.timerCount = 140;
   },
 
   async toHoursAndMinutes() {

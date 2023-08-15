@@ -55,7 +55,7 @@
               <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
                 <ul class="course__details__populer__list">
                   <li>
-                    <p v-if="store.seconds" style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{ store.seconds }} Seconds  </p>
+                    <p style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{ store.seconds }} Seconds  </p>
                     <!-- <button type="button" class="btn btn-primary" :disabled="store.counting" @click="startCountdown">
     <vue-countdown v-if="store.counting" :time="60000" @end="onCountdownEnd" v-slot="{ totalSeconds }">Fetch again {{ totalSeconds }} seconds later</vue-countdown>
     <span v-else>Fetch Verification Code</span>
