@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="gridarea__bottom">
-                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;">
+                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam()">
                                     เริ่มต้นทดสอบ</button>
                             </div>
                         </div>
@@ -59,11 +59,14 @@ import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
 
+const router = useRouter();
 const store = ExamPostStore()
 const { getisActiveCourse } = storeToRefs(store);
-
-
 await store.fetchExam()
+
+const GotoExam = async () => {
+    router.push({ path: '/exam/examtest'})
+};
 
 function coverimage(i) {
     let result = i.slice(0, 6);

@@ -1,21 +1,9 @@
 <template>
-  <div
-    class="tab-content tab__content__wrapper with__sidebar__content"
-    id="myTabContent"
-  >
-    <div
-      class="tab-pane fade"
-      v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }"
-      id="projects__one"
-      role="tabpanel"
-      aria-labelledby="projects__one"
-    >
+  <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent">
+    <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
+      role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
-        <div class="blogarea__2 sp_top_100 sp_bottom_100">
-          {{ store.listttt }}
-
-             {{ store.listexamqu }}
-          
+        <div class="blogarea__2">
           <div class="row">
             <div class="col-xl-8 col-lg-8">
               <!-- <div class="blog__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
@@ -28,32 +16,20 @@
                                 </div>
                             </div>
                         </div> -->
-                     
-              <div
-                class="blog__details__content__wraper"
-                v-if="store.listttt"
-                v-for="(x, index) in store.listttt"
-              >
-                <h4
-                  class="sidebar__title aos-init aos-animate"
-                  data-aos="fade-up"
-                >
+
+              <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
+                <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
                   หลักสูตร : รถยนต์ (อังกฤษ)
                 </h4>
-                <div
-                  class="course__details__wraper aos-init aos-animate"
-                  data-aos="fade-up"
-                >
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h2>{{ x.eq_name }} {{x.eq_id}}</h2>
+                    <h2>{{ x.eq_name }} {{ x.eq_id }}</h2>
                   </ul>
                 </div>
 
-                <div
-                  class="course__details__wraper aos-init aos-animate"
-                  data-aos="fade-up"
-                >
-                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_index === x.answer }"  @click="choosechoice(a.ec_index, x.eq_id)">
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
+                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_index === x.answer }"
+                    @click="choosechoice(a.ec_index, x.eq_id,index)">
                     <li>{{ ins + 1 }}.</li>
                     <hr />
                     <span>{{ a.ec_name }}</span>
@@ -61,31 +37,38 @@
                   </ul>
                 </div>
 
-                         <div class="main__pagination__wrapper" data-aos="fade-up">
-                            <ul class="main__page__pagination">
-                                <li  @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
-                          
-                                <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
-                            </ul>
-                        </div>
-                
+                <div class="main__pagination__wrapper" data-aos="fade-up">
+                  <ul class="main__page__pagination">
+                    <li @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
+
+                    <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
+                  </ul>
+                </div>
+
               </div>
-       
+
             </div>
 
+            
+
             <div class="col-xl-4 col-lg-4">
-              <div
-                class="blogsidebar__content__wraper__2 aos-init aos-animate"
-                data-aos="fade-up"
-              >
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
+                <ul class="course__details__populer__list">
+                  <li>
+                    <p v-if="store.seconds" style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{ store.seconds }} Seconds  </p>
+                    <!-- <button type="button" class="btn btn-primary" :disabled="store.counting" @click="startCountdown">
+    <vue-countdown v-if="store.counting" :time="60000" @end="onCountdownEnd" v-slot="{ totalSeconds }">Fetch again {{ totalSeconds }} seconds later</vue-countdown>
+    <span v-else>Fetch Verification Code</span>
+  </button> -->
+                  </li>
+                </ul>
+              </div>
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
                 <ul class="recent__list">
                   <li>
                     <div class="recent__img">
                       <a href="#">
-                        <img
-                          src="../../assets/img/blog/blog_11.png"
-                          alt="sidbar"
-                        />
+                        <img src="../../assets/img/blog/blog_11.png" alt="sidbar" />
                       </a>
                     </div>
                     <div class="recent__text">
@@ -103,17 +86,13 @@
                 </ul>
                 <div class="populer__tag__list">
                   <ul>
-                    <li style="width: 47%"><a>วิธีทำ</a></li>
+                    <li style="width: 47%"  @click="example();"><a>วิธีทำ</a></li>
                     <li style="width: 47%"><a>สรุป/ส่งคำตอบ</a></li>
                   </ul>
                 </div>
                 <hr />
                 <div class="row">
-                  <div
-                    class="col-6"
-                    v-if="store.listexamqu"
-                    v-for="(x, index) in store.listexamqu"
-                  >
+                  <div class="col-6" v-if="store.listexamqu" v-for="(x, index) in store.listexamqu">
                     ข้อ {{ index + 1 }}
                     <del style="color: red" v-if="x.answer">
                       {{ x.answer }}
@@ -131,6 +110,7 @@
 
 
 <script lang="ts" setup>
+import { ref, computed, watch } from 'vue'
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { CoursePostStore } from "@/stores/course";
@@ -142,8 +122,23 @@ const { getisActiveCourse } = storeToRefs(store);
 const { Updatechoice } = ExamPostStore(); //Action
 const { Next } = ExamPostStore(); //Action
 const { Previod } = ExamPostStore(); //Action
+const { countDownTimer } = ExamPostStore(); //Action
 
-await store.fetchExam();
+const router = useRouter();
+await store.fetchExamq();
+let start = await store.Start();
+let s = await store.countDownTimer();
+// const end = await store.End();
+
+const computedProperty = computed(() => {
+    return store.timerCount
+})
+
+watch(computedProperty, (newX) => {
+  if(newX == 0){
+    router.push({ path: '/exam'})
+  }
+})
 
 function coverimage(i) {
   let result = i.slice(0, 6);
@@ -154,17 +149,28 @@ function coverimage(i) {
   }
 }
 
-const choosechoice = async (choices, eq_id) => {
- 
+const choosechoice = async (choices, eq_id,index) => {
   await Updatechoice(choices, eq_id);
+  await Next(index);
 };
+
+const example = async () => {
+store.isActive = true;
+};
+
 const previodd = async (index) => {
-   await Previod(index);
+  await Previod(index);
 };
 const nextt = async (index) => {
- 
-   await Next(index);
+  await Next(index);
 };
+
+
+
+
+
+
+
 
 
 </script>
