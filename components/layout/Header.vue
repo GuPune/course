@@ -328,8 +328,6 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 
 const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
 
-
-
 // const formData = reactive({
 //   email: '',
 //   password: '',
