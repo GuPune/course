@@ -62,6 +62,8 @@ export const ExamPostStore = defineStore({
     },
 
     async fetchExamq() {
+      this.listexamqu = [];
+      this.aaaa = 0;
       try {
       const data = await ApiService.post('/exam/question/5/list', this.formsearchcourse).then(response => {
         this.listexamqu = response.data.data;
