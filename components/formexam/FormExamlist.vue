@@ -16,10 +16,11 @@
                                 </div>
                             </div>
                         </div> -->
-
+<!-- {{store.listexamqu}} -->
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
                 <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                  หลักสูตร : รถยนต์ (อังกฤษ)
+                  
+                 <i class="icofont-book-alt"></i> หลักสูตร : รถยนต์ (อังกฤษ)
                 </h4>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
@@ -86,8 +87,8 @@
                 </ul>
                 <div class="populer__tag__list">
                   <ul>
-                    <li style="width: 47%"  @click="example();"><a>วิธีทำ</a></li>
-                    <li style="width: 47%"><a>สรุป/ส่งคำตอบ</a></li>
+                    <li style="width: 47%"  @click="example();" class="exma"><a>วิธีทำ</a></li>
+                    <li style="width: 47%" class="send"><a>สรุป/ส่งคำตอบ</a></li>
                   </ul>
                 </div>
                 <hr />
@@ -188,5 +189,13 @@ const nextt = async (index) => {
 .sec-l {
   border-style: groove !important;
   border-color: red !important;
+}
+.exma{
+  background-color: #5f2ded;
+    color: white;
+}
+.send{
+  background-color: #e06512;
+    color: white;
 }
 </style>

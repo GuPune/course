@@ -6,7 +6,7 @@ export const ExamPostStore = defineStore({
   id: 'examlist',
   state: () => ({
     timerEnabled: true,
-    timerCount: 140,
+    timerCount: 20,
     isActiveCourse:true,  
     isActive:false, 
     listexam:[],
@@ -117,6 +117,16 @@ let obj = this.listexamqu.find(item => item.eq_id === index);
     },
 
     async countDownTimer () {
+
+  
+      console.log(this.timerCount);
+     
+      // const totalMinutes = dateInn + this.timerCount;
+      // this.seconds = totalMinutes % 60;
+      // console.log('dateInMillisecs',dateInMillisecs);
+      // console.log('dateInMillisxxxxxxxxecs', totalMinutes);
+   
+
       if (this.timerCount > 0) {
         await setTimeout(() => {
               this.timerCount -= 1
@@ -131,7 +141,7 @@ let obj = this.listexamqu.find(item => item.eq_id === index);
  
   },
   async Start(){
-    this.timerCount = 140;
+    this.timerCount = 20;
   },
 
   async toHoursAndMinutes() {
