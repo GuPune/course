@@ -339,6 +339,8 @@ const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth
 
 const Logout = async () => {
     await logUserOut();
+        router.push('/');
+
 }
 
 

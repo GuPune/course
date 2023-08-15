@@ -97,8 +97,8 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 
 
 const formData = reactive({
-  username: 'kminchelle',
-  password: '0lelplR',
+  username: 'rkknoob1',
+  password: '123456',
   confirmPassword: null,
 });
 
@@ -119,17 +119,14 @@ const rules = computed(() => {
 
 const v$ = useVuelidate(rules, formData);
 
-
-
 const login = async () => {
-
-
 
     v$.value.$validate();
   if (!v$.value.$error) {
-    await authenticateUser(formData); 
-      if (authenticated) {
-        router.push('/');
+   let login = await authenticateUser(formData); 
+
+      if (login === true) {
+      router.push('/');
       }
   }
    

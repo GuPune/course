@@ -80,6 +80,9 @@
   </div>
   </template>
   <script lang="ts" setup>
+ definePageMeta({
+  middleware: 'auth' // this should match the name of the file inside the middleware directory 
+})
   import FormExamlist from '@/components/formexam/FormExamlist.vue';
   import FormExamFitter from '@/components/formexam/FormExamFitter.vue';
   import { storeToRefs } from 'pinia';
@@ -91,9 +94,7 @@ const { GetopenModal } = storeToRefs(store);
 
 
 const HideModal = async () => {
-    console.log('Hide');
 store.isActive = false;
-
 };
 
   </script>

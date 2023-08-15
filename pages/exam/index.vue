@@ -54,6 +54,9 @@
     </div>
   </template>
   <script lang="ts" setup>
+    definePageMeta({
+  middleware: 'auth' // this should match the name of the file inside the middleware directory 
+})
   import Examlist from '@/components/exam/Examlist.vue';
   import ExamFitter from '@/components/exam/ExamFitter.vue';
   </script>
