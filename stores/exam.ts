@@ -37,6 +37,8 @@ export const ExamPostStore = defineStore({
   
    
   }, 
+
+
   actions: {
     async toggleActiveClass() {
       if (!this.isActiveCourse) {
@@ -50,8 +52,6 @@ export const ExamPostStore = defineStore({
     try {
     const data = await ApiService.post('/exam/main/list', this.formsearchcourse).then(response => {
       this.listexam = response.data.data;
-
-   
      });
     return true
     } catch (error) {

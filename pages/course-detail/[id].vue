@@ -23,10 +23,14 @@
                 </div>
             </div>
             <div class="shape__icon__2">
-                <img class=" shape__icon__img shape__icon__img__1" src="../../assets/img/herobanner/herobanner__1.png" alt="photo">
-                <img class=" shape__icon__img shape__icon__img__2" src="../../assets/img/herobanner/herobanner__2.png" alt="photo">
-                <img class=" shape__icon__img shape__icon__img__3" src="../../assets/img/herobanner/herobanner__3.png" alt="photo">
-                <img class=" shape__icon__img shape__icon__img__4" src="../../assets/img/herobanner/herobanner__4.png" alt="photo">
+                <img class=" shape__icon__img shape__icon__img__1" src="../../assets/img/herobanner/herobanner__1.png"
+                    alt="photo">
+                <img class=" shape__icon__img shape__icon__img__2" src="../../assets/img/herobanner/herobanner__2.png"
+                    alt="photo">
+                <img class=" shape__icon__img shape__icon__img__3" src="../../assets/img/herobanner/herobanner__3.png"
+                    alt="photo">
+                <img class=" shape__icon__img shape__icon__img__4" src="../../assets/img/herobanner/herobanner__4.png"
+                    alt="photo">
             </div>
         </div>
         <div class="coursearea sp_top_100 sp_bottom_100">
@@ -35,21 +39,11 @@
                     <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
                         <div class="blogarae__img__2 course__details__img__2 aos-init aos-animate" data-aos="fade-up">
                             <img :src="coverimage(item.course_cover)" alt="blog">
-                            <!-- <div class="registerarea__content course__details__video">
-                                <div class="registerarea__video">
-                                    <div class="video__pop__btn">
-                                        <a class="video-btn" href="https://www.youtube.com/watch?v=vHdclsdkp28"> <img
-                                                src="img/icon/video.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
 
                         <div class="blog__details__content__wraper">
                             <div class="course__button__wraper aos-init aos-animate" data-aos="fade-up">
                                 <div class="course__button">
-                                    <!-- <a href="#">Featured</a>
-                                    <a class="course__2" href="#">Ux Design</a> -->
                                 </div>
                                 <div class="course__date">
                                     <p>Last Update:<span> {{ coverttime(item.udp_date) }}</span></p>
@@ -117,12 +111,12 @@
                                                     <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" :data-bs-target="'#collapseOne-' + index"
                                                         aria-expanded="false" aria-controls="collapseOne">
-                                                        Lesson #{{ index + 1 }}
+                                                        {{ x.cs_name }} #{{ index + 1 }}
                                                     </button>
                                                 </h2>
                                                 <div :id="'collapseOne-' + index" class="accordion-collapse collapse"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
+                                                    <!-- <div class="accordion-body">
                                                         <div class="scc__wrap">
                                                             <div class="scc__info">
                                                                 <i class="icofont-read-book"></i>
@@ -174,19 +168,60 @@
                                                                 <span class="question">10 Questions</span>
                                                             </div>
                                                         </div>
+                                                    </div> -->
+                                                    <div class="row" style="padding: 5px;">
+                                                        <div class="col-lg-12">
+                                                            <div class="review__box">
+                                                                <div class="review__number">5.0</div>
+                                                                <div class="review__icon">
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                </div>
+                                                                <span>(17 Reviews)</span>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="row" style="padding: 5px;">
+                                                        <div class="col-lg-3">
+
+
+                                                            <div class="single__expart__teacher">
+                                                                <div class="teacher__img">
+                                                                    <img src="../../assets/img/grid/cart1.jpg" alt="author">
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col--30">
+                                                            <!-- <div class="single__expart__teacher">
+                                                                <div class="teacher__img">
+                                                                    <img src="../../assets/img/grid/cart1.jpg" alt="author">
+                                                                </div>
+                                                            </div> -->
+
+                                                            <div class="author__content" style="margin: 30px 0;"> 
+                                        <div class="author__name">
+                                            <h6><a href="#">Rohan De Spond</a></h6>
+                                            <p>25 january 2023</p>
+
+                                        </div>
+                                        <div class="author__text">
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have. There are many variations of passages of Lorem Ipsum available, but the majority have</p>
+                                        </div>
+                                    </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-
-
-
-
-
                                     </div>
-
-
                                 </div>
                             </div>
 
