@@ -9,7 +9,7 @@ const apiClient = axios.create({
     // ตั้งค่า headers ตามที่ API ระบุ (ตัวอย่างเป็น JSON)
   }
 });
-
+  const ViewImage = 'https://oasapi.iddriver.com/media_file/file/?f=';  
   // const apiClient = useRuntimeConfig().public.BASE_API_URL;
 
   export default {
@@ -27,6 +27,13 @@ const apiClient = axios.create({
     },
     delete(resource) {
       return apiClient.delete(resource);
-    }
+    },
+    image(img) {
+      const imag = ViewImage+img;
+      if(!img){
+        console.log('ไม่มีรูป');
+      }
+      return imag;
+    },
   };
 

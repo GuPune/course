@@ -76,4 +76,8 @@ function coverimage(i) {
         return i;
     }
 }
+// function image(i) {
+//   let im =  ApiService.image(i);
+//   return im;
+// }
 </script>

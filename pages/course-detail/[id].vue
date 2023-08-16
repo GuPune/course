@@ -193,10 +193,9 @@
 
                                                             <div class="single__expart__teacher">
                                                                 <div class="teacher__img">
-                                                                    <img src="../../assets/img/grid/cart1.jpg" alt="author">
-
+                                                                    <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
+                                                                     <img :src="image(x.cs_cover)" alt="Image">    
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-9 col--30">
@@ -206,16 +205,16 @@
                                                                 </div>
                                                             </div> -->
 
-                                                            <div class="author__content" style="margin: 30px 0;"> 
-                                        <div class="author__name">
-                                            <h6><a href="#">Rohan De Spond</a></h6>
-                                            <p>25 january 2023</p>
+                                                            <div class="author__content" style="margin: 30px 0;">
+                                                                <div class="author__name">
+                                                                    <h6><a href="#">{{ x.cs_name }} </a></h6>
+                                                                    <p>{{ coverttime(x.crt_date) }}</p>
 
-                                        </div>
-                                        <div class="author__text">
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have. There are many variations of passages of Lorem Ipsum available, but the majority have</p>
-                                        </div>
-                                    </div>
+                                                                </div>
+                                                                <div class="author__text">
+                                                                    <p>{{ x }} </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -264,6 +263,17 @@ function coverttime(date) {
 
     return formattedDatetime;
 
+}
+
+function image(i) {
+  var x = null;
+  if (i) {
+    const usingSplit = i.split(",");
+    var x = usingSplit[0];
+  } else {
+    var x = "static/upload/2023/8/files-BuxyK5Sy7I.png";
+  }
+  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
 }
 
 </script>
