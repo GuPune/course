@@ -78,6 +78,7 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course'; // import the auth store we just created
+import  ApiService  from '@/services/api.service';
 
 const store = CoursePostStore()
 store.fetchCourse()
@@ -88,14 +89,8 @@ const SelectCourse = async (id) => {
 };
 
 function image(i) {
-  var x = null;
-  if (i) {
-    const usingSplit = i.split(",");
-    var x = usingSplit[0];
-  } else {
-    var x = "static/upload/2023/7/files-1689561047889.jpg";
-  }
-  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
+  let im =  ApiService.image(i);
+  return im;
 }
 
 </script>

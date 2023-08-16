@@ -116,6 +116,7 @@ import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { CoursePostStore } from "@/stores/course";
 import { ExamPostStore } from "@/stores/exam";
+import  ApiService  from '@/services/api.service';
 
 const store = ExamPostStore();
 const { getisActiveCourse } = storeToRefs(store);
@@ -141,13 +142,11 @@ watch(computedProperty, (newX) => {
   }
 })
 
-function coverimage(i) {
-  let result = i.slice(0, 6);
-  if (result === "static") {
-    return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
-  } else {
-    return i;
-  }
+
+
+function image(i) {
+  let im =  ApiService.image(i);
+  return im;
 }
 
 const choosechoice = async (choices, eq_id,index) => {

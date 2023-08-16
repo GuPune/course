@@ -100,6 +100,7 @@ import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { newsPostStore } from '@/stores/news';
 import { useRoute } from "vue-router";
+import  ApiService  from '@/services/api.service';
 const store = newsPostStore()
 const { getisActiveNews } = storeToRefs(store);
 const { getselectNews } = storeToRefs(store);
@@ -116,16 +117,9 @@ const route = useRoute();
 
 
 function image(i) {
-  var x = null;
-  if (i) {
-    const usingSplit = i.split(',');
-    var x = usingSplit[0];
-  } else {
-    var x = 'static/upload/2023/7/files-1689561047889.jpg';
-  }
-  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
+  let im =  ApiService.image(i);
+  return im;
 }
-
 
 
 </script>

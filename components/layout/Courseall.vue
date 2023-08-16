@@ -134,6 +134,8 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
+import  ApiService  from '@/services/api.service';
+
 const router = useRouter();
 const store = CoursePostStore()
 let course = await store.fetchCourse();
@@ -146,12 +148,9 @@ const SelectCourse = async (item) => {
 const { getisActiveCourse } = storeToRefs(store);
 
 function coverimage(i) {
-  let result = i.slice(0, 6);
-  if (result === 'static') {
-    return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
-  } else {
-    return i;
-  }
+  let im =  ApiService.image(i);
+  return im;
 }
+
 
 </script>

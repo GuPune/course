@@ -6,7 +6,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="item in store.listexam">
                     <div class="gridarea__wraper gridarea__wraper__2">
                         <div class="gridarea__img">
-                            <a href="course-details.html"><img :src="coverimage(item.em_cover)" alt="grid"></a>
+                            <a href="course-details.html"><img :src="image(item.em_cover)" alt="grid"></a>
                         </div>
                         <div class="gridarea__content">
                             <div class="gridarea__list">
@@ -58,6 +58,7 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
+import  ApiService  from '@/services/api.service';
 
 const router = useRouter();
 const store = ExamPostStore()
@@ -68,16 +69,16 @@ const GotoExam = async () => {
     router.push({ path: '/exam/examtest'})
 };
 
-function coverimage(i) {
-    let result = i.slice(0, 6);
-    if (result === 'static') {
-        return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
-    } else {
-        return i;
-    }
-}
-// function image(i) {
-//   let im =  ApiService.image(i);
-//   return im;
+// function coverimage(i) {
+//     let result = i.slice(0, 6);
+//     if (result === 'static') {
+//         return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
+//     } else {
+//         return i;
+//     }
 // }
+function image(i) {
+  let im =  ApiService.image(i);
+  return im;
+}
 </script>

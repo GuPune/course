@@ -194,7 +194,7 @@
                                                             <div class="single__expart__teacher">
                                                                 <div class="teacher__img">
                                                                     <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
-                                                                     <img :src="image(x.cs_cover)" alt="Image">    
+                                                                     <img :src="coverimage(x.cs_cover)" alt="Image">    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -237,6 +237,7 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
+import  ApiService  from '@/services/api.service';
 const router = useRouter();
 const store = CoursePostStore()
 
@@ -248,12 +249,8 @@ let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 const { getisActiveCourse } = storeToRefs(store);
 
 function coverimage(i) {
-    let result = i.slice(0, 6);
-    if (result === 'static') {
-        return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
-    } else {
-        return i;
-    }
+    let im =  ApiService.image(i);
+  return im;
 }
 
 function coverttime(date) {
