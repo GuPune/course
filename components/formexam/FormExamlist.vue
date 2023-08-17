@@ -20,7 +20,7 @@
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
                 <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
                   
-                 <i class="icofont-book-alt"></i> หลักสูตร : รถยนต์ (อังกฤษ) 
+                 <i class="icofont-book-alt"></i> หลักสูตร : รถยนต์ (อังกฤษ)  
                 </h4>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
@@ -29,8 +29,8 @@
                 </div>
 
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
-                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_index === x.answer }" style="border-style: groove;"
-                    @click="choosechoice(a.ec_index, x.eq_id,index)">
+                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id === x.ec_id }" style="border-style: groove;"
+                    @click="choosechoice(a.ec_id,index)">
                     <li>{{ ins + 1 }}.</li>
                     <hr />
                     <span>{{ a.ec_name }}</span>
@@ -93,11 +93,19 @@
                 </div>
                 <hr />
                 <div class="row">
-                  <div class="col-6" v-if="store.listexamqu" v-for="(x, index) in store.listexamqu">
-                    ข้อ {{ index + 1 }}
-                    <del style="color: red" v-if="x.answer">
-                      {{ x.answer }}
-                    </del>
+                  <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
+                      ข้อ {{ index + 1 }}
+                    <li  v-for="(a, index) in x.choices">
+                    <span style="color: red" v-if="a.ec_id == x.ec_id">
+                     {{ a.ec_index }}
+                    </span>
+                     
+                    
+                    </li>
+              
+                    <!-- <del style="color: red" v-if="x.ec_id">
+                      {{ x.ec_id }}
+                    </del> -->
                   </div>
                 </div>
               </div>
@@ -142,9 +150,7 @@ watch(computedProperty, (newX) => {
     router.push({ path: '/exam'})
   }
 })
-let currentPathObject = router.currentRoute.value; 
- 
- console.log("Route Object", currentPathObject)
+
 
 
 function image(i) {
@@ -152,9 +158,11 @@ function image(i) {
   return im;
 }
 
-const choosechoice = async (choices, eq_id,index) => {
-  await Updatechoice(choices, eq_id);
-  await Next(index);
+const choosechoice = async (choices,index) => {
+let upchoice =  await Updatechoice(choices);
+console.log('upchoice',upchoice);
+await store.fetchExamTest();
+ await Next(index);
 };
 
 const example = async () => {

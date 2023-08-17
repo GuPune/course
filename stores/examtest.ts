@@ -7,9 +7,7 @@ export const ExamTestPostStore = defineStore({
     timerCount: 20,
     isActiveCourse:true,  
     isActive:false, 
-    listexam:[],
-    listexamqu:[],
-    examquest:[],
+    examination:[],
     listttt:[],
     counting:false,
     em_id:null,////param
@@ -22,6 +20,10 @@ export const ExamTestPostStore = defineStore({
       per_page: 50,
       clear_cach: 0,
       em_id: null,
+      user_id: useCookie('user_id').value,
+    },
+    updatetest: {
+      ec_id: null,
       user_id: useCookie('user_id').value,
     },
   }),
@@ -60,15 +62,11 @@ export const ExamTestPostStore = defineStore({
     },
 
     async fetchExamTest() {
-      this.listexamqu = [];
-      this.ind = 0;
-console.log(this.formsearchtest);
+
       try {
       const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
-  //      this.listexamqu = response.data.data;
-  console.log(response.data);
-      //  this.fetchExamquest()
-     
+   this.examination = response.data;
+      this.fetchExamquest()
        });
       return true
       } catch (error) {
@@ -79,34 +77,50 @@ console.log(this.formsearchtest);
       },
 
     async fetchExamquest() {
-
-      const arr = [];
-      for (var i = 0; i < this.listexamqu.length; i++) {
-         this.listexamqu[i].answer = null;
-   arr.push(this.listexamqu[i]);
-      }
+      this.listttt = [];
   
-  this.listttt = [];
-  this.listttt.push(this.listexamqu[0])
+
+  //     const arr = [];
+  //     for (var i = 0; i < this.examination.length; i++) {
+  //        this.examination[i].answer = null;
+  //  arr.push(this.examination[i]);
+  //     }
+  
+
+ this.listttt.push(this.examination[this.ind])
     },
-    async Updatechoice(choices,eq_id) {
-let obj = this.listexamqu.find(item => item.eq_id === eq_id).answer;
-this.listttt[0].answer = choices
+    async Updatechoice(choices) {
+// let obj = this.listexamqu.find(item => item.eq_id === eq_id).answer;
+ this.updatetest.ec_id = choices
+
+ 
+
+try {
+  const data = await ApiService.post('/exam/send/render', this.updatetest).then(response => {
+
+ 
+   });
+  return true
+  } catch (error) {
+  return false;
+  } finally {
+   
+  }
     },
 
     async Next(index) {
       this.ind++
       this.listttt = [];
-      this.listttt.push(this.listexamqu[this.ind])
-      let obj = this.listexamqu.find(item => item.eq_id === index);
+      this.listttt.push(this.examination[this.ind])
+      let obj = this.examination.find(item => item.eq_id === index);
     },
     async Previod(index) {
 
 this.ind--;
 
 this.listttt = [];
-this.listttt.push(this.listexamqu[this.ind])
-let obj = this.listexamqu.find(item => item.eq_id === index);
+this.listttt.push(this.examination[this.ind])
+let obj = this.examination.find(item => item.eq_id === index);
 
 
 
