@@ -20,7 +20,7 @@
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
                 <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
                   
-                 <i class="icofont-book-alt"></i> หลักสูตร : รถยนต์ (อังกฤษ)
+                 <i class="icofont-book-alt"></i> หลักสูตร : รถยนต์ (อังกฤษ) 
                 </h4>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
@@ -114,22 +114,23 @@
 import { ref, computed, watch } from 'vue'
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
-import { CoursePostStore } from "@/stores/course";
-import { ExamPostStore } from "@/stores/exam";
+
+
+import { ExamTestPostStore } from '@/stores/examtest';
 import  ApiService  from '@/services/api.service';
 
-const store = ExamPostStore();
+const store = ExamTestPostStore();
 const { getisActiveCourse } = storeToRefs(store);
 
-const { Updatechoice } = ExamPostStore(); //Action
-const { Next } = ExamPostStore(); //Action
-const { Previod } = ExamPostStore(); //Action
-const { countDownTimer } = ExamPostStore(); //Action
+const { Updatechoice } = ExamTestPostStore(); //Action
+const { Next } = ExamTestPostStore(); //Action
+const { Previod } = ExamTestPostStore(); //Action
+const { countDownTimer } = ExamTestPostStore(); //Action
 
 const router = useRouter();
-await store.fetchExamq();
-let start = await store.Start();
-let s = await store.countDownTimer();
+await store.fetchExamTest();
+//let start = await store.Start();
+//let s = await store.countDownTimer();
 // const end = await store.End();
 
 const computedProperty = computed(() => {
@@ -141,7 +142,9 @@ watch(computedProperty, (newX) => {
     router.push({ path: '/exam'})
   }
 })
-
+let currentPathObject = router.currentRoute.value; 
+ 
+ console.log("Route Object", currentPathObject)
 
 
 function image(i) {

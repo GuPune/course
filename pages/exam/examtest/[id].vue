@@ -11,8 +11,7 @@
                     <!-- <FormExamFitter></FormExamFitter> -->
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                      {{ $route.params.id }}xxxxxxxxxxxxx
-                        <!-- <FormExamlist></FormExamlist> -->
+                        <FormExamlist></FormExamlist>
                     </div>
                 </div>
             </div>
@@ -64,12 +63,11 @@
 import { defineComponent } from 'vue';
 import { ExamTestPostStore } from '@/stores/examtest';
 import { useRoute } from "vue-router";
-const route = useRoute();
-const store = ExamPostStore()
+
+const store = ExamTestPostStore()
 const { GetopenModal } = storeToRefs(store);
-
-
-
+const route = useRoute();
+store.setECid(route.params.id);
 const HideModal = async () => {
 store.isActive = false;
 };

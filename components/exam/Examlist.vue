@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="gridarea__bottom">
-                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam()">
+                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item.em_id)">
                                     เริ่มต้นทดสอบ</button>
                             </div>
                         </div>
@@ -65,18 +65,11 @@ const store = ExamPostStore()
 const { getisActiveCourse } = storeToRefs(store);
 await store.fetchExam()
 
-const GotoExam = async () => {
-    router.push({ path: '/exam/examtest'})
+const GotoExam = async (item) => {
+    router.push({ name: 'exam-examtest-id', params: { id: item }});
 };
 
-// function coverimage(i) {
-//     let result = i.slice(0, 6);
-//     if (result === 'static') {
-//         return "http://oasapi.iddriver.com/media_file/file/?f=" + i;
-//     } else {
-//         return i;
-//     }
-// }
+
 function image(i) {
   let im =  ApiService.image(i);
   return im;

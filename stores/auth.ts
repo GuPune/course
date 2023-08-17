@@ -73,7 +73,7 @@ export const useAuthStore = defineStore('auth', {
         },
         });
 
-        
+   
         if (data.value) {
         
           const token = useCookie('token'); // useCookie new hook in nuxt 3
@@ -91,7 +91,9 @@ export const useAuthStore = defineStore('auth', {
           this.status_login = true;
           return true;
         }else{
+    
           this.status_login = false;
+          this.alert = true; 
           return false;
         }
 

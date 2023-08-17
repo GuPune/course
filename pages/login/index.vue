@@ -8,7 +8,7 @@
       <div class="loginarea">
               <div class="container">
                   <div class="row">
-                                 <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="alertlogin.status">
+                                 <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="useError.alert">
                                     <div class="alert alert-danger" role="alert">
                                      {{alertlogin.message}}
                             </div>
@@ -94,7 +94,7 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 //   confirmPassword: null,
 // });
 
-
+useError.alert = false;
 const formData = reactive({
   username: 'kminchelle',
   password: '0lelplR',
