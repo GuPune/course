@@ -59,5 +59,8 @@
 })
   import Examlist from '@/components/exam/Examlist.vue';
   import ExamFitter from '@/components/exam/ExamFitter.vue';
+  import { ExamTestPostStore } from '@/stores/examtest';
+
+  const { countDownTimer } = ExamTestPostStore(); //Action
   </script>
   

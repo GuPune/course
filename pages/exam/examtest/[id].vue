@@ -10,7 +10,7 @@
                     <div class="col-xl-12">
                     <!-- <FormExamFitter></FormExamFitter> -->
                     </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12" v-if="fitter">
                         <FormExamlist></FormExamlist>
                     </div>
                 </div>
@@ -62,16 +62,36 @@
   import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { ExamTestPostStore } from '@/stores/examtest';
+import { ExamPostStore } from '@/stores/exam';
 import { useRoute } from "vue-router";
+import { onBeforeRouteLeave } from 'vue-router';
 
+
+
+const storeexam = ExamPostStore()
 const store = ExamTestPostStore()
 const { GetopenModal } = storeToRefs(store);
 const route = useRoute();
-store.setECid(route.params.id);
+
+await storeexam.fetchExam()
+let fitter = await store.setECid(route.params.id);
+if(fitter == true) {
+  await store.fetchExamTest();
+}
+
 const HideModal = async () => {
 store.isActive = false;
 };
 
+
+
+// ล้างไทเมอร์เมื่อออกจากเส้นทาง
+
+
+onBeforeRouteLeave((to, from, next) => {
+   store.clearTimer()
+  next();
+});
   </script>
   <style>
   .modal {

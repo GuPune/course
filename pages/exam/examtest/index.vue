@@ -74,6 +74,8 @@ const HideModal = async () => {
 store.isActive = false;
 };
 
+
+
   </script>
   <style>
   .modal {

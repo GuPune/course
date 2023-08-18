@@ -18,10 +18,18 @@
                         </div> -->
 <!-- {{store.listexamqu}} -->
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
-                <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                  
-                 <i class="icofont-book-alt"></i> หลักสูตร : รถยนต์ (อังกฤษ)  
-                </h4>
+            <div class="row">
+                <div class="col-xl-11 col-lg-11 col-sm-6">
+                  <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
+                  <i class="icofont-book-alt"></i> หลักสูตร : {{store.em_name}} {{ store.total }} {{ store.t }}
+                 </h4>
+                </div>
+                <div class="col-xl-1 col-lg-1 col-sm-6">
+                  <h6>
+              {{store.ind + 1}}   /  {{ store.total }}
+                 </h6>
+                </div>
+              </div>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
                     <h2>{{ x.eq_name }} {{ x.eq_id }}</h2>
@@ -136,9 +144,10 @@ const { Previod } = ExamTestPostStore(); //Action
 const { countDownTimer } = ExamTestPostStore(); //Action
 
 const router = useRouter();
-await store.fetchExamTest();
+
 //let start = await store.Start();
-//let s = await store.countDownTimer();
+var x = 1;
+let s = await store.countDownTimer();
 // const end = await store.End();
 
 const computedProperty = computed(() => {
