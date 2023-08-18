@@ -1,22 +1,11 @@
 <template>
-  <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent">
+  <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.updatetime.isComplate === false">
     <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
       role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
         <div class="blogarea__2">
           <div class="row">
             <div class="col-xl-8 col-lg-8">
-              <!-- <div class="blog__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
-                            <div class="blogarea__text__wraper__2">
-                                <div class="blogarea__heading__2">
-                                    <h3><a href="blog-details.html">Delivering What Consumers Really Value?</a></h3>
-                                </div>
-                                <div class="blogarea__paragraph">
-                                    <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of On the other hand, organizations have the need for integrating in IT departments</p>
-                                </div>
-                            </div>
-                        </div> -->
-<!-- {{store.listexamqu}} -->
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
             <div class="row">
                 <div class="col-xl-11 col-lg-11 col-sm-6">
@@ -53,22 +42,13 @@
                     <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
                   </ul>
                 </div>
-
               </div>
-
             </div>
-
-            
-
             <div class="col-xl-4 col-lg-4">
               <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
                 <ul class="course__details__populer__list">
                   <li>
                     <p style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{ store.seconds }} Seconds  </p>
-                    <!-- <button type="button" class="btn btn-primary" :disabled="store.counting" @click="startCountdown">
-    <vue-countdown v-if="store.counting" :time="60000" @end="onCountdownEnd" v-slot="{ totalSeconds }">Fetch again {{ totalSeconds }} seconds later</vue-countdown>
-    <span v-else>Fetch Verification Code</span>
-  </button> -->
                   </li>
                 </ul>
               </div>
@@ -96,7 +76,7 @@
                 <div class="populer__tag__list">
                   <ul>
                     <li style="width: 47%"  @click="example();" class="exma"><a>วิธีทำ</a></li>
-                    <li style="width: 47%" class="send"><a>สรุป/ส่งคำตอบ</a></li>
+                    <li style="width: 47%" class="send" @click="send();"><a>สรุป/ส่งคำตอบ</a></li>
                   </ul>
                 </div>
                 <hr />
@@ -106,14 +86,8 @@
                     <li  v-for="(a, index) in x.choices">
                     <span style="color: red" v-if="a.ec_id == x.ec_id">
                      {{ a.ec_index }}
-                    </span>
-                     
-                    
+                    </span>      
                     </li>
-              
-                    <!-- <del style="color: red" v-if="x.ec_id">
-                      {{ x.ec_id }}
-                    </del> -->
                   </div>
                 </div>
               </div>
@@ -146,8 +120,8 @@ const { countDownTimer } = ExamTestPostStore(); //Action
 const router = useRouter();
 
 //let start = await store.Start();
-var x = 1;
-let s = await store.countDownTimer();
+
+let start = await store.countDownTimer();
 // const end = await store.End();
 
 const computedProperty = computed(() => {
@@ -177,6 +151,13 @@ await store.fetchExamTest();
 const example = async () => {
 store.isActive = true;
 };
+
+const send = async () => {
+  let send = await store.sendexam();
+  console.log(send);
+};
+
+
 
 const previodd = async (index) => {
   await Previod(index);
