@@ -20,7 +20,7 @@ export const ExamTestPostStore = defineStore({
     minutes: "",
     total: null,
     cleartime: [],
-    test: [],
+    ex_count: [],
     formsearchtest: {
       page: 1,
       per_page: 50,
@@ -54,26 +54,20 @@ export const ExamTestPostStore = defineStore({
 
 
   actions: {
-    setECid(id) {
-
+    setECid(id) {   //// set data
       this.exam = null;
       this.updatetime.em_id = id;
       this.formsearchtest.em_id = parseInt(id);
       const Exam = ExamPostStore();
       const Ex = Exam.listexam.filter(item => item.em_id == id);
-
       if (Ex.length != 0) {
         this.exam = Ex[0];
         const timeParts = this.exam.em_time.split(':');
-
         if (typeof window !== 'undefined') {
           const exgettime = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
-
           if (exgettime) {
             ////////////////////me cache
-            // this.cleartime.push(exgettime);
             let timmer = exgettime.find(item => item.em_id === id) ?? null;
-
             if (timmer) {
               this.timerCount = timmer.timerCount;
             } else {
@@ -85,7 +79,6 @@ export const ExamTestPostStore = defineStore({
               } else {
                 this.timerCount = 0;
               }
-
             }
 
             //    this.timerCount = timmer.timerCount;
@@ -175,8 +168,6 @@ return true;
     },
 
     async countDownTimer() {
-      // let  interval = 1000;
-
       if (this.timerCount > 0) {
         this.timeoutId = setTimeout(() => {
           this.timerCount -= 1;
@@ -184,54 +175,26 @@ return true;
           const xt = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
           //  const indexToUpdate = xt.findIndex(item => item.em_id === 7);
           const data = JSON.parse(localStorage.getItem('examtest'));
-
-          //  console.log(JSON.parse(localStorage.getItem('examtest')));
-          //  const array = [
-          //   { id: 1, name: 'Alice' },
-          //   { id: 2, name: 'Bob' },
-          //   { id: 3, name: 'Charlie' }
-          // ];
-
           const updatedObject = { em_id: this.updatetime.em_id, timerCount: this.updatetime.timerCount, isComplate: false };
           if (data) {
             const index = data.findIndex(item => item.em_id === this.updatetime.em_id)
             if (index !== -1) {
-              console.log('Data', this.test);
+              console.log('Data', this.ex_count);
               // Replace the object at the specified index
               data.splice(index, 1, updatedObject);
               const updatetime = localStorage.setItem('examtest', JSON.stringify(data))
             } else {
-              this.test.push(updatedObject)
-              console.log('Object not found', this.test);
-              const updatetime = localStorage.setItem('examtest', JSON.stringify(this.test))
+              this.ex_count.push(updatedObject)
+              console.log('Object not found', this.ex_count);
+              const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
             }
           } else {
-            this.test.push(updatedObject)
-            const updatetime = localStorage.setItem('examtest', JSON.stringify(this.test))
+            this.ex_count.push(updatedObject)
+            const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
           }
-          //     if(!data){
-          //       var data =[];
-          //      data.push(updatedObject);
-          //      console.log('updatedObject',data);
-          // //   const updatetime = localStorage.setItem('examtest', JSON.stringify(data))
-          //     }
-          // console.log(data);
-          // const indexToUpdate = array.findIndex(item => item.id === updatedObject.id);
-          //     const test =[];
-          // if(index){
-
-          //   test.push(index);
-          // }
-
-          //   console.log(array);
-
-
-          //  test.push(this.updatetime);
-          //       console.log(data);
-
-          // const updatetime = localStorage.setItem('examtest', JSON.stringify(data))
-          this.countDownTimer()
-          this.toHoursAndMinutes()
+      
+          this.countDownTimer() 
+          this.toHoursAndMinutes()  ///แปลงเวลา
         }, 1000)
       }
       if (this.timerCount == 0) {
@@ -259,7 +222,6 @@ return true;
       this.seconds = this.timerCount % 60;
       this.hours = Math.floor(totalMinutes / 60);
       this.minutes = totalMinutes % 60;
-
 
     }
 

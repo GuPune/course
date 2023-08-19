@@ -86,9 +86,7 @@ store.isActive = false;
 
 
 // ล้างไทเมอร์เมื่อออกจากเส้นทาง
-
-
-onBeforeRouteLeave((to, from, next) => {
+onBeforeRouteLeave((to, from, next) => {  
    store.clearTimer()
   next();
 });

@@ -26,12 +26,12 @@
                 </div>
 
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
-                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id === x.ec_id }" style="border-style: groove;"
+                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }" style="border-style: groove;"
                     @click="choosechoice(a.ec_id,index)">
                     <li>{{ ins + 1 }}.</li>
                     <hr />
                     <span>{{ a.ec_name }}</span>
-                    <hr v-if="number % 2 === 0" />
+                    <!-- <hr v-if="number % 2 === 0" /> -->
                   </ul>
                 </div>
 
@@ -120,7 +120,7 @@ const { countDownTimer } = ExamTestPostStore(); //Action
 const router = useRouter();
 
 //let start = await store.Start();
-
+// const number = 2; // Define the 'number' property
 let start = await store.countDownTimer();
 // const end = await store.End();
 
@@ -128,8 +128,8 @@ const computedProperty = computed(() => {
     return store.timerCount
 })
 
-watch(computedProperty, (newX) => {
-  if(newX == 0){
+watch(computedProperty, (time) => {   //// countime
+  if(time == 0){
     router.push({ path: '/exam'})
   }
 })
@@ -143,7 +143,6 @@ function image(i) {
 
 const choosechoice = async (choices,index) => {
 let upchoice =  await Updatechoice(choices);
-console.log('upchoice',upchoice);
 await store.fetchExamTest();
  await Next(index);
 };
