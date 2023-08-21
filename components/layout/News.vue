@@ -29,7 +29,7 @@
                                                 </div>
                                                 <div class="eventarea__content__wraper">
                                                     <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">{{ item.news_title }}</a></h4>
+                                                        <h4><a >{{ item.news_title }}</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
                                                         <NuxtLink  :to="{ name: 'news-transport-id', params: { id: item.news_id } }">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>
@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="eventarea__content__wraper">
                                                     <div class="single__event__heading">
-                                                        <h4><a href="event-details.html">{{ civil.news_title }}</a></h4>
+                                                        <h4><a >{{ civil.news_title }}</a></h4>
                                                     </div>
                                                     <div class="single__event__button">
                                                         <NuxtLink  :to="{ name: 'news-civil-id', params: { id: civil.news_id } }">อ่านต่อ!<i class="icofont-simple-right"></i></NuxtLink>

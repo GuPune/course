@@ -116,59 +116,7 @@
                                                 </h2>
                                                 <div :id="'collapseOne-' + index" class="accordion-collapse collapse"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <!-- <div class="accordion-body">
-                                                        <div class="scc__wrap">
-                                                            <div class="scc__info">
-                                                                <i class="icofont-read-book"></i>
-                                                                <h5> <span>Reading :</span> This is the second item's</h5>
-                                                            </div>
-                                                            <div class="scc__meta">
-                                                                <span class="time"> <i class="icofont-clock-time"></i> 28
-                                                                    minutes</span>
-                                                                <span class="question">5 Questions</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="scc__wrap">
-                                                            <div class="scc__info">
-                                                                <i class="icofont-video-alt"></i>
-                                                                <h5> <span>Video :</span> Lorem ipsum dolor sit amet.</h5>
-                                                            </div>
-                                                            <div class="scc__meta">
-                                                                <span class="time"> <i class="icofont-clock-time"></i> 22
-                                                                    minutes</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="scc__wrap">
-                                                            <div class="scc__info">
-                                                                <i class="icofont-audio"></i>
-                                                                <h5> <span>Audio :</span> Lorem ipsum dolor sit amet.</h5>
-                                                            </div>
-                                                            <div class="scc__meta">
-                                                                <span class="time"> <i class="icofont-clock-time"></i> 15
-                                                                    minutes</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="scc__wrap">
-                                                            <div class="scc__info">
-                                                                <i class="icofont-certificate"></i>
-                                                                <h5> <span>Certificate :</span> This is most Important</h5>
-                                                            </div>
-                                                            <div class="scc__meta">
-                                                                <span class="time"> <i class="icofont-clock-time"></i> 50
-                                                                    minutes</span>
-                                                                <span class="question">3 Questions</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="scc__wrap">
-                                                            <div class="scc__info">
-                                                                <i class="icofont-file-text"></i>
-                                                                <h5> <span>Lesson 01 Exam :</span></h5>
-                                                            </div>
-                                                            <div class="scc__meta">
-                                                                <span class="question">10 Questions</span>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
+                                    
                                                     <div class="row" style="padding: 5px;">
                                                         <div class="col-lg-12">
                                                             <div class="review__box">
@@ -194,7 +142,7 @@
                                                             <div class="single__expart__teacher">
                                                                 <div class="teacher__img">
                                                                     <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
-                                                                     <img :src="coverimage(x.cs_cover)" alt="Image">    
+                                                                     <img :src="coverimage(x.cs_cover)" alt="Image" style="width: 120px;height:120px ;">    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -212,7 +160,10 @@
 
                                                                 </div>
                                                                 <div class="author__text">
-                                                                    <p>{{ x }} </p>
+                                                                    <p>{{ x.cs_description }} </p>
+                                                                </div>
+                                                                <div class="author__text">
+                                                                    <p>{{ x.user_create }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
