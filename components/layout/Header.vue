@@ -79,37 +79,158 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="container-fluid mob_menu_wrapper">
-                <div class="row align-items-center">
-                    <div class="col-6">
-                        <div class="mobile-logo">
-                            <a class="logo__dark" href="#"><img src="/img/logo/logo_1.png" alt="logo"></a>
+                <div class="container-fluid mob_menu_wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <div class="mobile-logo">
+                                <a class="logo__dark" href="#"><img src="/img/logo/logo_1.png" alt="logo"></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="header-right-wrap">
-
-                            <div class="mobile-off-canvas">
-                                <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
+                        <div class="col-6">
+                            <div class="header-right-wrap">
+                                <div class="mobile-off-canvas"> <!-- if click -> add class inside to element class "mobile-off-canvas-active" -->
+                                    <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </header>
         <!-- header section end -->
 
         <!-- Mobile Menu Start Here -->
-       
+        <div class="mobile-off-canvas-active"> <!-- Add class "inside" for show mobile menu -->
+            <a class="mobile-aside-close"><i class="icofont  icofont-close-line"></i></a>
+            <div class="header-mobile-aside-wrap">
+                <div class="mobile-search">
+                    <form class="search-form" action="#">
+                        <input type="text" placeholder="Search entire store…">
+                        <button class="button-search"><i class="icofont icofont-search-2"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap">
+
+                    <div class="mobile-navigation">
+
+                        <nav>
+                            <ul class="mobile-menu">
+                                <li class="menu-item-has-children"><a href="index.html">Home</a>
+                                    <ul class="dropdown">
+                                        <li><a href="index.html">Home Style 1</a></li>
+                                        <li><a href="index-dark.html">Home 1 (Dark)</a></li>
+                                        <li><a href="home-2.html">Home Style 2</a></li>
+                                        <li><a href="home-2-dark.html">Home 2 (Dark)</a></li>
+                                        <li><a href="home-3.html">Home Style 3</a></li>
+                                        <li><a href="home-3-dark.html">Home 3 (Dark)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children "><a href="about.html">About</a>
+
+                                </li>
+
+                                <li class="menu-item-has-children"><a href="portfolio.html">blog</a>
+                                    <ul class="dropdown">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-dark.html">Blog (Dark)</a></li>
+                                        <li><a href="blog-details.html">Blog-details</a></li>
+                                        <li><a href="blog-details-dark.html">Blog-details (Dark)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children "><a href="course.html">Course</a>
+                                    <ul class="dropdown">
+                                        <li><a href="course.html">Course</a></li>
+                                        <li><a href="course-dark.html">Course (Dark)</a></li>
+                                        <li><a href="course-list.html">Course List</a></li>
+                                        <li><a href="course-list-dark.html">Course List (Dark)</a></li>
+                                        <li><a href="course-grid.html">Course Grid</a></li>
+                                        <li><a href="course-grid-dark.html">Course Grid (Dark)</a></li>
+                                        <li><a href="course-details.html">Course-Details</a></li>
+                                        <li><a href="course-details-dark.html">Details (Dark)</a></li>
+                                        <li><a href="course-details-2.html">Details 2</a></li>
+                                        <li><a href="course-details-2-dark.html">Details 2 (Dark)</a></li>
+                                        <li><a href="course-details-3.html">Details 3</a></li>
+                                        <li><a href="course-details-3-dark.html">Details 3 (Dark)</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item-has-children "><a href="instructor.html">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="about-dark.html">About (Dark)</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="contact-dark.html">Contact (Dark)</a></li>
+                                        <li><a href="instructor.html">Instructor</a></li>
+                                        <li><a href="instructor-dark.html">Instructor (Dark)</a></li>
+                                        <li><a href="instructor-details.html">Instructor-Details</a></li>
+                                        <li><a href="instructor-details-dark.html">Details (Dark)</a></li>
+                                        <li><a href="event-details.html">Event-Details</a></li>
+                                        <li><a href="event-details-dark.html">Details (Dark)</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="login-dark.html">Login (Dark)</a></li>
+                                        <li><a href="error.html">Error</a></li>
+                                        <li><a href="error-dark.html">Error (Dark)</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="menu-item-has-children" href="contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+
+                </div>
+                <div class="mobile-curr-lang-wrap">
+                    <div class="single-mobile-curr-lang">
+                        <a class="mobile-language-active" href="#">Language <i class="icofont-thin-down"></i></a>
+                        <div class="lang-curr-dropdown lang-dropdown-active">
+                            <ul>
+                                <li><a href="#">English (US)</a></li>
+                                <li><a href="#">English (UK)</a></li>
+                                <li><a href="#">Spanish</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- <div class="single-mobile-curr-lang">
+                        <a class="mobile-currency-active" href="#">Currency <i class="icofont-thin-down"></i></a>
+                        <div class="lang-curr-dropdown curr-dropdown-active">
+                            <ul>
+                                <li><a href="#">USD</a></li>
+                                <li><a href="#">EUR</a></li>
+                                <li><a href="#">Real</a></li>
+                                <li><a href="#">BDT</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                    <div class="single-mobile-curr-lang">
+                        <a class="mobile-account-active" href="#">My Account <i class="icofont-thin-down"></i></a>
+                        <div class="lang-curr-dropdown account-dropdown-active">
+                            <ul>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="login.html">Creat Account</a></li>
+                                <li><a href="login.html">My Account</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-social-wrap">
+                    <a class="facebook" href="#"><i class="icofont icofont-facebook"></i></a>
+                    <a class="twitter" href="#"><i class="icofont icofont-twitter"></i></a>
+                    <a class="pinterest" href="#"><i class="icofont icofont-pinterest"></i></a>
+                    <a class="instagram" href="#"><i class="icofont icofont-instagram"></i></a>
+                    <a class="google" href="#"><i class="icofont icofont-youtube-play"></i></a>
+                </div>
+            </div>
+        </div>
         <!-- Mobile Menu end Here -->
 
         <!-- theme fixed shadow -->
+
        
     </div>
 </template>
+
 
 
 <script setup>
