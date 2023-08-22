@@ -6,7 +6,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="item in store.listexam">
                     <div class="gridarea__wraper gridarea__wraper__2">
                         <div class="gridarea__img">
-                            <a href="course-details.html"><img :src="image(item.em_cover)" alt="grid"></a>
+                            <a href="course-details.html"><img  :src="image(item.em_cover)" alt="grid"></a>
                         </div>
                         <div class="gridarea__content">
                             <div class="gridarea__list">
@@ -73,3 +73,14 @@ function image(i) {
   return im;
 }
 </script>
+
+ <style>
+ .gridarea__img{
+    height: 300px;
+ }
+ .gridarea__img img {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+ }
+</style>
