@@ -190,6 +190,13 @@ const nextt = async (index) => {
 .sec-l {
   border-style: groove !important;
   border-color: red !important;
+  #choice {
+    background-color: #4CAF50;
+    color: white;
+    #card-index {
+      color: white;
+    }
+  }
 }
 .exma{
   background-color: #5f2ded;

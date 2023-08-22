@@ -40,7 +40,7 @@
                         <div class="col-xl-1 col-lg-1 col-md-6">
                             <div class="headerarea__right">
                                 <div class="headerarea__left__logo">
-                                    <div style="padding-top: 3px;" class="pull-right">
+                                    <div style="padding-top: 3px; text-wrap: nowrap;" class="pull-right">
                                         <a style="padding-left: 10px;padding-right:10px;" @click="changeLocale('en')">
                                             <img src="../../assets/thai.png" alt="My Image">
                                         </a>
