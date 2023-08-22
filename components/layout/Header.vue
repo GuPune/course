@@ -271,6 +271,7 @@ const Logout = async () => {
 
 const Showaside = async () => {
 store.isActiveBar = !store.isActiveBar;
+store.isActiveBar = false;
 }
 
 const Hideaside = async () => {
