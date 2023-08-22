@@ -36,7 +36,6 @@
                                 </nav>
                             </div>
                         </div>
-
                         <div class="col-xl-1 col-lg-1 col-md-6">
                             <div class="headerarea__right">
                                 <div class="headerarea__left__logo">
@@ -88,7 +87,7 @@
                         </div>
                         <div class="col-6">
                             <div class="header-right-wrap">
-                                <div class="mobile-off-canvas"> <!-- if click -> add class inside to element class "mobile-off-canvas-active" -->
+                                <div class="mobile-off-canvas" @click="Showaside()"> <!-- if click -> add class inside to element class "mobile-off-canvas-active" -->
                                     <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
                                 </div>
                             </div>
@@ -100,8 +99,8 @@
         <!-- header section end -->
 
         <!-- Mobile Menu Start Here -->
-        <div class="mobile-off-canvas-active"> <!-- Add class "inside" for show mobile menu -->
-            <a class="mobile-aside-close"><i class="icofont  icofont-close-line"></i></a>
+        <div class="mobile-off-canvas-active" :class="{ 'inside': store.isActiveBar}"> <!-- Add class "inside" for show mobile menu -->
+            <a class="mobile-aside-close" @click="Hideaside()"><i class="icofont  icofont-close-line"></i></a>
             <div class="header-mobile-aside-wrap">
                 <div class="mobile-search">
                     <form class="search-form" action="#">
@@ -254,7 +253,7 @@ const { alertlogin } = storeToRefs(useError);
 
 const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
-
+const { getisActiveBar } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
 
 // const formData = reactive({
@@ -270,7 +269,13 @@ const Logout = async () => {
 
 }
 
+const Showaside = async () => {
+store.isActiveBar = !store.isActiveBar;
+}
 
+const Hideaside = async () => {
+store.isActiveBar = false;
+}
 
 
 

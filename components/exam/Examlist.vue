@@ -66,10 +66,8 @@ const { getisActiveCourse } = storeToRefs(store);
 await store.fetchExam()
 
 const GotoExam = async (item) => {
-    router.push({ name: 'exam-examtest-id', params: { id: item }});
+    router.push({ name: 'examquestions-id', params: { id: item }});
 };
-
-
 function image(i) {
   let im =  ApiService.image(i);
   return im;

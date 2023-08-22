@@ -8,6 +8,7 @@ export const useLogin = defineStore({
     isActive :true,
     isActiveSig :false,
     isLoading :false,
+    isActiveBar :false,
     form: {
         username: "",
         password: "",
@@ -20,6 +21,10 @@ export const useLogin = defineStore({
     getisLoading: (state) => {
       return state.isLoading;
     },
+    getisActiveBar: (state) => {
+      return state.isActiveBar;
+    },
+    
   }, 
   actions: {
 
