@@ -25,13 +25,15 @@
                   </ul>
                 </div>
 
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="choice-container">
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }" style="border-style: groove;"
-                    @click="choosechoice(a.ec_id,index)">
-                    <li>{{ ins + 1 }}.</li>
-                    <hr />
-                    <span>{{ a.ec_name }}</span>
-                    <!-- <hr v-if="number % 2 === 0" /> -->
+                    @click="choosechoice(a.ec_id,index)" id="choice-card">
+                    <div id="choice">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
                   </ul>
                 </div>
 
@@ -196,5 +198,37 @@ const nextt = async (index) => {
 .send{
   background-color: #e06512;
     color: white;
+}
+#choice-container {
+  /* border: 2px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+#choice {
+  border-radius: 20px;
+  padding: 10px 10px 0px 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  transition-duration: 0.4s;
+  display: flex;
+}
+#choice:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  #card-index {
+    color: white;
+  }
+}
+#choice-card {
+  padding: 5px;
+  border: unset !important;
+
+}
+#card-index {
+  margin-right: 10px;
 }
 </style>
