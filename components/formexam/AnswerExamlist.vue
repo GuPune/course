@@ -27,14 +27,21 @@
                    id="answer-card">
                   
                    <div v-if="(a.ec_index == item.eq_answer)">
-                    <div  class="answer-choice-success">
+                    <div  class="answer-choice-currect" v-if="(a.ec_id == item.ec_id) && (a.ec_index == item.eq_answer)">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      <i class="bi bi-check-circle-fill"></i>
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
+                    <div  class="answer-choice-success" v-else>
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
                       
+                      
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
-                    
                   </div>
 
                   <div v-else>
@@ -42,8 +49,10 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
+                      <i class="bi bi-x-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
+                    
                     <div  class="answer-choice" v-else="(a.ec_id != item.ec_id)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
@@ -183,6 +192,7 @@ const nextt = async (index) => {
 </script>
 
 <style>
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 .xt3e5 {
   padding: 30px 50px 10px 10px;
 }
@@ -275,7 +285,7 @@ const nextt = async (index) => {
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
-  border: 2px solid #040604;
+  border: 1px solid #868686;
   transition-duration: 0.4s;
   display: flex;
 }
@@ -294,10 +304,44 @@ const nextt = async (index) => {
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
-  border: 2px solid #040604;
+  border: 2px solid rgb(227, 52, 21);
   transition-duration: 0.4s;
   display: flex;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  #card-index {
+    color: white;
+  }
 }
+.answer-choice-currect {
+  border-radius: 20px;
+  padding: 10px 10px 0px 15px;
+  background-color: #0fe50f;
+  color: rgb(255, 255, 255);
+  border: 2px solid #0fe50f;
+  transition-duration: 0.4s;
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  #card-index {
+    color: white;
+  };
+}
+.answer-choice-currect span {
+  width: 100%;
+}
+.answer-choice-danger span {
+  width: 100%;
+}
+
+.answer-choice-currect i {
+  width: 20px;
+}
+.answer-choice-danger span {
+  width: 100%;
+}
+
 
 
 
