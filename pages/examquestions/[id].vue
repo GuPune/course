@@ -12,6 +12,7 @@
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12" v-if="fitter">
                         <FormExamlist></FormExamlist>
+                        <AnswerExamlist></AnswerExamlist>
                     </div>
                 </div>
             </div>
@@ -59,6 +60,7 @@
 })
   import FormExamlist from '@/components/formexam/FormExamlist.vue';
   import FormExamFitter from '@/components/formexam/FormExamFitter.vue';
+  import AnswerExamlist from '@/components/formexam/AnswerExamlist.vue';
   import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { ExamTestPostStore } from '@/stores/examtest';

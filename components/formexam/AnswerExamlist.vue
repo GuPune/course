@@ -1,49 +1,66 @@
 <template>
-  <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.updatetime.isComplate === false">
+    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.updatetime.isComplate === false">
     <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
       role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
         <div class="blogarea__2">
           <div class="row">
-            <div class="col-xl-8 col-lg-8">
-              <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
+            <div class="col-xl-12 col-lg-12">
+              <div class="blog__details__content__wraper" >
             <div class="row">
                 <div class="col-xl-11 col-lg-11 col-sm-6">
                   <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                  <i class="icofont-book-alt"></i> หลักสูตร : {{store.em_name}} {{ store.total }} {{ store.t }}
+                  <i class="icofont-book-alt"></i> หลักสูตร :
                  </h4>
                 </div>
-                <div class="col-xl-1 col-lg-1 col-sm-6">
-                  <h6>
-              {{store.ind + 1}}   /  {{ store.total }}
-                 </h6>
-                </div>
+        
               </div>
+              <div v-if="store.examination" v-for="(item, index) in store.examination">
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h2>  ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2>
+                    <h2> ข้อ. {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h2>
                   </ul>
                 </div>
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="choice-container">
-                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }" style="border-style: groove;"
-                    @click="choosechoice(a.ec_id,index)" id="choice-card">
-                    <div id="choice">
+             
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="answer-container" >
+                  <ul v-for="(a, ins) in item.choices"  style="border-style: groove;" 
+                   id="answer-card">
+                  
+                   <div v-if="(a.ec_index == item.eq_answer)">
+                    <div  class="answer-choice-success">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
+                    
+                  </div>
+
+                  <div v-else>
+                    <div  class="answer-choice-danger"  v-if="(a.ec_id == item.ec_id)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
-                  </ul>
-                </div>
-                <div class="main__pagination__wrapper" data-aos="fade-up">
-                  <ul class="main__page__pagination">
-                    <li @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
-                    <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
+                    <div  class="answer-choice" v-else="(a.ec_id != item.ec_id)">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
+                  </div>
+
+                  
+
+              
                   </ul>
                 </div>
               </div>
+              </div>
             </div>
-            <div class="col-xl-4 col-lg-4">
+            <div class="col-xl-12 col-lg-12">
               <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
                 <ul class="course__details__populer__list">
                   <li>
@@ -96,7 +113,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 
