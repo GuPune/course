@@ -19,6 +19,7 @@ export const ExamTestPostStore = defineStore({
     hours: "",
     minutes: "",
     total: null,
+    maxNext:null,
     cleartime: [],
     ex_count: [],
     formsearchtest: {
@@ -123,6 +124,7 @@ return true;
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
           this.examination = response.data;
           this.total = response.data.length
+          this.maxNext = response.data.length - 1
           this.fetchExamquest()
         });
         return true

@@ -21,10 +21,9 @@
               </div>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h2>{{ x.eq_name }} {{ x.eq_id }}</h2>
+                    <h2>  ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2>
                   </ul>
                 </div>
-
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="choice-container">
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }" style="border-style: groove;"
                     @click="choosechoice(a.ec_id,index)" id="choice-card">
@@ -36,17 +35,130 @@
                     </div>
                   </ul>
                 </div>
-
                 <div class="main__pagination__wrapper" data-aos="fade-up">
                   <ul class="main__page__pagination">
                     <li @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
-
                     <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="col-xl-4 col-lg-4">
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
+                <ul class="course__details__populer__list">
+                  <li>
+                    <p style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{ store.seconds }} Seconds  </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
+                <ul class="recent__list">
+                  <li>
+                    <div class="recent__img">
+                      <a href="#">
+                        <img src="../../assets/img/blog/blog_11.png" alt="sidbar" />
+                      </a>
+                    </div>
+                    <div class="recent__text">
+                      <div class="recent__date">
+                        <a>ชื่อจริง: ร้อยตรี ครรชิต ชัยกิจ</a>
+                      </div>
+                      <div class="recent__date">
+                        <a>รหัสบัตร ประชาชน: 0812630907</a>
+                      </div>
+                      <div class="recent__date">
+                        <a>สถานะการทำข้อสอบ: ทดลองสอบ</a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="populer__tag__list">
+                  <ul>
+                    <li style="width: 47%"  @click="example();" class="exma"><a>วิธีทำ</a></li>
+                    <li style="width: 47%" class="send" @click="send();"><a>สรุป/ส่งคำตอบ</a></li>
+                  </ul>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
+                      ข้อ {{ index + 1 }}
+                    <li  v-for="(a, index) in x.choices">
+                    <span style="color: red" v-if="a.ec_id == x.ec_id">
+                     {{ a.ec_index }}
+                    </span>      
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.updatetime.isComplate === false">
+    <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
+      role="tabpanel" aria-labelledby="projects__one">
+      <div class="row">
+        <div class="blogarea__2">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="blog__details__content__wraper" >
+            <div class="row">
+                <div class="col-xl-11 col-lg-11 col-sm-6">
+                  <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
+                  <i class="icofont-book-alt"></i> หลักสูตร :
+                 </h4>
+                </div>
+        
+              </div>
+              <div v-if="store.examination" v-for="(item, index) in store.examination">
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
+                  <ul style="width: 100%">
+                    <h2> ข้อ. {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h2>
+                  </ul>
+                </div>
+             
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="answer-container" >
+                  <ul v-for="(a, ins) in item.choices"  style="border-style: groove;" 
+                   id="answer-card">
+                  
+                   <div v-if="(a.ec_index == item.eq_answer)">
+                    <div  class="answer-choice-success">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
+                    
+                  </div>
+
+                  <div v-else>
+                    <div  class="answer-choice-danger"  v-if="(a.ec_id == item.ec_id)">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
+                    <div  class="answer-choice" v-else="(a.ec_id != item.ec_id)">
+                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <hr />
+                      <span>{{ a.ec_name }}</span>
+                      <!-- <hr v-if="number % 2 === 0" /> -->
+                    </div>
+                  </div>
+
+                  
+
+              
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12">
               <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
                 <ul class="course__details__populer__list">
                   <li>
@@ -120,7 +232,6 @@ const { Previod } = ExamTestPostStore(); //Action
 const { countDownTimer } = ExamTestPostStore(); //Action
 
 const router = useRouter();
-
 //let start = await store.Start();
 // const number = 2; // Define the 'number' property
 let start = await store.countDownTimer();
@@ -136,8 +247,6 @@ watch(computedProperty, (time) => {   //// countime
   }
 })
 
-
-
 function image(i) {
   let im =  ApiService.image(i);
   return im;
@@ -146,7 +255,7 @@ function image(i) {
 const choosechoice = async (choices,index) => {
 let upchoice =  await Updatechoice(choices);
 await store.fetchExamTest();
- await Next(index);
+await nextt(index);
 };
 
 const example = async () => {
@@ -155,25 +264,19 @@ store.isActive = true;
 
 const send = async () => {
   let send = await store.sendexam();
-  console.log(send);
 };
-
-
 
 const previodd = async (index) => {
-  await Previod(index);
+  if(store.ind > 0){
+    await Previod(index);
+  }
 };
 const nextt = async (index) => {
-  await Next(index);
+  if(store.maxNext > store.ind){
+    await Next(index);
+  }
+ // await Next(index);
 };
-
-
-
-
-
-
-
-
 
 </script>
 
@@ -198,6 +301,24 @@ const nextt = async (index) => {
     }
   }
 }
+
+.sec-choice {
+  border-style: groove !important;
+  border-color: red !important;
+
+  #answer {
+    background-color: #4CAF50;
+    color: white;
+    #card-index {
+      color: white;
+    }
+  }
+}
+#answer {
+    background-color: #4CAF50;
+  
+  }
+
 .exma{
   background-color: #5f2ded;
     color: white;
@@ -231,6 +352,54 @@ const nextt = async (index) => {
   }
 }
 #choice-card {
+  padding: 5px;
+  border: unset !important;
+
+}
+
+
+#answer {
+  border-radius: 20px;
+  padding: 10px 10px 0px 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #040604;
+  transition-duration: 0.4s;
+  display: flex;
+}
+
+.answer-choice{
+  background-color: rgb(247, 247, 247); 
+  border-radius: 20px;
+  padding: 10px 10px 0px 15px;
+  color: black;
+  border: 2px solid #040604;
+  transition-duration: 0.4s;
+  display: flex;
+}
+
+.answer-choice-success{
+  border-radius: 20px;
+  padding: 10px 10px 0px 15px;
+  color: black;
+  border: 2px solid #0fe50f;
+  transition-duration: 0.4s;
+  display: flex;
+}
+
+.answer-choice-danger{
+  background-color: rgb(227, 52, 21); 
+  border-radius: 20px;
+  padding: 10px 10px 0px 15px;
+  color: black;
+  border: 2px solid #040604;
+  transition-duration: 0.4s;
+  display: flex;
+}
+
+
+
+#answer-card {
   padding: 5px;
   border: unset !important;
 
