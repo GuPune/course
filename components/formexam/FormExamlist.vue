@@ -21,7 +21,7 @@
               </div>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h2>  ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2>
+                    <!-- <h2>  ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2> -->
                   </ul>
                 </div>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="choice-container">
@@ -31,7 +31,6 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
-                      <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
                   </ul>
                 </div>
@@ -116,23 +115,27 @@ const { getisActiveCourse } = storeToRefs(store);
 const { Updatechoice } = ExamTestPostStore(); //Action
 const { Next } = ExamTestPostStore(); //Action
 const { Previod } = ExamTestPostStore(); //Action
-const { countDownTimer } = ExamTestPostStore(); //Action
+
+
+
 
 const router = useRouter();
 //let start = await store.Start();
 // const number = 2; // Define the 'number' property
-let start = await store.countDownTimer();
 // const end = await store.End();
 
-const computedProperty = computed(() => {
-    return store.timerCount
-})
+// const computedProperty = computed(() => {
+//     return store.timerCount
+// })
 
-watch(computedProperty, (time) => {   //// countime
-  if(time == 0){
-    router.push({ path: '/exam'})
-  }
-})
+// watch(computedProperty, (time) => {   //// countime
+//  // store.UpdateTime();
+//   if(time == 0){
+//     router.push({ path: '/exam'})
+//   }
+// })
+
+
 
 function image(i) {
   let im =  ApiService.image(i);

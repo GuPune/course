@@ -67,7 +67,7 @@ import { ExamTestPostStore } from '@/stores/examtest';
 import { ExamPostStore } from '@/stores/exam';
 import { useRoute } from "vue-router";
 import { onBeforeRouteLeave } from 'vue-router';
-
+import { onMounted, onUnmounted } from 'vue';
 
 
 const storeexam = ExamPostStore()
@@ -78,12 +78,39 @@ const route = useRoute();
 await storeexam.fetchExam()
 let fitter = await store.setECid(route.params.id);
 if(fitter == true) {
-  await store.fetchExamTest();
+ let a = await store.fetchExamTest();
 }
 
+const router = useRouter();
+//let start = await store.Start();
+// const number = 2; // Define the 'number' property
+// const end = await store.End();
+
+
+
+
+await setTimeout(() => {
+   store.GetTime();
+}, 500)
+
+await setTimeout(() => {
+    store.countDownTimer();   
+          }, 1000)
 const HideModal = async () => {
 store.isActive = false;
 };
+
+const computedProperty = computed(() => {
+    return store.timerCount
+})
+
+ watch(computedProperty, (time) => {   //// countime
+ // store.UpdateTime();
+  if(time == 0){
+    router.push({ path: '/exam'})
+  }
+})
+
 
 
 
@@ -92,6 +119,28 @@ onBeforeRouteLeave((to, from, next) => {
    store.clearTimer()
   next();
 });
+
+const onPageReload = (event) => {
+  // Do whatever you need when the page is about to reload
+  store.clearTimer()
+  // If you want to warn the user before leaving the page, you can set the returnValue
+  // event.returnValue = "Are you sure you want to reload or leave the page?";
+}
+
+onMounted(() => {
+  window.addEventListener('beforeunload', onPageReload);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('beforeunload', onPageReload);
+});
+
+// onBeforeUnmount(() => {  
+//   console.log('onBeforeUnmount');
+//   stopWatch();
+// });
+
+
   </script>
   <style>
   .modal {

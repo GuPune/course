@@ -125,18 +125,18 @@ const { countDownTimer } = ExamTestPostStore(); //Action
 const router = useRouter();
 //let start = await store.Start();
 // const number = 2; // Define the 'number' property
-let start = await store.countDownTimer();
+//let start = await store.countDownTimer();
 // const end = await store.End();
 
-const computedProperty = computed(() => {
-    return store.timerCount
-})
+// const computedProperty = computed(() => {
+//     return store.timerCount
+// })
 
-watch(computedProperty, (time) => {   //// countime
-  if(time == 0){
-    router.push({ path: '/exam'})
-  }
-})
+// watch(computedProperty, (time) => {   //// countime
+//   if(time == 0){
+//     router.push({ path: '/exam'})
+//   }
+// })
 
 function image(i) {
   let im =  ApiService.image(i);

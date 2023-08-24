@@ -33,8 +33,11 @@ export const ExamTestPostStore = defineStore({
       ec_id: null,
       user_id: useCookie('user_id').value,
     },
+
     updatetime: {
+      et_time: null,
       em_id: null,
+      user_id: useCookie('user_id').value,
       timerCount: null,
       isComplate: false,
     }
@@ -63,37 +66,6 @@ export const ExamTestPostStore = defineStore({
       const Ex = Exam.listexam.filter(item => item.em_id == id);
       if (Ex.length != 0) {
         this.exam = Ex[0];
-        const timeParts = this.exam.em_time.split(':');
-        if (typeof window !== 'undefined') {
-          const exgettime = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
-          if (exgettime) {
-            ////////////////////me cache
-            let timmer = exgettime.find(item => item.em_id === id) ?? null;
-            if (timmer) {
-              this.timerCount = timmer.timerCount;
-            } else {
-              if (timeParts.length === 3) {
-                const hours = parseInt(timeParts[0], 10);
-                const minutes = parseInt(timeParts[1], 10);
-                const seconds = parseInt(timeParts[2], 10);
-                this.timerCount = hours * 3600 + minutes * 60 + seconds;
-              } else {
-                this.timerCount = 0;
-              }
-            }
-
-            //    this.timerCount = timmer.timerCount;
-          } else {
-            if (timeParts.length === 3) {
-              const hours = parseInt(timeParts[0], 10);
-              const minutes = parseInt(timeParts[1], 10);
-              const seconds = parseInt(timeParts[2], 10);
-              this.timerCount = hours * 3600 + minutes * 60 + seconds;
-            } else {
-              this.timerCount = 0;
-            }
-          }
-        }
         return true
       } else {
         return false;
@@ -122,10 +94,11 @@ return true;
     async fetchExamTest() {
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
-          this.examination = response.data;
-          this.total = response.data.length
-          this.maxNext = response.data.length - 1
-          this.fetchExamquest()
+          this.examination = response.data.data;
+          this.total = response.data.data.length
+          this.maxNext = response.data.data.length - 1
+         this.fetchExamquest()
+        // this.GetTime()
         });
         return true
       } catch (error) {
@@ -139,6 +112,43 @@ return true;
       this.listttt = [];
       this.listttt.push(this.examination[this.ind])
     },
+
+    async GetTime() {
+      try {
+        const data = await ApiService.get('/exam/time/?em_id='+ this.updatetime.em_id +'&user_id='+this.updatetest.user_id+'').then(rep => {
+              const timeParts = rep.data.et_time.split(':');
+              const hours = parseInt(timeParts[0], 10);
+              const minutes = parseInt(timeParts[1], 10);
+              const seconds = parseInt(timeParts[2], 10);
+              this.timerCount = hours * 3600 + minutes * 60 + seconds;
+              this.toHoursAndMinutes(this.timerCount) ///แปลงเวลา
+        });
+        return true
+      } catch (error) {
+        return false;
+      } finally {
+
+      }
+ 
+    },
+    async UpdateTime() {
+      const result = new Date(this.timerCount * 1000)
+      .toISOString()
+      .slice(11, 19);
+      this.updatetime.et_time = result;
+      try {
+        const data = await ApiService.post('/exam/time/render',this.updatetime).then(rep => {
+
+        });
+        return true
+      } catch (error) {
+        return false;
+      } finally {
+
+      }
+ 
+    },
+
     async Updatechoice(choices) {
       this.updatetest.ec_id = choices
       try {
@@ -173,27 +183,28 @@ return true;
       if (this.timerCount > 0) {
         this.timeoutId = setTimeout(() => {
           this.timerCount -= 1;
-          this.updatetime.timerCount = this.timerCount;
-          const xt = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
+     
+         // this.updatetime.timerCount = this.timerCount;
+          // const xt = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
           //  const indexToUpdate = xt.findIndex(item => item.em_id === 7);
-          const data = JSON.parse(localStorage.getItem('examtest'));
-          const updatedObject = { em_id: this.updatetime.em_id, timerCount: this.updatetime.timerCount, isComplate: false };
-          if (data) {
-            const index = data.findIndex(item => item.em_id === this.updatetime.em_id)
-            if (index !== -1) {
-              console.log('Data', this.ex_count);
-              // Replace the object at the specified index
-              data.splice(index, 1, updatedObject);
-              const updatetime = localStorage.setItem('examtest', JSON.stringify(data))
-            } else {
-              this.ex_count.push(updatedObject)
-              console.log('Object not found', this.ex_count);
-              const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
-            }
-          } else {
-            this.ex_count.push(updatedObject)
-            const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
-          }
+          // const data = JSON.parse(localStorage.getItem('examtest'));
+          // const updatedObject = { em_id: this.updatetime.em_id, timerCount: this.updatetime.timerCount, isComplate: false };
+          // if (data) {
+          //   const index = data.findIndex(item => item.em_id === this.updatetime.em_id)
+          //   if (index !== -1) {
+          //     console.log('Data', this.ex_count);
+          //     // Replace the object at the specified index
+          //     data.splice(index, 1, updatedObject);
+          //     const updatetime = localStorage.setItem('examtest', JSON.stringify(data))
+          //   } else {
+          //     this.ex_count.push(updatedObject)
+          //     console.log('Object not found', this.ex_count);
+          //     const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
+          //   }
+          // } else {
+          //   this.ex_count.push(updatedObject)
+          //   const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
+          // }
       
           this.countDownTimer() 
           this.toHoursAndMinutes()  ///แปลงเวลา
@@ -208,22 +219,31 @@ return true;
       return new Promise((resolve) => setTimeout(resolve, 1000));
     },
     clearTimer() {
-
+    
+      const result = new Date(this.timerCount * 1000)
+  .toISOString()
+  .slice(11, 19);
+  this.updatetime.et_time = result;
       if (this.timeoutId) {
+     this.UpdateTime();
         clearTimeout(this.timeoutId);
         this.timeoutId = null;
+  
       }
     },
 
     async Start() {
-      this.timerCount = 20;
+     // this.timerCount = 20;
     },
 
     async toHoursAndMinutes() {
+     
       const totalMinutes = Math.floor(this.timerCount / 60);
       this.seconds = this.timerCount % 60;
       this.hours = Math.floor(totalMinutes / 60);
       this.minutes = totalMinutes % 60;
+
+      return true;
 
     }
 
