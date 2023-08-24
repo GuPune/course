@@ -7,14 +7,49 @@
           <div class="row">
             <div class="col-xl-12 col-lg-12">
               <div class="blog__details__content__wraper" >
-            <div class="row">
-                <div class="col-xl-11 col-lg-11 col-sm-6">
-                  <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                  <i class="icofont-book-alt"></i> หลักสูตร :
-                 </h4>
+                <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div>
+                <div class="contact__text">
+                  <h1> <i class="icofont-book-alt" > :</i>หลักสูตร : {{store.exam.em_name}} </h1>
+                  <div class="contact__email">
+                    <p style="font-size: 24px;">รายละเอียดข้อสอบ</p>
+                  </div>
+                  <hr>
+                  <div class="contact__email">
+                    <p style="font-size: 24px;">รหัสหลักสูตร : {{store.exam.em_code}}</p>
+                  </div>
+                  <hr>
+                  <div class="contact__email">
+                    <p style="font-size: 24px;">จำนวนข้อสอบ : {{store.exam.em_random_amount}} ข้อ</p>
+                  </div>
+                  <hr>
+                  <div class="contact__email">
+                    <p style="font-size: 24px;">เวลาในการสอบ : {{store.exam.em_time}}</p>
+                  </div>
+                  <hr>
+                  <div class="contact__email">
+                    <p style="font-size: 24px;">ปรับปรุงล่าสุด : {{store.exam.udp_date}}</p>
+                  </div>
+                  <hr>
                 </div>
-        
               </div>
+            </div>
+            <div class="col-xl-10 aos-init aos-animate" data-aos="fade-up">
+              <h3 class="box-title">
+                <font style="font-size:56px">ได้คะแนน 1 / 50</font>
+              </h3>
+
+            </div>
+            <div class="col-xl-2 aos-init aos-animate" data-aos="fade-up">
+              <div class="box-tools pull-right" style="text-align: right;">
+                <button type="button" class="btn btn-success">เริ่มต้นสอบ</button>
+                <p class="form-messege"></p>
+              </div>
+            </div>
+          </div>
+          <hr>
+
               <div v-if="store.examination" v-for="(item, index) in store.examination">
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
@@ -59,62 +94,10 @@
                       <span>{{ a.ec_name }}</span>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
-                  </div>
-
-                  
-
-              
+                  </div>     
                   </ul>
                 </div>
               </div>
-              </div>
-            </div>
-            <div class="col-xl-12 col-lg-12">
-              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
-                <ul class="course__details__populer__list">
-                  <li>
-                    <p style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{ store.seconds }} Seconds  </p>
-                  </li>
-                </ul>
-              </div>
-              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
-                <ul class="recent__list">
-                  <li>
-                    <div class="recent__img">
-                      <a href="#">
-                        <img src="../../assets/img/blog/blog_11.png" alt="sidbar" />
-                      </a>
-                    </div>
-                    <div class="recent__text">
-                      <div class="recent__date">
-                        <a>ชื่อจริง: ร้อยตรี ครรชิต ชัยกิจ</a>
-                      </div>
-                      <div class="recent__date">
-                        <a>รหัสบัตร ประชาชน: 0812630907</a>
-                      </div>
-                      <div class="recent__date">
-                        <a>สถานะการทำข้อสอบ: ทดลองสอบ</a>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <div class="populer__tag__list">
-                  <ul>
-                    <li style="width: 47%"  @click="example();" class="exma"><a>วิธีทำ</a></li>
-                    <li style="width: 47%" class="send" @click="send();"><a>สรุป/ส่งคำตอบ</a></li>
-                  </ul>
-                </div>
-                <hr />
-                <div class="row">
-                  <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
-                      ข้อ {{ index + 1 }}
-                    <li  v-for="(a, index) in x.choices">
-                    <span style="color: red" v-if="a.ec_id == x.ec_id">
-                     {{ a.ec_index }}
-                    </span>      
-                    </li>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
