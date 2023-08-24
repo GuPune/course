@@ -13,34 +13,31 @@
                 <div class="contact__text">
                   <h1> <i class="icofont-book-alt" > :</i>หลักสูตร : {{store.exam.em_name}} </h1>
                   <div class="contact__email">
-                    <p style="font-size: 24px;">รายละเอียดข้อสอบ</p>
+                    <p style="font-size: 24px;">รายละเอียดข้อสอบ <span style="font-size: 16px;">( ปรับปรุงล่าสุด : {{store.exam.udp_date}} )</span></p>
                   </div>
-                  <hr>
-                  <div class="contact__email">
-                    <p style="font-size: 24px;">รหัสหลักสูตร : {{store.exam.em_code}}</p>
+
+                  <div class="course-info">
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-database-fill"></i></div>
+                      <p style="font-size: 20px;">รหัสหลักสูตร : <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_code}}</span></p>
+                    </div>
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-boxes"></i></div>
+                      <p style="font-size: 20px;">จำนวนข้อสอบ : <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_random_amount}} ข้อ</span> </p>
+                    </div>
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-alarm-fill"></i></div>
+                      <p style="font-size: 20px;">เวลาในการสอบ :<br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_time}}</span></p>
+                    </div>
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-check-circle"></i></div>
+                      <p style="font-size: 20px;">ได้คะแนน :<br> <span style="font-size: 28px; font-weight: bold;">1 / 50</span></p>
+                    </div>
                   </div>
-                  <hr>
-                  <div class="contact__email">
-                    <p style="font-size: 24px;">จำนวนข้อสอบ : {{store.exam.em_random_amount}} ข้อ</p>
-                  </div>
-                  <hr>
-                  <div class="contact__email">
-                    <p style="font-size: 24px;">เวลาในการสอบ : {{store.exam.em_time}}</p>
-                  </div>
-                  <hr>
-                  <div class="contact__email">
-                    <p style="font-size: 24px;">ปรับปรุงล่าสุด : {{store.exam.udp_date}}</p>
-                  </div>
-                  <hr>
                 </div>
               </div>
             </div>
-            <div class="col-xl-10 aos-init aos-animate" data-aos="fade-up">
-              <h3 class="box-title">
-                <font style="font-size:56px">ได้คะแนน 1 / 50</font>
-              </h3>
-
-            </div>
+           
             <div class="col-xl-2 aos-init aos-animate" data-aos="fade-up">
               <div class="box-tools pull-right" style="text-align: right;">
                 <button type="button" class="btn btn-success">เริ่มต้นสอบ</button>
@@ -335,5 +332,29 @@ const nextt = async (index) => {
 }
 #card-index {
   margin-right: 10px;
+}
+.course-info{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+.course-info > .contact__email {
+  padding: 10px;
+  padding-left: 20px;
+  min-height: 100px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px .2px rgb(190, 190, 190);
+  gap: 20px;
+}
+.contact__text {
+  margin-bottom: 50px;
+}
+.contact__email > .icon {
+  font-size: 50px;
+  color: aqua;
+}
+@media (min-width: 600px) {
+  .course-info { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
