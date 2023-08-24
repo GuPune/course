@@ -88,13 +88,13 @@ export const ExamTestPostStore = defineStore({
     },
 
     async ResetExam() {
+      this.ind = 0;
       this.formsearchtest.clear_cach = 1;
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
         this.updatetime.et_time = this.exam.em_time
         const updatetime =  ApiService.post('/exam/time/render',this.updatetime).then(rep => {
           this.GetTime();
-          this.ind = 0;
         });
         });
         return true
@@ -150,6 +150,7 @@ export const ExamTestPostStore = defineStore({
 
     async fetchExamquest() {
       this.listttt = [];
+      console.log(this.ind);
       this.listttt.push(this.examination[this.ind])
     },
 
