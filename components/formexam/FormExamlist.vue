@@ -22,7 +22,7 @@
               </div>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <!-- <h2>  ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2> -->
+                    <h2>  ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2>
                   </ul>
                 </div>
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="choice-container">
