@@ -5,6 +5,7 @@ export const ExamTestPostStore = defineStore({
   state: () => ({
     timerEnabled: true,
     timerCount: 0,
+    exam_complete:null,
     t: 1,
     timeoutId: null,
     isActiveCourse: true,
@@ -15,6 +16,7 @@ export const ExamTestPostStore = defineStore({
     counting: false,
     em_id: null,////param
     ind: 0,
+    ec_score:0,
     seconds: "",
     hours: "",
     minutes: "",
@@ -85,18 +87,56 @@ export const ExamTestPostStore = defineStore({
       }
     },
 
+    async ResetExam() {
+      this.formsearchtest.clear_cach = 1;
+      try {
+        const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
+        this.updatetime.et_time = this.exam.em_time
+        const updatetime =  ApiService.post('/exam/time/render',this.updatetime).then(rep => {
+          this.GetTime();
+          this.ind = 0;
+        });
+        });
+        return true
+      } catch (error) {
+        return false;
+      } 
+    },
+
+
     async sendexam() {
-      console.log(this.updatetime.em_id);
+  
+      try {
+        const data = await ApiService.post('/exam/result/render', this.updatetime).then(response => {
+          console.log(response);
+        });
+        return true
+      } catch (error) {
+        return false;
+      } finally {
+
+      }
    
-return true;
+
     },
 
     async fetchExamTest() {
+      this.formsearchtest.clear_cach = 0;
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
+          this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
           this.total = response.data.data.length
           this.maxNext = response.data.data.length - 1
+          var score = 0;
+         for (var i = 0; i < this.examination.length; i++) {
+          if(this.examination[i].ec_score == 1){
+          score++
+          }
+          
+          this.ec_score = score;
+
+          }
          this.fetchExamquest()
         // this.GetTime()
         });

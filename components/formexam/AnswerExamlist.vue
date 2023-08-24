@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.updatetime.isComplate === false">
+    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.exam_complete == 1">
     <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
       role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-boxes"></i></div>
-                      <p style="font-size: 20px;">จำนวนข้อสอบ : <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_random_amount}} ข้อ</span> </p>
+                      <p style="font-size: 20px;">จำนวนข้อสอบ : <br> <span style="font-size: 28px; font-weight: bold;">{{store.total}} ข้อ</span> </p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-check-circle"></i></div>
-                      <p style="font-size: 20px;">ได้คะแนน :<br> <span style="font-size: 28px; font-weight: bold;">1 / 50</span></p>
+                      <p style="font-size: 20px;">ได้คะแนน :<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
                     </div>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
            
             <div class="col-xl-2 aos-init aos-animate" data-aos="fade-up">
               <div class="box-tools pull-right" style="text-align: right;">
-                <button type="button" class="btn btn-success">เริ่มต้นสอบ</button>
+                <button type="button" class="btn btn-success"  @click="reset()">เริ่มต้นสอบใหม่</button>
                 <p class="form-messege"></p>
               </div>
             </div>
@@ -156,6 +156,14 @@ store.isActive = true;
 const send = async () => {
   let send = await store.sendexam();
 };
+
+const reset = async () => {
+ let resetexam = await store.ResetExam();
+ if(resetexam == true){
+  await store.fetchExamTest();
+ }
+};
+
 
 const previodd = async (index) => {
   if(store.ind > 0){

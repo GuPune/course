@@ -1,5 +1,6 @@
 <template>
-  <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.updatetime.isComplate === false">
+ 
+  <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.exam_complete != 1">
     <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
       role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
@@ -154,6 +155,7 @@ store.isActive = true;
 
 const send = async () => {
   let send = await store.sendexam();
+  await store.fetchExamTest();
 };
 
 const previodd = async (index) => {
@@ -286,8 +288,6 @@ const nextt = async (index) => {
   transition-duration: 0.4s;
   display: flex;
 }
-
-
 
 #answer-card {
   padding: 5px;

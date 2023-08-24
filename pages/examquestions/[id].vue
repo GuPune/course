@@ -90,6 +90,7 @@ const router = useRouter();
 
 
 await setTimeout(() => {
+  console.log('gettime');
    store.GetTime();
 }, 500)
 
