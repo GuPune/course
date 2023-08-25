@@ -114,7 +114,7 @@
                                           <li>
                                               <a href="#">
                                                   <div class="footerarea__right__img">
-                                                      <img src="/footer/footer__1.png" alt="footerphoto">
+                                                      <img src="../../assets/img/footer/footer__1.png" alt="footerphoto">
                                                   </div>
                                                   <div class="footerarea__right__content">
                                                       <span>02 Apr 2023 </span>
