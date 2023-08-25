@@ -12,6 +12,7 @@ export const ExamTestPostStore = defineStore({
     isActive: false,
     examination: [],
     listttt: [],
+    isconfirm: false,
     exam: null,
     counting: false,
     em_id: null,////param
@@ -49,10 +50,11 @@ export const ExamTestPostStore = defineStore({
     getisActiveCourse: (state) => {
       return state.isActiveCourse;
     },
-
-
     GetopenModal: (state) => {
       return state.isActive;
+    },
+    getisConfirm: (state) => {
+      return state.isconfirm;
     },
 
 
