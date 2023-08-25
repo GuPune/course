@@ -38,7 +38,7 @@
 
                         <a href="instructor-details.html">
                             <div class="gridarea__small__img">
-                                <img src="img/grid/grid_small_1.jpg" alt="grid">
+                                <img src="../../assets/img/grid/grid_small_1.jpg" alt="grid">
                                 <div class="gridarea__small__content">
                                     <h6>{{item.user_create}}</h6>
                                 </div>
@@ -95,7 +95,7 @@
                 <div class="gridarea__bottom__left">
                     <a>
                         <div class="gridarea__small__img">
-                            <img src="img/grid/grid_small_1.jpg" alt="grid">
+                            <img src="../../assets/img/grid/grid_small_1.jpg" alt="grid">
                             <div class="gridarea__small__content">
                                 <h6>{{item.user_create}}</h6>
                             </div>
