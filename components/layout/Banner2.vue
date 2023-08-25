@@ -34,13 +34,13 @@
                       </div>
                   </div>
               </div>
-              <div class="herobannerarea__icon__2">
+              <!-- <div class="herobannerarea__icon__2">
                   <img class="herobanner__common__img herobanner__img__1" src="/img/herobanner/herobanner__1.png" alt="photo">
                   <img class="herobanner__common__img herobanner__img__2" src="/img/herobanner/herobanner__2.png" alt="photo">
                   <img class="herobanner__common__img herobanner__img__3" src="/img/herobanner/herobanner__3.png" alt="photo">
                   <img class="herobanner__common__img herobanner__img__4" src="/img/herobanner/herobanner__4.png" alt="photo">
                   <img class="herobanner__common__img herobanner__img__5" src="/img/herobanner/herobanner__5.png" alt="photo">
-              </div>
+              </div> -->
           </div>
     </div>
 </template>
