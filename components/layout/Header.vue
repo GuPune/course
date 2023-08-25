@@ -68,7 +68,10 @@
                                                 style="padding: 8px 15px;border: 1px solid var(--borderColor1);"> <i
                                                     class="icofont-heart-alt"></i> บัญชีของฉัน {{ authenticated }}
                                             </a>
+                                            
+                                            
                                             <ul class="headerarea__submenu">
+                                                <li><a @click="GotoPage()">ประวัติการสอบ</a></li>
                                                 <li><a @click="Logout()">Logout</a></li>
                                             </ul>
                                         </li>
@@ -281,7 +284,9 @@ store.isActiveBar = false;
 
 
 
-
+const GotoPage = () => {
+    router.push('/history');
+};
 
 const { locale, setLocale } = useI18n();
 

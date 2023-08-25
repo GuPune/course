@@ -150,7 +150,6 @@ export const ExamTestPostStore = defineStore({
 
     async fetchExamquest() {
       this.listttt = [];
-      console.log(this.ind);
       this.listttt.push(this.examination[this.ind])
     },
 
@@ -179,7 +178,6 @@ export const ExamTestPostStore = defineStore({
       this.updatetime.et_time = result;
       try {
         const data = await ApiService.post('/exam/time/render',this.updatetime).then(rep => {
-
         });
         return true
       } catch (error) {
