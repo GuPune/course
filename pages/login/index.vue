@@ -39,12 +39,12 @@
   
                   </div>
   
-                  <div class=" login__shape__img educationarea__shape_image">
+                  <!-- <div class=" login__shape__img educationarea__shape_image">
                       <img class="hero__shape hero__shape__1" src="img/education/hero_shape2.png" alt="Shape">
                       <img class="hero__shape hero__shape__2" src="img/education/hero_shape3.png" alt="Shape">
                       <img class="hero__shape hero__shape__3" src="img/education/hero_shape4.png" alt="Shape">
                       <img class="hero__shape hero__shape__4" src="img/education/hero_shape5.png" alt="Shape">
-                  </div>
+                  </div> -->
 
 
   
