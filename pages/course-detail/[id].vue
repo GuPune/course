@@ -38,7 +38,8 @@
                 <div class="row" v-if="store.course_lesson">
                     <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
                         <div class="blogarae__img__2 course__details__img__2 aos-init aos-animate" data-aos="fade-up">
-                            <img :src="coverimage(item.course_cover)" alt="blog">
+                            <!-- <img :src="coverimage(item.course_cover)" alt="blog"> -->
+                            <img src="https://thainews.prd.go.th/dc/archive/uploads/image/2562/7/21/c4bea27bb8f863efd529523a5d3bae51.jpg" alt="">
                         </div>
 
                         <div class="blog__details__content__wraper">
@@ -225,4 +226,10 @@ function image(i) {
 }
 
 </script>
-  
+
+<style>
+.blogarae__img__2 > img {
+    max-height: 430cm;
+    object-fit: cover;
+}
+</style>
