@@ -70,23 +70,10 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                             </div>
                         </div>
-
-           
-
-
-
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -111,26 +98,19 @@ const { toggleActiveClassselect } = newsPostStore();
 await store.FetchNesTrans();
 await store.FetchNesCivil();
 
-
-
 // const toggleActiveClass = async (x) => {
 
 // alert('x');
 // };
-
-
 async function fill(x) {
     const formnew = reactive({
     selectnew: x,
     });
     await toggleActiveClassselect(formnew); 
 }
-
 function image(i) {
   let im =  ApiService.image(i);
   return im;
 }
-
-
 
 </script>

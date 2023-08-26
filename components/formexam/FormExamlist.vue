@@ -107,18 +107,14 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-12">
-            <p>Do you really want to delete these records? This process cannot be undone.</p>
+            <p>Do you really want to Confirm these records? This process cannot be undone.</p>
           </div>
-
-
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="Hide()">ปิด</button>
         <button type="button" class="btn btn-danger" @click="Confirm()">ยืนยัน</button>
       </div>
-
-
     </div>
   </div>
 </template>
@@ -141,27 +137,7 @@ const { Updatechoice } = ExamTestPostStore(); //Action
 const { Next } = ExamTestPostStore(); //Action
 const { Previod } = ExamTestPostStore(); //Action
 
-
-
-
 const router = useRouter();
-//let start = await store.Start();
-// const number = 2; // Define the 'number' property
-// const end = await store.End();
-
-// const computedProperty = computed(() => {
-//     return store.timerCount
-// })
-
-// watch(computedProperty, (time) => {   //// countime
-//  // store.UpdateTime();
-//   if(time == 0){
-//     router.push({ path: '/exam'})
-//   }
-// })
-
-
-
 function image(i) {
   let im = ApiService.image(i);
   return im;
