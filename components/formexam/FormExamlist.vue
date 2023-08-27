@@ -249,12 +249,13 @@ function coverimage(i) {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: unset !important;
 
 }
 
 #choice {
   border-radius: 20px;
+  height: 100%;
   padding: 10px 10px 0px 15px;
   background-color: white;
   color: black;
@@ -327,4 +328,5 @@ function coverimage(i) {
 
 #card-index {
   margin-right: 10px;
-}</style>
+}
+</style>
