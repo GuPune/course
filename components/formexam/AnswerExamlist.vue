@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent" v-if="store.isConfirmComplate === true">
+    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent"  v-if="store.exam_complete == 1">
     <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
       role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
@@ -63,6 +63,7 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
+                      <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-check-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
@@ -70,7 +71,7 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
-                      
+                      <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
@@ -81,6 +82,7 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
+                      <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-x-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
@@ -89,6 +91,7 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span>{{ a.ec_name }}</span>
+                      <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
                   </div>     
@@ -176,6 +179,11 @@ const nextt = async (index) => {
   }
  // await Next(index);
 };
+
+function coverimage(i) {
+    let im =  ApiService.image(i);
+  return im;
+}
 
 </script>
 
