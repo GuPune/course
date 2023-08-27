@@ -7,6 +7,7 @@ export const ExamTestPostStore = defineStore({
     timerCount: 0,
     exam_complete:null,
     t: 1,
+    isConfirmComplate:false,
     timeoutId: null,
     isActiveCourse: true,
     isActive: false,
