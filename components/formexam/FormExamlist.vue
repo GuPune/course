@@ -30,7 +30,7 @@
                     <div id="choice">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span>{{ a.ec_name }}</span>
+                      <span id="choice-text">{{ a.ec_name }}</span>
                         <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                     </div>
                   </ul>
@@ -256,12 +256,16 @@ function coverimage(i) {
 #choice {
   border-radius: 20px;
   height: 100%;
-  padding: 10px 10px 0px 15px;
+  justify-content: space-between;
+  padding: 10px 15px 10px 15px;
   background-color: white;
   color: black;
   border: 2px solid #4CAF50;
   transition-duration: 0.4s;
   display: flex;
+  #choice-text {
+    width: 100%;
+  }
 }
 
 #choice:hover {

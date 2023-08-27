@@ -62,7 +62,7 @@
                     <div  class="answer-choice-currect" v-if="(a.ec_id == item.ec_id) && (a.ec_index == item.eq_answer)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span>{{ a.ec_name }}</span>
+                      <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-check-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -70,7 +70,7 @@
                     <div  class="answer-choice-success" v-else>
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span>{{ a.ec_name }}</span>
+                      <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -81,7 +81,7 @@
                     <div  class="answer-choice-danger"  v-if="(a.ec_id == item.ec_id)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span>{{ a.ec_name }}</span>
+                      <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-x-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -90,7 +90,7 @@
                     <div  class="answer-choice" v-else="(a.ec_id != item.ec_id)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span>{{ a.ec_name }}</span>
+                      <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
@@ -243,15 +243,6 @@ function coverimage(i) {
   align-items: center;
 
 }
-#choice {
-  border-radius: 20px;
-  padding: 10px 10px 0px 15px;
-  background-color: white;
-  color: black;
-  border: 2px solid #4CAF50;
-  transition-duration: 0.4s;
-  display: flex;
-}
 #choice:hover {
   background-color: #4CAF50; /* Green */
   color: white;
@@ -263,6 +254,9 @@ function coverimage(i) {
   padding: 5px;
   border: unset !important;
 
+}
+.choice-text {
+  width: 100%;
 }
 
 
@@ -279,7 +273,7 @@ function coverimage(i) {
 .answer-choice{
   background-color: rgb(247, 247, 247); 
   border-radius: 20px;
-  padding: 10px 10px 0px 15px;
+  padding: 10px 15px 10px 15px;
   color: black;
   border: 1px solid #868686;
   transition-duration: 0.4s;
@@ -288,7 +282,7 @@ function coverimage(i) {
 
 .answer-choice-success{
   border-radius: 20px;
-  padding: 10px 10px 0px 15px;
+  padding: 10px 15px 10px 15px;
   color: black;
   border: 2px solid #0fe50f;
   transition-duration: 0.4s;
@@ -298,7 +292,7 @@ function coverimage(i) {
 .answer-choice-danger{
   background-color: rgb(227, 52, 21); 
   border-radius: 20px;
-  padding: 10px 10px 0px 15px;
+  padding: 10px 15px 10px 15px;
   color: black;
   border: 2px solid rgb(227, 52, 21);
   transition-duration: 0.4s;
@@ -312,7 +306,7 @@ function coverimage(i) {
 }
 .answer-choice-currect {
   border-radius: 20px;
-  padding: 10px 10px 0px 15px;
+  padding: 10px 15px 10px 15px;
   background-color: #0fe50f;
   color: rgb(255, 255, 255);
   border: 2px solid #0fe50f;
@@ -324,22 +318,14 @@ function coverimage(i) {
     color: white;
   };
 }
-.answer-choice-currect span {
-  width: 100%;
+.answer-choice-currect > i {
+  font-size: 125%;
+  margin-left: 15px;
 }
-.answer-choice-danger span {
-  width: 100%;
+.answer-choice-danger > i {
+  font-size: 125%;
+  margin-left: 15px;
 }
-
-.answer-choice-currect i {
-  width: 20px;
-}
-.answer-choice-danger span {
-  width: 100%;
-}
-
-
-
 
 #answer-card {
   padding: 5px;
