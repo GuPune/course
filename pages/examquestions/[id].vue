@@ -53,6 +53,36 @@
                                 </div>
                             </div>
   </div>
+
+
+  <div v-if="GetopenModalStart" class="modal">
+<div class="modal-content" id="deleteConformationLabel">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">วิธีทำ</h4>
+      </div>
+                                <div class="modal-body">
+        <div class="row">
+
+                 <div class="col-xs-12">
+                
+
+<!-- <img src="image_system/navigate.PNG" style='height:100%; width:100%;' /> -->
+1. กรุณาอ่านข้อแนะนำให้ครบทุกข้อ<br>
+2. ข้อสอบมีทั้งหมด 50 ข้อ เวลาในการสอบตามที่กำหนด <br>
+3. ข้อสอบจะแสดงทีละข้อโดยผู้เข้าสอบสามารถ <br>
+4. เมื่อเลือกคำตอบทุกข้อ ระบบจะสรุปผลทันที <br>
+5. เมื่อ เริ่มต้นทดสอบ ระบบจะ จับเวลาทันที่ <br>
+6. กรณีกดเปลี่ยนหน้า ระบบจะหยุดเวลาฝึกทำข้อสอบให้ และกลับมาฝึกทำต่อได้<br>
+                </div>
+                
+
+            </div>
+      </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-remove="task" @click="Start()">เริ่มต้นทดสอบ</button>
+                                </div>
+                            </div>
+  </div>
   </template>
   <script lang="ts" setup>
  definePageMeta({
@@ -73,6 +103,7 @@ import { onMounted, onUnmounted } from 'vue';
 const storeexam = ExamPostStore()
 const store = ExamTestPostStore()
 const { GetopenModal } = storeToRefs(store);
+const { GetopenModalStart } = storeToRefs(store);
 const route = useRoute();
 
 await storeexam.fetchExam()
@@ -87,17 +118,21 @@ const router = useRouter();
 // const end = await store.End();
 
 
-
-
 await setTimeout(() => {
    store.GetTime();
 }, 500)
 
-await setTimeout(() => {
-    store.countDownTimer();   
-          }, 1000)
 const HideModal = async () => {
 store.isActive = false;
+};
+
+
+const Start = async () => {
+  store.isstart = false;
+await setTimeout(() => {
+    store.countDownTimer();   
+          }, 500)
+
 };
 
 const computedProperty = computed(() => {
@@ -105,14 +140,19 @@ const computedProperty = computed(() => {
 })
 
  watch(computedProperty, (time) => {   //// countime
- // store.UpdateTime();
   if(time == 0){
-    router.push({ path: '/exam'})
+ 
+   Same()
   }
 })
 
 
-
+const Same = async () => {
+  let send = await store.sendexam();
+  if(send == true){
+    store.fetchExamTest();
+   }
+};
 
 // ล้างไทเมอร์เมื่อออกจากเส้นทาง
 onBeforeRouteLeave((to, from, next) => {  

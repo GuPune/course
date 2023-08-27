@@ -13,6 +13,7 @@ export const ExamTestPostStore = defineStore({
     examination: [],
     listttt: [],
     isconfirm: false,
+    isstart:true,
     exam: null,
     counting: false,
     em_id: null,////param
@@ -56,8 +57,10 @@ export const ExamTestPostStore = defineStore({
     getisConfirm: (state) => {
       return state.isconfirm;
     },
-
-
+    GetopenModalStart: (state) => {
+      return state.isstart;
+    },
+  
   },
 
 
@@ -92,34 +95,23 @@ export const ExamTestPostStore = defineStore({
     async ResetExam() {
       this.ind = 0;
       this.formsearchtest.clear_cach = 1;
-      try {
-        const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
-        this.updatetime.et_time = this.exam.em_time
-        const updatetime =  ApiService.post('/exam/time/render',this.updatetime).then(rep => {
-          this.GetTime();
-        });
-        });
-        return true
-      } catch (error) {
-        return false;
-      } 
+      this.isstart = true;
+      await this.clearTimer()
+      const data = await ApiService.post('/exam/start/render', this.formsearchtest);
+       this.updatetime.et_time = this.exam.em_time
+      const updatetime = await ApiService.post('/exam/time/render',this.updatetime)
+     await this.GetTime();
+    // await this.countDownTimer();
+     return true;
     },
 
 
     async sendexam() {
+      const data = await ApiService.post('/exam/result/render', this.updatetime).then(response => {
+    
+         });
+         return true;
   
-      try {
-        const data = await ApiService.post('/exam/result/render', this.updatetime).then(response => {
-          console.log(response);
-        });
-        return true
-      } catch (error) {
-        return false;
-      } finally {
-
-      }
-   
-
     },
 
     async fetchExamTest() {
@@ -156,6 +148,7 @@ export const ExamTestPostStore = defineStore({
     },
 
     async GetTime() {
+
       try {
         const data = await ApiService.get('/exam/time/?em_id='+ this.updatetime.em_id +'&user_id='+this.updatetest.user_id+'').then(rep => {
               const timeParts = rep.data.et_time.split(':');
@@ -221,9 +214,11 @@ export const ExamTestPostStore = defineStore({
     },
 
     async countDownTimer() {
+      console.log('countDownTimer',this.timerCount);
       if (this.timerCount > 0) {
         this.timeoutId = setTimeout(() => {
           this.timerCount -= 1;
+      
      
          // this.updatetime.timerCount = this.timerCount;
           // const xt = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
@@ -260,7 +255,7 @@ export const ExamTestPostStore = defineStore({
       return new Promise((resolve) => setTimeout(resolve, 1000));
     },
     clearTimer() {
-    
+      this.isstart = true;
       const result = new Date(this.timerCount * 1000)
   .toISOString()
   .slice(11, 19);
@@ -278,7 +273,7 @@ export const ExamTestPostStore = defineStore({
     },
 
     async toHoursAndMinutes() {
-     
+      console.log('Time',this.timerCount);
       const totalMinutes = Math.floor(this.timerCount / 60);
       this.seconds = this.timerCount % 60;
       this.hours = Math.floor(totalMinutes / 60);

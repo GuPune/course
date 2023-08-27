@@ -167,6 +167,12 @@ const reset = async () => {
  }
 };
 
+// const start = async () => {
+//   store.isstart = true;
+//   await store.fetchExamTest();
+// };
+
+
 
 const previodd = async (index) => {
   if(store.ind > 0){
