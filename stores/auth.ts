@@ -75,6 +75,7 @@ export const useAuthStore = defineStore('auth', {
 
       } catch (error) {
        this.status_login = false;
+       return false;
       } finally {
      
       }
