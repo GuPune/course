@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import { useEnvStore } from '@/stores/env'
+import ApiService from '../services/api.service';
 
 interface UserPayloadInterface {
   username: string;
@@ -15,6 +16,7 @@ export const useAuthStore = defineStore('auth', {
  
   state: () => ({
     authenticated: false,
+    verify: false,
     loading: false,
     alert :false,
     error:{
@@ -35,30 +37,6 @@ export const useAuthStore = defineStore('auth', {
     
     async authenticateUser({ username, password }: UserPayloadInterface) {
       // useFetch from nuxt 3
-   
-
-      // const { error, data, statusCode }: any = await useFetch('/auth/login', {
-      //   method: 'post',
-      //   baseURL:useEnvStore().apidev,
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: {
-      //     username,
-      //     password,
-      //   },
-      // });
-    
-      // if (data.value) {
-      //   const token = useCookie('token'); // useCookie new hook in nuxt 3
-      //   token.value = data?.value?.token; // set token to cookie
-      //   this.authenticated = true; // set authenticated  state value to true
-      //   return true;
-      // }
-      // if (!data.value) {
-      //   this.error.status = true;
-      //   return false;
-      // }
-
-
       try {
         const { data } = await useFetch('/user/login', {
           method: 'post',
@@ -73,25 +51,30 @@ export const useAuthStore = defineStore('auth', {
         },
         });
 
-   
         if (data.value) {
-        
+         
           const token = useCookie('token'); // useCookie new hook in nuxt 3
           const user_id = useCookie('user_id'); // useCookie new hook in nuxt 3
-          const firstname = useCookie('firstname'); // useCookie new hook in nuxt 3
-          const lastname = useCookie('firstname'); // useCookie new hook in nuxt 3
           token.value = "ZeBuphebrltl3uthIFraspubroST80Atr9tHuw5bODowi26p"; // set token to cookie
           user_id.value = data.value.user_id; // set token to cookie
-          localStorage.setItem('user', JSON.stringify(data.value))
-        
-      
-  
+       //   localStorage.setItem('user', JSON.stringify(data.value))
           // token.value = data?.value?.token; // set token to cookie
           this.authenticated = true; // set authenticated  state value to true
           this.status_login = true;
+        const checkveri = await ApiService.get('/user/get/'+data.value.user_id);
+        console.log(checkveri.data)
+        // const data = await ApiService.get('/user/get/90').then(response => {
+        
+          //   console.log(Object.keys(response.data.detail).length);
+       
+          // });
+          // if(Object.keys(response.data.detail).length === 0){
+         
+          // }else {
+           
+          // }
           return true;
         }else{
-    
           this.status_login = false;
           this.alert = true; 
           return false;
