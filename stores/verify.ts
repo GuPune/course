@@ -6,15 +6,20 @@ export const VerifyStore = defineStore({
   id: 'verify',
   state: () => ({
     timerEnabled: true,
+    imageReq:false,
+    otpisactive:true,
+    token:'',
+    otp: ['', '', '', '', '', ''],
+    user_id:useCookie('user_id').value,
     formdetail:{
-        verify_account:null,
+        verify_account:'n',
         identification_number:null,
         user_img:null,
         user_birthday:null,
         user_address:null,
-        location_id:null,
-        country_id:null,
-        user_id:null,
+        location_id:1,
+        country_id:1,
+        user_id:useCookie('user_id').value,
     },
     formszipcode: {
         page: 1,
@@ -25,9 +30,10 @@ export const VerifyStore = defineStore({
     country:null,
   }),
   getters: {
-   
-  
-   
+    getForm(state) {
+        return state.formdetail;
+      },
+
   }, 
 
 
@@ -52,6 +58,41 @@ export const VerifyStore = defineStore({
         }else {
           this.country = []
         }
+      },
+
+      async SendOtp() {
+        const data = await ApiService.get('/user/otp/'+ this.user_id).then(response => {
+            console.log('response',response);
+        });
+  
+        return true;
+      },
+      async verifyOTP() {
+        const otpconfirm = this.otp.join('');
+        this.formotp = {otp_code:otpconfirm,user_id:this.user_id};
+  
+
+
+          try {
+            const send = ApiService.put('/user/verify_otp', this.formotp).then(response => {
+                if(response.data == ''){
+                    console.log('240');
+                    return false;
+                }else{
+                    console.log('200');
+                    return true;
+                }
+              });
+            
+           
+            //    return response.data
+          } catch (error) {
+            return false;
+          }
+      },
+      setOTP(otp) {
+        this.otp = otp;
+        console.log('setOTP',this.otp);
       },
 
   },
