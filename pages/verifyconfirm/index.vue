@@ -1,89 +1,81 @@
 
-
-
-
+  
 
 <template>
-  <div>
-    <div class="breadcrumbarea">
+    <div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="breadcrumb__content__wraper" data-aos="fade-up">
-                <div class="breadcrumb__title">
-                    <h2 class="heading">VeriConfirm</h2>
-                </div>
-                <div class="breadcrumb__inner">
-                    <ul>
-                        <li><a href="index.html">VeriConfirm</a></li>
-                        <li>VeriConfirm</li>
-                    </ul>
+
+        <div class="loginarea">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-md-12 offset-md-2" data-aos="fade-up" v-if="useError.alert">
+                        <div class="alert alert-danger" role="alert">
+                            {{ alertlogin.message }}
+                        </div>
+                    </div>
+                    <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
+                        <Register></Register>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="shape__icon__2">
-                <img class=" shape__icon__img shape__icon__img__1" src="../../assets/img/herobanner/herobanner__1.png"
-                    alt="photo">
-                <img class=" shape__icon__img shape__icon__img__2" src="../../assets/img/herobanner/herobanner__2.png"
-                    alt="photo">
-                <img class=" shape__icon__img shape__icon__img__3" src="../../assets/img/herobanner/herobanner__3.png"
-                    alt="photo">
-                <img class=" shape__icon__img shape__icon__img__4" src="../../assets/img/herobanner/herobanner__4.png"
-                    alt="photo">
-            </div>
-
-</div>
-
-
- <div class="coursearea sp_top_100 sp_bottom_100">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-12">
-                
-                  </div>
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                    
-           
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
 </template>
-<script lang="ts" setup>
 
+
+
+
+
+
+<script setup>
+
+
+import Register from '@/components/verify/Register.vue';
+import Loading from '@/components/button/loading.vue';
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
+import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
+import { useRoute } from 'vue-router'
 
-import { useRoute } from "vue-router";
+
+import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+
+const router = useRouter();
+
 
 
 </script>
-  <style>
-  .modal {
+
+
+
+<style scoped>
+.loading-page {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    right: 0;
+    z-index: 1000;
+    padding: 1rem;
+    text-align: center;
+    font-size: 3rem;
+    font-family: sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    width: 50%;
-  }
-  
-  button {
-    margin-top: 10px;
-  }
-  
-  </style>
+    justify-content: center;
+}
+
+.loading {
+    display: inline-block;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 4px solid rgba(9, 133, 81, 0.705);
+    border-radius: 50%;
+    border-top-color: #158876;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+</style>
