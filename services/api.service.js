@@ -31,7 +31,7 @@ const apiClient = axios.create({
     image(img) {
       const imag = ViewImage+img;
       if(!img){
-        console.log('ไม่มีรูป');
+      
       }
       return imag;
     },
