@@ -1,6 +1,6 @@
 <template>
-  <div class="tab-pane fade" v-bind:class="{ active: !getisActive, show: !getisActive }" id="projects__two"
-    role="tabpanel" aria-labelledby="projects__two">
+  <div class="tab-pane fade show" id="projects__one"
+    role="tabpanel" aria-labelledby="projects__one">
     <div class="col-xl-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
@@ -8,14 +8,12 @@
           <p class="login__description">Already have an account? <a href="#" data-bs-toggle="modal"
               data-bs-target="#registerModal">Log In</a></p>
         </div>
-
-
         <form action="#">
          <div class="row">
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">First Name</label>
-                <input class="common__login__input" type="text" placeholder="First Name" v-model="stores.form.user_firstname"
+                <label class="form__label">ชื่อจริง</label>
+                <input class="common__login__input" type="text" placeholder="ชื่อจริง" v-model="stores.form.user_firstname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_firstname.$error,
                     'border-[#42d392] ': !v$.user_firstname.$invalid,
@@ -29,8 +27,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">Last Name</label>
-                <input class="common__login__input" type="text" placeholder="Last Name" v-model="stores.form.user_lastname"
+                <label class="form__label">นามสกุล</label>
+                <input class="common__login__input" type="text" placeholder="นามสกุล" v-model="stores.form.user_lastname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_lastname.$error,
                     'border-[#42d392] ': !v$.user_lastname.$invalid,
@@ -43,8 +41,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">Username</label>
-                <input class="common__login__input" type="text" placeholder="Username" v-model="stores.form.user_name"
+                <label class="form__label">ยูสเชอร</label>
+                <input class="common__login__input" type="text" placeholder="ยูสเชอร" v-model="stores.form.user_name"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_name.$error,
                     'border-[#42d392] ': !v$.user_name.$invalid,
@@ -57,8 +55,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">Email</label>
-                <input class="common__login__input" type="text" placeholder="Your Email" v-model="stores.form.user_email"
+                <label class="form__label">อีเมล</label>
+                <input class="common__login__input" type="text" placeholder="อีเมล" v-model="stores.form.user_email"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_email.$error,
                     'border-[#42d392] ': !v$.user_email.$invalid,
@@ -71,11 +69,11 @@
             </div>
             <div class="col-xl-12">
               <div class="login__form">
-                <label class="form__label">Tel </label>
-                <input class="common__login__input" type="text" placeholder="Tel" v-model="stores.form.user_phone" :class="{
+                <label class="form__label">เบอรโทร </label>
+                <input class="common__login__input" type="text" placeholder="เบอรโทร" v-model="stores.form.user_phone" :class="{
                   'border-red-500 focus:border-red-500': v$.user_phone.$error,
                   'border-[#42d392] ': !v$.user_phone.$invalid,
-                }" @change="v$.user_phone.$touch" autocomplete="off">
+                }" @change="v$.user_phone.$touch" autocomplete="off" @input="filterInput">
                 <span class="text-xs text-red-500" style="color:red" v-if="v$.user_phone.$error">{{
                   v$.user_phone.$errors[0].$message
                 }}</span>
@@ -84,8 +82,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">Password</label>
-                <input class="common__login__input" type="password" placeholder="Password"
+                <label class="form__label">รหัสผ่าน</label>
+                <input class="common__login__input" type="password" placeholder="รหัสผ่าน"
                   v-model="stores.form.user_password" :class="{
                     'border-red-500 focus:border-red-500': v$.user_password.$error,
                     'border-[#42d392] ': !v$.user_password.$invalid,
@@ -97,8 +95,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">Re-Enter Password</label>
-                <input class="common__login__input" type="password" placeholder="Re-Enter Password"
+                <label class="form__label">ยืนยันรหัสผ่าน</label>
+                <input class="common__login__input" type="password" placeholder="ยืนยันรหัสผ่าน"
                   v-model="stores.form.user_confirmPassword" :class="{
                     'border-red-500 focus:border-red-500': v$.user_confirmPassword.$error,
                     'border-[#42d392] ': !v$.user_confirmPassword.$invalid,
@@ -118,16 +116,10 @@
           </div>
             <span class="text-xs text-red-500" style="color:red" v-if="v$.accp.$error">{{ v$.accp.$errors[0].$message
           }}</span>
-
-
           <div class="login__button" @click="register()">
-            <a class="default__button">Submit</a>
+            <a class="default__button">สมัครสมาชิก</a>
           </div>
         </form>
-
-
-
-
       </div>
     </div>
 
@@ -143,7 +135,7 @@ import { RegisterStore } from '@/stores/register'; // import the auth store we j
 import { useRoute } from 'vue-router'
 import { useLogin } from '@/stores/login'
 import { useVuelidate } from '@vuelidate/core';
-import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+import { required, email, sameAs, minLength, helpers,numeric } from '@vuelidate/validators';
 import Swal from 'sweetalert2';
 
 const router = useRouter();
@@ -159,24 +151,7 @@ const { formDataregister } = storeToRefs(stores);
 const { regsiter } = RegisterStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 
-// const formData = reactive({
-//   email: '',
-//   password: '',
-//   confirmPassword: null,
-// });
-
-
-// const formDataregister = reactive({
-//   username: 'xxxxxx',
-//   password: '12345678',
-//   email: 'rrrr@gmail.com',
-//   fname: 'xxxxxxxx',
-//   lname: 'xxxxxxxx',
-//   tel: '0833268813',
-//   confirmPassword: '12345678',
-//   accp: null,
-// });
-
+const { ResetForm } = RegisterStore();//Action
 
 const rules = computed(() => {
   return {
@@ -201,7 +176,7 @@ const rules = computed(() => {
       minLength: minLength(6),
     },
     user_phone: {
-      required: helpers.withMessage('The tel field is required', required),
+      required: helpers.withMessage('The tel field is required', numeric),
       minLength: minLength(6),
     },
     user_confirmPassword: {
@@ -220,22 +195,15 @@ const v$ = useVuelidate(rules, formDataregister);
 
 
 
+const filterInput = async (event) => {
+   stores.form.user_phone = event.target.value.replace(/\D/g, '');
+
+}
 const register = async () => {
 
-
-
-  //   v$.value.$validate();
-  // if (!v$.value.$error) {
-  //   await authenticateUser(formData); 
-  //     if (authenticated) {
-  //       router.push('/');
-  //     }
-  // }
   v$.value.$validate();
   if (!v$.value.$error) {
    const regis = await regsiter(formDataregister); // call authenticateUser and pass the user object
-   console.log(regis);
-
    if(regis == true){
      await Swal.fire({
   position: 'top-end',
@@ -244,7 +212,8 @@ const register = async () => {
   showConfirmButton: false,
   timer: 1500
 })
-router.push('/');
+ await ResetForm();
+router.push('/login');
    }else{
     Swal.fire({
         title: 'ไม่สำเร็จ!',

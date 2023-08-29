@@ -1,29 +1,25 @@
 import { defineStore } from 'pinia'
+import ApiService from '../services/api.service';
 
 
 
 
-interface RegisterloadInterface {
-  username: string;
-  password: string;
-  email: string;
-  fname: string;
-  lname: string;
-  tel:string;
-  confirmPassword: null;
-}
 
-
-export const RegisterStore  = defineStore({
+export const RegisterStore = defineStore({
   id: 'register',
   state: () => ({
-    isLoading :false,
+    isLoading: false,
     form: {
-        fname: "",
-        lname: "",
-        username: "",
-        email: "",
-        password: "",
+      user_firstname: "",
+      user_lastname: "",
+      user_name: "",
+      user_email: "",
+      user_type: 3,
+      user_phone: "",
+      user_password: "",
+      active: 1,
+      user_confirmPassword: "",
+      accp: null,
     },
   }),
   getters: {
@@ -31,39 +27,46 @@ export const RegisterStore  = defineStore({
     getisLoading: (state) => {
       return state.isLoading;
     },
-  
-  }, 
+    formDataregister: (state) => {
+      return state.form;
+    },
+
+
+
+  },
   actions: {
 
-    
+    async regsiter() {
+      try {
+        const data = await ApiService.post('/user/create', this.form).then(response => {
+          if (response.data == "") {
+            return false;
+          } else {
+            return true;
+          }
+        });
+        return data
+      } catch (error) {
+        return false;
+      } finally {
+
+      }
+
+    },
+
+    async ResetForm() {
+this.form.user_firstname = "";
+this.form.user_lastname = "";
+this.form.user_name = "";
+this.form.user_email = "";
+this.form.user_type = 3;
+this.form.user_phone = "";
+this.form.user_password = "";
+this.form.active = 1;
+this.form.user_confirmPassword = "";
+this.form.accp = null;
  
-    async regsiter({ username, password,email,fname,lname,tel }: RegisterloadInterface) {
-
-    
-    // console.log(JSON.stringify({
-    //   username: username,
-    //   password: password,
-    //   email: email,
-    //   fname: fname,
-    //   lname: lname,
-    //   tel: tel,
-    // }));
-this.isLoading = true;
-    const { data } = await useFetch('https://dummyjson.com/products/add', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        title: 'BMW Pencil',
-        /* other product data */
-      })
-    })
-
-     console.log(JSON.stringify(data.value));
-     this.isLoading = false;
-  
     }
-
-
   }
 })
 

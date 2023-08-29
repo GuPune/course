@@ -1,56 +1,75 @@
 <template>
-        <div class="tab-pane fade" v-bind:class="{ active: getisActive , show:getisActive }" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
-                              <div class="col-xl-8 col-md-8 offset-md-2">
-                                  <div class="loginarea__wraper">
-                                      <div class="login__heading">
-                                          <h5 class="login__title">Login</h5>
-                                          <p class="login__description">Don't have an account yet? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Sign up for free</a></p>
-                                      </div>
-                                      <form action="#">
-                                          <div class="login__form">
-                                              <label class="form__label">Username or email</label>
-                                              <input class="common__login__input" type="text" placeholder="Your username or email"     v-model="formData.username"
-                                              
-                                                    :class="{
+  <div
+    class="tab-pane fade"
+    v-bind:class="{ active: getisActive, show: getisActive }"
+    id="projects__one"
+    role="tabpanel"
+    aria-labelledby="projects__one"
+  >
+    <div class="col-xl-8 col-md-8 offset-md-2">
+      <div class="loginarea__wraper">
+        <div class="login__heading">
+          <h5 class="login__title">Login</h5>
+          <p class="login__description">
+            Don't have an account yet?
+            <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal"
+              >Sign up for free</a
+            >
+          </p>
+        </div>
+        <form action="#">
+          <div class="login__form">
+            <label class="form__label">Username or email</label>
+            <input
+              class="common__login__input"
+              type="text"
+              placeholder="Your username or email"
+              v-model="formData.username"
+              :class="{
                 'border-red-500 focus:border-red-500': v$.username.$error,
                 'border-[#42d392] ': !v$.username.$invalid,
               }"
               @change="v$.username.$touch"
               autocomplete="off"
-                                              >
+            />
 
-                                                 <span class="text-xs text-red-500" style="color:red" v-if="v$.username.$error">{{
-            v$.username.$errors[0].$message
-          }}</span>
-  
-                                          </div>
-                                          <div class="login__form">
-                                              <label class="form__label">Password</label>
-                                              <input class="common__login__input" type="password" placeholder="Password"
-                                               v-model="formData.password"
+            <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ v$.username.$errors[0].$message }}</span
+            >
+          </div>
+          <div class="login__form">
+            <label class="form__label">Password</label>
+            <input
+              class="common__login__input"
+              type="password"
+              placeholder="Password"
+              v-model="formData.password"
               id="password"
               name="password"
-               :class="{
+              :class="{
                 ' border-red-500 focus:border-red-500': v$.password.$error,
                 'border-[#42d392]': !v$.password.$invalid,
               }"
               @change="v$.password.$touch"
-                                              >
-                                               <span class="text-xs text-red-500" style="color:red" v-if="v$.password.$error">{{
-            v$.password.$errors[0].$message
-          }}</span>
-  
-                                          </div>
-                                          <div class="login__form d-flex justify-content-between flex-wrap gap-2">
-                                         
-                                              
-                                          </div>
-                                          <div class="login__button" @click="login()">
-                                              <a class="default__button">Log In</a>
-                                          </div>
-                                         
-                                      </form>
-  
+            />
+            <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.password.$error"
+              >{{ v$.password.$errors[0].$message }}</span
+            >
+          </div>
+          <div
+            class="login__form d-flex justify-content-between flex-wrap gap-2"
+          ></div>
+          <div class="login__button" @click="login()">
+            <a class="default__button">Log In</a>
+          </div>
+        </form>
+        <!--   
                                       <div class="login__social__option">
                                           <p>or Log-in with</p>
   
@@ -59,32 +78,33 @@
                                       <div class="login__button"  @click="login()">
                                               <a class="default__button" style="width: 100%;">OTP</a>
                                           </div>
-  
-  
-                                  </div>
-                              </div>
-                          </div>
-  
-
+   -->
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-
-import { storeToRefs } from 'pinia';
-import { defineComponent } from 'vue';
-import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
-import { useRoute } from 'vue-router'
-import { useLogin } from '@/stores/login'
-import { useVuelidate } from '@vuelidate/core';
-import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+import { storeToRefs } from "pinia";
+import { defineComponent } from "vue";
+import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
+import { useRoute } from "vue-router";
+import { useLogin } from "@/stores/login";
+import { useVuelidate } from "@vuelidate/core";
+import {
+  required,
+  email,
+  sameAs,
+  minLength,
+  helpers,
+} from "@vuelidate/validators";
 
 const router = useRouter();
-const store = useLogin()
-const useError = useAuthStore()
+const store = useLogin();
+const useError = useAuthStore();
 
 const { getisActive } = storeToRefs(store);
 const { alertlogin } = storeToRefs(useError);
-
 
 const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
@@ -95,23 +115,21 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 //   confirmPassword: null,
 // });
 
-
 const formData = reactive({
-  username: 'rkknoob1',
-  password: '123456',
+  username: "rkknoob1",
+  password: "123456",
   confirmPassword: null,
 });
-
 
 const rules = computed(() => {
   return {
     username: {
-      required: helpers.withMessage('The email field is required', required),
-    //   email: helpers.withMessage('Invalid email format', email),
+      required: helpers.withMessage("The email field is required", required),
+      //   email: helpers.withMessage('Invalid email format', email),
       minLength: minLength(6),
     },
     password: {
-      required: helpers.withMessage('The password field is required', required),
+      required: helpers.withMessage("The password field is required", required),
       minLength: minLength(6),
     },
   };
@@ -120,21 +138,16 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, formData);
 
 const login = async () => {
-
-    v$.value.$validate();
+  v$.value.$validate();
   if (!v$.value.$error) {
-   let login = await authenticateUser(formData); 
+    let login = await authenticateUser(formData);
 
-      if (login === true) {
-      router.push('/');
-      }
+    if (login === true) {
+      router.push("/");
+    }
   }
-   
- //  v$.value.$validate();
+
+  //  v$.value.$validate();
   //await authenticateUser(formData); // call authenticateUser and pass the user object
 };
-
-
-
-
 </script>

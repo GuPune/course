@@ -28,7 +28,7 @@ imports: {
 
 
   plugins: [
-    
+    { src: '~/plugins/sweetalert', mode: 'client' }
     // { src: '~/plugins/main.js' ,mode: 'client'},
     // { src: '~/plugins/plugins.js',mode: 'client' },
     // { src: '~/plugins/wow.min.js',mode: 'client' },

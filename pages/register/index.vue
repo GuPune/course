@@ -13,32 +13,16 @@
                                      {{alertlogin.message}}
                             </div>
                         </div>
-            
+          
+           <Register></Register>
   
-  
-                      <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
 
-              <Login></Login>
-              
 
-  
-  
-                      </div>
 
-   <Loading v-if="getisLoading"></Loading>
-  
   
                   </div>
   
-                  <!-- <div class=" login__shape__img educationarea__shape_image">
-                      <img class="hero__shape hero__shape__1" src="img/education/hero_shape2.png" alt="Shape">
-                      <img class="hero__shape hero__shape__2" src="img/education/hero_shape3.png" alt="Shape">
-                      <img class="hero__shape hero__shape__3" src="img/education/hero_shape4.png" alt="Shape">
-                      <img class="hero__shape hero__shape__4" src="img/education/hero_shape5.png" alt="Shape">
-                  </div> -->
-
-
-  
+    
               </div>
           </div>
     </div>
@@ -51,8 +35,8 @@
 
 <script setup>
 
-import Login from '@/components/auth/Login.vue';
-import Register from '@/components/auth/Register.vue';
+
+import Register from '@/components/register/Register.vue';
 import Loading from '@/components/button/loading.vue';
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';

@@ -32,6 +32,7 @@
     "pinia": "^2.1.4",
     "popper": "^1.0.1",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.7.27",
     "vue": "^3.3.4",
     "vuex": "^4.0.2"
   }
