@@ -24,7 +24,7 @@
                   </div>
                 </div>
 
-                <div class="col-xl-12" data-aos="fade-up">
+                <div class="col-xl-12 mb-3" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <textarea name="con_message" id="con_message" cols="10" rows="10"
                       placeholder="Enter Your Message here"></textarea>
@@ -55,24 +55,26 @@
                   </div>
                 </div>
 
-                  <div class="form-group mb-4 mt-3">
+    <div class="form-group mb-4 mt-3 ">
       <label for="exampleFormControlFile1">รูปภาพหน้าข่าว</label> <span class="text-xs text-red-500" style="color:red"
         v-if="store.imageReq == true"> Invalid file selected</span>
       <input type="file" class="form-control-file" id="exampleFormControlFile1"  @change="onFileChange"
         ref="fileupload" accept="image/*">
     </div>
-    <div class="border p-2 mt-3">
-      <p>แสดงรูปตรงนี้:</p>
-      <template  v-if="store.image">
-        <div class="row">
-          <div id="image-container" class="col-md-3 col-sm-4 col-6" >
-            <div class="image-wrapper">
-              <img :src="store.image" class="img-fluid" />
-              <button @click="removeImage()" class="delete-button"><i class="bi bi-x-lg"></i></button>
+    <div>
+      <div class="border rounded p-2 mt-3" id="showimg">
+        <p>แสดงรูปตรงนี้:</p>
+        <template  v-if="store.image">
+          <div class="row">
+            <div id="image-container" class="col-md-3 col-sm-4 col-6" >
+              <div class="image-wrapper">
+                <img :src="store.image" class="img-fluid" />
+                <button @click="removeImage()" class="delete-button"><i class="bi bi-x-lg"></i></button>
+              </div>
             </div>
           </div>
-        </div>
-      </template>
+        </template>
+      </div>
     </div>
 
 
@@ -227,5 +229,12 @@ const input = document.querySelector('input[type="file"]');
   min-height: 200px;
   max-width: 300px;
   max-height: 300px;
+}
+#con_email {
+  padding-right: 20px;
+}
+
+#con_email, #con_name, #con_message, #showimg {
+  background-color: white;
 }
 </style>
