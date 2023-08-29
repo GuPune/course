@@ -8,7 +8,7 @@
               <h3 style="text-align:center;">1-Step Verification</h3>
             </div>
               <div class="row">
-                {{ store.formdetail }}
+                {{ store.formdetail }} {{auth.user_id}}
                 <div class="col-xl-6" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <label class="form__label">เลขบัตรประชาชน</label>    <span class="text-xs text-red-500" style="color:red" v-if="v$.identification_number.$error">{{
@@ -135,13 +135,14 @@ import { required, email, sameAs, minLength, helpers } from '@vuelidate/validato
 
 const router = useRouter();
 const store = VerifyStore()
+const auth = useAuthStore()
 const { getForm } = storeToRefs(store);
-
-
+const { getUser_id } = storeToRefs(store);
 const { Zipcode } = VerifyStore();
 const { Country } = VerifyStore();
 const { SendOtp } = VerifyStore();
 
+store.formdetail.user_id = auth.user_id;
 await store.Zipcode();
 await store.Country();
 

@@ -98,13 +98,19 @@ import { ExamPostStore } from '@/stores/exam';
 import { useRoute } from "vue-router";
 import { onBeforeRouteLeave } from 'vue-router';
 import { onMounted, onUnmounted } from 'vue';
-
-
+import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
+const auth = useAuthStore()
 const storeexam = ExamPostStore()
 const store = ExamTestPostStore()
 const { GetopenModal } = storeToRefs(store);
 const { GetopenModalStart } = storeToRefs(store);
 const route = useRoute();
+
+store.formsearchtest.user_id = auth.user_id
+store.updatetest.user_id = auth.user_id
+store.updatetime.user_id = auth.user_id
+await storeexam.fetchExam()
+await storeexam.fetchExam()
 
 await storeexam.fetchExam()
 let fitter = await store.setECid(route.params.id);

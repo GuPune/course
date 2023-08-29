@@ -19,6 +19,7 @@ export const useAuthStore = defineStore('auth', {
     verify: false,
     loading: false,
     alert :false,
+    user_id :null,
     error:{
       status:false,
       message:"Login ไม่สำเร็จ"
@@ -59,6 +60,7 @@ export const useAuthStore = defineStore('auth', {
           user_id.value = data.value.user_id; // set token to cookie
           this.authenticated = true; // set authenticated  state value to true
           this.status_login = true;
+          this.user_id = data.value.user_id;
           return true;
         }else{
           this.status_login = false;
@@ -89,6 +91,10 @@ export const useAuthStore = defineStore('auth', {
       user_id.value = null;
       this.loading = false;
     },
+
+    async getProfile() {
+
+    }
   },
 });
 

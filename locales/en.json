@@ -13,6 +13,14 @@
     "ZH": "ZH",
     "logo": "logo",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "confirmpassword": "Confirmpassword",
+    "email": "Email",
+    "tel": "Tel",
+    "fname": "First Name",
+    "lname": "Last Name",
+    "acc": "สมัครสมาชิก"
   }
   

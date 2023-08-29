@@ -10,7 +10,7 @@ export const VerifyStore = defineStore({
     otpisactive:true,
     token:'',
     otp: ['', '', '', '', '', ''],
-    user_id:useCookie('user_id').value,
+    user_id:null,
     formdetail:{
         verify_account:'n',
         identification_number:null,
@@ -19,7 +19,7 @@ export const VerifyStore = defineStore({
         user_address:null,
         location_id:1,
         country_id:1,
-        user_id:useCookie('user_id').value,
+        user_id:null,
     },
     formszipcode: {
         page: 1,
@@ -33,6 +33,12 @@ export const VerifyStore = defineStore({
     getForm(state) {
         return state.formdetail;
       },
+    getUser_id(state) {
+      const User = useAuthStore();
+      console.log('User.user_id',User.user_id);
+      this.formdetail.user_id = User.user_id
+        return state.formdetail;
+    },
 
   }, 
 

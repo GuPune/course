@@ -89,7 +89,8 @@
                       </a>
 
                       <ul class="headerarea__submenu">
-                        <li><a @click="GotoPage()">ประวัติการสอบ</a></li>
+                        <li><a @click="GotoPage('/profile')">บัญชีของฉัน</a></li>
+                        <li><a @click="GotoPage('/history')">ประวัติการสอบ</a></li>
                         <li><a @click="Logout()">Logout</a></li>
                       </ul>
                     </li>
@@ -350,8 +351,8 @@ const Hideaside = async () => {
   store.isActiveBar = false;
 };
 
-const GotoPage = () => {
-  router.push("/history");
+const GotoPage = (item) => {
+  router.push(item);
 };
 
 const { locale, setLocale } = useI18n();

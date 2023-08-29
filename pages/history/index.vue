@@ -59,13 +59,16 @@
   middleware: 'auth' // this should match the name of the file inside the middleware directory 
 })
 import History from '@/components/history/Historylist.vue';
+import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { HistoryStore } from '@/stores/history';
 import { useRoute } from "vue-router";
+const auth = useAuthStore()
 const route = useRoute();
 const store = HistoryStore()
 
+store.user_id = auth.user_id;
 await store.fetchExam()
 await store.CheckHistory()
 

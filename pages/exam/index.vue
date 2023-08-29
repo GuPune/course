@@ -65,6 +65,8 @@
   import Examlist from '@/components/exam/Examlist.vue';
   import ExamFitter from '@/components/exam/ExamFitter.vue';
   import { ExamTestPostStore } from '@/stores/examtest';
+  import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
+const auth = useAuthStore()
 
   const { countDownTimer } = ExamTestPostStore(); //Action
   </script>

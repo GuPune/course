@@ -36,9 +36,10 @@ import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import { useRoute } from 'vue-router'
-
-
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+ definePageMeta({
+  middleware: 'verify' // this should match the name of the file inside the middleware directory 
+})
 
 const router = useRouter();
 

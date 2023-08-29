@@ -12,7 +12,7 @@ export const HistoryStore = defineStore({
       search: '',
     },
     report: [],
-    user_id: useCookie('user_id').value,
+    user_id: null,
   }),
   getters: {
 

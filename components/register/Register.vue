@@ -12,7 +12,7 @@
          <div class="row">
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">ชื่อจริง</label>
+                <label class="form__label">{{ $t("fname") }}</label>
                 <input class="common__login__input" type="text" placeholder="ชื่อจริง" v-model="stores.form.user_firstname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_firstname.$error,
@@ -27,7 +27,7 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">นามสกุล</label>
+                <label class="form__label">{{ $t("lname") }}</label>
                 <input class="common__login__input" type="text" placeholder="นามสกุล" v-model="stores.form.user_lastname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_lastname.$error,
@@ -41,7 +41,7 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">ยูสเชอร</label>
+                <label class="form__label">{{ $t("username") }}</label>
                 <input class="common__login__input" type="text" placeholder="ยูสเชอร" v-model="stores.form.user_name"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_name.$error,
@@ -55,7 +55,7 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">อีเมล</label>
+                <label class="form__label">{{ $t("email") }}</label>
                 <input class="common__login__input" type="text" placeholder="อีเมล" v-model="stores.form.user_email"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_email.$error,
@@ -69,7 +69,7 @@
             </div>
             <div class="col-xl-12">
               <div class="login__form">
-                <label class="form__label">เบอรโทร </label>
+                <label class="form__label">{{ $t("tel") }} </label>
                 <input class="common__login__input" type="text" placeholder="เบอรโทร" v-model="stores.form.user_phone" :class="{
                   'border-red-500 focus:border-red-500': v$.user_phone.$error,
                   'border-[#42d392] ': !v$.user_phone.$invalid,
@@ -82,7 +82,7 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">รหัสผ่าน</label>
+                <label class="form__label">{{ $t("password") }}</label>
                 <input class="common__login__input" type="password" placeholder="รหัสผ่าน"
                   v-model="stores.form.user_password" :class="{
                     'border-red-500 focus:border-red-500': v$.user_password.$error,
@@ -95,7 +95,7 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">ยืนยันรหัสผ่าน</label>
+                <label class="form__label">{{ $t("confirmpassword") }}</label>
                 <input class="common__login__input" type="password" placeholder="ยืนยันรหัสผ่าน"
                   v-model="stores.form.user_confirmPassword" :class="{
                     'border-red-500 focus:border-red-500': v$.user_confirmPassword.$error,
