@@ -59,7 +59,7 @@ const { verifyOTP } = VerifyStore();
 
 const confirm = async () => {
     for (let i = 0; i < store.otp.length; i++) {
-        console.log(store.otp[i]);
+       
         if(store.otp[i] == ''){
             store.otpisactive = false;
             break;
@@ -68,7 +68,7 @@ const confirm = async () => {
     }
     if(store.otpisactive == true){
      let send = await verifyOTP();
-     console.log(send);
+  
     }
  
 

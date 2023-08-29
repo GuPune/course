@@ -27,7 +27,7 @@ for (let i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('input', function() {
     inputs[i].value = inputs[i].value.toUpperCase(); // Converts to Upper case. Remove .toUpperCase() if conversion isnt required.
     if (i === inputs.length - 1 && inputs[i].value !== '') {
-        console.log(i)
+       
         inputs[i].closest('form')
         inputs[i].closest('form').querySelector('.btn-optin-confirm').disabled = false;
       return true;

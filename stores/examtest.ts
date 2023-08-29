@@ -96,7 +96,7 @@ export const ExamTestPostStore = defineStore({
       this.ind = 0;
       this.formsearchtest.clear_cach = 1;
       this.isstart = true;
-      console.log(this.formsearchtest);
+    
       await this.clearTimer()
       const data = await ApiService.post('/exam/start/render', this.formsearchtest);
        this.updatetime.et_time = this.exam.em_time
@@ -117,7 +117,7 @@ export const ExamTestPostStore = defineStore({
 
     async fetchExamTest() {
       this.formsearchtest.clear_cach = 0;
-      console.log(this.formsearchtest);
+    
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
           this.exam_complete = response.data.exam_complete

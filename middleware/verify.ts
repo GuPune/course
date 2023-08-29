@@ -9,7 +9,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const user_id = useCookie('user_id'); // get token from cookies
   const User = useAuthStore();
   User.user_id = user_id.value;
-  console.log(user_id.value);
+
 
   if (token.value) {
     // check if value exists

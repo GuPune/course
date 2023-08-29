@@ -10,14 +10,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const User = useAuthStore();
   User.user_id = user_id.value;
   
-  console.log('User',User.user_id);
+
   if (token.value) {
 
     authenticated.value = true; // update the state to authenticated
 
 
 
-    
+
   //   const checkveri = await ApiService.get('/user/get/'+user_id.value);
   //  if(Object.keys(checkveri.data.detail).length === 0){
   //   verify.value = false;

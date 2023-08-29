@@ -234,8 +234,7 @@ const register = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
    const regis = await regsiter(formDataregister); // call authenticateUser and pass the user object
-   console.log(regis);
-
+  
    if(regis == true){
      await Swal.fire({
   position: 'top-end',
