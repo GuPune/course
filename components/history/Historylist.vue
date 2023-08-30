@@ -7,7 +7,7 @@
       <th scope="col">ลำดับ</th>
       <th scope="col">หลักสูตร</th>
       <th scope="col">จำนวนทำข้อสอบ</th>
-      <th scope="col">รายงนสถิติ - ผลสอบ</th>
+      <th scope="col">รายงานสถิติ - ผลสอบ</th>
     </tr>
   </thead>
   <tbody>

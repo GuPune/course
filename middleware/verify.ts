@@ -21,3 +21,19 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return navigateTo('/login');
   }
 })
+
+const obj = [
+  {
+    user_type: 1,
+    user_type_name:"ผู้ดูแลระบบ",
+  },
+  {
+    user_type: 2,
+    user_type_name:"เจ้าหน้าที่",
+  },
+  {
+    user_type: 3,
+    user_type_name:"ประชาชน",
+  },
+ 
+];

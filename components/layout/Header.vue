@@ -32,7 +32,8 @@
                       </a>
                     </li>
                     <li>
-                      <a href="contact.html">{{ $t("appointment") }}</a>
+                      <nuxt-link to="/appointment">{{ $t("appointment") }}</nuxt-link>
+              
                     </li>
                   </ul>
                 </nav>
@@ -49,7 +50,7 @@
                       style="padding-left: 10px; padding-right: 10px"
                       @click="changeLocale('en')"
                     >
-                      <img src="../../assets/thai.png" alt="My Image" />
+                      <img src="../../assets/eng.png" alt="My Image" />
                     </a>
                     <a @click="changeLocale('th')">
                       <img src="../../assets/thai.png" alt="My Image" />

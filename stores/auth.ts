@@ -8,18 +8,40 @@ interface UserPayloadInterface {
   password: string;
 }
 
-
-
-
-
 export const useAuthStore = defineStore('auth', {
  
   state: () => ({
     authenticated: false,
+    selectProfile:'profile',
     verify: false,
     loading: false,
     alert :false,
     user_id :null,
+    formuser:{
+      user_email:null,
+      user_firstname:null,
+      user_id:null,
+      user_lastname:null,
+      user_name:null,
+      user_phone:null,
+      user_type:null,
+      user_type_name:null,
+    },
+    type:[
+      {
+        user_type: 1,
+        user_type_name:"ผู้ดูแลระบบ",
+      },
+      {
+        user_type: 2,
+        user_type_name:"เจ้าหน้าที่",
+      },
+      {
+        user_type: 3,
+        user_type_name:"ประชาชน",
+      },
+     
+    ],
     error:{
       status:false,
       message:"Login ไม่สำเร็จ"
@@ -93,8 +115,33 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async getProfile() {
-
+try {
+  const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
+    if(response.data == ''){
+      return false;
+    }else {
+      const type = this.type.find(el => el.user_type === response.data.user_type);
+      this.formuser.user_email = response.data.user_email
+      this.formuser.user_firstname = response.data.user_firstname
+      this.formuser.user_lastname = response.data.user_lastname
+      this.formuser.user_name = response.data.user_name
+      this.formuser.user_phone = response.data.user_phone
+      this.formuser.user_type = response.data.user_type
+      this.formuser.user_id = response.data.user_id
+      this.formuser.user_type_name = type?.user_type_name
+      return true;
     }
+  });
+  return profile
+} catch (error) {
+  return false;
+}
+    },
+
+
+    async SelectProfile(item) {
+      this.selectProfile = item
+    }   
   },
 });
 

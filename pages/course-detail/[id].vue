@@ -39,7 +39,8 @@
                     <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
                         <div class="blogarae__img__2 course__details__img__2 aos-init aos-animate" data-aos="fade-up">
                             <!-- <img :src="coverimage(item.course_cover)" alt="blog"> -->
-                            <img src="https://thainews.prd.go.th/dc/archive/uploads/image/2562/7/21/c4bea27bb8f863efd529523a5d3bae51.jpg" alt="">
+                            <img src="https://thainews.prd.go.th/dc/archive/uploads/image/2562/7/21/c4bea27bb8f863efd529523a5d3bae51.jpg"
+                                alt="">
                         </div>
 
                         <div class="blog__details__content__wraper">
@@ -117,24 +118,10 @@
                                                 </h2>
                                                 <div :id="'collapseOne-' + index" class="accordion-collapse collapse"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    
-                                                    <div class="row" style="padding: 5px;">
-                                                        <div class="col-lg-12">
-                                                            <div class="review__box">
-                                                                <div class="review__number">5.0</div>
-                                                                <div class="review__icon">
-                                                                    <i class="icofont-star"></i>
-                                                                    <i class="icofont-star"></i>
-                                                                    <i class="icofont-star"></i>
-                                                                    <i class="icofont-star"></i>
-                                                                    <i class="icofont-star"></i>
-                                                                </div>
-                                                                <span>(17 Reviews)</span>
-                                                            </div>
-                                                        </div>
 
-
-                                                    </div>
+                                                    <div class="containerxxx"> 
+  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+</div>
 
                                                     <div class="row" style="padding: 5px;">
                                                         <div class="col-lg-3">
@@ -143,7 +130,9 @@
                                                             <div class="single__expart__teacher">
                                                                 <div class="teacher__img">
                                                                     <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
-                                                                     <img :src="coverimage(x.cs_cover)" alt="Image" style="width: 120px;height:120px ;">    
+
+                                                                    <img :src="coverimage(x.cs_cover)" alt="Image"
+                                                                        style="width: 120px;height:120px ;">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -189,47 +178,53 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
-import  ApiService  from '@/services/api.service';
+import ApiService from '@/services/api.service';
 const router = useRouter();
 const store = CoursePostStore()
 
 let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 
-
+let youtube = 'https //www.youtube.com/embed/tgbnymz7vqy';
 
 const { getisActiveCourse } = storeToRefs(store);
 
 function coverimage(i) {
-    let im =  ApiService.image(i);
-  return im;
+    let im = ApiService.image(i);
+    return im;
 }
 
 function coverttime(date) {
     const datetime = new Date(date);
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
     const formattedDatetime = datetime.toLocaleString(undefined, options);
-
     return formattedDatetime;
-
 }
 
-function image(i) {
-  var x = null;
-  if (i) {
-    const usingSplit = i.split(",");
-    var x = usingSplit[0];
-  } else {
-    var x = "static/upload/2023/8/files-BuxyK5Sy7I.png";
-  }
-  return "http://oasapi.iddriver.com/media_file/file/?f=" + x;
-}
 
 </script>
 
 <style>
-.blogarae__img__2 > img {
+.blogarae__img__2>img {
     max-height: 430cm;
     object-fit: cover;
+}
+
+.containerxxx {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 </style>
