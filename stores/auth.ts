@@ -115,6 +115,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async getProfile() {
+      console.log(this.user_id);
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
     if(response.data == ''){

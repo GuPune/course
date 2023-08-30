@@ -32,6 +32,7 @@
 
 import Register from '@/components/verify/Register.vue';
 import Loading from '@/components/button/loading.vue';
+
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
@@ -40,7 +41,8 @@ import { required, email, sameAs, minLength, helpers } from '@vuelidate/validato
  definePageMeta({
   middleware: 'verify' // this should match the name of the file inside the middleware directory 
 })
-
+const auth = useAuthStore()
+await auth.getProfile()
 const router = useRouter();
 
 

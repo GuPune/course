@@ -21,6 +21,11 @@
     "tel": "Tel",
     "fname": "First Name",
     "lname": "Last Name",
-    "acc": "สมัครสมาชิก"
+    "acc": "สมัครสมาชิก",
+    "singup_title": "Sign up",
+    "singup_longtitle": "Already have an account? Log In",
+    "button_register": "Sign Up",
+    "log_on_title": "Log in",
+    "log_on_longtitle": "Don't have an account yet? Sign up for free"
   }
   

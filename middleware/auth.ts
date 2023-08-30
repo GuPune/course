@@ -18,7 +18,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     verify.value = false;
     return navigateTo('/verifyconfirm');
   }else {
-    if(checkveri.data.detail.verify_account == 'n'){
+    if(checkveri.data.detail.verify_account == 'y'){
       verify.value = true;
     }else{
       verify.value = false;
@@ -33,11 +33,13 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   // if token exists and url is /login redirect to homepage
   if (token.value && to?.name === 'login') {
+    
     return navigateTo('/');
   }
 
   // if token doesn't exist redirect to log in
   if (!token.value && to?.name !== 'login') {
+    authenticated.value = false;
     abortNavigation();
     return navigateTo('/login');
   }

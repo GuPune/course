@@ -117,7 +117,7 @@
             <span class="text-xs text-red-500" style="color:red" v-if="v$.accp.$error">{{ v$.accp.$errors[0].$message
           }}</span>
           <div class="login__button" @click="register()">
-            <a class="default__button">สมัครสมาชิก</a>
+            <a class="default__button">{{ $t("singup_title") }}</a>
           </div>
         </form>
       </div>

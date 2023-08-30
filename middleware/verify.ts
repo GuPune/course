@@ -15,6 +15,18 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     // check if value exists
     // todo verify if token is valid, before updating the state
     authenticated.value = true; // update the state to authenticated
+
+    const checkveri = await ApiService.get('/user/get/'+user_id.value);
+    if(Object.keys(checkveri.data.detail).length === 0){
+     verify.value = false;
+   }else {
+     if(checkveri.data.detail.verify_account == 'y'){
+       verify.value = true;
+       return navigateTo('/');
+     }else{
+       verify.value = false;
+     }
+   }
   }
   if (!token.value && to?.name !== 'login') {
     abortNavigation();

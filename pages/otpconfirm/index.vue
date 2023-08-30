@@ -10,7 +10,7 @@
                     <h6>Please enter the one time password <br> </h6>
                     <div> <span> sent to</span> <small>+1******4343</small> </div>
                     <span class="text-xs text-red-500" style="color:red"
-        v-if="store.otpisactive == false"> Invalid file selected</span>
+        v-if="store.otpisactive == false"> OTP ไม่ถูกต้อง รึ กรอกไม่ครบ</span>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
 
            
@@ -42,9 +42,12 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { VerifyStore } from '@/stores/verify'
+import { useRoute } from 'vue-router'
 definePageMeta({
     layout: "blank"
 });
+
+const router = useRouter();
 
 const input1 = ref(null);
     const input2 = ref(null);
@@ -59,7 +62,6 @@ const { verifyOTP } = VerifyStore();
 
 const confirm = async () => {
     for (let i = 0; i < store.otp.length; i++) {
-       
         if(store.otp[i] == ''){
             store.otpisactive = false;
             break;
@@ -68,7 +70,13 @@ const confirm = async () => {
     }
     if(store.otpisactive == true){
      let send = await verifyOTP();
-  
+
+     console.log(send);
+     if(send == true){
+        router.push('/');
+     }else {
+        store.otpisactive = false;
+     }
     }
  
 

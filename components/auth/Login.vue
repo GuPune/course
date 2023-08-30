@@ -9,21 +9,18 @@
     <div class="col-xl-8 col-md-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">Login</h5>
+          <h5 class="login__title">{{ $t("login") }}</h5>
           <p class="login__description">
-            Don't have an account yet?
-            <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal"
-              >Sign up for free</a
-            >
+            {{ $t("log_on_longtitle") }}
           </p>
         </div>
         <form action="#">
           <div class="login__form">
-            <label class="form__label">Username or email</label>
+            <label class="form__label">{{ $t("username") }}</label>
             <input
               class="common__login__input"
               type="text"
-              placeholder="Your username or email"
+              placeholder="Your username"
               v-model="formData.username"
               :class="{
                 'border-red-500 focus:border-red-500': v$.username.$error,
@@ -41,7 +38,7 @@
             >
           </div>
           <div class="login__form">
-            <label class="form__label">Password</label>
+            <label class="form__label">{{ $t("password") }}</label>
             <input
               class="common__login__input"
               type="password"
@@ -66,7 +63,7 @@
             class="login__form d-flex justify-content-between flex-wrap gap-2"
           ></div>
           <div class="login__button" @click="login()">
-            <a class="default__button">Log In</a>
+            <a class="default__button">{{ $t("log_on_title") }}</a>
           </div>
         </form>
         <!--   
@@ -116,15 +113,15 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 // });
 
 const formData = reactive({
-  username: "rkknoob1",
-  password: "123456",
+  username: "",
+  password: "",
   confirmPassword: null,
 });
 
 const rules = computed(() => {
   return {
     username: {
-      required: helpers.withMessage("The email field is required", required),
+      required: helpers.withMessage("The Username field is required", required),
       //   email: helpers.withMessage('Invalid email format', email),
       minLength: minLength(6),
     },
@@ -141,7 +138,6 @@ const login = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
     let login = await authenticateUser(formData);
-
     if (login === true) {
       router.push("/");
     }

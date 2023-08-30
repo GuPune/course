@@ -9,6 +9,18 @@ const apiClient = axios.create({
     // ตั้งค่า headers ตามที่ API ระบุ (ตัวอย่างเป็น JSON)
   }
 });
+
+const apiUpload = axios.create({
+  baseURL: 'https://oasapi.iddriver.com',
+  // ตั้งค่า baseURL ให้เป็น URL ของเซิร์ฟเวอร์ API ที่ต้องการเชื่อมต่อ
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    'Authorization': 'ZeBuphebrltl3uthIFraspubroST80Atr9tHuw5bODowi26p', 
+    // ตั้งค่า headers ตามที่ API ระบุ (ตัวอย่างเป็น JSON)
+  }
+});
+
+
   const ViewImage = 'https://oasapi.iddriver.com/media_file/file/?f=';  
   // const apiClient = useRuntimeConfig().public.BASE_API_URL;
 
