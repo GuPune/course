@@ -27,6 +27,15 @@ export const useAuthStore = defineStore('auth', {
       user_type:null,
       user_type_name:null,
     },
+    formdetail:{
+      verify_account:null,
+      identification_number:null,
+      user_img:null,
+      user_birthday:null,
+      user_address:null,
+      location:null,
+      country:null,
+    },
     type:[
       {
         user_type: 1,
@@ -121,6 +130,7 @@ try {
     if(response.data == ''){
       return false;
     }else {
+      console.log(response.data.detail);
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname
@@ -130,6 +140,16 @@ try {
       this.formuser.user_type = response.data.user_type
       this.formuser.user_id = response.data.user_id
       this.formuser.user_type_name = type?.user_type_name
+
+
+      this.formdetail.verify_account = response.data.detail.verify_account
+      this.formdetail.identification_number = response.data.detail.identification_number
+      this.formdetail.user_img = response.data.detail.user_img
+      this.formdetail.user_birthday = response.data.detail.user_birthday
+      this.formdetail.user_address = response.data.detail.user_address
+      this.formdetail.location = response.data.detail.location
+      this.formdetail.country = response.data.detail.country
+    
       return true;
     }
   });

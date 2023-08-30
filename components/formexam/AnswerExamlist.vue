@@ -13,7 +13,7 @@
                 <div class="contact__text">
                   <h1> <i class="icofont-book-alt" > :</i>หลักสูตร : {{store.exam.em_name}} </h1>
                   <div class="contact__email">
-                    <p style="font-size: 24px;">รายละเอียดข้อสอบ <span style="font-size: 16px;">( ปรับปรุงล่าสุด : {{store.exam.udp_date}} )</span></p>
+                    <p style="font-size: 24px;">รายละเอียดข้อสอบ <span style="font-size: 16px;">( ปรับปรุงล่าสุด :  {{ coverttime(store.exam.udp_date) }})</span></p>
                   </div>
 
                   <div class="course-info">
@@ -189,6 +189,21 @@ const nextt = async (index) => {
 function coverimage(i) {
     let im =  ApiService.image(i);
   return im;
+}
+
+function coverttime(date) {
+  const datetime = new Date(date);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+  const formattedDatetime = datetime.toLocaleString(undefined, options);
+
+  return formattedDatetime;
 }
 
 </script>

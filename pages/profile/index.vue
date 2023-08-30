@@ -109,6 +109,8 @@
             </div>
 
             <Profilelist v-if="auth.selectProfile === 'profile'"></Profilelist>
+            <Details v-if="auth.selectProfile === 'details'"></Details>
+              <Display v-if="auth.selectProfile === 'iden'"></Display>
           </div>
           <div class="col-xl-12 col-lg-12 col-md-12 col-12">
 
@@ -125,6 +127,8 @@ definePageMeta({
 })
 
 import Profilelist from '@/components/profile/Profilelist.vue';
+import Details from '@/components/profile/Details.vue';
+import Display from '@/components/profile/Display.vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';

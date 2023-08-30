@@ -62,10 +62,10 @@
                     </div>
                     <div class="recent__text">
                       <div class="recent__date">
-                        <a>ชื่อจริง: ร้อยตรี ครรชิต ชัยกิจ</a>
+                        <a>ชื่อจริง: {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</a>
                       </div>
                       <div class="recent__date">
-                        <a>รหัสบัตร ประชาชน: 0812630907</a>
+                        <a>รหัสบัตร ประชาชน:  {{auth.formdetail.identification_number}}</a>
                       </div>
                       <div class="recent__date">
                         <a>สถานะการทำข้อสอบ: ทดลองสอบ</a>
@@ -129,6 +129,8 @@ import { defineComponent } from "vue";
 
 import { ExamTestPostStore } from '@/stores/examtest';
 import ApiService from '@/services/api.service';
+
+const auth = useAuthStore()
 
 const store = ExamTestPostStore();
 const { getisActiveCourse } = storeToRefs(store);

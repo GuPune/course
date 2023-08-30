@@ -26,6 +26,9 @@
     "singup_longtitle": "Already have an account? Log In",
     "button_register": "Sign Up",
     "log_on_title": "Log in",
-    "log_on_longtitle": "Don't have an account yet? Sign up for free"
+    "log_on_longtitle": "Don't have an account yet? Sign up for free",
+    "account": "My Account",
+    "history": "History",
+    "logout": "Logout"
   }
   

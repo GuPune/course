@@ -87,18 +87,18 @@
                           border: 1px solid var(--borderColor1);
                         "
                       >
-                        <i class="icofont-heart-alt"></i> บัญชีของฉัน
+                        <i class="icofont-heart-alt"></i> {{ $t("account") }}
                       
                       </a>
 
                       <ul class="headerarea__submenu">
                         <li>
-                          <a @click="GotoPage('/profile')">บัญชีของฉัน</a>
+                          <a @click="GotoPage('/profile')">{{ $t("account") }}</a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/history')">ประวัติการสอบ</a>
+                          <a @click="GotoPage('/history')">{{ $t("history") }}</a>
                         </li>
-                        <li><a @click="Logout()">Logout</a></li>
+                        <li><a @click="Logout()">{{ $t("logout") }}</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -181,21 +181,21 @@
                     </div> -->
           <div v-if="authenticated">
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/profile')">บัญชีของฉัน</a></li>
+              <li><a @click="GotoPage('/profile')">{{ $t("account") }}</a></li>
             </div>
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/history')">ประวัติการสอบ</a></li>
+              <li><a @click="GotoPage('/history')">{{ $t("history") }}</a></li>
             </div>
                  <div class="single-mobile-curr-lang">
-                   <li><a @click="Logout()">Logout</a></li>
+                   <li><a @click="Logout()">{{ $t("logout") }}</a></li>
             </div>
           </div>
           <div class="single-mobile-curr-lang" v-if="!authenticated">
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/login')">เข้าสู่ระบบ</a></li>
+              <li><a @click="GotoPage('/login')">{{ $t("login") }}</a></li>
             </div>
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/register')">สมัครสมาชิก</a></li>
+              <li><a @click="GotoPage('/register')">{{ $t("singup_title") }}</a></li>
             </div>
             
           </div>

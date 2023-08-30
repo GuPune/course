@@ -26,7 +26,10 @@
     "singup_longtitle": "Already have an account? Log In",
     "button_register": "สมัครสมาชิก",
     "log_on_title": "เข้าสู่ระบบ",
-    "log_on_longtitle": "คุณมีบัญชี ? เข้าสู่ระบบ"
+    "log_on_longtitle": "คุณมีบัญชี ? เข้าสู่ระบบ",
+    "account": "บัญชีของคุณ",
+    "history": "ประวัติการสอบ",
+    "logout": "ออกจากระบบ"
 
   
 }

@@ -102,6 +102,8 @@ import { useAuthStore } from '@/stores/auth'; // import the auth store we just c
 const auth = useAuthStore()
 const storeexam = ExamPostStore()
 const store = ExamTestPostStore()
+const profile = await auth.getProfile();
+
 const { GetopenModal } = storeToRefs(store);
 const { GetopenModalStart } = storeToRefs(store);
 const route = useRoute();
