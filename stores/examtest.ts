@@ -289,7 +289,6 @@ export const ExamTestPostStore = defineStore({
      this.UpdateTime();
         clearTimeout(this.timeoutId);
         this.timeoutId = null;
-  
       }
     },
 
