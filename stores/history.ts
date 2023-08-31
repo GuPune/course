@@ -11,6 +11,7 @@ export const HistoryStore = defineStore({
       per_page: 100,
       search: '',
     },
+    history:[],
     report: [],
     user_id: null,
   }),
@@ -21,7 +22,6 @@ export const HistoryStore = defineStore({
 
   actions: {
     async fetchExam() {
-
       try {
         const data = await ApiService.post('/exam/main/list', this.formsearchcourse).then(response => {
           this.listexam = response.data.data;
@@ -45,8 +45,33 @@ export const HistoryStore = defineStore({
         });
       }
       this.report = data_em_id;
+    },
+
+    async HistoryByExam(em_id) {
+const history = [];
+      const history_byid = await ApiService.get('/exam/history/?em_id=' + em_id + '&user_id=' + this.user_id + '').then(response => {
+        
+        for (var i = 0; i < response.data.length; i++) {
+          if (response.data.length > 0) {
+            let score = this.percentage(response.data[i].er_score_total,response.data[i].er_question_total);
+            console.log(score);
+            const a = { er_id: response.data[i].er_id,crt_date: response.data[i].crt_date,er_score_total: response.data[i].er_score_total,er_question_total: response.data[i].er_question_total }
+            history.push(a)
+          }
+
+        }
+        console.log(history);
+        this.history = history
+   
+      });
+
+    },
+
+    percentage(er_score_total, er_question_total) {
+      return (er_score_total / er_question_total) * 100;
     }
   },
+
 
 
 })

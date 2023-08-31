@@ -4,19 +4,26 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ลำดับ</th>
-      <th scope="col">หลักสูตร</th>
-      <th scope="col">จำนวนทำข้อสอบ</th>
-      <th scope="col">รายงานสถิติ - ผลสอบ</th>
+      <th scope="col" style="text-align: center;">ลำดับ</th>
+      <th scope="col" style="text-align: center;">หลักสูตร</th>
+      <th scope="col" style="text-align: center;">จำนวนทำข้อสอบ</th>
+      <th scope="col" style="text-align: center;">รายงานสถิติ - ผลสอบ</th>
     </tr>
   </thead>
-  <tbody>
-    <tr v-for="(item,index) in store.report">
-      <th scope="row" >{{ index + 1 }}</th>
-      <td>{{ item.em_name }}</td>
-      <td>{{ item.total_test }}</td>
-      <td><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">View</button></td>
+  <tbody v-if="store.report.length > 0">
+    
+    <tr v-for="(item,index) in store.report" >
+      <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
+      <td style="text-align: center;">{{ item.em_name }}</td>
+      <td style="text-align: center;">{{ item.total_test }}</td>
+      <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
     </tr>
+
+  </tbody>
+  <tbody v-else>
+    <tr>
+          <td colspan="5" class="center" style="text-align: center;">No data available</td>
+        </tr>
   </tbody>
 </table>
 </div>
