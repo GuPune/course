@@ -280,7 +280,7 @@ export const ExamTestPostStore = defineStore({
       return new Promise((resolve) => setTimeout(resolve, 1000));
     },
     clearTimer() {
-    //  this.isstart = true;
+     this.isstart = true;
       const result = new Date(this.timerCount * 1000)
   .toISOString()
   .slice(11, 19);

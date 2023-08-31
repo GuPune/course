@@ -11,7 +11,7 @@ export const HistoryStore = defineStore({
       per_page: 100,
       search: '',
     },
-    history:[],
+    history: [],
     report: [],
     user_id: null,
   }),
@@ -35,13 +35,11 @@ export const HistoryStore = defineStore({
     },
     async CheckHistory() {
       const data_em_id = []
-      console.log('this.listexam',this.listexam);
-      console.log('this.user_id',this.user_id);
+      console.log('this.listexam', this.listexam);
+      console.log('this.user_id', this.user_id);
       for (var x = 0; x < this.listexam.length; x++) {
         const em_id = this.listexam[x].em_id;
-        console.log('em_id',em_id);
         var examtest = await ApiService.get('/exam/history/?em_id=' + em_id + '&user_id=' + this.user_id + '').then(response => {
-          console.log(response);
           if (response.data.length > 0) {
             const a = { em_id: this.listexam[x].em_id, em_name: this.listexam[x].em_name, total_test: response.data.length }
             data_em_id.push(a)
@@ -49,26 +47,22 @@ export const HistoryStore = defineStore({
         });
       }
       this.report = data_em_id;
-      console.log(this.report);
+
     },
 
     async HistoryByExam(em_id) {
-const history = [];
+      const history = [];
       const history_byid = await ApiService.get('/exam/history/?em_id=' + em_id + '&user_id=' + this.user_id + '').then(response => {
-        
         for (var i = 0; i < response.data.length; i++) {
           if (response.data.length > 0) {
-            let score = this.percentage(response.data[i].er_score_total,response.data[i].er_question_total);
+            let score = this.percentage(response.data[i].er_score_total, response.data[i].er_question_total);
             console.log(score);
-            const a = { er_id: response.data[i].er_id,crt_date: response.data[i].crt_date,er_score_total: response.data[i].er_score_total,er_question_total: response.data[i].er_question_total,er_score:score }
+            const a = { er_id: response.data[i].er_id, crt_date: response.data[i].crt_date, er_score_total: response.data[i].er_score_total, er_question_total: response.data[i].er_question_total, er_score: score }
             history.push(a)
           }
-
         }
         this.history = history
-   
       });
-
     },
 
     percentage(er_score_total, er_question_total) {
