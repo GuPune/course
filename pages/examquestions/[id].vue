@@ -113,6 +113,8 @@ store.updatetest.user_id = auth.user_id
 store.updatetime.user_id = auth.user_id
 
 await storeexam.fetchExam()
+await store.CheckDataNull()
+
 
 let fitter = await store.setECid(route.params.id);
 if(fitter == true) {

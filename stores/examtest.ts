@@ -75,7 +75,13 @@ export const ExamTestPostStore = defineStore({
         this.exam = Ex[0];
         return true
       } else {
+        this.CheckDataNull(Ex.length)
         return false;
+      }
+    },
+    async CheckDataNull(item) {
+      if(item == 0){
+        this.isstart = false;
       }
     },
 
@@ -120,9 +126,9 @@ export const ExamTestPostStore = defineStore({
     
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
-         
           this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
+          this.CheckDataNull(this.examination.length)
           this.total = response.data.data.length
           this.maxNext = response.data.data.length - 1
           var score = 0;
@@ -151,15 +157,23 @@ export const ExamTestPostStore = defineStore({
     },
 
     async GetTime() {
-
       try {
         const data = await ApiService.get('/exam/time/?em_id='+ this.updatetime.em_id +'&user_id='+this.updatetest.user_id+'').then(rep => {
-              const timeParts = rep.data.et_time.split(':');
+          if(rep.data == ''){
+            const timeParts = this.exam.em_time.split(':');
+            const hours = parseInt(timeParts[0], 10);
+            const minutes = parseInt(timeParts[1], 10);
+            const seconds = parseInt(timeParts[2], 10);
+            this.timerCount = hours * 3600 + minutes * 60 + seconds;
+            this.toHoursAndMinutes(this.timerCount) ///แปลงเวลา
+          }else{
+             const timeParts = rep.data.et_time.split(':');
               const hours = parseInt(timeParts[0], 10);
               const minutes = parseInt(timeParts[1], 10);
               const seconds = parseInt(timeParts[2], 10);
               this.timerCount = hours * 3600 + minutes * 60 + seconds;
               this.toHoursAndMinutes(this.timerCount) ///แปลงเวลา
+          }      
         });
         return true
       } catch (error) {
@@ -183,7 +197,6 @@ export const ExamTestPostStore = defineStore({
       } finally {
 
       }
- 
     },
 
     async Updatechoice(choices) {
@@ -217,7 +230,7 @@ export const ExamTestPostStore = defineStore({
     },
 
     async countDownTimer() {
-      console.log('countDownTimer',this.timerCount);
+  
       if (this.timerCount > 0) {
         this.timeoutId = setTimeout(() => {
           this.timerCount -= 1;
