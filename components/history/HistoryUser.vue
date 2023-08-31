@@ -30,8 +30,6 @@
 
 
   </div>
-
-  {{ store.history }}
   <div class="col-sm-12">
     <table id="example5" class="table table-bordered table-striped dataTable" role="grid"
       aria-describedby="example5_info">
@@ -50,14 +48,14 @@
           <td>
             <center>{{index + 1}}</center>
           </td>
-          <td> {{ coverttime(item.crt_date ) }}</td>
+          <td> {{ coverttime(item.crt_date) }}</td>
           <td>
             <div class="progress progress-xs progress-striped active">
-              <div class="progress-bar progress-bar-success" style="width: 5%"></div>
+              <div class="progress-bar progress-bar-success" style="width: 5%" :style="{width: item.er_score ? item.er_score+'%' : '0%'}"></div>
             </div>
 
           </td>
-          <td align="center">0 %</td>
+          <td align="center">{{item.er_score}}%</td>
           <td align="center">
             {{item.er_score_total}} </td>
 

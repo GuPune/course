@@ -55,12 +55,11 @@ const history = [];
           if (response.data.length > 0) {
             let score = this.percentage(response.data[i].er_score_total,response.data[i].er_question_total);
             console.log(score);
-            const a = { er_id: response.data[i].er_id,crt_date: response.data[i].crt_date,er_score_total: response.data[i].er_score_total,er_question_total: response.data[i].er_question_total }
+            const a = { er_id: response.data[i].er_id,crt_date: response.data[i].crt_date,er_score_total: response.data[i].er_score_total,er_question_total: response.data[i].er_question_total,er_score:score }
             history.push(a)
           }
 
         }
-        console.log(history);
         this.history = history
    
       });
