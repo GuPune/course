@@ -11,7 +11,7 @@
                     <div class="col-xl-12">
                         <div class="contact__form__inner">
                             <div class="contact__form__heading" data-aos="fade-up">
-                                <h3>รายละเอียดผู้ใช้งาน</h3> 
+                                <h3 class="text-center">รายละเอียดผู้ใช้งาน</h3> 
                                 <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
                             </div>
                           
@@ -90,43 +90,36 @@
                                        
 
                                     </div>
-                                    <div class="gridarea__content">
-                                        <div class="gridarea__list">
-                                          <h3>
-                                         หมายเลขบัตรประชาชน : {{store.formdetail.identification_number}}
-                                          </h3>
+                                    <div class="gridarea__content py-2">
+                                        <div class="gridarea__list row border-bottom">
+                                          <p class="col fw-bold ">หมายเลขบัตรประชาชน :</p>
+                                          <p class="col">{{store.formdetail.identification_number}}</p>
                                         </div>
-                                        <div class="gridarea__list">
-                                         <h4> วันเกิด : {{store.formdetail.user_birthday}} </h4>
+                                        <div class="gridarea__list row border-bottom">
+                                         <p class="col fw-bold"> วันเกิด : </p>
+                                         <p class="col">{{store.formdetail.user_birthday}}</p>
                                         </div>
-                                        <div class="gridarea__list">
-                                            <ul>
-                                                <li>
-                                                    รหัสไปรษณีย์ :  {{store.formdetail.location.zipcode}} 
-                                                </li>
-                                                 <li>
-                                                    แขวง :  {{store.formdetail.location.zipcode_name}} 
-                                                </li>
-                                            </ul>
+                                        <div class="gridarea__list row border-bottom">
+                                         <p class="col fw-bold"> รหัสไปรษณีย์ : </p>
+                                         <p class="col">{{store.formdetail.location.zipcode}}</p>
                                         </div>
-                                      
-                                        <div class="gridarea__heading">
-                                            <h6><a href="course-details.html">ที่อยู่ : {{store.formdetail.user_address}}
-                                                        </a></h6>
+                                        <div class="gridarea__list row border-bottom">
+                                         <p class="col fw-bold"> แขวง : </p>
+                                         <p class="col">{{store.formdetail.location.zipcode_name}}</p>
                                         </div>
-
-                                             <div class="gridarea__list">
-                                            <ul>
-                                                <li v-if="store.formdetail.verify_account == 'y'">
-                                                    สถานะ : ยืนยันตัวตน
-                                                </li>
-                                                 <li v-else>
-                                                    สถานะ : ไม่ยืนยันตัวตน
-                                                </li>
-                                                
-                                            </ul>
+                                        <div class="gridarea__list row border-bottom">
+                                         <p class="col fw-bold"> ที่อยู่ : </p>
+                                         <p class="col">{{store.formdetail.user_address}}</p>
                                         </div>
-                                  
+                                        <div class="gridarea__list row ">
+                                         <p class="col fw-bold"> สถานะ : </p>
+                                         <div class="col " v-if="store.formdetail.verify_account == 'y'">
+                                          <span class="badge text-bg-success">ยืนยันตัวตน</span>
+                                         </div>
+                                         <div class="col" v-else>
+                                          <p><span class="badge text-bg-danger">ไม่ยืนยันตัวตน</span></p>
+                                         </div>
+                                        </div>
                                
                                     </div>
                                 </div>
