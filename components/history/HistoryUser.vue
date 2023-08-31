@@ -1,49 +1,17 @@
 <template>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col" style="text-align: center;">ลำดับ</th>
-          <th scope="col" style="text-align: center;">หลักสูตร</th>
-          <th scope="col" style="text-align: center;">จำนวนทำข้อสอบ</th>
-          <th scope="col" style="text-align: center;">รายงานสถิติ - ผลสอบ</th>
-        </tr>
-      </thead>
-
-
-      <tbody v-if="store.report.length > 0">
-        <tr v-for="(item, index) in store.report">
-          <th scope="row" style="text-align: center;">{{ index + 1 }}</th>
-          <td style="text-align: center;">{{ item.em_name }}</td>
-          <td style="text-align: center;">{{ item.total_test }}</td>
-          <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary"
-              @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
-        </tr>
-      </tbody>
-      <tbody v-else>
-        <tr>
-          <td colspan="5" class="center" style="text-align: center;">No data available</td>
-        </tr>
-      </tbody>
-    </table>
-
-
-
-  </div>
   <div class="col-sm-12">
-    <table id="example5" class="table table-bordered table-striped dataTable" role="grid"
+    <table id="example5" class="table dataTable " role="grid"
       aria-describedby="example5_info">
-      <thead>
+      <thead class="table-light text-center">
         <tr role="row">
           <th class="sorting_disabled" rowspan="1" colspan="1">ครั้งที่</th>
           <th class="sorting_disabled" rowspan="1" colspan="1">วันที่ทำข้อสอบ</th>
-          <th class="sorting_disabled" rowspan="1" colspan="1">แถบวัดคะแนน (100%)</th>
-          <th class="sorting_disabled" rowspan="1" colspan="1">เฉลี่ย (100%)</th>
+          <th class="sorting_disabled" rowspan="1" colspan="1">คะแนนเฉลี่ย (100%)</th>
           <th class="sorting_disabled" rowspan="1" colspan="1">คะแนนที่ได้ (50)</th>
         </tr>
       </thead>
     
-      <tbody v-if="store.history">
+      <tbody v-if="store.history" class="table-group-divider">
         <tr role="row" class="odd" v-for="(item, index) in store.history">
           <td>
             <center>{{index + 1}}</center>
@@ -51,16 +19,18 @@
           <td> {{ coverttime(item.crt_date) }}</td>
           <td>
             <div class="progress progress-xs progress-striped active">
-              <div class="progress-bar progress-bar-success" style="width: 5%" :style="{width: item.er_score ? item.er_score+'%' : '0%'}"></div>
+              <div class="progress-bar progress-bar-success" :style="{width: item.er_score ? item.er_score+'%' : '0%'}">{{item.er_score}}%</div>
             </div>
 
           </td>
-          <td align="center">{{item.er_score}}%</td>
           <td align="center">
-            {{item.er_score_total}} </td>
-
+            <h5>
+              <span v-if="item.er_score_total >= (item.er_question_total/2)" class="badge  bg-success">{{item.er_score_total}} / {{ item.er_question_total }}</span>
+              <span v-else class="badge  bg-danger">{{item.er_score_total}} / {{ item.er_question_total }}</span>
+            </h5>
+          </td>
         </tr>
-        
+      
       </tbody>
     </table>
   </div>
