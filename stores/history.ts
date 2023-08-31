@@ -45,6 +45,7 @@ export const HistoryStore = defineStore({
         });
       }
       this.report = data_em_id;
+      console.log(this.report);
     },
 
     async HistoryByExam(em_id) {

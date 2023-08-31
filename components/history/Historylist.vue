@@ -11,33 +11,12 @@
     </tr>
   </thead>
   <tbody v-if="store.report.length > 0">
-    
     <tr v-for="(item,index) in store.report" >
       <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
       <td style="text-align: center;">{{ item.em_name }}</td>
       <td style="text-align: center;">{{ item.total_test }}</td>
       <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
     </tr>
-    <tr v-for="(item,index) in store.report" >
-      <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
-      <td style="text-align: center;">{{ item.em_name }}</td>
-      <td style="text-align: center;">{{ item.total_test }}</td>
-      <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
-    </tr>
-    <tr v-for="(item,index) in store.report" >
-      <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
-      <td style="text-align: center;">{{ item.em_name }}</td>
-      <td style="text-align: center;">{{ item.total_test }}</td>
-      <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
-    </tr>
-    <tr v-for="(item,index) in store.report" >
-      <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
-      <td style="text-align: center;">{{ item.em_name }}</td>
-      <td style="text-align: center;">{{ item.total_test }}</td>
-      <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
-    </tr>
-    
-
   </tbody>
   <tbody v-else>
     <tr>
