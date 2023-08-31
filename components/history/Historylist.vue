@@ -1,5 +1,8 @@
 <template>
-
+<div>
+    <Bar :data="chartData" :options="chartOptions" />
+  </div>
+  <br>
  <div class="table-responsive shadow-sm rounded">
   <table class="table  table-hover mb-0">
   <thead class="table-dark">
@@ -26,6 +29,8 @@
 </table>
 </div>
 
+
+
 </template>
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue'
@@ -34,6 +39,26 @@ import { defineComponent } from "vue";
 
 import { HistoryStore } from '@/stores/history';
 import  ApiService  from '@/services/api.service';
+import { Bar } from 'vue-chartjs';
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js';
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
+
+
 
 const store = HistoryStore();
 const router = useRouter();
@@ -44,6 +69,21 @@ const Fitter = async (item) => {
   const id = item;
  router.push({ path: '/history-detail/'+id})
 };
+
+const chartData = ref({
+  labels: [store.data_em_name],
+  datasets: [
+    {
+      label: 'History',
+      backgroundColor: '#f87979',
+      data: store.total,
+    },
+  ],
+});
+const chartOptions = ref({
+  responsive: true,
+  maintainAspectRatio: false,
+});
 
 </script>
 
