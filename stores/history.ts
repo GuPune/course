@@ -41,10 +41,11 @@ export const HistoryStore = defineStore({
         const em_id = this.listexam[x].em_id;
         console.log('em_id',em_id);
         var examtest = await ApiService.get('/exam/history/?em_id=' + em_id + '&user_id=' + this.user_id + '').then(response => {
-          // if (response.data.length > 0) {
-          //   const a = { em_id: this.listexam[x].em_id, em_name: this.listexam[x].em_name, total_test: response.data.length }
-          //   data_em_id.push(a)
-          // }
+          console.log(response);
+          if (response.data.length > 0) {
+            const a = { em_id: this.listexam[x].em_id, em_name: this.listexam[x].em_name, total_test: response.data.length }
+            data_em_id.push(a)
+          }
         });
       }
       this.report = data_em_id;
