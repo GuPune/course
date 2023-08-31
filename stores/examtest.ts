@@ -120,6 +120,7 @@ export const ExamTestPostStore = defineStore({
     
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
+         
           this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
           this.total = response.data.data.length

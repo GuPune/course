@@ -10,7 +10,7 @@
                     <div class="col-xl-12">
                     <!-- <FormExamFitter></FormExamFitter> -->
                     </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-12" v-if="fitter">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12" v-if="store.examination.length > 0">
                         <FormExamlist></FormExamlist>
                         <AnswerExamlist></AnswerExamlist>
                     </div>
@@ -111,10 +111,9 @@ const route = useRoute();
 store.formsearchtest.user_id = auth.user_id
 store.updatetest.user_id = auth.user_id
 store.updatetime.user_id = auth.user_id
-await storeexam.fetchExam()
-await storeexam.fetchExam()
 
 await storeexam.fetchExam()
+
 let fitter = await store.setECid(route.params.id);
 if(fitter == true) {
  let a = await store.fetchExamTest();
