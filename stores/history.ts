@@ -36,6 +36,7 @@ export const HistoryStore = defineStore({
     async CheckHistory() {
       const data_em_id = []
       console.log('this.listexam',this.listexam);
+      console.log('this.user_id',this.user_id);
       for (var x = 0; x < this.listexam.length; x++) {
         const em_id = this.listexam[x].em_id;
         console.log('em_id',em_id);
