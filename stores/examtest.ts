@@ -129,6 +129,9 @@ export const ExamTestPostStore = defineStore({
           this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
           this.CheckDataNull(this.examination.length)
+          if(response.data.exam_complete == 1){
+            this.isstart = false;
+          }
           this.total = response.data.data.length
           this.maxNext = response.data.data.length - 1
           var score = 0;
@@ -203,6 +206,12 @@ export const ExamTestPostStore = defineStore({
       this.updatetest.ec_id = choices
       try {
         const data = await ApiService.post('/exam/send/render', this.updatetest).then(response => {
+          const getAll = ApiService.post('/exam/start/render', this.formsearchtest).then(rep => {
+            if(rep.data.exam_complete == 1){
+            
+              this.sendexam();
+            }
+          })
         });
         return true
       } catch (error) {
