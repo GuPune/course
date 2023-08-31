@@ -133,7 +133,7 @@
                 >{{ v$.user_img.$errors[0].$message }}</span
               >
               <div class="form-group mb-4 mt-3">
-                <label for="exampleFormControlFile1">รูปภาพหน้าข่าว</label>
+                <label for="exampleFormControlFile1">รูปโปรไฟล์</label>
                 <span
                   class="text-xs text-red-500"
                   style="color: red"
