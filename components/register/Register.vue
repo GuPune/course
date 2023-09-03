@@ -176,7 +176,8 @@ const rules = computed(() => {
       minLength: minLength(6),
     },
     user_phone: {
-      required: helpers.withMessage('The tel field is required', numeric),
+      required: helpers.withMessage('The tel field is required', required),
+      
       minLength: minLength(6),
     },
     user_confirmPassword: {
