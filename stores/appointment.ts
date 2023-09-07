@@ -8,13 +8,16 @@ export const AppointmentsStore = defineStore({
     appgroup: [],
     isShowApp: false,
     isShowNoApp: false,
+    popupconfirm: false,
+    ap_id:null,
+    user_id:null,
     appointment: {
       dlt_des: null,
       ap_learn: null,
     },
     form: {
       date_event: '2023-09-05',
-      ap_learn_type: null,
+      ap_learn_type: 1,
       dlt_code: 'A1'
     },
     date: null,
@@ -81,12 +84,27 @@ export const AppointmentsStore = defineStore({
     FormSearch: (state) => {
       return state.form;
     },
-
+    IsPopup: (state) => {
+      return state.popupconfirm;
+    },
+    
 
   },
   actions: {
 
+    async saverevs() {
+      const savereve = {user_id:this.user_id,ap_id:this.ap_id}
+      try {
+        const data = await ApiService.post('/appointment/reserve/create', savereve).then(response => {
+        console.log(response);
+        });
+        return true
+      } catch (error) {
+        console.log('error');
+        return false;
+      }
 
+    },
 
     async fetchApppoint() {
       const appdata = {
@@ -94,7 +112,6 @@ export const AppointmentsStore = defineStore({
         ap_learn_type: this.form.ap_learn_type,
         dlt_code: this.form.dlt_code
       }
-
       try {
         const data = await ApiService.post('/appointment/list', appdata).then(response => {
 
