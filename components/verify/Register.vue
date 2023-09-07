@@ -226,7 +226,7 @@ const rules = computed(() => {
   return {
     identification_number: {
       required: helpers.withMessage(
-        "The ณdentification Number name field is required",
+        "The identification Number name field is required",
         required
       ),
       minLength: minLength(1),
