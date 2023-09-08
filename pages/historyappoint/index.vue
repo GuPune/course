@@ -46,8 +46,6 @@
                     <HistoryAppList></HistoryAppList>
                   </div>
                   <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                    
-           
                   </div>
               </div>
           </div>
@@ -112,11 +110,11 @@ const closeModal = async () => {
   store.popupcancelapp = false;
 };
 const confirm = async () => {
-    store.deleteAppointUser()
+  await  store.deleteAppointUser()
   store.popupcancelapp = false;
+
+ await store.fetchApppointRes();
 };
-
-
 
 </script>
   <style>
