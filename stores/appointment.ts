@@ -7,7 +7,9 @@ export const AppointmentsStore = defineStore({
   state: () => ({
     appgroup: [],
     reserve: [],
+    tooltipText: 'This is a tooltip',
     isShowApp: false,
+    showTooltip:false,
     isShowNoApp: false,
     popupconfirm: false,
     popupcancelapp: false,

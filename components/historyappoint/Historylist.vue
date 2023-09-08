@@ -30,8 +30,8 @@
             </li>
           </td>
           <td style="text-align: center">
-            {{ item.appointment_detail.ap_date_start }} -
-            {{ item.appointment_detail.ap_date_end }}
+            {{ format(item.appointment_detail.ap_date_start) }} -
+            {{ format(item.appointment_detail.ap_date_end) }}
           </td>
               <td style="text-align: center">
           <button type="button" class="btn btn-sm btn-danger" @click="del(item.ap_id,item.ar_id)">ยกเลิกนัดหมาย</button>
@@ -56,6 +56,7 @@ import { defineComponent } from "vue";
 import { AppointmentsStore } from "@/stores/appointment";
 import ApiService from "@/services/api.service";
 import { Bar } from "vue-chartjs";
+import moment from "moment";
 import {
   Chart as ChartJS,
   Title,
@@ -85,6 +86,12 @@ store.checkpopupdel(ap,ar);
 
 
  //  store.deleteAppointUser(ap,ar);
+};
+
+
+const format = (item) => {
+ 
+  return moment(item).format("YYYY-MM-DD HH:SS");
 };
 
 
