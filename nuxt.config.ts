@@ -100,7 +100,7 @@ imports: {
 
 
 vite: {
-  define: { 'process.env.DEBUG': false },
+  define: { 'process.env.DEBUG': true },
 },
 
 })

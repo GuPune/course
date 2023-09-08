@@ -96,6 +96,9 @@
                           <a @click="GotoPage('/profile')">{{ $t("account") }}</a>
                         </li>
                         <li>
+                          <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
+                        </li>
+                        <li>
                           <a @click="GotoPage('/history')">{{ $t("history") }}</a>
                         </li>
                         <li><a @click="Logout()">{{ $t("logout") }}</a></li>

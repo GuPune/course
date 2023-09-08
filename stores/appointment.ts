@@ -6,6 +6,7 @@ export const AppointmentsStore = defineStore({
   id: 'appointments',
   state: () => ({
     appgroup: [],
+    reserve: [],
     isShowApp: false,
     isShowNoApp: false,
     popupconfirm: false,
@@ -106,6 +107,27 @@ export const AppointmentsStore = defineStore({
 
     },
 
+    async fetchApppointRes() {
+
+      try {
+        const data = await ApiService.get('/appointment/reserve/get/'+this.user_id).then(response => {
+        if(response.data){
+          this.reserve = response.data
+
+          return true;
+          
+        }else {
+          return true;
+        }
+        });
+        return data
+      } catch (error) {
+       
+        return false;
+      }
+
+    },
+
     async fetchApppoint() {
       const appdata = {
         date_event: this.form.date_event,
@@ -114,14 +136,13 @@ export const AppointmentsStore = defineStore({
       }
       try {
         const data = await ApiService.post('/appointment/list', appdata).then(response => {
-
           if (response.data.length > 0) {
             this.appgroup = response.data;
             let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)
             let learn = this.ap_learnlist.find(x => x.value === parseInt(this.form.ap_learn_type))
             this.appointment.dlt_des = dltlist?.dlt_description;
             this.appointment.ap_learn = learn.ap_learn;
-       
+
             return true
           } else {
 

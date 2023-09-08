@@ -56,8 +56,7 @@ export const HistoryStore = defineStore({
       this.report = data_em_id;
       this.data_em_name = data_em_name
       this.total = total
-      console.log(total);
-      
+    
     },
 
     async HistoryByExam(em_id) {
