@@ -7,7 +7,7 @@
           <th scope="col" style="text-align: center">DLT</th>
           <th scope="col" style="text-align: center">Remark</th>
           <th scope="col" style="text-align: center">ประเภทนัดหมาย</th>
-          <th scope="col" style="text-align: center">เวลาเริ่มต้น - เวลาจบ</th>
+          <th scope="col" style="text-align: center">ช่วงเวลา</th>
           <th scope="col" style="text-align: center">จัดการ</th>
         </tr>
       </thead>
@@ -22,7 +22,12 @@
             {{ item.appointment_detail.ap_remark }}
           </td>
           <td style="text-align: center">
-            {{ item.appointment_detail.ap_learn_type }}
+            <li v-if="item.appointment_detail.ap_learn_type == 1">
+          <span>ทฤษฎี</span>
+            </li>
+              <li v-else>
+          <span>ปฏิบัติ</span>
+            </li>
           </td>
           <td style="text-align: center">
             {{ item.appointment_detail.ap_date_start }} -

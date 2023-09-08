@@ -141,6 +141,30 @@ const closeModal = async () => {
 };
 
 
+const confirmreve = async () => {
+  let data = await store.saverevs();
+
+  if (data == true) {
+    store.popupconfirm = false;
+    await Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "บันทึกการจองเรียบร้อย",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    await store.fetchApppoint()
+    await store.fetchApppointRes();
+  } else {
+    store.popupconfirm = false;
+    Swal.fire({
+      title: "ไม่สำเร็จ!",
+      text: "จองไม่สำเร็จ!",
+      icon: "error",
+    });
+  }
+};
+
 
 const rules = computed(() => {
   return {
