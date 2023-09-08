@@ -10,6 +10,9 @@ export const AppointmentsStore = defineStore({
     isShowApp: false,
     isShowNoApp: false,
     popupconfirm: false,
+    popupcancelapp: false,
+    apdel_id:null,
+    ardel_id:null,
     ap_id:null,
     user_id:null,
     appointment: {
@@ -20,6 +23,10 @@ export const AppointmentsStore = defineStore({
       date_event: '2023-09-05',
       ap_learn_type: 1,
       dlt_code: 'A1'
+    },
+    formdel: {
+    user_id:null,
+    ap_id:null
     },
     date: null,
     ap_learnlist: [
@@ -156,6 +163,26 @@ export const AppointmentsStore = defineStore({
         return false;
       }
     },
+    async deleteAppointUser() {
+     this.formdel.user_id = this.user_id;
+     try {
+      const data = await ApiService.delete('/appointment/reserve/delete/'+this.ardel_id,this.formdel).then(response => {
+    return true;
+      });
+      return data
+    } catch (error) {
+      console.log('error');
+      return false;
+    }
+
+  //  let deldata = ApiService.delete('/appointment/reserve/delete/'+this.ardel_id,this.formdel)
+
+    },
+    async checkpopupdel(ap,ar) {
+      this.ardel_id = ar
+      this.formdel.ap_id = ap
+      this.popupcancelapp = true;
+    }
 
   }
 })

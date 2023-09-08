@@ -1,46 +1,56 @@
 <template>
-
-
- <div class="table-responsive shadow-sm rounded">
-  <table class="table  table-hover mb-0">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col" style="text-align: center;">ลำดับ</th>
-      <th scope="col" style="text-align: center;">หลักสูตร</th>
-      <th scope="col" style="text-align: center;">จำนวนทำข้อสอบ</th>
-      <th scope="col" style="text-align: center;">รายงานสถิติ - ผลสอบ</th>
-    </tr>
-  </thead>
-
-  <tbody v-if="store.reserve.length > 0">
-    <tr v-for="(item,index) in store.reserve" >
-      <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
-      <td style="text-align: center;">x</td>
-      <td style="text-align: center;">x</td>
-      <td style="text-align: center;">
-        <button type="button" class="btn btn-sm btn-primary">x</button>
-      </td>
-    </tr>
-  </tbody>
-  <tbody v-else>
-    <tr>
-          <td colspan="5" class="center" style="text-align: center;">No data available</td>
+  <div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" style="text-align: center">ลำดับ</th>
+          <th scope="col" style="text-align: center">DLT</th>
+          <th scope="col" style="text-align: center">Remark</th>
+          <th scope="col" style="text-align: center">ประเภทนัดหมาย</th>
+          <th scope="col" style="text-align: center">เวลาเริ่มต้น - เวลาจบ</th>
+          <th scope="col" style="text-align: center">จัดการ</th>
         </tr>
-  </tbody>
-</table>
-</div>
+      </thead>
 
-
-
+      <tbody v-if="store.reserve.length > 0">
+        <tr v-for="(item, index) in store.reserve">
+          <th scope="row" style="text-align: center">{{ index + 1 }}</th>
+          <td style="text-align: center">
+            {{ item.appointment_detail.dlt_code }}
+          </td>
+          <td style="text-align: center">
+            {{ item.appointment_detail.ap_remark }}
+          </td>
+          <td style="text-align: center">
+            {{ item.appointment_detail.ap_learn_type }}
+          </td>
+          <td style="text-align: center">
+            {{ item.appointment_detail.ap_date_start }} -
+            {{ item.appointment_detail.ap_date_end }}
+          </td>
+              <td style="text-align: center">
+          <button type="button" class="btn btn-sm btn-danger" @click="del(item.ap_id,item.ar_id)">ยกเลิกนัดหมาย</button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody v-else>
+        <tr>
+          <td colspan="5" class="center" style="text-align: center">
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 <script lang="ts" setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 
-import { AppointmentsStore } from '@/stores/appointment';
-import  ApiService  from '@/services/api.service';
-import { Bar } from 'vue-chartjs';
+import { AppointmentsStore } from "@/stores/appointment";
+import ApiService from "@/services/api.service";
+import { Bar } from "vue-chartjs";
 import {
   Chart as ChartJS,
   Title,
@@ -49,7 +59,7 @@ import {
   BarElement,
   CategoryScale,
   LinearScale,
-} from 'chart.js';
+} from "chart.js";
 ChartJS.register(
   Title,
   Tooltip,
@@ -59,16 +69,17 @@ ChartJS.register(
   LinearScale
 );
 
-
-
 const store = AppointmentsStore();
+
 const router = useRouter();
 
-const Fitter = async (item) => {
- //router.push({ path: '/exam'})
+const del = async (ap,ar) => {
+  //router.push({ path: '/exam'})
 
-  const id = item;
- router.push({ path: '/history-detail/'+id})
+store.checkpopupdel(ap,ar);
+
+
+ //  store.deleteAppointUser(ap,ar);
 };
 
 
@@ -88,7 +99,7 @@ const Fitter = async (item) => {
   border-style: groove !important;
   border-color: red !important;
   #choice {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     #card-index {
       color: white;
@@ -101,7 +112,7 @@ const Fitter = async (item) => {
   border-color: red !important;
 
   #answer {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     #card-index {
       color: white;
@@ -109,17 +120,16 @@ const Fitter = async (item) => {
   }
 }
 #answer {
-    background-color: #4CAF50;
-  
-  }
-
-.exma{
-  background-color: #5f2ded;
-    color: white;
+  background-color: #4caf50;
 }
-.send{
+
+.exma {
+  background-color: #5f2ded;
+  color: white;
+}
+.send {
   background-color: #e06512;
-    color: white;
+  color: white;
 }
 #choice-container {
   /* border: 2px solid black; */
@@ -127,19 +137,18 @@ const Fitter = async (item) => {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
 }
 #choice {
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   background-color: white;
   color: black;
-  border: 2px solid #4CAF50;
+  border: 2px solid #4caf50;
   transition-duration: 0.4s;
   display: flex;
 }
 #choice:hover {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
   color: white;
   #card-index {
     color: white;
@@ -148,9 +157,7 @@ const Fitter = async (item) => {
 #choice-card {
   padding: 5px;
   border: unset !important;
-
 }
-
 
 #answer {
   border-radius: 20px;
@@ -162,8 +169,8 @@ const Fitter = async (item) => {
   display: flex;
 }
 
-.answer-choice{
-  background-color: rgb(247, 247, 247); 
+.answer-choice {
+  background-color: rgb(247, 247, 247);
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
@@ -172,7 +179,7 @@ const Fitter = async (item) => {
   display: flex;
 }
 
-.answer-choice-success{
+.answer-choice-success {
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
@@ -181,8 +188,8 @@ const Fitter = async (item) => {
   display: flex;
 }
 
-.answer-choice-danger{
-  background-color: rgb(227, 52, 21); 
+.answer-choice-danger {
+  background-color: rgb(227, 52, 21);
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
@@ -194,7 +201,6 @@ const Fitter = async (item) => {
 #answer-card {
   padding: 5px;
   border: unset !important;
-
 }
 #card-index {
   margin-right: 10px;
