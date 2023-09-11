@@ -1,97 +1,60 @@
 <template>
+  <!-- .contact__section__end -->
 
 
-        <!-- .contact__section__end -->
-
-
-        <!-- contact__form__start -->
-        <div class="contact__from__wraper sp_bottom_100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="contact__form__inner">
-                            <div class="contact__form__heading" data-aos="fade-up">
-                                <h3>บัญชีผู้ใช้งาน</h3>
-                                <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
-                            </div>
-                            <form id="contact-form" class="contact-form" action="mail.php" method="post">
-                                <div class="row">
-
-                                  <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="subject" placeholder="First Name" v-model="store.formuser.user_firstname" disabled>
-                                            <div class="contact__icon">
-                                              <i class="icofont-businessman"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="phone" placeholder="Last Name" v-model="store.formuser.user_lastname" disabled>
-                                            <div class="contact__icon">
-                                              <i class="icofont-businessman"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="con_name" id="con_name" placeholder="User Name*" v-model="store.formuser.user_name" disabled>
-                                            <div class="contact__icon">
-                                                <i class="icofont-businessman"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="con_email" id="con_email" placeholder="Email Address*"  v-model="store.formuser.user_email" disabled>
-                                            <div class="contact__icon">
-                                                <i class="icofont-envelope"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="subject" placeholder="Write Service Type" v-model="store.formuser.user_phone" disabled>
-                                            <div class="contact__icon">
-                                              
-                                                <i class="icofont-ui-call"></i>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formuser.user_type_name" disabled>
-                                            <div class="contact__icon">
-                                              <i class="icofont-edit"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                
-                                    <!-- <div class="col-xl-12" data-aos="fade-up">
-                                        <div class="contact__button">
-
-                                            <button type="submit" value="submit" class="default__button" name="submit">Post a Comment</button>
-
-                                            <p class="form-messege"></p>
-
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
+  <!-- contact__form__start -->
+  <div class="contact__from__wraper sp_bottom_100">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="contact__form__inner" v-if="store.mydtla.length > 0">
+            <div class="contact__form__heading">
+              <h3>แสดงใบขับขี่</h3>
+              <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
             </div>
-        </div>
+            <div class="row">
+              <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+                <div class="blog__details__content__wraper">
+                  <div class="blog__details__heading aos-init aos-animate" >
+                      <h5>ข้างหน้า</h5>
+                    </div>
+                  <div class="blog__details__img aos-init aos-animate" v-if="store.formdtl.front_img">
+                  <!-- <img src="img/blog/blog_21.png" alt="blog"> -->
+                    <img :src="coverimage(store.formdtl.front_img)" alt="blog">
+                
+                  </div>
+                  <div class="blog__details__content">
+                  </div>
+                </div>
 
+
+                <div class="blog__details__content__wraper" v-if="store.formdtl.back_img">
+                  <div class="blog__details__heading aos-init aos-animate" data-aos="fade-up">
+                      <h5>ข้างหลัง</h5>
+                    </div>
+                  <div class="blog__details__img aos-init aos-animate" data-aos="fade-up">
+                    <img :src="coverimage(store.formdtl.back_img)" alt="blog">
+                  </div>
+                  <div class="blog__details__content">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                <div class="blogsidebar__content__wraper__2">
+                  <h4 class="sidebar__title">ประเภทใบขับขี่</h4>
+                  <ul class="categorie__list">
+                    <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)">
+                      <a>{{item.dlt_description}} <span>{{item.dlt_code}}</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue'
@@ -99,14 +62,21 @@ import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 
 import { useAuthStore } from '@/stores/auth';
-import  ApiService  from '@/services/api.service';
+import ApiService from '@/services/api.service';
 
 const store = useAuthStore();
 const router = useRouter();
 const profile = await store.getProfile();
 
+const SelectDtl = async (item) => {
 
+store.SelectgetDLT(item)
+};
 
+function coverimage(i) {
+    let im = ApiService.image(i);
+    return im;
+}
 
 </script>
 
@@ -123,9 +93,11 @@ const profile = await store.getProfile();
 .sec-l {
   border-style: groove !important;
   border-color: red !important;
+
   #choice {
     background-color: #4CAF50;
     color: white;
+
     #card-index {
       color: white;
     }
@@ -139,24 +111,28 @@ const profile = await store.getProfile();
   #answer {
     background-color: #4CAF50;
     color: white;
+
     #card-index {
       color: white;
     }
   }
 }
-#answer {
-    background-color: #4CAF50;
-  
-  }
 
-.exma{
+#answer {
+  background-color: #4CAF50;
+
+}
+
+.exma {
   background-color: #5f2ded;
-    color: white;
+  color: white;
 }
-.send{
+
+.send {
   background-color: #e06512;
-    color: white;
+  color: white;
 }
+
 #choice-container {
   /* border: 2px solid black; */
   display: flex;
@@ -165,6 +141,7 @@ const profile = await store.getProfile();
   align-items: center;
 
 }
+
 #choice {
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
@@ -174,13 +151,17 @@ const profile = await store.getProfile();
   transition-duration: 0.4s;
   display: flex;
 }
+
 #choice:hover {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
+  /* Green */
   color: white;
+
   #card-index {
     color: white;
   }
 }
+
 #choice-card {
   padding: 5px;
   border: unset !important;
@@ -198,8 +179,8 @@ const profile = await store.getProfile();
   display: flex;
 }
 
-.answer-choice{
-  background-color: rgb(247, 247, 247); 
+.answer-choice {
+  background-color: rgb(247, 247, 247);
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
@@ -208,7 +189,7 @@ const profile = await store.getProfile();
   display: flex;
 }
 
-.answer-choice-success{
+.answer-choice-success {
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
@@ -217,8 +198,8 @@ const profile = await store.getProfile();
   display: flex;
 }
 
-.answer-choice-danger{
-  background-color: rgb(227, 52, 21); 
+.answer-choice-danger {
+  background-color: rgb(227, 52, 21);
   border-radius: 20px;
   padding: 10px 10px 0px 15px;
   color: black;
@@ -232,7 +213,7 @@ const profile = await store.getProfile();
   border: unset !important;
 
 }
+
 #card-index {
   margin-right: 10px;
-}
-</style>
+}</style>

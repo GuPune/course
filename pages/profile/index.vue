@@ -133,15 +133,19 @@ import { useAuthStore } from '@/stores/auth'; // import the auth store we just c
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { HistoryStore } from '@/stores/history';
+
 import { useRoute } from "vue-router";
 const auth = useAuthStore()
+
 const route = useRoute();
 const profile = await auth.getProfile();
 
-
+await auth.displaycard()
 const choose = async (item) => {
   const profile = await auth.SelectProfile(item);
 };
+
+
 
 
 </script>

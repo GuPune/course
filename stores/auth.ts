@@ -27,6 +27,8 @@ export const useAuthStore = defineStore('auth', {
       user_type:null,
       user_type_name:null,
     },
+    mydtla: [],
+    dltcard:[],
     formdetail:{
       verify_account:null,
       identification_number:null,
@@ -36,6 +38,58 @@ export const useAuthStore = defineStore('auth', {
       location:null,
       country:null,
     },
+    formdtl: {
+      front_img: "",
+      back_img: "",
+      dlt_code: '',
+    },
+    dlt: [
+      {
+        dlt_code: "A",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท A รถจักรยานยนต์สองล้อ เครื่องยนต์ไม่เกิน 125 cc.",
+      },
+      {
+        dlt_code: "A1",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท A1 รถจักรยานยนต์สองล้อ เครื่องยนต์ 125 cc. ขึ้นไป",
+      },
+      {
+        dlt_code: "A2",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท A2 รถสามล้อส่วนตัว, รถสองล้อ และรถสามล้อโดยสาร",
+      },
+      {
+        dlt_code: "A3",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท A3 รถแทรกเตอร์แบบมีล้อ และรถปราบดิน",
+      },
+      {
+        dlt_code: "B",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท B รถยนต์ที่น้าหนักรวมน้อยกว่า 3,500 กิโลกรัม ไม่เกิน 9 ที่นั่ง รวมผู้ขับรถ",
+      },
+      {
+        dlt_code: "C",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท C รถขนส่งสินค้าน้าหนักรวมตั้งแต่ 3,500 ถึง 7,500 กิโลกรัม",
+      },
+      {
+        dlt_code: "C1",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท C1 รถขนส่งสินค้าน้าหนักรวมตั้งแต่ 7,500 ถึง 15,000 กิโลกรัม",
+      },
+      {
+        dlt_code: "C2",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท C2 รถขนส่งสินค้า น้าหนักรวม 15,000 กิโลกรัม ขึ้นไป",
+      },
+      {
+        dlt_code: "D",
+        dlt_description:
+          "ใบอนุญาตขับรถประเภท D รถขนส่งผู้โดยสาร ประเภท 4 ล้อขึ้นไป ไม่เกิน 15 ที่นั่ง",
+      },
+    ],
     type:[
       {
         user_type: 1,
@@ -99,13 +153,6 @@ export const useAuthStore = defineStore('auth', {
           return false;
         }
 
-        // if (response.error.value.statusCode) {
-        //   console.log('if 2');
-        //   this.status_login = false;
-
-        // }
-      
-
       } catch (error) {
        this.status_login = false;
        return false;
@@ -162,7 +209,43 @@ try {
 
     async SelectProfile(item) {
       this.selectProfile = item
-    }   
+    } ,  
+    async displaycard() {
+
+
+      const mydlt = [];
+      try {
+        const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
+          this.dltcard = response.data;
+        
+          if (response.data.length > 0) {
+            let a = this.dltcard[0];
+            this.formdtl.front_img = a.front_img
+            this.formdtl.back_img = a.back_img
+            this.formdtl.dlt_code = a.dlt_code
+      
+            for (let i = 0; i < response.data.length; i++) {
+              let a = this.dlt.find(x => x.dlt_code === response.data[i].dlt_code)
+              mydlt.push(a);
+            }
+            this.mydtla = mydlt;
+          }
+        });
+        return data
+      } catch (error) {
+        return false;
+      }
+    },
+
+    async SelectgetDLT(item) {
+
+      let a = this.dltcard[item];
+      this.formdtl.front_img = a.front_img
+      this.formdtl.back_img = a.back_img
+      this.formdtl.dlt_code = a.dlt_code
+
+     console.log(this.formdtl);
+    },
   },
 });
 

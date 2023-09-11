@@ -184,7 +184,8 @@ export const AppointmentsStore = defineStore({
       this.ardel_id = ar
       this.formdel.ap_id = ap
       this.popupcancelapp = true;
-    }
+    },
+
 
   }
 })
