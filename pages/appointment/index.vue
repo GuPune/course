@@ -31,12 +31,12 @@
       </div>
     </div>
     <nav class="navbar bg-body-tertiary nav-search">
-      <div class="container-fluid row justify-content-center py-2">
-        <div class="col-2">
+      <div class="container-fluid nav-container row justify-content-center py-2 gy-2">
+        <div class="col-2 nav-item" style="min-width: 150px;">
           <VueDatePicker v-model="store.form.date_event" :format="format_start" required></VueDatePicker>
           <!-- <label for="startDate">Start Date</label> -->
         </div>
-        <div class="col-2">
+        <div class="col-2 nav-item" style="min-width: 150px;">
           <!-- <label for="startDate">Start Date</label> -->
 
           <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type">
@@ -44,14 +44,14 @@
             <option value="2">ปฏิบัติ</option>
           </select>
         </div>
-        <div class="col-4">
+        <div class="col-4 nav-item" style="min-width: 150px;">
           <select class="form-control" v-model="store.form.dlt_code">
             <option v-for="(item, index) in store.dlt" :key="item.dlt_code" :value="item.dlt_code">
               {{ item.dlt_description }}
             </option>
           </select>
         </div>
-        <div class="col-2">
+        <div class="col-auto nav-item">
           <button type="button" class="btn btn-light mt-0" @click="find()">
             ค้นหา
           </button>
@@ -60,6 +60,133 @@
     </nav>
 
   <SelectAppoint></SelectAppoint>
+
+  <!-- Type Card -->
+  
+  <div class="container mb-5">
+    <div class="row type-row">
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A รถจักรยานยนต์สองล้อ เครื่องยนต์ไม่เกิน 125 cc.</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A1 รถจักรยานยนต์สองล้อ เครื่องยนต์ 125 cc. ขึ้นไป</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A2 รถสามล้อส่วนตัว, รถสองล้อ และรถสามล้อโดยสาร</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A3 รถแทรกเตอร์แบบมีล้อ และรถปราบดิน</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท B รถยนต์ที่น้าหนักรวมน้อยกว่า 3,500 กิโลกรัม ไม่เกิน 9 ที่นั่ง รวมผู้ขับรถ</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท C รถขนส่งสินค้าน้าหนักรวมตั้งแต่ 3,500 ถึง 7,500 กิโลกรัม</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท C1 รถขนส่งสินค้าน้าหนักรวมตั้งแต่ 7,500 ถึง 15,000 กิโลกรัม</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท C2 รถขนส่งสินค้า น้าหนักรวม 15,000 กิโลกรัม ขึ้นไป</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card d-flex flex-row type-card">
+          <div class="type-image">
+          </div>
+          <div class="type-detail">
+            <ul>
+              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
+              <li>Total: 6 Event</li>
+            </ul>
+            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท D รถขนส่งผู้โดยสาร ประเภท 4 ล้อขึ้นไป ไม่เกิน 15 ที่นั่ง</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Type Card -->
+
   </div>
   <div class="modal" v-if="store.popupconfirm">
     <div class="modal-content" id="deleteConformationLabel">
@@ -244,4 +371,51 @@ button {
   padding: 20px;
   width: 50%;
 }
+.type-image {
+  background-color: pink;
+  height: 80px;
+  width: 120px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.type-card {
+  padding: 20px 20px;
+  transition: .4s;
+  cursor: pointer;
+  border: 1px solid rgb(221, 221, 221);
+  
+  
+}
+.type-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 8px .2px rgb(221, 221, 221);
+}
+.type-detail > ul {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.type-row > .col-lg-6 {
+  margin-bottom: 20px;
+}
+.nav-search {
+  z-index: 1;
+}
+@media (min-width: 701px) {
+  .nav-search {
+    position: sticky;
+    top: 0;
+  }
+  .main_wrapper {
+  overflow: visible !important;
+  }
+}
+
+@media (max-width: 414px) {
+  .nav-item {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 </style>
