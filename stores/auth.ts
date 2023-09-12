@@ -211,19 +211,15 @@ try {
       this.selectProfile = item
     } ,  
     async displaycard() {
-
-
       const mydlt = [];
       try {
         const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
           this.dltcard = response.data;
-        
           if (response.data.length > 0) {
             let a = this.dltcard[0];
             this.formdtl.front_img = a.front_img
             this.formdtl.back_img = a.back_img
             this.formdtl.dlt_code = a.dlt_code
-      
             for (let i = 0; i < response.data.length; i++) {
               let a = this.dlt.find(x => x.dlt_code === response.data[i].dlt_code)
               mydlt.push(a);

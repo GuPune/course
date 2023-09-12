@@ -20,7 +20,12 @@ import { useRoute } from 'vue-router'
 
  // fetchPosts();
 
-
+ useHead({
+  title: 'My App',
+  meta: [
+    { name: 'description', content: 'My amazing site.' }
+  ],
+})
 
 
 </script>

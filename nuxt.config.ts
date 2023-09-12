@@ -27,6 +27,8 @@ imports: {
 },
 
 
+
+
   plugins: [
     { src: '~/plugins/sweetalert', mode: 'client' }
     // { src: '~/plugins/main.js' ,mode: 'client'},

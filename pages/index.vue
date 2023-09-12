@@ -18,13 +18,13 @@ definePageMeta({
 <template>
   <div>
     <Banner></Banner>
-          <Populer></Populer>
+          <!-- <Populer></Populer>
   <Course></Course>
   <Contact></Contact>
   <Teacher></Teacher>
       <Testimonial></Testimonial>
          <Blog></Blog>
-         <News></News>
+         <News></News> -->
 
          
 

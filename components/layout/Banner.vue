@@ -5,8 +5,6 @@
                   <div class="row">
                       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" data-aos="fade-up">
                           <div class="herobannerarea__content__wraper">
-  
-  
                               <div class="herobannerarea__title">
                                   <div class="herobannerarea__small__title">
                                       <span>Education Solution</span>
@@ -21,8 +19,10 @@
                                   <p>Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been </p>
                               </div>
                               <div class="hreobannerarea__button__2">
-                                  <a class="default__button" href="#">View Courses</a>
-                                  <a class="default__button hreobannerarea__button__3" href="#">Explore More</a>
+                              
+                                  <nuxt-link to="/course" class="default__button">{{ $t("courses") }}</nuxt-link>
+                        
+                                  <nuxt-link to="/course" class="default__button hreobannerarea__button__3">{{ $t("exam") }}</nuxt-link>
                               </div>
                           </div>
                       </div>
@@ -44,7 +44,7 @@
           </div>
           <!-- herobannerarea__section__end-->
           <!-- brand__section__start -->
-          <div class="brandarea__2">
+          <!-- <div class="brandarea__2">
               <div class="container">
                   <div class="row">
                       <div class="brandarea__wraper brandarea__wraper__2" data-aos="fade-up">
@@ -67,11 +67,11 @@
                       </div>
                   </div>
               </div>
-          </div>
+          </div> -->
           <!-- brand__section__end -->
   
           <!-- aboutarea__2__section__start -->
-          <div class="aboutarea__2 aboutarea__4 sp_bottom_30">
+          <!-- <div class="aboutarea__2 aboutarea__4 sp_bottom_30">
               <div class="container">
                   <div class="row">
                       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" data-aos="fade-up">
@@ -121,7 +121,7 @@
                       </div>
                   </div>
               </div>
-          </div>
+          </div> -->
           <!-- aboutarea__2__section__end -->
     </div>
 </template>
