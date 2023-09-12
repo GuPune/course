@@ -143,8 +143,10 @@ export const AppointmentsStore = defineStore({
         ap_learn_type: this.form.ap_learn_type,
         dlt_code: this.form.dlt_code
       }
+      
       try {
         const data = await ApiService.post('/appointment/list', appdata).then(response => {
+          console.log(response);
           if (response.data.length > 0) {
             this.appgroup = response.data;
             let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)
@@ -154,7 +156,7 @@ export const AppointmentsStore = defineStore({
 
             return true
           } else {
-
+            this.appgroup = [];
             return false
           }
         });
