@@ -87,10 +87,8 @@
                           border: 1px solid var(--borderColor1);
                         "
                       >
-                        <i class="icofont-heart-alt"></i> {{ $t("account") }}
-                      
+                        <i class="icofont-heart-alt"></i> {{ $t("account") }}  
                       </a>
-
                       <ul class="headerarea__submenu">
                         <li>
                           <a @click="GotoPage('/profile')">{{ $t("account") }}</a>
