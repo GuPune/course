@@ -28,8 +28,11 @@
     "log_on_title": "เข้าสู่ระบบ",
     "log_on_longtitle": "คุณมีบัญชี ? เข้าสู่ระบบ",
     "account": "บัญชีของคุณ",
-    "history": "ประวัติการสอบ",
+    "history": "ประวัติฝึกทำข้อสอบ",
     "historyappoint": "ประวัติการนัดหมาย",
+    "result": "ผลสอบ",
+    "resultall": "Resultall",
+    "historyall": "Historyall",
     "logout": "ออกจากระบบ"
 
   

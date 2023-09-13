@@ -146,6 +146,9 @@ export const useAuthStore = defineStore('auth', {
           this.authenticated = true; // set authenticated  state value to true
           this.status_login = true;
           this.user_id = data.value.user_id;
+
+
+          await this.getProfile() ;
           return true;
         }else{
           this.status_login = false;
@@ -168,16 +171,25 @@ export const useAuthStore = defineStore('auth', {
       token.value = null; // clear the token cookie
       user_id.value = null;
       this.loading = false;
+
+      this.formuser.user_email = null
+      this.formuser.user_firstname = null
+      this.formuser.user_id = null
+      this.formuser.user_lastname = null
+      this.formuser.user_name = null
+      this.formuser.user_phone = null
+      this.formuser.user_type = null
+      this.formuser.user_type_name = null
     },
 
     async getProfile() {
-      console.log(this.user_id);
+ 
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
     if(response.data == ''){
       return false;
     }else {
-      console.log(response.data.detail);
+ 
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname

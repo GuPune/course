@@ -101,6 +101,15 @@
                         <li>
                           <a @click="GotoPage('/history')">{{ $t("history") }}</a>
                         </li>
+                         <li>
+                          <a @click="GotoPage('/result')">{{ $t("result") }}</a>
+                        </li>
+                         <li  v-if="useError.formuser.user_type != 3">
+                          <a @click="GotoPage('/resultall')">{{ $t("resultall") }}</a>
+                        </li>
+                         <li v-if="useError.formuser.user_type != 3">
+                          <a @click="GotoPage('/historyall')">{{ $t("historyall") }}</a>
+                        </li>
                         <li><a @click="Logout()">{{ $t("logout") }}</a></li>
                       </ul>
                     </li>
@@ -232,6 +241,7 @@ import { useI18n } from "vue-i18n";
 const router = useRouter();
 const store = useLogin();
 const useError = useAuthStore();
+const profile = await useError.getProfile();
 
 const { getisActive } = storeToRefs(store);
 const { alertlogin } = storeToRefs(useError);

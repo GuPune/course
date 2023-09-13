@@ -30,6 +30,10 @@
     "account": "My Account",
     "history": "History",
     "historyappoint": "Appointment",
+    "result": "Result",
+    "resultall": "Resultall",
+    "historyall": "Historyall",
+
     "logout": "Logout"
   }
   
