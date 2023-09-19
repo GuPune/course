@@ -8,16 +8,26 @@
       <div class="row">
         <div class="col-xl-12">
           <div class="contact__form__inner" v-if="store.mydtla.length > 0">
-            <div class="contact__form__heading">
-              <h3>แสดงใบขับขี่</h3>
-              <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
-            </div>
             <div class="row">
+              <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                <div class="contact__form__heading text-center">
+                  <h3>ใบอนุญาตขับรถ</h3>
+                  <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
+                </div>
+                <div class="blogsidebar__content__wraper__2">
+                  <h4 class="sidebar__title">ประเภทใบขับขี่</h4>
+                  <ul class="categorie__list">
+                    <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)">
+                      <div class="row typecard">
+                        <div class="col-2" id="type"><a>{{item.dlt_code}}</a></div>
+                        <div class="col-10" id="typedes"><a>{{item.dlt_description}}</a></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                 <div class="blog__details__content__wraper">
-                  <div class="blog__details__heading aos-init aos-animate" >
-                      <h5>ข้างหน้า</h5>
-                    </div>
                   <div class="blog__details__img aos-init aos-animate" v-if="store.formdtl.front_img">
                   <!-- <img src="img/blog/blog_21.png" alt="blog"> -->
                     <img :src="coverimage(store.formdtl.front_img)" alt="blog">
@@ -29,24 +39,11 @@
 
 
                 <div class="blog__details__content__wraper" v-if="store.formdtl.back_img">
-                  <div class="blog__details__heading aos-init aos-animate" data-aos="fade-up">
-                      <h5>ข้างหลัง</h5>
-                    </div>
                   <div class="blog__details__img aos-init aos-animate" data-aos="fade-up">
                     <img :src="coverimage(store.formdtl.back_img)" alt="blog">
                   </div>
                   <div class="blog__details__content">
                   </div>
-                </div>
-              </div>
-              <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
-                <div class="blogsidebar__content__wraper__2">
-                  <h4 class="sidebar__title">ประเภทใบขับขี่</h4>
-                  <ul class="categorie__list">
-                    <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)">
-                      <a>{{item.dlt_description}} <span>{{item.dlt_code}}</span></a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -213,7 +210,31 @@ function coverimage(i) {
   border: unset !important;
 
 }
+.blogsidebar__content__wraper__2 {
+  border-radius: 10px;
+  border: unset;
+  box-shadow: 1px 1px 10px .5px rgba(0, 0, 0, .1);
+}
+#type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0, 0, 0, .2);
+}
+.typecard:hover > #type{
+  border-color:white !important;
+}
+.typecard {
+  border-radius: 25%;
+}
+#type > a {
+  font-size: large;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 25%;
+}
 
 #card-index {
   margin-right: 10px;
-}</style>
+}
+</style>

@@ -52,8 +52,8 @@
           </select>
         </div>
         <div class="col-auto nav-item">
-          <button type="button" class="btn btn-light mt-0" @click="find()">
-            ค้นหา
+          <button type="button" class="btn btn-primary mt-0" @click="find()">
+            ค้นหารอบนัดหมาย
           </button>
         </div>
       </div>
