@@ -146,11 +146,11 @@
 
                                                             <div class="author__content" style="margin: 30px 0;">
                                                                 <div class="author__text row">
-                                                                    <div class="col-lg-3 col-md-4"><p class="fs-4 fw-bold mb-0">หลักสูตร </p></div>
+                                                                    <div class="col-lg-3 col-md-4"><p class="fs-4 fw-bold mb-0">บทเรียนที่ {{ index + 1 }}</p></div>
                                                                     <div class="col-lg-9 col-md-8"><p class="fs-4 fw-bold mb-0"><a href="#">{{ x.cs_name }} </a></p></div>
                                                                 </div>
                                                                 <div class="author__text row">
-                                                                    <div class="col-lg-3 col-md-4"><p class="mb-0">รายละเอียดหลักสูตร</p></div>
+                                                                    <div class="col-lg-3 col-md-4"><p class="mb-0">รายละเอียด</p></div>
                                                                     <div class="col-lg-9 col-md-8"><p class="mb-0">{{ x.cs_description }}</p></div>
                                                                 </div>
                                                                 <hr>
