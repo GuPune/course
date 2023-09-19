@@ -34,6 +34,8 @@
             </div>
         </div>
         <div class="coursearea sp_top_100 sp_bottom_100">
+
+
             <div class="container">
                 <div class="row" v-if="store.course_lesson">
                     <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
@@ -90,16 +92,7 @@
                                                     data-bs-target="#projects__one" type="button" aria-selected="true"
                                                     role="tab"> <i class="icofont-book-alt"></i>Description</button>
                                             </li>
-                                            <!-- <li class="nav-item" role="presentation">
-                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__two" type="button" aria-selected="false" tabindex="-1" role="tab"><i class="icofont-paper"></i>Curriculum</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__three" type="button" aria-selected="false" tabindex="-1" role="tab"><i class="icofont-star"></i>Reviews</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__four" type="button" aria-selected="false" tabindex="-1" role="tab"><i class="icofont-teacher"></i>Instructor</button>
-                    </li> -->
-
+                                        
 
                                         </ul>
                                     </div>
@@ -118,10 +111,16 @@
                                                 </h2>
                                                 <div :id="'collapseOne-' + index" class="accordion-collapse collapse"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-
-                                                    <div class="containerxxx"> 
-  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-</div>
+                                                    <vue3VideoPlay
+      width="800px"
+      title="钢铁侠"
+      :src="options.src"
+      :poster="options.poster"
+      @play="onPlay"
+      @pause="onPause"
+      @timeupdate="onTimeupdate"
+      @canplay="onCanplay"
+    />
 
                                                     <div class="row" style="padding: 5px;">
                                                         <div class="col-lg-3">
@@ -186,6 +185,26 @@ let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 
 let youtube = 'https //www.youtube.com/embed/tgbnymz7vqy';
+
+import { reactive } from "vue";
+const options = reactive({
+  src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
+  poster: "", //封面
+});
+const onPlay = (ev) => {
+  console.log("onPlay");
+};
+const onPause = (ev) => {
+  console.log(ev, "onPause");
+};
+
+const onTimeupdate = (ev) => {
+  console.log(ev, "onTimeupdate");
+};
+const onCanplay = (ev) => {
+  console.log(ev, "onCanplay");
+};
+
 
 const { getisActiveCourse } = storeToRefs(store);
 

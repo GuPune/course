@@ -64,7 +64,6 @@ export const ResultStore = defineStore({
       const a = { mr_id: this.result[x].mr_id,mr_score: this.result[x].mr_score,mr_learn_type: this.result[x].mr_learn_type,mr_status: this.result[x].mr_status,crt_date:this.result[x].crt_date,dlt_description:dl.dlt_description}
       aa.push(a)
     }
-      console.log(aa);
 
       this.resultall = aa;
  
