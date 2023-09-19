@@ -103,31 +103,33 @@
                                         <div class="accordion content__cirriculum__wrap" id="accordionExample">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button collapsed" type="button"
+                                                    <button class="accordion-button collapsed mt-0" type="button"
                                                         data-bs-toggle="collapse" :data-bs-target="'#collapseOne-' + index"
                                                         aria-expanded="false" aria-controls="collapseOne">
                                                         {{ x.cs_name }} #{{ index + 1 }}
                                                     </button>
                                                 </h2>
-                                                <div :id="'collapseOne-' + index" class="accordion-collapse collapse"
+                                                <div :id="'collapseOne-' + index" class="accordion-collapse collapse p-4"
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <vue3VideoPlay
-      width="800px"
-      title="钢铁侠"
-      :src="options.src"
-      :poster="options.poster"
-      @play="onPlay"
-      @pause="onPause"
-      @timeupdate="onTimeupdate"
-      @canplay="onCanplay"
-    />
+                                                    <div class="row justify-content-center">
+                                                        <vue3VideoPlay
+                                                            width="100%"
+                                                            title="钢铁侠"
+                                                            :src="options.src"
+                                                            :poster="options.poster"
+                                                            @play="onPlay"
+                                                            @pause="onPause"
+                                                            @timeupdate="onTimeupdate"
+                                                            @canplay="onCanplay"
+                                                        />
+                                                    </div>
 
                                                     <div class="row" style="padding: 5px;">
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-3 d-flex justify-content-center align-items-center">
 
 
                                                             <div class="single__expart__teacher">
-                                                                <div class="teacher__img">
+                                                                <div class="teacher__img mb-0">
                                                                     <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
 
                                                                     <img :src="coverimage(x.cs_cover)" alt="Image"
@@ -143,16 +145,22 @@
                                                             </div> -->
 
                                                             <div class="author__content" style="margin: 30px 0;">
-                                                                <div class="author__name">
-                                                                    <h6><a href="#">{{ x.cs_name }} </a></h6>
-                                                                    <p>{{ coverttime(x.crt_date) }}</p>
-
+                                                                <div class="author__text row">
+                                                                    <div class="col-lg-3 col-md-4"><p class="fs-4 fw-bold mb-0">หลักสูตร </p></div>
+                                                                    <div class="col-lg-9 col-md-8"><p class="fs-4 fw-bold mb-0"><a href="#">{{ x.cs_name }} </a></p></div>
                                                                 </div>
-                                                                <div class="author__text">
-                                                                    <p>{{ x.cs_description }} </p>
+                                                                <div class="author__text row">
+                                                                    <div class="col-lg-3 col-md-4"><p class="mb-0">รายละเอียดหลักสูตร</p></div>
+                                                                    <div class="col-lg-9 col-md-8"><p class="mb-0">{{ x.cs_description }}</p></div>
                                                                 </div>
-                                                                <div class="author__text">
-                                                                    <p>{{ x.user_create }} </p>
+                                                                <hr>
+                                                                <div class="author__text row">
+                                                                    <div class="col-lg-3 col-md-4"><p class="mb-0">วิทยากร</p></div>
+                                                                    <div class="col-lg-9 col-md-8"><p class="mb-0">{{ x.user_create }} </p></div>
+                                                                </div>
+                                                                <div class="author__text row">
+                                                                    <div class="col-lg-3 col-md-4"><p class="mb-0">วันที่สร้าง</p></div>
+                                                                    <div class="col-lg-9 col-md-8"><p class="mb-0">{{ coverttime(x.crt_date) }}</p></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -245,5 +253,16 @@ function coverttime(date) {
   width: 100%;
   height: 100%;
   border: none;
+}
+.teacher__img > img {
+    border-radius: 10%;
+}
+@media screen and (max-width: 767px) {
+    .author__text > div > p {
+        text-align: center;
+    }
+    .author__text {
+        margin-bottom: 10px;
+    }
 }
 </style>
