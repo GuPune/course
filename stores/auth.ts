@@ -13,6 +13,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     authenticated: false,
     selectProfile:'profile',
+    
     verify: false,
     loading: false,
     alert :false,
@@ -163,6 +164,35 @@ export const useAuthStore = defineStore('auth', {
      
       }
     },
+
+
+    async authenticateUserMoible() {
+      // useFetch from nuxt 3
+  const login = {user_name: "rkknoob1",user_password: "123456"}
+      try {
+        const data = await ApiService.post('/user/login', login).then(response => {
+     if (response.data) {
+      const token = useCookie('token'); // useCookie new hook in nuxt 3
+      const user_id = useCookie('user_id'); // useCookie new hook in nuxt 3
+      token.value = "ZeBuphebrltl3uthIFraspubroST80Atr9tHuw5bODowi26p"; // set token to cookie
+      user_id.value = response.data.user_id; // set token to cookie
+      this.authenticated = true; // set authenticated  state value to true
+      this.status_login = true;
+      this.user_id = response.data.user_id;
+     }
+     console.log();
+          return true;
+        });
+        await this.getProfile();
+        return data
+      } catch (error) {
+       console.log('catch');
+       return false;
+      } finally {
+     
+      }
+    },
+
     logUserOut() {
       const token = useCookie('token'); 
       const user_id = useCookie('user_id'); 
