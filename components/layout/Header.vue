@@ -57,6 +57,12 @@
                     <a @click="changeLocale('th')">
                       <img src="../../assets/thai.png" alt="My Image" />
                     </a>
+                    <a
+                      style="padding-left: 10px; padding-right: 10px"
+                      @click="changeLocale('la')"
+                    >
+                      <img src="../../assets/la.png" alt="My Image" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -102,12 +108,12 @@
                          <li>
                           <a @click="GotoPage('/result')">{{ $t("result") }}</a>
                         </li>
-                         <li  v-if="useError.formuser.user_type != 3">
+                         <!-- <li  v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/resultall')">{{ $t("resultall") }}</a>
                         </li>
                          <li v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/historyall')">{{ $t("historyall") }}</a>
-                        </li>
+                        </li> -->
                         <li><a @click="Logout()">{{ $t("logout") }}</a></li>
                       </ul>
                     </li>

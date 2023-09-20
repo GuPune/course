@@ -1,0 +1,39 @@
+{
+    "home": "Home",
+    "courses": "Courses",
+    "exam": "DriveExam",
+    "appointment": "Appointment",
+    "language": "Language",
+    "message": "hello i18n !!",
+    "article": {
+      "title": "Get Started",
+      "info": "Vue I18n is internationalization plugin for Vue.js"
+    },
+    "EN": "EN",
+    "ZH": "ZH",
+    "logo": "logo",
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "confirmpassword": "Confirmpassword",
+    "email": "Email",
+    "tel": "Tel",
+    "fname": "First Name",
+    "lname": "Last Name",
+    "acc": "สมัครสมาชิก",
+    "singup_title": "Sign up",
+    "singup_longtitle": "Already have an account? Log In",
+    "button_register": "Sign Up",
+    "log_on_title": "Log in",
+    "log_on_longtitle": "Don't have an account yet? Sign up for free",
+    "account": "My Account",
+    "history": "History",
+    "historyappoint": "Appointment",
+    "result": "Result",
+    "resultall": "Resultall",
+    "historyall": "Historyall",
+
+    "logout": "Logout"
+  }
+  
