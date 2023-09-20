@@ -103,6 +103,22 @@
               </div>
             </div>
           </div>
+
+
+
+           <div class="row" v-else>
+            <div class="col-xl-12">
+              <div class="card p-4 mb-4">
+                <div class="d-flex flex-row mb-4">
+                     <div class="ms-5">
+                    <h3> ไม่มีรอบนัดหมาย</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

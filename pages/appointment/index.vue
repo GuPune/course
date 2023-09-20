@@ -63,7 +63,7 @@
 
   <!-- Type Card -->
   
-  <div class="container mb-5">
+  <!-- <div class="container mb-5">
     <div class="row type-row">
       <div class="col-lg-6">
         <div class="card d-flex flex-row type-card">
@@ -183,7 +183,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- End Type Card -->
 
