@@ -1,5 +1,4 @@
 <template>
-
     <div class="container">
       <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -7,12 +6,12 @@
             <table class="table table-hover mb-0" v-if="store.resultall.length > 0">
               <thead class="table-dark" >
                 <tr>
-                  <th scope="col" style="text-align: center">ลำดับ</th>
-                  <th scope="col" style="text-align: center">คะแนน</th>
-                  <th scope="col" style="text-align: center">ประเภทสอบ</th>
-                  <th scope="col" style="text-align: center">สถานะ</th>
-                  <th scope="col" style="text-align: center">รายละเอียด</th>
-                  <th scope="col" style="text-align: center">เวลา</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_id") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_score") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_type") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_details") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
                 </tr>
               </thead>
               <tbody v-if="store.resultall.length > 0">

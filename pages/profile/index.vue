@@ -46,7 +46,7 @@
                         </svg> -->
                       </div>
                       <div class="contact__text" @click="choose('profile')">
-                        <h5>ProFile User</h5>
+                        <h5>{{ $t("account_proFile_User") }}</h5>
                         <!-- <div class="contact__email">
                           <p>{{ auth.formuser.user_email }}</p>
                           <span>{{ auth.formuser.user_phone }}</span>
@@ -74,7 +74,7 @@
                         </svg> -->
                       </div>
                       <div class="contact__text">
-                        <h5>Profile Info</h5>
+                         <h5>{{ $t("account_proFile_Info") }}</h5>
                         <!-- <div class="contact__email">
                           <p>Digital Agency Network 2023</p>
                           <span>Eastbourne Terrace</span>
@@ -103,7 +103,7 @@
                         </svg> -->
                       </div>
                       <div class="contact__text">
-                        <h5>driver licence</h5>
+                         <h5>{{ $t("account_proFile_dtl") }}</h5>
                         <!-- <div class="contact__email">
                           <p>+880 123 456 789 , 99874</p>
                           <span>+880 123 456 789 </span>

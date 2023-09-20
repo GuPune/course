@@ -11,7 +11,7 @@
             <div class="row">
               <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                 <div class="contact__form__heading text-center">
-                  <h3>ใบอนุญาตขับรถ</h3>
+                  <h3>{{ $t("account_proFile_dtl") }}</h3>
                   <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
                 </div>
                 <div class="blogsidebar__content__wraper__2">

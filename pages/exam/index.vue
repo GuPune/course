@@ -10,12 +10,12 @@
           <div class="col-xl-12">
               <div class="breadcrumb__content__wraper" data-aos="fade-up">
                   <div class="breadcrumb__title">
-                      <h2 class="heading">Drive Exam</h2>
+                      <h2 class="heading">{{ $t("page_exam") }}</h2>
                   </div>
                   <div class="breadcrumb__inner">
                       <ul>
-                          <li><a href="index.html">Home</a></li>
-                          <li>Drive Exam</li>
+                          <li><a href="#">{{ $t("home") }}</a></li>
+                          <li>{{ $t("page_exam") }}</li>
                       </ul>
                   </div>
               </div>

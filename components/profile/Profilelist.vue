@@ -11,7 +11,7 @@
                     <div class="col-xl-12">
                         <div class="contact__form__inner">
                             <div class="contact__form__heading" data-aos="fade-up">
-                                <h3>บัญชีผู้ใช้งาน</h3>
+                                <h3>{{ $t("account_proFile_User") }}</h3>
                                 <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
                             </div>
                             <form id="contact-form" class="contact-form" action="mail.php" method="post">

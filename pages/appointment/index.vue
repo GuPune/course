@@ -6,12 +6,12 @@
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
-                <h2 class="heading">History</h2>
+                <h2 class="heading">{{ $t("page_appoint") }}</h2>
               </div>
               <div class="breadcrumb__inner">
                 <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li>Appointment</li>
+                   <li><a href="#">{{ $t("home") }}</a></li>
+                          <li>{{ $t("page_appoint") }}</li>
                 </ul>
               </div>
             </div>

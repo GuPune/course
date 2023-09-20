@@ -28,12 +28,25 @@
     "log_on_title": "Log in",
     "log_on_longtitle": "Don't have an account yet? Sign up for free",
     "account": "My Account",
+    "account_proFile_User": "ข้อมูลพื้นฐาน",
+    "account_proFile_Info": "รายละเอียด",
+    "account_proFile_dtl": "ข้อมูลใบขับขี่",
     "history": "History",
     "historyappoint": "Appointment",
+    "historyexame": "History Exam",
+    "table_id": "#",
+    "table_dlt": "Type Card",
+    "table_remark": "Remark",
+    "table_type_app": "Type Test",
+    "table_time": "Time",
+    "table_action": "Action",
+    "table_action_cancel": "CancelApp",
     "result": "Result",
     "resultall": "Resultall",
     "historyall": "Historyall",
-
+    "page_course": "หลักสูตรทั้งหมด",
+    "page_exam": "ฝึกทำข้อสอบ",
+    "page_appoint": "นัดหมาย",
     "logout": "Logout"
   }
   

@@ -3,12 +3,12 @@
     <table class="table table-hover mb-0">
       <thead class="table-dark">
         <tr>
-          <th scope="col" style="text-align: center">ลำดับ</th>
-          <th scope="col" style="text-align: center">DLT</th>
-          <th scope="col" style="text-align: center">Remark</th>
-          <th scope="col" style="text-align: center">ประเภทนัดหมาย</th>
-          <th scope="col" style="text-align: center">ช่วงเวลา</th>
-          <th scope="col" style="text-align: center">จัดการ</th>
+          <th scope="col" style="text-align: center">{{ $t("table_id") }}</th>
+          <th scope="col" style="text-align: center">{{ $t("table_dlt") }}</th>
+          <th scope="col" style="text-align: center">{{ $t("table_remark") }}</th>
+          <th scope="col" style="text-align: center">{{ $t("table_type_app") }}</th>
+          <th scope="col" style="text-align: center">{{ $t("table_time") }}</th>
+          <th scope="col" style="text-align: center">{{ $t("table_action") }}</th>
         </tr>
       </thead>
 
@@ -34,7 +34,7 @@
             {{ format(item.appointment_detail.ap_date_end) }}
           </td>
               <td style="text-align: center">
-          <button type="button" class="btn btn-sm btn-danger" @click="del(item.ap_id,item.ar_id)">ยกเลิกนัดหมาย</button>
+          <button type="button" class="btn btn-sm btn-danger" @click="del(item.ap_id,item.ar_id)">{{ $t("table_action_cancel") }}</button>
           </td>
         </tr>
       </tbody>

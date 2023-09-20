@@ -7,10 +7,10 @@
   <table class="table  table-hover mb-0">
   <thead class="table-dark">
     <tr>
-      <th scope="col" style="text-align: center;">ลำดับ</th>
-      <th scope="col" style="text-align: center;">หลักสูตร</th>
-      <th scope="col" style="text-align: center;">จำนวนทำข้อสอบ</th>
-      <th scope="col" style="text-align: center;">รายงานสถิติ - ผลสอบ</th>
+      <th scope="col" style="text-align: center;">{{ $t("table_history_id") }}</th>
+      <th scope="col" style="text-align: center;">{{ $t("table_history_exam") }}</th>
+      <th scope="col" style="text-align: center;">{{ $t("table_history_total") }}</th>
+      <th scope="col" style="text-align: center;">{{ $t("table_history_report") }}</th>
     </tr>
   </thead>
   <tbody v-if="store.report.length > 0">
@@ -18,7 +18,7 @@
       <th scope="row" style="text-align: center;" >{{ index + 1 }}</th>
       <td style="text-align: center;">{{ item.em_name }}</td>
       <td style="text-align: center;">{{ item.total_test }}</td>
-      <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">ดูสถิติการทดสอบ</button></td>
+      <td style="text-align: center;"><button type="button" class="btn btn-sm btn-primary" @click="Fitter(item.em_id)">{{ $t("table_history_button") }}</button></td>
     </tr>
   </tbody>
   <tbody v-else>
