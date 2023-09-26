@@ -3,7 +3,7 @@
     "language": "Language",
     "courses": "หลักสูตรทั้งหมด",
     "exam": "ฝึกทำข้อสอบ",
-    "appointment": "นัดหมาย",
+    "appointmentxx": "นัดหมาย",
     "message": "嗨 i18n !!",
     "article": {
       "title": "快速上手",
@@ -61,7 +61,11 @@
     "page_course": "หลักสูตรทั้งหมด",
     "page_exam": "ฝึกทำข้อสอบ",
     "page_appoint": "นัดหมาย",
-    "logout": "ออกจากระบบ"
+    "logout": "ออกจากระบบ",
 
-  
+    "page_register": "สมัครสมาชิก",
+    "page_register_login": "คุณยังไม่มีบัญชีเข้าสู่ระบบ ?",
+    "page_register_acc": "ยอมรับข้อกำหนดและนโยบายความเป็นส่วนตัว"
+
+    
 }

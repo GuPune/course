@@ -4,9 +4,9 @@
     <div class="col-xl-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">Sing Up</h5>
-          <p class="login__description">Already have an account? <a href="#" data-bs-toggle="modal"
-              data-bs-target="#registerModal">Log In</a></p>
+          <h5 class="login__title">{{ $t("page_register") }}</h5>
+          <p class="login__description">{{ $t("page_register_login") }} <a href="#" data-bs-toggle="modal"
+              data-bs-target="#registerModal"></a></p>
         </div>
         <form action="#">
          <div class="row">
@@ -110,8 +110,7 @@
 
           <div class="login__form d-flex justify-content-between flex-wrap gap-2">
             <div class="form__check">
-               <input id="accept_pp" type="checkbox" v-model="stores.form.accp"> <label for="accept_pp">Accept the
-                Terms and Privacy Policy</label>
+               <input id="accept_pp" type="checkbox" v-model="stores.form.accp"> <label for="accept_pp">{{ $t("page_register_acc") }}</label>
             </div>
           </div>
             <span class="text-xs text-red-500" style="color:red" v-if="v$.accp.$error">{{ v$.accp.$errors[0].$message

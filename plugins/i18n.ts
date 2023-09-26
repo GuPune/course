@@ -1,6 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import en from '../locales/en.json'
 import th from '../locales/th.json'
+import la from '../locales/la.json'
 
 
  export default defineNuxtPlugin(({ vueApp }) => {
@@ -10,7 +11,8 @@ import th from '../locales/th.json'
      locale: 'th',
      messages: {
       en,
-      th
+      th,
+      la
      }
    })
 

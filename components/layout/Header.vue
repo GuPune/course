@@ -33,9 +33,9 @@
                       </a>
                     </li>
                     <li>
-                      <nuxt-link to="/appointment">{{
-                        $t("appointment")
-                      }}</nuxt-link>
+                      <nuxt-link to="/appointment">
+                      {{ $t("appointmentxx")}}
+                      </nuxt-link>
                     </li>
                   </ul>
                 </nav>
@@ -174,7 +174,7 @@
                 </li>
                 <li class="menu-item-has-children">
                   <nuxt-link to="/appointment">{{
-                    $t("appointment")
+                    $t("appointmentxx")
                   }}</nuxt-link>
                 </li>
               </ul>
@@ -284,5 +284,6 @@ const { locale, setLocale } = useI18n();
 
 const changeLocale = (newLocale) => {
   locale.value = newLocale;
+   console.log(locale.value);
 };
 </script>
