@@ -223,7 +223,7 @@ const format_start = (date) => {
 };
 
 const format = (item) => {
-  return moment(item).format("YYYY-MM-DD HH:SS");
+   return moment(item).utc().format("DD/MM/YYYY HH:ss");
 };
 
 </script>
