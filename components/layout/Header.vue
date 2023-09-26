@@ -284,6 +284,5 @@ const { locale, setLocale } = useI18n();
 
 const changeLocale = (newLocale) => {
   locale.value = newLocale;
-   console.log(locale.value);
 };
 </script>
