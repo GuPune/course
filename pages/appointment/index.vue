@@ -248,15 +248,21 @@ import moment from "moment";
 import Swal from "sweetalert2";
  import SelectAppoint from '@/components/appointment/SelectAppoint.vue';
 
+
 const auth = useAuthStore();
 const store = AppointmentsStore();
 const route = useRoute();
 const profile = await auth.getProfile();
+store.form.date_event = moment().startOf('month').format('YYYY-MM-DD');
 await store.fetchApppoint()
 const { FormSearch } = storeToRefs(store);
 
 
 const date = ref(new Date());
+
+
+
+
 const choose = async (item) => {
   const profile = await auth.SelectProfile(item);
 };
@@ -324,7 +330,20 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, FormSearch);
 
 const find = async () => {
-  store.fetchApppoint();
+
+  if(store.FormSearch.date_event == null){
+        Swal.fire({
+      title: "ไม่สำเร็จ!",
+      text: "กรอกข้อมูลค้นหาให้ครบถ้วน!",
+      icon: "error",
+    });
+
+  }else {
+    store.fetchApppoint();
+  }
+
+
+  
 };
 
 

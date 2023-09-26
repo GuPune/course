@@ -22,7 +22,7 @@ export const AppointmentsStore = defineStore({
       ap_learn: null,
     },
     form: {
-      date_event: '2023-09-05',
+      date_event:null,
       ap_learn_type: 1,
       dlt_code: 'A1'
     },
@@ -106,7 +106,7 @@ export const AppointmentsStore = defineStore({
       const savereve = {user_id:this.user_id,ap_id:this.ap_id}
       try {
         const data = await ApiService.post('/appointment/reserve/create', savereve).then(response => {
-        console.log(response);
+     
         });
         return true
       } catch (error) {
@@ -146,7 +146,6 @@ export const AppointmentsStore = defineStore({
       
       try {
         const data = await ApiService.post('/appointment/list', appdata).then(response => {
-          console.log(response);
           if (response.data.length > 0) {
             this.appgroup = response.data;
             let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)

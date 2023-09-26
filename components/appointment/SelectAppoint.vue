@@ -21,14 +21,14 @@
                   </div>
                   <div class="ms-5">
                     <h3>{{ store.appointment.dlt_des }}</h3>
-                    <p class="m-0">{{ store.appointment.ap_learn }}</p>
-                    <p class="m-0">Date: 05/09/2566 - 06/09/2566</p>
-                    <p>Sign: 2/5</p>
-                    <button class="btn border">see more</button>
+                    <p class="m-0">ประเภทนัดหมาย : {{ store.appointment.ap_learn }}</p>
+                    <p class="m-0">Date: {{store.form.date_event}}</p>
+                    <p>รอบทั้งหมด: {{store.appgroup.length}}</p>
+                 
                   </div>
                 </div>
                 <div class="border-top">
-                  <p class="mb-0 mt-2">Section:</p>
+                  <p class="mb-0 mt-2">รอบนัดหมาย:</p>
                   <div class="btnContainer container">
                     <li
                       v-for="(item, index) in store.appgroup"
