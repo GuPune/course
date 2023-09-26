@@ -64,12 +64,7 @@
     <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
         <div class="gridarea__img">
             <a><img :src="coverimage(item.course_cover)" alt="grid"></a>
-            <!-- <div class="gridarea__small__button">
-                <div class="grid__badge">Data & Tech</div>
-            </div>
-            <div class="gridarea__small__icon">
-                <a href="#"><i class="icofont-heart-alt"></i></a>
-            </div> -->
+         
 
         </div>
         <div class="gridarea__content">
@@ -102,13 +97,13 @@
                         </div>
                     </a>
 
-                    <div class="gridarea__star">
+                    <!-- <div class="gridarea__star">
                         <i class="icofont-star"></i>
                         <i class="icofont-star"></i>
                         <i class="icofont-star"></i>
                         <i class="icofont-star"></i>
                         <span>(44)</span>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="gridarea__details">

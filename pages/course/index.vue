@@ -14,7 +14,7 @@
                   </div>
                   <div class="breadcrumb__inner">
                       <ul>
-                          <li><a href="index.html">{{ $t("home") }}</a></li>
+                          <li><a>{{ $t("home") }}</a></li>
                           <li>{{ $t("page_course") }}</li>
                       </ul>
                   </div>

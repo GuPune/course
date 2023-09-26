@@ -9,6 +9,7 @@ export const CoursePostStore = defineStore({
     coursecategories:[],
     listcourse:[],
     lessonlist:[],
+    total:null,
     formsearchcourse: {
       page: 1,
       per_page: 10,
@@ -53,9 +54,10 @@ export const CoursePostStore = defineStore({
 
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
+
+      this.total = response.data.total_filter
       this.coursecategories = response.data.data 
       this.listcourse = response.data.data
-
      this.fetchlesson();
   
      });
