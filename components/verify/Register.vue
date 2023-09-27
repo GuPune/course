@@ -208,6 +208,7 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
+import Swal from "sweetalert2";
 
 const router = useRouter();
 const store = VerifyStore();
@@ -217,6 +218,7 @@ const { getUser_id } = storeToRefs(store);
 const { Zipcode } = VerifyStore();
 const { Country } = VerifyStore();
 const { SendOtp } = VerifyStore();
+const { SaveUserVerify } = VerifyStore();
 
 store.formdetail.user_id = auth.user_id;
 await store.Zipcode();
@@ -254,9 +256,21 @@ const v$ = useVuelidate(rules, getForm);
 const sendotp = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
-    const sendotp = await SendOtp();
-    if (sendotp == true) {
+    const savedetail = await SaveUserVerify();
+    if (savedetail == true) {
+     await SendOtp()
       router.push("/otpconfirm");
+    }else {
+      await Swal.fire({
+  position: 'top-end',
+  icon: "error",
+  title: "ไม่สำเร็จ บัตรประชาชนอาจจะซ้ำ!",
+  showConfirmButton: false,
+  timer: 1500
+})
+
+
+
     }
   }
 };

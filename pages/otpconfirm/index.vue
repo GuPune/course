@@ -70,8 +70,6 @@ const confirm = async () => {
     }
     if(store.otpisactive == true){
      let send = await verifyOTP();
-
-     console.log(send);
      if(send == true){
         router.push('/');
      }else {

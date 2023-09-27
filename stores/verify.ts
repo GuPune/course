@@ -13,7 +13,7 @@ export const VerifyStore = defineStore({
     user_id: null,
     imagelist:null,
     formdetail: {
-      verify_account: 'y',
+      verify_account: 'n',
       identification_number: null,
       user_img: null,
       user_birthday: null,
@@ -69,7 +69,6 @@ export const VerifyStore = defineStore({
 
     async SendOtp() {
       let upload = await this.UploadfileProfile()
-     await localStorage.setItem('formverify', JSON.stringify(this.formdetail));
       const data = await ApiService.get('/user/otp/' + this.formdetail.user_id).then(response => {
         
       });
@@ -83,8 +82,9 @@ export const VerifyStore = defineStore({
         if (response.data == '') {
           return false;
         } else {
+          this.formdetail.verify_account = 'y';
           let saveuser =  this.SaveUserVerify()
-          this.delay(500);
+      //    this.delay(500);
         //  console.log(saveuser);
           return saveuser;
         }
@@ -104,17 +104,20 @@ export const VerifyStore = defineStore({
     async SaveUserVerify() {
 
        let upload = await this.UploadfileProfile()
+       try {
+        const updateuser = await ApiService.post('/user/detail/create', this.formdetail).then(response => {
 
-      let fort = localStorage.getItem('formverify', JSON.stringify(this.formdetail));
-  
-       const updateuser = await ApiService.post('/user/detail/create', fort).then(response => {
-        localStorage.removeItem('formverify');
+       
+        
         return true;
-       })
-      // console.log(updateuser);
-      // const updateuser =  ApiService.post('/user/detail/create', this.formdetail)
-      // const savedetail = await this.SaveDetails()
-     return updateuser;
+        })
+        return updateuser
+      } catch (error) {
+      
+       return false;
+      }
+
+   //  return updateuser;
     },
 
 
@@ -126,6 +129,7 @@ export const VerifyStore = defineStore({
         try {
           const data = await ApiService.upload('/media_file/upload/file', formData);
           this.formdetail.user_img = data.data[0].path
+          console.log();
           return true;
         } catch (error) {
           return false;
