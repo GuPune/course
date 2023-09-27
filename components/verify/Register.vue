@@ -30,7 +30,7 @@
                       'border-[#42d392] ': !v$.identification_number.$invalid,
                     }"
                     @change="v$.identification_number.$touch"
-                    autocomplete="off"
+                    autocomplete="off" @input="onInput"
                   />
                 </div>
               </div>
@@ -260,6 +260,10 @@ const sendotp = async () => {
     }
   }
 };
+
+const onInput = async (event) => {
+  store.formdetail.identification_number = event.target.value.replace(/\D/g, '');
+}
 
 const onFileChange = async (event) => {
   var input = event.target;
