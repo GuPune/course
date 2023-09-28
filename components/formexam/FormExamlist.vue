@@ -12,6 +12,9 @@
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
                       <i class="icofont-book-alt"></i> หลักสูตร : {{ store.em_name }} {{ store.total }} {{ store.t }}
                     </h4>
+                    <div class="timerCountdown">
+                      <p class="timeText">{{ store.hours }} : {{ store.minutes }} : {{store.seconds }}</p>
+                    </div>
                   </div>
                   <div class="col-xl-1 col-lg-1 col-sm-6">
                     <h6>
@@ -331,8 +334,26 @@ function coverimage(i) {
   border: unset !important;
 
 }
-
 #card-index {
   margin-right: 10px;
+}
+.timerCountdown {
+  visibility: hidden;
+}
+@media (max-width: 991px) {
+  .timerCountdown {
+    visibility: visible;
+    position: fixed;
+    right: 20px;
+    top: 120px;
+    background-color: black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-image: url("paper.gif");
+  }
+  .timeText {
+    margin-bottom: 0px;
+    color: white;
+  }
 }
 </style>
