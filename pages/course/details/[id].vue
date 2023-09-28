@@ -72,5 +72,9 @@
   import CourseAll from '@/components/layout/Courseall.vue';
   import CourseSel from '@/components/layout/CourseSel.vue';
 
+  definePageMeta({
+  middleware: "auth", // this should match the name of the file inside the middleware directory
+});
+
   </script>
   

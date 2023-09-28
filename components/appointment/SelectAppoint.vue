@@ -88,7 +88,7 @@
                               @click="resv(item.ap_id)"
                           
                             >
-                                  {{ item.ap_remark }}
+                            {{ format_app(item.format_app) }}
                             </button>
                           </div>
                           <div class="tooltip" v-if="store.showTooltip">
@@ -224,6 +224,10 @@ const format_start = (date) => {
 
 const format = (item) => {
    return moment(item).utc().format("DD/MM/YYYY HH:mm");
+};
+
+const format_app = (item) => {
+   return moment(item).utc().format("HH:mm");
 };
 
 </script>

@@ -64,10 +64,9 @@
   import Search from '@/components/layout/SearchCourse.vue';
   import CourseAll from '@/components/layout/Courseall.vue';
   import CourseSel from '@/components/layout/CourseSel.vue';
-
-definePageMeta({
-  middleware: 'guest' // this should match the name of the file inside the middleware directory 
-})
+  definePageMeta({
+  middleware: "auth", // this should match the name of the file inside the middleware directory
+});
 
   </script>
   
