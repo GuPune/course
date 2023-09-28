@@ -11,9 +11,12 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div>
                 <div class="contact__text">
-                  <h1> <i class="icofont-book-alt" > :</i>หลักสูตร : {{store.exam.em_name}} </h1>
+                  <div class="d-flex justify-content-between flex-wrap">
+                    <h1> <i class="icofont-book-alt" > :</i>หลักสูตร : {{store.exam.em_name}} </h1>
+                    <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">เริ่มต้นสอบใหม่</button></div>
+                  </div>
                   <div class="contact__email">
-                    <p style="font-size: 24px;">รายละเอียดข้อสอบ <span style="font-size: 16px;">( ปรับปรุงล่าสุด :  {{ coverttime(store.exam.udp_date) }})</span></p>
+                    <p style="font-size: 20px;">รายละเอียดข้อสอบ <span style="font-size: 16px;">( ปรับปรุงล่าสุด :  {{ coverttime(store.exam.udp_date) }})</span></p>
                   </div>
 
                   <div class="course-info">
@@ -37,20 +40,13 @@
                 </div>
               </div>
             </div>
-           
-            <div class="col-xl-2 aos-init aos-animate" data-aos="fade-up">
-              <div class="box-tools pull-right" style="text-align: right;">
-                <button type="button" class="btn btn-success"  @click="reset()">เริ่มต้นสอบใหม่</button>
-                <p class="form-messege"></p>
-              </div>
-            </div>
           </div>
           <hr>
-
+              <h4 class="mb-5">เฉลยการทดสอบ</h4>
               <div v-if="store.examination" v-for="(item, index) in store.examination">
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h2> ข้อ. {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h2>
+                    <h4 class="mb-0"> ข้อ. {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h4>
                   </ul>
                 </div>
              
@@ -377,7 +373,18 @@ function coverttime(date) {
   font-size: 50px;
   color: aqua;
 }
-@media (min-width: 600px) {
+@media (min-width: 1080px) {
+  .course-info { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 1080px) {
   .course-info { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .course-info { grid-template-columns: repeat(1, 1fr); }
+}
+@media (max-width: 410px) {
+  .btnRestart{
+    width: 100%;
+  }
 }
 </style>

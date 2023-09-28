@@ -63,7 +63,7 @@
                                 <div class="modal-body">
         <div class="row">
 
-                 <div class="col-xs-12">
+                 <div class="col-xs-12 howtoText">
                 
 
 <!-- <img src="image_system/navigate.PNG" style='height:100%; width:100%;' /> -->
@@ -213,5 +213,34 @@ onUnmounted(() => {
   button {
     margin-top: 10px;
   }
-  
+  @media screen and (max-width : 766px) {
+    .modal-content {
+      width: 60% !important;
+    }
+  }
+  @media screen and (max-width : 638px) {
+    .howtoText {
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width : 574px) {
+    .modal-content {
+      width: 70% !important;
+    }
+  }
+  @media screen and (max-width : 480px) {
+    .modal-content {
+      padding: 10px !important;
+    }
+  }
+  @media screen and (max-width : 407px) {
+    .modal-content {
+      width: 80% !important;
+    }
+  }
+  @media screen and (max-width : 373px) {
+    .howtoText {
+      font-size: 10px;
+    }
+  }
   </style>
