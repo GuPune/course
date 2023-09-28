@@ -164,7 +164,22 @@ export const useAuthStore = defineStore('auth', {
      
       }
     },
+    async authenticateUserMoiblex() {
+ const token = useCookie('token'); // useCookie new hook in nuxt 3
+ const user_id = useCookie('user_id'); // useCookie new hook in nuxt 3
+ token.value = "ZeBuphebrltl3uthIFraspubroST80Atr9tHuw5bODowi26p"; // set token to cookie
+ user_id.value = this.user_id; // set token to cookie
+ let user =  await this.getProfile()
 
+   if(user == true){
+    this.authenticated = true; // set authenticated  state value to true
+    this.status_login = true;
+    return true;
+   }else {
+    return false;
+   }
+
+    },
 
     async authenticateUserMoible() {
       // useFetch from nuxt 3
@@ -180,7 +195,7 @@ export const useAuthStore = defineStore('auth', {
       this.status_login = true;
       this.user_id = response.data.user_id;
      }
-     console.log();
+  
           return true;
         });
         await this.getProfile();
