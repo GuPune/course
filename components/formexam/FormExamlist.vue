@@ -7,6 +7,7 @@
           <div class="row">
             <div class="col-xl-8 col-lg-8">
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
+               
                 <div class="row">
                   <div class="col-xl-11 col-lg-11 col-sm-6">
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
@@ -22,19 +23,28 @@
                     </h6>
                   </div>
                 </div>
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
-                  <ul style="width: 100%">
-                    <h2> ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</h2>
-                  </ul>
+             
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name">
+                
+
+                      <div id="้howto">
+              
+                      <span id="้howto-text"  class="scrollbar">ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</span>
+                       <div class="force-overflow"></div>
+                        <span v-if="x.eq_image">     <img :src="coverimage(x.eq_image)" alt="sidbar"  width="80" height="100"/></span>
+                    </div>
                 </div>
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="choice-container">
+
+                
+                <div class="course__details__wraper aos-init aos-animate " data-aos="fade-up" id="choice-container">
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }"
                     style="border-style: groove;" @click="choosechoice(a.ec_id, index)" id="choice-card">
                     <div id="choice">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span id="choice-text">{{ a.ec_name }}</span>
-                        <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
+                      <span id="choice-text"  class="scrollbar">{{ a.ec_name }}</span>
+                       <div class="force-overflow"></div>
+                        <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="100"/></span>
                     </div>
                   </ul>
                 </div>
@@ -60,7 +70,7 @@
                   <li>
                     <div class="recent__img">
                       <a href="#">
-                        <img src="../../assets/img/blog/blog_11.png" alt="sidbar" />
+                         <img :src="coverimage(auth.formdetail.user_img )" alt="sidbar"  width="80" height="100"/>
                       </a>
                     </div>
                     <div class="recent__text">
@@ -273,6 +283,24 @@ function coverimage(i) {
   }
 }
 
+
+#้howto {
+  border-radius: 20px;
+  padding: 10px 10px 15px 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #040604;
+  transition-duration: 0.4s;
+  display: flex;
+  width: 100%;
+  #้howto-text {
+    width: 100%;
+  }
+}
+
+
+
+
 #choice:hover {
   background-color: #4CAF50;
   /* Green */
@@ -299,6 +327,8 @@ function coverimage(i) {
   transition-duration: 0.4s;
   display: flex;
 }
+
+
 
 .answer-choice {
   background-color: rgb(247, 247, 247);
@@ -340,6 +370,18 @@ function coverimage(i) {
 .timerCountdown {
   visibility: hidden;
 }
+
+
+
+.scrollbar {
+    width: 300px; /* Set the width of the container */
+    height: 100px; /* Set the height of the container */
+    overflow: auto; /* Enable scrolling for content exceeding the container's dimensions */
+    border: 1px solid #ccc; /* Optional: Add a border for better visualization */
+    padding: 10px; /* Optional: Add padding to the content inside the container */
+    font-size: 20px;
+}
+
 @media (max-width: 991px) {
   .timerCountdown {
     visibility: visible;

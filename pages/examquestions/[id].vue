@@ -163,8 +163,14 @@ const Same = async () => {
    }
 };
 
+console.log(store.exam_complete);
+
+if(store.exam_complete == 0){
+  store.isstart = true;
+}
 // ล้างไทเมอร์เมื่อออกจากเส้นทาง
 onBeforeRouteLeave((to, from, next) => {  
+ // store.isstart = true;
    store.clearTimer()
   next();
 });
