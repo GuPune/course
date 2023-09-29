@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="col-xl-4 col-lg-4">
-              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate exam-timmer" data-aos="fade-up">
                 <ul class="course__details__populer__list">
                   <li>
                     <p style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{
@@ -70,7 +70,7 @@
                   <li>
                     <div class="recent__img">
                       <a href="#">
-                         <img :src="coverimage(auth.formdetail.user_img )" alt="sidbar"  width="80" height="100"/>
+                         <img :src="coverimage(auth.formdetail.user_img )" alt="sidbar" id="user-icon"  width="80" height="100"/>
                       </a>
                     </div>
                     <div class="recent__text">
@@ -265,7 +265,9 @@ function coverimage(i) {
   flex-wrap: wrap;
   justify-content: center;
   align-items: unset !important;
-
+}
+#choice-container > ul {
+  overflow: hidden;
 }
 
 #choice {
@@ -370,16 +372,37 @@ function coverimage(i) {
 .timerCountdown {
   visibility: hidden;
 }
-
-
-
+#user-icon{
+  max-width: 100px;
+  border-radius: 50px;
+  object-fit: fill;
+}
+.recent__img {
+  display: flex;
+  justify-content: center;
+}
 .scrollbar {
     width: 300px; /* Set the width of the container */
     height: 100px; /* Set the height of the container */
-    overflow: auto; /* Enable scrolling for content exceeding the container's dimensions */
-    border: 1px solid #ccc; /* Optional: Add a border for better visualization */
+    overflow-y: scroll; /* Enable scrolling for content exceeding the container's dimensions */
     padding: 10px; /* Optional: Add padding to the content inside the container */
-    font-size: 20px;
+    font-size: 18px;
+    margin-right: 5px;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 100px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(179, 179, 179);
+  border-radius: 100px;
+}
+@media (max-width: 500px) {
+  #choice-text {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -392,6 +415,9 @@ function coverimage(i) {
     padding: 5px 10px;
     border-radius: 10px;
     background-image: url("paper.gif");
+  }
+  .exam-timmer {
+    display: none;
   }
   .timeText {
     margin-bottom: 0px;
