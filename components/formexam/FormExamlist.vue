@@ -389,6 +389,9 @@ function coverimage(i) {
     font-size: 18px;
     margin-right: 5px;
 }
+#choice:hover > .scrollbar::-webkit-scrollbar-thumb {
+  background-color: white;
+} 
 .scrollbar::-webkit-scrollbar {
   width: 6px;
 }
