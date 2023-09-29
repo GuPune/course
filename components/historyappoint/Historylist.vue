@@ -5,7 +5,7 @@
         <tr>
           <th scope="col" style="text-align: center">{{ $t("table_id") }}</th>
           <th scope="col" style="text-align: center">{{ $t("table_dlt") }}</th>
-          <th scope="col" style="text-align: center">{{ $t("table_remark") }}</th>
+          <!-- <th scope="col" style="text-align: center">{{ $t("table_remark") }}</th> -->
           <th scope="col" style="text-align: center">{{ $t("table_type_app") }}</th>
           <th scope="col" style="text-align: center">{{ $t("table_time") }}</th>
           <th scope="col" style="text-align: center">{{ $t("table_action") }}</th>
@@ -14,13 +14,15 @@
 
       <tbody v-if="store.reserve.length > 0">
         <tr v-for="(item, index) in store.reserve">
+
+          
           <th scope="row" style="text-align: center">{{ index + 1 }}</th>
           <td style="text-align: center">
             {{ item.appointment_detail.dlt_code }}
           </td>
-          <td style="text-align: center">
+          <!-- <td style="text-align: center">
             {{ item.appointment_detail.ap_remark }}
-          </td>
+          </td> -->
           <td style="text-align: center">
             <li v-if="item.appointment_detail.ap_learn_type == 1">
           <span>ทฤษฎี</span>
@@ -90,8 +92,7 @@ store.checkpopupdel(ap,ar);
 
 
 const format = (item) => {
- 
-  return moment(item).format("YYYY-MM-DD HH:SS");
+  return moment(item).format("YYYY-MM-DD HH:mm");
 };
 
 
