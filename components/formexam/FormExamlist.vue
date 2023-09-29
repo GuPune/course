@@ -75,21 +75,21 @@
                     </div>
                     <div class="recent__text">
                       <div class="recent__date">
-                        <a>ชื่อจริง: {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</a>
+                        <a>{{ $t("page_exam_name") }}: {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</a>
                       </div>
                       <div class="recent__date">
-                        <a>รหัสบัตร ประชาชน:  {{auth.formdetail.identification_number}}</a>
+                        <a>{{ $t("page_exam_code") }} {{ $t("page_exam_person") }}:  {{auth.formdetail.identification_number}}</a>
                       </div>
                       <div class="recent__date">
-                        <a>สถานะการทำข้อสอบ: ทดลองสอบ</a>
+                        <a>{{ $t("page_exam_status") }}: ทดลองสอบ</a>
                       </div>
                     </div>
                   </li>
                 </ul>
                 <div class="populer__tag__list">
                   <ul>
-                    <li style="width: 47%" @click="example();" class="exma"><a>วิธีทำ</a></li>
-                    <li style="width: 47%" class="send" @click="send();"><a>สรุป/ส่งคำตอบ</a></li>
+                    <li style="width: 47%" @click="example();" class="exma"><a>{{ $t("page_exam_t") }}</a></li>
+                    <li style="width: 47%" class="send" @click="send();"><a>{{ $t("page_exam_send") }}</a></li>
                   </ul>
                 </div>
                 <hr />
