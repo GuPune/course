@@ -195,6 +195,21 @@
                             </ul>
                         </div>
                     </div> -->
+
+                    <div class="single-mobile-curr-lang">
+                   
+
+                        <div class="btn-group">
+
+  <a class="mobile-language-active" href="#"  data-bs-toggle="dropdown" aria-expanded="false">เลือกภาษา <i class="icofont-thin-down"></i></a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"  @click="changeLocale('la')">{{ $t("lan_loas") }}</a></li>
+    <li><a class="dropdown-item" href="#"  @click="changeLocale('en')">{{ $t("lan_eng") }}</a></li>
+   
+    
+  </ul>
+</div>         
+                    </div>
           <div v-if="authenticated">
             <div class="single-mobile-curr-lang">
               <li><a @click="GotoPage('/profile')">{{ $t("account") }}</a></li>
