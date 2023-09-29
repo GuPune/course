@@ -83,6 +83,25 @@
                                 </div>
                             </div>
   </div>
+
+
+  <div v-if="store.PopupImage" class="modal">
+<div class="modal-content" id="deleteConformationLabel">
+ <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12 howtoText img-responsive-height">
+                  <img :src="coverimage(store.image)"  width="700" height="400" id="howto-img" />
+                </div>
+            </div>
+      </div>
+
+      <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-remove="task" @click="closeModal()">ปิด</button>
+                                </div>
+                             
+                            </div>
+  </div>
+
   </template>
   <script lang="ts" setup>
  definePageMeta({
@@ -99,6 +118,8 @@ import { useRoute } from "vue-router";
 import { onBeforeRouteLeave } from 'vue-router';
 import { onMounted, onUnmounted } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
+import ApiService from '@/services/api.service';
+
 const auth = useAuthStore()
 const storeexam = ExamPostStore()
 const store = ExamTestPostStore()
@@ -135,6 +156,13 @@ const HideModal = async () => {
 store.isActive = false;
 };
 
+function coverimage(i) {
+    let im =  ApiService.image(i);
+  return im;
+}
+const closeModal = async () => {
+  store.PopupImage = false;
+};
 
 const Start = async () => {
   store.isstart = false;
@@ -163,7 +191,7 @@ const Same = async () => {
    }
 };
 
-console.log(store.exam_complete);
+
 
 if(store.exam_complete == 0){
   store.isstart = true;
@@ -241,7 +269,7 @@ onUnmounted(() => {
   }
   @media screen and (max-width : 407px) {
     .modal-content {
-      width: 80% !important;
+      width: 100% !important;
     }
   }
   @media screen and (max-width : 373px) {
@@ -249,4 +277,15 @@ onUnmounted(() => {
       font-size: 10px;
     }
   }
+
+  .img-responsive-height
+{
+  display: block;
+  /* width: 100%; */
+  max-height: 100%
+}
+#howto-img {
+  width: 100%;
+  object-fit: cover;
+}
   </style>

@@ -31,20 +31,20 @@
               
                       <span id="้howto-text"  class="scrollbar">ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</span>
                        <div class="force-overflow"></div>
-                        <span v-if="x.eq_image">     <img :src="coverimage(x.eq_image)" alt="sidbar"  width="80" height="100"/></span>
+                        <span v-if="x.eq_image"  @click="imagemodal(x.eq_image)">     <img :src="coverimage(x.eq_image)" alt="sidbar"  width="80" height="100"/></span>
                     </div>
                 </div>
 
                 
                 <div class="course__details__wraper aos-init aos-animate " data-aos="fade-up" id="choice-container">
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }"
-                    style="border-style: groove;" @click="choosechoice(a.ec_id, index)" id="choice-card">
+                    style="border-style: groove;" id="choice-card">
                     <div id="choice">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span id="choice-text"  class="scrollbar">{{ a.ec_name }}</span>
+                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index)">{{ a.ec_name }}</span>
                        <div class="force-overflow"></div>
-                        <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="100"/></span>
+                        <span v-if="a.ec_image" @click="imagemodal(a.ec_image)"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="100"/></span>
                     </div>
                   </ul>
                 </div>
@@ -154,6 +154,7 @@ const { Next } = ExamTestPostStore(); //Action
 const { Previod } = ExamTestPostStore(); //Action
 
 const router = useRouter();
+
 function image(i) {
   let im = ApiService.image(i);
   return im;
@@ -168,6 +169,14 @@ const choosechoice = async (choices, index) => {
 const example = async () => {
   store.isActive = true;
 };
+
+const imagemodal = async (image) => {
+
+  store.image = image;
+  store.PopupImage = true;
+};
+
+
 
 
 
