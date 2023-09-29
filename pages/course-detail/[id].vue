@@ -69,7 +69,7 @@
                 <div class="course__button"></div>
                 <div class="course__date">
                   <p>
-                    Last Update:<span> {{ coverttime(item.udp_date) }}</span>
+                    {{ $t("page_course_last_lesson") }}<span> {{ coverttime(item.udp_date) }}</span>
                   </p>
                 </div>
               </div>
@@ -85,18 +85,8 @@
               >
                 <ul>
                   <li>
-                    <div class="course__details__date">
-                      <i class="icofont-book-alt"></i> 23 Lesson
-                    </div>
-                  </li>
-                  <li>
-                    <div class="course__star">
-                      <i class="icofont-star"></i>
-                      <i class="icofont-star"></i>
-                      <i class="icofont-star"></i>
-                      <i class="icofont-star"></i>
-                      <i class="icofont-star"></i>
-                      <span>(44)</span>
+                    <div class="course__details__date" v-if="item.lesson.length > 0">
+                      <i class="icofont-book-alt"></i> {{ item.lesson.length }} {{ $t("page_course_last_lesson") }}
                     </div>
                   </li>
                 </ul>
@@ -126,7 +116,7 @@
                           aria-selected="true"
                           role="tab"
                         >
-                          <i class="icofont-book-alt"></i>Description
+                          <i class="icofont-book-alt"></i>{{ $t("page_course_last_description") }}
                         </button>
                       </li>
                     </ul>
@@ -169,8 +159,8 @@
                           <div class="row justify-content-center">
                             <vue3VideoPlay
                               width="100%"
-                              title="钢铁侠"
-                              :src="options.src"
+                              title="Video"
+                              :src="x.cs_video"
                               :poster="options.poster"
                               @play="onPlay"
                               @pause="onPause"
@@ -184,7 +174,7 @@
                               class="col-lg-3 d-flex justify-content-center align-items-center"
                             >
                               <div class="single__expart__teacher">
-                                <div class="teacher__img mb-0">
+                                <div class="teacher__img mb-0" v-if="x.cs_cover">
                                   <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
 
                                   <img
@@ -196,12 +186,6 @@
                               </div>
                             </div>
                             <div class="col-lg-9 col--30">
-                              <!-- <div class="single__expart__teacher">
-                                                                <div class="teacher__img">
-                                                                    <img src="../../assets/img/grid/cart1.jpg" alt="author">
-                                                                </div>
-                                                            </div> -->
-
                               <div
                                 class="author__content"
                                 style="margin: 30px 0"
@@ -209,7 +193,7 @@
                                 <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
                                     <p class="fs-4 fw-bold mb-0">
-                                      บทเรียนที่ {{ index + 1 }}
+                                      {{ $t("page_course_last_lesson") }} {{ index + 1 }}
                                     </p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
@@ -220,7 +204,7 @@
                                 </div>
                                 <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
-                                    <p class="mb-0">รายละเอียด</p>
+                                    <p class="mb-0">{{ $t("page_course_last_description") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     <p class="mb-0">{{ x.cs_description }}</p>
@@ -229,7 +213,7 @@
                                 <hr />
                                 <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
-                                    <p class="mb-0">วิทยากร</p>
+                                    <p class="mb-0">{{ $t("page_course_user_create") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     <p class="mb-0">{{ x.user_create }}</p>
@@ -237,7 +221,7 @@
                                 </div>
                                 <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
-                                    <p class="mb-0">วันที่สร้าง</p>
+                                    <p class="mb-0">{{ $t("page_course_date") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     <p class="mb-0">

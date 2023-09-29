@@ -65,7 +65,24 @@
 
     "page_register": "สมัครสมาชิก",
     "page_register_login": "คุณยังไม่มีบัญชีเข้าสู่ระบบ ?",
-    "page_register_acc": "ยอมรับข้อกำหนดและนโยบายความเป็นส่วนตัว"
+    "page_register_acc": "ยอมรับข้อกำหนดและนโยบายความเป็นส่วนตัว",
+    "page_course_last_update": "อัพเดทล่าสุด",
+    "page_course_last_lesson": "บทเรียน :",
+    "page_course_last_description": "รายละเอียด",
+    "page_course_user_create": "ผู้สร้าง",
+    "page_course_date": "วันที่สร้าง",
+    "page_exam_bt": "เริ่มต้นทดสอบ",
 
-    
+    "page_exam_course": "หลักสูตร",
+    "page_exam_answer": "เฉลยการทดสอบ",
+    "page_exam_begin": "เริ่มต้นสอบใหม่",
+    "page_exam_name": "ชื่อ",
+    "page_exam_code": "รหัสบัตร",
+    "page_exam_person": "ประชาชน",
+    "page_exam_status": "สถานะการทำข้อสอบ",
+    "page_exam_t": "วิธีทำ",
+    "page_exam_send": "ส่งคำตอบ",
+    "page_exam_detail": "รายละเอียดข้อสอบ"
+
 }
+

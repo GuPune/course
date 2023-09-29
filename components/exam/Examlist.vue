@@ -34,16 +34,13 @@
                                 </a>
 
                                 <div class="gridarea__star">
-                                    <i class="icofont-star"></i>
-                                    <i class="icofont-star"></i>
-                                    <i class="icofont-star"></i>
-                                    <i class="icofont-star"></i>
-                                    <span>(44)</span>
+                                    
+                                    <span>({{ item.total_question }})</span>
                                 </div>
                             </div>
                             <div class="gridarea__bottom">
                                 <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item.em_id)">
-                                    เริ่มต้นทดสอบ</button>
+                                    {{ $t("page_exam_bt") }}</button>
                             </div>
                         </div>
                     </div>
