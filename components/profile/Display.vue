@@ -15,7 +15,7 @@
                   <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
                 </div>
                 <div class="blogsidebar__content__wraper__2">
-                  <h4 class="sidebar__title">ประเภทใบขับขี่</h4>
+                  <h4 class="sidebar__title">{{ $t("page_profile_type_dlt") }}</h4>
                   <ul class="categorie__list">
                     <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)">
                       <div class="row typecard">

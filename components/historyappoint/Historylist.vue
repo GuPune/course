@@ -25,10 +25,10 @@
           </td> -->
           <td style="text-align: center">
             <li v-if="item.appointment_detail.ap_learn_type == 1">
-          <span>ทฤษฎี</span>
+          <span>{{ $t("page_profile_type_test_y") }}</span>
             </li>
               <li v-else>
-          <span>ปฏิบัติ</span>
+          <span>{{ $t("page_profile_typepage_profile_type_test_n") }}</span>
             </li>
           </td>
           <td style="text-align: center">

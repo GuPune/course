@@ -23,12 +23,12 @@
                     {{ item.mr_score }}
                   </td>
                   <td style="text-align: center" v-if="item.mr_learn_type">
-                    <span v-if="item.mr_learn_type == 1">ทฤษฎี</span>
-                    <span v-else>ปฏิบัติ</span>
+                    <span v-if="item.mr_learn_type == 1">{{ $t("page_profile_type_test_y") }}</span>
+                    <span v-else>{{ $t("page_profile_typepage_profile_type_test_n") }}</span>
                   </td>
                   <td style="text-align: center">
-                      <span v-if="item.mr_status == 'pass'">ผ่าน</span>
-                    <span v-else>ไม่ผ่าน</span>
+                      <span v-if="item.mr_status == 'pass'">{{ $t("page_type_test_pass") }}</span>
+                    <span v-else>{{ $t("page_type_test_fail") }}</span>
                   </td>
                   <td style="text-align: center">
                     {{ item.dlt_description }}
@@ -41,7 +41,7 @@
               <tbody v-else>
                 <tr>
                   <td colspan="6" class="center" style="text-align: center">
-                    No data available
+                    {{ $t("page_no_data") }}
                   </td>
                 </tr>
               </tbody>
@@ -51,7 +51,7 @@
                    <table class="table table-hover mb-0" v-else>
               <thead class="table-dark" >
                 <tr>
-                  <th scope="col" style="text-align: center"> ไม่มีข้อมูลการสอบ </th>
+                  <th scope="col" style="text-align: center"> {{ $t("page_no_data") }} </th>
                 </tr>
               </thead>
             </table>

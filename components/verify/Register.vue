@@ -5,12 +5,12 @@
         <div class="col-xl-12">
           <div class="contact__form__inner">
             <div class="contact__form__heading" data-aos="fade-up">
-              <h3 style="text-align: center">1-Step Verification</h3>
+              <h3 style="text-align: center">  {{ $t("page_verify_step1") }}</h3>
             </div>
             <div class="row">
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label">เลขบัตรประชาชน</label>
+                  <label class="form__label"> {{ $t("page_verify_iden") }}</label>
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
@@ -37,7 +37,7 @@
 
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label">วันเกิด</label>
+                  <label class="form__label">{{ $t("page_verify_day") }}</label>
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
@@ -92,7 +92,7 @@
 
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label">zipcode</label>
+                  <label class="form__label">  {{ $t("page_verify_zip") }}</label>
                   <select
                     class="form-control"
                     v-model="store.formdetail.location_id"
@@ -110,7 +110,7 @@
 
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label">country</label>
+                  <label class="form__label"> {{ $t("page_verify_county") }}</label>
                   <select
                     class="form-control"
                     v-model="store.formdetail.country_id"
@@ -133,7 +133,7 @@
                 >{{ v$.user_img.$errors[0].$message }}</span
               >
               <div class="form-group mb-4 mt-3">
-                <label for="exampleFormControlFile1">รูปโปรไฟล์</label>
+                <label for="exampleFormControlFile1"> {{ $t("page_verify_imagepro") }}</label>
                 <span
                   class="text-xs text-red-500"
                   style="color: red"
@@ -152,7 +152,7 @@
               </div>
               <div>
                 <div class="border rounded p-2 mt-3" id="showimg">
-                  <p>แสดงรูปตรงนี้:</p>
+                  <p> {{ $t("page_verify_display_image") }}:</p>
                   <template v-if="store.formdetail.user_img">
                     <div class="row">
                       <div id="image-container" class="col-md-3 col-sm-4 col-6">
@@ -180,7 +180,7 @@
                     name="submit"
                     @click="sendotp()"
                   >
-                    บันทึก
+                    {{ $t("page_exam_report_del_confirm") }}
                   </button>
                   <p class="form-messege"></p>
                 </div>

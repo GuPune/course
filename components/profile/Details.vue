@@ -92,32 +92,32 @@
                                     </div>
                                     <div class="gridarea__content py-2">
                                         <div class="gridarea__list row border-bottom">
-                                          <p class="col fw-bold ">หมายเลขบัตรประชาชน :</p>
+                                          <p class="col fw-bold ">{{ $t("page_profile_iden") }}</p>
                                           <p class="col">{{store.formdetail.identification_number}}</p>
                                         </div>
                                         <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold"> วันเกิด : </p>
+                                         <p class="col fw-bold">{{ $t("page_profile_day") }}</p>
                                          <p class="col">{{store.formdetail.user_birthday}}</p>
                                         </div>
                                         <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold"> รหัสไปรษณีย์ : </p>
+                                         <p class="col fw-bold">{{ $t("page_profile_zip") }}</p>
                                          <p class="col">{{store.formdetail.location.zipcode}}</p>
                                         </div>
                                         <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold"> แขวง : </p>
+                                         <p class="col fw-bold">{{ $t("page_profile_add_1") }}</p>
                                          <p class="col">{{store.formdetail.location.zipcode_name}}</p>
                                         </div>
                                         <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold"> ที่อยู่ : </p>
+                                         <p class="col fw-bold">{{ $t("page_profile_add_2") }}</p>
                                          <p class="col">{{store.formdetail.user_address}}</p>
                                         </div>
                                         <div class="gridarea__list row ">
-                                         <p class="col fw-bold"> สถานะ : </p>
+                                         <p class="col fw-bold">{{ $t("page_profile_status") }}</p>
                                          <div class="col " v-if="store.formdetail.verify_account == 'y'">
-                                          <span class="badge text-bg-success">ยืนยันตัวตน</span>
+                                          <span class="badge text-bg-success">{{ $t("page_profile_confirm") }}</span>
                                          </div>
                                          <div class="col" v-else>
-                                          <p><span class="badge text-bg-danger">ไม่ยืนยันตัวตน</span></p>
+                                          <p><span class="badge text-bg-danger">{{ $t("page_profile_no_confirm") }}</span></p>
                                          </div>
                                         </div>
                                

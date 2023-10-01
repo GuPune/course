@@ -6,11 +6,11 @@
         <div class="container height-100 d-flex justify-content-center align-items-center">
             <div class="position-relative">
                 <div class="card p-2 text-center">
-                    2-Step Verification
-                    <h6>Please enter the one time password <br> </h6>
+                    {{ $t("page_verify_step2") }}
+                    <h6>{{ $t("page_verify_one_time") }} <br> </h6>
                     <div> <span> sent to</span> <small>+1******4343</small> </div>
                     <span class="text-xs text-red-500" style="color:red"
-        v-if="store.otpisactive == false"> OTP ไม่ถูกต้อง รึ กรอกไม่ครบ</span>
+        v-if="store.otpisactive == false">{{ $t("page_verify_step3") }}</span>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
 
            
@@ -29,7 +29,7 @@
                         maxlength="1"  /> 
                     </div>
                 <div class="mt-4"> 
-                    <button class="btn btn-secondary w-100" @click="confirm()">VERIFY</button>
+                    <button class="btn btn-secondary w-100" @click="confirm()">{{ $t("page_verify_save") }}</button>
                  </div>
              
             </div>

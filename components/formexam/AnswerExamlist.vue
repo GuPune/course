@@ -12,29 +12,29 @@
               <div>
                 <div class="contact__text">
                   <div class="d-flex justify-content-between flex-wrap">
-                    <h1> <i class="icofont-book-alt" > :</i>หลักสูตร : {{store.exam.em_name}} </h1>
-                    <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">เริ่มต้นสอบใหม่</button></div>
+                    <h1> <i class="icofont-book-alt" ></i>{{ $t("page_exam_course_eq") }} {{store.exam.em_name}} </h1>
+                    <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">{{ $t("page_exam_report_begin") }}</button></div>
                   </div>
                   <div class="contact__email">
-                    <p style="font-size: 20px;">รายละเอียดข้อสอบ <span style="font-size: 16px;">( ปรับปรุงล่าสุด :  {{ coverttime(store.exam.udp_date) }})</span></p>
+                    <p style="font-size: 20px;">{{ $t("page_exam_report_details") }} <span style="font-size: 16px;">( {{ $t("page_exam_report_update") }}   {{ coverttime(store.exam.udp_date) }})</span></p>
                   </div>
 
                   <div class="course-info">
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-database-fill"></i></div>
-                      <p style="font-size: 20px;">รหัสหลักสูตร : <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_code}}</span></p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_code") }} <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_code}}</span></p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-boxes"></i></div>
-                      <p style="font-size: 20px;">จำนวนข้อสอบ : <br> <span style="font-size: 28px; font-weight: bold;">{{store.total}} ข้อ</span> </p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_total") }}  <br> <span style="font-size: 28px; font-weight: bold;">{{store.total}} ข้อ</span> </p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>
-                      <p style="font-size: 20px;">เวลาในการสอบ :<br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_time}}</span></p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_time}}</span></p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-check-circle"></i></div>
-                      <p style="font-size: 20px;">ได้คะแนน :<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
                     </div>
                   </div>
                 </div>
@@ -42,11 +42,11 @@
             </div>
           </div>
           <hr>
-              <h4 class="mb-5">เฉลยการทดสอบ</h4>
+              <h4 class="mb-5">{{ $t("page_exam_report_ans") }}</h4>
               <div v-if="store.examination" v-for="(item, index) in store.examination">
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h4 class="mb-0"> ข้อ. {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h4>
+                    <h4 class="mb-0"> {{ $t("page_exam_report_cho") }} {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h4>
                   </ul>
                 </div>
              

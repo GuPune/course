@@ -91,7 +91,65 @@
     "page_test4":"4. เมื่อเลือกคำตอบทุกข้อ ระบบจะสรุปผลทันที",
     "page_test5":"5. เมื่อ เริ่มต้นทดสอบ ระบบจะ จับเวลาทันที่",
     "page_test6":"6. กรณีกดเปลี่ยนหน้า ระบบจะหยุดเวลาฝึกทำข้อสอบให้ และกลับมาฝึกทำต่อได้",
-    "page_close":"ปิด"
+    "page_close":"ปิด",
+
+    "page_exam_course_eq":"หลักสูตร : ",
+
+    "page_exam_report":"หลักสูตร",
+    "page_exam_report_details":"รายละเอียดข้อสอบ",
+    "page_exam_report_update":"ปรับปรุงล่าสุด :",
+    "page_exam_report_code":"รหัสหลักสูตร :",
+    "page_exam_report_total":"จำนวนข้อสอบ :",
+    "page_exam_report_time":"เวลาในการสอบ :",
+    "page_exam_report_score":"ได้คะแนน",
+    "page_exam_report_ans":"เฉลยการทดสอบ",
+    "page_exam_report_cho":"ข้อ.",
+    "page_exam_report_cho1":"ข้อ",
+    "page_exam_report_remain":":",
+    "page_exam_report_remain1":"เวลาที่เหลือ:",
+    "page_exam_report_remain2":"ชั่วโมง",
+    "page_exam_report_remain3":"นาที",
+    "page_exam_report_remain4":"วินาที",
+    "page_exam_report_del_t":"คุณแน่ใจหรือเปล่า?",
+    "page_exam_report_del_de":"คุณต้องการยืนยันบันทึกนี้จริงๆ หรือไม่? ขั้นตอนนี้ไม่สามารถย้อนข้อมูลกลับมาได้",
+    "page_exam_report_del_close":"ปิด",
+    "page_exam_report_del_confirm":"ยืนยัน",
+    "page_exam_report_begin":"เริ่มต้นสอบใหม่",
+    "page_exam_report_test":"ทดลองสอบ",
+    "page_profile_type_test_y":"ทฤษฎี",
+    "page_profile_typepage_profile_type_test_n":"ปฏิบัติ",
+
+    "page_type_test_pass":"ผ่าน",
+    "page_type_test_fail":"ไม่ผ่าน",
+    "page_no_data":"ไม่มีข้อมูลการสอบ",
+
+    "page_exam_report_index":"ครั้งที่",
+    "page_exam_report_day_test":"วันที่ทำข้อสอบ",
+    "page_exam_report_total_add":"คะแนนเฉลี่ย(100%)",
+    "page_exam_report_total_score":"คะแนนที่ได้",
+
+    "page_profile_iden":"หมายเลขบัตรประชาชน :",
+    "page_profile_day":"วันเกิด :",
+    "page_profile_zip":"รหัสไปรษณีย์ :",
+    "page_profile_add_1":"แขวง :",
+    "page_profile_add_2":" ที่อยู่ : ",
+    "page_profile_status":" สถานะ : ",
+    "page_profile_confirm":"ยืนยันตัวตน",
+    "page_profile_no_confirm":"ไม่ยืนยันตัวตน",
+    "page_profile_type_dlt":"ประเภทใบขับขี่",
+
+    "page_verify_iden":"เลขบัตรประชาชน",
+    "page_verify_day":"วันเกิด",
+    "page_verify_imagepro":"รูปโปรไฟล์",
+    "page_verify_county":"ประเทศ",
+    "page_verify_zip":"รหัสไปรษณีย์",
+    "page_verify_display_image":"แสดงรูปตรงนี้:",
+    "page_verify_step1":" 1-ขั้นการยืนยัน",
+    "page_verify_step2":" 2-ขั้นการยืนยัน",
+    
+    "page_verify_step3":"OTP ไม่ถูกต้อง รึ กรอกไม่ครบ",
+    "page_verify_step4":" 2-ขั้นการยืนยัน",
+    "page_verify_one_time":"Please enter the one time password",
+    "page_verify_save":"ยืนยัน"
+
 }
-
-

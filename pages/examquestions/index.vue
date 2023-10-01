@@ -11,7 +11,7 @@
                     <!-- <FormExamFitter></FormExamFitter> -->
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                      {{ $route.params.id }}xxxxxxxxxxxxx
+                      {{ $route.params.id }}
                         <!-- <FormExamlist></FormExamlist> -->
                     </div>
                 </div>

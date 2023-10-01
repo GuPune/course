@@ -4,10 +4,10 @@
       aria-describedby="example5_info">
       <thead class="table-light text-center">
         <tr role="row">
-          <th class="sorting_disabled" rowspan="1" colspan="1">ครั้งที่</th>
-          <th class="sorting_disabled" rowspan="1" colspan="1">วันที่ทำข้อสอบ</th>
-          <th class="sorting_disabled" rowspan="1" colspan="1">คะแนนเฉลี่ย (100%)</th>
-          <th class="sorting_disabled" rowspan="1" colspan="1">คะแนนที่ได้ (50)</th>
+          <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_index") }}</th>
+          <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_day_test") }}</th>
+          <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_total_add") }}</th>
+          <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_total_score") }}</th>
         </tr>
       </thead>
     

@@ -11,7 +11,7 @@
                 <div class="row">
                   <div class="col-xl-11 col-lg-11 col-sm-6">
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                      <i class="icofont-book-alt"></i> หลักสูตร : {{ store.em_name }} {{ store.total }} {{ store.t }}
+                      <i class="icofont-book-alt"></i> {{ $t("page_exam_course_eq") }}{{ store.em_name }} {{ store.total }} {{ store.t }}
                     </h4>
                     <div class="timerCountdown">
                       <p class="timeText">{{ store.hours }} : {{ store.minutes }} : {{store.seconds }}</p>
@@ -29,7 +29,7 @@
 
                       <div id="้howto">
               
-                      <span id="้howto-text"  class="scrollbar">ข้อ {{ store.ind + 1 }} : {{ x.eq_name }}</span>
+                      <span id="้howto-text"  class="scrollbar">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : {{ x.eq_name }}</span>
                        <div class="force-overflow"></div>
                         <span v-if="x.eq_image"  @click="imagemodal(x.eq_image)">     <img :src="coverimage(x.eq_image)" alt="sidbar"  width="80" height="100"/></span>
                     </div>
@@ -60,8 +60,8 @@
               <div class="blogsidebar__content__wraper__2 aos-init aos-animate exam-timmer" data-aos="fade-up">
                 <ul class="course__details__populer__list">
                   <li>
-                    <p style="color: #cf1111;">Remaining: {{ store.hours }} Hours {{ store.minutes }} Minutes {{
-                      store.seconds }} Seconds </p>
+                    <p style="color: #cf1111;">{{ $t("page_exam_report_remain1") }} {{ store.hours }} {{ $t("page_exam_report_remain2") }} {{ store.minutes }} {{ $t("page_exam_report_remain3") }} {{
+                      store.seconds }} {{ $t("page_exam_report_remain4") }} </p>
                   </li>
                 </ul>
               </div>
@@ -81,7 +81,7 @@
                         <a>{{ $t("page_exam_code") }} {{ $t("page_exam_person") }}:  {{auth.formdetail.identification_number}}</a>
                       </div>
                       <div class="recent__date">
-                        <a>{{ $t("page_exam_status") }}: ทดลองสอบ</a>
+                        <a>{{ $t("page_exam_status") }}: {{ $t("page_exam_report_test") }}</a>
                       </div>
                     </div>
                   </li>
@@ -95,7 +95,7 @@
                 <hr />
                 <div class="row">
                   <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
-                    ข้อ {{ index + 1 }}
+                    {{ $t("page_exam_report_cho1") }} {{ index + 1 }}
                     <li v-for="(a, index) in x.choices">
                       <span style="color: red" v-if="a.ec_id == x.ec_id">
                         {{ a.ec_index }}
@@ -115,19 +115,19 @@
   <div v-if="getisConfirm" class="modal">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+        <h4 class="modal-title" id="myModalLabel">{{ $t("page_exam_report_del_t") }}</h4>
       </div>
       
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-12">
-            <p>Do you really want to Confirm these records? This process cannot be undone.</p>
+            <p>{{ $t("page_exam_report_del_de") }}</p>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="Hide()">ปิด</button>
-        <button type="button" class="btn btn-danger" @click="Confirm()">ยืนยัน</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="Hide()">{{ $t("page_exam_report_del_close") }}</button>
+        <button type="button" class="btn btn-danger" @click="Confirm()">{{ $t("page_exam_report_del_confirm") }}</button>
       </div>
     </div>
   </div>
