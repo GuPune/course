@@ -9,6 +9,12 @@
           aria-labelledby="pills-d1-tab"
           tabindex="0"
         >
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type">
+              <option value="1">{{new Date().toLocaleDateString()}}</option>
+              <option value="2">{{new Date().toLocaleDateString()}}</option>
+            </select>
+          </div>
           <div class="row" v-if="store.appgroup.length > 0">
             <div class="col-xl-12">
               <div class="card p-4 mb-4">
@@ -88,7 +94,7 @@
                               @click="resv(item.ap_id)"
                           
                             >
-                            {{ format_app(item.ap_date_start) }}
+                            {{ format_app(item.format_app) }}
                             </button>
                           </div>
                           <div class="tooltip" v-if="store.showTooltip">
@@ -223,11 +229,11 @@ const format_start = (date) => {
 };
 
 const format = (item) => {
-   return moment(item).format("DD/MM/YYYY HH:mm");
+   return moment(item).utc().format("DD/MM/YYYY HH:mm");
 };
 
 const format_app = (item) => {
-   return moment(item).format("HH:mm");
+   return moment(item).utc().format("HH:mm");
 };
 
 </script>

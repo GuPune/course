@@ -32,10 +32,10 @@
     </div>
     <nav class="navbar bg-body-tertiary nav-search">
       <div class="container-fluid nav-container row justify-content-center py-2 gy-2">
-        <div class="col-2 nav-item" style="min-width: 150px;">
+        <!-- <div class="col-2 nav-item" style="min-width: 150px;">
           <VueDatePicker v-model="store.form.date_event" :format="format_start" required></VueDatePicker>
-          <!-- <label for="startDate">Start Date</label> -->
-        </div>
+          <label for="startDate">Start Date</label>
+        </div> -->
         <div class="col-2 nav-item" style="min-width: 150px;">
           <!-- <label for="startDate">Start Date</label> -->
 
@@ -58,6 +58,53 @@
         </div>
       </div>
     </nav>
+
+    <div class="container">
+      <div class="mt-4 d-flex gap-4 overflow-x-scroll p-2 scrollContainer">
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+        <div class="dateCard">
+          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        </div>
+      </div>
+    </div>
 
   <SelectAppoint></SelectAppoint>
 
@@ -435,6 +482,35 @@ button {
     width: 100%;
     justify-content: center;
   }
+}
+
+.dateCard {
+  background-color: white;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 20px 20px 0px 0px;
+  transition: .2s;
+}
+.dateCard:hover {
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0px 2px 6px -2px rgba(0,0,0,.5);
+  border-radius: 5px;
+  transform:translateY(-5px)
+}
+
+.scrollContainer {
+  /* Set initial overflow-x to hidden to hide horizontal scrollbar */
+  overflow-x: scroll;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollContainer::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: rgb(242 39 126);
+  border-radius: 100px;
 }
 
 </style>
