@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="coursearea sp_top_100 sp_bottom_100">
+    <div class="coursearea">
       <div class="container tab-content" id="pills-tabContent">
         <div
           class="tab-pane fade show active"
@@ -9,12 +9,12 @@
           aria-labelledby="pills-d1-tab"
           tabindex="0"
         >
-          <div class="col-lg-3 col-md-4 col-sm-12">
+          <!-- <div class="col-lg-3 col-md-4 col-sm-12">
             <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type">
               <option value="1">{{new Date().toLocaleDateString()}}</option>
               <option value="2">{{new Date().toLocaleDateString()}}</option>
             </select>
-          </div>
+          </div> -->
           <div class="row" v-if="store.appgroup.length > 0">
             <div class="col-xl-12">
               <div class="card p-4 mb-4">

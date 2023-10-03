@@ -7,6 +7,7 @@ export const AppointmentsStore = defineStore({
   state: () => ({
     appgroup: [],
     reserve: [],
+    event:[],
     tooltipText: 'This is a tooltip',
     isShowApp: false,
     showTooltip:false,
@@ -143,9 +144,52 @@ export const AppointmentsStore = defineStore({
         ap_learn_type: this.form.ap_learn_type,
         dlt_code: this.form.dlt_code
       }
+         try {
+        const data = await ApiService.get('/appointment/event/?ap_learn_type='+ this.form.ap_learn_type+'&dlt_code='+this.form.dlt_code+'').then(response => {
+          this.event = response.data
+          if(response.data.length == 0){
+            this.appgroup = []
+          }
+        
+        });
+        return data
+
+      } catch (error) {
+        return false;
+      }
       
-      try {
+      // try {
+      //   const data = await ApiService.post('/appointment/list', appdata).then(response => {
+      //     if (response.data.length > 0) {
+      //       this.appgroup = response.data;
+      //       let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)
+      //       let learn = this.ap_learnlist.find(x => x.value === parseInt(this.form.ap_learn_type))
+      //       this.appointment.dlt_des = dltlist?.dlt_description;
+      //       this.appointment.ap_learn = learn.ap_learn;
+
+      //       return true
+      //     } else {
+      //       this.appgroup = [];
+      //       return false
+      //     }
+      //   });
+      //   return data
+
+      // } catch (error) {
+      //   return false;
+      // }
+    },
+    async fetchApppointEvent() {
+
+      const appdata = {
+        date_event: this.form.date_event,
+        ap_learn_type: this.form.ap_learn_type,
+        dlt_code: this.form.dlt_code
+      }
+
+            try {
         const data = await ApiService.post('/appointment/list', appdata).then(response => {
+        
           if (response.data.length > 0) {
             this.appgroup = response.data;
             let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)
@@ -162,9 +206,9 @@ export const AppointmentsStore = defineStore({
         return data
 
       } catch (error) {
-        console.log('error');
         return false;
       }
+
     },
     async deleteAppointUser() {
      this.formdel.user_id = this.user_id;

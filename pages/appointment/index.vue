@@ -61,48 +61,10 @@
 
     <div class="container">
       <div class="mt-4 d-flex gap-4 overflow-x-scroll p-2 scrollContainer">
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
+        <div class="dateCard"  v-for="(event, index) in store.event">
+          <p class="mb-0 btn" @click="findEvent(event.event)">{{event.event}}</p>
         </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
-        <div class="dateCard">
-          <p class="mb-0 btn">{{new Date().toLocaleDateString()}}</p>
-        </div>
+       
       </div>
     </div>
 
@@ -378,19 +340,16 @@ const v$ = useVuelidate(rules, FormSearch);
 
 const find = async () => {
 
-  if(store.FormSearch.date_event == null){
-        Swal.fire({
-      title: "ไม่สำเร็จ!",
-      text: "กรอกข้อมูลค้นหาให้ครบถ้วน!",
-      icon: "error",
-    });
+store.fetchApppoint();
 
-  }else {
-    store.fetchApppoint();
-  }
+};
 
+const findEvent = async (item) => {
 
-  
+  store.form.date_event = item
+
+store.fetchApppointEvent();
+
 };
 
 
@@ -487,7 +446,7 @@ button {
 .dateCard {
   background-color: white;
   border: 1px solid rgb(214, 214, 214);
-  border-radius: 20px 20px 0px 0px;
+  /* border-radius: 20px 20px 0px 0px; */
   transition: .2s;
 }
 .dateCard:hover {
