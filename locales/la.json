@@ -172,6 +172,11 @@
   "page_app_resve_t":"ຕ້ອງການຈອງລາຍການນີ້?",
   "page_app_resve_s":"ຖ້າທ່ານຈອງລາຍການນີ້ ລາຍການນັ້ນບໍ່ສາມາດຈອງຄືນໄດ້ຈົນກ່ວາ ຍົກເລີກ ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການສືບຕໍ່??",
   "confirm":"ຢືນຢັນ",
-  "close":"ປິດ"
+  "close":"ປິດ",
+  "unactive":"Unactive",
+  "phone_unactive":"Phone unactive",
+  "phone_active":"Phone active",
+  "system_unactive":"System unactive",
+  "system_active":"System active"
 
 }

@@ -31,12 +31,10 @@
                   <div class="blog__details__img aos-init aos-animate" v-if="store.formdtl.front_img">
                   <!-- <img src="img/blog/blog_21.png" alt="blog"> -->
                     <img :src="coverimage(store.formdtl.front_img)" alt="blog">
-                
                   </div>
                   <div class="blog__details__content">
                   </div>
                 </div>
-
 
                 <div class="blog__details__content__wraper" v-if="store.formdtl.back_img">
                   <div class="blog__details__img aos-init aos-animate" data-aos="fade-up">
@@ -71,8 +69,13 @@ store.SelectgetDLT(item)
 };
 
 function coverimage(i) {
+  let result = i.slice(0, 6);
+  if (result === "static") {
     let im = ApiService.image(i);
     return im;
+  } else {
+    return i;
+  }
 }
 
 </script>

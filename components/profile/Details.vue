@@ -113,12 +113,18 @@
                                         </div>
                                         <div class="gridarea__list row ">
                                          <p class="col fw-bold">{{ $t("page_profile_status") }}</p>
-                                         <div class="col " v-if="store.formdetail.verify_account == 'y'">
-                                          <span class="badge text-bg-success">{{ $t("page_profile_confirm") }}</span>
+                                         
+                                                
+                                                <div class="col " v-if="store.formdetail.verify_account == 'phone_active'">
+                                          <span class="badge text-bg-success">{{ $t("phone_active") }}</span>
                                          </div>
-                                         <div class="col" v-else>
-                                          <p><span class="badge text-bg-danger">{{ $t("page_profile_no_confirm") }}</span></p>
+                                                <div class="col " v-if="store.formdetail.verify_account == 'system_unactive'">
+                                          <span class="badge text-bg-success">{{ $t("system_unactive") }}</span>
                                          </div>
+                                                <div class="col " v-if="store.formdetail.verify_account == 'system_active'">
+                                          <span class="badge text-bg-success">{{ $t("system_active") }}</span>
+                                         </div>
+                                        
                                         </div>
                                
                                     </div>

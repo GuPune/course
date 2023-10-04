@@ -18,7 +18,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     verify.value = false;
     return navigateTo('/verifyconfirm');
   }else {
-    if(checkveri.data.detail.verify_account == 'y'){
+    if((checkveri.data.detail.verify_account == 'phone_active') || (checkveri.data.detail.verify_account == 'system_active') || (checkveri.data.detail.verify_account == 'system_unactive')) {
       verify.value = true;
     }else{
       verify.value = false;

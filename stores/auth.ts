@@ -18,6 +18,7 @@ export const useAuthStore = defineStore('auth', {
     loading: false,
     alert :false,
     user_id :null,
+    isDisabled:false,
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -27,6 +28,7 @@ export const useAuthStore = defineStore('auth', {
       user_phone:null,
       user_type:null,
       user_type_name:null,
+      user_password:null,
     },
     mydtla: [],
     dltcard:[],
@@ -117,6 +119,9 @@ export const useAuthStore = defineStore('auth', {
     },
     alertlogin: (state) => {
       return state.error;
+    },
+    getForm(state) {
+      return state.formuser;
     },
   },
   
@@ -291,13 +296,30 @@ try {
     },
 
     async SelectgetDLT(item) {
-
       let a = this.dltcard[item];
       this.formdtl.front_img = a.front_img
       this.formdtl.back_img = a.back_img
       this.formdtl.dlt_code = a.dlt_code
+    },
 
-     console.log(this.formdtl);
+    async UpdateProfile() {
+
+    const update = {user_name:this.formuser.user_name,user_password:this.formuser.user_password,user_firstname:this.formuser.user_firstname,
+      user_lastname:this.formuser.user_lastname,user_email:this.formuser.user_email,user_phone:this.formuser.user_phone,user_type:3,active:1}
+      try {
+        const data = await ApiService.put('/user/update/' + this.formuser.user_id, update).then(response => {
+         
+          if(response.status === 200){
+            return true;
+          }else{
+            return false;
+          }
+         
+        });
+        return data
+      } catch (error) {
+        return false;
+      }
     },
   },
 });

@@ -13,7 +13,7 @@ export const VerifyStore = defineStore({
     user_id: null,
     imagelist:null,
     formdetail: {
-      verify_account: 'n',
+      verify_account: 'unactive',
       identification_number: null,
       user_img: null,
       user_birthday: null,
@@ -76,13 +76,21 @@ export const VerifyStore = defineStore({
       return true;
     },
     async verifyOTP() {
+      console.log('verifyOTP');
       const otpconfirm = this.otp.join('');
       this.formotp = { otp_code: otpconfirm, user_id: this.formdetail.user_id };
+      
       const send = await ApiService.put('/user/verify_otp', this.formotp).then(response => {
+        if(response.status === 204){
+          this.formdetail.verify_account = 'phone_unactive';
+          let saveuser =  this.SaveUserVerify()
+          return false;
+        }
+        
         if (response.data == '') {
           return false;
         } else {
-          this.formdetail.verify_account = 'y';
+          this.formdetail.verify_account = 'phone_active';
           let saveuser =  this.SaveUserVerify()
       //    this.delay(500);
         //  console.log(saveuser);
@@ -98,22 +106,19 @@ export const VerifyStore = defineStore({
     },
     setOTP(otp) {
       this.otp = otp;
-      console.log('setOTP', this.otp);
+    
     },
 
     async SaveUserVerify() {
 
+  
        let upload = await this.UploadfileProfile()
        try {
         const updateuser = await ApiService.post('/user/detail/create', this.formdetail).then(response => {
-
-       
-        
         return true;
         })
         return updateuser
       } catch (error) {
-      
        return false;
       }
 
@@ -125,11 +130,9 @@ export const VerifyStore = defineStore({
       let formData = new FormData();
       formData.append('files', this.imagelist);
       if (this.imagelist) {
-
         try {
           const data = await ApiService.upload('/media_file/upload/file', formData);
           this.formdetail.user_img = data.data[0].path
-          console.log();
           return true;
         } catch (error) {
           return false;

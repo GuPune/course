@@ -7,6 +7,7 @@
             <div class="contact__form__heading" data-aos="fade-up">
               <h3 style="text-align: center">  {{ $t("page_verify_step1") }}</h3>
             </div>
+            {{store.formdetail}}
             <div class="row">
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
@@ -158,7 +159,7 @@
                       <div id="image-container" class="col-md-3 col-sm-4 col-6">
                         <div class="image-wrapper">
                           <img
-                            :src="store.formdetail.user_img"
+                            :src="coverimage(store.formdetail.user_img)"
                             class="img-fluid"
                           />
                           <button @click="removeImage()" class="delete-button">
@@ -199,6 +200,7 @@ import { defineComponent } from "vue";
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { VerifyStore } from "@/stores/verify";
 import { useRoute } from "vue-router";
+import ApiService  from "../../services/api.service";
 
 import { useVuelidate } from "@vuelidate/core";
 import {
@@ -256,10 +258,10 @@ const v$ = useVuelidate(rules, getForm);
 const sendotp = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
-    const savedetail = await SaveUserVerify();
+   const savedetail = await SaveUserVerify();
     if (savedetail == true) {
-     await SendOtp()
-      router.push("/otpconfirm");
+    await SendOtp()
+     router.push("/otpconfirm");
     }else {
       await Swal.fire({
   position: 'top-end',
@@ -280,7 +282,9 @@ const onInput = async (event) => {
 }
 
 const onFileChange = async (event) => {
+
   var input = event.target;
+  console.log( event.target);
   if (input.files) {
     var reader = new FileReader();
     reader.onload = (e) => {
@@ -291,11 +295,24 @@ const onFileChange = async (event) => {
   }
 };
 
+
+
 const removeImage = async () => {
   store.formdetail.user_img = null;
   const input = document.querySelector('input[type="file"]');
   input.value = "";
 };
+
+
+function coverimage(i) {
+  let result = i.slice(0, 6);
+  if (result === "static") {
+    let im = ApiService.image(i);
+    return im;
+  } else {
+    return i;
+  }
+}
 </script>
 <style>
 .preview {

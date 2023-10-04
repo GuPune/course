@@ -172,6 +172,11 @@
   "page_app_resve_t":"Reserve this item?",
   "page_app_resve_s":"Are you sure you want to continue?",
   "confirm":"Confirm",
-  "close":"Close"
+  "close":"Close",
+  "unactive":"Unactive",
+  "phone_unactive":"Phone unactive",
+  "phone_active":"Phone active",
+  "system_unactive":"System unactive",
+  "system_active":"System active"
 
 }

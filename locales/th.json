@@ -172,6 +172,11 @@
     "page_app_resve_t":"ต้องการจองรายการนี้?",
     "page_app_resve_s":"หากคุณจองรายการนี้ รายการนั้นจะจองซ้ำไม่ได้จนกว่าจะ ยกเลิก คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?",
     "confirm":"ยืนยัน",
-    "close":"ปิด"
+    "close":"ปิด",
+    "unactive":"Unactive",
+    "phone_unactive":"Phone unactive",
+    "phone_active":"Phone active",
+    "system_unactive":"System unactive",
+    "system_active":"System active"
 
 }
