@@ -26,11 +26,13 @@
                     />
                   </div>
                   <div class="ms-5">
-                    <h3>{{ store.appointment.dlt_des }}</h3>
+                    <h3 v-if="locale == 'la'">{{ store.appointment.dlt_des_la }}</h3>
+                    <h3 v-if="locale == 'en'">{{ store.appointment.dlt_des_en }}</h3>
+                    <h3 v-if="locale == 'th'">{{ store.appointment.dlt_des }}</h3>
+
                     <p class="m-0"> {{ $t("page_app_search_type") }} : {{ store.appointment.ap_learn }}</p>
                     <p class="m-0"> {{ $t("page_app_search_date") }}: {{store.form.date_event}}</p>
                     <p> {{ $t("page_app_search_round") }}: {{store.appgroup.length}}</p>
-                 
                   </div>
                 </div>
                 <div class="border-top">
@@ -153,6 +155,8 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import moment from "moment";
 import Swal from "sweetalert2";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const auth = useAuthStore();
 const store = AppointmentsStore();

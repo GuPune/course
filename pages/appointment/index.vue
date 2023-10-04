@@ -39,7 +39,8 @@
         <div class="col-2 nav-item" style="min-width: 150px;">
           <!-- <label for="startDate">Start Date</label> -->
 
-          <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type">
+          <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type"
+            @change="findApp()">
             <option value="1">
               <span v-if="locale == 'la'">{{ $t("theory") }}</span>
               <span v-if="locale == 'en'">{{ $t("theory") }}</span>
@@ -52,18 +53,20 @@
             </option>
           </select>
         </div>
-        <div class="col-4 nav-item" style="min-width: 150px;">
+        <div class="col-4 nav-item" style="min-width: 150px;" @change="findApp()">
           <select class="form-control" v-model="store.form.dlt_code">
             <option v-for="(item, index) in store.dlt" :key="item.dlt_code" :value="item.dlt_code">
-              {{ item.dlt_description }}
+              <span v-if="locale == 'la'">{{ item.dlt_description_loas }}</span>
+              <span v-if="locale == 'en'">{{ item.dlt_description_english }}</span>
+              <span v-if="locale == 'th'">{{ item.dlt_description }}</span>
             </option>
           </select>
         </div>
-        <div class="col-auto nav-item">
+        <!-- <div class="col-auto nav-item">
           <button type="button" class="btn btn-primary mt-0" @click="find()">
             {{ $t("page_app_search_app") }}
           </button>
-        </div>
+        </div> -->
       </div>
     </nav>
 
@@ -208,20 +211,9 @@
   <div class="modal" v-if="store.popupconfirm">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
-        <div class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-trash-2">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-            <line x1="10" y1="11" x2="10" y2="17"></line>
-            <line x1="14" y1="11" x2="14" y2="17"></line>
-          </svg>
-        </div>
+
         <h5 class="modal-title" id="exampleModalLabel">{{ $t("page_app_resve_t") }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
       </div>
       <div class="modal-body">
         <p class="">
@@ -348,10 +340,33 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, FormSearch);
 
 const find = async () => {
-
   store.fetchApppoint();
 
 };
+
+const findApp = async () => {
+  Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+  let data = await store.fetchApppoint();
+  if (data == true) {
+    setTimeout(() => Swal.close(), 500);
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Contact Admin',
+      showCancelButton: false, // There won't be any cancel button
+      showConfirmButton: false // There won't be any confirm button
+    })
+
+  }
+};
+
+
 
 const findEvent = async (item) => {
 
@@ -490,4 +505,5 @@ button {
 .scrollContainer::-webkit-scrollbar-thumb {
   background-color: rgb(242 39 126);
   border-radius: 100px;
-}</style>
+}
+</style>

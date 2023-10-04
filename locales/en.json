@@ -161,7 +161,7 @@
   "page_app_search_date":"Date",
   "page_app_search_round":"All Round",
   "page_app_search_round_app":"Appointment round",
-  "page_app_search_round_resvse":"Already reserved",
+  "page_app_search_round_resvse":"Already",
   "page_app_search_round_t":"Round",
   "page_app_search_round_full":"Full",
   "page_app_search_not_round":"There are no appointments.",
@@ -169,8 +169,8 @@
   "page_app_search_app":"Appointment round",
   "theory":"Theory",
   "practice":"Practice",
-  "page_app_resve_t":"Want to reserve this item?",
-  "page_app_resve_s":"If you reserve this item The item cannot be rebooked until it is cancelled. Are you sure you want to continue??",
+  "page_app_resve_t":"Reserve this item?",
+  "page_app_resve_s":"Are you sure you want to continue?",
   "confirm":"Confirm",
   "close":"Close"
 
