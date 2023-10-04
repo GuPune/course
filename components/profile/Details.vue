@@ -93,7 +93,10 @@
                                     <div class="gridarea__content py-2">
                                         <div class="gridarea__list row border-bottom">
                                           <p class="col fw-bold ">{{ $t("page_profile_iden") }}</p>
-                                          <p class="col">{{store.formdetail.identification_number}}</p>
+                                          <p class="col">{{store.formdetail.identification_number}}
+
+                                             <!-- <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formdetail.identification_number" > -->
+                                          </p>
                                         </div>
                                         <div class="gridarea__list row border-bottom">
                                          <p class="col fw-bold">{{ $t("page_profile_day") }}</p>
