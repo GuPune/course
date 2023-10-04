@@ -10,8 +10,8 @@
               </div>
               <div class="breadcrumb__inner">
                 <ul>
-                   <li><a href="#">{{ $t("home") }}</a></li>
-                          <li>{{ $t("page_appoint") }}</li>
+                  <li><a href="#">{{ $t("home") }}</a></li>
+                  <li>{{ $t("page_appoint") }}</li>
                 </ul>
               </div>
             </div>
@@ -40,8 +40,16 @@
           <!-- <label for="startDate">Start Date</label> -->
 
           <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type">
-            <option value="1">ทฤษฎี</option>
-            <option value="2">ปฏิบัติ</option>
+            <option value="1">
+              <span v-if="locale == 'la'">{{ $t("theory") }}</span>
+              <span v-if="locale == 'en'">{{ $t("theory") }}</span>
+              <span v-if="locale == 'th'">{{ $t("theory") }}</span>
+            </option>
+            <option value="2">
+              <span v-if="locale == 'la'">{{ $t("practice") }}</span>
+              <span v-if="locale == 'en'">{{ $t("practice") }}</span>
+              <span v-if="locale == 'th'">{{ $t("practice") }}</span>
+            </option>
           </select>
         </div>
         <div class="col-4 nav-item" style="min-width: 150px;">
@@ -53,7 +61,7 @@
         </div>
         <div class="col-auto nav-item">
           <button type="button" class="btn btn-primary mt-0" @click="find()">
-            ค้นหารอบนัดหมาย
+            {{ $t("page_app_search_app") }}
           </button>
         </div>
       </div>
@@ -61,18 +69,18 @@
 
     <div class="container">
       <div class="mt-4 d-flex gap-4 overflow-x-scroll p-2 scrollContainer">
-        <div class="dateCard"  v-for="(event, index) in store.event">
-          <p class="mb-0 btn" @click="findEvent(event.event)">{{event.event}}</p>
+        <div class="dateCard" v-for="(event, index) in store.event">
+          <p class="mb-0 btn" @click="findEvent(event.event)">{{ event.event }}</p>
         </div>
-       
+
       </div>
     </div>
 
-  <SelectAppoint></SelectAppoint>
+    <SelectAppoint></SelectAppoint>
 
-  <!-- Type Card -->
-  
-  <!-- <div class="container mb-5">
+    <!-- Type Card -->
+
+    <!-- <div class="container mb-5">
     <div class="row type-row">
       <div class="col-lg-6">
         <div class="card d-flex flex-row type-card">
@@ -194,7 +202,7 @@
     </div>
   </div> -->
 
-  <!-- End Type Card -->
+    <!-- End Type Card -->
 
   </div>
   <div class="modal" v-if="store.popupconfirm">
@@ -210,23 +218,22 @@
             <line x1="14" y1="11" x2="14" y2="17"></line>
           </svg>
         </div>
-        <h5 class="modal-title" id="exampleModalLabel">ต้องการจองรายการนี้?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{ $t("page_app_resve_t") }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <p class="">
-          หากคุณจองรายการนี้ รายการนั้นจะจองซ้ำไม่ได้จนกว่าจะ ยกเลิก
-          คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?
+          {{ $t("page_app_resve_s") }}
         </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn" data-bs-dismiss="modal" @click="closeModal">
-          ปิด
+          {{ $t("close") }}
         </button>
         <button type="button" class="btn btn-danger" data-remove="task" @click="confirmreve()">
-          ยืนยัน
+          {{ $t("confirm") }}
         </button>
       </div>
     </div>
@@ -255,7 +262,9 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import moment from "moment";
 import Swal from "sweetalert2";
- import SelectAppoint from '@/components/appointment/SelectAppoint.vue';
+import SelectAppoint from '@/components/appointment/SelectAppoint.vue';
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 
 const auth = useAuthStore();
@@ -340,7 +349,7 @@ const v$ = useVuelidate(rules, FormSearch);
 
 const find = async () => {
 
-store.fetchApppoint();
+  store.fetchApppoint();
 
 };
 
@@ -348,7 +357,7 @@ const findEvent = async (item) => {
 
   store.form.date_event = item
 
-store.fetchApppointEvent();
+  store.fetchApppointEvent();
 
 };
 
@@ -396,6 +405,7 @@ button {
   padding: 20px;
   width: 50%;
 }
+
 .type-image {
   background-color: pink;
   height: 80px;
@@ -403,35 +413,42 @@ button {
   border-radius: 10px;
   margin-right: 20px;
 }
+
 .type-card {
   padding: 20px 20px;
   transition: .4s;
   cursor: pointer;
   border: 1px solid rgb(221, 221, 221);
-  
-  
+
+
 }
+
 .type-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 0px 8px .2px rgb(221, 221, 221);
 }
-.type-detail > ul {
+
+.type-detail>ul {
   font-size: 12px;
   margin-bottom: 5px;
 }
-.type-row > .col-lg-6 {
+
+.type-row>.col-lg-6 {
   margin-bottom: 20px;
 }
+
 .nav-search {
   z-index: 1;
 }
+
 @media (min-width: 701px) {
   .nav-search {
     position: sticky;
     top: 0;
   }
+
   .main_wrapper {
-  overflow: visible !important;
+    overflow: visible !important;
   }
 }
 
@@ -449,11 +466,12 @@ button {
   /* border-radius: 20px 20px 0px 0px; */
   transition: .2s;
 }
+
 .dateCard:hover {
   border: 1px solid rgb(255, 255, 255);
-  box-shadow: 0px 2px 6px -2px rgba(0,0,0,.5);
+  box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, .5);
   border-radius: 5px;
-  transform:translateY(-5px)
+  transform: translateY(-5px)
 }
 
 .scrollContainer {
@@ -464,12 +482,12 @@ button {
 .scrollContainer::-webkit-scrollbar {
   height: 6px;
 }
+
 .scrollContainer::-webkit-scrollbar-track {
   border-radius: 10px;
 }
+
 .scrollContainer::-webkit-scrollbar-thumb {
   background-color: rgb(242 39 126);
   border-radius: 100px;
-}
-
-</style>
+}</style>

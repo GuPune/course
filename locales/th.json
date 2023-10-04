@@ -1,7 +1,7 @@
 {
     "home": "หน้าหลัก",
     "language": "Language",
-    "courses": "คอร์สเรียน",
+    "courses": "เรียนรู้",
     "exam": "หลักสูตร",
     "appointmentxx": "นัดหมาย",
     "message": "嗨 i18n !!",
@@ -72,7 +72,10 @@
     "page_course_user_create": "ผู้สร้าง",
     "page_course_date": "วันที่สร้าง",
     "page_exam_bt": "เริ่มต้นทดสอบ",
+    "page_course_code": "รหัส",
+    "page_course_view_details": "ดูรายละเอียดเพิ่มเติม",
 
+    "page_course_view_show": "แสดงข้อมูล 1 - 10 ทั้งหมด",
     "page_exam_course": "หลักสูตร",
     "page_exam_answer": "เฉลยการทดสอบ",
     "page_exam_begin": "เริ่มต้นสอบใหม่",
@@ -118,6 +121,8 @@
     "page_exam_report_test":"ทดลองสอบ",
     "page_profile_type_test_y":"ทฤษฎี",
     "page_profile_typepage_profile_type_test_n":"ปฏิบัติ",
+    
+
 
     "page_type_test_pass":"ผ่าน",
     "page_type_test_fail":"ไม่ผ่าน",
@@ -150,6 +155,23 @@
     "page_verify_step3":"OTP ไม่ถูกต้อง รึ กรอกไม่ครบ",
     "page_verify_step4":" 2-ขั้นการยืนยัน",
     "page_verify_one_time":"Please enter the one time password",
-    "page_verify_save":"ยืนยัน"
+    "page_verify_save":"ยืนยัน",
+
+    "page_app_search_type":"ประเภทนัดหมาย",
+    "page_app_search_date":"วันที่",
+    "page_app_search_round":"รอบทั้งหมด",
+    "page_app_search_round_app":"รอบนัดหมาย",
+    "page_app_search_round_resvse":"จองแล้ว",
+    "page_app_search_round_t":"รอบ",
+    "page_app_search_round_full":"เต็ม",
+    "page_app_search_not_round":"ไม่มีรอบนัดหมาย",
+
+    "page_app_search_app":"ค้นหารอบนัดหมาย",
+    "theory":"ภาคทฤษฎี",
+    "practice":"ภาคปฏิบัติ",
+    "page_app_resve_t":"ต้องการจองรายการนี้?",
+    "page_app_resve_s":"หากคุณจองรายการนี้ รายการนั้นจะจองซ้ำไม่ได้จนกว่าจะ ยกเลิก คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?",
+    "confirm":"ยืนยัน",
+    "close":"ปิด"
 
 }

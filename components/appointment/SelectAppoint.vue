@@ -27,14 +27,14 @@
                   </div>
                   <div class="ms-5">
                     <h3>{{ store.appointment.dlt_des }}</h3>
-                    <p class="m-0">ประเภทนัดหมาย : {{ store.appointment.ap_learn }}</p>
-                    <p class="m-0">Date: {{store.form.date_event}}</p>
-                    <p>รอบทั้งหมด: {{store.appgroup.length}}</p>
+                    <p class="m-0"> {{ $t("page_app_search_type") }} : {{ store.appointment.ap_learn }}</p>
+                    <p class="m-0"> {{ $t("page_app_search_date") }}: {{store.form.date_event}}</p>
+                    <p> {{ $t("page_app_search_round") }}: {{store.appgroup.length}}</p>
                  
                   </div>
                 </div>
                 <div class="border-top">
-                  <p class="mb-0 mt-2">รอบนัดหมาย:</p>
+                  <p class="mb-0 mt-2">{{ $t("page_app_search_round_app") }}:</p>
                   <div class="btnContainer container">
                     <li
                       v-for="(item, index) in store.appgroup"
@@ -50,11 +50,11 @@
                               @mouseout="store.showTooltip = false"
                           
                             >
-                              จองแล้ว
+                            {{ $t("page_app_search_round_resvse") }}
                             </button>
                           </div>
                           <div class="tooltip" v-if="store.showTooltip">
-                           รอบ {{ format(item.ap_date_start) }} - {{ format(item.ap_date_end) }}
+                            {{ $t("page_app_search_round_t") }} {{ format(item.ap_date_start) }} - {{ format(item.ap_date_end) }}
                           </div>
                         </div>
                       </div>
@@ -73,11 +73,11 @@
                               @mouseout="store.showTooltip = false"
                           
                             >
-                                 เต็ม
+                            {{ $t("page_app_search_round_full") }}
                             </button>
                           </div>
                           <div class="tooltip" v-if="store.showTooltip">
-                          รอบ {{ format(item.ap_date_start) }} - {{ format(item.ap_date_end) }}
+                            {{ $t("page_app_search_round_t") }}  {{ format(item.ap_date_start) }} - {{ format(item.ap_date_end) }}
                           </div>
                         </div>
 
@@ -98,7 +98,7 @@
                             </button>
                           </div>
                           <div class="tooltip" v-if="store.showTooltip">
-                          รอบ {{ format(item.ap_date_start) }} - {{ format(item.ap_date_end) }}
+                            {{ $t("page_app_search_round_t") }}  {{ format(item.ap_date_start) }} - {{ format(item.ap_date_end) }}
                           </div>
                         </div>
                         </div>
@@ -117,7 +117,7 @@
               <div class="card p-4 mb-4">
                 <div class="d-flex flex-row mb-4">
                      <div class="ms-5">
-                    <h3> ไม่มีรอบนัดหมาย</h3>
+                    <h3>  {{ $t("page_app_search_not_round") }} </h3>
                   </div>
                 </div>
               </div>

@@ -3,7 +3,7 @@
 
     <div class="course__text__wraper aos-init aos-animate" data-aos="fade-up" >
                             <div class="course__text">
-                                <p>Showing 1 – 10 of {{store.total}} Results</p>
+                                <p>{{ $t("page_course_view_show") }} {{store.total}} </p>
                             </div>
                             <div class="course__icon">
                                 <ul class="nav property__team__tap" id="myTab" role="tablist">
