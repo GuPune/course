@@ -47,6 +47,10 @@ export const useAuthStore = defineStore('auth', {
       back_img: "",
       dlt_code: '',
     },
+    formcard:{
+      idcard_back:null,
+      idcard_front:null,
+    },
     formszipcode: {
       page: 1,
       per_page: 200,
@@ -273,8 +277,9 @@ try {
       this.formdetail.country = response.data.detail.country
       this.formdetail.location_id = response.data.detail.location_id
       this.formdetail.country_id = response.data.detail.country_id
+      this.formcard.idcard_back = response.data.card.idcard_back
+      this.formcard.idcard_front = response.data.card.idcard_front
 
-      
     
       return true;
     }
