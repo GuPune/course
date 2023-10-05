@@ -135,7 +135,7 @@
 
   "page_profile_iden":"ເລກບັດປະຈຳຕົວ :",
   "page_profile_day":"ວັນເດືອນປີເກີດ :",
-  "page_profile_zip":"ລະ​ຫັດ​ໄປ​ສະ​ນີ :",
+  "page_profile_zip":"ประเทศ :",
   "page_profile_add_1":"ເມືອງ :",
   "page_profile_add_2":" ທີ່ຢູ່ : ",
   "page_profile_status":" ສະຖານະ : ",
@@ -177,6 +177,7 @@
   "phone_unactive":"Phone unactive",
   "phone_active":"Phone active",
   "system_unactive":"System unactive",
-  "system_active":"System active"
+  "system_active":"System active",
+  "account_proFile_idcard": "รูปบัตร"
 
 }

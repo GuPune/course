@@ -135,7 +135,7 @@
 
   "page_profile_iden":"ID Card :",
   "page_profile_day":"Birthday :",
-  "page_profile_zip":"Zipcode :",
+  "page_profile_zip":"ประเทศ :",
   "page_profile_add_1":"Subdistrict :",
   "page_profile_add_2":" Address : ",
   "page_profile_status":" Status : ",
@@ -173,10 +173,10 @@
   "page_app_resve_s":"Are you sure you want to continue?",
   "confirm":"Confirm",
   "close":"Close",
-  "unactive":"Unactive",
-  "phone_unactive":"Phone unactive",
-  "phone_active":"Phone active",
-  "system_unactive":"System unactive",
-  "system_active":"System active"
-
+  "unactive":"Not Verify",
+  "phone_unactive":"OTP failed",
+  "phone_active":"OTP success",
+  "system_unactive":"Information is incorrect",
+  "system_active":"Information is correct.",
+  "account_proFile_idcard": "รูปบัตร"
 }

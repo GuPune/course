@@ -135,7 +135,7 @@
 
     "page_profile_iden":"หมายเลขบัตรประชาชน :",
     "page_profile_day":"วันเกิด :",
-    "page_profile_zip":"รหัสไปรษณีย์ :",
+    "page_profile_zip":"ประเทศ :",
     "page_profile_add_1":"แขวง :",
     "page_profile_add_2":" ที่อยู่ : ",
     "page_profile_status":" สถานะ : ",
@@ -173,10 +173,11 @@
     "page_app_resve_s":"หากคุณจองรายการนี้ รายการนั้นจะจองซ้ำไม่ได้จนกว่าจะ ยกเลิก คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?",
     "confirm":"ยืนยัน",
     "close":"ปิด",
-    "unactive":"Unactive",
-    "phone_unactive":"Phone unactive",
-    "phone_active":"Phone active",
-    "system_unactive":"System unactive",
-    "system_active":"System active"
+    "unactive":"ไม่ยืนยัน",
+    "phone_unactive":"ยืนยัน OTP ไม่สำเร็จ",
+    "phone_active":"ยืนยัน OTP สำเร็จ",
+    "system_unactive":"ตรวจสอบข้อมูลไม่ถูกต้อง",
+    "system_active":"ตรวจสอบข้อมูลถูกต้อง",
+    "account_proFile_idcard": "รูปบัตร"
 
 }

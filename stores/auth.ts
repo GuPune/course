@@ -19,6 +19,7 @@ export const useAuthStore = defineStore('auth', {
     alert :false,
     user_id :null,
     isDisabled:false,
+    imagelist:null,
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -45,6 +46,11 @@ export const useAuthStore = defineStore('auth', {
       front_img: "",
       back_img: "",
       dlt_code: '',
+    },
+    formszipcode: {
+      page: 1,
+      per_page: 200,
+      search: '',
     },
     dlt: [
       {
@@ -108,6 +114,8 @@ export const useAuthStore = defineStore('auth', {
       },
      
     ],
+    zipcode: null,
+    country: null,
     error:{
       status:false,
       message:"Login ไม่สำเร็จ"
@@ -123,6 +131,11 @@ export const useAuthStore = defineStore('auth', {
     getForm(state) {
       return state.formuser;
     },
+    getFormDetails(state) {
+      return state.formdetail;
+    },
+
+    
   },
   
   actions: {
@@ -236,10 +249,10 @@ export const useAuthStore = defineStore('auth', {
  
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
+    console.log(response.data);
     if(response.data == ''){
       return false;
     }else {
- 
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname
@@ -258,6 +271,10 @@ try {
       this.formdetail.user_address = response.data.detail.user_address
       this.formdetail.location = response.data.detail.location
       this.formdetail.country = response.data.detail.country
+      this.formdetail.location_id = response.data.detail.location_id
+      this.formdetail.country_id = response.data.detail.country_id
+
+      
     
       return true;
     }
@@ -303,7 +320,6 @@ try {
     },
 
     async UpdateProfile() {
-
     const update = {user_name:this.formuser.user_name,user_password:this.formuser.user_password,user_firstname:this.formuser.user_firstname,
       user_lastname:this.formuser.user_lastname,user_email:this.formuser.user_email,user_phone:this.formuser.user_phone,user_type:3,active:1}
       try {
@@ -321,6 +337,62 @@ try {
         return false;
       }
     },
+
+    async UpdateDetails() {
+      let upload = await this.UploadfileDetails()
+      const update = {verify_account:this.formdetail.verify_account,identification_number:this.formdetail.identification_number,
+        user_img:this.formdetail.user_img,
+        user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
+        location_id:this.formdetail.location_id,country_id:this.formdetail.country_id,user_id:this.formuser.user_id};
+
+     
+
+        try {
+          const data = await ApiService.post('/user/detail/create', update).then(response => {
+            if(response.status === 200){
+              return true;
+            }else{
+              return false;
+            }
+          });
+          return data
+        } catch (error) {
+          return false;
+        }
+      },
+
+      async UploadfileDetails() {
+        let formData = new FormData();
+        formData.append('files', this.imagelist);
+        if (this.imagelist) {
+          try {
+            const data = await ApiService.upload('/media_file/upload/file', formData);
+            this.formdetail.user_img = data.data[0].path
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+      },
+
+      async Zipcode() {
+        const zipcode = await ApiService.post('/master_data/zipcode', this.formszipcode)
+        if (zipcode.data.data) {
+          this.zipcode = zipcode.data.data
+        } else {
+          this.zipcode = []
+        }
+  
+      },
+      async Country() {
+        const country = await ApiService.post('/master_data/contry', this.formszipcode)
+        if (country.data.data) {
+          this.country = country.data.data
+        } else {
+          this.country = []
+        }
+      },
+  
   },
 });
 
