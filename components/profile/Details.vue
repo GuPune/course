@@ -84,35 +84,39 @@
                                         </div>
                                     </div> -->
                                 </div>
-<div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate" data-aos="fade-up">
+                                <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate" data-aos="fade-up">
                                     <div class="gridarea__img">
                                         <a><img :src="coverimage(store.formdetail.user_img)"  alt="grid"></a>
-                                       
-
                                     </div>
+                                    <button class="changeImg btn btn-info">Edit</button>
                                     <div class="gridarea__content py-2">
-                                        <div class="gridarea__list row border-bottom">
-                                          <p class="col fw-bold ">{{ $t("page_profile_iden") }}</p>
-                                          <p class="col">{{store.formdetail.identification_number}}
+                                        <div class="gridarea__list row border-bottom pb-2">
+                                          <p class="col fw-bold mb-0">{{ $t("page_profile_iden") }}</p>
+                                          <input type="number" class="form-control col" :value="store.formdetail.identification_number" disabled>
+                                          <!-- <p class="col">{{store.formdetail.identification_number}}</p> -->
 
                                              <!-- <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formdetail.identification_number" > -->
-                                          </p>
+                                          
                                         </div>
-                                        <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold">{{ $t("page_profile_day") }}</p>
-                                         <p class="col">{{store.formdetail.user_birthday}}</p>
+                                        <div class="gridarea__list row border-bottom pb-2">
+                                         <p class="col fw-bold mb-0">{{ $t("page_profile_day") }}</p>
+                                         <input type="date" class="form-control col" :value="store.formdetail.user_birthday" disabled>
+                                         <!-- <p class="col">{{store.formdetail.user_birthday}}</p> -->
                                         </div>
-                                        <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold">{{ $t("page_profile_zip") }}</p>
-                                         <p class="col">{{store.formdetail.location.zipcode}}</p>
+                                        <div class="gridarea__list row border-bottom pb-2">
+                                         <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
+                                         <input type="number" class="form-control col" :value="store.formdetail.location.zipcode" disabled>
+                                         <!-- <p class="col">{{store.formdetail.location.zipcode}}</p> -->
                                         </div>
-                                        <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold">{{ $t("page_profile_add_1") }}</p>
-                                         <p class="col">{{store.formdetail.location.zipcode_name}}</p>
+                                        <div class="gridarea__list row border-bottom pb-2">
+                                         <p class="col fw-bold mb-0">{{ $t("page_profile_add_1") }}</p>
+                                         <input type="text" class="form-control col" :value="store.formdetail.location.zipcode_name" disabled>
+                                         <!-- <p class="col">{{store.formdetail.location.zipcode_name}}</p> -->
                                         </div>
-                                        <div class="gridarea__list row border-bottom">
-                                         <p class="col fw-bold">{{ $t("page_profile_add_2") }}</p>
-                                         <p class="col">{{store.formdetail.user_address}}</p>
+                                        <div class="gridarea__list row border-bottom pb-2">
+                                         <p class="col fw-bold mb-0">{{ $t("page_profile_add_2") }}</p>
+                                         <input type="text" class="form-control col" :value="store.formdetail.user_address" disabled>
+                                         <!-- <p class="col">{{store.formdetail.user_address}}</p> -->
                                         </div>
                                         <div class="gridarea__list row ">
                                          <p class="col fw-bold">{{ $t("page_profile_status") }}</p>
@@ -285,5 +289,12 @@ function coverimage(i) {
 }
 #card-index {
   margin-right: 10px;
+}
+.changeImg {
+  position: absolute;
+  visibility: hidden;
+}
+.gridarea__wraper:hover > .changeImg {
+  visibility: visible;
 }
 </style>
