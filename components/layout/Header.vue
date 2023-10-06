@@ -95,8 +95,14 @@
                         "
                       >
                         <i class="icofont-heart-alt"></i> {{ $t("account") }}  
-                        <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="badgeSpan"><i class="icofont-close"></i><span id="badgeText">ยังไม่ยืนยันตัวตน</span></span> -->
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="badgeSpan"><i class="icofont-check"></i><span id="badgeText">ยืนยันตัวตน</span></span>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="badgeSpan" v-if="useError.formdetail.verify_account == 'system_active'">
+                          <i class="icofont-check"></i><span id="badgeText">ยืนยันตัวตน</span>
+                        </span>
+                       
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="badgeSpan" v-else>
+                          <i class="icofont-close"></i><span id="badgeText">ยังไม่ยืนยันตัวตน</span>
+                        </span>
+                  
                       </a>
                       <ul class="headerarea__submenu">
                         <li>
