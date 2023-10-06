@@ -49,8 +49,8 @@ export const useAuthStore = defineStore('auth', {
       dlt_code: '',
     },
     formcard:{
-      idcard_back:null,
-      idcard_front:null,
+      idcard_back:'',
+      idcard_front:'',
       user_id:null,
     },
     formszipcode: {
