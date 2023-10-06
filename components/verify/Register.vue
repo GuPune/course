@@ -7,7 +7,6 @@
             <div class="contact__form__heading" data-aos="fade-up">
               <h3 style="text-align: center">  {{ $t("page_verify_step1") }}</h3>
             </div>
-            {{store.formdetail}}
             <div class="row">
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
@@ -281,17 +280,32 @@ const onInput = async (event) => {
   store.formdetail.identification_number = event.target.value.replace(/\D/g, '');
 }
 
-const onFileChange = async (event) => {
 
+
+const onFileChange = async (event) => {
   var input = event.target;
-  console.log( event.target);
-  if (input.files) {
-    var reader = new FileReader();
-    reader.onload = (e) => {
-      store.formdetail.user_img = e.target.result;
+  const file = event.target.files[0];
+
+  if (file && file.type.startsWith('image/')) {
+    // Use FileReader to read the selected image and set it as the source for the <img> tag
+    const reader = new FileReader();
+    reader.onload = () => {
+      //  this.imageUrl = reader.result;
+      store.formdetail.user_img = reader.result;
     };
     store.imagelist = input.files[0];
-    reader.readAsDataURL(input.files[0]);
+    reader.readAsDataURL(file);
+  } else {
+    // Reset the image URL if the selected file is not an image
+    //   this.imageUrl = null;
+    const input = document.querySelector('input[type="file"]');
+  input.value = "";
+    Swal.fire({
+
+      text: 'Upload File Image Only!',
+      icon: 'error',
+
+    });
   }
 };
 

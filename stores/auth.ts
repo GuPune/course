@@ -51,6 +51,7 @@ export const useAuthStore = defineStore('auth', {
     formcard:{
       idcard_back:null,
       idcard_front:null,
+      user_id:null,
     },
     formszipcode: {
       page: 1,
@@ -403,10 +404,10 @@ try {
         await this.UploadfileCardBack();
         await this.UploadfileCardFront();
         const card = {user_id:this.user_id,idcard_front:this.formcard.idcard_front,idcard_back:this.formcard.idcard_back}
-      
-      
+        this.formcard.user_id = this.user_id;
+      console.log(this.formcard);
         try {
-          const data = await ApiService.post('/user/idcard/create', card).then(response => {
+          const data = await ApiService.post('/user/idcard/create', this.formcard).then(response => {
             console.log(response);
          
           });

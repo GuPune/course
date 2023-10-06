@@ -178,6 +178,12 @@
     "phone_active":"ยืนยัน OTP สำเร็จ",
     "system_unactive":"ตรวจสอบข้อมูลไม่ถูกต้อง",
     "system_active":"ตรวจสอบข้อมูลถูกต้อง",
-    "account_proFile_idcard": "รูปบัตร"
+    "account_proFile_idcard": "รูปบัตร",
+    "profile_idcard_front": "บัตรประจำตัว ข้างหน้า",
+    "profile_idcard_back": "บัตรประจำตัว ข้างหลัง",
+    "profile_idcard_front_upload": "อัพโหลด ด้านหน้า",
+    "profile_idcard_back_upload": "อัพโหลด ด้านหลัง",
+    "profile_idcard_save": "ยันยืน"
 
+    
 }

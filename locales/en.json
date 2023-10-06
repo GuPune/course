@@ -178,5 +178,10 @@
   "phone_active":"OTP success",
   "system_unactive":"Information is incorrect",
   "system_active":"Information is correct.",
-  "account_proFile_idcard": "รูปบัตร"
+  "account_proFile_idcard": "รูปบัตร",
+  "profile_idcard_front": "ID Card Front",
+  "profile_idcard_back": "ID Card Back",
+  "profile_idcard_front_upload": "Upload Front",
+  "profile_idcard_back_upload": "Upload Back",
+  "profile_idcard_save": "Save"
 }

@@ -178,6 +178,11 @@
   "phone_active":"Phone active",
   "system_unactive":"System unactive",
   "system_active":"System active",
-  "account_proFile_idcard": "รูปบัตร"
+  "account_proFile_idcard": "บัตรประจำตัว",
+  "profile_idcard_front": "ໜ້າບັດປະຈຳຕົວ",
+  "profile_idcard_back": "ບັດປະຈຳຕົວຄືນ",
+  "profile_idcard_front_upload": "ອັບໂຫຼດ ດ້ານໜ້າ",
+  "profile_idcard_back_upload": "ອັບໂຫຼດ ຫລັງ",
+  "profile_idcard_save": "ຮຽກຮ້ອງ"
 
 }

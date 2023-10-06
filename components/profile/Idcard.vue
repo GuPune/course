@@ -19,7 +19,7 @@
             <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate"
               data-aos="fade-up" id="uploadCard">
               <div class="text-center">
-                <h4>Font Card</h4>
+                <h4>{{ $t("profile_idcard_front") }}</h4>
                 <div class="frontCardUpload" v-if="store.formcard.idcard_front">
                   <img class="cardImg" :src="coverimage(store.formcard.idcard_front)" alt="">
                   <input type="file" ref="fileInputFont" style="display: none;" accept="image/*">
@@ -30,10 +30,10 @@
                     alt="">
                   <input type="file" ref="fileInputFont" style="display: none;">
                 </div>
-                <button class="btn btn-outline-primary" @click="changeFont">Upload Font card</button>
+                <button class="btn btn-outline-primary" @click="changeFont">{{ $t("profile_idcard_front_upload") }}</button>
               </div>
               <div class="text-center">
-                <h4>Back Card</h4>
+                <h4>{{ $t("profile_idcard_back") }}</h4>
 
                 <div class="frontCardUpload" v-if="store.formcard.idcard_back">
                   <img class="cardImg" :src="coverimage(store.formcard.idcard_back)" alt="">
@@ -45,7 +45,7 @@
                     alt="">
                   <input type="file" ref="fileInputBack" style="display: none;">
                 </div>
-                <button class="btn btn-outline-primary" @click="changeBack">Upload Back card</button>
+                <button class="btn btn-outline-primary" @click="changeBack">{{ $t("profile_idcard_back_upload") }}</button>
               </div>
             </div>
 
@@ -53,7 +53,7 @@
               <button v-if="store.formdetail.verify_account !== 'system_active' ??
                 disabled
                 " type="button" class="btn btn-primary mt-0" @click="saveimage()">
-                Update
+                {{ $t("profile_idcard_save") }}
               </button>
             </div>
 
