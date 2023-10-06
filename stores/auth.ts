@@ -13,13 +13,14 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     authenticated: false,
     selectProfile:'profile',
-    
     verify: false,
     loading: false,
     alert :false,
     user_id :null,
     isDisabled:false,
     imagelist:null,
+    imagelist_font:null,
+    imagelist_back:null,
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -223,7 +224,7 @@ export const useAuthStore = defineStore('auth', {
         await this.getProfile();
         return data
       } catch (error) {
-       console.log('catch');
+    
        return false;
       } finally {
      
@@ -350,8 +351,7 @@ try {
         user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
         location_id:this.formdetail.location_id,country_id:this.formdetail.country_id,user_id:this.formuser.user_id};
 
-     
-
+  
         try {
           const data = await ApiService.post('/user/detail/create', update).then(response => {
             if(response.status === 200){
@@ -396,6 +396,54 @@ try {
         } else {
           this.country = []
         }
+      },
+
+      async savecard() {
+
+        await this.UploadfileCardBack();
+        await this.UploadfileCardFront();
+        const card = {user_id:this.user_id,idcard_front:this.formcard.idcard_front,idcard_back:this.formcard.idcard_back}
+      
+      
+        try {
+          const data = await ApiService.post('/user/idcard/create', card).then(response => {
+            console.log(response);
+         
+          });
+          return data
+        } catch (error) {
+          return false;
+        }
+      },
+
+  
+      async UploadfileCardFront() {
+        let formData = new FormData();
+        if (this.imagelist_font) {
+          formData.append('files', this.imagelist_font);
+          try {
+           const data = await ApiService.upload('/media_file/upload/file', formData);
+           this.formcard.idcard_front = data.data[0].path
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+       
+      },
+      async UploadfileCardBack() {
+        let formData = new FormData();
+        if (this.imagelist_back) {
+          formData.append('files', this.imagelist_back);
+          try {
+           const data = await ApiService.upload('/media_file/upload/file', formData);
+           this.formcard.idcard_back = data.data[0].path
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+       
       },
   
   },
