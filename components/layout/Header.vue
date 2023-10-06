@@ -88,12 +88,15 @@
                       <a
                         class="headerarea__has__dropdown headerarea__login"
                         href="#"
+                        id="headBadge"
                         style="
                           padding: 8px 15px;
                           border: 1px solid var(--borderColor1);
                         "
                       >
                         <i class="icofont-heart-alt"></i> {{ $t("account") }}  
+                        <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="badgeSpan"><i class="icofont-close"></i><span id="badgeText">ยังไม่ยืนยันตัวตน</span></span> -->
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="badgeSpan"><i class="icofont-check"></i><span id="badgeText">ยืนยันตัวตน</span></span>
                       </a>
                       <ul class="headerarea__submenu">
                         <li>
@@ -301,3 +304,13 @@ const changeLocale = (newLocale) => {
   locale.value = newLocale;
 };
 </script>
+
+<style>
+#headBadge > #badgeSpan > #badgeText{
+  display: none;
+  transition: all 1s;
+}
+#headBadge > #badgeSpan:hover > #badgeText{
+  display:unset;
+}
+</style>
