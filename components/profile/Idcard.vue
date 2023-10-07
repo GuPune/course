@@ -9,7 +9,7 @@
         <div class="col-xl-12">
           <div class="contact__form__inner">
             <div class="contact__form__heading" data-aos="fade-up">
-              <h3 class="text-center">{{ $t("account_proFile_Info") }}</h3>
+              <h3 class="text-center">{{ $t("profile_idcard") }}</h3>
               <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
             </div>
 
@@ -30,7 +30,9 @@
                     alt="">
                   <input type="file" ref="fileInputFont" style="display: none;">
                 </div>
-                <button class="btn btn-outline-primary" @click="changeFont">{{ $t("profile_idcard_front_upload") }}</button>
+                <button class="btn btn-outline-primary" @click="changeFont" v-if="store.formdetail.verify_account !== 'system_active' ??
+                disabled
+                " >{{ $t("profile_idcard_front_upload") }}</button>
               </div>
               <div class="text-center">
                 <h4>{{ $t("profile_idcard_back") }}</h4>
@@ -45,7 +47,9 @@
                     alt="">
                   <input type="file" ref="fileInputBack" style="display: none;">
                 </div>
-                <button class="btn btn-outline-primary" @click="changeBack">{{ $t("profile_idcard_back_upload") }}</button>
+                <button class="btn btn-outline-primary" @click="changeBack" v-if="store.formdetail.verify_account !== 'system_active' ??
+                disabled
+                "  >{{ $t("profile_idcard_back_upload") }}</button>
               </div>
             </div>
 

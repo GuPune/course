@@ -5,24 +5,30 @@
 
 <template>
   <div>
-
-
     <div class="coursearea sp_top_100 sp_bottom_100">
       <div class="container">
         <div class="row">
           <div class="col-xl-12">
-
             <div class="contact__section" data-aos="fade-up">
               <div class="container">
                 <div class="row">
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="single__contact pcard">
                       <div class="contact__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" fill="#5F2DED" class="bi bi-person-circle" viewBox="0 0 16 16">
-                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="58"
+                          height="58"
+                          fill="#5F2DED"
+                          class="bi bi-person-circle"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                          <path
+                            fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                          />
                         </svg>
-                    
                       </div>
                       <div class="contact__text" @click="choose('profile')">
                         <h5>{{ $t("account_proFile_User") }}</h5>
@@ -34,11 +40,23 @@
                     </div>
                   </div>
 
-                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" @click="choose('details')">
-                    <div class="single__contact pcard" >
+                  <div
+                    class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"
+                    @click="choose('details')"
+                  >
+                    <div class="single__contact pcard">
                       <div class="contact__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" fill="#5F2DED" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="58"
+                          height="58"
+                          fill="#5F2DED"
+                          class="bi bi-person-lines-fill"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"
+                          />
                         </svg>
                         <!-- <svg width="46" height="60" viewBox="0 0 46 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -53,7 +71,7 @@
                         </svg> -->
                       </div>
                       <div class="contact__text">
-                         <h5>{{ $t("account_proFile_Info") }}</h5>
+                        <h5>{{ $t("account_proFile_Info") }}</h5>
                         <!-- <div class="contact__email">
                           <p>Digital Agency Network 2023</p>
                           <span>Eastbourne Terrace</span>
@@ -62,35 +80,58 @@
                     </div>
                   </div>
 
-                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" @click="choose('iden')">
-                    <div class="single__contact pcard" >
+                  <div
+                    class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"
+                    @click="choose('iden')"
+                  >
+                    <div class="single__contact pcard">
                       <div class="contact__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" fill="#5F2DED" class="bi bi-credit-card" viewBox="0 0 16 16">
-                          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
-                          <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="58"
+                          height="58"
+                          fill="#5F2DED"
+                          class="bi bi bi-card-list"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"
+                          />
+                          <path
+                            d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"
+                          />
                         </svg>
-              
                       </div>
                       <div class="contact__text">
-                         <h5>{{ $t("account_proFile_dtl") }}</h5>
-                     
+                        <h5>{{ $t("account_proFile_dtl") }}</h5>
                       </div>
                     </div>
                   </div>
 
-                  
-                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" @click="choose('idcard')">
-                    <div class="single__contact pcard" >
+                  <div
+                    class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"
+                    @click="choose('idcard')"
+                  >
+                    <div class="single__contact pcard">
                       <div class="contact__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" fill="#5F2DED" class="bi bi-credit-card" viewBox="0 0 16 16">
-                          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
-                          <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="58"
+                          height="58"
+                           fill="#5F2DED"
+                          class="bi bi-card-heading"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"
+                          />
+                          <path
+                            d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"
+                          />
                         </svg>
-              
                       </div>
                       <div class="contact__text">
-                         <h5>{{ $t("account_proFile_idcard") }}</h5>
-                     
+                        <h5>{{ $t("profile_idcard") }}</h5>
                       </div>
                     </div>
                   </div>
@@ -101,9 +142,8 @@
             <Profilelist v-if="auth.selectProfile === 'profile'"></Profilelist>
             <Details v-if="auth.selectProfile === 'details'"></Details>
             <Display v-if="auth.selectProfile === 'iden'"></Display>
-            <IDcard v-if="auth.selectProfile === 'idcard'"></IDcard>
+            <IDcard v-if="(auth.selectProfile === 'idcard')"  ></IDcard>
           </div>
-      
         </div>
       </div>
     </div>
@@ -111,32 +151,28 @@
 </template>
 <script lang="ts" setup>
 definePageMeta({
-  middleware: 'auth' // this should match the name of the file inside the middleware directory 
-})
+  middleware: "auth", // this should match the name of the file inside the middleware directory
+});
 
-import Profilelist from '@/components/profile/Profilelist.vue';
-import Details from '@/components/profile/Details.vue';
-import Display from '@/components/profile/Display.vue';
-import IDcard from '@/components/profile/Idcard.vue';
-import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
-import { storeToRefs } from 'pinia';
-import { defineComponent } from 'vue';
-import { HistoryStore } from '@/stores/history';
+import Profilelist from "@/components/profile/Profilelist.vue";
+import Details from "@/components/profile/Details.vue";
+import Display from "@/components/profile/Display.vue";
+import IDcard from "@/components/profile/Idcard.vue";
+import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
+import { storeToRefs } from "pinia";
+import { defineComponent } from "vue";
+import { HistoryStore } from "@/stores/history";
 
 import { useRoute } from "vue-router";
-const auth = useAuthStore()
+const auth = useAuthStore();
 
 const route = useRoute();
 const profile = await auth.getProfile();
 
-await auth.displaycard()
+await auth.displaycard();
 const choose = async (item) => {
   const profile = await auth.SelectProfile(item);
 };
-
-
-
-
 </script>
 <style>
 .modal {
@@ -163,5 +199,4 @@ button {
 .pcard {
   cursor: pointer;
 }
-
 </style>

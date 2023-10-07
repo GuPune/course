@@ -183,5 +183,7 @@
   "profile_idcard_back": "ID Card Back",
   "profile_idcard_front_upload": "Upload Front",
   "profile_idcard_back_upload": "Upload Back",
-  "profile_idcard_save": "Save"
+  "profile_idcard_save": "Save",
+  "profile_idcard": "ID Card"
+
 }
