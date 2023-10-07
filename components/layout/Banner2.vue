@@ -12,13 +12,13 @@
                                       <span>Education Solution</span>
                                   </div>
                                   <div class="herobannerarea__title__heading__2 herobannerarea__title__heading__3">
-                                      <h2>Cloud-based LMS Trusted by 1000+</h2>
+                                      <h2>{{ $t("banner") }}</h2>
                                   </div>
                               </div>
   
   
                               <div class="herobannerarea__text herobannerarea__text__2">
-                                  <p>Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been </p>
+                                  <p>{{ $t("banner1") }}</p>
                               </div>
                               <div class="hreobannerarea__button__2">
                                   <a class="default__button" href="#">View Courses</a>
