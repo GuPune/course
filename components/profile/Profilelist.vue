@@ -271,7 +271,7 @@ import {
 
 const store = useAuthStore();
 const router = useRouter();
-const profile = await store.getProfile();
+
 const verify = store.formdetail.verify_account;
 
 if(verify == 'system_active'){

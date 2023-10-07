@@ -237,7 +237,6 @@ const { locale, setLocale } = useI18n();
 const store = useAuthStore();
 
 const router = useRouter();
-const profile = await store.getProfile();
 const { getFormDetails } = storeToRefs(store);
 
 await store.Zipcode();

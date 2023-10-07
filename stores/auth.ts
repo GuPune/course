@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { useEnvStore } from '@/stores/env'
 import ApiService from '../services/api.service';
+import Cookies from 'js-cookie';
 
 interface UserPayloadInterface {
   username: string;
@@ -163,6 +164,11 @@ export const useAuthStore = defineStore('auth', {
         });
 
         if (data.value) {
+
+          const expirationHours = 2;
+        const expirationDate = new Date();
+        expirationDate.setTime(expirationDate.getTime() + expirationHours * 60 * 60 * 2);
+        Cookies.set('loggedIn', 'true', { expires: expirationDate });
          
           const token = useCookie('token'); // useCookie new hook in nuxt 3
           const user_id = useCookie('user_id'); // useCookie new hook in nuxt 3

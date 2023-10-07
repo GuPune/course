@@ -29,6 +29,7 @@
     "bootstrap": "^5.3.0",
     "chart.js": "^4.4.0",
     "jquery": "^3.7.0",
+    "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "nuxi": "^3.6.0",
     "nuxt3-vuex-module": "^1.0.11",

@@ -61,7 +61,7 @@ import ApiService from '@/services/api.service';
 
 const store = useAuthStore();
 const router = useRouter();
-const profile = await store.getProfile();
+
 
 const SelectDtl = async (item) => {
 
