@@ -72,7 +72,7 @@
 
               <div class="headerarea__main__menu .headerarea__login headerarea__right" v-if="authenticated">
 
-                <div class="header__cart">
+                <!-- <div class="">
                   <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                       class="bi bi-bell-fill" viewBox="0 0 16 16" id="noti-bell">
@@ -93,10 +93,29 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <nav>
                   <ul>
-
+                    <li class="me-5">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        class="bi bi-bell-fill " viewBox="0 0 16 16" id="noti-bell">
+                        <path
+                          d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                      </svg>
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                        9
+                      </span>
+                      <ul class="headerarea__submenu mt-3">
+                        <li class="header__right__dropdown__inner"  v-for="(item, index) in useError.mydltcardExp"
+                      :key="item.ap_id">
+                          <div class="single__header__right__dropdown">
+                            <div class="header__right__dropdown__content">
+                              <a > ใกล้วันหมดอายุใบขับขี่ประเภท <span class="text-danger">{{ item.dlt_code }}</span> วันที่หมดคือ <span class="text-danger">{{ item.expiry_date }}</span></a>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
                     <li>
                       <a class="headerarea__has__dropdown headerarea__login" href="#" id="headBadge" style="
                           padding: 8px 15px;
@@ -151,12 +170,23 @@
             </div>
             <div class="col-6">
               <div class="header-right-wrap">
-                <div class="me-2">
+                <div class="dropdown me-4">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                    class="bi bi-bell-fill" viewBox="0 0 16 16" id="noti-bell">
+                    class="bi bi-bell-fill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" viewBox="0 0 16 16" id="noti-bell">
                     <path
                       d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
                   </svg>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                        9
+                  </span>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item border-bottom"  v-for="(item, index) in useError.mydltcardExp"
+                      :key="item.ap_id">
+                      <div class="">
+                          <a > ใกล้วันหมดอายุใบขับขี่ประเภท <span class="text-danger">{{ item.dlt_code }}</span> วันที่หมดคือ <span class="text-danger">{{ item.expiry_date }}</span></a>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
                 <div class="mobile-off-canvas" @click="Showaside()">
                   <!-- if click -> add class inside to element class "mobile-off-canvas-active" -->
@@ -349,5 +379,22 @@ const changeLocale = (newLocale) => {
 
 #noti-bell:hover {
   color: var(--primaryColor);
+}
+.dropdown-item {
+  width: 100%;
+  overflow-wrap: break-word;
+}
+@media (max-width: 700px) {
+  .dropdown-item {
+    width: 250px;
+  }
+  .dropdown-item > div {
+    width: 200px;
+  }
+  .dropdown-item > div > a {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 16px;
+  }
 }
 </style>
