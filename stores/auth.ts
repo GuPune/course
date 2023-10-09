@@ -22,6 +22,7 @@ export const useAuthStore = defineStore('auth', {
     imagelist:null,
     imagelist_font:null,
     imagelist_back:null,
+    mydltcardExp:[],
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -184,7 +185,8 @@ export const useAuthStore = defineStore('auth', {
 
           await this.getProfile() ;
           await this.displaycard();
-          return true;
+          await this.getDltAlert();
+         return true;
         }else{
           this.status_login = false;
           this.alert = true; 
@@ -337,10 +339,10 @@ try {
     },
     async getDltAlert() {
       const alert = [];
+      console.log();
 if(this.dltcard){
   for (let x = 0; x < this.dltcard.length; x++) {
  const seconds = new Date().getTime() / 1000;
-console.log(new Date(this.dltcard[x].expiry_date).getTime() / 1000);
  const differ = (new Date(this.dltcard[x].expiry_date).getTime() / 1000) -  Math.floor(seconds) ;
  if(differ > 2592000){
  }else {
@@ -348,6 +350,7 @@ console.log(new Date(this.dltcard[x].expiry_date).getTime() / 1000);
  }
   }
   this.mydltcardExp = alert;
+
 }
     
      

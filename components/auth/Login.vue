@@ -138,9 +138,17 @@ const login = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
     let login = await authenticateUser(formData);
+
     if (login === true) {
       router.push("/");
     }
+
+  //  setTimeout(function() {
+  //   if (login === true) {
+  //     router.push("/");
+  //   }
+  //   }, 1000);
+  
   }
 
   //  v$.value.$validate();
