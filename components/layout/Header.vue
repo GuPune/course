@@ -102,16 +102,18 @@
                         <path
                           d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
                       </svg>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                        9
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" v-if="useError.mydltcardExp.length > 0">
+                        {{useError.mydltcardExp.length}}
                       </span>
                       <ul class="headerarea__submenu mt-3">
                         <li class="header__right__dropdown__inner"  v-for="(item, index) in useError.mydltcardExp"
                       :key="item.ap_id">
                           <div class="single__header__right__dropdown">
+                            <NuxtLink to="/profile">  
                             <div class="header__right__dropdown__content">
                               <a > ใกล้วันหมดอายุใบขับขี่ประเภท <span class="text-danger">{{ item.dlt_code }}</span> วันที่หมดคือ <span class="text-danger">{{ item.expiry_date }}</span></a>
                             </div>
+                          </NuxtLink>
                           </div>
                         </li>
                       </ul>
