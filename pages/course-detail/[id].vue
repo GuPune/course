@@ -48,6 +48,7 @@
     </div>
     <div class="coursearea sp_top_100 sp_bottom_100">
       <div class="container">
+ 
         <div class="row" v-if="store.course_lesson">
           <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
             <div
@@ -85,7 +86,7 @@
               >
                 <ul>
                   <li>
-                    <div class="course__details__date" v-if="item.lesson.length > 0">
+                    <div class="course__details__date" v-if="item.lesson">
                       <i class="icofont-book-alt"></i> {{ item.lesson.length }} {{ $t("page_course_last_lesson") }}
                     </div>
                   </li>
