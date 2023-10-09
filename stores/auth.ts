@@ -35,6 +35,7 @@ export const useAuthStore = defineStore('auth', {
     },
     mydtla: [],
     dltcard:[],
+    mydltcard:[],
     formdetail:{
       verify_account:null,
       identification_number:null,
@@ -48,6 +49,8 @@ export const useAuthStore = defineStore('auth', {
       front_img: "",
       back_img: "",
       dlt_code: '',
+      issue_date: '',
+      expiry_date: '',
     },
     formcard:{
       idcard_back:'',
@@ -167,7 +170,7 @@ export const useAuthStore = defineStore('auth', {
 
           const expirationHours = 2;
         const expirationDate = new Date();
-        expirationDate.setTime(expirationDate.getTime() + expirationHours * 60 * 60 * 2);
+        expirationDate.setTime(expirationDate.getTime() + expirationHours * 60 * 60 * 1000);
         Cookies.set('loggedIn', 'true', { expires: expirationDate });
          
           const token = useCookie('token'); // useCookie new hook in nuxt 3
@@ -180,6 +183,7 @@ export const useAuthStore = defineStore('auth', {
 
 
           await this.getProfile() ;
+          await this.displaycard();
           return true;
         }else{
           this.status_login = false;
@@ -229,6 +233,7 @@ export const useAuthStore = defineStore('auth', {
           return true;
         });
         await this.getProfile();
+        await this.displaycard();
         return data
       } catch (error) {
     
@@ -304,16 +309,22 @@ try {
     } ,  
     async displaycard() {
       const mydlt = [];
+      console.log('1');
       try {
         const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
           this.dltcard = response.data;
+         
           if (response.data.length > 0) {
             let a = this.dltcard[0];
             this.formdtl.front_img = a.front_img
             this.formdtl.back_img = a.back_img
             this.formdtl.dlt_code = a.dlt_code
+            this.formdtl.issue_date = a.issue_date
+            this.formdtl.expiry_date = a.expiry_date
+        
             for (let i = 0; i < response.data.length; i++) {
               let a = this.dlt.find(x => x.dlt_code === response.data[i].dlt_code)
+              console.log(a)
               mydlt.push(a);
             }
             this.mydtla = mydlt;
@@ -323,6 +334,24 @@ try {
       } catch (error) {
         return false;
       }
+    },
+    async getDltAlert() {
+      const alert = [];
+if(this.dltcard){
+  for (let x = 0; x < this.dltcard.length; x++) {
+ const seconds = new Date().getTime() / 1000;
+console.log(new Date(this.dltcard[x].expiry_date).getTime() / 1000);
+ const differ = (new Date(this.dltcard[x].expiry_date).getTime() / 1000) -  Math.floor(seconds) ;
+ if(differ > 2592000){
+ }else {
+  alert.push(this.dltcard[x]);
+ }
+  }
+  this.mydltcardExp = alert;
+}
+    
+     
+     
     },
 
     async SelectgetDLT(item) {
@@ -411,10 +440,10 @@ try {
         await this.UploadfileCardFront();
         const card = {user_id:this.user_id,idcard_front:this.formcard.idcard_front,idcard_back:this.formcard.idcard_back}
         this.formcard.user_id = this.user_id;
-      console.log(this.formcard);
+    
         try {
           const data = await ApiService.post('/user/idcard/create', this.formcard).then(response => {
-            console.log(response);
+          
          
           });
           return data
