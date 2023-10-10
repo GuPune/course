@@ -247,12 +247,17 @@
   </div>
 </template>
 <script lang="ts" setup>
+    definePageMeta({
+  middleware: 'auth' // this should match the name of the file inside the middleware directory 
+})
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { CoursePostStore } from "@/stores/course";
 import ApiService from "@/services/api.service";
 const router = useRouter();
 const store = CoursePostStore();
+
+
 
 let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
