@@ -5,7 +5,8 @@ import Banner from '@/components/layout/Banner.vue';
 definePageMeta({
     middleware: ['guest','cookie'] // this should match the name of the file inside the middleware directory 
 })
-
+const auth = useAuthStore();
+const profile = await auth.getProfile();
 
 
 </script>

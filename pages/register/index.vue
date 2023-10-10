@@ -47,6 +47,11 @@ import { RegisterStore } from '@/stores/register'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 
+
+definePageMeta({
+  middleware: 'register' // this should match the name of the file inside the middleware directory 
+})
+
 const router = useRouter();
 const store = useLogin()
 const registerload = RegisterStore()

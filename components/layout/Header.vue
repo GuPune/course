@@ -59,7 +59,6 @@
               </div>
             </div>
 
-
             <div class="col-xl-3 col-lg-3 col-md-6">
               <div class="headerarea__right" v-if="!authenticated">
                 <div class="headerarea__login">
@@ -125,7 +124,7 @@
                         ">
                         <i class="icofont-heart-alt"></i> {{ $t("account") }}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
-                          id="badgeSpan" v-if="useError.formdetail.verify_account == 'system_active'">
+                          id="badgeSpan" v-if="useError.formdetail.verify_account === 'system_active'">
                           <i class="icofont-check"></i><span id="badgeText">{{ $t("head_verify") }}</span>
                         </span>
 

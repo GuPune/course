@@ -12,11 +12,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     const loggedIn = useCookie('loggedIn'); // get token from cookies
    
     if (!loggedIn.value) {
-        const token = useCookie('token'); 
-    const user_id = useCookie('user_id'); 
+const token = useCookie('token'); 
+const user_id = useCookie('user_id'); 
   authenticated.value = false;
   token.value = null; // clear the token cookie
   user_id.value = null;
+  loggedIn.value = null;
   
  // abortNavigation();
  // return navigateTo('/login');

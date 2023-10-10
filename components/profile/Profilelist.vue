@@ -123,25 +123,13 @@
                       v-model="store.formuser.user_email"
                   :disabled="store.isDisabled"
 
-                          :class="{
-                        'border-red-500 focus:border-red-500':
-                          v$.user_email.$error,
-                        'border-[#42d392] ': !v$.user_email.$invalid,
-                      }"
-                      @change="v$.user_email.$touch"
-                      autocomplete="off"
-                      maxlength="10"
+                       
                     />
                     <div class="contact__icon">
                       <i class="icofont-envelope"></i>
                     </div>
                   </div>
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_email.$error"
-                    >{{ v$.user_email.$errors[0].$message }}</span
-                  >
+                
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
@@ -337,13 +325,13 @@ const rules = computed(() => {
       minLength: minLength(1),
     },
 
-    user_email: {
-      required: helpers.withMessage(
-        "The password confirmation field is required",
-        required
-      ),
-      email: helpers.withMessage("Invalid email format", email),
-    },
+    // user_email: {
+    //   required: helpers.withMessage(
+    //     "The password confirmation field is required",
+    //     required
+    //   ),
+    //   email: helpers.withMessage("Invalid email format", email),
+    // },
     // user_address: {
     //   required: helpers.withMessage('The Address field is required', required),
     //   minLength: minLength(6),

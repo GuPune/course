@@ -37,7 +37,7 @@ export const RegisterStore = defineStore({
   actions: {
 
     async regsiter() {
-    
+    console.log('this.form',this.form);
       try {
         const data = await ApiService.post('/user/create', this.form).then(response => {
           if (response.data == "") {

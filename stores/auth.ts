@@ -248,10 +248,12 @@ export const useAuthStore = defineStore('auth', {
     logUserOut() {
       const token = useCookie('token'); 
       const user_id = useCookie('user_id'); 
+      const loggedIn = useCookie('loggedIn'); // get token from cookies
       this.authenticated = false; 
       this.verify = false; 
       token.value = null; // clear the token cookie
       user_id.value = null;
+      loggedIn.value = null;
       this.loading = false;
 
       this.formuser.user_email = null
@@ -326,7 +328,6 @@ try {
         
             for (let i = 0; i < response.data.length; i++) {
               let a = this.dlt.find(x => x.dlt_code === response.data[i].dlt_code)
-              console.log(a)
               mydlt.push(a);
             }
             this.mydtla = mydlt;
@@ -339,7 +340,7 @@ try {
     },
     async getDltAlert() {
       const alert = [];
-      console.log();
+     
 if(this.dltcard){
   for (let x = 0; x < this.dltcard.length; x++) {
  const seconds = new Date().getTime() / 1000;

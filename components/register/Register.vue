@@ -8,11 +8,14 @@
           <p class="login__description">{{ $t("page_register_login") }} <a href="#" data-bs-toggle="modal"
               data-bs-target="#registerModal"></a></p>
         </div>
+    
         <form action="#">
          <div class="row">
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">{{ $t("fname") }}</label>
+                <label class="form__label">{{ $t("fname") }}<span style="color:red" > *
+                 </span></label>       
+              
                 <input class="common__login__input" type="text" placeholder="ชื่อจริง" v-model="stores.form.user_firstname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_firstname.$error,
@@ -27,7 +30,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">{{ $t("lname") }}</label>
+                <label class="form__label">{{ $t("lname") }}<span style="color:red" > *
+                 </span></label>
                 <input class="common__login__input" type="text" placeholder="นามสกุล" v-model="stores.form.user_lastname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_lastname.$error,
@@ -41,7 +45,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">{{ $t("username") }}</label>
+                <label class="form__label">{{ $t("username") }}<span style="color:red" > *
+                 </span></label>
                 <input class="common__login__input" type="text" placeholder="ยูสเชอร" v-model="stores.form.user_name"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_name.$error,
@@ -57,19 +62,15 @@
               <div class="login__form">
                 <label class="form__label">{{ $t("email") }}</label>
                 <input class="common__login__input" type="text" placeholder="อีเมล" v-model="stores.form.user_email"
-                  :class="{
-                    'border-red-500 focus:border-red-500': v$.user_email.$error,
-                    'border-[#42d392] ': !v$.user_email.$invalid,
-                  }" @change="v$.user_email.$touch" autocomplete="off">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_email.$error">{{
-                  v$.user_email.$errors[0].$message
-                }}</span>
+                >
+               
 
               </div>
             </div>
             <div class="col-xl-12">
               <div class="login__form">
-                <label class="form__label">{{ $t("tel") }} </label>
+                <label class="form__label">{{ $t("tel") }}<span style="color:red" > *
+                 </span> </label>
                 <input class="common__login__input" type="text" placeholder="เบอรโทร" v-model="stores.form.user_phone" :class="{
                   'border-red-500 focus:border-red-500': v$.user_phone.$error,
                   'border-[#42d392] ': !v$.user_phone.$invalid,
@@ -82,7 +83,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">{{ $t("password") }}</label>
+                <label class="form__label">{{ $t("password") }}<span style="color:red" > *
+                 </span></label>
                 <input class="common__login__input" type="password" placeholder="รหัสผ่าน"
                   v-model="stores.form.user_password" :class="{
                     'border-red-500 focus:border-red-500': v$.user_password.$error,
@@ -95,7 +97,8 @@
             </div>
             <div class="col-xl-6">
               <div class="login__form">
-                <label class="form__label">{{ $t("confirmpassword") }}</label>
+                <label class="form__label">{{ $t("confirmpassword") }}<span style="color:red" > *
+                 </span></label>
                 <input class="common__login__input" type="password" placeholder="ยืนยันรหัสผ่าน"
                   v-model="stores.form.user_confirmPassword" :class="{
                     'border-red-500 focus:border-red-500': v$.user_confirmPassword.$error,
@@ -166,10 +169,7 @@ const rules = computed(() => {
       required: helpers.withMessage('The username field is required', required),
       minLength: minLength(6),
     },
-    user_email: {
-      required: helpers.withMessage('The email field is required', required),
-      email: helpers.withMessage('Invalid email format', email),
-    },
+  
     user_password: {
       required: helpers.withMessage('The password field is required', required),
       minLength: minLength(6),
@@ -185,7 +185,7 @@ const rules = computed(() => {
     },
     accp: {
       required: helpers.withMessage('Accept the Terms and Privacy Policy', required),
-      sameAs: helpers.withMessage("Passwords don't xxx", sameAs(true)),
+      sameAs: helpers.withMessage("Accept the Terms and Privacy Policy", sameAs(true)),
     },
 
   };
