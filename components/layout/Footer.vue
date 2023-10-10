@@ -20,17 +20,7 @@
 
                                 </p>
                             </div>
-                            <div class="foter__bottom__text">
-                                <div class="footer__bottom__icon">
-                                    <i class="icofont-clock-time"></i>
-                                </div>
-                                <div class="footer__bottom__content">
-                                    <h6>Opening Houres</h6>
-                                    <span>Mon - Sat(8.00 - 6.00)</span>
-                                    <span>Sunday - Closed</span>
-                                </div>
-                            </div>
-
+               
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3  col-md-6 col-sm-6" data-aos="fade-up">
@@ -124,7 +114,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-3">
                         <div class="copyright__logo">
-                            <a href="/"><img src="/img/logo/logo_1.png" alt="logo"></a>
+                            <img src="/img/logo/logo_3.png" alt="logo" width="140" height="100" />
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
@@ -132,7 +122,7 @@
                             <p>Copyright © <span>2023</span> by All Rights Reserved.</p>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3">
+                    <!-- <div class="col-xl-3 col-lg-3">
                         <div class="footerarea__icon footerarea__icon__2">
                             <ul>
                                 <li><a href="//facebook.com"><i class="icofont-facebook"></i></a></li>
@@ -142,7 +132,7 @@
                                 <li><a href="//skype.com"><i class="icofont-skype"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

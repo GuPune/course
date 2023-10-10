@@ -23,7 +23,7 @@
   "lname": "ນາມສະກຸນ",
   "acc": "acc",
   "singup_title": "ສະໝັກສະມາຊິກ",
-  "singup_longtitle": "Already have an account? Log In",
+  "singup_longtitle": "ມີບັນຊີຢູ່ແລ້ວບໍ? ເຂົ້າ​ສູ່​ລະ​ບົບ",
   "button_register": "ສະໝັກສະມາຊິກ",
   "log_on_title": "ເຂົ້າ​ສູ່​ລະ​ບົບ",
   "log_on_longtitle": "ທ່ານມີບັນຊີ ? ເຂົ້າ​ສູ່​ລະ​ບົບ",
@@ -41,8 +41,8 @@
   "report_exam": "ບົດລາຍງານສະຖິຕິ",
   "historyappoint": "ປະຫວັດການນັດໝາຍ",
   "table_id": "ເລກ",
-  "table_dlt": "ประเภทรถ",
-  "table_remark": "หมายเหตุ",
+  "table_dlt": "ປະເພດລົດ",
+  "table_remark": "ຫມາຍ​ເຫດ​",
   "table_type_app": "ປະເພດການສອບເສັງ",
   "table_time": "ໄລຍະເວລາ",
   "table_action": "ຈັດການ",
@@ -135,7 +135,7 @@
 
   "page_profile_iden":"ເລກບັດປະຈຳຕົວ :",
   "page_profile_day":"ວັນເດືອນປີເກີດ :",
-  "page_profile_zip":"ประเทศ :",
+  "page_profile_zip":"ປະເທດ :",
   "page_profile_add_1":"ເມືອງ :",
   "page_profile_add_2":" ທີ່ຢູ່ : ",
   "page_profile_status":" ສະຖານະ : ",
@@ -186,7 +186,12 @@
   "profile_idcard_save": "ຮຽກຮ້ອງ",
   "profile_idcard": "ບັດປະຈຳຕົວ",
   "banner": "ຫຼາຍກວ່າ 100,000 ຜູ້ໃຊ້ລະບົບ",
-  "banner1": "ຫຼັກສູດການສອນແລະການສອນທັງຫມົດແມ່ນ ຍອມຮັບແລະ ມັນມີຄວາມຖືກຕ້ອງສູງແລະດັ່ງນັ້ນຈຶ່ງເຊື່ອຖືໄດ້."
+  "banner1": "ຫຼັກສູດການສອນແລະການສອນທັງຫມົດແມ່ນ ຍອມຮັບແລະ ມັນມີຄວາມຖືກຕ້ອງສູງແລະດັ່ງນັ້ນຈຶ່ງເຊື່ອຖືໄດ້.",
+  "head_verify":"ຢືນຢັນຕົວຕົນຂອງທ່ານ",
+  "head_notverify":"ບໍ່ໄດ້ຢັ້ງຢືນຕົວຕົນ",
+  "head_alert":"ວັນໝົດອາຍຸໃບຂັບຂີ່ໃກ້ເຂົ້າມາແລ້ວ",
+  "head_alert_day_out":"ວັນໝົດອາຍຸແມ່ນ",
+  "head_choose_lan":"ເລືອກພາສາ"
 
 
 }

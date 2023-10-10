@@ -41,7 +41,7 @@
   "report_exam": "Report statistics",
   "historyappoint": "History Appointment",
   "table_id": "Index",
-  "table_dlt": "ประเภทรถ",
+  "table_dlt": "Type",
   "table_remark": "Remark",
   "table_type_app": "Type of Exam",
   "table_time": "Period",
@@ -59,7 +59,7 @@
   "resultall": "Resultall",
   "historyall": "Historyall",
   "page_course": "All Course",
-  "page_exam": "ฝึกทำข้อสอบ",
+  "page_exam": "Test Exam",
   "page_appoint": "Appointment",
   "logout": "Log Out",
 
@@ -86,8 +86,8 @@
   "page_exam_t": "Read",
   "page_exam_send": "Send My Exam",
   "page_exam_detail": "Exam details",
-  "lan_loas": "ภาษาลาว",
-  "lan_eng": "ภาษาอังกฤษ",
+  "lan_loas": "Loas",
+  "lan_eng": "English",
   "page_test1":"1. Please read all instructions.",
   "page_test2":"2. The exam has a total of 50 questions. The exam time is specified.",
   "page_test3":"3. The exam will be presented one by one and the test taker can",
@@ -113,16 +113,14 @@
   "page_exam_report_remain2":"Hour",
   "page_exam_report_remain3":"minute",
   "page_exam_report_remain4":"second",
-  "page_exam_report_del_t":"คุณแน่ใจหรือเปล่า?",
-  "page_exam_report_del_de":"คุณต้องการยืนยันบันทึกนี้จริงๆ หรือไม่? ขั้นตอนนี้ไม่สามารถย้อนข้อมูลกลับมาได้",
+  "page_exam_report_del_t":"Are you sure?",
+  "page_exam_report_del_de":"Do you really want to confirm this record? This step cannot be reversed.",
   "page_exam_report_del_close":"Close",
   "page_exam_report_del_confirm":"Confirm",
   "page_exam_report_begin":"Start a new exam",
   "page_exam_report_test":"Take a test",
   "page_profile_type_test_y":"Theory",
   "page_profile_typepage_profile_type_test_n":"Practice",
-  
-
 
   "page_type_test_pass":"Pass",
   "page_type_test_fail":"Fail",
@@ -186,6 +184,11 @@
   "profile_idcard_save": "Save",
   "profile_idcard": "ID Card",
   "banner": "ผู้ใช้งานระบบมากกว่า แสนราย",
-  "banner1": "หลักสูตรการสอนและติวทั้งหมดเป็นหลักสูตรที่ได้รับการยอมรับและ มีความถูกต้องสูงจึงน่าเชื่อถือได้"
+  "banner1": "หลักสูตรการสอนและติวทั้งหมดเป็นหลักสูตรที่ได้รับการยอมรับและ มีความถูกต้องสูงจึงน่าเชื่อถือได้",
+  "head_verify":"ยืนยันตัวตน",
+  "head_notverify":"ไม่ยืนยันตัวตน",
+  "head_alert":"ใกล้วันหมดอายุใบขับขี่ประเภท",
+  "head_alert_day_out":"วันที่หมดคือ",
+  "head_choose_lan":"เลือกภาษา"
 
 }

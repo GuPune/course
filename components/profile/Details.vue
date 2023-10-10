@@ -121,8 +121,24 @@
                 </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_day") }}</p>
-                  <input type="date" class="form-control col" :value="store.formdetail.user_birthday" disabled>
+                  <input type="date" class="form-control col" v-model="store.formdetail.user_birthday"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.user_birthday.$error,
+                        'border-[#42d392] ': !v$.user_birthday.$invalid,
+                      }"
+                      @change="v$.user_birthday.$touch"
+                      autocomplete="off"
+                      maxlength="13" 
+                  >
                   <!-- <p class="col">{{store.formdetail.user_birthday}}</p> -->
+
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_birthday.$error"
+                    >{{ v$.user_birthday.$errors[0].$message }}</span
+                  >
                 </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
@@ -262,6 +278,13 @@ const rules = computed(() => {
       ),
       minLength: minLength(5),
     },
+    user_birthday: {
+      required: helpers.withMessage(
+        "user_birthday field is required",
+        required,
+      ),
+
+    },
   };
 });
 const v$ = useVuelidate(rules, getFormDetails);
@@ -287,7 +310,7 @@ const update = async () => {
  v$.value.$validate();
 
 if (!v$.value.$error) {
-  let savedetails = await store.UpdateDetails();
+let savedetails = await store.UpdateDetails();
 console.log(savedetails);
 if (savedetails == true) {
   await Swal.fire({

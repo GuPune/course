@@ -7,7 +7,7 @@
             <div class="col-xl-2 col-lg-2 col-md-6">
               <div class="headerarea__left">
                 <div class="headerarea__left__logo">
-                  <img src="/img/logo/logo_3.png" alt="logo" width="80" height="80" />
+                  <img src="/img/logo/logo_3.png" alt="logo" width="140" height="100" />
                 </div>
               </div>
             </div>
@@ -48,9 +48,9 @@
                     <a style="padding-left: 10px; padding-right: 10px" @click="changeLocale('en')">
                       <img src="../../assets/eng.png" alt="My Image" />
                     </a>
-                    <a @click="changeLocale('th')">
+                    <!-- <a @click="changeLocale('th')">
                       <img src="../../assets/thai.png" alt="My Image" />
-                    </a>
+                    </a> -->
                     <a style="padding-left: 10px; padding-right: 10px" @click="changeLocale('la')">
                       <img src="../../assets/la.png" alt="My Image" />
                     </a>
@@ -111,7 +111,7 @@
                           <div class="single__header__right__dropdown">
                             <NuxtLink to="/profile">  
                             <div class="header__right__dropdown__content">
-                              <a > ใกล้วันหมดอายุใบขับขี่ประเภท <span class="text-danger">{{ item.dlt_code }}</span> วันที่หมดคือ <span class="text-danger">{{ item.expiry_date }}</span></a>
+                              <a > {{ $t("head_alert") }} <span class="text-danger">{{ item.dlt_code }}</span> {{ $t("head_alert_day_out") }} <span class="text-danger">{{ item.expiry_date }}</span></a>
                             </div>
                           </NuxtLink>
                           </div>
@@ -126,12 +126,12 @@
                         <i class="icofont-heart-alt"></i> {{ $t("account") }}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
                           id="badgeSpan" v-if="useError.formdetail.verify_account == 'system_active'">
-                          <i class="icofont-check"></i><span id="badgeText">ยืนยันตัวตน</span>
+                          <i class="icofont-check"></i><span id="badgeText">{{ $t("head_verify") }}</span>
                         </span>
 
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                           id="badgeSpan" v-else>
-                          <i class="icofont-close"></i><span id="badgeText">ยังไม่ยืนยันตัวตน</span>
+                          <i class="icofont-close"></i><span id="badgeText">{{ $t("head_notverify") }}</span>
                         </span>
 
                       </a>
@@ -185,7 +185,7 @@
                     <li class="dropdown-item border-bottom"  v-for="(item, index) in useError.mydltcardExp"
                       :key="item.ap_id">
                       <div class="">
-                          <a > ใกล้วันหมดอายุใบขับขี่ประเภท <span class="text-danger">{{ item.dlt_code }}</span> วันที่หมดคือ <span class="text-danger">{{ item.expiry_date }}</span></a>
+                          <a > {{ $t("head_alert") }} <span class="text-danger">{{ item.dlt_code }}</span> {{ $t("head_alert_day_out") }} <span class="text-danger">{{ item.expiry_date }}</span></a>
                       </div>
                     </li>
                   </ul>
@@ -250,7 +250,7 @@
 
             <div class="btn-group">
 
-              <a class="mobile-language-active" href="#" data-bs-toggle="dropdown" aria-expanded="false">เลือกภาษา <i
+              <a class="mobile-language-active" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ $t("head_choose_lan") }} <i
                   class="icofont-thin-down"></i></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" @click="changeLocale('la')">{{ $t("lan_loas") }}</a></li>

@@ -40,27 +40,27 @@
     "table_history_button": "ดูสถิติการทดสอบ",
     "report_exam": "รายงานสถิติ",
     "historyappoint": "ประวัติการนัดหมาย",
-    "table_id": "ลำดับ",
-    "table_dlt": "ประเภทรถ",
-    "table_remark": "หมายเหตุ",
-    "table_type_app": "ประเภทสอบ",
-    "table_time": "ช่วงเวลา",
-    "table_action": "จัดการ",
-    "table_action_cancel": "ยกเลิกนัดหมาย",
+    "table_id": "#",
+    "table_dlt": "Type license",
+    "table_remark": "Remark",
+    "table_type_app": "Exam type",
+    "table_time": "Period",
+    "table_action": "Manage",
+    "table_action_cancel": "Cancel appointment",
 
-    "result_id": "ลำดับ",
-    "result_score": "คะแนน",
-    "result_type": "ประเภทสอบ",
-    "result_status": "สภานะ",
-    "result_details": "รายละเอียด",
-    "result_time": "เวลา",
+    "result_id": "#",
+    "result_score": "Score",
+    "result_type": "Exam type",
+    "result_status": "Status",
+    "result_details": "Details",
+    "result_time": "Time",
  
-    "result": "ผลสอบ",
+    "result": "Results",
     "resultall": "Resultall",
     "historyall": "Historyall",
-    "page_course": "หลักสูตรทั้งหมด",
-    "page_exam": "ฝึกทำข้อสอบ",
-    "page_appoint": "นัดหมาย",
+    "page_course": "All courses",
+    "page_exam": "Test",
+    "page_appoint": "Appointment",
     "logout": "ออกจากระบบ",
 
     "page_register": "สมัครสมาชิก",
@@ -186,7 +186,15 @@
     "profile_idcard_save": "ยันยืน",
     "profile_idcard": "บัตรประจำตัว",
     "banner": "ผู้ใช้งานระบบมากกว่า แสนราย",
-    "banner1": "หลักสูตรการสอนและติวทั้งหมดเป็นหลักสูตรที่ได้รับการยอมรับและ มีความถูกต้องสูงจึงน่าเชื่อถือได้"
+    "banner1": "หลักสูตรการสอนและติวทั้งหมดเป็นหลักสูตรที่ได้รับการยอมรับและ มีความถูกต้องสูงจึงน่าเชื่อถือได้",
+    "head_verify":"ยืนยันตัวตน",
+    "head_notverify":"ไม่ยืนยันตัวตน",
+    "head_alert":"ใกล้วันหมดอายุใบขับขี่ประเภท",
+    "head_alert_day_out":"วันที่หมดคือ",
+    "head_choose_lan":"เลือกภาษา"
+    
+
+    
 
 
     
