@@ -215,7 +215,7 @@
                       "
                       type="button"
                       class="btn btn-primary mt-0" @click="update()">
-                      Update
+                      {{ $t("bt_edit") }}
                     </button>
                 </div>
 

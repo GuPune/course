@@ -191,7 +191,8 @@
   "head_notverify":"ບໍ່ໄດ້ຢັ້ງຢືນຕົວຕົນ",
   "head_alert":"ວັນໝົດອາຍຸໃບຂັບຂີ່ໃກ້ເຂົ້າມາແລ້ວ",
   "head_alert_day_out":"ວັນໝົດອາຍຸແມ່ນ",
-  "head_choose_lan":"ເລືອກພາສາ"
+  "head_choose_lan":"ເລືອກພາສາ",
+  "bt_edit":"แก้ไข"
 
 
 }

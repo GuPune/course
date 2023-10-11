@@ -75,12 +75,12 @@
   "page_course_code": "Code",
   "page_course_view_details": "See more details",
 
-  "page_course_view_show": "แสดงข้อมูล 1 - 10 ทั้งหมด",
+  "page_course_view_show": "Show Record 1 - 10 All",
   "page_exam_course": "Course",
   "page_exam_answer": "Answers",
   "page_exam_begin": "Start a new exam",
   "page_exam_name": "Name",
-  "page_exam_code": "รหัสบัตร",
+  "page_exam_code": "Code",
   "page_exam_person": "Population",
   "page_exam_status": "Status",
   "page_exam_t": "Read",
@@ -133,7 +133,7 @@
 
   "page_profile_iden":"ID Card :",
   "page_profile_day":"Birthday :",
-  "page_profile_zip":"ประเทศ :",
+  "page_profile_zip":"Country :",
   "page_profile_add_1":"Subdistrict :",
   "page_profile_add_2":" Address : ",
   "page_profile_status":" Status : ",
@@ -183,12 +183,13 @@
   "profile_idcard_back_upload": "Upload Back",
   "profile_idcard_save": "Save",
   "profile_idcard": "ID Card",
-  "banner": "ผู้ใช้งานระบบมากกว่า แสนราย",
-  "banner1": "หลักสูตรการสอนและติวทั้งหมดเป็นหลักสูตรที่ได้รับการยอมรับและ มีความถูกต้องสูงจึงน่าเชื่อถือได้",
-  "head_verify":"ยืนยันตัวตน",
-  "head_notverify":"ไม่ยืนยันตัวตน",
-  "head_alert":"ใกล้วันหมดอายุใบขับขี่ประเภท",
-  "head_alert_day_out":"วันที่หมดคือ",
-  "head_choose_lan":"เลือกภาษา"
+  "banner": "More than 100,000 system users",
+  "banner1": "All teaching and tutoring courses are accepted and It is highly accurate and therefore reliable.",
+  "head_verify":"Verify your identity",
+  "head_notverify":"Identity not verified",
+  "head_alert":"License Type",
+  "head_alert_day_out":"Expiration date",
+  "head_choose_lan":"Choose language",
+  "bt_edit":"Update"
 
 }

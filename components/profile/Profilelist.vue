@@ -228,7 +228,7 @@
                         disabled
                       "
                     >
-                      Save
+                    {{ $t("bt_edit") }}
                     </button>
                   </div>
                 </div>
