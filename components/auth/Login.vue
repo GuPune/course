@@ -61,7 +61,10 @@
           </div>
           <div
             class="login__form d-flex justify-content-between flex-wrap gap-2"
-          ></div>
+          >
+        
+        <nuxt-link to="/resetpassword">Reset Password</nuxt-link>
+        </div>
           <div class="login__button" @click="login()">
             <a class="default__button">{{ $t("log_on_title") }}</a>
           </div>
