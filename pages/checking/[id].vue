@@ -42,6 +42,8 @@ let FirstDate = new Date(new Date(decodedString).setHours(new Date().getHours() 
 
 var date = new Date();
 var expiryDate = Math.floor(date.getTime() / 1000); //1440516958
+
+
 if(first > expiryDate){
   store.user_id = user_id
   let user = await store.authenticateUserMoiblex()
@@ -50,12 +52,12 @@ if(first > expiryDate){
 router.push("/examquestions/"+em_id);
  }
  if(menu_type == 2){
-//  router.push("/course-detail/"+em_id);
+router.push("/course-detail/"+em_id);
  }
   }
- // router.push("/examquestions/"+em_id);
+ 
 }else {
-  router.push("/unauthorized");
+router.push("/unauthorized");
 }
 }
 
