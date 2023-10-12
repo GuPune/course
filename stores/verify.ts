@@ -76,7 +76,6 @@ export const VerifyStore = defineStore({
       return true;
     },
     async verifyOTP() {
-      console.log('verifyOTP');
       const otpconfirm = this.otp.join('');
       this.formotp = { otp_code: otpconfirm, user_id: this.formdetail.user_id };
       

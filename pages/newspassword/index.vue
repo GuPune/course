@@ -8,23 +8,10 @@
       <div class="resetpassword">
               <div class="container">
                   <div class="row">
-                                 <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="store.isAlertFindUser">
-                                    <div class="alert alert-danger" role="alert">
-                                  ไม่มี Account นี้
-                            </div>
-                        </div>
                       <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
-              <ResetPassword v-if="store.isResetPassword"></ResetPassword>
-
-              <ResetPasswordOTP v-if="store.isResetPasswordOTP"></ResetPasswordOTP>
+              <NewPassword></NewPassword>
                       </div>
-
-  
-  
                   </div>
-
-
-  
               </div>
           </div>
     </div>
@@ -38,8 +25,8 @@
 <script setup>
 
 
-import ResetPassword from '@/components/auth/Reset.vue';
-import ResetPasswordOTP from '@/components/auth/ResetPassOtp.vue';
+import NewPassword from '@/components/auth/NewPass.vue';
+
 
 import Loading from '@/components/button/loading.vue';
 import { storeToRefs } from 'pinia';
@@ -52,22 +39,7 @@ import { required, email, sameAs, minLength, helpers } from '@vuelidate/validato
 
 const router = useRouter();
 
-const store = useLogin()
 
-
-const rules = computed(() => {
-  return {
-    username: {
-      required: helpers.withMessage('The email field is required', required),
-    //   email: helpers.withMessage('Invalid email format', email),
-      minLength: minLength(6),
-    },
-    password: {
-      required: helpers.withMessage('The password field is required', required),
-      minLength: minLength(6),
-    },
-  };
-});
 
 
 

@@ -15,7 +15,7 @@
               <input
                 class="common__login__input"
                 type="text"
-                placeholder="ID card number"
+                placeholder="ID card number && Phone && Email"
                 v-model="store.formreset.user"
               />
               <span
@@ -50,7 +50,7 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
-
+const router = useRouter();
 
 const store = useLogin()
 const { Formreset } = storeToRefs(store);
@@ -61,7 +61,6 @@ const rules = computed(() => {
       required: helpers.withMessage("field is required", required),
       minLength: minLength(1),
     },
-
   };
 });
 
@@ -70,8 +69,17 @@ const v$ = useVuelidate(rules, Formreset);
 const reset = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
- store.isResetPassword = false;
- store.isResetPasswordOTP = true;
+
+  let check_user = await store.checkUser();
+  if(check_user == true){
+store.isAlertFindUser = false;
+store.isResetPassword = false;
+store.isResetPasswordOTP = true;
+  }else{
+    store.isAlertFindUser = true;
+  }
+// store.isResetPassword = false;
+// store.isResetPasswordOTP = true;
   }
 };
 

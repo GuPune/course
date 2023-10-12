@@ -5,7 +5,7 @@
         <div class="login__heading">
           <h5 class="login__title">OTP</h5>
           <p class="login__description">
-            After click => <a class="btn btn-info" href="#">Get OTP code</a>, We will send OTP Code to your phone number
+            After click => <a class="btn btn-info" href="#" @click="getotp()">Get OTP code</a>, We will send OTP Code to your phone number
           </p>
         </div>
         <form action="#">
@@ -16,12 +16,20 @@
                 class="common__login__input"
                 type="text"
                 placeholder="Enter your OTP Code"
-                v-model="store.formreset.user"
+                v-model="store.formreset.otp"
+              
               />
-              <p>Didn't receive the OTP? <a href="#">Resend again</a></p>
+
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.otp.$error"
+              >{{ v$.otp.$errors[0].$message }}</span
+            >
+              <!-- <p>Didn't receive the OTP? <a href="#">Resend again</a></p> -->
             </div>
           </div>
-          <div class="login__button" @click="reset()">
+          <div class="login__button" @click="sendotp()">
             <a class="default__button">{{ $t("log_on_title") }}</a>
           </div>
         </form>
@@ -46,27 +54,40 @@ import {
   helpers,
 } from "@vuelidate/validators";
 
-
+const router = useRouter();
 const store = useLogin()
 const { Formreset } = storeToRefs(store);
 
 const rules = computed(() => {
   return {
-    user: {
-      required: helpers.withMessage("Exam code field is required", required),
-      minLength: minLength(1),
+    otp: {
+      required: helpers.withMessage("OTP code field is required", required),
+      minLength: minLength(6),
     },
-
   };
 });
 
 const v$ = useVuelidate(rules, Formreset);
-
 const reset = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
  
   }
 };
+
+const getotp = async () => {
+let otp = await store.getOtp();
+};
+
+const sendotp = async () => {
+  v$.value.$validate();
+  if (!v$.value.$error) {
+    router.push("/newspassword");
+   // let sendotp = await store.verifyOTP();
+   // console.log()
+  }
+};
+
+
 
 </script>
