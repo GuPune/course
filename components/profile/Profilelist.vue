@@ -44,12 +44,34 @@
                       <i class="icofont-businessman"></i>
                     </div>
                   </div>
-                  <span
+       
+
+                  <div v-if="locale == 'la'">
+                    <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_firstname.$error"
-                    >{{ v$.user_firstname.$errors[0].$message }}</span
+                    >{{ $t("profile_alert_name") }}</span
                   >
+                 </div>
+
+                 <div v-if="locale == 'th'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_firstname.$error"
+                    >{{ $t("profile_alert_name") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_firstname.$error"
+                    >{{ $t("profile_alert_name") }}</span
+                  >
+                 </div>
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
@@ -74,12 +96,34 @@
                       <i class="icofont-businessman"></i>
                     </div>
                   </div>
-                  <span
+          
+
+                  <div v-if="locale == 'la'">
+                    <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_lastname.$error"
-                    >{{ v$.user_lastname.$errors[0].$message }}</span
+                    >{{ $t("profile_alert_lname") }}</span
                   >
+                 </div>
+
+                 <div v-if="locale == 'th'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_lastname.$error"
+                    >{{ $t("profile_alert_lname") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_lastname.$error"
+                    >{{ $t("profile_alert_lname") }}</span
+                  >
+                 </div>
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
@@ -105,12 +149,34 @@
                       <i class="icofont-businessman"></i>
                     </div>
                   </div>
-                  <span
+                
+
+                  <div v-if="locale == 'la'">
+                    <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_name.$error"
-                    >{{ v$.user_name.$errors[0].$message }}</span
+                    >{{ $t("profile_alert_usersname") }}</span
                   >
+                 </div>
+
+                 <div v-if="locale == 'th'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_name.$error"
+                    >{{ $t("profile_alert_usersname") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_name.$error"
+                    >{{ $t("profile_alert_usersname") }}</span
+                  >
+                 </div>
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
@@ -129,6 +195,8 @@
                       <i class="icofont-envelope"></i>
                     </div>
                   </div>
+
+                  
                 
                 </div>
 
@@ -153,12 +221,33 @@
                       <i class="icofont-ui-call"></i>
                     </div>
                   </div>
-                  <span
+        
+                  <div v-if="locale == 'la'">
+                    <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_phone.$error"
-                    >{{ v$.user_phone.$errors[0].$message }}</span
+                    >{{ $t("profile_alert_phone") }}</span
                   >
+                 </div>
+
+                 <div v-if="locale == 'th'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_phone.$error"
+                    >{{ $t("profile_alert_phone") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_phone.$error"
+                    >{{ $t("profile_alert_phone") }}</span
+                  >
+                 </div>
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
@@ -203,13 +292,39 @@
                       <i class="icofont-edit"></i>
                     </div>
                   </div>
+                  
 
-                  <span
+
+                  <div v-if="locale == 'la'">
+                    <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_password.$error"
-                    >{{ v$.user_password.$errors[0].$message }}</span
+                    >{{ $t("profile_alert_password") }}</span
                   >
+                 </div>
+
+                 <div v-if="locale == 'th'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_password.$error"
+                    >{{ $t("profile_alert_password") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_password.$error"
+                    >{{ $t("profile_alert_password") }}</span
+                  >
+                 </div>
+
+
+
+                  
                 </div>
 
                 <div class="col-xl-12" data-aos="fade-up">
@@ -256,6 +371,8 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const store = useAuthStore();
 const router = useRouter();

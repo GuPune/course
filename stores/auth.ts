@@ -210,11 +210,19 @@ export const useAuthStore = defineStore('auth', {
    if(user == true){
     this.authenticated = true; // set authenticated  state value to true
     this.status_login = true;
+
+    const expirationHours = 2;
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + expirationHours * 60 * 60 * 1000);
+    Cookies.set('loggedIn', 'true', { expires: expirationDate });
+
+        await this.getProfile() ;
+          await this.displaycard();
+          await this.getDltAlert();
     return true;
    }else {
     return false;
    }
-
     },
 
     async authenticateUserMoible() {
@@ -313,7 +321,6 @@ try {
     } ,  
     async displaycard() {
       const mydlt = [];
-      console.log('1');
       try {
         const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
           this.dltcard = response.data;

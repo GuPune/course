@@ -151,7 +151,7 @@
                   <p class="col fw-bold mb-0">{{ $t("page_profile_add_1") }}</p>
                   <!-- <input type="text" class="form-control col" :value="store.formdetail.location.zipcode_name" disabled> -->
                   <select class="form-control col" v-if="store.zipcode" v-model="store.formdetail.location_id" :disabled="store.isDisabled">
-    <option   v-for="(zipcode, index) in store.zipcode" :key="zipcode.id" :value="zipcode.id">{{zipcode.zipcode_name}}</option>
+    <option   v-for="(zipcode, index) in store.zipcode" :key="zipcode.id" :value="zipcode.id">{{zipcode.zipcode_name}} - {{ zipcode.amphur_name }}</option>
     </select>
                   <!-- <p class="col">{{store.formdetail.location.zipcode_name}}</p> -->
                 </div>

@@ -135,7 +135,7 @@
 
   "page_profile_iden":"ເລກບັດປະຈຳຕົວ :",
   "page_profile_day":"ວັນເດືອນປີເກີດ :",
-  "page_profile_zip":"ປະເທດ :",
+  "page_profile_zip":"ສັນຊາດ :",
   "page_profile_add_1":"ເມືອງ :",
   "page_profile_add_2":" ທີ່ຢູ່ : ",
   "page_profile_status":" ສະຖານະ : ",
@@ -192,7 +192,11 @@
   "head_alert":"ວັນໝົດອາຍຸໃບຂັບຂີ່ໃກ້ເຂົ້າມາແລ້ວ",
   "head_alert_day_out":"ວັນໝົດອາຍຸແມ່ນ",
   "head_choose_lan":"ເລືອກພາສາ",
-  "bt_edit":"แก้ไข"
-
-
+  "bt_edit":"ຖືກຕ້ອງ",
+  "profile_alert_name":"ຕື່ມໃສ່ໃນຊື່ຂອງທ່ານຢ່າງສົມບູນ.",
+  "profile_alert_lname":"ຕື່ມໃສ່ນາມສະກຸນຂອງເຈົ້າໃຫ້ຄົບຖ້ວນ.",
+  "profile_alert_usersname":"ຕື່ມຂໍ້ມູນໃສ່ຊື່ຜູ້ໃຊ້ຢ່າງສົມບູນ.",
+  "profile_alert_email":"ໃສ່ອີເມວຂອງເຈົ້າຢ່າງຖືກຕ້ອງ.",
+  "profile_alert_phone":"ຕື່ມໃສ່ເບີໂທລະສັບຂອງເຈົ້າໃຫ້ຄົບຖ້ວນ.",
+  "profile_alert_password":"ຕື່ມລະຫັດຜ່ານຂອງທ່ານ."
 }

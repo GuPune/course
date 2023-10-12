@@ -135,7 +135,7 @@
 
     "page_profile_iden":"หมายเลขบัตรประชาชน :",
     "page_profile_day":"วันเกิด :",
-    "page_profile_zip":"ประเทศ :",
+    "page_profile_zip":"สัญชาติ :",
     "page_profile_add_1":"แขวง :",
     "page_profile_add_2":" ที่อยู่ : ",
     "page_profile_status":" สถานะ : ",
@@ -192,11 +192,11 @@
     "head_alert":"ใกล้วันหมดอายุใบขับขี่ประเภท",
     "head_alert_day_out":"วันที่หมดคือ",
     "head_choose_lan":"เลือกภาษา",
-    "bt_edit":"แก้ไข"
-    
-
-    
-
-
-    
+    "bt_edit":"แก้ไข",
+    "profile_alert_name":"กรอกชื่อให้ครบถ้วน",
+    "profile_alert_lname":"กรอกนามสกุลให้ครบถ้วน",
+    "profile_alert_usersname":"กรอกยูสเซอร์ให้ครบถ้วน",
+    "profile_alert_email":"กรอกอีเมลให้ถูกต้อง",
+    "profile_alert_phone":"กรอกเบอร์โทรให้ครบถ้วน",
+    "profile_alert_password":"กรอกรหัสผ่าน"
 }

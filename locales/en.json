@@ -133,7 +133,7 @@
 
   "page_profile_iden":"ID Card :",
   "page_profile_day":"Birthday :",
-  "page_profile_zip":"Country :",
+  "page_profile_zip":"Nationality :",
   "page_profile_add_1":"Subdistrict :",
   "page_profile_add_2":" Address : ",
   "page_profile_status":" Status : ",
@@ -190,6 +190,12 @@
   "head_alert":"License Type",
   "head_alert_day_out":"Expiration date",
   "head_choose_lan":"Choose language",
-  "bt_edit":"Update"
+  "bt_edit":"Update",
+  "profile_alert_name":"กรอกชื่อให้ครบถ้วน",
+  "profile_alert_lname":"กรอกนามสกุลให้ครบถ้วน",
+  "profile_alert_usersname":"กรอกยูสเซอร์ให้ครบถ้วน",
+  "profile_alert_email":"กรอกอีเมลให้ถูกต้อง",
+  "profile_alert_phone":"กรอกเบอร์โทรให้ครบถ้วน",
+  "profile_alert_password":"กรอกรหัสผ่าน"
 
 }
