@@ -5,19 +5,20 @@
         <div class="login__heading">
           <h5 class="login__title">OTP</h5>
           <p class="login__description">
-            Enter this form associated with your account to reset your password.
+            After click => <a class="btn btn-info" href="#">Get OTP code</a>, We will send OTP Code to your phone number
           </p>
         </div>
         <form action="#">
           <div class="login__form">
             <div class="mb-4">
-              <label class="form__label mb-0">{{ $t("page_verify_iden") }} && {{ $t("tel") }} && {{ $t("email") }}</label>
+              <label class="form__label mb-0">OTP Code</label>
               <input
                 class="common__login__input"
                 type="text"
-                placeholder="ID card number"
+                placeholder="Enter your OTP Code"
                 v-model="store.formreset.user"
               />
+              <p>Didn't receive the OTP? <a href="#">Resend again</a></p>
             </div>
           </div>
           <div class="login__button" @click="reset()">
