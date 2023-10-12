@@ -58,12 +58,11 @@
               v-if="v$.password.$error"
               >{{ v$.password.$errors[0].$message }}</span
             >
+            <div id="emailHelp" class="form-text"><nuxt-link to="/resetpassword">Forget Password?</nuxt-link></div>
           </div>
           <div
             class="login__form d-flex justify-content-between flex-wrap gap-2"
           >
-        
-        <nuxt-link to="/resetpassword">Reset Password</nuxt-link>
         </div>
           <div class="login__button" @click="login()">
             <a class="default__button">{{ $t("log_on_title") }}</a>
