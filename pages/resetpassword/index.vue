@@ -14,7 +14,9 @@
                             </div>
                         </div>
                       <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
-              <ResetPassword></ResetPassword>
+              <ResetPassword v-if="store.isResetPassword"></ResetPassword>
+
+              <ResetPasswordOTP v-if="store.isResetPasswordOTP"></ResetPasswordOTP>
                       </div>
 
   
@@ -37,6 +39,7 @@
 
 
 import ResetPassword from '@/components/auth/Reset.vue';
+import ResetPasswordOTP from '@/components/auth/ResetPassOtp.vue';
 
 import Loading from '@/components/button/loading.vue';
 import { storeToRefs } from 'pinia';
@@ -49,8 +52,7 @@ import { required, email, sameAs, minLength, helpers } from '@vuelidate/validato
 
 const router = useRouter();
 
-
-
+const store = useLogin()
 
 
 const rules = computed(() => {

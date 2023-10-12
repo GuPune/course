@@ -299,7 +299,7 @@ export const ExamTestPostStore = defineStore({
     },
 
     async toHoursAndMinutes() {
-      console.log('Time',this.timerCount);
+    
       const totalMinutes = Math.floor(this.timerCount / 60);
       this.seconds = this.timerCount % 60;
       this.hours = Math.floor(totalMinutes / 60);

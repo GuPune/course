@@ -9,10 +9,16 @@ export const useLogin = defineStore({
     isActiveSig :false,
     isLoading :false,
     isActiveBar :false,
+    isResetPassword :false,
+    isResetPasswordOTP :true,
     form: {
         username: "",
         password: "",
     },
+    formreset: {
+      user: "",
+  },
+
   }),
   getters: {
     getisActive: (state) => {
@@ -24,7 +30,10 @@ export const useLogin = defineStore({
     getisActiveBar: (state) => {
       return state.isActiveBar;
     },
-    
+    Formreset: (state) => {
+      return state.formreset;
+    },
+  
   }, 
   actions: {
 

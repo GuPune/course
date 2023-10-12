@@ -3,7 +3,7 @@
     <div class="col-xl-8 col-md-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">Reset Password</h5>
+          <h5 class="login__title">OTP</h5>
           <p class="login__description">
             Enter this form associated with your account to reset your password.
           </p>
@@ -18,12 +18,6 @@
                 placeholder="ID card number"
                 v-model="store.formreset.user"
               />
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.user.$error"
-              >{{ v$.user.$errors[0].$message }}</span
-            >
             </div>
           </div>
           <div class="login__button" @click="reset()">
@@ -58,7 +52,7 @@ const { Formreset } = storeToRefs(store);
 const rules = computed(() => {
   return {
     user: {
-      required: helpers.withMessage("field is required", required),
+      required: helpers.withMessage("Exam code field is required", required),
       minLength: minLength(1),
     },
 
@@ -70,8 +64,7 @@ const v$ = useVuelidate(rules, Formreset);
 const reset = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
- store.isResetPassword = false;
- store.isResetPasswordOTP = true;
+ 
   }
 };
 
