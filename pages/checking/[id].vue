@@ -1,13 +1,15 @@
 
 <script lang="ts" setup>
+
+definePageMeta({
+  layout: "blank"
+});
 import { storeToRefs } from "pinia";
 import { ref, computed, watch, onMounted } from 'vue'
 import { defineComponent } from "vue";
 
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import { useRoute } from 'vue-router'
-
-
 
 
 const store = useAuthStore()
@@ -34,7 +36,29 @@ const genr_last = myArray[4];
 const menu_type = myArray[5];
 
 
-const decodedString = atob(datetime); // Decoded string  
+if(!genr_first){
+  router.push("/sessiontimeout");
+}
+if(!em_id){
+  router.push("/sessiontimeout");
+}
+if(!datetime){
+  router.push("/sessiontimeout");
+}
+if(!user_id){
+  router.push("/sessiontimeout");
+}
+if(!genr_last){
+  router.push("/sessiontimeout");
+}
+if(!menu_type){
+  router.push("/sessiontimeout");
+}
+ 
+if(datetime){
+  var decodedString = atob(datetime); // Decoded string  
+}
+
 
 var date = new Date(decodedString);
 let FirstDate = new Date(new Date(decodedString).setHours(new Date().getHours() + 1));
@@ -57,7 +81,7 @@ router.push("/course-detail/"+em_id);
   }
  
 }else {
-router.push("/unauthorized");
+router.push("/sessiontimeout");
 }
 }
 
