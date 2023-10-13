@@ -53,6 +53,7 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
+import Swal from "sweetalert2";
 
 const router = useRouter();
 const store = useLogin()
@@ -82,9 +83,23 @@ let otp = await store.getOtp();
 const sendotp = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
-    router.push("/newspassword");
-   // let sendotp = await store.verifyOTP();
-   // console.log()
+ 
+    let sendotp = await store.verifyOTP();
+    console.log(sendotp);
+    if(sendotp === true){
+      router.push("/newspassword");
+    }else {
+
+      Swal.fire({
+      title: "ไม่สำเร็จ!",
+      text: "ยืนยันOTPไม่สำเร็จ!",
+      icon: "error",
+    });
+
+    }
+
+   // router.push("/newspassword");
+
   }
 };
 

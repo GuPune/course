@@ -11,7 +11,7 @@
 
 import { useRoute } from 'vue-router'
   import { storeToRefs } from 'pinia'
-
+  import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
   import { usePostStore } from '@/stores/post'
 
 
@@ -19,6 +19,14 @@ import { useRoute } from 'vue-router'
   const { fetchPosts } = usePostStore()
 
  // fetchPosts();
+
+ const auth = useAuthStore();
+const useError = useAuthStore();
+
+if(useError.authenticated){
+  const profile = await useError.getProfile();
+}
+
 
  useHead({
   title: 'My App',

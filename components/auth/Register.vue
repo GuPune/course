@@ -159,23 +159,6 @@ const { formDataregister } = storeToRefs(stores);
 const { regsiter } = RegisterStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 
-// const formData = reactive({
-//   email: '',
-//   password: '',
-//   confirmPassword: null,
-// });
-
-
-// const formDataregister = reactive({
-//   username: 'xxxxxx',
-//   password: '12345678',
-//   email: 'rrrr@gmail.com',
-//   fname: 'xxxxxxxx',
-//   lname: 'xxxxxxxx',
-//   tel: '0833268813',
-//   confirmPassword: '12345678',
-//   accp: null,
-// });
 
 
 const rules = computed(() => {

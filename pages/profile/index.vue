@@ -270,8 +270,6 @@ import { useRoute } from "vue-router";
 const auth = useAuthStore();
 
 const route = useRoute();
-const profile = await auth.getProfile();
-
 
 
 await auth.displaycard();

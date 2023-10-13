@@ -118,20 +118,25 @@
                       </ul>
                     </li>
                     <li>
+                 
                       <a class="headerarea__has__dropdown headerarea__login" href="#" id="headBadge" style="
                           padding: 8px 15px;
                           border: 1px solid var(--borderColor1);
                         ">
+                        
                         <i class="icofont-heart-alt"></i> {{ $t("account") }}
+                        <div v-if="useError.formdetail.verify_account == 'system_active'">
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
-                          id="badgeSpan" v-if="useError.formdetail.verify_account === 'system_active'">
+                          id="badgeSpan" >
                           <i class="icofont-check"></i><span id="badgeText">{{ $t("head_verify") }}</span>
                         </span>
-
+                        </div>
+                        <div v-else>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                          id="badgeSpan" v-else>
+                          id="badgeSpan" >
                           <i class="icofont-close"></i><span id="badgeText">{{ $t("head_notverify") }}</span>
                         </span>
+                        </div>
 
                       </a>
                       <ul class="headerarea__submenu">
@@ -292,7 +297,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted } from 'vue';
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { useRoute } from "vue-router";
 import { useLogin } from "@/stores/login";
@@ -310,7 +315,7 @@ import { useI18n } from "vue-i18n";
 const router = useRouter();
 const store = useLogin();
 const useError = useAuthStore();
-const profile = await useError.getProfile();
+
 
 
 const { getisActive } = storeToRefs(store);
@@ -329,13 +334,7 @@ const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth
 
 
 
-if(authenticated.value == true){
-  const user_id = useCookie('user_id'); // useCookie new hook in nuxt 3
 
-  useError.user_id = user_id.value
-  await useError.displaycard()
-  await useError.getDltAlert()
-}
 
 
 const Logout = async () => {

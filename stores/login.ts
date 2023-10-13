@@ -71,7 +71,6 @@ export const useLogin = defineStore({
      try {
       const checkuser = await ApiService.get('/user/only/detail/'+this.formreset.user).then(response => {
        if(response.data){
-        console.log(response.data[0])
         this.user_id = response.data[0].user_id;
         return true
        }else {
@@ -95,8 +94,25 @@ export const useLogin = defineStore({
     async verifyOTP() {
   
       const otp  = { otp_code: this.formreset.otp, user_id: this.user_id}; 
-      const send = await ApiService.put('/user/verify_otp', otp).then(response => {
-      });
+      // const send = await ApiService.put('/user/verify_otp', otp).then(response => {
+
+
+      // });
+
+      try {
+        const send = await ApiService.put('/user/verify_otp', otp).then(response => {
+        
+          if(response.status === 200){
+            const user_reset = localStorage.setItem('user_reset', this.user_id)
+            return true;
+          }else{
+            return false;
+          }
+        });
+        return send
+      } catch (error) {
+        return false;
+      }
 
      return send;
     },
@@ -135,7 +151,7 @@ export const useLogin = defineStore({
             return false;
           }else {
         
-        
+  
       this.formnewpassword.user_firstname = response.data.user_firstname
       this.formnewpassword.user_lastname = response.data.user_firstname
       this.formnewpassword.user_name = response.data.user_firstname
@@ -143,9 +159,6 @@ export const useLogin = defineStore({
       this.formnewpassword.user_type = response.data.user_type
       this.formnewpassword.user_phone = response.data.user_phone
       this.formnewpassword.active = 1
-
- 
-          console.log(this.formnewpassword);
             return true;
           }
         });

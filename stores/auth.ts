@@ -216,7 +216,7 @@ export const useAuthStore = defineStore('auth', {
     expirationDate.setTime(expirationDate.getTime() + expirationHours * 60 * 60 * 1000);
     Cookies.set('loggedIn', 'true', { expires: expirationDate });
 
-        await this.getProfile() ;
+          await this.getProfile() ;
           await this.displaycard();
           await this.getDltAlert();
     return true;

@@ -55,6 +55,10 @@ const router = useRouter();
 const store = useLogin()
 
 
+store.isResetPassword = true;
+store.isResetPasswordOTP = false;
+store.formreset.otp = null;
+store.formreset.user = null;
 const rules = computed(() => {
   return {
     username: {

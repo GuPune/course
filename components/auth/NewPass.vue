@@ -52,7 +52,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted } from 'vue';
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { useRoute } from "vue-router";
 import { useLogin } from "@/stores/login";
@@ -65,11 +65,19 @@ import {
   helpers,
 } from "@vuelidate/validators";
 
-
+const router = useRouter();
 const store = useLogin()
+const useLog = useAuthStore();
 const { Formreset } = storeToRefs(store);
+const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
 
-await store.getProfile()
+onMounted(() => {
+  const localStorageValue = ref('')
+localStorageValue.value = localStorage.getItem('user_reset')
+if(localStorageValue.value == null){
+  router.push("/");
+}
+    });
 
 const rules = computed(() => {
   return {
@@ -84,14 +92,42 @@ const rules = computed(() => {
   };
 });
 
+
+
+
+
+
 const v$ = useVuelidate(rules, Formreset);
 
 const confirm = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
+
+const localStorageValue = ref('')
+localStorageValue.value = localStorage.getItem('user_reset')
+store.user_id = localStorageValue;
+await store.getProfile();
+const formData = reactive({
+  username: store.formnewpassword.user_name,
+  password: store.formreset.user_password,
+});
 let updatepassword = await store.updatePassword();
-console.log(updatepassword);
+if(updatepassword === true)
+{
+  let login = await authenticateUser(formData);
+  if (login === true) {
+    localStorage.removeItem('user_reset');
+      router.push("/");
     }
+}
+
+// let login = await authenticateUser(formData);
+// if (login === true) {
+//       router.push("/");
+//     }
+}
 };
+
+
 
 </script>
