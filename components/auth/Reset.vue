@@ -3,9 +3,9 @@
     <div class="col-xl-8 col-md-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">Reset Password</h5>
+          <h5 class="login__title">{{ $t("forget_pass_title") }}</h5>
           <p class="login__description">
-            Enter this form associated with your account to reset your password.
+            {{ $t("forget_pass_title_2") }}
           </p>
         </div>
         <form action="#">

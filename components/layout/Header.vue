@@ -171,7 +171,7 @@
           <div class="row align-items-center">
             <div class="col-6">
               <div class="mobile-logo">
-                <a class="logo__dark" href="#"><img src="/img/logo/logo_1.png" alt="logo" /></a>
+                <a class="logo__dark" href="#"><img src="/img/logo/logo_3.png" alt="logo" /></a>
               </div>
             </div>
             <div class="col-6">

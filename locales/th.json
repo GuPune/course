@@ -198,5 +198,17 @@
     "profile_alert_usersname":"กรอกยูสเซอร์ให้ครบถ้วน",
     "profile_alert_email":"กรอกอีเมลให้ถูกต้อง",
     "profile_alert_phone":"กรอกเบอร์โทรให้ครบถ้วน",
-    "profile_alert_password":"กรอกรหัสผ่าน"
+    "profile_alert_password":"กรอกรหัสผ่าน",
+    "forget_pass":"ลืมรหัสผ่าน?",
+    "forget_pass_title":"Reset Password",
+    "forget_pass_title_2":"Enter this form associated with your account to reset your password.",
+    "otp":"OTP",
+    "otp_code":"OTP Code",
+    "save_otp":"Save",
+    "title_con_otp":", We will send OTP Code to your phone number",
+    "get_otp":"Get OTP code",
+    "after_click":"After click =>",
+    "new_password":"New Password",
+    "new_password_t1":"New Password",
+    "new_password_t2":"Confirm New Password"
 }

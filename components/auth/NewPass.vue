@@ -3,13 +3,13 @@
     <div class="col-xl-8 col-md-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">New Password</h5>
+          <h5 class="login__title">{{ $t("new_password") }}</h5>
           
         </div>
         <form action="#">
           <div class="login__form">
             <div class="mb-4">
-              <label class="form__label mb-0">New Password</label>
+              <label class="form__label mb-0">{{ $t("new_password_t1") }}</label>
               <input
                 class="common__login__input"
                 type="text"
@@ -25,7 +25,7 @@
             </div>
 
             <div class="mb-4">
-              <label class="form__label mb-0">Confirm New Password</label>
+              <label class="form__label mb-0">{{ $t("new_password_t2") }}</label>
               <input
                 class="common__login__input"
                 type="text"

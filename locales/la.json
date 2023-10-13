@@ -198,5 +198,17 @@
   "profile_alert_usersname":"ຕື່ມຂໍ້ມູນໃສ່ຊື່ຜູ້ໃຊ້ຢ່າງສົມບູນ.",
   "profile_alert_email":"ໃສ່ອີເມວຂອງເຈົ້າຢ່າງຖືກຕ້ອງ.",
   "profile_alert_phone":"ຕື່ມໃສ່ເບີໂທລະສັບຂອງເຈົ້າໃຫ້ຄົບຖ້ວນ.",
-  "profile_alert_password":"ຕື່ມລະຫັດຜ່ານຂອງທ່ານ."
+  "profile_alert_password":"ຕື່ມລະຫັດຜ່ານຂອງທ່ານ.",
+  "forget_pass":"ลืมรหัสผ่าน?",
+  "forget_pass_title":"ຣີເຊັດລະຫັດຜ່ານ",
+  "forget_pass_title_2":"ໃສ່ແບບຟອມນີ້ທີ່ເຊື່ອມໂຍງກັບບັນຊີຂອງທ່ານເພື່ອປ່ຽນລະຫັດຜ່ານຂອງທ່ານ.",
+  "otp":"OTP",
+  "otp_code":"OTP Code",
+  "save_otp":"ບັນທຶກ",
+  "title_con_otp":", ພວກເຮົາຈະສົ່ງລະຫັດ OTP ໄປຫາເບີໂທລະສັບຂອງທ່ານ",
+  "get_otp":"ຂໍຮັບ OTP code",
+  "after_click":"ຫຼັງຈາກຄລິກ =>",
+  "new_password":"ລະຫັດຜ່ານໃໝ່",
+  "new_password_t1":"ລະຫັດຜ່ານໃໝ່",
+  "new_password_t2":"ຢືນ​ຢັນ​ລະ​ຫັດ​ຜ່ານ​ໃຫມ່"
 }

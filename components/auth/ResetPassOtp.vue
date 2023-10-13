@@ -3,7 +3,7 @@
     <div class="col-xl-8 col-md-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">OTP</h5>
+          <h5 class="login__title">{{ $t("otp") }}</h5>
           <p class="login__description">
             After click => <a class="btn btn-info" href="#" @click="getotp()">Get OTP code</a>, We will send OTP Code to your phone number
           </p>
@@ -11,7 +11,7 @@
         <form action="#">
           <div class="login__form">
             <div class="mb-4">
-              <label class="form__label mb-0">OTP Code</label>
+              <label class="form__label mb-0">{{ $t("otp_code") }}</label>
               <input
                 class="common__login__input"
                 type="text"
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="login__button" @click="sendotp()">
-            <a class="default__button">{{ $t("log_on_title") }}</a>
+            <a class="default__button">{{ $t("save_otp") }}</a>
           </div>
         </form>
     
