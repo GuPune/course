@@ -210,5 +210,7 @@
     "after_click":"After click =>",
     "new_password":"New Password",
     "new_password_t1":"New Password",
-    "new_password_t2":"Confirm New Password"
+    "new_password_t2":"Confirm New Password",
+    "form_login_user":"Invalid username",
+    "form_login_pass":"Invalid password"
 }

@@ -30,12 +30,33 @@
               autocomplete="off"
             />
 
-            <span
+            <span v-if="locale == 'la'">
+              <span
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.username.$error"
-              >{{ v$.username.$errors[0].$message }}</span
+              >{{ $t("form_login_user") }}</span
             >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ $t("form_login_user") }}</span
+            >
+                      
+            </span>
+             <span v-if="locale == 'th'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ $t("form_login_user") }}</span
+            >
+              
+            </span>
           </div>
           <div class="login__form">
             <label class="form__label">{{ $t("password") }}</label>
@@ -52,12 +73,34 @@
               }"
               @change="v$.password.$touch"
             />
-            <span
+      
+            <span v-if="locale == 'la'">
+              <span
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.password.$error"
-              >{{ v$.password.$errors[0].$message }}</span
+              >{{ $t("form_login_pass") }}</span
             >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.password.$error"
+              >{{ $t("form_login_pass") }}</span
+            >
+                      
+            </span>
+             <span v-if="locale == 'th'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.password.$error"
+              >{{ $t("form_login_pass") }}</span
+            >
+              
+            </span>
             <div id="emailHelp" class="form-text"><nuxt-link to="/resetpassword">{{ $t("forget_pass") }}</nuxt-link></div>
           </div>
           <div

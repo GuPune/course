@@ -5,7 +5,7 @@
         <div class="login__heading">
           <h5 class="login__title">{{ $t("otp") }}</h5>
           <p class="login__description">
-            After click => <a class="btn btn-info" href="#" @click="getotp()">Get OTP code</a>, We will send OTP Code to your phone number
+            {{ $t("after_click") }} <a class="btn btn-info" href="#" @click="getotp()">{{ $t("get_otp") }}</a>{{ $t("title_con_otp") }}
           </p>
         </div>
         <form action="#">
