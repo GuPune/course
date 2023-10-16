@@ -92,7 +92,7 @@
                           data-bs-parent="#accordionExample"
                         >
                           <div class="row justify-content-center" v-if="store.data.cs_video">
-                            <vue3VideoPlay
+                            <!-- <vue3VideoPlay
                               width="100%"
                               title="Video"
                              :src="store.data.cs_video"
@@ -101,7 +101,13 @@
                               @timeupdate="onTimeupdate"
                               @canplay="onCanplay"
                              
-                            />
+                            /> -->
+
+                             <video controls autoplay>
+      <!-- Specify the path to your MP4 video file using the src attribute -->
+      <source :src="store.data.cs_video" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
                             <!-- <vue3VideoPlay
                               width="100%"
