@@ -134,6 +134,7 @@
                     aria-labelledby="projects__two"
                     v-for="(x, index) in item.lesson"
                   >
+           
                     <div
                       class="accordion content__cirriculum__wrap"
                       id="accordionExample"
@@ -163,11 +164,19 @@
                               title="Video"
                               :src="x.cs_video"
                               :poster="options.poster"
-                              @play="onPlay"
+                              @play="onPlay(x.cs_id)"
+                            />
+
+                            <!-- <vue3VideoPlay
+                              width="100%"
+                              title="Video"
+                              :src="x.cs_video"
+                              :poster="options.poster"
+                              @play="onPlay(x.cs_id)"
                               @pause="onPause"
                               @timeupdate="onTimeupdate"
                               @canplay="onCanplay"
-                            />
+                            /> -->
                           </div>
 
                           <div class="row" style="padding: 5px">
@@ -269,8 +278,9 @@ const options = reactive({
   src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
   poster: "", //封面
 });
-const onPlay = (ev) => {
-  console.log("onPlay");
+const onPlay = (id) => {
+  store.cs_id = id;
+   store.updateLogCourse();
 };
 const onPause = (ev) => {
   console.log(ev, "onPause");

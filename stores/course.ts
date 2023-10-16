@@ -20,6 +20,7 @@ export const CoursePostStore = defineStore({
       course_id:null,
       course_cover: null,
     },
+    cs_id:null
     // course: {
     //   course_id: null,
     //   course_cover: null,
@@ -54,7 +55,6 @@ export const CoursePostStore = defineStore({
 
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
-
       this.total = response.data.total_filter
       this.coursecategories = response.data.data 
       this.listcourse = response.data.data
@@ -87,6 +87,11 @@ this.listcourse = arr;
       this.course_lesson = this.listcourse.filter(item => item.course_id == id);
       console.log(this.course_lesson);
       return true
+    },
+
+    async updateLogCourse() {
+      console.log('updateLogCourse',this.cs_id);
+
     }
   }
 })
