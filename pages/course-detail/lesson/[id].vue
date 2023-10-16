@@ -214,6 +214,11 @@ const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
 let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
+if(lesson_id == true){
+   store.updateLogCourse();
+
+}
+
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
@@ -224,8 +229,8 @@ const options = reactive({
 });
 const onPlay = (id) => {
 
-  store.cs_id = id;
- store.updateLogCourse();
+//  store.cs_id = id;
+// store.updateLogCourse();
 };
 
 

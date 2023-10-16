@@ -44,7 +44,7 @@ cs_id:null
           this.data.cs_name = response.data.cs_name
           this.data.cs_video = response.data.cs_video
           this.data.udp_date = response.data.udp_date
-
+this.cs_id = response.data.cs_id
       
          });
          return true;
