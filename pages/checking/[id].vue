@@ -61,7 +61,7 @@ if(datetime){
 
 
 var date = new Date(decodedString);
-let FirstDate = new Date(new Date(decodedString).setHours(new Date().getHours() + 1));
+let FirstDate = new Date(new Date(decodedString).setHours(new Date().getHours() + 60));
  var first = Math.floor(FirstDate.getTime() / 1000); //1440516958
 
 var date = new Date();
@@ -76,7 +76,7 @@ if(first > expiryDate){
 router.push("/examquestions/"+em_id);
  }
  if(menu_type == 2){
-router.push("/course-detail/"+em_id);
+router.push("/course-detail/lesson/"+em_id);
  }
   }
  
