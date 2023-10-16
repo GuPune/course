@@ -39,7 +39,7 @@
                 class="course__details__tab__wrapper aos-init"
                 data-aos="fade-up"
               >
-                <!-- <div class="row">
+                <div class="row">
                   <div class="col-xl-12">
                     <ul class="nav course__tap__wrap" id="myTab" role="tablist">
                       <li class="nav-item" role="presentation">
@@ -50,13 +50,15 @@
                           type="button"
                           aria-selected="true"
                           role="tab"
+                         
+                          @click="backlearning(store.data.course_id)" 
                         >
-                          <i class="icofont-book-alt"></i>{{ $t("page_course_last_description") }}
+                         บทสู่บทเรียนหลัก
                         </button>
                       </li>
                     </ul>
                   </div>
-                </div> -->
+                </div>
                 <div
                   class="tab-content tab__content__wrapper"
                   id="myTabContent"
@@ -80,7 +82,7 @@
                             type="button" style="background-color:#7e7ec3"
                         
                           >
-                           
+                           {{store.data.cs_name}}
                           </button>
                         </h2>
                         <div
@@ -89,11 +91,11 @@
                           aria-labelledby="headingOne"
                           data-bs-parent="#accordionExample"
                         >
-                          <div class="row justify-content-center">
+                          <div class="row justify-content-center" v-if="store.data.cs_video">
                             <vue3VideoPlay
                               width="100%"
                               title="Video"
-                             
+                             :src="store.data.cs_video"
                               :poster="options.poster"
                              
                             />
@@ -117,7 +119,6 @@
                               <div class="single__expart__teacher">
                                 <div class="teacher__img mb-0" v-if="store.data.cs_cover">
                                   <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
-
                                   <img
                                     :src="coverimage(store.data.cs_cover)"
                                     alt="Image"
@@ -139,27 +140,20 @@
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     <p class="fs-4 fw-bold mb-0">
-                                      
+                                        {{store.data.cs_name}}
                                     </p>
                                   </div>
                                 </div>
-                                <div class="author__text row">
-                                  <div class="col-lg-3 col-md-4">
-                                    <p class="mb-0">{{ $t("page_course_last_description") }}</p>
-                                  </div>
-                                  <div class="col-lg-9 col-md-8">
-                                   
-                                  </div>
-                                </div>
+                        
                                 <hr />
-                                <div class="author__text row">
+                                <!-- <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
                                     <p class="mb-0">{{ $t("page_course_user_create") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     
                                   </div>
-                                </div>
+                                </div> -->
                                 <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
                                     <p class="mb-0">{{ $t("page_course_date") }}</p>
@@ -167,6 +161,15 @@
                                   <div class="col-lg-9 col-md-8">
                                     <p class="mb-0"> {{ coverttime(store.data.crt_date) }}
                                     </p>
+                                  </div>
+                                </div>
+
+                                       <div class="author__text row">
+                                  <div class="col-lg-3 col-md-4">
+                                    <p class="mb-0">{{ $t("page_course_last_description") }}</p>
+                                  </div>
+                                  <div class="col-lg-9 col-md-8">
+                                   {{store.data.cs_description}}
                                   </div>
                                 </div>
                               </div>
@@ -223,7 +226,11 @@ const onCanplay = (ev) => {
   console.log(ev, "onCanplay");
 };
 
-const { getisActiveCourse } = storeToRefs(store);
+const backlearning = (couse_id) => {
+   router.push("/course-detail/"+couse_id);
+};
+
+
 
 function coverimage(i) {
   let im = ApiService.image(i);

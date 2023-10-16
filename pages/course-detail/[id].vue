@@ -139,11 +139,13 @@
                           <button @click="choose(x.cs_id)"
                             class="accordion-button collapsed mt-0"
                             type="button"
-                            data-bs-toggle="collapse"
+                 
+                          >
+
+                                     <!-- data-bs-toggle="collapse"
                             :data-bs-target="'#collapseOne-' + index"
                             aria-expanded="false"
-                            aria-controls="collapseOne"
-                          >
+                            aria-controls="collapseOne" -->
                             {{ x.cs_name }} #{{ index + 1 }}
                           </button>
                         </h2>
