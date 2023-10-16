@@ -6,6 +6,12 @@ export const LessonStore = defineStore({
   id: 'lessonsselect',
   state: () => ({
     isActiveCourse:false,
+    cs_id:null,
+    user_id:null,
+    formlean:{
+user_id:null,
+cs_id:null
+    },
     data:{
       course_id:null,
       crt_date:null,
@@ -16,7 +22,6 @@ export const LessonStore = defineStore({
       cs_video:null,
       udp_date:null
     }
-
   }),
   getters: {
  
@@ -40,7 +45,7 @@ export const LessonStore = defineStore({
           this.data.cs_video = response.data.cs_video
           this.data.udp_date = response.data.udp_date
 
-          console.log(this.data);
+      
          });
          return true;
         } catch (error) {
@@ -48,6 +53,15 @@ export const LessonStore = defineStore({
         }
      
     },
+    async updateLogCourse(){
+  
+      this.formlean.cs_id =  this.cs_id;
+      this.formlean.user_id = this.user_id;
+      const data = await ApiService.post('/course/log/create',this.formlean).then(response => {
+       
+       });
+    }
+    
 
    
   }

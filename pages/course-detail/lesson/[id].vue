@@ -208,9 +208,11 @@ import ApiService from "@/services/api.service";
 const router = useRouter();
 const store = LessonStore();
 
+const auth = useAuthStore();
+const route = useRoute();
+const profile = await auth.getProfile();
 
-
-
+store.user_id = auth.user_id;
 let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
@@ -223,7 +225,7 @@ const options = reactive({
 const onPlay = (id) => {
 
   store.cs_id = id;
-//   store.updateLogCourse();
+ store.updateLogCourse();
 };
 
 
