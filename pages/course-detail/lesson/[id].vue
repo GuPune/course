@@ -103,7 +103,7 @@
                              
                             /> -->
 
-                             <video controls autoplay>
+                             <video controls @play="onPlay(store.data.cs_id)">
       <!-- Specify the path to your MP4 video file using the src attribute -->
       <source :src="store.data.cs_video" type="video/mp4">
       Your browser does not support the video tag.
@@ -221,6 +221,7 @@ const options = reactive({
   poster: "", //封面
 });
 const onPlay = (id) => {
+
   store.cs_id = id;
 //   store.updateLogCourse();
 };
