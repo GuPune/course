@@ -16,12 +16,25 @@
                 placeholder="New Password"
                 v-model="store.formreset.user_password"
               />
+             
+
+            <span v-if="locale == 'la'">
               <span
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.user_password.$error"
-              >{{ v$.user_password.$errors[0].$message }}</span
+              >{{ $t("new_password_t1") }}</span
             >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_password.$error"
+              >{{ $t("new_password_t1") }}</span
+            >         
+            </span>
             </div>
 
             <div class="mb-4">
@@ -32,12 +45,25 @@
                 placeholder="Confirm New Password"
                 v-model="store.formreset.user_confirmPassword"
               />
+        
+
+            <span v-if="locale == 'la'">
               <span
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.user_confirmPassword.$error"
-              >{{ v$.user_confirmPassword.$errors[0].$message }}</span
+              >{{ $t("new_password_t2") }}</span
             >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_confirmPassword.$error"
+              >{{ $t("new_password_t2") }}</span
+            >         
+            </span>
             </div>
           </div>
           <div class="login__button" @click="confirm()">
@@ -64,6 +90,8 @@ import {
   minLength,
   helpers,
 } from "@vuelidate/validators";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const router = useRouter();
 const store = useLogin()

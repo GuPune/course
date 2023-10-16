@@ -145,6 +145,8 @@ import { useLogin } from '@/stores/login'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 import Swal from 'sweetalert2';
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const router = useRouter();
 const store = useLogin()

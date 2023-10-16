@@ -18,12 +18,25 @@
                 placeholder="ID card number && Phone && Email"
                 v-model="store.formreset.user"
               />
+              <span v-if="locale == 'la'">
               <span
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.user.$error"
-              >{{ v$.user.$errors[0].$message }}</span
+              >{{ $t("form_reset_pass") }}</span
             >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user.$error"
+              >{{ $t("form_reset_pass") }}</span
+            >         
+            </span>
+
+            
             </div>
           </div>
           <div class="login__button" @click="reset()">
@@ -51,6 +64,8 @@ import {
   helpers,
 } from "@vuelidate/validators";
 const router = useRouter();
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const store = useLogin()
 const { Formreset } = storeToRefs(store);

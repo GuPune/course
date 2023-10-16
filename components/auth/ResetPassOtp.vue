@@ -20,12 +20,25 @@
               
               />
 
+           
+
+            <span v-if="locale == 'la'">
               <span
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.otp.$error"
-              >{{ v$.otp.$errors[0].$message }}</span
+              >{{ $t("form_reset_pass_otp") }}</span
             >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.otp.$error"
+              >{{ $t("form_reset_pass_otp") }}</span
+            >         
+            </span>
               <!-- <p>Didn't receive the OTP? <a href="#">Resend again</a></p> -->
             </div>
           </div>
@@ -54,6 +67,8 @@ import {
   helpers,
 } from "@vuelidate/validators";
 import Swal from "sweetalert2";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const router = useRouter();
 const store = useLogin()

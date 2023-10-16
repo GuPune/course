@@ -212,5 +212,7 @@
     "new_password_t1":"New Password",
     "new_password_t2":"Confirm New Password",
     "form_login_user":"Invalid username",
-    "form_login_pass":"Invalid password"
+    "form_login_pass":"Invalid password",
+    "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
+    "form_reset_pass_otp":"OTP code field is required"
 }

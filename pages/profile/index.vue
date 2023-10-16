@@ -269,6 +269,7 @@ import { HistoryStore } from "@/stores/history";
 import { useRoute } from "vue-router";
 const auth = useAuthStore();
 
+
 const route = useRoute();
 
 

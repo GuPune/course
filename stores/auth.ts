@@ -275,7 +275,8 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async getProfile() {
- 
+      this.formcard.idcard_back = ''
+      this.formcard.idcard_front = ''
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
    

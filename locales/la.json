@@ -212,5 +212,7 @@
   "new_password_t1":"ລະຫັດຜ່ານໃໝ່",
   "new_password_t2":"ຢືນ​ຢັນ​ລະ​ຫັດ​ຜ່ານ​ໃຫມ່",
   "form_login_user":"ຊື່​ຜູ້​ໃຊ້​ທີ່​ບໍ່​ຖືກ​ຕ້ອງ",
-  "form_login_pass":"ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ"
+  "form_login_pass":"ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ",
+  "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
+  "form_reset_pass_otp":"OTP code ພາກສະຫນາມແມ່ນຕ້ອງການ"
 }
