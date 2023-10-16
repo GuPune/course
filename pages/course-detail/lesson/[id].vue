@@ -3,59 +3,16 @@
 
 <template>
   <div>
-    <div class="breadcrumbarea">
+
+    <div class="coursearea sp_bottom_100">
       <div class="container">
-        <div class="row">
-          <div class="col-xl-12">
-            <div class="breadcrumb__content__wraper" data-aos="fade-up">
-              <div class="breadcrumb__title">
-                <h2 class="heading">{{ $t("page_course") }}</h2>
-              </div>
-              <div class="breadcrumb__inner">
-                <ul>
-                  <li>
-                    <a>{{ $t("home") }}</a>
-                  </li>
-                  <li>{{ $t("page_course") }}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="shape__icon__2">
-        <img
-          class="shape__icon__img shape__icon__img__1"
-          src="../../assets/img/herobanner/herobanner__1.png"
-          alt="photo"
-        />
-        <img
-          class="shape__icon__img shape__icon__img__2"
-          src="../../assets/img/herobanner/herobanner__2.png"
-          alt="photo"
-        />
-        <img
-          class="shape__icon__img shape__icon__img__3"
-          src="../../assets/img/herobanner/herobanner__3.png"
-          alt="photo"
-        />
-        <img
-          class="shape__icon__img shape__icon__img__4"
-          src="../../assets/img/herobanner/herobanner__4.png"
-          alt="photo"
-        />
-      </div>
-    </div>
-    <div class="coursearea sp_top_100 sp_bottom_100">
-      <div class="container">
- 
-        <div class="row" v-if="store.course_lesson">
-          <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
+        <div class="row" v-if="store.data">
+          <div class="col-xl-12 col-lg-12">
             <div
               class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
               data-aos="fade-up"
             >
-              <img :src="coverimage(item.course_cover)" alt="blog">
+              <!-- <img :src="coverimage(store.data.cs_cover)" alt="blog"> -->
             </div>
             <div class="blog__details__content__wraper">
               <div
@@ -63,44 +20,26 @@
                 data-aos="fade-up"
               >
                 <div class="course__button"></div>
-                <div class="course__date">
-                  <p>
-                    {{ $t("page_course_last_lesson") }}<span> {{ coverttime(item.udp_date) }}</span>
-                  </p>
-                </div>
+            
               </div>
-              <div
+              <!-- <div
                 class="course__details__heading aos-init aos-animate"
                 data-aos="fade-up"
               >
-                <h3>{{ item.course_description }}</h3>
-              </div>
-              <div
+                <h3>{{ store.data.cs_description }}</h3>
+              </div> -->
+              <!-- <div
                 class="course__details__price aos-init aos-animate"
                 data-aos="fade-up"
               >
-                <ul>
-                  <li>
-                    <div class="course__details__date" v-if="item.lesson">
-                      <i class="icofont-book-alt"></i> {{ item.lesson.length }} {{ $t("page_course_last_lesson") }}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="course__details__paragraph aos-init aos-animate"
-                data-aos="fade-up"
-              >
-                <p>
-                  {{ item.course_description }}
-                </p>
-              </div>
-
+                
+              </div> -->
+        
               <div
                 class="course__details__tab__wrapper aos-init"
                 data-aos="fade-up"
               >
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-xl-12">
                     <ul class="nav course__tap__wrap" id="myTab" role="tablist">
                       <li class="nav-item" role="presentation">
@@ -117,7 +56,7 @@
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
                 <div
                   class="tab-content tab__content__wrapper"
                   id="myTabContent"
@@ -127,7 +66,7 @@
                     id="projects__two"
                     role="tabpanel"
                     aria-labelledby="projects__two"
-                    v-for="(x, index) in item.lesson"
+                 
                   >
            
                     <div
@@ -136,20 +75,17 @@
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                          <button @click="choose(x.cs_id)"
+                          <button
                             class="accordion-button collapsed mt-0"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            :data-bs-target="'#collapseOne-' + index"
-                            aria-expanded="false"
-                            aria-controls="collapseOne"
+                            type="button" style="background-color:#7e7ec3"
+                        
                           >
-                            {{ x.cs_name }} #{{ index + 1 }}
+                           
                           </button>
                         </h2>
                         <div
-                          :id="'collapseOne-' + index"
-                          class="accordion-collapse collapse p-4"
+                          id="collapseOne"
+                          class="accordion-collapse collapse p-4 show"
                           aria-labelledby="headingOne"
                           data-bs-parent="#accordionExample"
                         >
@@ -157,9 +93,9 @@
                             <vue3VideoPlay
                               width="100%"
                               title="Video"
-                              :src="x.cs_video"
+                             
                               :poster="options.poster"
-                              @play="onPlay(x.cs_id)"
+                             
                             />
 
                             <!-- <vue3VideoPlay
@@ -179,11 +115,11 @@
                               class="col-lg-3 d-flex justify-content-center align-items-center"
                             >
                               <div class="single__expart__teacher">
-                                <div class="teacher__img mb-0" v-if="x.cs_cover">
+                                <div class="teacher__img mb-0" v-if="store.data.cs_cover">
                                   <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
 
                                   <img
-                                    :src="coverimage(x.cs_cover)"
+                                    :src="coverimage(store.data.cs_cover)"
                                     alt="Image"
                                     style="width: 120px; height: 120px"
                                   />
@@ -198,12 +134,12 @@
                                 <div class="author__text row">
                                   <div class="col-lg-3 col-md-4">
                                     <p class="fs-4 fw-bold mb-0">
-                                      {{ $t("page_course_last_lesson") }} {{ index + 1 }}
+                                      {{ $t("page_course_last_lesson") }} 
                                     </p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     <p class="fs-4 fw-bold mb-0">
-                                      <a href="#">{{ x.cs_name }} </a>
+                                      
                                     </p>
                                   </div>
                                 </div>
@@ -212,7 +148,7 @@
                                     <p class="mb-0">{{ $t("page_course_last_description") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
-                                    <p class="mb-0">{{ x.cs_description }}</p>
+                                   
                                   </div>
                                 </div>
                                 <hr />
@@ -221,7 +157,7 @@
                                     <p class="mb-0">{{ $t("page_course_user_create") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
-                                    <p class="mb-0">{{ x.user_create }}</p>
+                                    
                                   </div>
                                 </div>
                                 <div class="author__text row">
@@ -229,8 +165,7 @@
                                     <p class="mb-0">{{ $t("page_course_date") }}</p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
-                                    <p class="mb-0">
-                                      {{ coverttime(x.crt_date) }}
+                                    <p class="mb-0"> {{ coverttime(store.data.crt_date) }}
                                     </p>
                                   </div>
                                 </div>
@@ -256,15 +191,15 @@
 })
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
-import { CoursePostStore } from "@/stores/course";
+import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
 const router = useRouter();
-const store = CoursePostStore();
+const store = LessonStore();
 
 
 
-let course = await store.fetchCourse();
-let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
+
+let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
@@ -277,14 +212,6 @@ const onPlay = (id) => {
   store.cs_id = id;
    store.updateLogCourse();
 };
-
-const choose = (id) => {
-//  store.cs_id = id;
-  router.push('/course-detail/lesson/'+id);
-};
-
-
-
 const onPause = (ev) => {
   console.log(ev, "onPause");
 };
