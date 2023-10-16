@@ -92,13 +92,10 @@
                           data-bs-parent="#accordionExample"
                         >
                           <div class="row justify-content-center" v-if="store.data.cs_video">
-                            <vue3VideoPlay
-                              width="100%"
-                              title="Video"
-                             :src="store.data.cs_video"
-                              :poster="options.poster"
-                             
-                            />
+                          <vue3VideoPlay
+      v-bind="options"
+      poster="https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg"
+    />
 
                             <!-- <vue3VideoPlay
                               width="100%"
@@ -208,23 +205,36 @@ let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
 import { reactive } from "vue";
 const options = reactive({
+  width: "800px", //播放器高度
+  height: "450px", //播放器高度
+  color: "#409eff", //主题色
+  title: "", //视频名称
   src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
-  poster: "", //封面
+  muted: false, //静音
+  webFullScreen: false,
+  speedRate: ["0.75", "1.0", "1.25", "1.5", "2.0"], //播放倍速
+  autoPlay: false, //自动播放
+  loop: false, //循环播放
+  mirror: false, //镜像画面
+  ligthOff: false, //关灯模式
+  volume: 0.3, //默认音量大小
+  control: true, //是否显示控制
+  controlBtns: [
+    "audioTrack",
+    "quality",
+    "speedRate",
+    "volume",
+    "setting",
+    "pip",
+    "pageFullScreen",
+    "fullScreen",
+  ], //显示所有按钮,
 });
 const onPlay = (id) => {
   store.cs_id = id;
-   store.updateLogCourse();
-};
-const onPause = (ev) => {
-  console.log(ev, "onPause");
+//   store.updateLogCourse();
 };
 
-const onTimeupdate = (ev) => {
-  console.log(ev, "onTimeupdate");
-};
-const onCanplay = (ev) => {
-  console.log(ev, "onCanplay");
-};
 
 const backlearning = (couse_id) => {
    router.push("/course-detail/"+couse_id);

@@ -277,7 +277,7 @@ const options = reactive({
 });
 const onPlay = (id) => {
   store.cs_id = id;
-   store.updateLogCourse();
+ //  store.updateLogCourse();
 };
 
 const choose = (id) => {
