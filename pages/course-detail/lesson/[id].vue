@@ -2,8 +2,7 @@
 
 
 <template>
-  <div>
-
+  <div v-if="store.data.course_id">
     <div class="coursearea sp_bottom_100">
       <div class="container">
         <div class="row" v-if="store.data">
@@ -196,6 +195,110 @@
       </div>
     </div>
   </div>
+
+    <div v-else>
+    <div class="coursearea sp_bottom_100">
+      <div class="container">
+        <div class="row" v-if="store.data">
+          <div class="col-xl-12 col-lg-12">
+            <div
+              class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
+              data-aos="fade-up"
+            >
+              <!-- <img :src="coverimage(store.data.cs_cover)" alt="blog"> -->
+            </div>
+            <div class="blog__details__content__wraper">
+              <div
+                class="course__button__wraper aos-init aos-animate"
+                data-aos="fade-up"
+              >
+                <div class="course__button"></div>
+            
+              </div>
+      
+              <div
+                class="course__details__tab__wrapper aos-init"
+                data-aos="fade-up"
+              >
+              
+                <div
+                  class="tab-content tab__content__wrapper"
+                  id="myTabContent"
+                >
+                  <div
+                    class="tab-pane fade active show"
+                    id="projects__two"
+                    role="tabpanel"
+                    aria-labelledby="projects__two"
+                 
+                  >
+           
+                    <div
+                      class="accordion content__cirriculum__wrap"
+                      id="accordionExample"
+                    >
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button
+                            class="accordion-button collapsed mt-0"
+                            type="button" style="background-color:#7e7ec3"
+                        
+                          >
+                           {{store.data.cs_name}}
+                          </button>
+                        </h2>
+                        <div
+                          id="collapseOne"
+                          class="accordion-collapse collapse p-4 show"
+                          aria-labelledby="headingOne"
+                          data-bs-parent="#accordionExample"
+                        >
+                     
+
+                          <div class="row" style="padding: 5px">
+                            <div
+                              class="col-lg-3 d-flex justify-content-center align-items-center"
+                            >
+                            
+                            </div>
+                            <div class="col-lg-9 col--30">
+                              <div
+                                class="author__content"
+                                style="margin: 30px 0"
+                              >
+                                <div class="author__text row">
+                                  <div class="col-lg-3 col-md-4">
+                                    <p class="fs-4 fw-bold mb-0">
+                                     ไม่มีบทเรียนนี้
+                                    </p>
+                                  </div>
+                                  <div class="col-lg-9 col-md-8">
+                                    <p class="fs-4 fw-bold mb-0">
+                                     
+                                    </p>
+                                  </div>
+                                </div>
+                        
+                           
+                            
+                          
+
+                             
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
     definePageMeta({
@@ -214,8 +317,10 @@ const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
 let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
+
 if(lesson_id == true){
    store.updateLogCourse();
+}else {
 
 }
 
@@ -233,11 +338,9 @@ const onPlay = (id) => {
 // store.updateLogCourse();
 };
 
-
 const backlearning = (couse_id) => {
    router.push("/course-detail/"+couse_id);
 };
-
 
 
 function coverimage(i) {
