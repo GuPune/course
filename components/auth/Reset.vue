@@ -35,12 +35,11 @@
               >{{ $t("form_reset_pass") }}</span
             >         
             </span>
-
             
             </div>
           </div>
           <div class="login__button" @click="reset()">
-            <a class="default__button">{{ $t("log_on_title") }}</a>
+            <a class="default__button">{{ $t("get_otp") }}</a>
           </div>
         </form>
     

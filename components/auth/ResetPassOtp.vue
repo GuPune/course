@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="login__button" @click="sendotp()">
-            <a class="default__button">{{ $t("save_otp") }}</a>
+            <a class="default__button">{{ $t("forget_pass_title") }}</a>
           </div>
         </form>
     

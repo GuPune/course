@@ -67,7 +67,7 @@
             </div>
           </div>
           <div class="login__button" @click="confirm()">
-            <a class="default__button">{{ $t("log_on_title") }}</a>
+            <a class="default__button">{{ $t("save_otp") }}</a>
           </div>
         </form>
     
