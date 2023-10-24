@@ -61,7 +61,7 @@ if(datetime){
 
 
 var date = new Date(decodedString);
-let FirstDate = new Date(new Date(decodedString).setHours(new Date().getHours() + 60));
+let FirstDate = new Date(new Date(decodedString).setHours(new Date().getHours() + 2));
  var first = Math.floor(FirstDate.getTime() / 1000); //1440516958
 
 var date = new Date();
