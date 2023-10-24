@@ -129,7 +129,8 @@ export const useAuthStore = defineStore('auth', {
     country: null,
     error:{
       status:false,
-      message:"Login ไม่สำเร็จ"
+      message:"ເຂົ້າສູ່ລະບົບບໍ່ສຳເລັດ",
+      message_en:"Login unsuccessful"
     },
   }),
   getters: {

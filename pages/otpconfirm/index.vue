@@ -43,6 +43,7 @@ import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { VerifyStore } from '@/stores/verify'
 import { useRoute } from 'vue-router'
+import Swal from "sweetalert2";
 definePageMeta({
     layout: "blank"
 });
@@ -71,7 +72,15 @@ const confirm = async () => {
     if(store.otpisactive == true){
      let send = await verifyOTP();
      if(send == true){
-        router.push('/');
+
+await Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "บันทึกสำเร็จ รอสักครู่",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+       router.push('/');
      }else {
         store.otpisactive = false;
      }

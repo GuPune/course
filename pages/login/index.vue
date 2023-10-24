@@ -10,7 +10,11 @@
                   <div class="row">
                                  <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="useError.alert">
                                     <div class="alert alert-danger" role="alert">
-                                     {{alertlogin.message}}
+                                
+
+                                     <h3 v-if="locale == 'la'">{{alertlogin.message}}</h3>
+                    <h3 v-if="locale == 'en'">{{alertlogin.message_en}}</h3>
+      
                             </div>
                         </div>
             
@@ -62,6 +66,8 @@ import { useLogin } from '@/stores/login'
 import { RegisterStore } from '@/stores/register'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const router = useRouter();
 const store = useLogin()
