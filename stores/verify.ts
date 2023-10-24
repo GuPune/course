@@ -69,16 +69,20 @@ export const VerifyStore = defineStore({
 
     async SendOtp() {
       let upload = await this.UploadfileProfile()
+    
       const data = await ApiService.get('/user/otp/' + this.formdetail.user_id).then(response => {
-        
+    
       });
 
       return true;
     },
     async verifyOTP() {
       const otpconfirm = this.otp.join('');
+
+      var retrievedObject = localStorage.getItem('Userid');
+      this.formdetail = JSON.parse(retrievedObject)
       this.formotp = { otp_code: otpconfirm, user_id: this.formdetail.user_id };
-      
+   
       const send = await ApiService.put('/user/verify_otp', this.formotp).then(response => {
         if(response.status === 204){
           this.formdetail.verify_account = 'phone_unactive';
@@ -109,11 +113,10 @@ export const VerifyStore = defineStore({
     },
 
     async SaveUserVerify() {
-
-  
        let upload = await this.UploadfileProfile()
        try {
         const updateuser = await ApiService.post('/user/detail/create', this.formdetail).then(response => {
+          localStorage.setItem('Userid', JSON.stringify(this.formdetail));
         return true;
         })
         return updateuser

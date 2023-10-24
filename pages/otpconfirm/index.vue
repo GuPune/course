@@ -12,8 +12,6 @@
                     <span class="text-xs text-red-500" style="color:red"
         v-if="store.otpisactive == false">{{ $t("page_verify_step3") }}</span>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-
-           
                          <input
                             class="m-2 text-center form-control rounded" type="text" v-model="store.otp[0]" @input="moveFocus(1)" ref="input1"
                             maxlength="1"  />
@@ -80,6 +78,8 @@ await Swal.fire({
     showConfirmButton: false,
     timer: 1500,
   });
+
+  localStorage.removeItem('Userid')
        router.push('/');
      }else {
         store.otpisactive = false;

@@ -260,7 +260,7 @@ const sendotp = async () => {
    const savedetail = await SaveUserVerify();
     if (savedetail == true) {
     await SendOtp()
-     router.push("/otpconfirm");
+    await router.push("/otpconfirm");
     }else {
       await Swal.fire({
   position: 'top-end',
