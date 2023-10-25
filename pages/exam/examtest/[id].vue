@@ -78,7 +78,8 @@ const route = useRoute();
 await storeexam.fetchExam()
 let fitter = await store.setECid(route.params.id);
 if(fitter == true) {
-  await store.fetchExamTest();
+ let start =  await store.fetchExamTest();
+
 }
 
 const HideModal = async () => {

@@ -151,9 +151,7 @@ export const ExamTestPostStore = defineStore({
         return true
       } catch (error) {
         return false;
-      } finally {
-
-      }
+      } 
     },
 
     async fetchExamquest() {

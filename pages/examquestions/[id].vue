@@ -109,6 +109,7 @@ import { onBeforeRouteLeave } from 'vue-router';
 import { onMounted, onUnmounted } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import ApiService from '@/services/api.service';
+import Swal from "sweetalert2";
 
 const auth = useAuthStore()
 const storeexam = ExamPostStore()
@@ -130,6 +131,16 @@ await storeexam.fetchExam()
 let fitter = await store.setECid(route.params.id);
 if (fitter == true) {
   let a = await store.fetchExamTest();
+//   if(a == false){
+//     await Swal.fire({
+//     position: "top-end",
+//     icon: "error",
+//     title: "Contact Admin",
+//     showConfirmButton: false
+//   });
+
+// store.GetopenModalStart = false;
+//   }
 }
 
 const router = useRouter();
