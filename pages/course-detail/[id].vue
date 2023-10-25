@@ -139,7 +139,6 @@
                           <button @click="choose(x.cs_id)"
                             class="accordion-button collapsed mt-0"
                             type="button"
-                 
                           >
 
                                      <!-- data-bs-toggle="collapse"
@@ -353,5 +352,8 @@ function coverttime(date) {
   .author__text {
     margin-bottom: 10px;
   }
+}
+.accordion-button::after {
+  background-image: none;
 }
 </style>

@@ -107,12 +107,8 @@
       <source :src="store.data.cs_video" type="video/mp4">
       Your browser does not support the video tag.
     </video> -->
-
-    <YouTube 
-    :src="store.data.cs_video"
-    @ready="onReady"
-       ref="youtube" />
-
+    <YouTube :src="store.data.cs_video" :width="youtubeWidth" @ready="onReady" ref="youtube" />
+      
                             <!-- <vue3VideoPlay
                               width="100%"
                               title="Video"
@@ -309,14 +305,14 @@
     definePageMeta({
   middleware: 'auth' // this should match the name of the file inside the middleware directory 
 })
+import { defineComponent, ref, onMounted, onBeforeUnmount  } from 'vue';
 import { storeToRefs } from "pinia";
-import { defineComponent } from "vue";
 import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
 import YouTube from 'vue3-youtube'
 const router = useRouter();
 const store = LessonStore();
-
+const youtubeWidth = ref(620);
 const auth = useAuthStore();
 const route = useRoute();
 const profile = await auth.getProfile();
@@ -331,6 +327,24 @@ if(lesson_id == true){
 
 }
 
+const updateWidth = () => {
+  if (window.innerWidth < 768 && window.innerWidth >= 430) {
+    youtubeWidth.value = 350;
+  } else if (window.innerWidth < 430) {
+    youtubeWidth.value = 250;
+  }
+  else {
+    youtubeWidth.value = 620; // default width
+  }
+};
+onMounted(() => {
+  window.addEventListener('resize', updateWidth);
+  updateWidth(); // Call once when component is mounted to set the initial width
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateWidth);
+});
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
