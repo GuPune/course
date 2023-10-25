@@ -64,7 +64,7 @@ return true
 
       this.formlean.cs_id = this.cs_id;
       this.formlean.user_id = this.user_id;
-      const data = await ApiService.post('/course/log/create', this.formlean).then(response => {
+      const data = await ApiService.post('/log/lesson/create', this.formlean).then(response => {
 
       });
     }

@@ -102,11 +102,16 @@
                              
                             /> -->
 
-                             <video controls @play="onPlay(store.data.cs_id)">
-      <!-- Specify the path to your MP4 video file using the src attribute -->
+                             <!-- <video controls @play="onPlay(store.data.cs_id)">
+
       <source :src="store.data.cs_video" type="video/mp4">
       Your browser does not support the video tag.
-    </video>
+    </video> -->
+
+    <YouTube 
+    :src="store.data.cs_video"
+    @ready="onReady"
+       ref="youtube" />
 
                             <!-- <vue3VideoPlay
                               width="100%"
@@ -308,6 +313,7 @@ import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
+import YouTube from 'vue3-youtube'
 const router = useRouter();
 const store = LessonStore();
 
@@ -317,6 +323,7 @@ const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
 let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
+
 
 if(lesson_id == true){
    store.updateLogCourse();
@@ -340,6 +347,11 @@ const onPlay = (id) => {
 
 const backlearning = (couse_id) => {
    router.push("/course-detail/"+couse_id);
+};
+
+
+const onReady = () => {
+console.log('onReady');
 };
 
 
