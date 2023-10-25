@@ -107,8 +107,11 @@
       <source :src="store.data.cs_video" type="video/mp4">
       Your browser does not support the video tag.
     </video> -->
-    <YouTube :src="store.data.cs_video" :width="youtubeWidth" @ready="onReady" ref="youtube" />
-      
+  
+   <div v-if="store.isYoutube == true" class="ifra">
+    <YouTube :src="store.data.cs_video" :width="store.windowWidth" @ready="onReady" @playing="handlePlaying" ref="youtube" />
+   </div>
+    
                             <!-- <vue3VideoPlay
                               width="100%"
                               title="Video"
@@ -318,6 +321,7 @@ const route = useRoute();
 const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
+
 let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
 
 
@@ -326,24 +330,62 @@ if(lesson_id == true){
 }else {
 
 }
+if (process.client) {
 
-const updateWidth = () => {
+  window.addEventListener("resize", () => loadEdit(), store.isYoutube == false);
+  
+//   window.addEventListener('resize', function(event) {
+  
+//     updateWidth();
+// }, true);
+
+}
+
+async function loadEdit() {
+
+ store.isYoutube = false;
+
+setTimeout(function(){
+          updateWidth();
+   },1000); //delay is in milliseconds 
+
+ // await updateWidth();
+ // console.log('loadEdit');
+ 
+}
+
+const handlePlaying = () => {
+      console.log('Video is playing');
+    };
+
+
+    
+  const updateWidth = async () => {
+console.log('update');
   if (window.innerWidth < 768 && window.innerWidth >= 430) {
     youtubeWidth.value = 350;
+    store.windowWidth = youtubeWidth.value;
+   store.isYoutube = true 
   } else if (window.innerWidth < 430) {
     youtubeWidth.value = 250;
+    store.windowWidth = youtubeWidth.value;
+    store.isYoutube = true 
   }
   else {
     youtubeWidth.value = 620; // default width
+    store.windowWidth = youtubeWidth.value;
+     store.isYoutube = true 
   }
 };
 onMounted(() => {
-  window.addEventListener('resize', updateWidth);
-  updateWidth(); // Call once when component is mounted to set the initial width
+  console.log('onMounted');
+ // window.addEventListener('resize', updateWidth);
+   updateWidth(); // Call once when component is mounted to set the initial width
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateWidth);
+  console.log('onBeforeUnmount');
+ // window.removeEventListener('resize', updateWidth);
 });
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
@@ -422,5 +464,22 @@ function coverttime(date) {
   .author__text {
     margin-bottom: 10px;
   }
+}
+
+.youtube-embed {
+  position: relative;
+  padding-bottom: 56%;
+  width: 100%;
+  text-align: left;
+}
+
+.youtube-embed iframe {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+}
+.ifra {
+text-align:-webkit-center;
 }
 </style>

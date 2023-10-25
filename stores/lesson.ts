@@ -12,6 +12,8 @@ export const LessonStore = defineStore({
       user_id: null,
       cs_id: null
     },
+    isYoutube:false,
+    windowWidth:0,
     data: {
       course_id: null,
       crt_date: null,
