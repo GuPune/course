@@ -12,7 +12,7 @@
                 <div class="row">
                   <div class="col-xl-10 col-lg-10 col-sm-6">
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                      <i class="icofont-book-alt"></i> {{ $t("page_exam_course_eq") }}{{ store.em_name }} {{ store.total }} {{ store.t }}
+                      <i class="icofont-book-alt"></i> {{ $t("page_exam_course_eq") }}{{ store.exam.em_name }}
                     </h4>
                     <div class="timerCountdown">
                       <p class="timeText">{{ store.hours }} : {{ store.minutes }} : {{store.seconds }}</p>
