@@ -10,7 +10,7 @@
               <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
                
                 <div class="row">
-                  <div class="col-xl-11 col-lg-11 col-sm-6">
+                  <div class="col-xl-10 col-lg-10 col-sm-6">
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
                       <i class="icofont-book-alt"></i> {{ $t("page_exam_course_eq") }}{{ store.em_name }} {{ store.total }} {{ store.t }}
                     </h4>
@@ -18,7 +18,7 @@
                       <p class="timeText">{{ store.hours }} : {{ store.minutes }} : {{store.seconds }}</p>
                     </div>
                   </div>
-                  <div class="col-xl-1 col-lg-1 col-sm-6">
+                  <div class="col-xl-2 col-lg-2 col-sm-6">
                     <h6>
                       {{ store.ind + 1 }} / {{ store.total }}
                     </h6>
