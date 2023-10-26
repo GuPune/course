@@ -130,7 +130,8 @@ await storeexam.fetchExam()
 
 let fitter = await store.setECid(route.params.id);
 if (fitter == true) {
-  let a = await store.fetchExamTest();
+await store.fetchExamTest();
+await store.fetchExamTest();
 //   if(a == false){
 //     await Swal.fire({
 //     position: "top-end",
