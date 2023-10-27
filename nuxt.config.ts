@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   
@@ -14,6 +15,7 @@ export default defineNuxtConfig({
  modules: [
   '@pinia/nuxt','nuxt-icon',
 ],
+
 
 runtimeConfig: {
   // Config within public will be also exposed to the client

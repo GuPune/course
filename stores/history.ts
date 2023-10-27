@@ -39,12 +39,10 @@ export const HistoryStore = defineStore({
       const data_em_id = []
       const data_em_name = []
       const total = []
-      console.log('this.listexam', this.listexam);
-      console.log('this.user_id', this.user_id);
       for (var x = 0; x < this.listexam.length; x++) {
         const em_id = this.listexam[x].em_id;
         var examtest = await ApiService.get('/exam/history/?em_id=' + em_id + '&user_id=' + this.user_id + '').then(response => {
-          console.log(this.listexam[x]);
+
           if (response.data.length > 0) {
             const a = { em_id: this.listexam[x].em_id, em_name: this.listexam[x].em_name, total_test: response.data.length }
             data_em_id.push(a)
