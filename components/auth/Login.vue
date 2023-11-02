@@ -15,13 +15,13 @@
             
           </p>
         </div>
-        <form action="#">
+        <form action="#"> 
           <div class="login__form">
-            <label class="form__label">{{ $t("username") }}</label>
+            <label class="form__label">{{ $t("username") }} {{ $t("or") }} {{ $t("email") }}  {{ $t("or") }} {{ $t("tel") }}</label>
             <input
               class="common__login__input"
               type="text"
-              placeholder="Your username"
+              placeholder="Username"
               v-model="formData.username"
               :class="{
                 'border-red-500 focus:border-red-500': v$.username.$error,

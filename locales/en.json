@@ -15,6 +15,7 @@
   "login": "Login",
   "register":"Register",
   "username": "Users",
+  "or": "Or",
   "password": "Password",
   "confirmpassword": "Confirm Password",
   "email": "Email",
