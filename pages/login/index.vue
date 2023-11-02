@@ -55,6 +55,9 @@
 
 <script setup>
 
+definePageMeta({
+  middleware: "checklogin", // this should match the name of the file inside the middleware directory
+});
 import Login from '@/components/auth/Login.vue';
 import Register from '@/components/auth/Register.vue';
 import Loading from '@/components/button/loading.vue';
@@ -68,6 +71,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 import { useI18n } from "vue-i18n";
 const { locale, setLocale } = useI18n();
+
 
 const router = useRouter();
 const store = useLogin()

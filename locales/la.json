@@ -71,7 +71,7 @@
   "page_course_last_description": "ລາຍລະອຽດ",
   "page_course_user_create": "ຜູ້ສ້າງ",
   "page_course_date": "ວັນທີສ້າງ",
-  "page_exam_bt": "ເລີ່ມການທົດສອບ",
+  "page_exam_bt": "ເຂົ້າສູ່ການທົດສອບ",
   "page_course_code": "ລະຫັດ",
   "page_course_view_details": "ເບິ່ງລາຍລະອຽດເພີ່ມເຕີມ",
 
@@ -95,9 +95,7 @@
   "page_test5":"5. ເມື່ອເລີ່ມການທົດສອບ, ລະບົບຈະນັບເວລາທັນທີ.",
   "page_test6":"6. ໃນກໍລະນີທີ່ກົດເພື່ອປ່ຽນຫນ້າ ລະບົບຈະຢຸດເວລາສອບເສັງພາກປະຕິບັດສໍາລັບທ່ານ. ແລະສາມາດກັບຄືນໄປປະຕິບັດ",
   "page_close":"ປິດ",
-
   "page_exam_course_eq":"ຫຼັກສູດ : ",
-
   "page_exam_report":"ຫຼັກສູດ",
   "page_exam_report_details":"ລາຍລະອຽດການສອບເສັງ",
   "page_exam_report_update":"ອັບເດດຫຼ້າສຸດ :",
@@ -214,5 +212,12 @@
   "form_login_user":"ຊື່​ຜູ້​ໃຊ້​ທີ່​ບໍ່​ຖືກ​ຕ້ອງ",
   "form_login_pass":"ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ",
   "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
-  "form_reset_pass_otp":"OTP code ພາກສະຫນາມແມ່ນຕ້ອງການ"
+  "form_reset_pass_otp":"OTP code ພາກສະຫນາມແມ່ນຕ້ອງການ",
+
+  "form_register_fname":"ຊື່ ຕ້ອງລະບຸຂໍ້ມູນ",
+  "form_register_lname":"ນາມ​ສະ​ກຸນ ຕ້ອງລະບຸຂໍ້ມູນ",
+  "form_register_users":"ຊື່ຜູ້ໃຊ້ ຕ້ອງລະບຸຂໍ້ມູນ",
+  "form_register_phone":"ໂທລະສັບ ຕ້ອງລະບຸຂໍ້ມູນ",
+  "form_register_pass":"ລະຫັດຜ່ານ ຕ້ອງລະບຸຂໍ້ມູນ",
+  "form_register_pass_con":"ລະ​ຫັດ​ຜ່ານ​ດຽວ​ກັນ​ ຕ້ອງລະບຸຂໍ້ມູນ"
 }

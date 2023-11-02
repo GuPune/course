@@ -16,14 +16,31 @@
                 <label class="form__label">{{ $t("fname") }}<span style="color:red" > *
                  </span></label>       
               
-                <input class="common__login__input" type="text" placeholder="ชื่อจริง" v-model="stores.form.user_firstname"
+                <input class="common__login__input" type="text" placeholder="First Name" v-model="stores.form.user_firstname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_firstname.$error,
                     'border-[#42d392] ': !v$.user_firstname.$invalid,
                   }" @change="v$.user_firstname.$touch" autocomplete="off">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_firstname.$error">{{
-                  v$.user_firstname.$errors[0].$message
-                }}</span>
+            
+
+            <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_firstname.$error"
+              >{{ $t("form_register_fname") }}</span
+            >
+            </span>
+
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_firstname.$error"
+              >{{ $t("form_register_fname") }}</span
+            >    
+            </span>
+              
 
 
               </div>
@@ -32,14 +49,28 @@
               <div class="login__form">
                 <label class="form__label">{{ $t("lname") }}<span style="color:red" > *
                  </span></label>
-                <input class="common__login__input" type="text" placeholder="นามสกุล" v-model="stores.form.user_lastname"
+                <input class="common__login__input" type="text" placeholder="Last Name" v-model="stores.form.user_lastname"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_lastname.$error,
                     'border-[#42d392] ': !v$.user_lastname.$invalid,
                   }" @change="v$.user_lastname.$touch" autocomplete="off">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_lastname.$error">{{
-                  v$.user_lastname.$errors[0].$message
-                }}</span>
+                  <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_lastname.$error"
+              >{{ $t("form_register_lname") }}</span
+            >
+            </span>
+
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_lastname.$error"
+              >{{ $t("form_register_lname") }}</span
+            >    
+            </span>
 
               </div>
             </div>
@@ -47,21 +78,35 @@
               <div class="login__form">
                 <label class="form__label">{{ $t("username") }}<span style="color:red" > *
                  </span></label>
-                <input class="common__login__input" type="text" placeholder="ยูสเชอร" v-model="stores.form.user_name"
+                <input class="common__login__input" type="text" placeholder="UserName" v-model="stores.form.user_name"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_name.$error,
                     'border-[#42d392] ': !v$.user_name.$invalid,
                   }" @change="v$.user_name.$touch" autocomplete="off">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_name.$error">{{
-                  v$.user_name.$errors[0].$message
-                }}</span>
+                         <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_name.$error"
+              >{{ $t("form_register_users") }}</span
+            >
+            </span>
+
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_name.$error"
+              >{{ $t("form_register_users") }}</span
+            >    
+            </span>
 
               </div>
             </div>
             <div class="col-xl-6">
               <div class="login__form">
                 <label class="form__label">{{ $t("email") }}</label>
-                <input class="common__login__input" type="text" placeholder="อีเมล" v-model="stores.form.user_email"
+                <input class="common__login__input" type="text" placeholder="Email" v-model="stores.form.user_email"
                 >
                
 
@@ -71,13 +116,27 @@
               <div class="login__form">
                 <label class="form__label">{{ $t("tel") }}<span style="color:red" > *
                  </span> </label>
-                <input class="common__login__input" type="text" placeholder="เบอรโทร" v-model="stores.form.user_phone" :class="{
+                <input class="common__login__input" type="text" placeholder="Phone" v-model="stores.form.user_phone" :class="{
                   'border-red-500 focus:border-red-500': v$.user_phone.$error,
                   'border-[#42d392] ': !v$.user_phone.$invalid,
                 }" @change="v$.user_phone.$touch" autocomplete="off" @input="filterInput">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_phone.$error">{{
-                  v$.user_phone.$errors[0].$message
-                }}</span>
+                              <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_phone.$error"
+              >{{ $t("form_register_phone") }}</span
+            >
+            </span>
+
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_phone.$error"
+              >{{ $t("form_register_phone") }}</span
+            >    
+            </span>
 
               </div>
             </div>
@@ -85,39 +144,83 @@
               <div class="login__form">
                 <label class="form__label">{{ $t("password") }}<span style="color:red" > *
                  </span></label>
-                <input class="common__login__input" type="password" placeholder="รหัสผ่าน"
+                <input class="common__login__input" type="password" placeholder="Password"
                   v-model="stores.form.user_password" :class="{
                     'border-red-500 focus:border-red-500': v$.user_password.$error,
                     'border-[#42d392] ': !v$.user_password.$invalid,
                   }" @change="v$.user_password.$touch" autocomplete="off">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_password.$error">{{
-                  v$.user_password.$errors[0].$message
-                }}</span>
+
+<span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_password.$error"
+              >{{ $t("form_register_pass") }}</span
+            >
+            </span>
+
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_password.$error"
+              >{{ $t("form_register_pass") }}</span
+            >    
+            </span>
+               
               </div>
             </div>
             <div class="col-xl-6">
               <div class="login__form">
                 <label class="form__label">{{ $t("confirmpassword") }}<span style="color:red" > *
                  </span></label>
-                <input class="common__login__input" type="password" placeholder="ยืนยันรหัสผ่าน"
+                <input class="common__login__input" type="password" placeholder="Confirm Password"
                   v-model="stores.form.user_confirmPassword" :class="{
                     'border-red-500 focus:border-red-500': v$.user_confirmPassword.$error,
                     'border-[#42d392] ': !v$.user_confirmPassword.$invalid,
                   }" @change="v$.user_confirmPassword.$touch" autocomplete="off">
-                <span class="text-xs text-red-500" style="color:red" v-if="v$.user_confirmPassword.$error">{{
-                  v$.user_confirmPassword.$errors[0].$message
-                }}</span>
+          
+
+          <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_confirmPassword.$error"
+              >{{ $t("form_register_pass_con") }}</span
+            >
+            </span>
+
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.user_confirmPassword.$error"
+              >{{ $t("form_register_pass_con") }}</span
+            >    
+            </span>
+               
               </div>
             </div>
           </div>
 
           <div class="login__form d-flex justify-content-between flex-wrap gap-2">
             <div class="form__check">
-               <input id="accept_pp" type="checkbox" v-model="stores.form.accp"> <label for="accept_pp">{{ $t("page_register_acc") }}</label>
+               <input id="accept_pp" type="checkbox" v-model="stores.form.accp"> <label for="accept_pp">{{ $t("page_register_acc") }}
+              
+              </label>
             </div>
           </div>
-            <span class="text-xs text-red-500" style="color:red" v-if="v$.accp.$error">{{ v$.accp.$errors[0].$message
-          }}</span>
+            <span class="text-xs text-red-500" style="color:red" v-if="v$.accp.$error">
+              
+              <span v-if="locale == 'la'">
+                  {{ $t("page_register_acc") }}
+            </span>
+
+            <span v-if="locale == 'en'">
+              {{ $t("page_register_acc") }}
+            </span>
+          </span>
+
           <div class="login__button" @click="register()">
             <a class="default__button">{{ $t("singup_title") }}</a>
           </div>
@@ -139,11 +242,14 @@ import { useLogin } from '@/stores/login'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, sameAs, minLength, helpers,numeric } from '@vuelidate/validators';
 import Swal from 'sweetalert2';
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const router = useRouter();
 const store = useLogin()
 const stores = RegisterStore()
 
+const { authenticateUser } = useAuthStore(); // use authenticateUser action from  auth store
 
    
 const { getisActive } = storeToRefs(store);
@@ -159,15 +265,15 @@ const rules = computed(() => {
   return {
     user_firstname: {
       required: helpers.withMessage('The First name field is required', required),
-      minLength: minLength(6),
+      minLength: minLength(1),
     },
     user_lastname: {
       required: helpers.withMessage('The Last name field is required', required),
-      minLength: minLength(6),
+      minLength: minLength(1),
     },
     user_name: {
       required: helpers.withMessage('The username field is required', required),
-      minLength: minLength(6),
+      minLength: minLength(1),
     },
   
     user_password: {
@@ -208,16 +314,27 @@ const register = async () => {
      await Swal.fire({
   position: 'top-end',
   icon: 'success',
-  title: 'สมัครสมาชิกเรียบร้อย',
+  title: 'Applied for membership.',
   showConfirmButton: false,
   timer: 1500
 })
- await ResetForm();
-router.push('/login');
+
+const formData = reactive({
+  username: stores.form.user_name,
+  password: stores.form.user_password,
+  confirmPassword: null,
+});
+
+
+//let user = await store.authenticateUserMoiblex()
+let login = await authenticateUser(formData);
+
+await ResetForm();
+ router.push('/');
    }else{
     Swal.fire({
-        title: 'ไม่สำเร็จ!',
-        text: 'สมัครสมาชิกไม่สำเร็จ!',
+        title: 'Unsuccessful!',
+        text: 'Unsuccessful registration!',
         icon: 'error',
         
       });

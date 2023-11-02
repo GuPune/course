@@ -224,15 +224,15 @@ const register = async () => {
      await Swal.fire({
   position: 'top-end',
   icon: 'success',
-  title: 'สมัครสมาชิกเรียบร้อย',
+  title: 'Applied for membership',
   showConfirmButton: false,
   timer: 1500
 })
 router.push('/');
    }else{
     Swal.fire({
-        title: 'ไม่สำเร็จ!',
-        text: 'สมัครสมาชิกไม่สำเร็จ!',
+        title: 'Unsuccessful!',
+        text: 'Unsuccessful registration!',
         icon: 'error',
         
       });

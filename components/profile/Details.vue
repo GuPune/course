@@ -316,14 +316,14 @@ if (savedetails == true) {
   await Swal.fire({
     position: "top-end",
     icon: "success",
-    title: "บันทึกสำเร็จ",
+    title: "Saved successfully",
     showConfirmButton: false,
     timer: 1500,
   });
 } else {
   Swal.fire({
-    title: "ไม่สำเร็จ!",
-    text: "บันทึกไม่สำเร็จ!",
+    title: "Unsuccessful!",
+    text: "Failed to save!",
     icon: "error",
   });
 }

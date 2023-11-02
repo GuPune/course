@@ -145,7 +145,7 @@ const saveimage = async () => {
   await Swal.fire({
     position: "top-end",
     icon: "success",
-    title: "บันทึกสำเร็จ",
+    title: "Saved successfully",
     showConfirmButton: false,
     timer: 1500,
   });

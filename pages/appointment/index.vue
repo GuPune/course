@@ -292,7 +292,7 @@ const confirmreve = async () => {
     await Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "บันทึกการจองเรียบร้อย",
+      title: "Booking recorded successfully",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -301,8 +301,8 @@ const confirmreve = async () => {
   } else {
     store.popupconfirm = false;
     Swal.fire({
-      title: "ไม่สำเร็จ!",
-      text: "จองไม่สำเร็จ!",
+      title: "Unsuccessful!",
+      text: "Unsuccessful Booking!",
       icon: "error",
     });
   }

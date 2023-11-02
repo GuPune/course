@@ -21,7 +21,8 @@
                     type="text"
                     name="con_name"
                     id="con_name"
-                    placeholder="เลขบัตรประชาชน*"
+                  
+                    placeholder="ID Card Number"
                     maxlength="13"
                     v-model="store.formdetail.identification_number"
                     :class="{
@@ -74,7 +75,7 @@
                     id="con_message"
                     cols="10"
                     rows="10"
-                    placeholder="ที่อยู่"
+                    placeholder="Address"
                     v-model="store.formdetail.user_address"
                     :class="{
                       'border-red-500 focus:border-red-500':
@@ -210,6 +211,10 @@ import {
   helpers,
 } from "@vuelidate/validators";
 import Swal from "sweetalert2";
+import len  from "../../locales/en.json";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
+
 
 const router = useRouter();
 const store = VerifyStore();
@@ -265,7 +270,7 @@ const sendotp = async () => {
       await Swal.fire({
   position: 'top-end',
   icon: "error",
-  title: "ไม่สำเร็จ บัตรประชาชนอาจจะซ้ำ!",
+  title: "Unsuccessful ID card may be duplicated.!",
   showConfirmButton: false,
   timer: 1500
 })
@@ -281,6 +286,12 @@ const onInput = async (event) => {
 }
 
 
+
+// function fromTimeWindow(A) {
+//   console.log('fromTimeWindow',len);
+
+//   return 'x'
+// }
 
 const onFileChange = async (event) => {
   var input = event.target;

@@ -9,8 +9,9 @@
                   <th scope="col" style="text-align: center">{{ $t("result_id") }}</th>
                   <th scope="col" style="text-align: center">{{ $t("result_score") }}</th>
                   <th scope="col" style="text-align: center">{{ $t("result_type") }}</th>
-                  <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
+                 
                   <th scope="col" style="text-align: center">{{ $t("result_details") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
                   <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
                 </tr>
               </thead>
@@ -26,15 +27,27 @@
                     <span v-if="item.mr_learn_type == 1">{{ $t("page_profile_type_test_y") }}</span>
                     <span v-else>{{ $t("page_profile_typepage_profile_type_test_n") }}</span>
                   </td>
+                  <td>
+                  
+            <span v-if="locale == 'la'">
+              {{
+                covertdtl(item.dlt_code).dlt_description_loas
+              }}</span
+            >
+            <span v-if="locale == 'en'">
+              {{
+                covertdtl(item.dlt_code)
+                  .dlt_description_english
+              }}</span
+            >
+          </td>
+
+                    <td style="text-align: center">
+                    {{ format(item.crt_date) }}
+                  </td>
                   <td style="text-align: center">
                       <span v-if="item.mr_status == 'pass'">{{ $t("page_type_test_pass") }}</span>
                     <span v-else>{{ $t("page_type_test_fail") }}</span>
-                  </td>
-                  <td style="text-align: center">
-                    {{ item.dlt_description }}
-                  </td>
-                    <td style="text-align: center">
-                    {{ format(item.crt_date) }}
                   </td>
                 </tr>
               </tbody>
@@ -71,6 +84,8 @@ import { ResultStore } from "@/stores/result";
 import ApiService from "@/services/api.service";
 import { Bar } from "vue-chartjs";
 import moment from "moment";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const store = ResultStore();
 
@@ -80,6 +95,14 @@ const del = async () => {};
 
 const format = (item) => {
   return moment(item).format("YYYY-MM-DD HH:SS");
+};
+
+const covertdtl = (x) => {
+
+
+  let item = store.dlt.filter((o) => o.dlt_code == x);
+
+  return item[0];
 };
 </script>
 

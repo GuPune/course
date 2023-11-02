@@ -74,7 +74,7 @@ const confirm = async () => {
 await Swal.fire({
     position: "top-end",
     icon: "success",
-    title: "บันทึกสำเร็จ รอสักครู่",
+    title: "Saved successfully",
     showConfirmButton: false,
     timer: 1500,
   });

@@ -100,14 +100,14 @@ const sendotp = async () => {
   if (!v$.value.$error) {
  
     let sendotp = await store.verifyOTP();
-    console.log(sendotp);
+ 
     if(sendotp === true){
       router.push("/newspassword");
     }else {
 
       Swal.fire({
-      title: "ไม่สำเร็จ!",
-      text: "ยืนยันOTPไม่สำเร็จ!",
+      title: "Unsuccessful!",
+      text: "Failed to confirm OTP!",
       icon: "error",
     });
 

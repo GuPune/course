@@ -17,8 +17,22 @@
 
           
           <th scope="row" style="text-align: center">{{ index + 1 }}</th>
-          <td style="text-align: center">
+          <!-- <td style="text-align: center">
             {{ item.appointment_detail.dlt_code }}
+          </td> -->
+
+          <td>
+            <span v-if="locale == 'la'">
+              {{
+                covertdtl(item.appointment_detail.dlt_code).dlt_description_loas
+              }}</span
+            >
+            <span v-if="locale == 'en'">
+              {{
+                covertdtl(item.appointment_detail.dlt_code)
+                  .dlt_description_english
+              }}</span
+            >
           </td>
           <!-- <td style="text-align: center">
             {{ item.appointment_detail.ap_remark }}
@@ -76,6 +90,8 @@ ChartJS.register(
   CategoryScale,
   LinearScale
 );
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const store = AppointmentsStore();
 
@@ -93,6 +109,11 @@ store.checkpopupdel(ap,ar);
 
 const format = (item) => {
   return moment(item).format("YYYY-MM-DD HH:mm");
+};
+
+const covertdtl = (x) => {
+  let item = store.dlt.filter((o) => o.dlt_code == x);
+  return item[0];
 };
 
 

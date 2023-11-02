@@ -71,7 +71,7 @@
   "page_course_last_description": "Details",
   "page_course_user_create": "Creator",
   "page_course_date": "Creation date",
-  "page_exam_bt": "Start testing",
+  "page_exam_bt": "Exam In",
   "page_course_code": "Code",
   "page_course_view_details": "See more details",
 
@@ -212,5 +212,13 @@
   "form_login_user":"Invalid user",
   "form_login_pass":"Invalid password",
   "form_reset_pass":"field is required",
-  "form_reset_pass_otp":"OTP code field is required"
+  "form_reset_pass_otp":"OTP code field is required",
+
+  "form_register_fname":"First Name  field is required",
+  "form_register_lname":"Last Name code field is required",
+  "form_register_users":"Usernam field is required",
+  "form_register_phone":"Phone field is required",
+  "form_register_pass":"Password field is required",
+  "form_register_pass_con":"Same Password code field is required"
+
 }
