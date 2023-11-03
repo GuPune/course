@@ -87,7 +87,12 @@
               <div class="gridarea__img">
                 <a><img :src="coverimage(store.formdetail.user_img)" alt="grid"></a>
               </div>
-              <button class="changeImg btn btn-info"  @click="changeFile">Edit
+              <button class="changeImg btn btn-info"  @click="changeFile" :disabled="store.isDisabled">
+
+       
+                <span v-if="locale == 'la'">{{ $t("page_profile_bt_pic") }}</span>
+              <span v-if="locale == 'en'">{{ $t("page_profile_bt_pic") }}</span>
+           
          
               
               </button>
@@ -121,7 +126,7 @@
                 </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_day") }}</p>
-                  <input type="date" class="form-control col" v-model="store.formdetail.user_birthday"
+                  <input type="date" class="form-control col" v-model="store.formdetail.user_birthday" :disabled="store.isDisabled"
                   :class="{
                         'border-red-500 focus:border-red-500':
                           v$.user_birthday.$error,
