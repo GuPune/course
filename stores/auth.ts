@@ -154,9 +154,7 @@ export const useAuthStore = defineStore('auth', {
     
     async authenticateUser({ username, password }: UserPayloadInterface) {
       
-      // useFetch from nuxt 3
-      console.log(username);
-      console.log(password);
+
       try {
         const { data } = await useFetch('/user/login', {
           method: 'post',
@@ -281,12 +279,15 @@ export const useAuthStore = defineStore('auth', {
     async getProfile() {
       this.formcard.idcard_back = ''
       this.formcard.idcard_front = ''
+   
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
+ 
    
     if(response.data == ''){
       return false;
     }else {
+     this.displaycard();
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname
@@ -310,10 +311,14 @@ try {
       this.formcard.idcard_back = response.data.card.idcard_back
       this.formcard.idcard_front = response.data.card.idcard_front
 
+
+
     
       return true;
     }
   });
+
+
   return profile
 } catch (error) {
   return false;
@@ -326,6 +331,7 @@ try {
     } ,  
     async displaycard() {
       const mydlt = [];
+  
       try {
         const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
           this.dltcard = response.data;
@@ -345,6 +351,8 @@ try {
             this.mydtla = mydlt;
           }
         });
+
+        this.getDltAlert()
         return data
       } catch (error) {
         return false;
@@ -352,7 +360,6 @@ try {
     },
     async getDltAlert() {
       const alert = [];
-     
 if(this.dltcard){
   for (let x = 0; x < this.dltcard.length; x++) {
  const seconds = new Date().getTime() / 1000;
