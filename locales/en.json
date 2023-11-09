@@ -1,8 +1,8 @@
 {
   "home": "Home",
   "language": "Language",
-  "courses": "E-learning",
-  "exam": "Course",
+  "courses": "Online knowledge",
+  "exam": "Exam",
   "appointmentxx": "Appointment",
   "message": "嗨 i18n !!",
   "article": {
@@ -72,12 +72,12 @@
   "page_course_last_description": "Details",
   "page_course_user_create": "Creator",
   "page_course_date": "Creation date",
-  "page_exam_bt": "Exam In",
+  "page_exam_bt": "Start Exam",
   "page_course_code": "Code",
   "page_course_view_details": "See more details",
 
   "page_course_view_show": "Show Record 1 - 10 All",
-  "page_exam_course": "Course",
+  "page_exam_course": "Exam",
   "page_exam_answer": "Answers",
   "page_exam_begin": "Start a new exam",
   "page_exam_name": "Name",
@@ -97,7 +97,7 @@
   "page_test6":"6. In the case of pressing to change page The system will stop the practice exam time for you. and can return to practice",
   "page_close":"Close",
 
-  "page_exam_course_eq":"Course : ",
+  "page_exam_course_eq":"Exam : ",
 
   "page_exam_report":"Course",
   "page_exam_report_details":"Exam details",
@@ -106,7 +106,7 @@
   "page_exam_report_total":"Number :",
   "page_exam_report_time":"Exam time :",
   "page_exam_report_score":"Score",
-  "page_exam_report_ans":"Test answers",
+  "page_exam_report_ans":"Test Answers",
   "page_exam_report_cho":"",
   "page_exam_report_cho1":"",
   "page_exam_report_remain":":",
