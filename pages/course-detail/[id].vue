@@ -287,14 +287,14 @@ const choose = (id) => {
 
 
 const onPause = (ev) => {
-  console.log(ev, "onPause");
+ 
 };
 
 const onTimeupdate = (ev) => {
-  console.log(ev, "onTimeupdate");
+ 
 };
 const onCanplay = (ev) => {
-  console.log(ev, "onCanplay");
+ 
 };
 
 const { getisActiveCourse } = storeToRefs(store);

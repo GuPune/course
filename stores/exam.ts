@@ -119,7 +119,7 @@ let obj = this.listexamqu.find(item => item.eq_id === index);
     async countDownTimer () {
 
   
-      console.log(this.timerCount);
+   
      
       // const totalMinutes = dateInn + this.timerCount;
       // this.seconds = totalMinutes % 60;
@@ -130,7 +130,7 @@ let obj = this.listexamqu.find(item => item.eq_id === index);
       if (this.timerCount > 0) {
         await setTimeout(() => {
               this.timerCount -= 1
-              console.log(this.timerCount);
+            
         this.countDownTimer()
         this.toHoursAndMinutes()
           }, 1000)

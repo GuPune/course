@@ -95,6 +95,7 @@
                 </div> -->
                 <nav>
                   <ul>
+                    
                     <li class="me-5">
                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                         class="bi bi-bell-fill " viewBox="0 0 16 16" id="noti-bell">
@@ -128,9 +129,24 @@
                         <div v-if="useError.formdetail.verify_account == 'system_active'">
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
                           id="badgeSpan" >
-                          <i class="icofont-check"></i><span id="badgeText">{{ $t("head_verify") }}</span>
+                          <i class="icofont-check"></i><span id="badgeText">{{ $t("system_active") }}</span>
                         </span>
                         </div>
+
+                        <div v-else-if="useError.formdetail.verify_account == 'phone_active'">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                          id="badgeSpan" >
+                          <i class="icofont-check"></i><span id="badgeText">{{ $t("phone_active") }}</span>
+                        </span>
+                        </div>
+
+                        <div v-else-if="useError.formdetail.verify_account == 'phone_unactive'">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                          id="badgeSpan" >
+                          <i class="icofont-check"></i><span id="badgeText">{{ $t("phone_unactive") }}</span>
+                        </span>
+                        </div>
+                  
                         <div v-else>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                           id="badgeSpan" >
@@ -343,7 +359,7 @@ const Logout = async () => {
 };
 
 const Showaside = async () => {
-  console.log(store.isActiveBar);
+ 
   store.isActiveBar = !store.isActiveBar;
   // store.isActiveBar = false;
 };

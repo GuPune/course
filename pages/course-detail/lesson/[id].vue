@@ -355,13 +355,13 @@ setTimeout(function(){
 }
 
 const handlePlaying = () => {
-      console.log('Video is playing');
+    
     };
 
 
     
   const updateWidth = async () => {
-console.log('update');
+
   if (window.innerWidth < 768 && window.innerWidth >= 430) {
     youtubeWidth.value = 350;
     store.windowWidth = youtubeWidth.value;
@@ -378,13 +378,13 @@ console.log('update');
   }
 };
 onMounted(() => {
-  console.log('onMounted');
+
  // window.addEventListener('resize', updateWidth);
    updateWidth(); // Call once when component is mounted to set the initial width
 });
 
 onBeforeUnmount(() => {
-  console.log('onBeforeUnmount');
+ 
  // window.removeEventListener('resize', updateWidth);
 });
 
@@ -407,7 +407,7 @@ const backlearning = (couse_id) => {
 
 
 const onReady = () => {
-console.log('onReady');
+
 };
 
 

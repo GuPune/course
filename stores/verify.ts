@@ -36,7 +36,7 @@ export const VerifyStore = defineStore({
     },
     getUser_id(state) {
       const User = useAuthStore();
-      console.log('User.user_id', User.user_id);
+    
       this.formdetail.user_id = User.user_id
       return state.formdetail;
     },

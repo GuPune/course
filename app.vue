@@ -29,7 +29,7 @@ if(useError.authenticated){
 
 
  useHead({
-  title: 'PWT Driving school',
+  title: 'DoT Smart App',
   meta: [
     { name: 'description', content: 'Appointment Tutor Course Online' }
   ],

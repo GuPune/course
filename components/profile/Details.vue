@@ -316,7 +316,7 @@ const update = async () => {
 
 if (!v$.value.$error) {
 let savedetails = await store.UpdateDetails();
-console.log(savedetails);
+
 if (savedetails == true) {
   await Swal.fire({
     position: "top-end",
