@@ -10,6 +10,7 @@ export const RegisterStore = defineStore({
   state: () => ({
     isLoading: false,
     form: {
+      user_prefrix: null,
       user_firstname: "",
       user_lastname: "",
       user_name: "",
