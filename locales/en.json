@@ -221,6 +221,10 @@
   "form_register_users":"Usernam field is required",
   "form_register_phone":"Phone field is required",
   "form_register_pass":"Password field is required",
-  "form_register_pass_con":"Same Password code field is required"
+  "form_register_pass_con":"Same Password code field is required",
+  "than":"Than",
+  "nang":"Nang",
+  "form_name_title":"ນາງ",
+  "choose":"Choose"
 
 }

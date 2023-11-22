@@ -219,5 +219,9 @@
   "form_register_users":"ຊື່ຜູ້ໃຊ້ ຕ້ອງລະບຸຂໍ້ມູນ",
   "form_register_phone":"ໂທລະສັບ ຕ້ອງລະບຸຂໍ້ມູນ",
   "form_register_pass":"ລະຫັດຜ່ານ ຕ້ອງລະບຸຂໍ້ມູນ",
-  "form_register_pass_con":"ລະ​ຫັດ​ຜ່ານ​ດຽວ​ກັນ​ ຕ້ອງລະບຸຂໍ້ມູນ"
+  "form_register_pass_con":"ລະ​ຫັດ​ຜ່ານ​ດຽວ​ກັນ​ ຕ້ອງລະບຸຂໍ້ມູນ",
+  "than":"ທ້າວ",
+  "nang":"ນາງ ",
+  "form_name_title":"ຄຳນຳໜ້າ",
+  "choose":"ເລືອກ"
 }

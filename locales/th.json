@@ -214,5 +214,7 @@
     "form_login_user":"Invalid username",
     "form_login_pass":"Invalid password",
     "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
-    "form_reset_pass_otp":"OTP code field is required"
+    "form_reset_pass_otp":"OTP code field is required",
+    "than":"ທ້າວ",
+    "nang":"ນາງ "
 }
