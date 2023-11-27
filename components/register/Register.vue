@@ -36,8 +36,8 @@
                   <option selected :value="null" disabled>
                     {{ $t("choose") }}
                   </option>
-                  <option value="นาย">{{ $t("than") }}</option>
-                  <option value="นาง">{{ $t("nang") }}</option>
+                  <option value="ທ້າວ">{{ $t("than") }}</option>
+                  <option value="ນາງ">{{ $t("nang") }}</option>
                 </select>
 
                 <span v-if="locale == 'la'">
