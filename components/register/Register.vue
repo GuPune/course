@@ -191,7 +191,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="Phone"
+                  placeholder="85620xxxxxxxx"
                   v-model="stores.form.user_phone"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_phone.$error,
