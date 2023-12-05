@@ -224,9 +224,12 @@
   "nang":"ນາງ ",
   "form_name_title":"ຄຳນຳໜ້າ",
   "choose":"ເລືອກ",
-  "changepassword":"Change Password",
-  "changepassword_title":"Change Password Title",
-  "changepassword_old":"Change Password Old",
-  "changepassword_new":"Change Password New",
-  "changepassword_confirm":"Change Password Confirm"
+  "changepassword":"ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ",
+  "changepassword_title":"ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ",
+  "changepassword_old":"ປ່ຽນລະຫັດຜ່ານເກົ່າ",
+  "changepassword_new":"ປ່ຽນລະຫັດຜ່ານໃໝ່",
+  "changepassword_confirm":"ຢືນຢັນລະຫັດໃຫມ່",
+  "changepassword_old_re":"ໃສ່ລະຫັດຜ່ານເກົ່າ.",
+  "changepassword_new_re":"ໃສ່ລະຫັດຜ່ານໃໝ່.",
+  "changepassword_confirm_re":"ໃສ່ຢືນຢັນລະຫັດຜ່ານໃໝ່"
 }

@@ -21,8 +21,6 @@
 
         <form action="#">
           <div class="row">
-           
-           {{ stores.changepassword }}
             <div class="col-xl-12">
               <div class="login__form">
                 <label class="form__label"
@@ -48,7 +46,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.curent_password.$error"
-                    >{{ $t("changepassword_old") }}</span
+                    >{{ $t("changepassword_old_re") }}</span
                   >
                 </span>
 
@@ -57,7 +55,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.curent_password.$error"
-                    >{{ $t("changepassword_old") }}</span
+                    >{{ $t("changepassword_old_re") }}</span
                   >
                 </span>
               </div>
@@ -85,7 +83,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.new_password.$error"
-                    >{{ $t("form_register_lname") }}</span
+                    >{{ $t("changepassword_new_re") }}</span
                   >
                 </span>
 
@@ -94,7 +92,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.new_password.$error"
-                    >{{ $t("form_register_lname") }}</span
+                    >{{ $t("changepassword_new_re") }}</span
                   >
                 </span>
               </div>
@@ -122,7 +120,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.confirm_new_password.$error"
-                    >{{ $t("form_register_users") }}</span
+                    >{{ $t("changepassword_confirm_re") }}</span
                   >
                 </span>
 
@@ -131,7 +129,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.confirm_new_password.$error"
-                    >{{ $t("form_register_users") }}</span
+                    >{{ $t("changepassword_confirm_re") }}</span
                   >
                 </span>
               </div>
@@ -221,7 +219,7 @@ const savechangepassword = async () => {
 
   if (!v$.value.$error) {
 let savepassword = await stores.Changepassword();
-console.log(savepassword);
+
 if(savepassword === true){
   await Swal.fire({
       position: "top-end",
@@ -230,6 +228,19 @@ if(savepassword === true){
       showConfirmButton: false,
       timer: 1500,
     });
+    v$.value.$reset();
+    await stores.ResetFormPassword();
+}else {
+
+  await Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "Change Password unsuccessfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+
 }
 
 }

@@ -512,6 +512,12 @@ if(this.dltcard){
         }
        
       },
+      async ResetFormPassword() {
+        this.changepassword.curent_password = null;
+        this.changepassword.new_password = null;
+        this.changepassword.confirm_new_password = null;
+
+      },
 
       async Changepassword() {
        
@@ -519,7 +525,7 @@ if(this.dltcard){
 
        try {
         const data = await ApiService.put('/user/change_password/' + this.user_id,this.changepassword).then(response => {
-       console.log(response);
+
 
        return true
 
@@ -532,6 +538,8 @@ if(this.dltcard){
       }
        
       },
+
+
   
   },
 });
