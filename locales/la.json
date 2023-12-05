@@ -223,5 +223,10 @@
   "than":"ທ້າວ",
   "nang":"ນາງ ",
   "form_name_title":"ຄຳນຳໜ້າ",
-  "choose":"ເລືອກ"
+  "choose":"ເລືອກ",
+  "changepassword":"Change Password",
+  "changepassword_title":"Change Password Title",
+  "changepassword_old":"Change Password Old",
+  "changepassword_new":"Change Password New",
+  "changepassword_confirm":"Change Password Confirm"
 }

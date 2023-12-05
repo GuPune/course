@@ -132,6 +132,11 @@ export const useAuthStore = defineStore('auth', {
       message:"ເຂົ້າສູ່ລະບົບບໍ່ສຳເລັດ",
       message_en:"Login unsuccessful"
     },
+    changepassword:{
+      curent_password:null,
+      new_password:null,
+      confirm_new_password:null,
+    }
   }),
   getters: {
     load(state) {
@@ -145,6 +150,9 @@ export const useAuthStore = defineStore('auth', {
     },
     getFormDetails(state) {
       return state.formdetail;
+    },
+    getFormChangepassword(state) {
+      return state.changepassword;
     },
 
     
@@ -502,6 +510,26 @@ if(this.dltcard){
             return false;
           }
         }
+       
+      },
+
+      async Changepassword() {
+       
+  
+
+       try {
+        const data = await ApiService.put('/user/change_password/' + this.user_id,this.changepassword).then(response => {
+       console.log(response);
+
+       return true
+
+        });
+
+      
+        return data
+      } catch (error) {
+        return false;
+      }
        
       },
   

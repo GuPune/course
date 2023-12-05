@@ -160,6 +160,9 @@
                           <a @click="GotoPage('/profile')">{{ $t("account") }}</a>
                         </li>
                         <li>
+                          <a @click="GotoPage('/changepassword')">{{ $t("changepassword") }}</a>
+                        </li>
+                        <li>
                           <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
                         </li>
                         <li>
