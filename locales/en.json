@@ -135,6 +135,7 @@
 
   "page_profile_iden":"ID Card :",
   "page_profile_day":"Birthday :",
+  "page_profile_village":"Village :",
   "page_profile_zip":"Nationality :",
   "page_profile_add_1":"Subdistrict :",
   "page_profile_add_2":" Address : ",
@@ -144,6 +145,7 @@
   "page_profile_type_dlt":"Driver's license type",
 
   "page_verify_iden":"ID Card",
+  "page_user_village":"Village",
   "page_verify_day":"Birthday",
   "page_verify_imagepro":"Profile Image",
   "page_verify_county":"Country",

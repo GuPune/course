@@ -62,6 +62,8 @@
                 </div>
               </div>
 
+      
+
               <div class="col-xl-12 mb-3" data-aos="fade-up">
                 <div class="contact__input__wraper">
                   <span
@@ -88,6 +90,35 @@
                   <div class="contact__icon">
                     <i class="icofont-pen-alt-2"></i>
                   </div>
+                </div>
+              </div>
+
+
+              <div class="col-xl-12" data-aos="fade-up">
+                <div class="contact__input__wraper">
+                  <label class="form__label"> {{ $t("page_user_village") }}</label>
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_village.$error"
+                    >{{ v$.user_village.$errors[0].$message }}</span
+                  >
+                  <input
+                    type="text"
+                    name="con_name"
+                    id="con_name"
+                  
+                    placeholder="Village"
+                    maxlength="50"
+                    v-model="store.formdetail.user_village"
+                    :class="{
+                      'border-red-500 focus:border-red-500':
+                        v$.user_village.$error,
+                      'border-[#42d392] ': !v$.user_village.$invalid,
+                    }"
+                    @change="v$.user_village.$touch"
+                    autocomplete="off" 
+                  />
                 </div>
               </div>
 
@@ -241,6 +272,10 @@ const rules = computed(() => {
     },
     user_birthday: {
       required: helpers.withMessage("The Birthday field is required", required),
+      minLength: minLength(1),
+    },
+    user_village: {
+      required: helpers.withMessage("Village field is required", required),
       minLength: minLength(1),
     },
     user_address: {

@@ -45,6 +45,7 @@ export const useAuthStore = defineStore('auth', {
       user_address:null,
       location:null,
       country:null,
+      user_village:"",
     },
     formdtl: {
       front_img: "",
@@ -306,7 +307,7 @@ try {
       this.formuser.user_id = response.data.user_id
       this.formuser.user_type_name = type?.user_type_name
 
-
+      
       this.formdetail.verify_account = response.data.detail.verify_account
       this.formdetail.identification_number = response.data.detail.identification_number
       this.formdetail.user_img = response.data.detail.user_img
@@ -316,6 +317,7 @@ try {
       this.formdetail.country = response.data.detail.country
       this.formdetail.location_id = response.data.detail.location_id
       this.formdetail.country_id = response.data.detail.country_id
+      this.formdetail.user_village = response.data.detail.user_village
       this.formcard.idcard_back = response.data.card.idcard_back
       this.formcard.idcard_front = response.data.card.idcard_front
 
@@ -416,7 +418,7 @@ if(this.dltcard){
       const update = {verify_account:this.formdetail.verify_account,identification_number:this.formdetail.identification_number,
         user_img:this.formdetail.user_img,
         user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
-        location_id:this.formdetail.location_id,country_id:this.formdetail.country_id,user_id:this.formuser.user_id};
+        location_id:this.formdetail.location_id,country_id:this.formdetail.country_id,user_id:this.formuser.user_id,user_village:this.formdetail.user_village};
 
   
         try {
