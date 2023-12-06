@@ -21,6 +21,7 @@ export const VerifyStore = defineStore({
       location_id: 1,
       country_id: 1,
       user_id: null,
+      user_village:"",
     },
     formszipcode: {
       page: 1,

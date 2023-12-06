@@ -132,6 +132,7 @@
   "page_exam_report_total_score":"ຄະແນນທີ່ໄດ້ຮັບ",
 
   "page_profile_iden":"ເລກບັດປະຈຳຕົວ :",
+  "page_profile_village":"ບ້ານ :",
   "page_profile_day":"ວັນເດືອນປີເກີດ :",
   "page_profile_zip":"ສັນຊາດ :",
   "page_profile_add_1":"ເມືອງ :",
@@ -142,6 +143,7 @@
   "page_profile_type_dlt":"ປະເພດໃບຂັບຂີ່",
 
   "page_verify_iden":"ໝາຍເລກບັດປະຈຳຕົວ",
+  "page_user_village":"ບ້ານ",
   "page_verify_day":"ວັນເດືອນປີເກີດ",
   "page_verify_imagepro":"ຮູບໂປຣໄຟລ໌",
   "page_verify_county":"ປະເທດ",
@@ -223,5 +225,13 @@
   "than":"ທ້າວ",
   "nang":"ນາງ ",
   "form_name_title":"ຄຳນຳໜ້າ",
-  "choose":"ເລືອກ"
+  "choose":"ເລືອກ",
+  "changepassword":"ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ",
+  "changepassword_title":"ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ",
+  "changepassword_old":"ປ່ຽນລະຫັດຜ່ານເກົ່າ",
+  "changepassword_new":"ປ່ຽນລະຫັດຜ່ານໃໝ່",
+  "changepassword_confirm":"ຢືນຢັນລະຫັດໃຫມ່",
+  "changepassword_old_re":"ໃສ່ລະຫັດຜ່ານເກົ່າ.",
+  "changepassword_new_re":"ໃສ່ລະຫັດຜ່ານໃໝ່.",
+  "changepassword_confirm_re":"ໃສ່ຢືນຢັນລະຫັດຜ່ານໃໝ່"
 }

@@ -216,5 +216,6 @@
     "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
     "form_reset_pass_otp":"OTP code field is required",
     "than":"ທ້າວ",
-    "nang":"ນາງ "
+    "nang":"ນາງ ",
+    "changepassword":"Change Password"
 }

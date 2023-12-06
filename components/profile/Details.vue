@@ -12,7 +12,6 @@
               <h3 class="text-center">{{ $t("account_proFile_Info") }}</h3>
               <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
             </div>
-
             <div class="row">
 
               <!-- <div class="col-xl-6" data-aos="fade-up">
@@ -145,6 +144,32 @@
                     >{{ v$.user_birthday.$errors[0].$message }}</span
                   >
                 </div>
+
+                <div class="gridarea__list row border-bottom pb-2">
+                  <p class="col fw-bold mb-0">{{ $t("page_profile_village") }}</p>
+                  <input type="text" class="form-control col" 
+                  v-model="store.formdetail.user_village"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.user_village.$error,
+                        'border-[#42d392] ': !v$.user_village.$invalid,
+                      }"
+                      @change="v$.user_village.$touch"
+                      autocomplete="off"
+                      maxlength="13" 
+                      :disabled="store.isDisabled"
+
+                  >
+                  <!-- <p class="col">{{store.formdetail.identification_number}}</p> -->
+
+                  <!-- <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formdetail.identification_number" > -->
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_village.$error"
+                    >{{ v$.user_village.$errors[0].$message }}</span
+                  >
+                </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
                   <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
@@ -181,6 +206,8 @@
                   <!-- <p class="col">{{store.formdetail.user_address}}</p> -->
                  
                 </div>
+
+                
                 <div class="gridarea__list row ">
                   <p class="col fw-bold">{{ $t("page_profile_status") }}</p>
 
@@ -270,6 +297,14 @@ await store.Country();
 const rules = computed(() => {
   return {
     identification_number: {
+      required: helpers.withMessage(
+        "The Identification number field is required",
+        required
+      ),
+      minLength: minLength(5),
+    },
+
+    user_village: {
       required: helpers.withMessage(
         "The Identification number field is required",
         required
