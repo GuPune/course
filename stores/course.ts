@@ -63,9 +63,8 @@ export const CoursePostStore = defineStore({
      });
      return true;
     } catch (error) {
-    
-    } finally {
-     
+    console.log('error');
+    alert(error)
     }
     },
     async fetchCourseall() {
