@@ -28,12 +28,17 @@ if(useError.authenticated){
 }
 
 
- useHead({
+useHead({
   title: 'DoT Smart App',
   meta: [
     { name: 'description', content: 'Appointment Tutor Course Online' }
   ],
+  link: [
+      { rel: 'icon', type: 'image/png', href: '/LogoPWT.png' }
+      // You can add other link tags here
+    ]
 })
+
 
 
 </script>
