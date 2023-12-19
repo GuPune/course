@@ -2,8 +2,12 @@ import { storeToRefs } from 'pinia';
 import { useAuthStore } from '~/stores/auth';
 import ApiService from '../services/api.service';
 import Cookies from 'js-cookie';
+import { useRouter } from 'vue-router';
+
+
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
+  const router = useRouter();
   const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
   const { verify } = storeToRefs(useAuthStore()); // make authenticated state reactive
   const token = useCookie('token'); // get token from cookies
@@ -26,7 +30,13 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   if (token.value) {
     authenticated.value = true; // update the state to authenticated
-    const checkveri = await ApiService.get('/user/get/'+user_id.value);
+    const checkveri = await ApiService.get('/user/get/'+user_id.value).catch(({ response }) => {
+     router.push('/maintenance'); // Replace with your error page route
+    //  return navigateTo('/maintenance');
+    });
+
+
+
    if(Object.keys(checkveri.data.detail).length === 0){
     verify.value = false;
     return navigateTo('/verifyconfirm');
