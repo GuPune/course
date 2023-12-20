@@ -20,11 +20,16 @@ import { useRoute } from 'vue-router'
 
  // fetchPosts();
 
+
  const auth = useAuthStore();
 const useError = useAuthStore();
+const router = useRouter();
 
 if(useError.authenticated){
   const profile = await useError.getProfile();
+if(profile === false){
+  await useError.logUserOut()
+}
 }
 
 

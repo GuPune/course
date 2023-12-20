@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEnvStore } from '@/stores/env'
 import ApiService from '../services/api.service';
 import Cookies from 'js-cookie';
+import { useRouter } from 'vue-router';
 
 interface UserPayloadInterface {
   username: string;
@@ -286,6 +287,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async getProfile() {
+      const router = useRouter();
       this.formcard.idcard_back = ''
       this.formcard.idcard_front = ''
    
@@ -331,7 +333,9 @@ try {
 
   return profile
 } catch (error) {
-  return false;
+//  router.push('/maintenance');
+ return false;
+ 
 }
     },
 

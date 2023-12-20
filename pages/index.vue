@@ -9,7 +9,6 @@ definePageMeta({
 const auth = useAuthStore();
 
 
-
 </script>
 <template>
   <div>
