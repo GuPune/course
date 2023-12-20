@@ -79,7 +79,7 @@
 
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
+                    <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
                         <div class="footerarea__inner footerarea__padding__left">
                             <div class="footerarea__heading">
                                 <h3>ข่าวล่าสุด</h3>
@@ -106,7 +106,7 @@
 
 
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
