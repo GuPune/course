@@ -22,7 +22,7 @@
                     name="con_name"
                     id="con_name"
                   
-                    placeholder="ID Card Number"
+                    placeholder="ໝາຍເລກບັດປະຈຳຕົວ"
                     maxlength="13"
                     v-model="store.formdetail.identification_number"
                     :class="{
@@ -49,7 +49,7 @@
                     type="date"
                     name="con_email"
                     id="con_email"
-                    placeholder="Enter Email Address*"
+                    placeholder="ອີເມວ*"
                     v-model="store.formdetail.user_birthday"
                     :class="{
                       'border-red-500 focus:border-red-500':
@@ -77,7 +77,7 @@
                     id="con_message"
                     cols="10"
                     rows="10"
-                    placeholder="Address"
+                    placeholder="ທີ່ຢູ່"
                     v-model="store.formdetail.user_address"
                     :class="{
                       'border-red-500 focus:border-red-500':
@@ -108,7 +108,7 @@
                     name="con_name"
                     id="con_name"
                   
-                    placeholder="Village"
+                    placeholder="ບ້ານ"
                     maxlength="50"
                     v-model="store.formdetail.user_village"
                     :class="{

@@ -9,7 +9,7 @@
                                 <ul class="nav property__team__tap" id="myTab" role="tablist">
                                    
                                     <li class="short__by__new">
-                                <input type="text" placeholder="Search Course" v-model="store.formsearchcourse.search"  @keyup="searchData" >
+                                <input type="text" placeholder="ຫຼັກສູດຄົ້ນຫາ" v-model="store.formsearchcourse.search"  @keyup="searchData" >
                                     </li>
 
                                 </ul>
