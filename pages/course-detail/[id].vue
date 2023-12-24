@@ -145,7 +145,7 @@
                             :data-bs-target="'#collapseOne-' + index"
                             aria-expanded="false"
                             aria-controls="collapseOne" -->
-                            {{ x.cs_name }} #{{ index + 1 }}
+                            ບົດຮຽນ #{{ index + 1 }}
                           </button>
                         </h2>
                         <div
