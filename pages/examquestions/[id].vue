@@ -10,6 +10,7 @@
           <div class="col-xl-12">
             <!-- <FormExamFitter></FormExamFitter> -->
           </div>
+         
           <div class="col-xl-12 col-lg-12 col-md-12 col-12" v-if="store.examination.length > 0">
             <FormExamlist></FormExamlist>
             <AnswerExamlist></AnswerExamlist>
@@ -130,8 +131,8 @@ await storeexam.fetchExam()
 
 let fitter = await store.setECid(route.params.id);
 if (fitter == true) {
-await store.fetchExamTest();
-await store.fetchExamTest();
+// await store.fetchExamTest();
+//await store.fetchExamTest();
 //   if(a == false){
 //     await Swal.fire({
 //     position: "top-end",
@@ -167,6 +168,7 @@ const closeModal = async () => {
 };
 
 const Start = async () => {
+  await store.fetchExamTest();
   store.isstart = false;
   await setTimeout(() => {
     store.countDownTimer();

@@ -208,9 +208,9 @@ export const ExamTestPostStore = defineStore({
       this.updatetest.ec_id = choices
       try {
         const data = await ApiService.post('/exam/send/render', this.updatetest).then(response => {
+          console.log(response);
           const getAll = ApiService.post('/exam/start/render', this.formsearchtest).then(rep => {
             if(rep.data.exam_complete == 1){
-            
               this.sendexam();
             }
           })
@@ -247,27 +247,7 @@ export const ExamTestPostStore = defineStore({
           this.timerCount -= 1;
       
      
-         // this.updatetime.timerCount = this.timerCount;
-          // const xt = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('examtest')) : null;
-          //  const indexToUpdate = xt.findIndex(item => item.em_id === 7);
-          // const data = JSON.parse(localStorage.getItem('examtest'));
-          // const updatedObject = { em_id: this.updatetime.em_id, timerCount: this.updatetime.timerCount, isComplate: false };
-          // if (data) {
-          //   const index = data.findIndex(item => item.em_id === this.updatetime.em_id)
-          //   if (index !== -1) {
-          //     console.log('Data', this.ex_count);
-          //     // Replace the object at the specified index
-          //     data.splice(index, 1, updatedObject);
-          //     const updatetime = localStorage.setItem('examtest', JSON.stringify(data))
-          //   } else {
-          //     this.ex_count.push(updatedObject)
-          //     console.log('Object not found', this.ex_count);
-          //     const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
-          //   }
-          // } else {
-          //   this.ex_count.push(updatedObject)
-          //   const updatetime = localStorage.setItem('examtest', JSON.stringify(this.ex_count))
-          // }
+       
       
           this.countDownTimer() 
           this.toHoursAndMinutes()  ///แปลงเวลา
