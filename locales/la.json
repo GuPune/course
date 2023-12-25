@@ -233,5 +233,6 @@
   "changepassword_confirm":"ຢືນຢັນລະຫັດໃຫມ່",
   "changepassword_old_re":"ໃສ່ລະຫັດຜ່ານເກົ່າ.",
   "changepassword_new_re":"ໃສ່ລະຫັດຜ່ານໃໝ່.",
-  "changepassword_confirm_re":"ໃສ່ຢືນຢັນລະຫັດຜ່ານໃໝ່"
+  "changepassword_confirm_re":"ໃສ່ຢືນຢັນລະຫັດຜ່ານໃໝ່",
+  "backtocourse":"ກັບໄປທີ່ບົດຮຽນຫຼັກ"
 }
