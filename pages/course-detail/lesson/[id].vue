@@ -44,7 +44,7 @@
                 </div>
                 <div
                   class="tab-content tab__content__wrapper"
-                  id="myTabContent"
+                  id="myTabContent" v-if="store.data.cs_cover"
                 >
                   <div
                     class="tab-pane fade active show"
@@ -63,7 +63,7 @@
                             type="button"
                             style="background-color: #7e7ec3"
                           >
-                            ບົດຮຽນ
+                             {{ $t("lesson_t") }}
                           </button>
                         </h2>
                         <div
@@ -124,7 +124,7 @@
 
                 <div
                   class="tab-content tab__content__wrapper"
-                  id="myTabContent"
+                  id="myTabContent" v-if="store.data.cs_video"
                 >
                   <div
                     class="tab-pane fade active show"
@@ -269,27 +269,19 @@
       </h1>
     </div> -->
     <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree"
-            aria-expanded="false"
-            aria-controls="flush-collapseThree"
-          >
-            Q1: {{ store.data.cs_name }} ?
-          </button>
-        </h2>
-        <div
-          id="flush-collapseThree"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">{{ store.data.cs_description }}</div>
-        </div>
+
+       <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+       {{ $t("lesson_q") }} : {{ store.data.cs_name }} ?
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        {{ $t("lesson_a") }} : {{ store.data.cs_description }}
       </div>
+    </div>
+  </div>
     </div>
   </div>
 </template>
