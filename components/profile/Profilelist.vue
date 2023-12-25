@@ -26,7 +26,7 @@
                     <input
                       type="text"
                       name="subject"
-                      placeholder="First Name"
+                      placeholder="ຊື່​ແທ້"
                       v-model="store.formuser.user_firstname"
                   
                            :class="{
@@ -79,7 +79,7 @@
                     <input
                       type="text"
                       name="phone"
-                      placeholder="Last Name"
+                      placeholder="ນາມ​ສະ​ກຸນ"
                       v-model="store.formuser.user_lastname"
                     :disabled="store.isDisabled"
 
@@ -132,7 +132,7 @@
                       type="text"
                       name="con_name"
                       id="con_name"
-                      placeholder="User Name*"
+                      placeholder="ຊື່ຜູ້ໃຊ້*"
                       v-model="store.formuser.user_name"
                      :disabled="store.isDisabled"
 
@@ -185,7 +185,7 @@
                       type="text"
                       name="con_email"
                       id="con_email"
-                      placeholder="Email Address*"
+                      placeholder="ອີເມວ*"
                       v-model="store.formuser.user_email"
                   :disabled="store.isDisabled"
 
@@ -205,7 +205,7 @@
                     <input
                       type="text"
                       name="subject"
-                      placeholder="Phone"
+                      placeholder="85620xxxxxxxx"
                       v-model="store.formuser.user_phone"
                    :disabled="store.isDisabled"
                          :class="{
@@ -276,7 +276,7 @@
                     <input
                       type="password"
                       name="phone"
-                      placeholder="Enter Your Password"
+                      placeholder="ໃສ່ລະຫັດຜ່ານ"
                       v-model="store.formuser.user_password"
                   
                       :class="{

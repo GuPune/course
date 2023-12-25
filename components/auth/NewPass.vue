@@ -13,7 +13,7 @@
               <input
                 class="common__login__input"
                 type="text"
-                placeholder="New Password"
+                placeholder="ລະຫັດຜ່ານໃໝ່"
                 v-model="store.formreset.user_password"
               />
              
@@ -42,7 +42,7 @@
               <input
                 class="common__login__input"
                 type="text"
-                placeholder="Confirm New Password"
+                placeholder="ຢືນ​ຢັນ​ລະ​ຫັດ​ຜ່ານ​ໃຫມ່"
                 v-model="store.formreset.user_confirmPassword"
               />
         

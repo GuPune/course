@@ -235,6 +235,6 @@
   "changepassword_confirm":"Change Password Confirm",
   "changepassword_old_re":"Password Old Valid",
   "changepassword_new_re":"Password New Valid",
-  "changepassword_confirm_re":"Password Confirm Valid"
-
+  "changepassword_confirm_re":"Password Confirm Valid",
+  "backtocourse":"Back To Course"
 }

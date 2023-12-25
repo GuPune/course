@@ -30,7 +30,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="Password Old"
+                  placeholder="ລະຫັດຜ່ານເກົ່າ"
                   v-model="stores.changepassword.curent_password"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -68,7 +68,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="Password New"
+                  placeholder="ລະຫັດຜ່ານໃໝ່"
                   v-model="stores.changepassword.new_password"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -106,7 +106,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="Password Confirm"
+                  placeholder="ຢືນຢັນລະຫັດຜ່ານ"
                   v-model="stores.changepassword.confirm_new_password"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.confirm_new_password.$error,

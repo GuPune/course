@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   ,'~/assets/css/meanmenu.css'
   ,'~/assets/css/owl.carousel.min.css'
   ,'~/assets/css/slick.css',
-  '@/assets/scss/style.scss'
+  '@/assets/scss/style.scss',
+  '~/assets/css/global.css',
  ],
  modules: [
   '@pinia/nuxt','nuxt-icon',

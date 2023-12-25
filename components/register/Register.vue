@@ -68,7 +68,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="First Name"
+                  placeholder="ຊື່​ແທ້"
                   v-model="stores.form.user_firstname"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -106,7 +106,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="Last Name"
+                  placeholder="ນາມ​ສະ​ກຸນ"
                   v-model="stores.form.user_lastname"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -144,7 +144,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="UserName"
+                  placeholder="ຊື່ຜູ້ໃຊ້"
                   v-model="stores.form.user_name"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_name.$error,
@@ -178,7 +178,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="Email"
+                  placeholder="ອີເມວ"
                   v-model="stores.form.user_email"
                 />
               </div>
@@ -229,7 +229,7 @@
                 <input
                   class="common__login__input"
                   type="password"
-                  placeholder="Password"
+                  placeholder="ລະຫັດຜ່ານ"
                   v-model="stores.form.user_password"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -268,7 +268,7 @@
                 <input
                   class="common__login__input"
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="ຢືນ​ຢັນ​ລະ​ຫັດ"
                   v-model="stores.form.user_confirmPassword"
                   :class="{
                     'border-red-500 focus:border-red-500':

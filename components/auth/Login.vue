@@ -21,7 +21,7 @@
             <input
               class="common__login__input"
               type="text"
-              placeholder="Username"
+              placeholder="ຊື່ຜູ້ໃຊ້"
               v-model="formData.username"
               :class="{
                 'border-red-500 focus:border-red-500': v$.username.$error,
@@ -64,7 +64,7 @@
             <input
               class="common__login__input"
               type="password"
-              placeholder="Password"
+              placeholder="ລະຫັດຜ່ານ"
               v-model="formData.password"
               id="password"
               name="password"
