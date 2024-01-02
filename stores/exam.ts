@@ -20,7 +20,7 @@ export const ExamPostStore = defineStore({
     minutes:"",
     formsearchcourse: {
       page: 1,
-      per_page: 10,
+      per_page: 50,
       search: '',
     },
   }),
