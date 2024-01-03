@@ -8,7 +8,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" data-aos="fade-up">
                         <div class="footerarea__inner footerarea__about__us">
                             <div class="footerarea__heading">
-                                <h3>เกี่ยวกับเรา</h3>
+                                <h3>ກ່ຽວ​ກັບ​ພວກ​ເຮົາ</h3>
                             </div>
                             <div class="footerarea__content">
                                 <p>
@@ -26,19 +26,19 @@
                     <div class="col-xl-3 col-lg-3  col-md-6 col-sm-6" data-aos="fade-up">
                         <div class="footerarea__inner">
                             <div class="footerarea__heading">
-                                <h3>ติดต่อเรา</h3>
+                                <h3>ຕິດ​ຕໍ່​ພວກ​ເຮົາ</h3>
                             </div>
                             <div class="footerarea__list">
                                 <ul>
                                     <li>
 
-                                        <a href="#">กระทรวงโยธาธิการและขนส่ง สปป. ลาว</a>
+                                        <a href="#">ກະຊວງໂຍທາທິການ ແລະ ຂົນສົ່ງ, ສປປ ລາວ</a>
                                     </li>
                                     <li>
-                                        <a href="#">แฟกซ์: 856-21 412250</a>
+                                        <a href="#">ແຟັກ: 856-21 412250</a>
                                     </li>
                                     <li>
-                                        <a href="#">856-21 412255 , สายด่วน 1518</a>
+                                        <a href="#">856-21 412255 , ສາຍດ່ວນ 1518</a>
                                     </li>
 
                                 </ul>
@@ -51,7 +51,7 @@
                     <div class="col-xl-2 col-lg-2  col-md-6 col-sm-6" data-aos="fade-up">
                         <div class="footerarea__inner">
                             <div class="footerarea__heading">
-                                <h3>เมนูต่างๆ</h3>
+                                <h3>ເມນູຕ່າງໆ</h3>
                             </div>
                             <div class="footerarea__list">
                                 <ul>
