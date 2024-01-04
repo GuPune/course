@@ -6,7 +6,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up" v-for="item in store.listexam">
                     <div class="gridarea__wraper gridarea__wraper__2">
                         <div class="gridarea__img">
-                            <a href="course-details.html"><img  :src="image(item.em_cover)" alt="grid"></a>
+                            <a><img  :src="image(item.em_cover)" alt="grid"></a>
                         </div>
                         <div class="gridarea__content">
                             <div class="gridarea__list">
@@ -20,11 +20,11 @@
                                 </ul>
                             </div>
                             <div class="gridarea__heading">
-                                <h3><a href="course-details.html">{{ item.em_name }}</a></h3>
+                                <h3><a>{{ item.em_name }}</a></h3>
                             </div>
                             <div class="gridarea__bottom">
 
-                                <a href="instructor-details.html">
+                                <a>
                                     <div class="gridarea__small__img">
                                         <img src="../../assets/img/grid/grid_small_1.jpg" alt="grid">
                                         <div class="gridarea__small__content">
