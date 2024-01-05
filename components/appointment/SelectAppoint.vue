@@ -228,16 +228,17 @@ const findindex = async (a) => {
 };
 
 const format_start = (date) => {
+
   store.form.date_event = moment(date).format("YYYY-MM-DD");
   return moment(date).format("YYYY-MM-DD");
 };
 
 const format = (item) => {
-   return moment(item).utc().format("DD/MM/YYYY HH:mm");
+   return moment(item).format("DD/MM/YYYY HH:mm");
 };
 
 const format_app = (item) => {
-   return moment(item).utc().format("HH:mm");
+   return moment(item).format("HH:mm");
 };
 
 </script>
