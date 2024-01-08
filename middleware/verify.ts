@@ -38,15 +38,15 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 const obj = [
   {
     user_type: 1,
-    user_type_name:"ผู้ดูแลระบบ",
+    user_type_name:"ຜູ້​ບໍ​ລິ​ຫານ",
   },
   {
     user_type: 2,
-    user_type_name:"เจ้าหน้าที่",
+    user_type_name:"ເຈົ້າໜ້າທີ່",
   },
   {
     user_type: 3,
-    user_type_name:"ประชาชน",
+    user_type_name:"ປະຊາກອນ",
   },
  
 ];
