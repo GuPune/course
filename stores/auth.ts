@@ -34,6 +34,7 @@ export const useAuthStore = defineStore('auth', {
       user_type:null,
       user_type_name:null,
       user_password:null,
+      user_prefrix:null,
     },
     mydtla: [],
     dltcard:[],
@@ -308,6 +309,9 @@ try {
       this.formuser.user_type = response.data.user_type
       this.formuser.user_id = response.data.user_id
       this.formuser.user_type_name = type?.user_type_name
+      this.formuser.user_prefrix = response.data.user_prefrix
+
+ 
 
       
       this.formdetail.verify_account = response.data.detail.verify_account
@@ -323,6 +327,7 @@ try {
       this.formcard.idcard_back = response.data.card.idcard_back
       this.formcard.idcard_front = response.data.card.idcard_front
 
+  
 
 
     
@@ -399,7 +404,7 @@ if(this.dltcard){
     },
 
     async UpdateProfile() {
-    const update = {user_prefrix:"",user_name:this.formuser.user_name,user_password:"",user_firstname:this.formuser.user_firstname,
+    const update = {user_prefrix:this.formuser.user_prefrix,user_name:this.formuser.user_name,user_password:"",user_firstname:this.formuser.user_firstname,
       user_lastname:this.formuser.user_lastname,user_email:this.formuser.user_email,user_phone:this.formuser.user_phone,user_type:3,active:1}
   
       try {
