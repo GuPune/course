@@ -157,8 +157,11 @@ export const ExamTestPostStore = defineStore({
     },
 
     async fetchExamquest() {
+   
+      console.log(this.examination[this.ind]);
       this.listttt = [];
       this.listttt.push(this.examination[this.ind])
+   
     },
 
     async GetTime() {
