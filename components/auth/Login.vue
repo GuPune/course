@@ -108,6 +108,8 @@
             class="login__form d-flex justify-content-between flex-wrap gap-2"
           >
         </div>
+
+        
           <div class="login__button" @click="login()">
             <a class="default__button">{{ $t("log_on_title") }}</a>
           </div>
@@ -123,11 +125,16 @@
                                           </div>
    -->
       </div>
+
+       <v-select v-model="store.selectedOption" :options="store.books" label="title"></v-select>
+
+       {{store.selectedOption}}
     </div>
   </div>
 </template>
-
 <script setup>
+
+import "vue-select/dist/vue-select.css";
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
@@ -142,6 +149,7 @@ import {
   helpers,
 } from "@vuelidate/validators";
 import { useI18n } from "vue-i18n";
+
 const { locale, setLocale } = useI18n();
 
 const router = useRouter();
@@ -160,11 +168,34 @@ const { authenticated } = storeToRefs(useAuthStore()); // make authenticated sta
 //   confirmPassword: null,
 // });
 
+
+const options = [{country: 'Canada', code: 'CA'},];
+
 const formData = reactive({
   username: "",
   password: "",
   confirmPassword: null,
 });
+
+// onMounted(() => {
+//  this.select2 = $(this.$el)
+//       .find('select')
+//       .select2({
+//         placeholder: "xxx",
+       
+//         data: store.options
+//       })
+//       .on('select2:select select2:unselect', ev => {
+//         this.$emit('update:modelValue', this.select2.val());
+//         this.$emit('select', ev['params']['data']);
+//       });
+//     this.setValue(this.modelValue);
+ 
+// });
+
+
+
+
 
 const rules = computed(() => {
   return {

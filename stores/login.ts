@@ -17,6 +17,16 @@ export const useLogin = defineStore({
         password: "",
     },
 
+    selectedOption: null,
+    books: [
+      { title: "Old Man's War" },
+      { title: "The Lock Artist" },
+      { title: "HTML5" },
+      { title: "Right Ho Jeeves" },
+      { title: "The Code of the Wooster" },
+      { title: "Thank You Jeeves" }
+    ],
+  
   formnewpassword: {
     user_firstname: "",
     user_lastname: "",
