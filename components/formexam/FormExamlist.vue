@@ -156,7 +156,7 @@ const { Previod } = ExamTestPostStore(); //Action
 
 const router = useRouter();
 
-
+store.ind = 0;
 
 function image(i) {
   let im = ApiService.image(i);
