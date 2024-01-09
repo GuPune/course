@@ -155,6 +155,9 @@
                       {{ country.country_name_eng }}
                     </option>
                   </select>
+
+
+
                 </div>
               </div>
 
@@ -233,6 +236,7 @@ import { VerifyStore } from "@/stores/verify";
 import { useRoute } from "vue-router";
 import ApiService  from "../../services/api.service";
 
+import "vue-select/dist/vue-select.css";
 import { useVuelidate } from "@vuelidate/core";
 import {
   required,

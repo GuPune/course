@@ -399,8 +399,9 @@ if(this.dltcard){
     },
 
     async UpdateProfile() {
-    const update = {user_name:this.formuser.user_name,user_password:this.formuser.user_password,user_firstname:this.formuser.user_firstname,
+    const update = {user_prefrix:"",user_name:this.formuser.user_name,user_password:"",user_firstname:this.formuser.user_firstname,
       user_lastname:this.formuser.user_lastname,user_email:this.formuser.user_email,user_phone:this.formuser.user_phone,user_type:3,active:1}
+  
       try {
         const data = await ApiService.put('/user/update/' + this.formuser.user_id, update).then(response => {
          

@@ -268,64 +268,6 @@
              
                 </div>
 
-                <div class="col-xl-6" data-aos="fade-up"     v-if="
-                        store.formdetail.verify_account !== 'system_active' ??
-                        disabled
-                      ">
-                  <div class="contact__input__wraper" >
-                    <input
-                      type="password"
-                      name="phone"
-                      placeholder="ໃສ່ລະຫັດຜ່ານ"
-                      v-model="store.formuser.user_password"
-                  
-                      :class="{
-                        'border-red-500 focus:border-red-500':
-                          v$.user_password.$error,
-                        'border-[#42d392] ': !v$.user_password.$invalid,
-                      }"
-                      @change="v$.user_password.$touch"
-                      autocomplete="off"
-                      maxlength="10"
-                    />
-                    <div class="contact__icon">
-                      <i class="icofont-edit"></i>
-                    </div>
-                  </div>
-                  
-
-
-                  <div v-if="locale == 'la'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_password.$error"
-                    >{{ $t("profile_alert_password") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'th'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_password.$error"
-                    >{{ $t("profile_alert_password") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_password.$error"
-                    >{{ $t("profile_alert_password") }}</span
-                  >
-                 </div>
-
-
-
-                  
-                </div>
 
                 <div class="col-xl-12" data-aos="fade-up">
                   <div class="contact__button">
@@ -418,10 +360,7 @@ const rules = computed(() => {
       ),
       minLength: minLength(1),
     },
-    user_password: {
-      required: helpers.withMessage("The Password field is required", required),
-      minLength: minLength(6),
-    },
+
     user_firstname: {
       required: helpers.withMessage(
         "The First Name field is required",
