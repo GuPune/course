@@ -24,7 +24,7 @@
                     </h6>
                   </div>
                 </div>
-             
+             {{ x }}
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name">
                 
 
@@ -156,7 +156,7 @@ const { Previod } = ExamTestPostStore(); //Action
 
 const router = useRouter();
 
-store.ind = 0;
+await store.ind == 0;
 
 function image(i) {
   let im = ApiService.image(i);
