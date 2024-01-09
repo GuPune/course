@@ -96,7 +96,7 @@
                               @click="resv(item.ap_id)"
                           
                             >
-                            {{ format_app(item.format_app) }}
+                            {{ format_app(item.ap_date_start) }}
                             </button>
                           </div>
                           <div class="tooltip" v-if="store.showTooltip">
