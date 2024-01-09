@@ -24,7 +24,7 @@
                     </h6>
                   </div>
                 </div>
-             {{ x }}
+       
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name">
                 
 
