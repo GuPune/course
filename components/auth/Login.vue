@@ -126,9 +126,9 @@
    -->
       </div>
 
-       <v-select v-model="store.selectedOption" :options="store.books" label="title"></v-select>
+       <!-- <v-select v-model="store.selectedOption" :options="store.books" label="title"></v-select>
 
-       {{store.selectedOption}}
+       {{store.selectedOption}} -->
     </div>
   </div>
 </template>
