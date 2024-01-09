@@ -409,13 +409,11 @@ if(this.dltcard){
   
       try {
         const data = await ApiService.put('/user/update/' + this.formuser.user_id, update).then(response => {
-         
           if(response.status === 200){
             return true;
           }else{
             return false;
           }
-         
         });
         return data
       } catch (error) {
