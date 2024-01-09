@@ -115,17 +115,17 @@ export const useAuthStore = defineStore('auth', {
     type:[
       {
         user_type: 1,
-        user_type_name:"ผู้ดูแลระบบ",
+        user_type_name:"ຜູ້​ບໍ​ລິ​ຫານ",
       },
       {
         user_type: 2,
-        user_type_name:"เจ้าหน้าที่",
+        user_type_name:"ເຈົ້າໜ້າທີ່",
       },
       {
         user_type: 3,
-        user_type_name:"ประชาชน",
+        user_type_name:"ປະຊາກອນ",
       },
-     
+ 
     ],
     zipcode: null,
     country: null,
@@ -399,8 +399,9 @@ if(this.dltcard){
     },
 
     async UpdateProfile() {
-    const update = {user_name:this.formuser.user_name,user_password:this.formuser.user_password,user_firstname:this.formuser.user_firstname,
+    const update = {user_prefrix:"",user_name:this.formuser.user_name,user_password:"",user_firstname:this.formuser.user_firstname,
       user_lastname:this.formuser.user_lastname,user_email:this.formuser.user_email,user_phone:this.formuser.user_phone,user_type:3,active:1}
+  
       try {
         const data = await ApiService.put('/user/update/' + this.formuser.user_id, update).then(response => {
          

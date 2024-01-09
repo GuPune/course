@@ -261,13 +261,7 @@ function coverttime(date) {
   align-items: center;
 
 }
-#choice:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
-  #card-index {
-    color: white;
-  }
-}
+
 #choice-card {
   padding: 5px;
   border: unset !important;

@@ -33,6 +33,7 @@
 import Register from '@/components/verify/Register.vue';
 import Loading from '@/components/button/loading.vue';
 
+
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created

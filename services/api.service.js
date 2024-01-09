@@ -26,7 +26,7 @@ const apiUpload = axios.create({
 
   export default {
     get(resource) {
-      return apiClient.get(resource);
+      return apiClient.get(resource)
     },
     post(resource, data) {
       return apiClient.post(resource, data);

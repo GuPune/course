@@ -309,19 +309,17 @@ function coverimage(i) {
     width: 100%;
   }
 }
-
-
-
-
+  /* Green 
 #choice:hover {
   background-color: #4CAF50;
-  /* Green */
   color: white;
-
   #card-index {
     color: white;
   }
 }
+
+*/
+
 
 #choice-card {
   padding: 5px;
