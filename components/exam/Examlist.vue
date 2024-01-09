@@ -55,14 +55,19 @@
 import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
+  import { ExamTestPostStore } from '@/stores/examtest';
 import  ApiService  from '@/services/api.service';
 
 const router = useRouter();
 const store = ExamPostStore()
+const storeTest = ExamTestPostStore()
 const { getisActiveCourse } = storeToRefs(store);
+
 await store.fetchExam()
 
 const GotoExam = async (item) => {
+    await store.ind == 0;
+    storeTest.ind = 0;
     router.push({ name: 'examquestions-id', params: { id: item }});
 };
 function image(i) {

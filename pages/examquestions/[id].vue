@@ -125,6 +125,7 @@ store.updatetest.user_id = auth.user_id
 store.updatetime.user_id = auth.user_id
 
 await storeexam.fetchExam()
+
 //await storeexam.CheckDataNull()
 
 
