@@ -123,8 +123,13 @@
 
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label">  {{ $t("page_verify_zip") }}</label>
-                  <select
+                  <label class="form__label">  {{ $t("page_verify_zip") }}   <span
+                class="text-xs text-red-500"
+                style="color: red"
+                v-if="v$.location_id.$error"
+                >{{ v$.location_id.$errors[0].$message }}</span
+              ></label>
+                  <!-- <select
                     class="form-control"
                     v-model="store.formdetail.location_id"
                   >
@@ -135,14 +140,30 @@
                     >
                       {{ zipcode.zipcode_name }}
                     </option>
-                  </select>
+                  </select> -->
+
+                  
                 </div>
               </div>
 
+                <v-select
+  v-model="store.formdetail.location_id"
+    :options="store.zipcode"
+    label="zipcode_name"
+    @input="changedLabel"
+     placeholder="ເລືອກ"
+     
+  ></v-select>
+
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label"> {{ $t("page_verify_county") }}</label>
-                  <select
+                  <label class="form__label"> {{ $t("page_verify_county") }}      <span
+                class="text-xs text-red-500"
+                style="color: red"
+                v-if="v$.country_id.$error"
+                >{{ v$.country_id.$errors[0].$message }}</span
+              ></label>
+                  <!-- <select
                     class="form-control"
                     v-model="store.formdetail.country_id"
                   >
@@ -153,12 +174,23 @@
                     >
                       {{ country.country_name_eng }}
                     </option>
-                  </select>
+                  </select> -->
 
 
 
                 </div>
               </div>
+
+                <v-select
+  v-model="store.formdetail.country_id"
+    :options="store.country"
+    label="country_name_eng"
+    @input="changedLabelCounrt"
+     placeholder="ເລືອກ"
+
+  ></v-select>
+
+
 
               <span
                 class="text-xs text-red-500"
@@ -209,6 +241,10 @@
 
   <option value="WY">Wyoming</option>
 </select> -->
+
+
+
+ 
               <div class="col-xl-12" data-aos="fade-up">
                 <div class="contact__button">
                   <button
@@ -239,7 +275,8 @@ import { useAuthStore } from "@/stores/auth"; // import the auth store we just c
 import { VerifyStore } from "@/stores/verify";
 import { useRoute } from "vue-router";
 import ApiService  from "../../services/api.service";
-
+import 'vue-select/dist/vue-select.css';
+import vSelect from 'vue-select';
 import { useVuelidate } from "@vuelidate/core";
 import {
   required,
@@ -268,23 +305,7 @@ store.formdetail.user_id = auth.user_id;
 await store.Zipcode();
 await store.Country();
 
-const myOptions = [
-    {id: 1, text: 'apple'},
-    {id: 2, text: 'berry'},
-    {id: 3, text: 'cherry'},
-  ]
 
-onMounted(() => {
-
-
-
-
-  $('.js-example-basic-single').select2();
-
-
- 
-
-});
 
 const rules = computed(() => {
   return {
@@ -293,7 +314,7 @@ const rules = computed(() => {
         "The identification Number name field is required",
         required
       ),
-      minLength: minLength(1),
+      minLength: minLength(13),
     },
     user_birthday: {
       required: helpers.withMessage("The Birthday field is required", required),
@@ -305,6 +326,14 @@ const rules = computed(() => {
     },
     user_address: {
       required: helpers.withMessage("The Address field is required", required),
+      minLength: minLength(1),
+    },
+    country_id: {
+      required: helpers.withMessage("Select Country field is required", required),
+      minLength: minLength(1),
+    },
+    location_id: {
+      required: helpers.withMessage("Select Location is required", required),
       minLength: minLength(1),
     },
     user_img: {
@@ -320,8 +349,11 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, getForm);
 
 const sendotp = async () => {
-  v$.value.$validate();
+ v$.value.$validate();
+
   if (!v$.value.$error) {
+    store.formdetail.location_id = store.formdetail.location_id.id
+    store.formdetail.country_id = store.formdetail.country_id.country_id
    const savedetail = await SaveUserVerify();
     if (savedetail == true) {
     await SendOtp()
@@ -335,8 +367,6 @@ const sendotp = async () => {
   timer: 1500
 })
 
-
-
     }
   }
 };
@@ -344,6 +374,31 @@ const sendotp = async () => {
 const onInput = async (event) => {
   store.formdetail.identification_number = event.target.value.replace(/\D/g, '');
 }
+
+
+const changedLabel = async (event) => {
+
+store.formszipcode.search = event.target.value
+if(event.data == null){
+store.formszipcode.search = ""
+}
+await store.Zipcode()
+}
+
+const changedLabelCounrt = async (event) => {
+
+store.formscountry.search = event.target.value
+if(event.data == null){
+store.formscountry.search = ""
+}
+
+await store.Country()
+
+}
+
+
+
+
 
 
 

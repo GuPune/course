@@ -42,10 +42,12 @@ import { defineComponent } from 'vue';
 import { VerifyStore } from '@/stores/verify'
 import { useRoute } from 'vue-router'
 import Swal from "sweetalert2";
+  import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 definePageMeta({
     layout: "blank"
 });
 
+const auth = useAuthStore()
 const router = useRouter();
 
 const input1 = ref(null);
@@ -70,7 +72,7 @@ const confirm = async () => {
     if(store.otpisactive == true){
      let send = await verifyOTP();
      if(send == true){
-
+await auth.getProfile()
 await Swal.fire({
     position: "top-end",
     icon: "success",

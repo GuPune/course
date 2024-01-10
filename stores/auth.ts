@@ -219,8 +219,6 @@ export const useAuthStore = defineStore('auth', {
  token.value = "ZeBuphebrltl3uthIFraspubroST80Atr9tHuw5bODowi26p"; // set token to cookie
  user_id.value = this.user_id; // set token to cookie
  let user =  await this.getProfile()
-
-console.log('xxxxxxxxxxxxx',user);
    if(user == true){
     this.authenticated = true; // set authenticated  state value to true
     this.status_login = true;
@@ -297,10 +295,7 @@ console.log('xxxxxxxxxxxxx',user);
    
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
-
-   
     if(response.data == ''){
-
       return false;
     }else {
 
