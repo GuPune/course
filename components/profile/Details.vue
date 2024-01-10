@@ -5,6 +5,8 @@
   <!-- contact__form__start -->
   <div class="contact__from__wraper sp_bottom_100">
     <div class="container">
+
+      
       <div class="row">
         <div class="col-xl-12">
           <div class="contact__form__inner">
@@ -12,75 +14,200 @@
               <h3 class="text-center">{{ $t("account_proFile_Info") }}</h3>
               <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
             </div>
-            <div class="row">
 
-              <!-- <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="subject" placeholder="First Name" v-model="store.formuser.user_firstname" disabled>
-                                            <div class="contact__icon">
-                                              <i class="icofont-businessman"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+            <div class="col-xl-12">
+              <label class="form__label"
+                  >{{ $t("page_profile_iden") }}<span style="color: red"> * </span>
+                </label>
 
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="phone" placeholder="Last Name" v-model="store.formuser.user_lastname" disabled>
-                                            <div class="contact__icon">
-                                              <i class="icofont-businessman"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+                <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.identification_number.$error"
+                    >{{ $t("form_d_iden") }}</span
+                  >
+                </span>
 
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="con_name" id="con_name" placeholder="User Name*" v-model="store.formuser.user_name" disabled>
-                                            <div class="contact__icon">
-                                                <i class="icofont-businessman"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.identification_number.$error"
+                    >{{ $t("form_d_iden") }}</span
+                  >
+                </span>
+                  <div class="contact__input__wraper">
+                    <input type="text" class="form-control col" 
+                  v-model="store.formdetail.identification_number"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.identification_number.$error,
+                        'border-[#42d392] ': !v$.identification_number.$invalid,
+                      }"
+                      @change="v$.identification_number.$touch"
+                      autocomplete="off"
+                      maxlength="13" 
+                      :disabled="store.isDisabled"
 
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="con_email" id="con_email" placeholder="Email Address*"  v-model="store.formuser.user_email" disabled>
-                                            <div class="contact__icon">
-                                                <i class="icofont-envelope"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="subject" placeholder="Write Service Type" v-model="store.formuser.user_phone" disabled>
-                                            <div class="contact__icon">
-                                              
-                                                <i class="icofont-ui-call"></i>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6" data-aos="fade-up">
-                                        <div class="contact__input__wraper">
-                                            <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formuser.user_type_name" disabled>
-                                            <div class="contact__icon">
-                                              <i class="icofont-edit"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                 -->
-              <!-- <div class="col-xl-12" data-aos="fade-up">
-                                        <div class="contact__button">
-
-                                            <button type="submit" value="submit" class="default__button" name="submit">Post a Comment</button>
-
-                                            <p class="form-messege"></p>
-
-                                        </div>
-                                    </div> -->
+                  >
+                   
+                  </div>
             </div>
+
+            <div class="col-xl-12">
+              <label class="form__label"
+                  >{{ $t("page_profile_day") }}<span style="color: red"> * </span>
+                </label>
+
+                <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_birthday.$error"
+                    >{{ $t("form_d_bird") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_birthday.$error"
+                    >{{ $t("form_d_bird") }}</span
+                  >
+                </span>
+                  <div class="contact__input__wraper">
+                    <input type="date" class="form-control col" v-model="store.formdetail.user_birthday" :disabled="store.isDisabled"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.user_birthday.$error,
+                        'border-[#42d392] ': !v$.user_birthday.$invalid,
+                      }"
+                      @change="v$.user_birthday.$touch"
+                      autocomplete="off"
+                      maxlength="13" 
+                  >
+                   
+                  </div>
+            </div>
+
+
+            <div class="col-xl-12">
+              <label class="form__label"
+                  >{{ $t("page_profile_village") }}<span style="color: red"> * </span>
+                </label>
+
+                <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_village.$error"
+                    >{{ $t("form_d_vil") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_village.$error"
+                    >{{ $t("form_d_vil") }}</span
+                  >
+                </span>
+                  <div class="contact__input__wraper">
+                    <input type="text" class="form-control col" 
+                  v-model="store.formdetail.user_village"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.user_village.$error,
+                        'border-[#42d392] ': !v$.user_village.$invalid,
+                      }"
+                      @change="v$.user_village.$touch"
+                      autocomplete="off"
+                      maxlength="13" 
+                      :disabled="store.isDisabled"
+
+                  >
+                  
+                  </div>
+            </div>
+
+
+            <div class="col-xl-12">
+              <label class="form__label"
+                  >{{ $t("page_profile_add_2") }}<span style="color: red"> * </span>
+                </label>
+
+                <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_address.$error"
+                    >{{ $t("form_d_add") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_address.$error"
+                    >{{ $t("form_d_add") }}</span
+                  >
+                </span>
+                  <div class="contact__input__wraper">
+                    <textarea v-model="store.formdetail.user_address" class="form-control col" :disabled="store.isDisabled"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.user_address.$error,
+                        'border-[#42d392] ': !v$.user_address.$invalid,
+                      }"
+                      @change="v$.user_address.$touch"
+                      autocomplete="off"
+                  ></textarea>
+                
+                  </div>
+            </div>
+
+
+
+            <div class="col-xl-12">
+              <label class="form__label"
+                  >{{ $t("page_profile_add_1") }}<span style="color: red"> * </span>
+                </label>
+                  <div class="contact__input__wraper">
+                    <select class="form-control col" v-if="store.zipcode" v-model="store.formdetail.location_id" :disabled="store.isDisabled">
+    <option   v-for="(zipcode, index) in store.zipcode" :key="zipcode.id" :value="zipcode.id">{{zipcode.zipcode_name}} - {{ zipcode.amphur_name }}</option>
+    </select>
+
+    
+                
+                  </div>
+            </div>
+
+            <div class="col-xl-12">
+              <label class="form__label"
+                  >{{ $t("page_profile_zip") }}<span style="color: red"> * </span>
+                </label>
+                  <div class="contact__input__wraper">
+                    <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
+    <option   v-for="(country, x) in store.country" :key="country.country_id" :value="country.country_id">{{country.country_name_eng}}</option>
+    </select>
+
+                
+                  </div>
+            </div>
+
+            <v-select
+  v-model="store.formdetail.country_id"
+    :options="store.country"
+    label="country_name_eng"
+
+     placeholder="ເລືອກ"
+
+  ></v-select>
+        
             <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate"
               data-aos="fade-up">
               <div class="gridarea__img">
@@ -97,7 +224,7 @@
               </button>
               <input type="file" ref="fileInput" style="display: none;">
      
-              <div class="gridarea__content py-2">
+              <div class="gridarea__content">
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_iden") }}</p>
                   <input type="text" class="form-control col" 
@@ -209,13 +336,7 @@
                   >
                 </span>
                 </div>
-                <div class="gridarea__list row border-bottom pb-2">
-                  <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
-                  <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
-    <option   v-for="(country, x) in store.country" :key="country.country_id" :value="country.country_id">{{country.country_name_eng}}</option>
-    </select>
-                  <!-- <p class="col">{{store.formdetail.location.zipcode}}</p> -->
-                </div>
+   
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_add_1") }}</p>
                   <!-- <input type="text" class="form-control col" :value="store.formdetail.location.zipcode_name" disabled> -->
@@ -257,6 +378,27 @@
                 </span>
                   <!-- <p class="col">{{store.formdetail.user_address}}</p> -->
                  
+                </div>
+
+                <div class="gridarea__list row border-bottom pb-2">
+                  <!-- <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
+                  <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
+    <option   v-for="(country, x) in store.country" :key="country.country_id" :value="country.country_id">{{country.country_name_eng}}</option>
+    </select> -->
+
+
+               
+                </div>
+
+
+                <div class="gridarea__list row border-bottom pb-2">
+                  <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
+                  <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
+    <option   v-for="(country, x) in store.country" :key="country.country_id" :value="country.country_id">{{country.country_name_eng}}</option>
+    </select>
+
+
+               
                 </div>
 
                 
@@ -310,11 +452,17 @@
         </div>
       </div>
 
+
+    
+
+
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref, computed, watch,onMounted } from 'vue'
+import 'vue-select/dist/vue-select.css';
+import vSelect from 'vue-select';
 
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
