@@ -220,6 +220,7 @@ export const useAuthStore = defineStore('auth', {
  user_id.value = this.user_id; // set token to cookie
  let user =  await this.getProfile()
 
+console.log('xxxxxxxxxxxxx',user);
    if(user == true){
     this.authenticated = true; // set authenticated  state value to true
     this.status_login = true;
@@ -291,15 +292,18 @@ export const useAuthStore = defineStore('auth', {
       const router = useRouter();
       this.formcard.idcard_back = ''
       this.formcard.idcard_front = ''
+
+
    
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
- 
+
    
     if(response.data == ''){
+
       return false;
     }else {
-     this.displaycard();
+
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname
@@ -313,7 +317,6 @@ try {
 
  
 
-      
       this.formdetail.verify_account = response.data.detail.verify_account
       this.formdetail.identification_number = response.data.detail.identification_number
       this.formdetail.user_img = response.data.detail.user_img
@@ -324,11 +327,11 @@ try {
       this.formdetail.location_id = response.data.detail.location_id
       this.formdetail.country_id = response.data.detail.country_id
       this.formdetail.user_village = response.data.detail.user_village
-      this.formcard.idcard_back = response.data.card.idcard_back
-      this.formcard.idcard_front = response.data.card.idcard_front
+   //   this.formcard.idcard_back = response.data.card.idcard_back
+   //   this.formcard.idcard_front = response.data.card.idcard_front
 
   
-
+    //  this.displaycard();
 
     
       return true;
@@ -338,6 +341,8 @@ try {
 
   return profile
 } catch (error) {
+
+  console.log('false',error);
 //  router.push('/maintenance');
  return false;
  
@@ -354,6 +359,8 @@ try {
       try {
         const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
           this.dltcard = response.data;
+
+         
          
           if (response.data.length > 0) {
             let a = this.dltcard[0];
