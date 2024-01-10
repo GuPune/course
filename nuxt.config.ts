@@ -18,6 +18,7 @@ export default defineNuxtConfig({
 ],
 
 
+
 runtimeConfig: {
   // Config within public will be also exposed to the client
   public: {

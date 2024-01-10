@@ -204,7 +204,11 @@
                   </template>
                 </div>
               </div>
+              <!-- <select class="js-example-basic-single" name="state">
+  <option value="AL">Alabama</option>
 
+  <option value="WY">Wyoming</option>
+</select> -->
               <div class="col-xl-12" data-aos="fade-up">
                 <div class="contact__button">
                   <button
@@ -228,6 +232,7 @@
 </template>
 
 <script setup>
+
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
@@ -262,6 +267,24 @@ const { SaveUserVerify } = VerifyStore();
 store.formdetail.user_id = auth.user_id;
 await store.Zipcode();
 await store.Country();
+
+const myOptions = [
+    {id: 1, text: 'apple'},
+    {id: 2, text: 'berry'},
+    {id: 3, text: 'cherry'},
+  ]
+
+onMounted(() => {
+
+
+
+
+  $('.js-example-basic-single').select2();
+
+
+ 
+
+});
 
 const rules = computed(() => {
   return {
