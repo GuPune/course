@@ -172,6 +172,8 @@
 
 
 
+
+
             <div class="col-xl-12">
               <label class="form__label"
                   >{{ $t("page_profile_add_1") }}<span style="color: red"> * </span>
@@ -200,13 +202,16 @@
             </div>
 
             <v-select
-  v-model="store.formdetail.country_id"
+  v-model="store.formdetail.country"
     :options="store.country"
     label="country_name_eng"
 
      placeholder="ເລືອກ"
 
   ></v-select>
+
+  {{ store.formdetail.location }}
+{{ store.formdetail.country }}
         
             <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate"
               data-aos="fade-up">
