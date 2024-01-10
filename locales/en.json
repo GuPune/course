@@ -239,5 +239,12 @@
   "backtocourse":"Back To Course",
   "lesson_t":"Lesson",
   "lesson_q":"Question",
-  "lesson_a":"Answer"
+  "lesson_a":"Answer",
+  "form_d_iden":"Identification field is required",
+  "form_d_bird":"Birthday field is required",
+  "form_d_add":"Address  field is required",
+  "form_d_vil":"Village field is required",
+  "form_d_zip":"Field is required",
+  "form_d_cou":" Country field is required",
+  "form_d_image":"Image  field is required"
 }

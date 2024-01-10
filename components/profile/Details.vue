@@ -116,12 +116,25 @@
                   <!-- <p class="col">{{store.formdetail.identification_number}}</p> -->
 
                   <!-- <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formdetail.identification_number" > -->
+            
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.identification_number.$error"
-                    >{{ v$.identification_number.$errors[0].$message }}</span
+                    >{{ $t("form_d_iden") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.identification_number.$error"
+                    >{{ $t("form_d_iden") }}</span
+                  >
+                </span>
                 </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_day") }}</p>
@@ -137,12 +150,25 @@
                   >
                   <!-- <p class="col">{{store.formdetail.user_birthday}}</p> -->
 
+              
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_birthday.$error"
-                    >{{ v$.user_birthday.$errors[0].$message }}</span
+                    >{{ $t("form_d_bird") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_birthday.$error"
+                    >{{ $t("form_d_bird") }}</span
+                  >
+                </span>
                 </div>
 
                 <div class="gridarea__list row border-bottom pb-2">
@@ -163,12 +189,25 @@
                   <!-- <p class="col">{{store.formdetail.identification_number}}</p> -->
 
                   <!-- <input type="text" name="phone" placeholder="Enter Your Phone" v-model="store.formdetail.identification_number" > -->
+               
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_village.$error"
-                    >{{ v$.user_village.$errors[0].$message }}</span
+                    >{{ $t("form_d_vil") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_village.$error"
+                    >{{ $t("form_d_vil") }}</span
+                  >
+                </span>
                 </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_zip") }}</p>
@@ -197,12 +236,25 @@
                       autocomplete="off"
                   ></textarea>
              
+                
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_address.$error"
-                    >{{ v$.user_address.$errors[0].$message }}</span
+                    >{{ $t("form_d_add") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_address.$error"
+                    >{{ $t("form_d_add") }}</span
+                  >
+                </span>
                   <!-- <p class="col">{{store.formdetail.user_address}}</p> -->
                  
                 </div>
