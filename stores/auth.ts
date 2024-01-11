@@ -66,6 +66,11 @@ export const useAuthStore = defineStore('auth', {
       per_page: 200,
       search: '',
     },
+    formscout: {
+      page: 1,
+      per_page: 200,
+      search: '',
+    },
     dlt: [
       {
         dlt_code: "A",
@@ -154,6 +159,7 @@ export const useAuthStore = defineStore('auth', {
     getFormDetails(state) {
       return state.formdetail;
     },
+    
     getFormChangepassword(state) {
       return state.changepassword;
     },
@@ -219,8 +225,6 @@ export const useAuthStore = defineStore('auth', {
  token.value = "ZeBuphebrltl3uthIFraspubroST80Atr9tHuw5bODowi26p"; // set token to cookie
  user_id.value = this.user_id; // set token to cookie
  let user =  await this.getProfile()
-
-console.log('xxxxxxxxxxxxx',user);
    if(user == true){
     this.authenticated = true; // set authenticated  state value to true
     this.status_login = true;
@@ -297,10 +301,7 @@ console.log('xxxxxxxxxxxxx',user);
    
 try {
   const profile = await ApiService.get('/user/get/'+this.user_id).then(response => {
-
-   
     if(response.data == ''){
-
       return false;
     }else {
 
@@ -330,7 +331,9 @@ try {
    //   this.formcard.idcard_back = response.data.card.idcard_back
    //   this.formcard.idcard_front = response.data.card.idcard_front
 
-  
+   this.formdetail.country.country_id = response.data.detail.country_id
+   this.formdetail.location.id = response.data.detail.location_id
+
     //  this.displaycard();
 
     
@@ -361,7 +364,7 @@ try {
           this.dltcard = response.data;
 
          
-         
+
           if (response.data.length > 0) {
             let a = this.dltcard[0];
             this.formdtl.front_img = a.front_img
@@ -433,9 +436,8 @@ if(this.dltcard){
       const update = {verify_account:this.formdetail.verify_account,identification_number:this.formdetail.identification_number,
         user_img:this.formdetail.user_img,
         user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
-        location_id:this.formdetail.location_id,country_id:this.formdetail.country_id,user_id:this.formuser.user_id,user_village:this.formdetail.user_village};
-
-  
+        location_id:this.formdetail.location.id,country_id:this.formdetail.country.country_id,user_id:this.formuser.user_id,user_village:this.formdetail.user_village};
+ 
         try {
           const data = await ApiService.post('/user/detail/create', update).then(response => {
             if(response.status === 200){
@@ -468,13 +470,14 @@ if(this.dltcard){
         const zipcode = await ApiService.post('/master_data/zipcode', this.formszipcode)
         if (zipcode.data.data) {
           this.zipcode = zipcode.data.data
+   
         } else {
           this.zipcode = []
         }
   
       },
       async Country() {
-        const country = await ApiService.post('/master_data/contry', this.formszipcode)
+        const country = await ApiService.post('/master_data/contry', this.formscout)
         if (country.data.data) {
           this.country = country.data.data
         } else {

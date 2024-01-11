@@ -11,12 +11,25 @@
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
                   <label class="form__label"> {{ $t("page_verify_iden") }}</label>
+               
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.identification_number.$error"
-                    >{{ v$.identification_number.$errors[0].$message }}</span
+                    >{{ $t("form_d_iden") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.identification_number.$error"
+                    >{{ $t("form_d_iden") }}</span
+                  >
+                </span>
                   <input
                     type="text"
                     name="con_name"
@@ -36,15 +49,28 @@
                 </div>
               </div>
 
+              
+
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
                   <label class="form__label">{{ $t("page_verify_day") }}</label>
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_birthday.$error"
-                    >{{ v$.user_birthday.$errors[0].$message }}</span
+                    >{{ $t("form_d_bird") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_birthday.$error"
+                    >{{ $t("form_d_bird") }}</span
+                  >
+                </span>
                   <input
                     type="date"
                     name="con_email"
@@ -65,12 +91,25 @@
     
               <div class="col-xl-12 mb-3" data-aos="fade-up">
                 <div class="contact__input__wraper">
+             
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_address.$error"
-                    >{{ v$.user_address.$errors[0].$message }}</span
+                    >{{ $t("form_d_add") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_address.$error"
+                    >{{ $t("form_d_add") }}</span
+                  >
+                </span>
                   <textarea
                     name="con_message"
                     id="con_message"
@@ -96,12 +135,25 @@
               <div class="col-xl-12" data-aos="fade-up">
                 <div class="contact__input__wraper">
                   <label class="form__label"> {{ $t("page_user_village") }}</label>
+              
+
+                  <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_village.$error"
-                    >{{ v$.user_village.$errors[0].$message }}</span
+                    >{{ $t("form_d_vil") }}</span
                   >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_village.$error"
+                    >{{ $t("form_d_vil") }}</span
+                  >
+                </span>
                   <input
                     type="text"
                     name="con_name"
@@ -121,10 +173,30 @@
                 </div>
               </div>
 
+     
+
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label">  {{ $t("page_verify_zip") }}</label>
-                  <select
+                  <label class="form__label">  {{ $t("page_verify_zip") }}  
+              <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.location_id.$error"
+                    >{{ $t("form_d_zip") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.location_id.$error"
+                    >{{ $t("form_d_zip") }}</span
+                  >
+                </span>
+            </label>
+                  <!-- <select
                     class="form-control"
                     v-model="store.formdetail.location_id"
                   >
@@ -135,14 +207,44 @@
                     >
                       {{ zipcode.zipcode_name }}
                     </option>
-                  </select>
+                  </select> -->
+
+                  
                 </div>
               </div>
 
+                <v-select
+  v-model="store.formdetail.location_id"
+    :options="store.zipcode"
+    label="zipcode_name"
+    @input="changedLabel"
+     placeholder="ເລືອກ"
+     
+  ></v-select>
+
               <div class="col-xl-6" data-aos="fade-up">
                 <div class="contact__input__wraper">
-                  <label class="form__label"> {{ $t("page_verify_county") }}</label>
-                  <select
+                  <label class="form__label"> {{ $t("page_verify_county") }}    
+              <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.country_id.$error"
+                    >{{ $t("form_d_cou") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.country_id.$error"
+                    >{{ $t("form_d_cou") }}</span
+                  >
+                </span>
+            
+            </label>
+                  <!-- <select
                     class="form-control"
                     v-model="store.formdetail.country_id"
                   >
@@ -153,19 +255,43 @@
                     >
                       {{ country.country_name_eng }}
                     </option>
-                  </select>
+                  </select> -->
 
 
 
                 </div>
               </div>
 
-              <span
-                class="text-xs text-red-500"
-                style="color: red"
-                v-if="v$.user_img.$error"
-                >{{ v$.user_img.$errors[0].$message }}</span
-              >
+                <v-select
+  v-model="store.formdetail.country_id"
+    :options="store.country"
+    label="country_name_eng"
+    @input="changedLabelCounrt"
+     placeholder="ເລືອກ"
+
+  ></v-select>
+
+
+
+
+
+              <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_img.$error"
+                    >{{ $t("form_d_image") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_img.$error"
+                    >{{ $t("form_d_image") }}</span
+                  >
+                </span>
               <div class="form-group mb-4 mt-3">
                 <label for="exampleFormControlFile1"> {{ $t("page_verify_imagepro") }}</label>
                 <span
@@ -204,7 +330,15 @@
                   </template>
                 </div>
               </div>
+              <!-- <select class="js-example-basic-single" name="state">
+  <option value="AL">Alabama</option>
 
+  <option value="WY">Wyoming</option>
+</select> -->
+
+
+
+ 
               <div class="col-xl-12" data-aos="fade-up">
                 <div class="contact__button">
                   <button
@@ -228,13 +362,15 @@
 </template>
 
 <script setup>
+
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { VerifyStore } from "@/stores/verify";
 import { useRoute } from "vue-router";
 import ApiService  from "../../services/api.service";
-
+import 'vue-select/dist/vue-select.css';
+import vSelect from 'vue-select';
 import { useVuelidate } from "@vuelidate/core";
 import {
   required,
@@ -263,6 +399,8 @@ store.formdetail.user_id = auth.user_id;
 await store.Zipcode();
 await store.Country();
 
+
+
 const rules = computed(() => {
   return {
     identification_number: {
@@ -270,7 +408,7 @@ const rules = computed(() => {
         "The identification Number name field is required",
         required
       ),
-      minLength: minLength(1),
+      minLength: minLength(13),
     },
     user_birthday: {
       required: helpers.withMessage("The Birthday field is required", required),
@@ -282,6 +420,14 @@ const rules = computed(() => {
     },
     user_address: {
       required: helpers.withMessage("The Address field is required", required),
+      minLength: minLength(1),
+    },
+    country_id: {
+      required: helpers.withMessage("Select Country field is required", required),
+      minLength: minLength(1),
+    },
+    location_id: {
+      required: helpers.withMessage("Select Location is required", required),
       minLength: minLength(1),
     },
     user_img: {
@@ -297,8 +443,11 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, getForm);
 
 const sendotp = async () => {
-  v$.value.$validate();
+ v$.value.$validate();
+
   if (!v$.value.$error) {
+    store.formdetail.location_id = store.formdetail.location_id.id
+    store.formdetail.country_id = store.formdetail.country_id.country_id
    const savedetail = await SaveUserVerify();
     if (savedetail == true) {
     await SendOtp()
@@ -307,12 +456,10 @@ const sendotp = async () => {
       await Swal.fire({
   position: 'top-end',
   icon: "error",
-  title: "Unsuccessful ID card may be duplicated.!",
+  title: "ໝາຍເລກບັດອາດຈະຄືກັນ.!",
   showConfirmButton: false,
   timer: 1500
 })
-
-
 
     }
   }
@@ -321,6 +468,31 @@ const sendotp = async () => {
 const onInput = async (event) => {
   store.formdetail.identification_number = event.target.value.replace(/\D/g, '');
 }
+
+
+const changedLabel = async (event) => {
+
+store.formszipcode.search = event.target.value
+if(event.data == null){
+store.formszipcode.search = ""
+}
+await store.Zipcode()
+}
+
+const changedLabelCounrt = async (event) => {
+
+store.formscountry.search = event.target.value
+if(event.data == null){
+store.formscountry.search = ""
+}
+
+await store.Country()
+
+}
+
+
+
+
 
 
 

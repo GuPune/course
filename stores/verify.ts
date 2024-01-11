@@ -12,14 +12,16 @@ export const VerifyStore = defineStore({
     otp: ['', '', '', '', '', ''],
     user_id: null,
     imagelist:null,
+    selectedOption:null,
+    selectedOptionCourt:null,
     formdetail: {
       verify_account: 'unactive',
       identification_number: null,
       user_img: null,
       user_birthday: null,
       user_address: null,
-      location_id: 1,
-      country_id: 1,
+      location_id: null,
+      country_id: null,
       user_id: null,
       user_village:"",
     },
@@ -28,8 +30,13 @@ export const VerifyStore = defineStore({
       per_page: 200,
       search: '',
     },
-    zipcode: null,
-    country: null,
+    formscountry: {
+      page: 1,
+      per_page: 200,
+      search: '',
+    },
+    zipcode: [],
+    country: [],
   }),
   getters: {
     getForm(state) {
@@ -60,7 +67,7 @@ export const VerifyStore = defineStore({
 
     },
     async Country() {
-      const country = await ApiService.post('/master_data/contry', this.formszipcode)
+      const country = await ApiService.post('/master_data/contry', this.formscountry)
       if (country.data.data) {
         this.country = country.data.data
       } else {
@@ -70,7 +77,7 @@ export const VerifyStore = defineStore({
 
     async SendOtp() {
       let upload = await this.UploadfileProfile()
-    
+  
       const data = await ApiService.get('/user/otp/' + this.formdetail.user_id).then(response => {
     
       });
@@ -115,6 +122,7 @@ export const VerifyStore = defineStore({
 
     async SaveUserVerify() {
        let upload = await this.UploadfileProfile()
+      
        try {
         const updateuser = await ApiService.post('/user/detail/create', this.formdetail).then(response => {
           localStorage.setItem('Userid', JSON.stringify(this.formdetail));

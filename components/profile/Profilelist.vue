@@ -19,8 +19,56 @@
               action="mail.php"
               method="post"
             >
+  
               <div class="row">
-                <div class="col-xl-6" data-aos="fade-up">
+                <div class="col-xl-2" data-aos="fade-up">
+                  <div class="contact__input__wraper">
+                 
+                    <select
+                  class="ceslr"
+                  aria-label="Default select example"
+                  v-model="store.formuser.user_prefrix"
+                >
+              
+                  <option disabled>
+                    {{ $t("choose") }}
+                  </option>
+                  <option value="ທ້າວ">{{ $t("than") }}</option>
+                  <option value="ນາງ">{{ $t("nang") }}</option>
+                </select>
+
+                   
+                  </div>
+       
+
+                  <div v-if="locale == 'la'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_firstname.$error"
+                    >{{ $t("profile_alert_name") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'th'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_firstname.$error"
+                    >{{ $t("profile_alert_name") }}</span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_firstname.$error"
+                    >{{ $t("profile_alert_name") }}</span
+                  >
+                 </div>
+                </div>
+                <div class="col-xl-5" data-aos="fade-up">
                   <div class="contact__input__wraper">
                  
                     <input
@@ -74,7 +122,7 @@
                  </div>
                 </div>
 
-                <div class="col-xl-6" data-aos="fade-up">
+                <div class="col-xl-5" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <input
                       type="text"
@@ -188,7 +236,7 @@
                       placeholder="ອີເມວ*"
                       v-model="store.formuser.user_email"
                   :disabled="store.isDisabled"
-
+                  maxlength="30"
                        
                     />
                     <div class="contact__icon">
@@ -380,13 +428,9 @@ const rules = computed(() => {
       required: helpers.withMessage("The tel field is required", required),
       minLength: minLength(1),
     },
-
     // user_email: {
-    //   required: helpers.withMessage(
-    //     "The password confirmation field is required",
-    //     required
-    //   ),
-    //   email: helpers.withMessage("Invalid email format", email),
+    //   required: helpers.withMessage('The email field is required', required),
+    //   email: helpers.withMessage('Invalid email format', email),
     // },
     // user_address: {
     //   required: helpers.withMessage('The Address field is required', required),
@@ -521,5 +565,16 @@ const v$ = useVuelidate(rules, getForm);
 }
 #card-index {
   margin-right: 10px;
+}
+
+.ceslr {
+    height: 60px;
+    width: 100%;
+    padding-left: 27px;
+    border: 1px solid var(--borderColor2);
+    margin-bottom: 30px;
+    border-radius: var(--borderRadius);
+    background: transparent;
+    color: var(--contentColor);
 }
 </style>
