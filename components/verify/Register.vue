@@ -456,7 +456,7 @@ const sendotp = async () => {
       await Swal.fire({
   position: 'top-end',
   icon: "error",
-  title: "Unsuccessful ID card may be duplicated.!",
+  title: "ໝາຍເລກບັດອາດຈະຄືກັນ.!",
   showConfirmButton: false,
   timer: 1500
 })

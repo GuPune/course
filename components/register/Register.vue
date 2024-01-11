@@ -442,7 +442,7 @@ const register = async () => {
        await Swal.fire({
     position: 'top-end',
     icon: 'success',
-    title: 'Applied for membership.',
+    title: 'ສະໝັກສະມາຊິກສຳເລັດແລ້ວ.',
     showConfirmButton: false,
     timer: 1500
   })
