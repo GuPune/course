@@ -15,7 +15,7 @@
               <input
                 class="common__login__input"
                 type="text"
-                placeholder="ID card number && Phone && Email"
+                placeholder="ບັດ​ປະ​ຈໍາ​ຕົວ ຫຼື ເບີ​ໂທລະ​ສັບ ຫຼື ອີເມວ"
                 v-model="store.formreset.user"
               />
               <span v-if="locale == 'la'">
