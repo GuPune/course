@@ -257,7 +257,7 @@
  
 
         
-            <div class="mt-5 gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate grid_detail" data-aos="fade-up">
+            <div class="mt-4 gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate grid_detail" data-aos="fade-up">
               <div class="gridarea__img mb-5">
                 <a><img :src="coverimage(store.formdetail.user_img)" alt="grid"></a>
               </div>
