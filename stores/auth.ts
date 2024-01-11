@@ -304,7 +304,6 @@ try {
     if(response.data == ''){
       return false;
     }else {
-
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname
@@ -316,23 +315,23 @@ try {
       this.formuser.user_type_name = type?.user_type_name
       this.formuser.user_prefrix = response.data.user_prefrix
 
+      const isEmptyObj = !Object.keys(response.data.detail).length;
  
+if(isEmptyObj == false){
+  this.formdetail.verify_account = response.data.detail.verify_account
+  this.formdetail.identification_number = response.data.detail.identification_number
+  this.formdetail.user_img = response.data.detail.user_img
+  this.formdetail.user_birthday = response.data.detail.user_birthday
+  this.formdetail.user_address = response.data.detail.user_address
+  this.formdetail.location = response.data.detail.location
+  this.formdetail.country = response.data.detail.country
+  this.formdetail.location_id = response.data.detail.location_id
+  this.formdetail.country_id = response.data.detail.country_id
+  this.formdetail.user_village = response.data.detail.user_village
+this.formdetail.country.country_id = response.data.detail?.country_id
+this.formdetail.location.id = response.data.detail?.location_id
 
-      this.formdetail.verify_account = response.data.detail.verify_account
-      this.formdetail.identification_number = response.data.detail.identification_number
-      this.formdetail.user_img = response.data.detail.user_img
-      this.formdetail.user_birthday = response.data.detail.user_birthday
-      this.formdetail.user_address = response.data.detail.user_address
-      this.formdetail.location = response.data.detail.location
-      this.formdetail.country = response.data.detail.country
-      this.formdetail.location_id = response.data.detail.location_id
-      this.formdetail.country_id = response.data.detail.country_id
-      this.formdetail.user_village = response.data.detail.user_village
-   //   this.formcard.idcard_back = response.data.card.idcard_back
-   //   this.formcard.idcard_front = response.data.card.idcard_front
-
-   this.formdetail.country.country_id = response.data.detail.country_id
-   this.formdetail.location.id = response.data.detail.location_id
+}
 
     //  this.displaycard();
 

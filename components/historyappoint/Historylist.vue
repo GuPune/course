@@ -57,7 +57,7 @@
       <tbody v-else>
         <tr>
           <td colspan="5" class="center" style="text-align: center">
-            No data available
+            ບໍ່ມີຂໍ້ມູນ
           </td>
         </tr>
       </tbody>
