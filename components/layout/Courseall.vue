@@ -124,6 +124,36 @@
 
 
     </div>
+
+<!-- <div>
+ <div class="paginating-container" v-if="store.total_filter > store.limit_page">
+      <div class="dataTables_paginate paging_simple_numbers" id="zero-config_paginate">
+        <ul class="pagination">
+          <li class="paginate_button page-item previous" id="zero-config_previous"  @click="pred()">
+          <a href="#" aria-controls="zero-config" data-dt-idx="0" tabindex="0" class="page-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a></li>
+            <li class="paginate_button page-item "  v-for="page in store.total" :key="page">
+              <a href="#" aria-controls="zero-config" data-dt-idx="1" tabindex="0" class="page-link" @click="setCurrentPageclick(page)" >
+              {{page}}
+            </a>
+              </li>
+            <li class="paginate_button page-item next" id="zero-config_next" @click="next()"><a href="#" aria-controls="zero-config" data-dt-idx="4" tabindex="0" class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></li></ul></div>
+       </div>
+    </div> -->
+
+    <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_filter > store.limit_page">
+                            <ul class="main__page__pagination">
+                                <li @click="pred()"><a href="#"><i class="icofont-double-left"></i></a></li>
+                                <li  v-for="page in store.total_page" :key="page"  @click="setCurrentPageclick(page)">
+                                    <a class="active" href="#" v-if="store.formsearchcourse.page == page">{{page}}
+                                    </a>
+                                    <a  href="#" v-else>{{page}}
+                                    </a>
+                                </li>
+                            
+                                <li  @click="next()"><a href="#"><i class="icofont-double-right"></i></a></li>
+                            </ul>
+                        </div>
 </template>
 
 
@@ -148,6 +178,30 @@ function coverimage(i) {
     let im = ApiService.image(i);
     return im;
 }
+const setCurrentPageclick = async (page) => {
+ await store.setCurrentPage(page)
+ await store.fetchCourse()
+};
+
+const next = async () => {
+    if(store.total_page != store.formsearchcourse.page){
+        store.formsearchcourse.page = store.formsearchcourse.page + 1
+await store.fetchCourse()
+    }
+
+console.log(store.formsearchcourse.page);
+ };
+
+ const pred = async () => {
+// store.formsearchcourse.page = store.formsearchcourse.page - 1
+//await store.fetchCourse()
+
+if(store.formsearchcourse.page != 1){
+    store.formsearchcourse.page = store.formsearchcourse.page - 1
+    await store.fetchCourse()
+}
+ };
+
 
 
 </script>

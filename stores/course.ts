@@ -12,9 +12,10 @@ export const CoursePostStore = defineStore({
     total:null,
     formsearchcourse: {
       page: 1,
-      per_page: 10,
+      per_page: 3,
       search: '',
     },
+    total_filter:0,
     course_lesson:null,
     course:{
       course_id:null,
@@ -55,9 +56,14 @@ export const CoursePostStore = defineStore({
 
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
-      this.total = response.data.total_filter
+      this.total = response.data.total
+      this.total_page = response.data.total_page
+      
       this.coursecategories = response.data.data 
       this.listcourse = response.data.data
+      this.total_filter = response.data.total_filter
+      this.limit_page = response.data.limit_page
+ 
      this.fetchlesson();
   
      });
@@ -91,7 +97,13 @@ this.listcourse = arr;
     async updateLogCourse() {
       console.log('updateLogCourse',this.cs_id);
 
-    }
+    },
+
+    async setCurrentPage(page) {
+      this.formsearchcourse.page = page
+
+    },
+
   }
 })
 

@@ -70,6 +70,7 @@
                   type="text"
                   placeholder="ຊື່​ແທ້"
                   v-model="stores.form.user_firstname"
+                  maxlength="20" 
                   :class="{
                     'border-red-500 focus:border-red-500':
                       v$.user_firstname.$error,
@@ -115,6 +116,7 @@
                   }"
                   @change="v$.user_lastname.$touch"
                   autocomplete="off"
+                  maxlength="20" 
                 />
                 <span v-if="locale == 'la'">
                   <span
@@ -152,6 +154,7 @@
                   }"
                   @change="v$.user_name.$touch"
                   autocomplete="off"
+                  maxlength="20" 
                 />
                 <span v-if="locale == 'la'">
                   <span
@@ -180,6 +183,7 @@
                   type="text"
                   placeholder="ອີເມວ"
                   v-model="stores.form.user_email"
+                  maxlength="20" 
                 />
               </div>
             </div>
@@ -197,6 +201,7 @@
                     'border-red-500 focus:border-red-500': v$.user_phone.$error,
                     'border-[#42d392] ': !v$.user_phone.$invalid,
                   }"
+                  maxlength="20" 
                   @change="v$.user_phone.$touch"
                   autocomplete="off"
                   @input="filterInput"
@@ -236,6 +241,7 @@
                       v$.user_password.$error,
                     'border-[#42d392] ': !v$.user_password.$invalid,
                   }"
+                  maxlength="20" 
                   @change="v$.user_password.$touch"
                   autocomplete="off"
                 />
@@ -277,6 +283,7 @@
                   }"
                   @change="v$.user_confirmPassword.$touch"
                   autocomplete="off"
+                  maxlength="20" 
                 />
 
                 <span v-if="locale == 'la'">

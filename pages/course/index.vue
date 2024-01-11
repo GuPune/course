@@ -45,15 +45,7 @@
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <CourseAll></CourseAll>
-                        <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
-                            <ul class="main__page__pagination">
-                                <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class="icofont-double-right"></i></a></li>
-                            </ul>
-                        </div> -->
+                        
                     </div>
                 </div>
             </div>
