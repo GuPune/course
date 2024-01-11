@@ -23,7 +23,7 @@
   </tbody>
   <tbody v-else>
     <tr>
-          <td colspan="5" class="center" style="text-align: center;">No data available</td>
+          <td colspan="5" class="center" style="text-align: center;">ບໍ່ມີຂໍ້ມູນ</td>
         </tr>
   </tbody>
 </table>
