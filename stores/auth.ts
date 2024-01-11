@@ -364,7 +364,7 @@ try {
           this.dltcard = response.data;
 
          
-         
+
           if (response.data.length > 0) {
             let a = this.dltcard[0];
             this.formdtl.front_img = a.front_img
@@ -470,7 +470,7 @@ if(this.dltcard){
         const zipcode = await ApiService.post('/master_data/zipcode', this.formszipcode)
         if (zipcode.data.data) {
           this.zipcode = zipcode.data.data
-          console.log(this.zipcode);
+   
         } else {
           this.zipcode = []
         }
