@@ -28,6 +28,7 @@
                   class="ceslr"
                   aria-label="Default select example"
                   v-model="store.formuser.user_prefrix"
+                  :disabled="store.isDisabled"
                 >
               
                   <option disabled>
