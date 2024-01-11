@@ -178,24 +178,69 @@
               <label class="form__label"
                   >{{ $t("page_profile_add_1") }}<span style="color: red"> * </span>
                 </label>
+
+                <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.location.$error"
+                    >{{ $t("page_verify_zip") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.location.$error"
+                    >{{ $t("page_verify_zip") }}</span
+                  >
+                </span>
                   <div class="contact__input__wraper">
-                    <select class="form-control col" v-if="store.zipcode" v-model="store.formdetail.location_id" :disabled="store.isDisabled">
+                    <!-- <select class="form-control col" v-if="store.zipcode" v-model="store.formdetail.location_id" :disabled="store.isDisabled">
     <option   v-for="(zipcode, index) in store.zipcode" :key="zipcode.id" :value="zipcode.id">{{zipcode.zipcode_name}} - {{ zipcode.amphur_name }}</option>
-    </select>
+    </select> -->
 
     
                 
                   </div>
             </div>
 
+            <v-select
+  v-model="store.formdetail.location"
+    :options="store.zipcode"
+    label="zipcode_name" 
+    @input="changedLabelZip"
+     placeholder="ເລືອກ"
+  ></v-select>
+
+
             <div class="col-xl-12">
               <label class="form__label"
                   >{{ $t("page_profile_zip") }}<span style="color: red"> * </span>
                 </label>
+
+                <span v-if="locale == 'la'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.country.$error"
+                    >{{ $t("form_d_cou") }}</span
+                  >
+                </span>
+
+                <span v-if="locale == 'en'">
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.country.$error"
+                    >{{ $t("form_d_cou") }}</span
+                  >
+                </span>
                   <div class="contact__input__wraper">
-                    <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
+                    <!-- <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
     <option   v-for="(country, x) in store.country" :key="country.country_id" :value="country.country_id">{{country.country_name_eng}}</option>
-    </select>
+    </select> -->
 
                 
                   </div>
@@ -205,13 +250,12 @@
   v-model="store.formdetail.country"
     :options="store.country"
     label="country_name_eng"
-
+    @input="changedLabelCounrt"
      placeholder="ເລືອກ"
-
   ></v-select>
 
-  {{ store.formdetail.location }}
-{{ store.formdetail.country }}
+ 
+
         
             <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate"
               data-aos="fade-up">
@@ -344,11 +388,11 @@
    
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_add_1") }}</p>
-                  <!-- <input type="text" class="form-control col" :value="store.formdetail.location.zipcode_name" disabled> -->
+                
                   <select class="form-control col" v-if="store.zipcode" v-model="store.formdetail.location_id" :disabled="store.isDisabled">
     <option   v-for="(zipcode, index) in store.zipcode" :key="zipcode.id" :value="zipcode.id">{{zipcode.zipcode_name}} - {{ zipcode.amphur_name }}</option>
     </select>
-                  <!-- <p class="col">{{store.formdetail.location.zipcode_name}}</p> -->
+               
                 </div>
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_add_2") }}</p>
@@ -508,7 +552,14 @@ const rules = computed(() => {
       ),
       minLength: minLength(5),
     },
-
+    country: {
+      required: helpers.withMessage("Select Country field is required", required),
+      minLength: minLength(1),
+    },
+    location: {
+      required: helpers.withMessage("Select Country field is required", required),
+      minLength: minLength(1),
+    },
     user_village: {
       required: helpers.withMessage(
         "The Identification number field is required",
@@ -528,8 +579,9 @@ const rules = computed(() => {
         "user_birthday field is required",
         required,
       ),
-
     },
+
+
   };
 });
 const v$ = useVuelidate(rules, getFormDetails);
@@ -578,6 +630,19 @@ if (savedetails == true) {
 
 
 }
+
+const changedLabelCounrt = async (event) => {
+store.formscout.search = event.target.value
+await store.Country();
+
+}
+
+const changedLabelZip = async (event) => {
+store.formszipcode.search = event.target.value
+await store.Zipcode();
+
+}
+
 const fileInput = ref(null);
 const changeFile = () => {
           // Trigger a click event on the file input element
