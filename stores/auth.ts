@@ -290,6 +290,7 @@ export const useAuthStore = defineStore('auth', {
       this.formuser.user_phone = null
       this.formuser.user_type = null
       this.formuser.user_type_name = null
+      this.formdetail.verify_account = null
     },
 
     async getProfile() {

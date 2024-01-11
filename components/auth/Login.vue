@@ -219,7 +219,8 @@ const login = async () => {
     let login = await authenticateUser(formData);
     if (login === true) {
       const profile = await useError.getProfile();
-if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'phone_unactive')) {
+     
+if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive')) {
   router.push("/verifyconfirm");
 }else {
   router.push("/");
