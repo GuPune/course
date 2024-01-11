@@ -205,8 +205,13 @@ const previodd = async (index) => {
 };
 const nextt = async (index) => {
 
+
+if(store.examination[store.ind].is_complete == 0){
+return false;
+}
   if (store.maxNext > store.ind) {
-    await Next(index);
+    
+  await Next(index);
   }
   // await Next(index);
 };
