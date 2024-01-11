@@ -11,10 +11,11 @@
                                     <li class="short__by__new">
                                 <input type="text" placeholder="ຫຼັກສູດຄົ້ນຫາ" v-model="store.formsearchcourse.search"  @keyup="searchData" >
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
+
+                        
   </div>
 </template>
 
@@ -28,6 +29,7 @@ const store = CoursePostStore();
 const { getisActiveCourse } = storeToRefs(store);
 
 const searchData = async () => {
+  store.formsearchcourse.page = 1;
   await store.fetchCourse()
 };
 </script>
