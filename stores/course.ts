@@ -15,6 +15,7 @@ export const CoursePostStore = defineStore({
       per_page: 3,
       search: '',
     },
+    total_filter:0,
     course_lesson:null,
     course:{
       course_id:null,
