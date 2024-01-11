@@ -27,6 +27,7 @@ const router = useRouter();
 
 if(useError.authenticated){
   const profile = await useError.getProfile();
+  
 if(profile === false){
   await useError.logUserOut()
 }

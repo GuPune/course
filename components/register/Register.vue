@@ -463,7 +463,7 @@ const register = async () => {
   let login = await authenticateUser(formData);
 
   await ResetForm();
-   router.push('/');
+   router.push('/verifyconfirm');
      }else{
       Swal.fire({
           title: 'Unsuccessful!',
