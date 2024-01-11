@@ -50,6 +50,8 @@
                       maxlength="13" 
                       :disabled="store.isDisabled"
 
+                      @input="onInput"
+
                   >
                    
                   </div>
@@ -125,7 +127,7 @@
                       }"
                       @change="v$.user_village.$touch"
                       autocomplete="off"
-                      maxlength="13" 
+                      maxlength="20" 
                       :disabled="store.isDisabled"
 
                   >
@@ -165,13 +167,11 @@
                       }"
                       @change="v$.user_address.$touch"
                       autocomplete="off"
+                      maxlength="200" 
                   ></textarea>
                 
                   </div>
             </div>
-
-
-
 
 
             <div class="col-xl-12 mt-4">
@@ -382,7 +382,7 @@ const rules = computed(() => {
         "The Identification number field is required",
         required
       ),
-      minLength: minLength(5),
+      minLength: minLength(1),
     },
     user_address: {
       required: helpers.withMessage(
@@ -467,16 +467,33 @@ const changeFile = () => {
         };
 const handleFileChange = async (event) => {
   var input = event.target;
+  const file = event.target.files[0];
 
-  if (input.files) {
+  if (file && file.type.startsWith('image/')) {
     var reader = new FileReader();
     reader.onload = (e) => {
       store.formdetail.user_img = e.target.result;
     };
     store.imagelist = input.files[0];
     reader.readAsDataURL(input.files[0]);
+  } else {
+    // Reset the image URL if the selected file is not an image
+    //   this.imageUrl = null;
+    const input = document.querySelector('input[type="file"]');
+  input.value = "";
+    Swal.fire({
+      text: 'Upload File Image Only!',
+      icon: 'error',
+    });
   }
 };
+
+
+const onInput = async (event) => {
+    store.formdetail.identification_number = event.target.value.replace(/\D/g, '');
+}
+
+
 
 </script>
 
