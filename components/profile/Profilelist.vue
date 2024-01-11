@@ -236,7 +236,7 @@
                       placeholder="ອີເມວ*"
                       v-model="store.formuser.user_email"
                   :disabled="store.isDisabled"
-
+                  maxlength="30"
                        
                     />
                     <div class="contact__icon">
@@ -428,13 +428,9 @@ const rules = computed(() => {
       required: helpers.withMessage("The tel field is required", required),
       minLength: minLength(1),
     },
-
     // user_email: {
-    //   required: helpers.withMessage(
-    //     "The password confirmation field is required",
-    //     required
-    //   ),
-    //   email: helpers.withMessage("Invalid email format", email),
+    //   required: helpers.withMessage('The email field is required', required),
+    //   email: helpers.withMessage('Invalid email format', email),
     // },
     // user_address: {
     //   required: helpers.withMessage('The Address field is required', required),
