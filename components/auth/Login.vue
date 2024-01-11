@@ -217,9 +217,17 @@ const login = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
     let login = await authenticateUser(formData);
-
     if (login === true) {
-      router.push("/");
+      const profile = await useError.getProfile();
+if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'phone_unactive')) {
+  router.push("/verifyconfirm");
+}else {
+  router.push("/");
+}
+        
+
+      console.log(profile)
+    //  router.push("/verifyconfirm");
     }
 
   //  setTimeout(function() {
