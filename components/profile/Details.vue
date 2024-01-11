@@ -174,7 +174,7 @@
 
 
 
-            <div class="col-xl-12">
+            <div class="col-xl-12 mt-4">
               <label class="form__label"
                   >{{ $t("page_profile_add_1") }}<span style="color: red"> * </span>
                 </label>
@@ -215,7 +215,7 @@
   ></v-select>
 
 
-            <div class="col-xl-12">
+            <div class="col-xl-12 mt-4">
               <label class="form__label"
                   >{{ $t("page_profile_zip") }}<span style="color: red"> * </span>
                 </label>
@@ -257,23 +257,17 @@
  
 
         
-            <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate"
-              data-aos="fade-up">
-              <div class="gridarea__img">
+            <div class="mt-5 gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate grid_detail" data-aos="fade-up">
+              <div class="gridarea__img mb-5">
                 <a><img :src="coverimage(store.formdetail.user_img)" alt="grid"></a>
               </div>
               <button class="changeImg btn btn-info"  @click="changeFile" :disabled="store.isDisabled">
-
-       
                 <span v-if="locale == 'la'">{{ $t("page_profile_bt_pic") }}</span>
-              <span v-if="locale == 'en'">{{ $t("page_profile_bt_pic") }}</span>
-           
-         
-              
+                <span v-if="locale == 'en'">{{ $t("page_profile_bt_pic") }}</span>
               </button>
               <input type="file" ref="fileInput" style="display: none;">
      
-              <div class="gridarea__content">
+              <div class="gridarea__content w-100 p-0">
                 <div class="gridarea__list row border-bottom pb-2">
                   <p class="col fw-bold mb-0">{{ $t("page_profile_iden") }}</p>
                   <input type="text" class="form-control col" 
@@ -808,4 +802,14 @@ const handleFileChange = async (event) => {
 
 .gridarea__wraper:hover>.changeImg {
   visibility: visible;
-}</style>
+}
+.grid_detail{
+  display: block !important;
+  background: unset;
+  box-shadow: unset;
+  position: relative;
+}
+.changeImg {
+  top: 1%;
+}
+</style>
