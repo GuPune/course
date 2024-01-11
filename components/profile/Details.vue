@@ -206,7 +206,7 @@
                   </div>
             </div>
 
-            <v-select
+            <v-select :disabled="store.isDisabled"
   v-model="store.formdetail.location"
     :options="store.zipcode"
     label="zipcode_name" 
@@ -246,7 +246,7 @@
                   </div>
             </div>
 
-            <v-select
+            <v-select :disabled="store.isDisabled"
   v-model="store.formdetail.country"
     :options="store.country"
     label="country_name_eng"
