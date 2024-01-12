@@ -292,7 +292,7 @@ const confirmreve = async () => {
     await Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Booking recorded successfully",
+      title: "ບັນທຶກການຈອງສຳເລັດແລ້ວ",
       showConfirmButton: false,
       timer: 1500,
     });

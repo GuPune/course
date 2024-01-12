@@ -141,6 +141,7 @@ import { useAuthStore } from "@/stores/auth"; // import the auth store we just c
 import { useRoute } from "vue-router";
 import { useLogin } from "@/stores/login";
 import { useVuelidate } from "@vuelidate/core";
+import Swal from "sweetalert2";
 import {
   required,
   email,
@@ -215,22 +216,29 @@ const v$ = useVuelidate(rules, formData);
 
 const login = async () => {
   v$.value.$validate();
+
+
   if (!v$.value.$error) {
+  Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
     let login = await authenticateUser(formData);
     if (login === true) {
       const profile = await useError.getProfile();
-   
+   setTimeout(() => Swal.close(), 500);
 if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive') || (useError.formdetail.verify_account == 'phone_unactive')) {
   router.push("/verifyconfirm");
 }else {
   router.push("/");
 }
-        
-
-      console.log(profile)
+      
     //  router.push("/verifyconfirm");
     }
-
+ setTimeout(() => Swal.close(), 500);
   //  setTimeout(function() {
   //   if (login === true) {
   //     router.push("/");

@@ -38,9 +38,9 @@
    <div class="coursearea sp_top_100 sp_bottom_100">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
-                    <!-- <ExamFitter></ExamFitter> -->
-                    </div>
+                    <!-- <div class="col-xl-12">
+                    <ExamFitter></ExamFitter>
+                    </div> -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <Examlist></Examlist>
                         <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
@@ -64,9 +64,14 @@
 })
   import Examlist from '@/components/exam/Examlist.vue';
   import ExamFitter from '@/components/exam/ExamFitter.vue';
-  import { ExamTestPostStore } from '@/stores/examtest';
+  import { ExamPostStore } from '@/stores/exam';
   import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 const auth = useAuthStore()
+
+
+const store = ExamPostStore()
+await store.Resetfetch()
+await store.fetchExam()
 
   const { countDownTimer } = ExamTestPostStore(); //Action
   </script>

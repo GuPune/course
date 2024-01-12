@@ -56,6 +56,20 @@ export const VerifyStore = defineStore({
     async toggleActiveClass() {
 
     },
+    async ResetFetch() {
+
+this.formdetail.verify_account = 'unactive'
+this.formdetail.identification_number =
+this.formdetail.user_img = null
+this.formdetail.user_birthday = null
+this.formdetail.user_address = null
+this.formdetail.location_id = null
+this.formdetail.country_id = null
+this.formdetail.user_village = "",
+this.formdetail.location_id = null
+this.formdetail.country_id = null
+
+    },
 
     async Zipcode() {
       const zipcode = await ApiService.post('/master_data/zipcode', this.formszipcode)
