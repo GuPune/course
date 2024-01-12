@@ -450,6 +450,8 @@ const sendotp = async () => {
     store.formdetail.country_id = store.formdetail.country_id.country_id
    const savedetail = await SaveUserVerify();
     if (savedetail == true) {
+      store.formdetail.location_id = null
+      store.formdetail.country_id = null
     await SendOtp()
     await router.push("/otpconfirm");
     }else {
