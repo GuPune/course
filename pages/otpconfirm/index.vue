@@ -116,9 +116,9 @@ const moveFocus = (next) => {
         input6.value.focus();
       }
 };
+const sendotp = async () => {
 
-const sendotp = (next) => {
-    auth.GetOtp()
+   await auth.getOtp()
 };
 
 

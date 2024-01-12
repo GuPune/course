@@ -94,7 +94,6 @@ export const useLogin = defineStore({
     },
 
     async getOtp() {
-   
       const data = await ApiService.get('/user/otp/' + this.user_id).then(response => {
   
       });
