@@ -20,7 +20,7 @@
               data-aos="fade-up" id="uploadCard">
               <div class="text-center">
                 <h4>{{ $t("profile_idcard_front") }}</h4>
-                <div class="frontCardUpload" v-if="store.formcard.idcard_front">
+                <div class="frontCardUpload" v-if="store.formcard.idcard_front" style="overflow: hidden;">
                   <img class="cardImg" :src="coverimage(store.formcard.idcard_front)" alt="">
                   <input type="file" ref="fileInputFont" style="display: none;" accept="image/*">
                 </div>
@@ -36,11 +36,11 @@
               <div class="text-center">
                 <h4>{{ $t("profile_idcard_back") }}</h4>
 
-                <div class="frontCardUpload" v-if="store.formcard.idcard_back">
+                <div class="frontCardUpload" v-if="store.formcard.idcard_back" style="overflow: hidden;">
                   <img class="cardImg" :src="coverimage(store.formcard.idcard_back)" alt="">
                   <input type="file" ref="fileInputBack" style="display: none;" accept="image/*">
                 </div>
-                <div class="frontCardUpload" v-else>
+                <div class="frontCardUpload" v-else >
                   <img :src="coverimage('static/upload/2023/11/files-vOtznT6img.jpg')"
                    
                     alt="">

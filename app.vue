@@ -30,7 +30,7 @@ if(useError.authenticated){
   if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive') || (useError.formdetail.verify_account == 'phone_unactive')) {
   router.push("/verifyconfirm");
 }else {
-  router.push("/");
+ // router.push("/");
 }
 if(profile === false){
   await useError.logUserOut()
