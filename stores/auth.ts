@@ -305,6 +305,7 @@ try {
     if(response.data == ''){
       return false;
     }else {
+  
       const type = this.type.find(el => el.user_type === response.data.user_type);
       this.formuser.user_email = response.data.user_email
       this.formuser.user_firstname = response.data.user_firstname
@@ -317,7 +318,6 @@ try {
       this.formuser.user_prefrix = response.data.user_prefrix
 
       const isEmptyObj = !Object.keys(response.data.detail).length;
- 
 if(isEmptyObj == false){
   this.formdetail.verify_account = response.data.detail.verify_account
   this.formdetail.identification_number = response.data.detail.identification_number
@@ -331,10 +331,15 @@ if(isEmptyObj == false){
   this.formdetail.user_village = response.data.detail.user_village
 this.formdetail.country.country_id = response.data.detail?.country_id
 this.formdetail.location.id = response.data.detail?.location_id
-
 }
 
-    //  this.displaycard();
+if(response.data.card != null){
+this.formcard.idcard_back = response.data.card.idcard_back
+this.formcard.idcard_front = response.data.card.idcard_front
+this.formcard.user_id = response.data.user_id
+}
+
+   // this.displaycard();
 
     
       return true;
@@ -356,7 +361,6 @@ this.formdetail.location.id = response.data.detail?.location_id
     async SelectProfile(item) {
       this.selectProfile = item
     } ,  
-
     async displaycard() {
       const mydlt = [];
   
@@ -560,10 +564,9 @@ if(this.dltcard){
        
       },
 
-      async GetOtp() {
-    
+      async getOtp() {
         const data = await ApiService.get('/user/otp/' + this.user_id).then(response => {
-          console.log(response);
+    console.log(response);
         });
         return true;
       },
