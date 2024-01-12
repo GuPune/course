@@ -9,6 +9,21 @@ definePageMeta({
 const auth = useAuthStore();
 
 
+const router = useRouter();
+
+if(auth.authenticated){
+  const profile = await auth.getProfile();
+  if((auth.formdetail.verify_account == null) || (auth.formdetail.verify_account == 'unactive') || (auth.formdetail.verify_account == 'phone_unactive')) {
+  router.push("/verifyconfirm");
+}else {
+ // router.push("/");
+}
+if(profile === false){
+  await auth.logUserOut()
+}
+}
+
+
 </script>
 <template>
   <div>
