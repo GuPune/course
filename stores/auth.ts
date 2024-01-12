@@ -356,6 +356,7 @@ this.formdetail.location.id = response.data.detail?.location_id
     async SelectProfile(item) {
       this.selectProfile = item
     } ,  
+
     async displaycard() {
       const mydlt = [];
   
@@ -557,6 +558,14 @@ if(this.dltcard){
         return false;
       }
        
+      },
+
+      async GetOtp() {
+    
+        const data = await ApiService.get('/user/otp/' + this.user_id).then(response => {
+          console.log(response);
+        });
+        return true;
       },
 
 

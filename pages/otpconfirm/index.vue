@@ -8,7 +8,7 @@
                 <div class="card p-2 text-center">
                     {{ $t("page_verify_step2") }}
                     <h6>{{ $t("page_verify_one_time") }} <br> </h6>
-                    <div> <span> sent to</span> <small>+1******4343</small> </div>
+                    <div> <span> sent to</span> <small>{{auth.formuser.user_phone}}</small> </div>
                     <span class="text-xs text-red-500" style="color:red"
         v-if="store.otpisactive == false">{{ $t("page_verify_step3") }}</span>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
@@ -26,9 +26,15 @@
                         <input class="m-2 text-center form-control rounded"  type="text" id="input6"  v-model="store.otp[5]"  ref="input6" 
                         maxlength="1"  /> 
                     </div>
+                    
                 <div class="mt-4"> 
                     <button class="btn btn-secondary w-100" @click="confirm()">{{ $t("page_verify_save") }}</button>
                  </div>
+                 <div class="col-12">
+                                    <div class="text-center"  @click="sendotp()">
+                                        <p class="mb-0">ບໍ່ໄດ້ຮັບລະຫັດ ? <a href="javascript:void(0);" class="text-warning">ສົ່ງຄືນ</a></p>
+                                    </div>
+                                </div>
              
             </div>
         </div>
@@ -42,13 +48,18 @@ import { defineComponent } from 'vue';
 import { VerifyStore } from '@/stores/verify'
 import { useRoute } from 'vue-router'
 import Swal from "sweetalert2";
+import Cookies from 'js-cookie';
   import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 definePageMeta({
     layout: "blank"
 });
 
 const auth = useAuthStore()
+
+const value = Cookies.get('user_id')
+auth.user_id = value
 const router = useRouter();
+await auth.getProfile()
 
 const input1 = ref(null);
     const input2 = ref(null);
@@ -105,6 +116,11 @@ const moveFocus = (next) => {
         input6.value.focus();
       }
 };
+
+const sendotp = (next) => {
+    auth.GetOtp()
+};
+
 
 
  

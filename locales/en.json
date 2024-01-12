@@ -157,6 +157,7 @@
   "page_verify_step3":"OTP ไม่ถูกต้อง รึ กรอกไม่ครบ",
   "page_verify_step4":" 2-Step Verification",
   "page_verify_one_time":"Enter the code for verification.",
+  "send_to":"sent to",
   "page_verify_save":"Confirm",
 
   "page_app_search_type":"Appointment type",

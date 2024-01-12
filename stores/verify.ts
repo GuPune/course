@@ -84,6 +84,8 @@ export const VerifyStore = defineStore({
 
       return true;
     },
+
+
     async verifyOTP() {
       const otpconfirm = this.otp.join('');
 
