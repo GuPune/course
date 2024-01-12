@@ -154,7 +154,8 @@
   
   "page_verify_step3":"OTP ບໍ່ຖືກຕ້ອງ ຫຼື? ບໍ່ສົມບູນ",
   "page_verify_step4":" 2-ຂັ້ນຕອນການຢືນຢັນ",
-  "page_verify_one_time":"Please enter the one time password",
+  "page_verify_one_time":"ກະລຸນາໃສ່ລະຫັດຜ່ານຄັ້ງດຽວ",
+  "send_to":"ຖືກ​ສົ່ງ​ໄປ",
   "page_verify_save":"ຢືນຢັນ",
 
   "page_app_search_type":"ປະເພດນັດໝາຍ",

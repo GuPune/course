@@ -27,7 +27,11 @@ const router = useRouter();
 
 if(useError.authenticated){
   const profile = await useError.getProfile();
-  
+  if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive') || (useError.formdetail.verify_account == 'phone_unactive')) {
+  router.push("/verifyconfirm");
+}else {
+  router.push("/");
+}
 if(profile === false){
   await useError.logUserOut()
 }
