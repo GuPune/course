@@ -8,7 +8,7 @@
                 <div class="card p-2 text-center">
                     {{ $t("page_verify_step2") }}
                     <h6>{{ $t("page_verify_one_time") }} <br> </h6>
-                    <div> <span> sent to</span> <small>{{auth.formuser.user_phone}}</small> </div>
+                    <div> <span>{{ $t("send_to") }}</span> <small>{{auth.formuser.user_phone}}</small> </div>
                     <span class="text-xs text-red-500" style="color:red"
         v-if="store.otpisactive == false">{{ $t("page_verify_step3") }}</span>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
