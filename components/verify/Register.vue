@@ -398,7 +398,7 @@ const { SaveUserVerify } = VerifyStore();
 store.formdetail.user_id = auth.user_id;
 await store.Zipcode();
 await store.Country();
-
+ await store.ResetFetch();
 
 
 const rules = computed(() => {
@@ -444,15 +444,21 @@ const v$ = useVuelidate(rules, getForm);
 
 const sendotp = async () => {
  v$.value.$validate();
-
   if (!v$.value.$error) {
+    Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
     store.formdetail.location_id = store.formdetail.location_id.id
     store.formdetail.country_id = store.formdetail.country_id.country_id
    const savedetail = await SaveUserVerify();
     if (savedetail == true) {
-      store.formdetail.location_id = null
-      store.formdetail.country_id = null
+    await store.ResetFetch();
     await SendOtp()
+    await setTimeout(() => Swal.close(), 500);
     await router.push("/otpconfirm");
     }else {
       await Swal.fire({

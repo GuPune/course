@@ -1,4 +1,17 @@
 <template>
+    <div class="course__text__wraper aos-init aos-animate" data-aos="fade-up" >
+                            <div class="course__text">
+                                <p>{{ $t("page_course_view_show") }} {{store.total_filter}} </p>
+                            </div>
+                            <div class="course__icon">
+                                <ul class="nav property__team__tap" id="myTab" role="tablist">
+                                   
+                                    <li class="short__by__new">
+                                <input type="text" placeholder="ຫຼັກສູດຄົ້ນຫາ"  @keyup="searchData" v-model="store.formsearchcourse.search" >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
     <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent">
         <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
             role="tabpanel" aria-labelledby="projects__one">
@@ -45,7 +58,22 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
+                     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page > 0">
+                            <ul class="main__page__pagination">
+                                <li @click="pred()"><a href="#"><i class="icofont-double-left"></i></a></li>
+                                <li  v-for="page in store.total_page" :key="page"  @click="setCurrentPageclick(page)">
+                                    <a class="active" href="#" v-if="store.formsearchcourse.page == page">{{page}}
+                                    </a>
+                                    <a  href="#" v-else>{{page}}
+                                    </a>
+                                </li>
+                            
+                                <li  @click="next()"><a href="#"><i class="icofont-double-right"></i></a></li>
+                            </ul>
+                        </div>
         </div>
     </div>
 </template>
@@ -63,8 +91,10 @@ const store = ExamPostStore()
 const storeTest = ExamTestPostStore()
 const { getisActiveCourse } = storeToRefs(store);
 
-await store.fetchExam()
-
+const searchData = async () => {
+    store.formsearchcourse.page = 1
+  await store.fetchExam()
+};
 const GotoExam = async (item) => {
     await store.ind == 0;
     storeTest.ind = 0;
@@ -74,6 +104,31 @@ function image(i) {
   let im =  ApiService.image(i);
   return im;
 }
+
+
+const setCurrentPageclick = async (page) => {
+ await store.setCurrentPage(page)
+ await store.fetchExam()
+};
+
+const next = async () => {
+    if(store.total_page != store.formsearchcourse.page){
+        store.formsearchcourse.page = store.formsearchcourse.page + 1
+await store.fetchExam()
+    }
+
+
+ };
+
+ const pred = async () => {
+// store.formsearchcourse.page = store.formsearchcourse.page - 1
+//await store.fetchCourse()
+
+if(store.formsearchcourse.page != 1){
+    store.formsearchcourse.page = store.formsearchcourse.page - 1
+    await store.fetchExam()
+}
+ };
 </script>
 
  <style>

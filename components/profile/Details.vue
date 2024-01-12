@@ -424,21 +424,33 @@ const update = async () => {
  v$.value.$validate();
 
 if (!v$.value.$error) {
+
+    Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
 let savedetails = await store.UpdateDetails();
 
 if (savedetails == true) {
+   setTimeout(() => Swal.close(), 500);
   await Swal.fire({
     position: "top-end",
     icon: "success",
-    title: "Saved successfully",
+    title: "ບັນທຶກສຳເລັດແລ້ວ",
     showConfirmButton: false,
     timer: 1500,
   });
 } else {
-  Swal.fire({
-    title: "Unsuccessful!",
-    text: "Failed to save!",
+   setTimeout(() => Swal.close(), 500);
+   await Swal.fire({
+    position: "top-end",
     icon: "error",
+    text: "ບໍ່ສຳເລັດ!",
+    showConfirmButton: false,
+    timer: 1500,
   });
 }
  

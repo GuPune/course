@@ -61,6 +61,7 @@ auth.user_id = value
 const router = useRouter();
 await auth.getProfile()
 
+
 const input1 = ref(null);
     const input2 = ref(null);
     const input3 = ref(null);
@@ -72,6 +73,8 @@ const store = VerifyStore()
 const { setOTP } = VerifyStore();
 const { verifyOTP } = VerifyStore();
 
+
+
 const confirm = async () => {
     for (let i = 0; i < store.otp.length; i++) {
         if(store.otp[i] == ''){
@@ -81,9 +84,17 @@ const confirm = async () => {
        store.otpisactive = true;
     }
     if(store.otpisactive == true){
+          Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
      let send = await verifyOTP();
      if(send == true){
 await auth.getProfile()
+ await setTimeout(() => Swal.close(), 500);
 await Swal.fire({
     position: "top-end",
     icon: "success",
@@ -93,6 +104,13 @@ await Swal.fire({
   });
 
   localStorage.removeItem('Userid')
+
+  store.otp[0] = '';
+store.otp[1] = '';
+store.otp[2] = '';
+store.otp[3] = '';
+store.otp[4] = '';
+store.otp[5] = '';
        router.push('/');
      }else {
         store.otpisactive = false;

@@ -46,7 +46,7 @@
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.user_firstname.$error"
+                    v-if="v$.user_prefrix.$error"
                     >{{ $t("profile_alert_name") }}</span
                   >
                  </div>
@@ -55,7 +55,7 @@
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.user_firstname.$error"
+                    v-if="v$.user_prefrix.$error"
                     >{{ $t("profile_alert_name") }}</span
                   >
                  </div>
@@ -64,7 +64,7 @@
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.user_firstname.$error"
+                    v-if="v$.user_prefrix.$error"
                     >{{ $t("profile_alert_name") }}</span
                   >
                  </div>
@@ -379,21 +379,35 @@ const save = async () => {
   v$.value.$validate();
 
   if (!v$.value.$error) {
+  Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
     let saveprofile = await store.UpdateProfile();
 
     if (saveprofile == true) {
+        setTimeout(() => Swal.close(), 500);
       await Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Saved successfully",
+        title: "ບັນທຶກສຳເລັດແລ້ວ",
         showConfirmButton: false,
         timer: 1500,
       });
+       
     } else {
-      Swal.fire({
-        title: "Unsuccessful!",
-        text: "Failed to save!",
+         setTimeout(() => Swal.close(), 500);
+ 
+
+        await Swal.fire({
+        position: "top-end",
         icon: "error",
+        title: "ບໍ່ສຳເລັດ!",
+        showConfirmButton: false,
+        timer: 1500,
       });
     }
   }
@@ -402,6 +416,13 @@ const save = async () => {
 
 const rules = computed(() => {
   return {
+      user_prefrix: {
+      required: helpers.withMessage(
+        "The User name field is required",
+        required
+      ),
+      minLength: minLength(1),
+    },
     user_name: {
       required: helpers.withMessage(
         "The User name field is required",
@@ -409,7 +430,6 @@ const rules = computed(() => {
       ),
       minLength: minLength(1),
     },
-
     user_firstname: {
       required: helpers.withMessage(
         "The First Name field is required",

@@ -20,7 +20,7 @@ export const ExamPostStore = defineStore({
     minutes:"",
     formsearchcourse: {
       page: 1,
-      per_page: 50,
+      per_page: 6,
       search: '',
     },
   }),
@@ -48,17 +48,28 @@ export const ExamPostStore = defineStore({
       }
     },
 
+    async Resetfetch(){
+this.formsearchcourse.page = 1
+this.formsearchcourse.per_page = 6;
+this.formsearchcourse.search = '';
+    },
+
     async fetchExam() {
     try {
     const data = await ApiService.post('/exam/main/list', this.formsearchcourse).then(response => {
       this.listexam = response.data.data;
+      this.total = response.data.total;
+      this.total_page = response.data.total_page;
+      this.total_filter = response.data.total_filter;
+      console.log(this.total_filter);
      });
     return true
     } catch (error) {
     return false;
-    } finally {
-     
-    }
+    } 
+    },
+    async setCurrentPage(page) {
+      this.formsearchcourse.page = page
     },
 
     async fetchExamq() {
