@@ -389,7 +389,7 @@ const rules = computed(() => {
         "Adress field is required",
         required
       ),
-      minLength: minLength(5),
+      minLength: minLength(1),
     },
     user_birthday: {
       required: helpers.withMessage(
