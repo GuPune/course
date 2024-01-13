@@ -408,7 +408,7 @@ const rules = computed(() => {
         "The identification Number name field is required",
         required
       ),
-      minLength: minLength(13),
+      minLength: minLength(5),
     },
     user_birthday: {
       required: helpers.withMessage("The Birthday field is required", required),
