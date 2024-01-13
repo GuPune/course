@@ -68,13 +68,9 @@ var date = new Date();
 var expiryDate = Math.floor(date.getTime() / 1000); //1440516958
 
 
-
 if(first > expiryDate){
-
-
   store.user_id = user_id
   let user = await store.authenticateUserMoiblex()
-
   if(user == true){
     if(menu_type == 1){
 router.push("/examquestions/"+em_id);
@@ -87,11 +83,7 @@ router.push("/course-detail/lesson/"+em_id);
 }else {
 router.push("/sessiontimeout");
 }
-
-
-router.push("/sessiontimeout");
 }
-
 
 
 </script>
