@@ -140,6 +140,13 @@ onMounted(() => {
 });
 
 const saveimage = async () => {
+  Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
   await store.savecard();
   await Swal.fire({
     position: "top-end",
@@ -148,6 +155,7 @@ const saveimage = async () => {
     showConfirmButton: false,
     timer: 1500,
   });
+  setTimeout(() => Swal.close(), 500);
 
 }
 const fileInputFont = ref(null);
