@@ -461,6 +461,7 @@ const sendotp = async () => {
     await setTimeout(() => Swal.close(), 500);
     await router.push("/otpconfirm");
     }else {
+   
       await Swal.fire({
   position: 'top-end',
   icon: "error",
