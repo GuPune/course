@@ -114,6 +114,8 @@ store.otp[5] = '';
        router.push('/');
      }else {
         store.otpisactive = false;
+          setTimeout(() => Swal.close(), 500);
+        
      }
     }
  
