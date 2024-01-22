@@ -184,7 +184,7 @@
                       placeholder="ຊື່ຜູ້ໃຊ້*"
                       v-model="store.formuser.user_name"
                      :disabled="store.isDisabled"
-
+                     @input="filterInputUser"
                              :class="{
                         'border-red-500 focus:border-red-500':
                           v$.user_name.$error,
@@ -264,7 +264,7 @@
                       }"
                       @change="v$.user_phone.$touch"
                       autocomplete="off"
-                      maxlength="10"
+                      maxlength="15"
                     />
                     <div class="contact__icon">
                       <i class="icofont-ui-call"></i>
@@ -400,8 +400,6 @@ const save = async () => {
        
     } else {
          setTimeout(() => Swal.close(), 500);
- 
-
         await Swal.fire({
         position: "top-end",
         icon: "error",
@@ -465,6 +463,12 @@ const rules = computed(() => {
 });
 
 const v$ = useVuelidate(rules, getForm);
+
+
+const filterInputUser = async (event) => {
+  store.formuser.user_name = event.target.value.replace(/[^\w]/g, '');
+  //stores.form.user_name = event.target.value.replace(/[`~%^&*!@#$()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+};
 </script>
 
 <style>
