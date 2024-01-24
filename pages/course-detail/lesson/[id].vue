@@ -303,19 +303,14 @@ const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
 
-let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
+let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
 
-if (lesson_id == true) {
-  store.updateLogCourse();
-} else {
-}
+// if (lesson_id == true) {
+//   store.updateLogCourse();
+// } else {
+// }
 if (process.client) {
   window.addEventListener("resize", () => loadEdit(), store.isYoutube == false);
-
-  //   window.addEventListener('resize', function(event) {
-
-  //     updateWidth();
-  // }, true);
 }
 
 async function loadEdit() {

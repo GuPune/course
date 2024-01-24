@@ -23,6 +23,11 @@ export const LessonStore = defineStore({
       cs_name: null,
       cs_video: null,
       udp_date: null
+    },
+    formcourse: {
+      page: 1,
+      per_page: 50,
+      search: "",
     }
   }),
   getters: {
@@ -38,8 +43,6 @@ export const LessonStore = defineStore({
 
       try {
         const data = await ApiService.get('/course/lesson/get/' + id).then(response => {
-
-
           if (response.data) {
             this.data.course_id = response.data.course_id
             this.data.crt_date = response.data.crt_date
@@ -54,6 +57,21 @@ return true
           }else {
             return false;
           }
+
+        });
+        return data;
+      } catch (error) {
+
+      }
+
+    },
+
+    async fetchCourse(id) {
+
+      try {
+        const data = await ApiService.post('/course/lesson/list/' + id,this.formcourse).then(response => {
+          console.log(response);
+
 
         });
         return data;

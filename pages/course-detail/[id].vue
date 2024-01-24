@@ -50,12 +50,12 @@
       <div class="container">
  
         <div class="row" v-if="store.course_lesson">
-          <div class="col-xl-12 col-lg-12" v-for="item in store.course_lesson">
+          <div class="col-xl-12 col-lg-12">
             <div
               class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
               data-aos="fade-up"
             >
-              <img :src="coverimage(item.course_cover)" alt="blog">
+              <img :src="coverimage(store.course_lesson.course_cover)" alt="blog">
             </div>
             <div class="blog__details__content__wraper">
               <div
@@ -65,7 +65,7 @@
                 <div class="course__button"></div>
                 <div class="course__date">
                   <p>
-                    {{ $t("page_course_last_lesson") }}<span> {{ coverttime(item.udp_date) }}</span>
+                    {{ $t("page_course_last_lesson") }}<span> {{ coverttime(store.course_lesson.udp_date) }}</span>
                   </p>
                 </div>
               </div>
@@ -73,18 +73,18 @@
                 class="course__details__heading aos-init aos-animate"
                 data-aos="fade-up"
               >
-                <h3>{{ item.course_description }}</h3>
+                <h3>{{ store.course_lesson.course_description }}</h3>
               </div>
               <div
                 class="course__details__price aos-init aos-animate"
                 data-aos="fade-up"
               >
                 <ul>
-                  <li>
+                  <!-- <li>
                     <div class="course__details__date" v-if="item.lesson">
                       <i class="icofont-book-alt"></i> {{ item.lesson.length }} {{ $t("page_course_last_lesson") }}
                     </div>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
               <div
@@ -92,7 +92,7 @@
                 data-aos="fade-up"
               >
                 <p>
-                  {{ item.course_description }}
+                  {{ store.course_lesson.course_description }}
                 </p>
               </div>
 
@@ -127,7 +127,7 @@
                     id="projects__two"
                     role="tabpanel"
                     aria-labelledby="projects__two"
-                    v-for="(x, index) in item.lesson"
+                    v-for="(x, index) in store.lesson"
                   >
            
                     <div
@@ -136,16 +136,13 @@
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                          <button @click="choose(x.cs_id)"
+                          <button @click="choose(router.currentRoute.value.params.id)"
                             class="accordion-button collapsed mt-0"
                             type="button"
                           >
 
-                                     <!-- data-bs-toggle="collapse"
-                            :data-bs-target="'#collapseOne-' + index"
-                            aria-expanded="false"
-                            aria-controls="collapseOne" -->
-                            ບົດຮຽນ #{{ index + 1 }}
+                              
+                            ບົດຮຽນ #{{ index + 1 * store.lesson_current_page}} 
                           </button>
                         </h2>
                         <div
@@ -154,26 +151,7 @@
                           aria-labelledby="headingOne"
                           data-bs-parent="#accordionExample"
                         >
-                          <div class="row justify-content-center">
-                            <vue3VideoPlay
-                              width="100%"
-                              title="Video"
-                              :src="x.cs_video"
-                              :poster="options.poster"
-                              @play="onPlay(x.cs_id)"
-                            />
-
-                            <!-- <vue3VideoPlay
-                              width="100%"
-                              title="Video"
-                              :src="x.cs_video"
-                              :poster="options.poster"
-                              @play="onPlay(x.cs_id)"
-                              @pause="onPause"
-                              @timeupdate="onTimeupdate"
-                              @canplay="onCanplay"
-                            /> -->
-                          </div>
+                  
 
                           <div class="row" style="padding: 5px">
                             <div
@@ -181,8 +159,7 @@
                             >
                               <div class="single__expart__teacher">
                                 <div class="teacher__img mb-0" v-if="x.cs_cover">
-                                  <!-- <img src="../../assets/img/grid/cart1.jpg" alt="author"> -->
-
+                              
                                   <img
                                     :src="coverimage(x.cs_cover)"
                                     alt="Image"
@@ -249,6 +226,20 @@
         </div>
       </div>
     </div>
+
+    <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page_lesson > 1">
+                            <ul class="main__page__pagination">
+                                <li ><a href="#"><i class="icofont-double-left"></i></a></li>
+                                <li  v-for="page in store.total_page_lesson" :key="page"  @click="setCurrentPageLesson(page)" >
+                                    <a class="active" href="#" v-if="store.formsearchlesson.page == page">{{page}}
+                                    </a>
+                                    <a  href="#" v-else>{{page}}
+                                    </a>
+                                </li>
+                            
+                                <li  ><a href="#"><i class="icofont-double-right"></i></a></li>
+                            </ul>
+                        </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -266,7 +257,7 @@ const store = CoursePostStore();
 
 let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
-
+let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
 import { reactive } from "vue";
@@ -295,6 +286,12 @@ const onTimeupdate = (ev) => {
 };
 const onCanplay = (ev) => {
  
+};
+
+const setCurrentPageLesson = async (page) => {
+
+ await store.setCurrentPageLesson(page)
+ await store.fetchCourseLessId(router.currentRoute.value.params.id)
 };
 
 const { getisActiveCourse } = storeToRefs(store);
