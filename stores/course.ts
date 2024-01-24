@@ -23,7 +23,7 @@ export const CoursePostStore = defineStore({
     },
     formsearchlesson: {
       page: 1,
-      per_page: 1,
+      per_page: 3,
       search: '',
     },
     total_lesson:null,

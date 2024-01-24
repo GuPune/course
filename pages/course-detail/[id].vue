@@ -142,8 +142,10 @@
                           >
 
                               
-                            ບົດຮຽນ #{{ index + 1 * store.lesson_current_page}} 
+                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}
                           </button>
+
+                          
                         </h2>
                         <div
                           :id="'collapseOne-' + index"
