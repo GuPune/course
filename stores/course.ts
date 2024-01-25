@@ -121,8 +121,7 @@ this.listcourse = arr;
           this.total_page_lesson = response.data.total_page
           this.lesson_current_page = response.data.current_page
 
-
-
+        
         });
         return data;
       } catch (error) {
@@ -144,6 +143,16 @@ this.listcourse = arr;
     async setCurrentPageLesson(page) {
       this.formsearchlesson.page = page
      
+    },
+
+    async SelectLesson(id,index,x) {
+      this.course_select_id = id;
+      this.course_index = index;
+      this.course_select_page = this.formsearchlesson.page;
+     const cour = localStorage.setItem('course_select_id', this.course_select_id)
+      const selelesson = localStorage.setItem('selelesson',x)
+   //   const cour_ind = localStorage.setItem('course_index', this.course_index)
+   //   const coursel_page = localStorage.setItem('course_select_page', this.formsearchlesson.page)
     },
 
 

@@ -136,13 +136,13 @@
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                          <button @click="choose(router.currentRoute.value.params.id)"
+                          <button @click="choose(router.currentRoute.value.params.id,index,(store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1)"
                             class="accordion-button collapsed mt-0"
                             type="button"
                           >
 
-                              
-                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}
+                             
+                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }} 
                           </button>
 
                           
@@ -231,15 +231,12 @@
 
     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page_lesson > 1">
                             <ul class="main__page__pagination">
-                                <li ><a href="#"><i class="icofont-double-left"></i></a></li>
                                 <li  v-for="page in store.total_page_lesson" :key="page"  @click="setCurrentPageLesson(page)" >
                                     <a class="active" href="#" v-if="store.formsearchlesson.page == page">{{page}}
                                     </a>
                                     <a  href="#" v-else>{{page}}
                                     </a>
                                 </li>
-                            
-                                <li  ><a href="#"><i class="icofont-double-right"></i></a></li>
                             </ul>
                         </div>
   </div>
@@ -272,9 +269,10 @@ const onPlay = (id) => {
  //  store.updateLogCourse();
 };
 
-const choose = (id) => {
-//  store.cs_id = id;
-  router.push('/course-detail/lesson/'+id);
+const choose = async (id,index,x) => {
+
+await store.SelectLesson(id,index,x)
+ router.push('/course-detail/lesson/'+id);
 };
 
 
@@ -292,8 +290,8 @@ const onCanplay = (ev) => {
 
 const setCurrentPageLesson = async (page) => {
 
- await store.setCurrentPageLesson(page)
- await store.fetchCourseLessId(router.currentRoute.value.params.id)
+  store.setCurrentPageLesson(page)
+  store.fetchCourseLessId(router.currentRoute.value.params.id)
 };
 
 const { getisActiveCourse } = storeToRefs(store);
