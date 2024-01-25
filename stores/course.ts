@@ -66,11 +66,12 @@ export const CoursePostStore = defineStore({
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
       this.total = response.data.total
       this.total_page = response.data.total_page
-      
       this.coursecategories = response.data.data 
       this.listcourse = response.data.data
       this.total_filter = response.data.total_filter
       this.limit_page = response.data.limit_page
+
+    
  
      this.fetchlesson();
   
@@ -86,14 +87,18 @@ export const CoursePostStore = defineStore({
     },
     async fetchlesson() {
       const arr = [];
+      const page = [];
       for (var i = 0; i < this.listcourse.length; i++) {
          this.listcourse[i].lesson = [];
        const x = await ApiService.post('/course/lesson/list/'+ this.listcourse[i].course_id, this.formsearchcourse);
    this.listcourse[i].lesson = x.data.data
-
+   
+   this.listcourse[i].total_les = x.data.total
    arr.push(this.listcourse[i]);
+  
       }
 this.listcourse = arr;
+
     },
 
 

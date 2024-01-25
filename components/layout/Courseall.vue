@@ -72,8 +72,8 @@
                 <div class="gridarea__content">
                     <div class="gridarea__list">
                         <ul>
-                            <li v-if="item.lesson">
-                                <i class="icofont-book-alt"></i> {{ item.lesson.length }}
+                            <li v-if="item.total_les">
+                                <i class="icofont-book-alt"></i> {{ item.total_les }}
                             </li>
                             <li>
                                 <i class="icofont-clock-time"></i> {{ $t("page_course_code") }} {{ item.course_code }}
