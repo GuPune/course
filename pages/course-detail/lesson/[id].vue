@@ -5,7 +5,7 @@
   <div v-if="store.data.course_id">
     <div>
       <div class="container">
-      
+      {{ store.seconds }}
         <div class="row" v-if="store.data">
           <div class="col-xl-12 col-lg-12">
             <div
@@ -353,9 +353,7 @@ if (process.client) {
     },
   });
  let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
- console.log(lesson_id);
   window.addEventListener("resize", () => loadEdit(), store.isYoutube == false);
-
   setTimeout(() => Swal.close(), 500);
 }
 
@@ -387,9 +385,40 @@ const updateWidth = async () => {
     store.isYoutube = true;
   }
 };
+
+
+const start = async () => {
+
+  if (!store.timer) {
+    store.timer = setInterval(updateMillea, 1000);
+      }
+};
+
+const stop = async () => {
+  clearInterval(store.timer);
+  reset();
+};
+
+const updateMillea = async () => {
+ //let time = setInterval(updateMille, 1000);
+ store.seconds++;
+ if(store.seconds > 5){
+  stop();
+      }
+};
+
+const reset = async () => {
+      store.timer = null;
+      store.seconds = 0;
+};
+
+
 onMounted(() => {
   // window.addEventListener('resize', updateWidth);
   updateWidth(); // Call once when component is mounted to set the initial width
+  start();
+  
+
 });
 
 onBeforeUnmount(() => {
@@ -460,9 +489,14 @@ const next = async () => {
       Swal.showLoading()
     },
   });
+  stop();
+  reset();
+start();
 if(store.selelesson != store.total){
 store.selelesson++;
 await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
+
+
 await setTimeout(() => Swal.close(), 500);
 }
 await setTimeout(() => Swal.close(), 500);

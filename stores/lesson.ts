@@ -13,6 +13,8 @@ export const LessonStore = defineStore({
       cs_id: null
     },
     isYoutube:false,
+    seconds: 0,
+    timer: null,
     windowWidth:0,
     selelesson:null,
     data: {
