@@ -421,9 +421,13 @@ onMounted(() => {
 
 });
 
+
+
 onBeforeUnmount(() => {
   // window.removeEventListener('resize', updateWidth);
 });
+
+
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
