@@ -15,9 +15,9 @@
                     <h1> <i class="icofont-book-alt" ></i>{{ $t("page_exam_course_eq") }} {{store.exam.em_name}} </h1>
                     <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">{{ $t("page_exam_report_begin") }}</button></div>
                   </div>
-                  <div class="contact__email">
+                  <!-- <div class="contact__email">
                     <p style="font-size: 20px;">{{ $t("page_exam_report_details") }} <span style="font-size: 16px;">( {{ $t("page_exam_report_update") }}   {{ coverttime(store.exam.udp_date) }})</span></p>
-                  </div>
+                  </div> -->
 
                   <div class="course-info">
                     <div class="contact__email d-flex">

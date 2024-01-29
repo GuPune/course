@@ -8,6 +8,8 @@ export const ExamTestPostStore = defineStore({
     exam_complete:null,
     PopupImage:false,
     image:"",
+    selectchoice:null,
+    selectec_id:null,
     t: 1,
     timeoutId: null,
     isActiveCourse: true,
@@ -127,15 +129,17 @@ export const ExamTestPostStore = defineStore({
 
     async fetchExamTest() {
       this.formsearchtest.clear_cach = 0;
-    
+      this.selectchoice = null;
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
+        
           this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
           this.CheckDataNull(this.examination.length)
           if(response.data.exam_complete == 1){
             this.isstart = false;
           }
+  
           this.total = response.data.data.length
           this.maxNext = response.data.data.length - 1
           var score = 0;
@@ -157,11 +161,19 @@ export const ExamTestPostStore = defineStore({
     },
 
     async fetchExamquest() {
-  
+      for (var i = 0; i < this.examination.length; i++) {
+        if (this.examination[i].is_complete == 0) { 
+          this.ind = i;
+          break;
+        
+        }
+    
+      }
+     
       this.listttt = [];
       this.listttt.push(this.examination[this.ind])
   
-   
+ 
     },
 
     async GetTime() {
