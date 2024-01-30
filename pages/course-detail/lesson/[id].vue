@@ -5,7 +5,6 @@
   <div v-if="store.data.course_id">
     <div>
       <div class="container">
-      {{ store.seconds }}
         <div class="row" v-if="store.data">
           <div class="col-xl-12 col-lg-12">
             <div
@@ -289,8 +288,9 @@
   <div class="container" v-if="store.data.course_id">
           <div class="row">
     <div class="col-xl-12 col-lg-12">
-      <div class="pagination-no_spacing">
+      <!-- <div class="pagination-no_spacing">
         <ul class="pagination" style="justify-content: center;">
+
           <li @click="prev()"> <a href="javascript:void(0);" class="prev"  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="feather feather-chevron-left">
@@ -299,7 +299,7 @@
           </li>
          
             
-              <li><a href="javascript:void(0);">{{store.selelesson}}</a></li>
+          <li><a href="javascript:void(0);">{{store.selelesson}}</a></li>
        
           <li><a href="javascript:void(0);"> / </a></li>
           <li><a href="javascript:void(0);">{{store.total}}</a></li>
@@ -310,7 +310,22 @@
               </svg></a>
           </li>
         </ul>
-      </div>
+      </div> -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" style="justify-content: center;">
+          <li class="page-item" @click="prev()">
+            <a class="page-link" href="javascript:void(0);" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0);">{{store.selelesson}} / {{store.total}}</a></li>
+          <li class="page-item" @click="next()">
+            <a class="page-link" href="javascript:void(0);" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
    
     </div>
