@@ -75,22 +75,22 @@ search:"",
 
 
   actions: {
-    // setECid(id) { 
-    //   this.exam = null;
-    //   this.updatetime.em_id = id;
-    //   this.formsearchtest.em_id = parseInt(id);
-    //   const Exam = ExamPostStore();
-    //   const Ex = Exam.listexam.filter(item => item.em_id == id);
+    setECid(id) { 
+      this.exam = null;
+      this.updatetime.em_id = id;
+      this.formsearchtest.em_id = parseInt(id);
+      const Exam = ExamPostStore();
+      const Ex = Exam.listexam.filter(item => item.em_id == id);
  
    
-    //   if (Ex.length != 0) {
-    //     this.exam = Ex[0];
-    //     return true
-    //   } else {
-    //     this.CheckDataNull(Ex.length)
-    //     return false;
-    //   }
-    // },
+      if (Ex.length != 0) {
+        this.exam = Ex[0];
+        return true
+      } else {
+        this.CheckDataNull(Ex.length)
+        return false;
+      }
+    },
     async CheckDataNull(item) {
 
       if(item.length == 0){
@@ -99,38 +99,32 @@ search:"",
     },
 
 
-    async setECid(id) { 
-      this.exam = null;
-      this.updatetime.em_id = id;
-      this.formsearchtest.em_id = parseInt(id);
-    //  const Exam = ExamPostStore();
-    //  const Ex = Exam.listexam.filter(item => item.em_id == id);
-
-
- try {
-  const data = await ApiService.post('/exam/question/'+id+'/list',this.formsearex_id).then(response => {
+//     async setECid(id) { 
+//       this.exam = null;
+//       this.updatetime.em_id = id;
+//       this.formsearchtest.em_id = parseInt(id);
+//     const Exam = ExamPostStore();
+//      const Ex = Exam.listexam.filter(item => item.em_id == id);
+//      console.log(Ex);
    
-          if (response.data.data.length != 0) {
-        this.exam = response.data.data;
-        return true
-      } else {
-        this.CheckDataNull(response.data.data)
-        return false;
-      }
-  });
-  return data
-} catch (error) {
-  return false;
-} 
+//  try {
+//   const data = await ApiService.post('/exam/question/'+id+'/list',this.formsearex_id).then(response => {
+ 
+//           if (response.data.data.length != 0) {
+//         this.exam = response.data.data[0];
+//         return true
+//       } else {
+//         this.CheckDataNull(response.data.data)
+//         return false;
+//       }
+//   });
+//   return data
+// } catch (error) {
+//   return false;
+// } 
    
-      // if (Ex.length != 0) {
-      //   this.exam = Ex[0];
-      //   return true
-      // } else {
-      //   this.CheckDataNull(Ex.length)
-      //   return false;
-      // }
-    },
+  
+//     },
 
 
     async fetchExam() {
@@ -220,10 +214,13 @@ search:"",
     },
 
     async GetTime() {
+   
       try {
         const data = await ApiService.get('/exam/time/?em_id='+ this.updatetime.em_id +'&user_id='+this.updatetest.user_id+'').then(rep => {
+      
           if(rep.data == ''){
-            const timeParts = this.exam.em_time.split(':');
+            const timeParts = this.exam.em_time.split(':')
+        
             const hours = parseInt(timeParts[0], 10);
             const minutes = parseInt(timeParts[1], 10);
             const seconds = parseInt(timeParts[2], 10);
