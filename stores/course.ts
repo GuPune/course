@@ -21,6 +21,14 @@ export const CoursePostStore = defineStore({
       course_id:null,
       course_cover: null,
     },
+    formsearchlesson: {
+      page: 1,
+      per_page: 10,
+      search: '',
+    },
+    total_lesson:null,
+    total_filter_lesson:null,
+    total_page_lesson:null,
     cs_id:null
     // course: {
     //   course_id: null,
@@ -58,11 +66,12 @@ export const CoursePostStore = defineStore({
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
       this.total = response.data.total
       this.total_page = response.data.total_page
-      
       this.coursecategories = response.data.data 
       this.listcourse = response.data.data
       this.total_filter = response.data.total_filter
       this.limit_page = response.data.limit_page
+
+    
  
      this.fetchlesson();
   
@@ -70,7 +79,7 @@ export const CoursePostStore = defineStore({
      return true;
     } catch (error) {
     console.log('error');
-    alert(error)
+
     }
     },
     async fetchCourseall() {
@@ -78,19 +87,52 @@ export const CoursePostStore = defineStore({
     },
     async fetchlesson() {
       const arr = [];
+      const page = [];
       for (var i = 0; i < this.listcourse.length; i++) {
          this.listcourse[i].lesson = [];
        const x = await ApiService.post('/course/lesson/list/'+ this.listcourse[i].course_id, this.formsearchcourse);
    this.listcourse[i].lesson = x.data.data
-
+   
+   this.listcourse[i].total_les = x.data.total
    arr.push(this.listcourse[i]);
+  
       }
 this.listcourse = arr;
+
+    },
+
+
+    async fetchCourseId(id){
+    
+      try {
+        const data = await ApiService.get('/course/get/' + id).then(response => {
+       this.course_lesson = response.data
+        });
+        return true
+      } catch (error) {
+
+      }
+    
     },
     
-    async fetchCourseId(id){
-      this.course_lesson = this.listcourse.filter(item => item.course_id == id);
-      console.log(this.course_lesson);
+    async fetchCourseLessId(id){
+   
+      try {
+        const data = await ApiService.post('/course/lesson/list/' + id,this.formsearchlesson).then(response => {
+         
+          this.lesson = response.data.data
+          this.total_lesson = response.data.total
+          this.total_filter_lesson = response.data.total_filter
+          this.total_page_lesson = response.data.total_page
+          this.lesson_current_page = response.data.current_page
+
+        
+        });
+        return data;
+      } catch (error) {
+
+      }
+     
       return true
     },
 
@@ -101,8 +143,23 @@ this.listcourse = arr;
 
     async setCurrentPage(page) {
       this.formsearchcourse.page = page
-
     },
+
+    async setCurrentPageLesson(page) {
+      this.formsearchlesson.page = page
+     
+    },
+
+    async SelectLesson(id,index,x) {
+      this.course_select_id = id;
+      this.course_index = index;
+      this.course_select_page = this.formsearchlesson.page;
+     const cour = localStorage.setItem('course_select_id', this.course_select_id)
+      const selelesson = localStorage.setItem('selelesson',x)
+   //   const cour_ind = localStorage.setItem('course_index', this.course_index)
+   //   const coursel_page = localStorage.setItem('course_select_page', this.formsearchlesson.page)
+    },
+
 
   }
 })

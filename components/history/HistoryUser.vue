@@ -8,6 +8,7 @@
           <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_day_test") }}</th>
           <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_total_add") }}</th>
           <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_total_score") }}</th>
+          <th class="sorting_disabled" rowspan="1" colspan="1">{{ $t("page_exam_report_stat") }}</th>
         </tr>
       </thead>
     
@@ -21,13 +22,21 @@
             <div class="progress progress-xs progress-striped active">
               <div class="progress-bar progress-bar-success" :style="{width: item.er_score ? item.er_score+'%' : '0%'}">{{item.er_score}}%</div>
             </div>
-
           </td>
           <td align="center">
             <h5>
               <span v-if="item.er_score_total >= (item.er_question_total/2)" class="badge  bg-success">{{item.er_score_total}} / {{ item.er_question_total }}</span>
               <span v-else class="badge  bg-danger">{{item.er_score_total}} / {{ item.er_question_total }}</span>
             </h5>
+          </td>
+          <td align="center">
+
+
+  
+
+
+      <span v-if="item.status == 'pass'" class="badge  bg-success">{{ $t("page_exam_report_status_pass") }}</span>
+              <span v-else class="badge  bg-danger">{{ $t("page_exam_report_status_faill") }}</span>
           </td>
         </tr>
       

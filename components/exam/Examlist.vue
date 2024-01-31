@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="gridarea__bottom">
-                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item.em_id)">
+                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item)">
                                     {{ $t("page_exam_bt") }}</button>
                             </div>
                         </div>
@@ -85,6 +85,7 @@ import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
   import { ExamTestPostStore } from '@/stores/examtest';
 import  ApiService  from '@/services/api.service';
+import Swal from "sweetalert2";
 
 const router = useRouter();
 const store = ExamPostStore()
@@ -96,9 +97,20 @@ const searchData = async () => {
   await store.fetchExam()
 };
 const GotoExam = async (item) => {
+if(item.total_question == 0){
+    Swal.fire({
+        title: 'ບໍ່ມີການສອບເສັງ!',
+        text: 'ລໍຖ້າພະນັກງານເພີ່ມເຕີມ!',
+        icon: 'error',
+      });
+
+}else {
     await store.ind == 0;
-    storeTest.ind = 0;
-    router.push({ name: 'examquestions-id', params: { id: item }});
+storeTest.ind = 0;
+  router.push({ name: 'examquestions-id', params: { id: item.em_id }});
+
+}
+
 };
 function image(i) {
   let im =  ApiService.image(i);

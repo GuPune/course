@@ -155,6 +155,7 @@
                   @change="v$.user_name.$touch"
                   autocomplete="off"
                   maxlength="20" 
+                  @input="filterInputUser"
                 />
                 <span v-if="locale == 'la'">
                   <span
@@ -436,10 +437,16 @@ const rules = computed(() => {
   };
 });
 
+
+
 const v$ = useVuelidate(rules, formDataregister);
 
 const filterInput = async (event) => {
   stores.form.user_phone = event.target.value.replace(/\D/g, "");
+};
+const filterInputUser = async (event) => {
+  stores.form.user_name = event.target.value.replace(/[^\w]/g, '');
+  //stores.form.user_name = event.target.value.replace(/[`~%^&*!@#$()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 };
 const register = async () => {
   v$.value.$validate();

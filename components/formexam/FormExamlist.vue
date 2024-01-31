@@ -38,23 +38,27 @@
 
                 
                 <div class="course__details__wraper aos-init aos-animate " data-aos="fade-up" id="choice-container">
-                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': a.ec_id == x.ec_id }"
+                  <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': store.selectchoice == ins }"
                     style="border-style: groove;" id="choice-card">
                     <div id="choice">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
-                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index)">{{ a.ec_name }}</span>
+                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins)">{{ a.ec_name }}</span>
                        <div class="force-overflow"></div>
                         <span v-if="a.ec_image" @click="imagemodal(a.ec_image)"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="100"/></span>
                     </div>
                   </ul>
                 </div>
-                <div class="main__pagination__wrapper" data-aos="fade-up">
+                <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
                   <ul class="main__page__pagination">
                     <li @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
                     <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
                   </ul>
-                </div>
+                </div> -->
+               
+                <div>
+    <button class="full-width-button" style="background-color:chocolate" @click="updatecho()" v-if="store.selectchoice != null">{{ $t("confirm_answer") }}</button>
+  </div>
               </div>
             </div>
             <div class="col-xl-4 col-lg-4">
@@ -163,18 +167,22 @@ function image(i) {
   return im;
 }
 
-const choosechoice = async (choices, index) => {
-  let upchoice = await Updatechoice(choices);
-  await store.fetchExamTest();
-  await nextt(index);
+const choosechoice = async (choices, index,ins) => {
+  store.selectchoice = ins;
+  store.selectec_id = choices;
+
 };
+
+const updatecho = async () => {
+  let upchoice = await Updatechoice(store.selectec_id);
+ await store.fetchExamTest();
+}
 
 const example = async () => {
   store.isActive = true;
 };
 
 const imagemodal = async (image) => {
-
   store.image = image;
   store.PopupImage = true;
 };
@@ -238,7 +246,7 @@ function coverimage(i) {
   border-color: red !important;
 
   #choice {
-    background-color: #4CAF50;
+    background-color: #030303;
     color: white;
 
     #card-index {
@@ -252,7 +260,7 @@ function coverimage(i) {
   border-color: red !important;
 
   #answer {
-    background-color: #4CAF50;
+    background-color: #030303;
     color: white;
 
     #card-index {
@@ -416,6 +424,23 @@ function coverimage(i) {
 .scrollbar::-webkit-scrollbar-thumb {
   background-color: rgb(179, 179, 179);
   border-radius: 100px;
+}
+
+
+.full-width-button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px; /* Adjust padding as needed */
+  background-color: #007bff; /* Button background color */
+  color: #ffffff; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.full-width-button:hover {
+  background-color: #0056b3; /* Change background color on hover */
 }
 @media (max-width: 500px) {
   #choice-text {

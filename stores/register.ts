@@ -9,6 +9,7 @@ export const RegisterStore = defineStore({
   id: 'register',
   state: () => ({
     isLoading: false,
+    filteredText:"",
     form: {
       user_prefrix: null,
       user_firstname: "",
@@ -68,6 +69,13 @@ this.form.active = 1;
 this.form.user_confirmPassword = "";
 this.form.accp = null;
  
+    },
+
+    async FitterString(value) {
+
+      const filteredValue = value.replace(/[^\w\s]/gi, '');
+   console.log(filteredValue);
+
     }
   }
 })

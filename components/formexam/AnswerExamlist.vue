@@ -15,9 +15,9 @@
                     <h1> <i class="icofont-book-alt" ></i>{{ $t("page_exam_course_eq") }} {{store.exam.em_name}} </h1>
                     <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">{{ $t("page_exam_report_begin") }}</button></div>
                   </div>
-                  <div class="contact__email">
+                  <!-- <div class="contact__email">
                     <p style="font-size: 20px;">{{ $t("page_exam_report_details") }} <span style="font-size: 16px;">( {{ $t("page_exam_report_update") }}   {{ coverttime(store.exam.udp_date) }})</span></p>
-                  </div>
+                  </div> -->
 
                   <div class="course-info">
                     <div class="contact__email d-flex">
@@ -42,20 +42,24 @@
             </div>
           </div>
           <hr>
+
+ 
               <h4 class="mb-5">{{ $t("page_exam_report_ans") }}</h4>
-              <div v-if="store.examination" v-for="(item, index) in store.examination">
+              <div v-if="store.examination">
+             
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
                   <ul style="width: 100%">
-                    <h4 class="mb-0"> {{ $t("page_exam_report_cho") }} {{ index + 1 }} {{ item.eq_name }} {{ item.eq_id }}</h4>
+                    <h4 class="mb-0"> {{ $t("page_exam_report_cho") }} {{ store.answer_ind + 1 }} {{ store.examination[store.answer_ind].eq_name }} </h4>
                   </ul>
                 </div>
-             
+
+
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="answer-container" >
-                  <ul v-for="(a, ins) in item.choices"  style="border-style: groove;" 
+                  <ul v-for="(a, ins) in store.examination[store.answer_ind].choices"  style="border-style: groove;" 
                    id="answer-card">
                   
-                   <div v-if="(a.ec_index == item.eq_answer)">
-                    <div  class="answer-choice-currect" v-if="(a.ec_id == item.ec_id) && (a.ec_index == item.eq_answer)">
+                   <div v-if="(a.ec_index == store.examination[store.answer_ind].eq_answer)">
+                    <div  class="answer-choice-currect" v-if="(a.ec_id == store.examination[store.answer_ind].ec_id) && (a.ec_index == store.examination[store.answer_ind].eq_answer)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
@@ -74,7 +78,7 @@
                   </div>
 
                   <div v-else>
-                    <div  class="answer-choice-danger"  v-if="(a.ec_id == item.ec_id)">
+                    <div  class="answer-choice-danger"  v-if="(a.ec_id == store.examination[store.answer_ind].ec_id)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
@@ -83,7 +87,7 @@
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
                     
-                    <div  class="answer-choice" v-else="(a.ec_id != item.ec_id)">
+                    <div  class="answer-choice" v-else="(a.ec_id != store.examination[store.answer_ind].ec_id)">
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
@@ -93,7 +97,25 @@
                   </div>     
                   </ul>
                 </div>
+             
+          
               </div>
+
+              <nav aria-label="Page navigation example" v-if="store.examination.length > 0">
+        <ul class="pagination" style="justify-content: center;">
+          <li class="page-item" @click="ans_prev()">
+            <a class="page-link" href="javascript:void(0);" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0);">{{ store.answer_ind + 1 }} / {{ store.examination.length }}</a></li>
+          <li class="page-item" @click="ans_next()">
+            <a class="page-link" href="javascript:void(0);" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
               </div>
             </div>
           </div>
@@ -122,21 +144,7 @@ const { Previod } = ExamTestPostStore(); //Action
 const { countDownTimer } = ExamTestPostStore(); //Action
 
 const router = useRouter();
-//let start = await store.Start();
-// const number = 2; // Define the 'number' property
-//let start = await store.countDownTimer();
-// const end = await store.End();
-
-// const computedProperty = computed(() => {
-//     return store.timerCount
-// })
-
-// watch(computedProperty, (time) => {   //// countime
-//   if(time == 0){
-//     router.push({ path: '/exam'})
-//   }
-// })
-
+store.answer_ind = 0;
 
 function image(i) {
   let im =  ApiService.image(i);
@@ -168,6 +176,23 @@ const reset = async () => {
 //   store.isstart = true;
 //   await store.fetchExamTest();
 // };
+
+
+const ans_prev = async () => {
+  
+  if(store.answer_ind != 0){
+    store.answer_ind -= 1;
+  }
+
+};
+
+const ans_next = async () => {
+  if((store.answer_ind) != (store.examination.length) - 1){
+    store.answer_ind += 1;
+  }
+
+};
+
 
 
 

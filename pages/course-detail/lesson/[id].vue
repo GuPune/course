@@ -158,9 +158,6 @@
                               />
                             </div>
                           </div>
-
-                
-                        
                         </div>
                       </div>
                     </div>
@@ -229,25 +226,21 @@
                         >
                           <div class="row" style="padding: 5px">
                             <div
-                              class="col-lg-3 d-flex justify-content-center align-items-center"
-                            ></div>
-                            <div class="col-lg-9 col--30">
-                              <div
-                                class="author__content"
-                                style="margin: 30px 0"
-                              >
+                              class="col-lg-12 d-flex justify-content-center align-items-center"
+                            >
                                 <div class="author__text row">
-                                  <div class="col-lg-3 col-md-4">
+                                  <div class="col-lg-12 col-md-4">
                                     <p class="fs-4 fw-bold mb-0">
-                                      ไม่มีบทเรียนนี้
+                                      ບໍ່ມີບົດຮຽນສໍາລັບການນີ້
                                     </p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
                                     <p class="fs-4 fw-bold mb-0"></p>
                                   </div>
                                 </div>
-                              </div>
                             </div>
+                           
+                     
                           </div>
                         </div>
                       </div>
@@ -261,7 +254,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" v-if="store.data.course_id">
     <!-- <hr class="mb-5">
     <div class="my-4">
       <h1 class="text-center">
@@ -273,17 +266,73 @@
        <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-       {{ $t("lesson_q") }} : {{ store.data.cs_name }} ?
+       <!-- {{ $t("lesson_q") }} : {{ store.data.cs_name }} ? -->
+       {{ store.data.cs_name }}
       </button>
     </h2>
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
-        {{ $t("lesson_a") }} : {{ store.data.cs_description }}
+        <!-- {{ $t("lesson_a") }} : {{ store.data.cs_description }} -->
+        {{ store.data.cs_description }}
       </div>
     </div>
   </div>
     </div>
+
+
+
+
+
   </div>
+  <br>
+  <div class="container" v-if="store.data.course_id">
+          <div class="row">
+    <div class="col-xl-12 col-lg-12">
+      <!-- <div class="pagination-no_spacing">
+        <ul class="pagination" style="justify-content: center;">
+
+          <li @click="prev()"> <a href="javascript:void(0);" class="prev"  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="feather feather-chevron-left">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg></a>
+          </li>
+         
+            
+          <li><a href="javascript:void(0);">{{store.selelesson}}</a></li>
+       
+          <li><a href="javascript:void(0);"> / </a></li>
+          <li><a href="javascript:void(0);">{{store.total}}</a></li>
+          <li @click="next()"> <a href="javascript:void(0);" class="next" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg></a>
+          </li>
+        </ul>
+      </div> -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" style="justify-content: center;">
+          <li class="page-item" @click="prev()">
+            <a class="page-link" href="javascript:void(0);" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0);">{{store.selelesson}} / {{store.total}}</a></li>
+          <li class="page-item" @click="next()">
+            <a class="page-link" href="javascript:void(0);" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+   
+    </div>
+  </div>
+ </div>
+
+  
 </template>
 <script lang="ts" setup>
 definePageMeta({
@@ -294,6 +343,7 @@ import { storeToRefs } from "pinia";
 import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
 import YouTube from "vue3-youtube";
+import Swal from "sweetalert2";
 const router = useRouter();
 const store = LessonStore();
 const youtubeWidth = ref(620);
@@ -303,19 +353,24 @@ const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
 
-let lesson_id = await store.fetchLessonId(router.currentRoute.value.params.id);
 
-if (lesson_id == true) {
-  store.updateLogCourse();
-} else {
-}
+//let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
+
+// if (lesson_id == true) {
+//   store.updateLogCourse();
+// } else {
+// }
 if (process.client) {
+   Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+ let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
   window.addEventListener("resize", () => loadEdit(), store.isYoutube == false);
-
-  //   window.addEventListener('resize', function(event) {
-
-  //     updateWidth();
-  // }, true);
+  setTimeout(() => Swal.close(), 500);
 }
 
 async function loadEdit() {
@@ -346,14 +401,49 @@ const updateWidth = async () => {
     store.isYoutube = true;
   }
 };
+
+
+const start = async () => {
+
+  if (!store.timer) {
+    store.timer = setInterval(updateMillea, 1000);
+      }
+};
+
+const stop = async () => {
+  clearInterval(store.timer);
+  reset();
+};
+
+const updateMillea = async () => {
+ //let time = setInterval(updateMille, 1000);
+ store.seconds++;
+ if(store.seconds > 5){
+  stop();
+      }
+};
+
+const reset = async () => {
+      store.timer = null;
+      store.seconds = 0;
+};
+
+
 onMounted(() => {
   // window.addEventListener('resize', updateWidth);
   updateWidth(); // Call once when component is mounted to set the initial width
+  start();
+  
+
 });
+
+
 
 onBeforeUnmount(() => {
   // window.removeEventListener('resize', updateWidth);
 });
+
+
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
@@ -391,9 +481,52 @@ function coverttime(date) {
   const formattedDatetime = datetime.toLocaleString(undefined, options);
   return formattedDatetime;
 }
+
+
+const prev = async () => {
+    Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+
+if(store.selelesson != 1){
+store.selelesson--;
+await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
+await setTimeout(() => Swal.close(), 500);
+}
+setTimeout(() => Swal.close(), 500);
+// store.selelesson--;
+// await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
+};
+const next = async () => {
+      Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+  stop();
+  reset();
+start();
+if(store.selelesson != store.total){
+store.selelesson++;
+await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
+
+
+await setTimeout(() => Swal.close(), 500);
+}
+await setTimeout(() => Swal.close(), 500);
+
+};
 </script>
 
 <style>
+
+
 .blogarae__img__2 > img {
   max-height: 430cm;
   object-fit: cover;

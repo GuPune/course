@@ -73,6 +73,8 @@ const store = ExamPostStore()
 await store.Resetfetch()
 await store.fetchExam()
 
+
+
   const { countDownTimer } = ExamTestPostStore(); //Action
   </script>
   

@@ -247,5 +247,9 @@
   "form_d_vil":"Village field is required",
   "form_d_zip":"Field is required",
   "form_d_cou":" Country field is required",
-  "form_d_image":"Image  field is required"
+  "form_d_image":"Image  field is required",
+  "confirm_answer":"Confirm Answer",
+  "page_exam_report_stat":"Status",
+  "page_exam_report_status_pass":"Success",
+  "page_exam_report_status_faill":"Fail"
 }

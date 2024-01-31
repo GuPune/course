@@ -103,7 +103,7 @@
   "page_exam_report_code":"ລະຫັດຫຼັກສູດ :",
   "page_exam_report_total":"ຈໍານວນການສອບເສັງ :",
   "page_exam_report_time":"ເວລາສອບເສັງ :",
-  "page_exam_report_score":"ຄະແນນ",
+  "page_exam_report_score":"ຄະແນນທີ່ໄດ້ຮັບ",
   "page_exam_report_ans":"ຄໍາຕອບທົດສອບ",
   "page_exam_report_cho":"ຂໍ້.",
   "page_exam_report_cho1":"ຂໍ້",
@@ -246,5 +246,9 @@
   "form_d_vil":"ພື້ນທີ່ບ້ານແມ່ນຕ້ອງການ",
   "form_d_zip":"ລະຫັດໄປສະນີແມ່ນຕ້ອງການ",
   "form_d_cou":"ຕ້ອງລະບຸຊ່ອງຂໍ້ມູນປະເທດ",
-  "form_d_image":"ຊ່ອງຮູບພາບແມ່ນຕ້ອງການ"
+  "form_d_image":"ຊ່ອງຮູບພາບແມ່ນຕ້ອງການ",
+  "confirm_answer":"ຢືນຢັນຄໍາຕອບ",
+  "page_exam_report_stat":"ສະຖານະ",
+  "page_exam_report_status_pass":"ສໍາເລັດ",
+  "page_exam_report_status_faill":"ບໍ່​ສໍາ​ເລັດ"
 }
