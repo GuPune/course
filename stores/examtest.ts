@@ -82,7 +82,6 @@ search:"",
       const Exam = ExamPostStore();
       const Ex = Exam.listexam.filter(item => item.em_id == id);
  
-   
       if (Ex.length != 0) {
         this.exam = Ex[0];
         return true

@@ -134,10 +134,13 @@ let fitter = await store.setECid(route.params.id);
 if (fitter == true) {
 await store.fetchExamTest();
 await store.fetchExamTest();
-
+}
+if (fitter == false) {
+   navigateTo('/exam');
 }
 
-const router = useRouter();
+
+
 //let start = await store.Start();
 // const number = 2; // Define the 'number' property
 // const end = await store.End();
