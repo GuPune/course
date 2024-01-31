@@ -130,19 +130,11 @@ await storeexam.fetchExam()
 
 
 let fitter = await store.setECid(route.params.id);
+
 if (fitter == true) {
 await store.fetchExamTest();
 await store.fetchExamTest();
-//   if(a == false){
-//     await Swal.fire({
-//     position: "top-end",
-//     icon: "error",
-//     title: "Contact Admin",
-//     showConfirmButton: false
-//   });
 
-// store.GetopenModalStart = false;
-//   }
 }
 
 const router = useRouter();

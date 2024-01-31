@@ -57,7 +57,7 @@
                 </div> -->
                
                 <div>
-    <button class="full-width-button" style="background-color:chocolate" @click="updatecho()" v-if="store.selectchoice != null">ยืนยันคำตอบ</button>
+    <button class="full-width-button" style="background-color:chocolate" @click="updatecho()" v-if="store.selectchoice != null">{{ $t("confirm_answer") }}</button>
   </div>
               </div>
             </div>
@@ -183,7 +183,6 @@ const example = async () => {
 };
 
 const imagemodal = async (image) => {
-
   store.image = image;
   store.PopupImage = true;
 };

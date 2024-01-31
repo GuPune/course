@@ -353,6 +353,7 @@ const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
 
+
 //let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
 
 // if (lesson_id == true) {

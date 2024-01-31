@@ -23,6 +23,7 @@ export const ExamTestPostStore = defineStore({
     em_id: null,////param
     ind: 0,
     ec_score:0,
+    answer_ind:0,
     seconds: "",
     hours: "",
     minutes: "",
@@ -40,6 +41,11 @@ export const ExamTestPostStore = defineStore({
     updatetest: {
       ec_id: null,
       user_id: null,
+    },
+    formsearex_id:{
+page:1,
+per_page:50,
+search:"",
     },
 
     updatetime: {
@@ -69,27 +75,63 @@ export const ExamTestPostStore = defineStore({
 
 
   actions: {
-    setECid(id) {   //// set data
-      this.exam = null;
-      this.updatetime.em_id = id;
-      this.formsearchtest.em_id = parseInt(id);
-      const Exam = ExamPostStore();
-      const Ex = Exam.listexam.filter(item => item.em_id == id);
+    // setECid(id) { 
+    //   this.exam = null;
+    //   this.updatetime.em_id = id;
+    //   this.formsearchtest.em_id = parseInt(id);
+    //   const Exam = ExamPostStore();
+    //   const Ex = Exam.listexam.filter(item => item.em_id == id);
+ 
    
-      if (Ex.length != 0) {
-        this.exam = Ex[0];
-        
-        return true
-      } else {
-        this.CheckDataNull(Ex.length)
-        return false;
-      }
-    },
+    //   if (Ex.length != 0) {
+    //     this.exam = Ex[0];
+    //     return true
+    //   } else {
+    //     this.CheckDataNull(Ex.length)
+    //     return false;
+    //   }
+    // },
     async CheckDataNull(item) {
-      if(item == 0){
+
+      if(item.length == 0){
         this.isstart = false;
       }
     },
+
+
+    async setECid(id) { 
+      this.exam = null;
+      this.updatetime.em_id = id;
+      this.formsearchtest.em_id = parseInt(id);
+    //  const Exam = ExamPostStore();
+    //  const Ex = Exam.listexam.filter(item => item.em_id == id);
+
+
+ try {
+  const data = await ApiService.post('/exam/question/'+id+'/list',this.formsearex_id).then(response => {
+   
+          if (response.data.data.length != 0) {
+        this.exam = response.data.data;
+        return true
+      } else {
+        this.CheckDataNull(response.data.data)
+        return false;
+      }
+  });
+  return data
+} catch (error) {
+  return false;
+} 
+   
+      // if (Ex.length != 0) {
+      //   this.exam = Ex[0];
+      //   return true
+      // } else {
+      //   this.CheckDataNull(Ex.length)
+      //   return false;
+      // }
+    },
+
 
     async fetchExam() {
       try {
@@ -106,6 +148,7 @@ export const ExamTestPostStore = defineStore({
 
     async ResetExam() {
       this.ind = 0;
+      this.answer_ind = 0;
       this.formsearchtest.clear_cach = 1;
       this.isstart = true;
     

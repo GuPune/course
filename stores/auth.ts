@@ -575,7 +575,7 @@ if(this.dltcard){
 
         for (let i = 0; i < 1000; i++) {
           const data = await ApiService.get('/user/get/202').then(response => {
-            console.log(response);
+           
                 });
             
       

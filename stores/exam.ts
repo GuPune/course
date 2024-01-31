@@ -61,7 +61,6 @@ this.formsearchcourse.search = '';
       this.total = response.data.total;
       this.total_page = response.data.total_page;
       this.total_filter = response.data.total_filter;
-      console.log(this.total_filter);
      });
     return true
     } catch (error) {
@@ -78,7 +77,6 @@ this.formsearchcourse.search = '';
       try {
       const data = await ApiService.post('/exam/question/5/list', this.formsearchcourse).then(response => {
         this.listexamqu = response.data.data;
-  
         this.fetchExamquest()
      
        });

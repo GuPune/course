@@ -145,11 +145,12 @@ export const HistoryStore = defineStore({
     async HistoryByExam(em_id) {
       const history = [];
       const history_byid = await ApiService.get('/exam/history/?em_id=' + em_id + '&user_id=' + this.user_id + '').then(response => {
+       
         for (var i = 0; i < response.data.length; i++) {
           if (response.data.length > 0) {
             let score = this.percentage(response.data[i].er_score_total, response.data[i].er_question_total);
        
-            const a = { er_id: response.data[i].er_id, crt_date: response.data[i].crt_date, er_score_total: response.data[i].er_score_total, er_question_total: response.data[i].er_question_total, er_score: score }
+            const a = { status:response.data[i].status,er_id: response.data[i].er_id, crt_date: response.data[i].crt_date, er_score_total: response.data[i].er_score_total, er_question_total: response.data[i].er_question_total, er_score: score }
             history.push(a)
           }
         }
