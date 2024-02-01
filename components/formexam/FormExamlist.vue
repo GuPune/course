@@ -56,9 +56,9 @@
                   </ul>
                 </div> -->
                
-                <div>
-    <button class="full-width-button" style="background-color:chocolate" @click="updatecho()" v-if="store.selectchoice != null">{{ $t("confirm_answer") }}</button>
-  </div>
+                <div class="submitExam">
+                  <button class="full-width-button submitExamBtn" style="background-color:chocolate" @click="updatecho()" v-if="store.selectchoice != null">{{ $t("confirm_answer") }}</button>
+                </div>
               </div>
             </div>
             <div class="col-xl-4 col-lg-4">
@@ -465,6 +465,21 @@ function coverimage(i) {
   .timeText {
     margin-bottom: 0px;
     color: white;
+  }
+}
+
+@media (max-width: 767px) {
+  .submitExam {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .submitExam > .submitExamBtn {
+    width: 80%;
+    margin-right: 30px;
   }
 }
 </style>
