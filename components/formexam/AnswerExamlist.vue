@@ -15,11 +15,12 @@
                     <h1> <i class="icofont-book-alt" ></i>{{ $t("page_exam_course_eq") }} {{store.exam.em_name}} </h1>
                     <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">{{ $t("page_exam_report_begin") }}</button></div>
                   </div>
+                  <br>
                   <!-- <div class="contact__email">
                     <p style="font-size: 20px;">{{ $t("page_exam_report_details") }} <span style="font-size: 16px;">( {{ $t("page_exam_report_update") }}   {{ coverttime(store.exam.udp_date) }})</span></p>
                   </div> -->
 
-                  <div class="course-info">
+                  <div class="course-info" id="dis-pc">
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-database-fill"></i></div>
                       <p style="font-size: 20px;">{{ $t("page_exam_report_code") }} <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_code}}</span></p>
@@ -32,6 +33,13 @@
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>
                       <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_time}}</span></p>
                     </div>
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-check-circle"></i></div>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
+                    </div>
+                  </div>
+
+                  <div class="course-info"  id="dis-mobile">
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-check-circle"></i></div>
                       <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
@@ -235,6 +243,11 @@ function coverttime(date) {
 .xt3e5 {
   padding: 30px 50px 10px 10px;
 }
+#dis-mobile {
+  display: none;
+}
+
+
 
 .hover-button:hover {
   border: 2px solid #b217b4;
@@ -401,10 +414,30 @@ function coverttime(date) {
 }
 @media (max-width: 560px) {
   .course-info { grid-template-columns: repeat(1, 1fr); }
+  #dis-pc {
+  display: none;
 }
+  #dis-mobile {
+  display: block;
+}
+}
+
+@media (max-width: 500px) {
+
+  #dis-mobile {
+  display: block;
+}
+}
+
 @media (max-width: 410px) {
   .btnRestart{
     width: 100%;
   }
+  #dis-mobile {
+  display: block;
+}
+#dis-pc {
+  display: none;
+}
 }
 </style>
