@@ -15,6 +15,7 @@ export const CoursePostStore = defineStore({
       per_page: 3,
       search: '',
     },
+    user_id:null,
     total_filter:0,
     course_lesson:null,
     course:{
@@ -103,7 +104,7 @@ this.listcourse = arr;
 
 
     async fetchCourseId(id){
-    
+    this.course_id = id;
       try {
         const data = await ApiService.get('/course/get/' + id).then(response => {
        this.course_lesson = response.data
@@ -119,26 +120,38 @@ this.listcourse = arr;
    
       try {
         const data = await ApiService.post('/course/lesson/list/' + id,this.formsearchlesson).then(response => {
-         
           this.lesson = response.data.data
           this.total_lesson = response.data.total
           this.total_filter_lesson = response.data.total_filter
           this.total_page_lesson = response.data.total_page
           this.lesson_current_page = response.data.current_page
-
-        
+          console.log('1');
+          return true;
         });
         return data;
       } catch (error) {
-
+        return false;
       }
      
-      return true
+
+    },
+
+    async addlessread(){
+
+      if(this.lesson.length > 0){
+        for (var i = 0; i < this.lesson.length; i++) {
+          console.log(this.lesson[i].cs_id);
+          const data = await ApiService.get('/course/learn/status?cs_id='+this.lesson[i].cs_id+'&user_id='+this.user_id+'&course_id='+this.course_id);
+          this.lesson[i].studied = data.data.studied
+    
+      }
+
+
+      }
     },
 
     async updateLogCourse() {
       console.log('updateLogCourse',this.cs_id);
-
     },
 
     async setCurrentPage(page) {

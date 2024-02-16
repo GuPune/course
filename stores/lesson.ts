@@ -10,7 +10,8 @@ export const LessonStore = defineStore({
     user_id: null,
     formlean: {
       user_id: null,
-      cs_id: null
+      cs_id: null,
+      course_id: null,
     },
     isYoutube:false,
     seconds: 0,
@@ -74,6 +75,7 @@ return true
       const selelesson = localStorage.getItem('selelesson');
       this.selelesson = selelesson;
       this.formcourse.page = parseInt(this.selelesson);
+      this.formlean.course_id = id
 
       // ((int.parse(page) * int.parse(perPage)) - ((int.parse(perPage) -  index)) +  1)
   
@@ -104,11 +106,13 @@ console.log(error);
 
     },
     async updateLogCourse() {
-
+  
       this.formlean.cs_id = this.cs_id;
       this.formlean.user_id = this.user_id;
+    
       const data = await ApiService.post('/log/lesson/create', this.formlean).then(response => {
-
+        console.log(this.formlean);
+        console.log(response);
       });
     },
 

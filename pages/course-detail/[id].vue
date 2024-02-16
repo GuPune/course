@@ -142,7 +142,7 @@
                           >
 
                              
-                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }} 
+                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}  {{ x.studied }}
                           </button>
 
                           
@@ -252,11 +252,15 @@ import ApiService from "@/services/api.service";
 const router = useRouter();
 const store = CoursePostStore();
 
+const auth = useAuthStore()
+store.user_id = auth.user_id
 
 
 let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
+let addlessread = await store.addlessread();
+
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
 import { reactive } from "vue";
@@ -272,6 +276,7 @@ const onPlay = (id) => {
 const choose = async (id,index,x) => {
 
 await store.SelectLesson(id,index,x)
+
  router.push('/course-detail/lesson/'+id);
 };
 
@@ -290,8 +295,9 @@ const onCanplay = (ev) => {
 
 const setCurrentPageLesson = async (page) => {
 
-  store.setCurrentPageLesson(page)
-  store.fetchCourseLessId(router.currentRoute.value.params.id)
+  await store.setCurrentPageLesson(page)
+  await store.fetchCourseLessId(router.currentRoute.value.params.id)
+   await store.addlessread();
 };
 
 const { getisActiveCourse } = storeToRefs(store);
