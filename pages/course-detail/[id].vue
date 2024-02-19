@@ -142,7 +142,12 @@
                           >
 
                              
-                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}  {{ x.studied }}
+                            ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}  
+                            <span v-if="x.studied == true" style="padding: 5px;">Read 
+                            </span>
+                            <span v-else style="padding: 5px;">Unread
+                            </span>
+
                           </button>
 
                           
