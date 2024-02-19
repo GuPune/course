@@ -2,6 +2,7 @@
 
 
 <template>
+  {{ store.seconds }}
   <div v-if="store.data.course_id">
     <div>
       <div class="container">
@@ -411,6 +412,7 @@ const start = async () => {
 };
 
 const stop = async () => {
+  await store.updateLogCourse();
   clearInterval(store.timer);
   reset();
 };
