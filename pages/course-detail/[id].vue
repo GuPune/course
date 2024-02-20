@@ -144,12 +144,14 @@
                              
                             <div class="d-flex justify-content-between w-100">
                               <div>
-                                ບົດຮຽນ # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}  
+                                {{ $t("lesson") }} # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}  
                               </div>
                               <div>
-                                <span v-if="x.studied == true" style="padding: 5px;">Read </span>
-                                <span v-else style="padding: 5px;">Unread</span>
+                                <span v-if="x.studied == true" style="padding: 5px;">  {{ $t("lesson_read") }} </span>
+                                <span v-else style="padding: 5px;">  {{ $t("lesson_unread") }}</span>
                               </div>
+
+
                             </div>
 
                           </button>
