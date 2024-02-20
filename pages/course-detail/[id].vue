@@ -118,11 +118,11 @@
                     </ul>
                   </div>
                 </div>
-                <div
+                <div   v-if="store.lesson.length > 0"
                   class="tab-content tab__content__wrapper"
                   id="myTabContent"
                 >
-                  <div
+                  <div 
                     class="tab-pane fade active show"
                     id="projects__two"
                     role="tabpanel"
@@ -229,6 +229,34 @@
                     </div>
                   </div>
                 </div>
+
+
+           
+                <div v-else
+                      class="accordion content__cirriculum__wrap"
+                      id="accordionExample"
+                    >
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button 
+                            class="accordion-button collapsed mt-0"
+                            type="button"
+                          >
+
+                             
+                            <div class="d-flex justify-content-between w-100">
+                              <div>
+                                ไม่มีบทเรียน # 
+                              </div>
+                             
+                            </div>
+
+                          </button>
+                        </h2>
+                      
+                      </div>
+                    </div>
+
               </div>
             </div>
           </div>
@@ -267,6 +295,7 @@ let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
 let addlessread = await store.addlessread();
+
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
 
