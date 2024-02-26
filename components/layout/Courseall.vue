@@ -3,17 +3,13 @@
         <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
             role="tabpanel" aria-labelledby="projects__one">
             <div class="row">
+
                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12" data-aos="fade-up"
                     v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
                     <div class="gridarea__wraper gridarea__wraper__2">
                         <div class="gridarea__img">
                             <a><img :src="coverimage(item.course_cover)" alt="grid" width="340" height="212"></a>
-                            <!-- <div class="gridarea__small__button">
-                        <div class="grid__badge">Data & Tech</div>
-                    </div>
-                    <div class="gridarea__small__icon">
-                        <a href="#"><i class="icofont-heart-alt"></i></a>
-                    </div> -->
+              
 
                         </div>
                         <div class="gridarea__content">
@@ -31,11 +27,7 @@
                             <div class="gridarea__heading">
                                 <h3><a>{{ item.course_name }}</a></h3>
                             </div>
-                            <!-- <div class="gridarea__price">
-                        $32.00 <del>/ $67.00</del>
-                        <span> <del class="del__2">Free</del></span>
-
-                    </div> -->
+           
                             <div class="gridarea__bottom">
 
                                 <a href="instructor-details.html">
@@ -98,14 +90,13 @@
                                     </div>
                                 </div>
                             </a>
+                            
 
-                            <!-- <div class="gridarea__star">
-                        <i class="icofont-star"></i>
-                        <i class="icofont-star"></i>
-                        <i class="icofont-star"></i>
-                        <i class="icofont-star"></i>
-                        <span>(44)</span>
-                    </div> -->
+                        <div class="gridarea__star">
+                        
+                            <i class="icofont-book-alt" v-if="item.is_complete == 1"></i> 
+                      
+                    </div>
                         </div>
 
                         <div class="gridarea__details">
@@ -125,21 +116,6 @@
 
     </div>
 
-<!-- <div>
- <div class="paginating-container" v-if="store.total_filter > store.limit_page">
-      <div class="dataTables_paginate paging_simple_numbers" id="zero-config_paginate">
-        <ul class="pagination">
-          <li class="paginate_button page-item previous" id="zero-config_previous"  @click="pred()">
-          <a href="#" aria-controls="zero-config" data-dt-idx="0" tabindex="0" class="page-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a></li>
-            <li class="paginate_button page-item "  v-for="page in store.total" :key="page">
-              <a href="#" aria-controls="zero-config" data-dt-idx="1" tabindex="0" class="page-link" @click="setCurrentPageclick(page)" >
-              {{page}}
-            </a>
-              </li>
-            <li class="paginate_button page-item next" id="zero-config_next" @click="next()"><a href="#" aria-controls="zero-config" data-dt-idx="4" tabindex="0" class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></li></ul></div>
-       </div>
-    </div> -->
 
     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_filter > store.limit_page">
                             <ul class="main__page__pagination">

@@ -9,6 +9,7 @@ export const CoursePostStore = defineStore({
     coursecategories:[],
     listcourse:[],
     lessonlist:[],
+    lesson:[],
     total:null,
     formsearchcourse: {
       page: 1,
@@ -130,6 +131,9 @@ this.listcourse = arr;
         });
         return data;
       } catch (error) {
+        console.log('catch');
+      this.lesson = [];
+      this.total_page_lesson = 0
         return false;
       }
      
@@ -138,9 +142,11 @@ this.listcourse = arr;
 
     async addlessread(){
 
+  
+console.log(this.lesson.length);
       if(this.lesson.length > 0){
         for (var i = 0; i < this.lesson.length; i++) {
-          console.log(this.lesson[i].cs_id);
+      
           const data = await ApiService.get('/course/learn/status?cs_id='+this.lesson[i].cs_id+'&user_id='+this.user_id+'&course_id='+this.course_id);
           this.lesson[i].studied = data.data.studied
     
