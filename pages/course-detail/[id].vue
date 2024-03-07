@@ -127,7 +127,7 @@
                     id="projects__two"
                     role="tabpanel"
                     aria-labelledby="projects__two"
-                    v-for="(x, index) in store.lesson"
+                    v-for="(x, index) in store.lesson_item"
                   >
            
                     <div
@@ -136,7 +136,7 @@
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                          <button @click="choose(router.currentRoute.value.params.id,index,(store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1)"
+                          <button @click="choose(router.currentRoute.value.params.id,index,(store.selectlesson_form_menu_less.page * store.selectlesson_form_menu_less.per_page) - (store.selectlesson_form_menu_less.per_page -  index) +  1)"
                             class="accordion-button collapsed mt-0"
                             type="button"
                           >
@@ -144,7 +144,7 @@
                              
                             <div class="d-flex justify-content-between w-100">
                               <div>
-                                {{ $t("lesson") }} # {{ (store.lesson_current_page * store.formsearchlesson.per_page) - (store.formsearchlesson.per_page -  index) +  1 }}  
+                                {{ $t("lesson") }} # {{ (store.selectlesson_form_menu_less.page * store.selectlesson_form_menu_less.per_page) - (store.selectlesson_form_menu_less.per_page -  index) +  1 }}  
                               </div>
                               <div>
                                 <span v-if="x.studied == true" style="padding: 5px;">  {{ $t("lesson_read") }} </span>
@@ -266,10 +266,10 @@
       </div>
     </div>
 
-    <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page_lesson > 1">
+    <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.selectlesson_form_menu_less.total_page > 1">
                             <ul class="main__page__pagination">
-                                <li  v-for="page in store.total_page_lesson" :key="page"  @click="setCurrentPageLesson(page)" >
-                                    <a class="active" href="#" v-if="store.formsearchlesson.page == page">{{page}}
+                                <li  v-for="page in store.selectlesson_form_menu_less.total_page" :key="page"  @click="setCurrentPageLesson(page)" >
+                                    <a class="active" href="#" v-if="store.selectlesson_form_menu_less.page == page">{{page}}
                                     </a>
                                     <a  href="#" v-else>{{page}}
                                     </a>
@@ -297,6 +297,8 @@ let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
 let addlessread = await store.addlessread();
+let group = await store.fetchGrouplist();
+let pagin = await store.paginatedItems();
 
 
 let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
@@ -333,9 +335,10 @@ const onCanplay = (ev) => {
 
 const setCurrentPageLesson = async (page) => {
 
-  await store.setCurrentPageLesson(page)
-  await store.fetchCourseLessId(router.currentRoute.value.params.id)
-   await store.addlessread();
+  await store.setCurrentPageLessonNew(page)
+  let pagin = await store.paginatedItems();
+//  await store.fetchCourseLessId(router.currentRoute.value.params.id)
+//   await store.addlessread();
 };
 
 const { getisActiveCourse } = storeToRefs(store);

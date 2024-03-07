@@ -33,14 +33,51 @@ export const LessonStore = defineStore({
       page: 1,
       per_page: 1,
       search: "",
-    }
+    },
+    formgroup: {
+      page: 1,
+      per_page: 50,
+      search: "",
+    },
+    group:[],
+    formsearchlessongroup:{
+      page: 1,
+      per_page: 50,
+      search: '',
+    },
   }),
   getters: {
 
   },
   actions: {
 
+    async fetchGrouplist() {
+      this.group = [];
+      const checkpag =  await ApiService.post('/course/group/all',this.formsearchlessongroup)
 
+
+    if(checkpag){
+      if(checkpag.data.total_page > 1){
+        for(let i = 0; i < checkpag.data.total_page; i++){
+          this.formsearchlessongroup.page = i + 1;
+          const data =  await ApiService.post('/course/group/all',this.formsearchlessongroup)
+          // const Storage = LessonStore();
+          for(let i = 0; i < data.data.data.length; i++){
+            this.group.push(data.data.data[i]);
+          }
+      }
+  
+      }else {
+        const data =  await ApiService.post('/course/group/all',this.formsearchlessongroup)
+        this.group = data.data.data
+      }
+
+    }
+
+    console.log(this.group);
+  
+      
+    },
 
 
     async fetchLessonId(id) {

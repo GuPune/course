@@ -25,22 +25,28 @@ export const CoursePostStore = defineStore({
     },
     formsearchlesson: {
       page: 1,
-      per_page: 10,
+      per_page: 5,
       search: '',
+    },
+
+    selectlesson_form_menu_less: {
+      per_page: 5,
+      total_page: 0,
+      page: 1,
+      search: '',
+      cg_id: 0,
     },
     total_lesson:null,
     total_filter_lesson:null,
     total_page_lesson:null,
-    cs_id:null
-    // course: {
-    //   course_id: null,
-    //   course_cover: null,
-    //   course_code: null,
-    //   course_name: null,
-    //   course_description: null,
-    //   user_create: null,
-    //   lessonlist:[]
-    // },
+    cs_id:null,
+    group:[],
+    formsearchlessongroup:{
+      page: 1,
+      per_page: 50,
+      search: '',
+    },
+
   }),
   getters: {
     getisActiveCourse: (state) => {
@@ -118,32 +124,49 @@ this.listcourse = arr;
     },
     
     async fetchCourseLessId(id){
-   
-      try {
-        const data = await ApiService.post('/course/lesson/list/' + id,this.formsearchlesson).then(response => {
-          this.lesson = response.data.data
-          this.total_lesson = response.data.total
-          this.total_filter_lesson = response.data.total_filter
-          this.total_page_lesson = response.data.total_page
-          this.lesson_current_page = response.data.current_page
-          console.log('1');
-          return true;
-        });
-        return data;
-      } catch (error) {
-        console.log('catch');
+
       this.lesson = [];
-      this.total_page_lesson = 0
-        return false;
+      const checkpag =  await ApiService.post('/course/lesson/list/'+ id,this.formsearchlesson)
+
+
+    if(checkpag){
+      if(checkpag.data.total_page > 1){
+        for(let i = 0; i < checkpag.data.total_page; i++){
+          this.formsearchlesson.page = i + 1;
+          const data =  await ApiService.post('/course/lesson/list/'+ id,this.formsearchlesson)
+          // const Storage = LessonStore();
+          for(let i = 0; i < data.data.data.length; i++){
+            this.lesson.push(data.data.data[i]);
+          }
       }
-     
+  
+      }else {
+        const data =  await ApiService.post('/course/lesson/list/'+ id,this.formsearchlesson)
+        this.lesson = data.data.data
+      }
+
+   console.log(this.lesson);
+      // try {
+      //   const data = await ApiService.post('/course/lesson/list/' + id,this.formsearchlesson).then(response => {
+      //     this.lesson = response.data.data
+      //     this.total_lesson = response.data.total
+      //     this.total_filter_lesson = response.data.total_filter
+      //     this.total_page_lesson = response.data.total_page
+      //     this.lesson_current_page = response.data.current_page
+      
+      //     return true;
+      //   });
+      //   return data;
+      // } catch (error) {
+      // this.lesson = [];
+      // this.total_page_lesson = 0
+      //   return false;
+      // }
+    }
 
     },
 
     async addlessread(){
-
-  
-console.log(this.lesson.length);
       if(this.lesson.length > 0){
         for (var i = 0; i < this.lesson.length; i++) {
       
@@ -166,7 +189,9 @@ console.log(this.lesson.length);
 
     async setCurrentPageLesson(page) {
       this.formsearchlesson.page = page
-     
+    },
+    async setCurrentPageLessonNew(page) {
+      this.selectlesson_form_menu_less.page = page
     },
 
     async SelectLesson(id,index,x) {
@@ -175,8 +200,43 @@ console.log(this.lesson.length);
       this.course_select_page = this.formsearchlesson.page;
      const cour = localStorage.setItem('course_select_id', this.course_select_id)
       const selelesson = localStorage.setItem('selelesson',x)
-   //   const cour_ind = localStorage.setItem('course_index', this.course_index)
-   //   const coursel_page = localStorage.setItem('course_select_page', this.formsearchlesson.page)
+    },
+
+    async fetchGrouplist() {
+      this.group = [];
+      const checkpag =  await ApiService.post('/course/group/all',this.formsearchlessongroup)
+
+
+    if(checkpag){
+      if(checkpag.data.total_page > 1){
+        for(let i = 0; i < checkpag.data.total_page; i++){
+          this.formsearchlessongroup.page = i + 1;
+          const data =  await ApiService.post('/course/group/all',this.formsearchlessongroup)
+          // const Storage = LessonStore();
+          for(let i = 0; i < data.data.data.length; i++){
+            this.group.push(data.data.data[i]);
+          }
+      }
+  
+      }else {
+        const data =  await ApiService.post('/course/group/all',this.formsearchlessongroup)
+        this.group = data.data.data
+      }
+
+    }
+
+    },
+
+    async paginatedItems() {
+
+
+   
+
+      const startIndex = (this.selectlesson_form_menu_less.page - 1) * this.selectlesson_form_menu_less.per_page;
+      const endIndex = startIndex + this.selectlesson_form_menu_less.per_page;
+      this.selectlesson_form_menu_less.total_page = Math.ceil(this.lesson.length / this.selectlesson_form_menu_less.per_page);
+      this.lesson_item = this.lesson.slice(startIndex, endIndex);
+     // this.max = endIndex;
     },
 
 
