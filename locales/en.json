@@ -152,7 +152,7 @@
   "page_verify_zip":"Select Zipcode",
   "page_verify_display_image":"Image display here:",
   "page_verify_step1":" 1-Step Verification",
-  "page_verify_step2":" 2-Step Verification",
+  "page_verify_step2":" Step Verification",
   
   "page_verify_step3":"OTP ไม่ถูกต้อง รึ กรอกไม่ครบ",
   "page_verify_step4":" 2-Step Verification",

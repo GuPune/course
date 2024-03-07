@@ -35,12 +35,19 @@ export const VerifyStore = defineStore({
       per_page: 200,
       search: '',
     },
+    formvrdls: {
+      student_id:null,
+      user_id:null
+    },
     zipcode: [],
     country: [],
   }),
   getters: {
     getForm(state) {
       return state.formdetail;
+    },
+    getFormStuden(state) {
+      return state.formvrdls;
     },
     getUser_id(state) {
       const User = useAuthStore();
@@ -105,24 +112,18 @@ this.formdetail.country_id = null
 
       var retrievedObject = localStorage.getItem('Userid');
       this.formdetail = JSON.parse(retrievedObject)
-      this.formotp = { otp_code: otpconfirm, user_id: this.formdetail.user_id };
+      this.formotp = { otp_code: otpconfirm, user_id: this.user_id };
    
       const send = await ApiService.put('/user/verify_otp', this.formotp).then(response => {
+    
         if(response.status === 204){
-          this.formdetail.verify_account = 'phone_unactive';
-          let saveuser =  this.SaveUserVerify()
+        //  let saveuser =  this.SaveUserVerify()
           return false;
+        }else {
+          return true;
         }
         
-        if (response.data == '') {
-          return false;
-        } else {
-          this.formdetail.verify_account = 'phone_active';
-          let saveuser =  this.SaveUserVerify()
-      //    this.delay(500);
-        //  console.log(saveuser);
-          return saveuser;
-        }
+
       });
    
   
@@ -164,6 +165,20 @@ this.formdetail.country_id = null
         } catch (error) {
           return false;
         }
+      }
+    },
+
+    async CheckVR() {
+this.formvrdls.user_id = 104;
+
+      try {
+        const data = await ApiService.post('/vrdls/verify/student', this.formvrdls).then(response => {
+
+return true
+        });
+        return true
+      } catch (error) {
+        return false;
       }
     },
 

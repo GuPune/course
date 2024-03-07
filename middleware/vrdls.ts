@@ -9,40 +9,47 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const user_id = useCookie('user_id'); // get token from cookies
   const User = useAuthStore();
   User.user_id = user_id.value;
-  
+
 
   if (token.value) {
+    // check if value exists
+    // todo verify if token is valid, before updating the state
     authenticated.value = true; // update the state to authenticated
+
     const checkveri = await ApiService.get('/user/get/'+user_id.value);
-   if(Object.keys(checkveri.data.detail).length === 0){
 
-    verify.value = false;
-    return navigateTo('/verifyconfirm');
-  }else {
-    if(checkveri.data.detail.verify_account == 'system_active') {
-      verify.value = true;
-    }else{
-   
+    if(Object.keys(checkveri.data.detail).length === 0){
       verify.value = false;
-      return navigateTo('/verifyconfirm');
+    }else {
+      if((checkveri.data.detail.verify_account == 'phone_active') ) {
+      
+      verify.value = false;
+     // return navigateTo('/');
+      }else{
+    verify.value = true;
+       return navigateTo('/');
+      }
     }
+
   }
-  }
-
-
-
- 
-
-  // if token exists and url is /login redirect to homepage
-  if (token.value && to?.name === 'login') {
-    
-    return navigateTo('/');
-  }
-
-  // if token doesn't exist redirect to log in
   if (!token.value && to?.name !== 'login') {
-    authenticated.value = false;
     abortNavigation();
     return navigateTo('/login');
   }
 })
+
+const obj = [
+  {
+    user_type: 1,
+    user_type_name:"ຜູ້​ບໍ​ລິ​ຫານ",
+  },
+  {
+    user_type: 2,
+    user_type_name:"ເຈົ້າໜ້າທີ່",
+  },
+  {
+    user_type: 3,
+    user_type_name:"ປະຊາກອນ",
+  },
+ 
+];

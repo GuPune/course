@@ -70,6 +70,7 @@ const input1 = ref(null);
     const input6 = ref(null);
 
 const store = VerifyStore()
+store.user_id = value
 const { setOTP } = VerifyStore();
 const { verifyOTP } = VerifyStore();
 
@@ -93,7 +94,10 @@ const confirm = async () => {
   });
      let send = await verifyOTP();
      if(send == true){
-await auth.getProfile()
+let profile = await auth.getProfile()
+let updatestatus = await auth.UpdateProfileafterOtp()
+console.log(updatestatus);
+
  await setTimeout(() => Swal.close(), 500);
 await Swal.fire({
     position: "top-end",

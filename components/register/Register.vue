@@ -76,7 +76,8 @@
                       v$.user_firstname.$error,
                     'border-[#42d392] ': !v$.user_firstname.$invalid,
                   }"
-                  @change="v$.user_firstname.$touch"
+                  @change="v$.user_firstname.$touch" 
+                  @input="filterInputFirstname"
                   autocomplete="off"
                 />
 
@@ -117,6 +118,7 @@
                   @change="v$.user_lastname.$touch"
                   autocomplete="off"
                   maxlength="20" 
+                  @input="filterInputLasttname"
                 />
                 <span v-if="locale == 'la'">
                   <span
@@ -191,18 +193,18 @@
             <div class="col-xl-12">
               <div class="login__form">
                 <label class="form__label"
-                  >{{ $t("tel") }}<span style="color: red"> * </span>
+                  >{{ $t("tel") }}<span style="color: red"> * ພຽງ​ແຕ່​ເບີ​ໂທລະ​ສັບ​ມື​ຖື​  </span>
                 </label>
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="85620xxxxxxxx"
+                  placeholder="554xxxxx"
                   v-model="stores.form.user_phone"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_phone.$error,
                     'border-[#42d392] ': !v$.user_phone.$invalid,
                   }"
-                  maxlength="20" 
+                  maxlength="8" 
                   @change="v$.user_phone.$touch"
                   autocomplete="off"
                   @input="filterInput"
@@ -445,9 +447,33 @@ const filterInput = async (event) => {
   stores.form.user_phone = event.target.value.replace(/\D/g, "");
 };
 const filterInputUser = async (event) => {
-  stores.form.user_name = event.target.value.replace(/[^\w]/g, '');
-  //stores.form.user_name = event.target.value.replace(/[`~%^&*!@#$()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.form.user_name = stores.form.user_name.substring(0, stores.form.user_name.length - 1);
+        return;
+      }
+      stores.form.user_name = event.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
 };
+
+const filterInputFirstname = async (event) => {
+      const key = event.data;
+      if (event.data === ' ') {
+        stores.form.user_firstname = stores.form.user_firstname.substring(0, stores.form.user_firstname.length - 1);
+        return;
+      }
+      stores.form.user_firstname = event.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+
+};
+const filterInputLasttname = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.form.user_lastname = stores.form.user_lastname.substring(0, stores.form.user_lastname.length - 1);
+        return;
+      }
+      stores.form.user_lastname = event.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+};
+
+
 const register = async () => {
   v$.value.$validate();
     if (!v$.value.$error) {
@@ -470,7 +496,8 @@ const register = async () => {
   let login = await authenticateUser(formData);
 
   await ResetForm();
-   router.push('/verifyconfirm');
+  //  router.push('/verifyconfirm');
+   router.push('/otpconfirm');
      }else{
       Swal.fire({
           title: 'Unsuccessful!',

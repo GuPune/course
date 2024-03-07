@@ -254,7 +254,7 @@
                     <input
                       type="text"
                       name="subject"
-                      placeholder="85620xxxxxxxx"
+                      placeholder="554xxxxx"
                       v-model="store.formuser.user_phone"
                    :disabled="store.isDisabled"
                          :class="{
@@ -264,12 +264,31 @@
                       }"
                       @change="v$.user_phone.$touch"
                       autocomplete="off"
-                      maxlength="15"
+                      maxlength="8"
                     />
                     <div class="contact__icon">
                       <i class="icofont-ui-call"></i>
                     </div>
                   </div>
+
+                
+                  <div v-if="locale == 'la'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+             
+                    >* ພຽງ​ແຕ່​ເບີ​ໂທລະ​ສັບ​ມື​ຖື​ </span
+                  >
+                 </div>
+
+                 <div v-if="locale == 'en'">
+                    <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                
+                    >Only mobile numbers</span
+                  >
+                 </div>
         
                   <div v-if="locale == 'la'">
                     <span
