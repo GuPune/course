@@ -61,7 +61,7 @@
 
             </div>
 
-                     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page > 0">
+                     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page > 1">
                             <ul class="main__page__pagination">
                                 <li @click="pred()"><a href="#"><i class="icofont-double-left"></i></a></li>
                                 <li  v-for="page in store.total_page" :key="page"  @click="setCurrentPageclick(page)">
