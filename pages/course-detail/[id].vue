@@ -73,7 +73,7 @@
                 class="course__details__heading aos-init aos-animate"
                 data-aos="fade-up"
               >
-                <h3>{{ store.course_lesson.course_description }}</h3>
+                <h3>{{ store.course_lesson.course_name }}</h3>
               </div>
               <div
                 class="course__details__price aos-init aos-animate"

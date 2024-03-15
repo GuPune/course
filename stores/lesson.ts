@@ -115,10 +115,11 @@ return true
       this.formlean.course_id = id
 
       // ((int.parse(page) * int.parse(perPage)) - ((int.parse(perPage) -  index)) +  1)
-  
+
       
       try {
         const data = await ApiService.post('/course/lesson/list/' + id,this.formcourse).then(response => {
+          console.log(response.data.data);
           if(response.data.data.length > 0){
             this.data.course_id = response.data.data[0].course_id
             this.data.crt_date = response.data.data[0].crt_date

@@ -2,7 +2,7 @@
 
 
 <template>
-  <div v-if="store.data.course_id">
+  <div>
     <div>
       <div class="container">
         <div class="row" v-if="store.data">
@@ -34,7 +34,7 @@
                           type="button"
                           aria-selected="true"
                           role="tab"
-                          @click="backlearning(store.data.course_id)"
+                          @click="backlearning(router.currentRoute.value.params.id)"
                         >
                         {{ $t("backtocourse") }}
                         </button>
@@ -171,7 +171,7 @@
     </div>
   </div>
 
-  <div v-else>
+  <div >
     <div class="coursearea sp_bottom_100">
       <div class="container">
         <div class="row" v-if="store.data">
@@ -231,7 +231,7 @@
                                 <div class="author__text row">
                                   <div class="col-lg-12 col-md-4">
                                     <p class="fs-4 fw-bold mb-0">
-                                      ບໍ່ມີບົດຮຽນສໍາລັບການນີ້
+                                      {{ store.data.cs_description }}
                                     </p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
@@ -285,7 +285,7 @@
 
   </div>
   <br>
-  <div class="container" v-if="store.data.course_id">
+  <div class="container">
           <div class="row">
     <div class="col-xl-12 col-lg-12">
       <!-- <div class="pagination-no_spacing">
@@ -459,6 +459,7 @@ const onPlay = (id) => {
 };
 
 const backlearning = (couse_id) => {
+
   router.push("/course-detail/" + couse_id);
 };
 
@@ -533,10 +534,10 @@ await setTimeout(() => Swal.close(), 500);
   object-fit: cover;
 }
 
-.responsive {
+/* .responsive {
   width: 100%;
   height: auto;
-}
+} */
 
 .containerxxx {
   position: relative;
