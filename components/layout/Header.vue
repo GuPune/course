@@ -16,26 +16,34 @@
               <div class="headerarea__main__menu">
                 <nav>
                   <ul>
-                    <li>
-                      <a class="headerarea__has__dropdown">
-                        <nuxt-link to="/">{{ $t("home") }}</nuxt-link>
-                        <div></div>
+                    
+                    <li @click="goToMenu('/')" >
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
+                        <span> {{ $t("home") }} </span>
+                     
                       </a>
                     </li>
-                    <li>
-                      <a class="headerarea__has__dropdown">
-                        <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link>
+                    <li @click="goToMenu('/course')" >
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link> -->
+                        <span> {{ $t("courses") }} </span>
                       </a>
                     </li>
-                    <li>
-                      <a class="headerarea__has__dropdown">
-                        <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link>
+                    <li @click="goToMenu('/exam')">
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        <span> {{ $t("exam") }} </span>
                       </a>
                     </li>
-                    <li>
-                      <nuxt-link to="/appointment">
+                    <li  @click="goToMenu('/appointment')">
+                      <!-- <nuxt-link to="/appointment">
                         {{ $t("appointmentxx") }}
-                      </nuxt-link>
+                      </nuxt-link> -->
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        <span> {{ $t("appointmentxx") }} </span>
+                      </a>
                     </li>
                   </ul>
                 </nav>
@@ -71,28 +79,7 @@
 
               <div class="headerarea__main__menu .headerarea__login headerarea__right" v-if="authenticated">
 
-                <!-- <div class="">
-                  <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                      class="bi bi-bell-fill" viewBox="0 0 16 16" id="noti-bell">
-                      <path
-                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
-                    </svg>
-                  </a>
-            
-                  <div class="header__right__dropdown__wrapper" v-if="authenticated">
-                   
-                    <div class="header__right__dropdown__inner"  v-for="(item, index) in useError.mydltcardExp"
-                      :key="item.ap_id">
-                 
-                      <div class="single__header__right__dropdown">
-                        <div class="header__right__dropdown__content">
-                          <a > ใกล้วันหมดอายุใบขับขี่ประเภท {{ item.dlt_code }} วันที่หมดคือ {{ item.expiry_date }}</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+             
                 <nav>
                   <ul>
                     
@@ -371,6 +358,11 @@ const Hideaside = async () => {
   store.isActiveBar = false;
 };
 
+const goToMenu = async (meun) => {
+  router.push(meun);
+};
+
+
 const GotoPage = (item) => {
   router.push(item);
 };
@@ -383,6 +375,10 @@ const changeLocale = (newLocale) => {
 </script>
 
 <style>
+
+.cursor-pointer{
+  cursor: pointer;
+}
 #headBadge>#badgeSpan>#badgeText {
   display: none;
   transition: all 1s;
