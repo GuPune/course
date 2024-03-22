@@ -62,6 +62,7 @@
 ***************************************************************/
 @import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 :root {
+  --dotColor : #fdc800;
   --bodyColor: #222222;
   --bodyBg: #fbfbfb;
   --bodyBg1: #F7F7F7;
