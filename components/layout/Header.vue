@@ -149,14 +149,14 @@
 
                       </a>
                       <ul class="headerarea__submenu">
-                        <li>
-                          <a @click="GotoPage('/profile')">{{ $t("account_details") }}</a>
+                        <li> 
+                          <a @click="GotoPage('/profile')"><i class="icofont-memory-card"></i> <span style="font-size: 14px;">  {{ $t("account_details") }}</span></a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/changepassword')">{{ $t("changepassword") }}</a>
+                          <a @click="GotoPage('/changepassword')"><i class="icofont-edit"></i><span style="font-size: 14px;"> {{ $t("changepassword") }}</span></a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/profile')">{{ $t("mylicense") }}</a>
+                          <a @click="GotoPage('/profile')"> <i class="icofont-ui-v-card"></i><span style="font-size: 13px;"> {{ $t("mylicense") }}</span></a>
                         </li>
                         <!-- <li>
                           <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
@@ -173,7 +173,7 @@
                          <li v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/historyall')">{{ $t("historyall") }}</a>
                         </li> -->
-                        <li><a @click="Logout()">{{ $t("logout") }}</a></li>
+                        <li><a @click="Logout()"> <i class="icofont-sign-out"></i><span style="font-size: 14px;">  {{ $t("logout") }} </span></a></li>
                       </ul>
                     </li>
                   </ul>

@@ -30,7 +30,7 @@
   "log_on_longtitle": "Do you have an account? Login",
   "account": "My Account",
   "account_details": "Account Detail",
-  "mylicense":"My Driving Licenses",
+  "mylicense":" My Driving Licenses",
   "account_proFile_User": "Infomation",
   "account_proFile_Info": "Description",
   "account_proFile_dtl": "Driver's license",
@@ -64,7 +64,7 @@
   "page_course": "All Course",
   "page_exam": "Exam",
   "page_appoint": "Appointment",
-  "logout": "Log Out",
+  "logout": " Log Out",
 
   "page_register": "Register",
   "page_register_login": "You don't have a login account yet. ?",
