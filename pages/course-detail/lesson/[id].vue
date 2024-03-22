@@ -315,13 +315,13 @@
         <ul class="pagination" style="justify-content: center;">
           <li class="page-item" @click="prev()">
             <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
+              <span aria-hidden="true">&laquo;</span> Back
             </a>
           </li>
           <li class="page-item"><a class="page-link" href="javascript:void(0);">{{store.selelesson}} / {{store.total}}</a></li>
           <li class="page-item" @click="next()">
             <a class="page-link" href="javascript:void(0);" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
+              Next <span aria-hidden="true">&raquo;</span>
             </a>
           </li>
         </ul>

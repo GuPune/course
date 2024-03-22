@@ -5,9 +5,9 @@
         <div class="container desktop__menu__wrapper">
           <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-6">
-              <div class="headerarea__left">
+              <div class="headerarea__left justify-content-center">
                 <div class="headerarea__left__logo">
-                  <img src="/img/logo/logo_3.png" alt="logo" width="140" height="100" />
+                  <img src="/img/logo/logo_4.png" alt="logo" width="120" />
                 </div>
               </div>
             </div>
@@ -20,8 +20,8 @@
                     <li @click="goToMenu('/')" >
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
-                        <span> {{ $t("home") }} </span>
-                     
+                        <!-- <span> {{ $t("home") }} </span> -->
+                        <span> Info / News </span>
                       </a>
                     </li>
                     <li @click="goToMenu('/course')" >
@@ -43,6 +43,12 @@
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
                         <span> {{ $t("appointmentxx") }} </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        <span> Exam Results </span>
                       </a>
                     </li>
                   </ul>

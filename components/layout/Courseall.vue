@@ -54,6 +54,53 @@
             </div>
 
         </div>
+
+            <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up">
+                <div class="gridarea__img">
+                    <a><img src="../../public/img/course01.png" alt="grid"></a>
+                </div>
+                <div class="gridarea__content pt-4 ps-4 pe-4">
+                    <!-- <div class="gridarea__list">
+                        <ul>
+                            <li >
+                                <i class="icofont-book-alt"></i> wadawdwdwadad
+                            </li>
+                            <li>
+                                <i class="icofont-clock-time"></i> awdawdwadawdawd
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div class="gridarea__heading">
+                        <h3><a>A : Two-wheels motocycle, engine not exceed 125cc</a></h3>
+                    </div>
+                    <div class="gridarea__price">
+                        <p>ກຽມພ້ອມສຳລັບການເສັງໃບຂັບຂີ່ປະເພດ A - ລົດຈັກສອງລໍ້ ຄວາມແຮງບໍ່ເກີນ 125 cc. </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean viverra cursus libero ut scelerisque. Vivamus porttitor dolor eget auctor pulvinar. Nunc ac ultricies lectus, eu laoreet mi. Nam vitae nisl ac nulla sagittis luctus. Duis euismod lacus ut venenatis malesuada. Donec ullamcorper ullamcorper mauris, ut varius elit viverra mattis. Sed aliquam tempus</p>
+                        <p class="fw-bold mb-0">ເງືອນໄຂສອບເສັງທິດສະດີ:</p>
+                        <p class="mb-0">ມີ 20 ຄຳຖາມ ກຳນົດເວລາ 20 ນາທີ, ຕ້ອງຕອບຖືກຢ່າງນ້ອຍ 17 ຂໍ້</p>
+                    </div>
+                    <div class="gridarea__bottom p-0">
+                        <div class="gridarea__bottom__left">
+                            <div class="gridarea__star ms-2 pe-2 border-end">
+                                ຈຳນວນໝວດວິຊາ:   5 
+                            </div>
+                            <div class="gridarea__star ms-2 pe-2 border-end">
+                                ຈຳນວນບົດຮຽນ:  150
+                            </div>
+                            <div class="gridarea__star ms-2 pe-2 border-end">
+                                ຈຳນວນ Video:  4
+                            </div>
+                        </div>
+                        <div class="gridarea__details btn btn-info detailBtn">
+                            <a>
+                                ເລິ່ມຮຽນ
+                                <i class="icofont-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <div class="tab-pane fade" id="projects__two" role="tabpanel"
             v-bind:class="{ active: !getisActiveCourse, show: !getisActiveCourse }" aria-labelledby="projects__two">
             <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up"
@@ -73,12 +120,10 @@
                         </ul>
                     </div>
                     <div class="gridarea__heading">
-                        <h3><a>{{ item.course_name }}
-                            </a></h3>
+                        <h3><a>{{ item.course_name }}</a></h3>
                     </div>
                     <div class="gridarea__price">
                         {{ item.course_description }}
-
                     </div>
                     <div class="gridarea__bottom">
                         <div class="gridarea__bottom__left">
@@ -181,3 +226,11 @@ if(store.formsearchcourse.page != 1){
 
 
 </script>
+
+<style>
+@media screen and (max-width: 767px) {
+    .detailBtn {
+        width: 100%;
+    }   
+}
+</style>
