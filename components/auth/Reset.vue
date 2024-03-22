@@ -1,24 +1,31 @@
 <template>
 
     <div class="col-xl-8 col-md-8 offset-md-2">
+   
+      <div class="card-header " style="background-color: #FEF301;text-align: center;font-size: 24px;"> ລືມລະຫັດຜ່ານ, ຂໍຕັ້ງລະຫັດຜ່ານໃໝ່</div>
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">{{ $t("forget_pass_title") }}</h5>
+    
           <p class="login__description">
-            {{ $t("forget_pass_title_2") }}
+            ກະລຸນາປ້ອນຂໍ້ມູນຂອງບັນຊີຂອງທ່ານ
           </p>
         </div>
         <form action="#">
           <div class="login__form">
             <div class="mb-4">
-              <label class="form__label mb-0">{{ $t("page_verify_iden") }} && {{ $t("tel") }} && {{ $t("email") }}</label>
+              <label class="form__label mb-0" style="text-align: center;">username ຫຼື ເບີໂທໃນຮູບແບບ 20xxxxxxxx ຫຼື email</label>
               <input
                 class="common__login__input"
                 type="text"
-                placeholder="ບັດ​ປະ​ຈໍາ​ຕົວ ຫຼື ເບີ​ໂທລະ​ສັບ ຫຼື ອີເມວ"
+                placeholder="username / ເບີໂທໃນຮູບແບບ 20xxxxxxxx / email"
                 v-model="store.formreset.user"
               />
-              <span v-if="locale == 'la'">
+              <span style="font-size: 14px;">* ລະບົບຈະສົ່ງລະຫັດ OTP ໄປເບີໂທ ເພື່ອຢືນຢັນ, ແລ້ວຈະອະນຸຍາດໃຫ້ທ່ານຕັ້ງລະຫັດຜ່ານໃໝ່
+            </span>
+             
+            
+            </div>
+            <span v-if="locale == 'la'">
               <span
               class="text-xs text-red-500"
               style="color: red"
@@ -35,12 +42,13 @@
               >{{ $t("form_reset_pass") }}</span
             >         
             </span>
-            
-            </div>
           </div>
-          <div class="login__button" @click="reset()">
-            <a class="default__button">{{ $t("get_otp") }}</a>
-          </div>
+       
+
+          <div class="login__heading"  @click="reset()">
+        
+        <button type="button" class="btn" style="width: 30%;background-color: #2AB0E5;color: white;border: none; border-radius:0px;">ສົ່ງຂໍລະຫັດ OTP</button>
+  </div>
         </form>
     
       </div>

@@ -115,10 +115,10 @@
                  
                       <a class="headerarea__has__dropdown headerarea__login" href="#" id="headBadge" style="
                           padding: 8px 15px;
-                          border: 1px solid var(--borderColor1);
-                        ">
                         
-                        <i class="icofont-heart-alt"></i> {{ $t("account") }}
+                        ">
+                       
+                        <i class="icofont-users"></i> {{ $t("account") }}  <i class="icofont-arrow-down"></i>
                         <div v-if="useError.formdetail.verify_account == 'system_active'">
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
                           id="badgeSpan" >
@@ -150,20 +150,23 @@
                       </a>
                       <ul class="headerarea__submenu">
                         <li>
-                          <a @click="GotoPage('/profile')">{{ $t("account") }}</a>
+                          <a @click="GotoPage('/profile')">{{ $t("account_details") }}</a>
                         </li>
                         <li>
                           <a @click="GotoPage('/changepassword')">{{ $t("changepassword") }}</a>
                         </li>
                         <li>
+                          <a @click="GotoPage('/profile')">{{ $t("mylicense") }}</a>
+                        </li>
+                        <!-- <li>
                           <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
                         </li>
                         <li>
                           <a @click="GotoPage('/history')">{{ $t("history") }}</a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                           <a @click="GotoPage('/result')">{{ $t("result") }}</a>
-                        </li>
+                        </li> -->
                         <!-- <li  v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/resultall')">{{ $t("resultall") }}</a>
                         </li>
