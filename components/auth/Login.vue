@@ -33,6 +33,8 @@
               }"
               @change="v$.username.$touch"
               autocomplete="off"
+              @input="filterInputUser"
+              maxlength="20"
             />
 
             <span v-if="locale == 'la'">
@@ -77,6 +79,8 @@
                 'border-[#42d392]': !v$.password.$invalid,
               }"
               @change="v$.password.$touch"
+              @input="filterInputUserPass"
+              maxlength="20"
             />
       
             <span v-if="locale == 'la'">
@@ -382,6 +386,25 @@ if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_a
 const goToPage = async (e) => {
   router.push(e);
 }
+
+const filterInputUser = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        formData.username = formData.username.substring(0, formData.username.length - 1);
+        return;
+      }
+      formData.username = event.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+};
+
+
+const filterInputUserPass = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        formData.password = formData.password.substring(0, formData.password.length - 1);
+        return;
+      }
+ 
+};
 
 
 </script>

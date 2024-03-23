@@ -213,6 +213,7 @@
                   maxlength="20" 
                   @change="v$.user_password.$touch"
                   autocomplete="off"
+                  @input="filterInputUserPass"
                 />
 
                 <span v-if="locale == 'la'">
@@ -290,7 +291,7 @@
                     'border-red-500 focus:border-red-500': v$.user_phone.$error,
                     'border-[#42d392] ': !v$.user_phone.$invalid,
                   }"
-                  maxlength="8" 
+                  maxlength="11" 
                   @change="v$.user_phone.$touch"
                   autocomplete="off"
                   @input="filterInput"
@@ -827,6 +828,14 @@ const filterInputLasttname = async (event) => {
         return;
       }
       stores.form.user_lastname = event.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+};
+
+const filterInputUserPass = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.form.user_password = stores.form.user_password.substring(0, stores.form.user_password.length - 1);
+        return;
+      }
 };
 
 
