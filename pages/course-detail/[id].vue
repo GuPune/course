@@ -130,7 +130,7 @@
                 </div>
                
               </div>
-              <p class="mb-0">ອ່ານແລ້ວ: {{store.learned}} / {{store.total_lesson}}  <span class="text-success">({{store.progress}}%)</span></p>
+              <p class="mb-0">ອ່ານແລ້ວ: {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success">({{store.progress}}%)</span></p>
               <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສຸດ : 2024-02-01 09:34</p>
               <p class="mb-0">ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
             </div>
@@ -170,13 +170,14 @@
                 style="background-color: #F5F5F5;"   
               >
 
-                <h5 class="fw-bold">ໝວດວິຊາ: ກົດຈະລາຈອນ</h5>
+                <h5 class="fw-bold">ໝວດວິຊາ: {{y.cg_name}}</h5>
+              
                 <div 
                   class="tab-pane fade active show px-md-4"
                   id="projects__two"
                   role="tabpanel"
                   aria-labelledby="projects__two"
-                  v-for="(x, index) in store.lesson"
+                  v-for="(x, index) in y.lessons"
                 >
           
                   <div
@@ -193,7 +194,7 @@
                             
                           <div class="d-flex justify-content-between w-100">
                             <div style="color: #0AA7FF;">
-                          {{x.cg_name}}
+                          {{x.cs_name}}
                             </div>
                             <!-- <div>
                               <span v-if="x.studied == true" style="padding: 5px;">  {{ $t("lesson_read") }} </span>
@@ -349,6 +350,7 @@ let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
 let progress = await store.progersslesson(router.currentRoute.value.params.id);
 let getpdf = await store.getpdflesson(router.currentRoute.value.params.id);
+let condition = await store.getcondition(router.currentRoute.value.params.id);
 
 const setCurrentPageLesson = async (page) => {
 

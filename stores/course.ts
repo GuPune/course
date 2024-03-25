@@ -10,7 +10,7 @@ export const CoursePostStore = defineStore({
     isActiveCourse:false,
     learning_status:false,
     learned:0,
-    total_lesson:0,
+    total_lesson_progress:0,
     progress:0,
     coursecategories:[],
     listcourse:[],
@@ -149,12 +149,12 @@ export const CoursePostStore = defineStore({
      if(response.status == 200){
    this.learning_status = response.data.learning_status;
 this.learned = response.data.learned;
-this.total_lesson = response.data.total_lesson;
+this.total_lesson_progress = response.data.total_lesson;
 this.progress = response.data.progress;
      }else {
 this.learning_status = false;
 this.learned = 0;
-this.total_lesson = 0;
+this.total_lesson_progress = 0;
 this.progress = '0';
      }
         });
@@ -258,6 +258,11 @@ this.progress = '0';
       this.selectlesson_form_menu_less.total_page = Math.ceil(this.lesson.length / this.selectlesson_form_menu_less.per_page);
       this.lesson_item = this.lesson.slice(startIndex, endIndex);
      // this.max = endIndex;
+    },
+    async getcondition(id) {
+
+
+
     },
 
 
