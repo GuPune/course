@@ -172,7 +172,7 @@
   </div>
 
   <div >
-    <div class="coursearea sp_bottom_100">
+    <div class="coursearea ">
       <div class="container">
         <div class="row" v-if="store.data">
           <div class="col-xl-12 col-lg-12">
@@ -239,8 +239,6 @@
                                   </div>
                                 </div>
                             </div>
-                           
-                     
                           </div>
                         </div>
                       </div>
@@ -278,60 +276,42 @@
     </div>
   </div>
     </div>
-
-
-
-
-
   </div>
   <br>
-  <div class="container">
-          <div class="row">
-    <div class="col-xl-12 col-lg-12">
-      <!-- <div class="pagination-no_spacing">
-        <ul class="pagination" style="justify-content: center;">
-
-          <li @click="prev()"> <a href="javascript:void(0);" class="prev"  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="feather feather-chevron-left">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg></a>
-          </li>
-         
-            
-          <li><a href="javascript:void(0);">{{store.selelesson}}</a></li>
-       
-          <li><a href="javascript:void(0);"> / </a></li>
-          <li><a href="javascript:void(0);">{{store.total}}</a></li>
-          <li @click="next()"> <a href="javascript:void(0);" class="next" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="feather feather-chevron-right">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg></a>
-          </li>
-        </ul>
-      </div> -->
-      <nav aria-label="Page navigation example">
-        <ul class="pagination" style="justify-content: center;">
-          <li class="page-item" @click="prev()">
-            <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span> Back
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="javascript:void(0);">{{store.selelesson}} / {{store.total}}</a></li>
-          <li class="page-item" @click="next()">
-            <a class="page-link" href="javascript:void(0);" aria-label="Next">
-              Next <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-   
+  <div class="container sp_bottom_90">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination" style="justify-content: center;">
+            <li class="page-item" @click="prev()">
+              <a class="page-link" href="javascript:void(0);" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span> Back
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">{{store.selelesson}} / {{store.total}}</a></li>
+            <li class="page-item" @click="next()">
+              <a class="page-link" href="javascript:void(0);" aria-label="Next">
+                Next <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
- </div>
-
+  <div class="container py-5">
+    <div class="text-center p-3 mb-4" style="background-color: rgba(0, 0, 0, .1);">
+      <p class="fs-5">Congratuations, You have completed the last lesson of the Course :</p>
+      <h4>A : Two-wheels motocycle, engine not exceed 125cc</h4>
+    </div>
+    <div class="text-center p-3 mb-3">
+      <p class="fs-3">Arealdy Read: 99 / 100 <span class="text-success">(99.00%)</span></p>
+    </div>
+    <div class="d-flex gap-3 justify-content-center">
+      <button class="btn btn-primary">Go Back to Course List</button>
+      <button class="btn" style="background-color: var(--dotColor);">Try doing the theory Test for Course A</button>
+    </div>
+  </div>
   
 </template>
 <script lang="ts" setup>
