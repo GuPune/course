@@ -307,7 +307,7 @@
     <div class="text-center p-3 mb-3">
       <p class="fs-3">Arealdy Read: 99 / 100 <span class="text-success">(99.00%)</span></p>
     </div>
-    <div class="d-flex gap-3 justify-content-center">
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
       <button class="btn btn-primary">Go Back to Course List</button>
       <button class="btn" style="background-color: var(--dotColor);">Try doing the theory Test for Course A</button>
     </div>
