@@ -60,16 +60,7 @@
                     <a><img src="../../public/img/course01.png" alt="grid"></a>
                 </div>
                 <div class="gridarea__content pt-4 ps-4 pe-4">
-                    <!-- <div class="gridarea__list">
-                        <ul>
-                            <li >
-                                <i class="icofont-book-alt"></i> wadawdwdwadad
-                            </li>
-                            <li>
-                                <i class="icofont-clock-time"></i> awdawdwadawdawd
-                            </li>
-                        </ul>
-                    </div> -->
+          
                     <div class="gridarea__heading">
                         <h3><a>A : Two-wheels motocycle, engine not exceed 125cc</a></h3>
                     </div>

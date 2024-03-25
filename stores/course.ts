@@ -2,13 +2,20 @@ import { defineStore } from 'pinia'
 import ApiService from '../services/api.service';
 
 
+
+
 export const CoursePostStore = defineStore({
   id: 'courseall',
   state: () => ({
     isActiveCourse:false,
+    learning_status:false,
+    learned:0,
+    total_lesson:0,
+    progress:0,
     coursecategories:[],
     listcourse:[],
     lessonlist:[],
+    pdf:[],
     lesson:[],
     total:null,
     formsearchcourse: {
@@ -68,8 +75,6 @@ export const CoursePostStore = defineStore({
 
     async fetchCourse() {
       this.coursecategories = []
-   // this.posts = await myService.fetchData();
-   console.log(this.formsearchcourse);
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
     
@@ -82,7 +87,7 @@ export const CoursePostStore = defineStore({
 
     
  
-     this.fetchlesson();
+   //  this.fetchlesson();
   
      });
      return true;
@@ -94,21 +99,21 @@ export const CoursePostStore = defineStore({
     async fetchCourseall() {
 
     },
-    async fetchlesson() {
-      const arr = [];
-      const page = [];
-      for (var i = 0; i < this.listcourse.length; i++) {
-         this.listcourse[i].lesson = [];
-       const x = await ApiService.post('/course/lesson/list/'+ this.listcourse[i].course_id, this.formsearchcourse);
-   this.listcourse[i].lesson = x.data.data
+//     async fetchlesson() {
+//       const arr = [];
+//       const page = [];
+//       for (var i = 0; i < this.listcourse.length; i++) {
+//          this.listcourse[i].lesson = [];
+//        const x = await ApiService.post('/course/lesson/list/'+ this.listcourse[i].course_id, this.formsearchcourse);
+//    this.listcourse[i].lesson = x.data.data
    
-   this.listcourse[i].total_les = x.data.total
-   arr.push(this.listcourse[i]);
+//    this.listcourse[i].total_les = x.data.total
+//    arr.push(this.listcourse[i]);
   
-      }
-this.listcourse = arr;
+//       }
+// this.listcourse = arr;
 
-    },
+//     },
 
 
     async fetchCourseId(id){
@@ -116,6 +121,7 @@ this.listcourse = arr;
       try {
         const data = await ApiService.get('/course/get/' + id).then(response => {
        this.course_lesson = response.data
+       console.log(response.data);
         });
         return true
       } catch (error) {
@@ -125,46 +131,60 @@ this.listcourse = arr;
     },
     
     async fetchCourseLessId(id){
-
       this.lesson = [];
-      const checkpag =  await ApiService.post('/course/lesson/list/'+ id,this.formsearchlesson)
+      try {
+        const data = await ApiService.get('/course/get/option/' + id).then(response => {
 
+     this.lesson = response.data;
+        });
+        
+      } catch (error) {
 
-    if(checkpag){
-      if(checkpag.data.total_page > 1){
-        for(let i = 0; i < checkpag.data.total_page; i++){
-          this.formsearchlesson.page = i + 1;
-          const data =  await ApiService.post('/course/lesson/list/'+ id,this.formsearchlesson)
-          // const Storage = LessonStore();
-          for(let i = 0; i < data.data.data.length; i++){
-            this.lesson.push(data.data.data[i]);
-          }
       }
+    },
+    async progersslesson(id){
   
-      }else {
-        const data =  await ApiService.post('/course/lesson/list/'+ id,this.formsearchlesson)
-        this.lesson = data.data.data
-      }
-
-   console.log(this.lesson);
-      // try {
-      //   const data = await ApiService.post('/course/lesson/list/' + id,this.formsearchlesson).then(response => {
-      //     this.lesson = response.data.data
-      //     this.total_lesson = response.data.total
-      //     this.total_filter_lesson = response.data.total_filter
-      //     this.total_page_lesson = response.data.total_page
-      //     this.lesson_current_page = response.data.current_page
+      try {
+        const data = await ApiService.get('/course/learn/status?user_id='+this.user_id+'&course_id='+id+'').then(response => {
+     if(response.status == 200){
+   this.learning_status = response.data.learning_status;
+this.learned = response.data.learned;
+this.total_lesson = response.data.total_lesson;
+this.progress = response.data.progress;
+     }else {
+this.learning_status = false;
+this.learned = 0;
+this.total_lesson = 0;
+this.progress = '0';
+     }
+        });
       
-      //     return true;
-      //   });
-      //   return data;
-      // } catch (error) {
-      // this.lesson = [];
-      // this.total_page_lesson = 0
-      //   return false;
-      // }
-    }
+      } catch (error) {
 
+      }
+    },
+
+    async getpdflesson(id){
+      try {
+        const data = await ApiService.get('/course/document/get/'+id).then(response => {
+ this.pdf = response.data
+        });
+      
+      } catch (error) {
+
+      }
+    },
+
+    
+    async downloadpdf(e){
+      try {
+        const data = await ApiService.get('media_file/file/?f=static/upload/2024/3/files-5Vva3AkwiG.pdf').then(response => {
+ console.log(response);
+        });
+      
+      } catch (error) {
+
+      }
     },
 
     async addlessread(){

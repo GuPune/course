@@ -122,19 +122,17 @@
                 </tbody>
               </table>
 
-              <div class="d-flex gap-2">
+              <div class="d-flex gap-2" v-if="store.pdf.length > 0">
                 <p class="mb-0">ເອກະສານແນບ:</p>
-                <div>
-                  <a href="" class="fw-bold"><i class="icofont-file-pdf"></i> Download</a>
+                <div  v-for="(item, index) in store.pdf"
+                      :key="item.id">
+                <i class="icofont-file-pdf"></i><span style="color: #0AA7FF;cursor: pointer;"  @click="readpdf(item.cd_path)" > Download {{ store.item }} </span>
                 </div>
-                <div>
-                  <a href="" class="fw-bold"><i class="icofont-file-pdf"></i> Download</a>
-                </div>
+               
               </div>
-
-              <p class="mb-0">ອ່ານແລ້ວ: 55 / 150  <span class="text-success">(36.67%)</span></p>
+              <p class="mb-0">ອ່ານແລ້ວ: {{store.learned}} / {{store.total_lesson}}  <span class="text-success">({{store.progress}}%)</span></p>
               <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສຸດ : 2024-02-01 09:34</p>
-              <p class="mb-0">ບົດຮຽນອ່ານຫຼ້າສຸດ : <span><a class="text-info" href="">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</a></span></p>
+              <p class="mb-0">ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
             </div>
           </div>
         </div>
@@ -164,18 +162,21 @@
                   </ul>
                 </div>
               </div>
-              <div   v-if="store.lesson.length > 0"
+              <div  v-if="store.lesson.length > 0"  v-for="(y, index) in store.lesson" style="padding: 10px;">
+
+                <div 
                 class="tab-content tab__content__wrapper px-md-4 py-3"
                 id="myTabContent"
-                style="background-color: rgba(0, 0, 0, .1);"
+                style="background-color: #F5F5F5;"   
               >
+
                 <h5 class="fw-bold">ໝວດວິຊາ: ກົດຈະລາຈອນ</h5>
                 <div 
                   class="tab-pane fade active show px-md-4"
                   id="projects__two"
                   role="tabpanel"
                   aria-labelledby="projects__two"
-                  v-for="(x, index) in store.lesson_item"
+                  v-for="(x, index) in store.lesson"
                 >
           
                   <div
@@ -191,14 +192,14 @@
 
                             
                           <div class="d-flex justify-content-between w-100">
-                            <div>
-                              {{ $t("lesson") }} # {{ (store.selectlesson_form_menu_less.page * store.selectlesson_form_menu_less.per_page) - (store.selectlesson_form_menu_less.per_page -  index) +  1 }}  
+                            <div style="color: #0AA7FF;">
+                          {{x.cg_name}}
                             </div>
-                            <div>
+                            <!-- <div>
                               <span v-if="x.studied == true" style="padding: 5px;">  {{ $t("lesson_read") }} </span>
                               <span v-else style="padding: 5px;">  {{ $t("lesson_unread") }}</span>
                             </div>
-
+ -->
 
                           </div>
 
@@ -281,8 +282,12 @@
               </div>
 
 
+              </div>
           
-              <div v-else
+
+
+          
+              <!-- <div v-else
                     class="accordion content__cirriculum__wrap"
                     id="accordionExample"
                   >
@@ -296,7 +301,7 @@
                             
                           <div class="d-flex justify-content-between w-100">
                             <div>
-                              ไม่มีบทเรียน # 
+                             No Data
                             </div>
                             
                           </div>
@@ -305,14 +310,14 @@
                       </h2>
                     
                     </div>
-                  </div>
+                  </div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.selectlesson_form_menu_less.total_page > 1">
+    <!-- <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.selectlesson_form_menu_less.total_page > 1">
                             <ul class="main__page__pagination">
                                 <li  v-for="page in store.selectlesson_form_menu_less.total_page" :key="page"  @click="setCurrentPageLesson(page)" >
                                     <a class="active" href="#" v-if="store.selectlesson_form_menu_less.page == page">{{page}}
@@ -321,7 +326,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
   </div>
 </template>
 <script lang="ts" setup>
@@ -339,55 +344,27 @@ const auth = useAuthStore()
 store.user_id = auth.user_id
 
 
-let course = await store.fetchCourse();
+// let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
 let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
-let addlessread = await store.addlessread();
-let group = await store.fetchGrouplist();
-let pagin = await store.paginatedItems();
-
-
-let youtube = "https //www.youtube.com/embed/tgbnymz7vqy";
-
-import { reactive } from "vue";
-const options = reactive({
-  src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
-  poster: "", //封面
-});
-const onPlay = (id) => {
-  store.cs_id = id;
- //  store.updateLogCourse();
-};
-
-const choose = async (id,index,x) => {
-
-await store.SelectLesson(id,index,x)
-
- router.push('/course-detail/lesson/'+id);
-};
-
-
-
-const onPause = (ev) => {
- 
-};
-
-const onTimeupdate = (ev) => {
- 
-};
-const onCanplay = (ev) => {
- 
-};
+let progress = await store.progersslesson(router.currentRoute.value.params.id);
+let getpdf = await store.getpdflesson(router.currentRoute.value.params.id);
 
 const setCurrentPageLesson = async (page) => {
 
-  await store.setCurrentPageLessonNew(page)
-  let pagin = await store.paginatedItems();
+//  await store.setCurrentPageLessonNew(page)
+//  let pagin = await store.paginatedItems();
 //  await store.fetchCourseLessId(router.currentRoute.value.params.id)
 //   await store.addlessread();
 };
 
 const { getisActiveCourse } = storeToRefs(store);
+
+const readpdf = async (e) => {
+ let im = ApiService.image(e);
+window.open(im, '_blank');
+}
+
 
 function coverimage(i) {
   let im = ApiService.image(i);
