@@ -141,7 +141,7 @@ if(checkvr === false){
 })
 }
 if(checkvr === true){
-  console.log('true')
+
 }
 
   }

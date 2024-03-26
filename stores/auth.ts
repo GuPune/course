@@ -350,7 +350,7 @@ this.formcard.user_id = response.data.user_id
   return profile
 } catch (error) {
 
-  console.log('false',error);
+
 //  router.push('/maintenance');
  return false;
  
@@ -566,7 +566,7 @@ if(this.dltcard){
 
       async getOtp() {
         const data = await ApiService.get('/user/otp/' + this.user_id).then(response => {
-    console.log(response);
+  
         });
         return true;
       },

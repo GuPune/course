@@ -201,7 +201,7 @@ const next = async () => {
 await store.fetchCourse()
     }
 
-console.log(store.formsearchcourse.page);
+
  };
 
  const pred = async () => {

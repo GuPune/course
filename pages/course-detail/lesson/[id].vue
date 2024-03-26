@@ -333,6 +333,10 @@ Swal.fire({
     },
   });
 let lesson_id = await store.fetchCourseread(route.query);
+if(lesson_id === false){
+  router.push("/course");
+  
+}
  let course = await store.fetchCourseCode(route.query.course_id);
  setTimeout(() => Swal.close(), 500);
 // if (process.client) {

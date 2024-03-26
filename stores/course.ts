@@ -92,7 +92,7 @@ export const CoursePostStore = defineStore({
      });
      return true;
     } catch (error) {
-    console.log('error');
+   
 
     }
     },
@@ -177,7 +177,7 @@ this.progress = '0';
     async downloadpdf(e){
       try {
         const data = await ApiService.get('media_file/file/?f=static/upload/2024/3/files-5Vva3AkwiG.pdf').then(response => {
- console.log(response);
+
         });
       
       } catch (error) {
@@ -199,7 +199,7 @@ this.progress = '0';
     },
 
     async updateLogCourse() {
-      console.log('updateLogCourse',this.cs_id);
+   
     },
 
     async setCurrentPage(page) {

@@ -149,7 +149,7 @@ export const AppointmentsStore = defineStore({
         });
         return true
       } catch (error) {
-        console.log('error');
+        
         return false;
       }
 
@@ -262,7 +262,7 @@ export const AppointmentsStore = defineStore({
       });
       return data
     } catch (error) {
-      console.log('error');
+   
       return false;
     }
 

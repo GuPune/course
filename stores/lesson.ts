@@ -114,6 +114,16 @@ export const LessonStore = defineStore({
       this.formsearchlearing.course_id = query.course_id
       this.formsearchlearing.user_id = this.user_id
 
+      if(query.cg_id == ''){
+        return false
+      }
+      if(query.cs_id == ''){
+        return false
+      }
+      if(query.course_id == ''){
+        return false
+      }
+
       const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
 
 this.curent_lesson = response.data.curent_lesson
@@ -123,8 +133,15 @@ this.previous_cg_id = (Object.keys(response.data.previous_cg_id).length);
 this.next_cg_id = (Object.keys(response.data.next_cg_id).length);
 // this.previous_cg_id
 
+if(Object.keys(response.data.curent_lesson).length == 0){
+return false;
+}
+return true;
     
       });
+    
+
+      return learing
      
           },
 
@@ -251,7 +268,7 @@ try {
 
                 async fetchCoursereadPrev() {
                   const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
-           console.log(response.data.previous_cg_id);
+       
              this.curent_lesson = response.data.curent_lesson
              this.next_lesson = response.data.next_lesson
              this.previous_lesson = response.data.previous_lesson
