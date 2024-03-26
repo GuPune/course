@@ -6,6 +6,7 @@ export const LessonStore = defineStore({
   id: 'lessonsselect',
   state: () => ({
     isActiveCourse: false,
+    learning_status:true,
     cs_id: null,
     user_id: null,
     formlean: {
@@ -121,6 +122,7 @@ this.previous_lesson = response.data.previous_lesson
 this.previous_cg_id = (Object.keys(response.data.previous_cg_id).length);
 this.next_cg_id = (Object.keys(response.data.next_cg_id).length);
 // this.previous_cg_id
+
     
       });
      

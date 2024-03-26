@@ -84,6 +84,7 @@
               class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
               data-aos="fade-up"
             >
+         
               <!-- <img :src="coverimage(store.data.cs_cover)" alt="blog"> -->
             </div>
             <div class="blog__details__content__wraper">
@@ -253,7 +254,7 @@
 
                 <div
                   class="tab-content tab__content__wrapper"
-                  id="myTabContent" v-if="store.curent_lesson.cs_video"
+                  id="myTabContent" v-if="store.curent_lesson.cs_description"
                 >
                   <div
                     class="tab-pane fade active show"
@@ -273,7 +274,7 @@
                   </div>
                 </div>
 
-
+ <span style="color:#11901E" v-if="store.learning_status">ອ່ານແລ້ວ</span>
                 
             </div>
 
@@ -283,34 +284,15 @@
       </div>
     </div>
   </div>
-  <div class="container" v-if="store.data.course_id">
 
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-
-       <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-       <!-- {{ $t("lesson_q") }} : {{ store.data.cs_name }} ? -->
-       {{ store.data.cs_name }}
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-      <div class="accordion-body">
-        <!-- {{ $t("lesson_a") }} : {{ store.data.cs_description }} -->
-        {{ store.data.cs_description }}
-      </div>
-    </div>
-  </div>
-    </div>
-  </div>
   <br>
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
       <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()" v-if="store.previous_cg_id == 0"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
       <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="next()"  v-if="store.next_cg_id == 0">Next<span aria-hidden="true">&raquo;</span></button>
     </div>
-
-  <div class="container py-5">
+<br>
+  <!-- <div class="container py-5">
     <div class="text-center p-3 mb-4" style="background-color: rgba(0, 0, 0, .1);">
       <p class="fs-5">Congratuations, You have completed the last lesson of the Course :</p>
       <h4>A : Two-wheels motocycle, engine not exceed 125cc</h4>
@@ -322,7 +304,7 @@
       <button class="btn btn-primary">Go Back to Course List</button>
       <button class="btn" style="background-color: var(--dotColor);">Try doing the theory Test for Course A</button>
     </div>
-  </div>
+  </div> -->
   
 </template>
 <script lang="ts" setup>
