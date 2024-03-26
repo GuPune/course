@@ -121,7 +121,7 @@ export const CoursePostStore = defineStore({
       try {
         const data = await ApiService.get('/course/get/' + id).then(response => {
        this.course_lesson = response.data
-       console.log(response.data);
+
         });
         return true
       } catch (error) {
@@ -133,13 +133,11 @@ export const CoursePostStore = defineStore({
     async fetchCourseLessId(id){
       this.lesson = [];
       try {
-        const data = await ApiService.get('/course/get/option/' + id).then(response => {
-
+        const data = await ApiService.get('/course/get/option/'+id+'?user_id='+this.user_id).then(response => {
      this.lesson = response.data;
-        });
-        
+        });  
       } catch (error) {
-
+   
       }
     },
     async progersslesson(id){
@@ -264,6 +262,8 @@ this.progress = '0';
 
 
     },
+
+
 
 
   }

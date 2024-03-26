@@ -72,10 +72,7 @@ this.form.accp = null;
     },
 
     async FitterString(value) {
-
       const filteredValue = value.replace(/[^\w\s]/gi, '');
-   console.log(filteredValue);
-
     }
   }
 })

@@ -59,11 +59,7 @@
               class="aos-init aos-animate"
               data-aos="fade-up"
             >
-              <div class="course__date">
-                <p>
-                  {{ $t("page_course_last_lesson") }}<span> {{ coverttime(store.course_lesson.udp_date) }}</span>
-                </p>
-              </div>
+            
             </div>
 
             <div
@@ -179,41 +175,34 @@
                   aria-labelledby="projects__two"
                   v-for="(x, index) in y.lessons"
                 >
-          
+        
                   <div
                     class="accordion content__cirriculum__wrap"
                     id="accordionExample"
                   >
                     <div class="accordion-item mb-2">
                       <h2 class="accordion-header" id="headingOne">
-                        <button @click="choose(router.currentRoute.value.params.id,index,(store.selectlesson_form_menu_less.page * store.selectlesson_form_menu_less.per_page) - (store.selectlesson_form_menu_less.per_page -  index) +  1)"
+                        <button @click="choose(router.currentRoute.value.params.id,x.cs_id,y.cg_id,index)"
                           class="accordion-button collapsed mt-0"
                           type="button"
                         >
-
-                            
                           <div class="d-flex justify-content-between w-100">
-                            <div style="color: #0AA7FF;">
-                          {{x.cs_name}}
+                            <div style="color: #0AA7FF;" :class="{ 'true-class': true }" v-if="x.learning_status == 'true'">
+                              {{ index + 1 }}.  {{x.cs_name}}   
                             </div>
-                            <!-- <div>
-                              <span v-if="x.studied == true" style="padding: 5px;">  {{ $t("lesson_read") }} </span>
-                              <span v-else style="padding: 5px;">  {{ $t("lesson_unread") }}</span>
+                            <div style="color: #0AA7FF;" :class="{ 'true-class': false }"  v-else>
+                              {{ index + 1 }}.  {{x.cs_name}}   
                             </div>
- -->
-
                           </div>
 
                         </button>
                       </h2>
-                      <div
+                      <!-- <div
                         :id="'collapseOne-' + index"
                         class="accordion-collapse collapse p-4"
                         aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample"
                       >
-                
-
                         <div class="row" style="padding: 5px">
                           <div
                             class="col-lg-3 d-flex justify-content-center align-items-center"
@@ -276,7 +265,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -288,30 +277,7 @@
 
 
           
-              <!-- <div v-else
-                    class="accordion content__cirriculum__wrap"
-                    id="accordionExample"
-                  >
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button 
-                          class="accordion-button collapsed mt-0"
-                          type="button"
-                        >
-
-                            
-                          <div class="d-flex justify-content-between w-100">
-                            <div>
-                             No Data
-                            </div>
-                            
-                          </div>
-
-                        </button>
-                      </h2>
-                    
-                    </div>
-                  </div> -->
+          
             </div>
           </div>
         </div>
@@ -337,9 +303,11 @@
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { CoursePostStore } from "@/stores/course";
+import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
 const router = useRouter();
 const store = CoursePostStore();
+const storelesson = LessonStore();
 
 const auth = useAuthStore()
 store.user_id = auth.user_id
@@ -354,10 +322,7 @@ let condition = await store.getcondition(router.currentRoute.value.params.id);
 
 const setCurrentPageLesson = async (page) => {
 
-//  await store.setCurrentPageLessonNew(page)
-//  let pagin = await store.paginatedItems();
-//  await store.fetchCourseLessId(router.currentRoute.value.params.id)
-//   await store.addlessread();
+
 };
 
 const { getisActiveCourse } = storeToRefs(store);
@@ -365,6 +330,39 @@ const { getisActiveCourse } = storeToRefs(store);
 const readpdf = async (e) => {
  let im = ApiService.image(e);
 window.open(im, '_blank');
+}
+
+const choose = async (x,y,z,index) => {
+  ////////////////////////////
+
+
+  storelesson.formlean.cs_id = y
+  storelesson.formlean.course_id = x
+  storelesson.formlean.user_id = auth.user_id
+
+////////////////////////////  insert log
+let updatelog = await storelesson.updateLogCourse();
+
+if(updatelog == true){
+  //////ไปต่อ
+ // router.push("/course-detail/lesson/"+y);
+//  router.push({ path: '/course-detail/lesson/' + y })
+
+  router.push({
+        path: '/course-detail/lesson/' + x,
+        query: {
+    course_id: x,
+    cg_id: z,
+    cs_id: y,
+    // เพิ่ม Query String Parameters เพิ่มเติมตามต้องการ
+  }
+      })
+
+  // router.push({ path: '/course-detail/lesson/' + id })
+}else {
+
+}
+
 }
 
 
@@ -399,6 +397,12 @@ function coverttime(date) {
   width: 100%;
   overflow: hidden;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.true-class {
+  /* CSS styles for the 'true-class' */
+  color: red;
+  font-weight: bold;
 }
 
 .responsive-iframe {
