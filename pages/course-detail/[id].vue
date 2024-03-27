@@ -9,16 +9,16 @@
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
-                <h2 class="heading">{{ $t("page_course") }}</h2>
+                <h2 class="heading">{{ $t("page_course_one") }} : {{ store.course_lesson.course_code }}</h2>
               </div>
-              <div class="breadcrumb__inner">
+              <!-- <div class="breadcrumb__inner">
                 <ul>
                   <li>
                     <a>{{ $t("home") }}</a>
                   </li>
                   <li>{{ $t("page_course") }}</li>
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
               class="aos-init aos-animate"
               data-aos="fade-up"
             >
-              <h3>{{ store.course_lesson.course_name }}</h3>
+              <h3>{{ store.course_lesson.course_remark_a }}</h3>
             </div>
 
             <div
@@ -75,8 +75,9 @@
             >
               <p class="mb-0">{{ store.course_lesson.course_description }}</p>
               <p class="fw-bold mb-0">ເງືອນໄຂສອບເສັງທິດສະດີ:</p>
-              <p>ມີ 20 ຄຳຖາມ ກຳນົດເວລາ 20 ນາທີ, ຕ້ອງຕອບຖືກຢ່າງນ້ອຍ 17 ຂໍ້</p>
-              <table class="my-3">
+        
+              <p>{{ store.course_lesson.course_remark_b }}</p>
+              <table class="my-3" v-if="store.condition.length > 0">
                 <thead>
                   <tr>
                     <th class="px-2">ໝວດວິຊາ</th>
@@ -85,35 +86,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>ກົດຈະລາຈອນ</td>
-                    <td class="text-center">30</td>
-                    <td class="text-center">6</td>
-                  </tr>
-                  <tr>
-                    <td>ປ້າຍສັນຍານ ແລະ ເຄື່ອງໝາຍການຈະລາຈອນ</td>
-                    <td class="text-center">50</td>
-                    <td class="text-center">8</td>
-                  </tr>
-                  <tr>
-                    <td>ເຕັກນິກການຂັບຂີ່</td>
-                    <td class="text-center">30</td>
-                    <td class="text-center">2</td>
-                  </tr>
-                  <tr>
-                    <td>ຄຸນສົມບັດ ແລະ ມາລະຍາດການຂັບຂ</td>
-                    <td class="text-center">20</td>
-                    <td class="text-center">2</td>
-                  </tr>
-                  <tr>
-                    <td>ການປະຖົມພະຍາບານຜູ້ບາດເຈັບ</td>
-                    <td class="text-center">20</td>
-                    <td class="text-center">2</td>
+                  <tr   v-for="(item, index) in store.condition"
+                      :key="item.id">
+                    <td>{{item.cg_name}}</td>
+                    <td class="text-center">{{item.cc_value_a}}</td>
+                    <td class="text-center">{{item.cc_value_b}}</td>
                   </tr>
                   <tr class="border-top border-black">
                     <td></td>
-                    <td class="text-center">150</td>
-                    <td class="text-center">20</td>
+                    <td class="text-center">{{store.lesson_total_all}}</td>
+                    <td class="text-center">{{store.lesson_total_in_course}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -127,8 +109,8 @@
                
               </div>
               <p class="mb-0">ອ່ານແລ້ວ: {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success">({{store.progress}}%)</span></p>
-              <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສຸດ : 2024-02-01 09:34</p>
-              <p class="mb-0">ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
+              <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສຸດ : {{store.last_date}}</p>
+              <p class="mb-0" @click=lastlesson()>ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
             </div>
           </div>
         </div>
@@ -330,6 +312,13 @@ const { getisActiveCourse } = storeToRefs(store);
 const readpdf = async (e) => {
  let im = ApiService.image(e);
 window.open(im, '_blank');
+}
+
+
+
+
+const lastlesson = async () => {
+console.log('gotoLesson');
 }
 
 const choose = async (x,y,z,index) => {

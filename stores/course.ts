@@ -120,6 +120,7 @@ export const CoursePostStore = defineStore({
     this.course_id = id;
       try {
         const data = await ApiService.get('/course/get/' + id).then(response => {
+       
        this.course_lesson = response.data
 
         });
@@ -144,16 +145,21 @@ export const CoursePostStore = defineStore({
   
       try {
         const data = await ApiService.get('/course/learn/status?user_id='+this.user_id+'&course_id='+id+'').then(response => {
+      
      if(response.status == 200){
    this.learning_status = response.data.learning_status;
 this.learned = response.data.learned;
 this.total_lesson_progress = response.data.total_lesson;
 this.progress = response.data.progress;
+this.last_date = response.data.last_date;
+
+this.last_course = response.data.last_course
      }else {
 this.learning_status = false;
 this.learned = 0;
 this.total_lesson_progress = 0;
 this.progress = '0';
+this.last_course = null
      }
         });
       
@@ -259,7 +265,16 @@ this.progress = '0';
     },
     async getcondition(id) {
 
+      const data = await ApiService.get('/course/condition/list/?course_id=' + id).then(response => {
 
+
+        this.condition = response.data.data;
+        this.lesson_total_all = response.data.sum_val_a;
+        this.lesson_total_in_course = response.data.sum_val_b;
+      
+        
+
+      });
 
     },
 
