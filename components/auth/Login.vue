@@ -19,7 +19,7 @@
             
           </p>
         </div>
-        <form action="#"> 
+        <form    @submit.prevent="login"> 
           <div class="login__form">
             <label class="form__label">Username / ເບີໂທ</label>
             <input
@@ -106,6 +106,7 @@
               class="text-xs text-red-500"
               style="color: red"
               v-if="v$.password.$error"
+              
               >{{ $t("form_login_pass") }}</span
             >
               
@@ -115,7 +116,7 @@
   <br>
           <div class="login__heading">
         
-        <button type="button" class="btn" @click="login()" style="width: 30%;background-color: #2AB0E5;color: white;border: none; border-radius:0px;">{{ $t("log_on_title") }}</button>
+        <button  class="btn"  type="submit" style="width: 30%;background-color: #2AB0E5;color: white;border: none; border-radius:0px;">{{ $t("log_on_title") }}</button>
   </div>
 
         <!-- <div class="col-12">
