@@ -801,6 +801,22 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, formDataregister);
 
 const filterInput = async (event) => {
+  // stores.form.user_phone = event.target.value.replace(/\D/g, "");
+
+
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.form.user_phone= stores.form.user_phone.substring(0, stores.form.user_phone.length - 1);
+        return;
+      }
+      if (stores.form.user_phone.charAt(0) !== '2') {
+        stores.form.user_phone = stores.form.user_phone.substring(0, stores.form.user_phone.length - 1);
+        return;
+      } 
+      if ((stores.form.user_phone.charAt(1) !== '') && (stores.form.user_phone.charAt(1) !== '0')) {
+       stores.form.user_phone = stores.form.user_phone.substring(0, stores.form.user_phone.length - 1);
+        return;
+      } 
   stores.form.user_phone = event.target.value.replace(/\D/g, "");
 };
 const filterInputUser = async (event) => {
@@ -837,6 +853,20 @@ const filterInputUserPass = async (event) => {
         return;
       }
 };
+
+const filterInputCgNameA = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        store.formDataCondit.cc_value_a = store.formDataCondit.cc_value_a.substring(0, store.formDataCondit.cc_value_a.length - 1);
+        return;
+      }
+      if (store.formDataCondit.cc_value_a.charAt(0) === '0') {
+        store.formDataCondit.cc_value_a = store.formDataCondit.cc_value_a.substring(0, store.formDataCondit.cc_value_a.length - 1);
+        return;
+  } 
+    store.formDataCondit.cc_value_a = event.target.value.replace(/\D/g, "");
+};
+
 
 
 const register = async () => {

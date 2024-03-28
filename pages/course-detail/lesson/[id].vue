@@ -284,14 +284,11 @@
       </div>
     </div>
   </div>
-  {{ store.prevs }}
-  {{ store.nexts }}
-  
   <br>
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
-      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()" v-if="store.prevs != 0"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
-      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="next()"  v-if="store.next_cg_id == 0">Next<span aria-hidden="true">&raquo;</span></button>
+      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
+      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="next()">Next<span aria-hidden="true">&raquo;</span></button>
     </div>
 <br>
 
@@ -483,10 +480,30 @@ const prev = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
+  
+if(store.prevs == 0){
+  console.log('0')
+
   router.push({
-        path: '/course-detail/lesson/' + store.previous_lesson.course_id,
+        path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
-    course_id: store.previous_lesson.course_id,
+    course_id: store.course_read.course_id,
+    cg_id: store.previous_couse_group.cg_id,
+    cs_id: store.previous_lesson.cs_id,
+  }
+      })
+      store.formsearchlearing.course_id = store.previous_lesson.course_id
+      store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
+      store.formsearchlearing.cs_id = store.previous_lesson.cs_id
+
+      let prev = await store.fetchCoursereadPrev();
+  
+}else{
+  console.log('ໄປຈ່ອ')
+    router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.course_read.course_id,
     cg_id: store.previous_lesson.cg_id,
     cs_id: store.previous_lesson.cs_id,
   }
@@ -497,7 +514,24 @@ const prev = async () => {
       store.formsearchlearing.cg_id = store.previous_lesson.cg_id
       store.formsearchlearing.cs_id = store.previous_lesson.cs_id
 
-      let next = await store.fetchCoursereadPrev();
+      let prev = await store.fetchCoursereadPrev();
+}
+
+  // router.push({
+  //       path: '/course-detail/lesson/' + store.previous_lesson.course_id,
+  //       query: {
+  //   course_id: store.previous_lesson.course_id,
+  //   cg_id: store.previous_lesson.cg_id,
+  //   cs_id: store.previous_lesson.cs_id,
+  // }
+  //     })
+
+
+  //     store.formsearchlearing.course_id = store.previous_lesson.course_id
+  //     store.formsearchlearing.cg_id = store.previous_lesson.cg_id
+  //     store.formsearchlearing.cs_id = store.previous_lesson.cs_id
+
+  //     let next = await store.fetchCoursereadPrev();
 
 }
 const next = async () => {
@@ -513,14 +547,32 @@ const next = async () => {
 
 
 if(store.nexts == 0){
-  console.log('if');
-}else {
-  console.log('else');
+
+
+
   router.push({
-        path: '/course-detail/lesson/' + store.next_lesson.course_id,
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.course_read.course_id,
+    cg_id: store.next_couse_group.cg_id,
+    cs_id: store.curent_lesson.cs_id,
+  }
+      })
+
+
+      store.formsearchlearing.course_id = store.course_read.course_id
+      store.formsearchlearing.cg_id = store.next_couse_group.cg_id
+      store.formsearchlearing.cs_id = store.curent_lesson.cs_id
+   
+   let next = await store.fetchCoursereadNext();
+  
+}else {
+
+  router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
     course_id: store.next_lesson.course_id,
-    cg_id: store.next_lesson.cg_id,
+    cg_id: store.curent_couse_group.cg_id,
     cs_id: store.next_lesson.cs_id,
   }
       })

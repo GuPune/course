@@ -134,6 +134,11 @@ this.previous_lesson = response.data.previous_lesson
 
  this.prevs = (Object.keys(response.data.previous_lesson).length);
  this.nexts = (Object.keys(response.data.next_lesson).length);
+ this.next_couse_group = response.data.next_couse_group;
+ this.curent_couse_group = response.data.curent_couse_group;
+ this.course_read = response.data.course;
+ this.previous_group = response.data.course;
+ 
  
 
 // this.next_cg_id = (Object.keys(response.data.next_cg_id).length);
@@ -272,10 +277,9 @@ try {
 
  this.prevs = (Object.keys(response.data.previous_lesson).length);
  this.nexts = (Object.keys(response.data.next_lesson).length);
-//  console.log(this.previous);
-
-        
-
+ this.next_couse_group = response.data.next_couse_group;
+ this.curent_couse_group = response.data.curent_couse_group;
+ this.previous_couse_group = response.data.previous_couse_group;
             });
            
                 },
@@ -283,11 +287,18 @@ try {
 
                 async fetchCoursereadPrev() {
                   const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
-       
-             this.curent_lesson = response.data.curent_lesson
-             this.next_lesson = response.data.next_lesson
-             this.previous_lesson = response.data.previous_lesson
+                    this.curent_lesson = response.data.curent_lesson
+                    this.next_lesson = response.data.next_lesson
+                    this.previous_lesson = response.data.previous_lesson
+          
+              this.prevs = (Object.keys(response.data.previous_lesson).length);
+              this.nexts = (Object.keys(response.data.next_lesson).length);
+              this.next_couse_group = response.data.next_couse_group;
+              this.curent_couse_group = response.data.curent_couse_group;
+              this.previous_couse_group = response.data.previous_couse_group;
+              
              
+        
       
                   });
                  
