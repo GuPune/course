@@ -73,9 +73,13 @@
               <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
                 <ul class="recent__list">
                   <li>
+                    
                     <div class="recent__img">
-                      <a href="#">
+                      <a href="#" v-if="auth.formdetail.user_img">
                          <img :src="coverimage(auth.formdetail.user_img )" alt="sidbar" id="user-icon"  width="80" height="100"/>
+                      </a>
+                      <a href="#" v-else>
+                         <img src="../../public/images/users/avatar-1.jpg" alt="sidbar" id="user-icon"  width="80" height="100"/>
                       </a>
                     </div>
                     <div class="recent__text">

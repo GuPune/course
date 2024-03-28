@@ -12,6 +12,7 @@
               <div>
                 <div class="contact__text">
                   <div class="d-flex justify-content-between flex-wrap">
+                  
                     <h1> <i class="icofont-book-alt" ></i>{{ $t("page_exam_course_eq") }} {{store.exam.em_name}} </h1>
                     <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">{{ $t("page_exam_report_begin") }}</button></div>
                   </div>
@@ -71,6 +72,7 @@
                       <li id="card-index">{{ ins + 1 }}.</li>
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
+                    
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-check-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->

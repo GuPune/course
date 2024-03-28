@@ -585,7 +585,7 @@ if(this.dltcard){
 
       async UpdateProfileafterOtp() {
 
-const update = {verify_account:"phone_active",identification_number:this.formdetail.identification_number,
+const update = {verify_account:"system_active",identification_number:this.formdetail.identification_number,
   user_img:this.formdetail.user_img,
   user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
   location_id:this.formdetail.location.id,country_id:this.formdetail.country.country_id,user_id:this.formuser.user_id,user_village:this.formdetail.user_village};

@@ -291,7 +291,7 @@
                     'border-red-500 focus:border-red-500': v$.user_phone.$error,
                     'border-[#42d392] ': !v$.user_phone.$invalid,
                   }"
-                  maxlength="11" 
+                  maxlength="10" 
                   @change="v$.user_phone.$touch"
                   autocomplete="off"
                   @input="filterInput"
