@@ -190,14 +190,14 @@ const rules = computed(() => {
         "Field is required",
         required
       ),
-      minLength: minLength(1),
+      minLength: minLength(6),
     },
     new_password: {
       required: helpers.withMessage(
         "Field is required",
         required
       ),
-      minLength: minLength(1),
+      minLength: minLength(6),
     },
     confirm_new_password: {
       required: helpers.withMessage(
