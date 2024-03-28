@@ -546,10 +546,10 @@ if(this.dltcard){
 
       async Changepassword() {
        
-  
+        const id = localStorage.getItem('user_reset')
 
        try {
-        const data = await ApiService.put('/user/change_password/' + this.user_id,this.changepassword).then(response => {
+        const data = await ApiService.put('/user/change_password/' + id,this.changepassword).then(response => {
 
 
        return true

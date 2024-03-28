@@ -1,8 +1,8 @@
 <template>
 
     <div class="col-xl-8 col-md-8 offset-md-2">
-   
-      <div class="card-header " style="background-color: #FEF301;text-align: center;font-size: 24px;"> ລືມລະຫັດຜ່ານ, ຂໍຕັ້ງລະຫັດຜ່ານໃໝ່</div>
+      <div class="card">
+      <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;"> ລືມລະຫັດຜ່ານ, ຂໍຕັ້ງລະຫັດຜ່ານໃໝ່</div>
       <div class="loginarea__wraper">
         <div class="login__heading">
     
@@ -22,8 +22,6 @@
               />
               <span style="font-size: 14px;">* ລະບົບຈະສົ່ງລະຫັດ OTP ໄປເບີໂທ ເພື່ອຢືນຢັນ, ແລ້ວຈະອະນຸຍາດໃຫ້ທ່ານຕັ້ງລະຫັດຜ່ານໃໝ່
             </span>
-             
-            
             </div>
             <span v-if="locale == 'la'">
               <span
@@ -32,7 +30,6 @@
               v-if="v$.user.$error"
               >{{ $t("form_reset_pass") }}</span
             >
-            
             </span>
             <span v-if="locale == 'en'">
               <span
@@ -53,7 +50,7 @@
     
       </div>
     </div>
- 
+  </div>
 </template>
 
 <script setup>

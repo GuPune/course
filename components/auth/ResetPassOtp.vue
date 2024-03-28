@@ -1,9 +1,11 @@
 <template>
 
     <div class="col-xl-8 col-md-8 offset-md-2">
+      <div class="card">
+      <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;"> ລືມລະຫັດຜ່ານ, ຂໍຕັ້ງລະຫັດຜ່ານໃໝ່, ຢືນຢັນ OTP</div>
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">ລືມລະຫັດຜ່ານ, ຂໍຕັ້ງລະຫັດຜ່ານໃໝ່, ຢືນຢັນ OTP</h5>
+        
           <p class="login__description">
             ກະລຸນາໃສ່ລະຫັດ OTP 6 ຕົວເລກ ທີ່ຖືກສົ່ງໄປເບີໂທຂອງທ່ານ 
           </p>
@@ -11,33 +13,10 @@
         <form action="#">
           <div class="login__form">
             <div class="mb-4">
-          
-
-           
-
-            <span v-if="locale == 'la'">
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.otp.$error"
-              >{{ $t("form_reset_pass_otp") }}</span
-            >
-            
-            </span>
-            <span v-if="locale == 'en'">
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.otp.$error"
-              >{{ $t("form_reset_pass_otp") }}</span
-            >         
-            </span>
               <!-- <p>Didn't receive the OTP? <a href="#">Resend again</a></p> -->
             </div>
-          </div>
-    
+          </div>  
         </form>
-{{ store.otpisactive }}
         <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
                      <input
                         class="m-2 text-center form-control rounded" type="text"  ref="input1"  v-model="store.otp[0]" @input="moveFocus(1)"
@@ -54,9 +33,25 @@
                     maxlength="1"  /> 
                 </div>
 
-
+                <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.otp.$error"
+              >{{ $t("form_reset_pass_otp") }}</span
+            >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.otp.$error"
+              >{{ $t("form_reset_pass_otp") }}</span
+            >         
+            </span>
                 <div class="col-12" style="text-align: center">
-                <button class="btn" style="width: 30%;background-color: aqua;" @click="sendotp()"><span style="color: white;">ຢືນຢັນ</span></button>
+                <button class="btn" style="width: 30%;background-color: #2AB0E5;" @click="sendotp()"><span style="color: white;">ຢືນຢັນ</span></button>
                             </div>
                             <br>
              <div class="col-12">
@@ -68,7 +63,7 @@
     
       </div>
     </div>
-
+  </div>
 
     
  
@@ -191,7 +186,6 @@ store.otp[5] = '';
      }else {
         store.otpisactive = false;
           setTimeout(() => Swal.close(), 500);
-        
      }
     }
  
@@ -251,8 +245,13 @@ const sendotpnumber = async () => {
        store.otpisactive = true;
     }
     if(store.otpisactive == true){
-      console.log('ໄປຈ່ອ');
       let send = await store.ResetverifyOTP();
+
+      if(send == true){
+        router.push("/changepassword");
+      }else {
+
+      }
     }
 
 };

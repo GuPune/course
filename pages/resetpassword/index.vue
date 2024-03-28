@@ -56,8 +56,8 @@ const router = useRouter();
 const store = useLogin()
 
 
-store.isResetPassword = false;
-store.isResetPasswordOTP = true;
+store.isResetPassword = true;
+store.isResetPasswordOTP = false;
 store.isAlertFindUser = false
 store.formreset.otp = null;
 store.formreset.user = null;
@@ -75,13 +75,7 @@ const rules = computed(() => {
   };
 });
 
-
-
-
-
-
 </script>
-
 
 
 <style scoped>
