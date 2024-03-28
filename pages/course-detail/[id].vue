@@ -318,7 +318,7 @@ window.open(im, '_blank');
 
 
 const lastlesson = async () => {
-console.log('gotoLesson');
+
 }
 
 const choose = async (x,y,z,index) => {

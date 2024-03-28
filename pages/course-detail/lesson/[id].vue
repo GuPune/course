@@ -499,7 +499,6 @@ if(store.prevs == 0){
       let prev = await store.fetchCoursereadPrev();
   
 }else{
-  console.log('ໄປຈ່ອ')
     router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {

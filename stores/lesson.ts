@@ -127,7 +127,7 @@ export const LessonStore = defineStore({
       }
 
       const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
-console.log(response.data);
+
 this.curent_lesson = response.data.curent_lesson
 this.next_lesson = response.data.next_lesson
 this.previous_lesson = response.data.previous_lesson
