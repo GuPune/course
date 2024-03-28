@@ -12,7 +12,7 @@
               </div>
             </div>
 
-            <div class="col-xl-6 col-lg-6 main_menu_wrap">
+            <div class="col-xl-6 col-lg-6 main_menu_wrap" >
               <div class="headerarea__main__menu">
                 <nav>
                   <ul>
@@ -21,10 +21,10 @@
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
                         <!-- <span> {{ $t("home") }} </span> -->
-                        <span> Info / News </span>
+                        <span> {{ $t("news") }}</span>
                       </a>
                     </li>
-                    <li @click="goToMenu('/course')" >
+                    <li @click="goToMenu('/course')"  >
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link> -->
                         <span> {{ $t("courses") }} </span>
@@ -48,7 +48,7 @@
                     <li>
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
-                        <span> Exam Results </span>
+                        <span> {{ $t("exam_results") }} </span>
                       </a>
                     </li>
                   </ul>

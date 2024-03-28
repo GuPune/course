@@ -8,7 +8,7 @@
   >
   <div class="col-xl-8 col-md-8 offset-md-2">
   <div class="card">
-  <div class="card-header" style="text-align: center;background-color: yellow;">    ເຂົ້າສູ່ລະບົບ</div>
+  <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;">    ເຂົ້າສູ່ລະບົບ</div>
   <div>
     <div class="loginarea__wraper">
         <div class="login__heading">

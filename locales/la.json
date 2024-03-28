@@ -1,9 +1,11 @@
 {
   "home": "ຫນ້າທໍາອິດ",
   "language": "Language",
+  "news": "ຂ່າວ",
   "courses": "ຄວາມຮູ້ອອນໄລນ໌",
   "exam": "ແບບທົດສອບ",
   "appointmentxx": "ນັດໝາຍ",
+  "exam_results": "ຜົນການສອບເສັງ",
   "message": "嗨 i18n !!",
   "article": {
     "title": "快速上手",

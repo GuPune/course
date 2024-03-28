@@ -1,9 +1,11 @@
 {
   "home": "Home",
   "language": "Language",
+  "news": "News",
   "courses": "Course",
   "exam": "Examination",
   "appointmentxx": "Appointment",
+  "exam_results": "ນັດໝາຍ",
   "message": "嗨 i18n !!",
   "article": {
     "title": "快速上手",
