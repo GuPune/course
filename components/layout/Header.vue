@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-6">
               <div class="headerarea__left justify-content-center">
-                <div class="headerarea__left__logo">
+                <div class="headerarea__left__logo" @click="goToMenu('/')">
                   <img src="/img/logo/logo_4.png" alt="logo" width="120" />
                 </div>
               </div>
