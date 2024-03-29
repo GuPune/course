@@ -55,20 +55,19 @@
 
         </div>
 
-            <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up">
+            <div class="gridarea__wraper gridarea__wraper__1 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
                 <div class="gridarea__img">
-                    <a><img src="../../public/img/course01.png" alt="grid"></a>
+                     <a><img :src="coverimage(item.course_cover)" alt="grid"></a>
                 </div>
-                <div class="gridarea__content pt-4 ps-4 pe-4">
-          
+                <div class="gridarea__content">
                     <div class="gridarea__heading">
-                        <h3><a>A : Two-wheels motocycle, engine not exceed 125cc</a></h3>
+                        <h3><a> {{ item.course_remark_a }}</a></h3>
                     </div>
                     <div class="gridarea__price">
-                        <p>ກຽມພ້ອມສຳລັບການເສັງໃບຂັບຂີ່ປະເພດ A - ລົດຈັກສອງລໍ້ ຄວາມແຮງບໍ່ເກີນ 125 cc. </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean viverra cursus libero ut scelerisque. Vivamus porttitor dolor eget auctor pulvinar. Nunc ac ultricies lectus, eu laoreet mi. Nam vitae nisl ac nulla sagittis luctus. Duis euismod lacus ut venenatis malesuada. Donec ullamcorper ullamcorper mauris, ut varius elit viverra mattis. Sed aliquam tempus</p>
+        
+                        <p style="font-size:12px">    {{ item.course_description }}</p>
                         <p class="fw-bold mb-0">ເງືອນໄຂສອບເສັງທິດສະດີ:</p>
-                        <p class="mb-0">ມີ 20 ຄຳຖາມ ກຳນົດເວລາ 20 ນາທີ, ຕ້ອງຕອບຖືກຢ່າງນ້ອຍ 17 ຂໍ້</p>
+                        <p class="mb-0">    {{ item.course_remark_b }}</p>
                     </div>
                     <div class="gridarea__bottom p-0">
                         <div class="gridarea__bottom__left">
@@ -82,7 +81,7 @@
                                 ຈຳນວນ Video:  4
                             </div>
                         </div>
-                        <div class="gridarea__details btn btn-info detailBtn">
+                        <div class="gridarea__details btn btn-info detailBtn" @click="SelectCourse(item)">
                             <a>
                                 ເລິ່ມຮຽນ
                                 <i class="icofont-arrow-right"></i>
@@ -92,62 +91,6 @@
                 </div>
             </div>
 
-        <div class="tab-pane fade" id="projects__two" role="tabpanel"
-            v-bind:class="{ active: !getisActiveCourse, show: !getisActiveCourse }" aria-labelledby="projects__two">
-            <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up"
-                v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
-                <div class="gridarea__img">
-                    <a><img :src="coverimage(item.course_cover)" alt="grid"></a>
-                </div>
-                <div class="gridarea__content">
-                    <div class="gridarea__list">
-                        <ul>
-                            <li v-if="item.total_les">
-                                <i class="icofont-book-alt"></i> {{ item.total_les }}
-                            </li>
-                            <li>
-                                <i class="icofont-clock-time"></i> {{ $t("page_course_code") }} {{ item.course_code }}
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="gridarea__heading">
-                        <h3><a>{{ item.course_name }}</a></h3>
-                    </div>
-                    <div class="gridarea__price">
-                        {{ item.course_description }}
-                    </div>
-                    <div class="gridarea__bottom">
-                        <div class="gridarea__bottom__left">
-                            <a>
-                                <div class="gridarea__small__img">
-                                    <img src="../../assets/img/grid/grid_small_1.jpg" alt="grid">
-                                    <div class="gridarea__small__content">
-                                        <h6>{{ item.user_create }}</h6>
-                                    </div>
-                                </div>
-                            </a>
-                            
-
-                        <div class="gridarea__star">
-                        
-                            <i class="icofont-book-alt" v-if="item.is_complete == 1"></i> 
-                      
-                    </div>
-                        </div>
-
-                        <div class="gridarea__details">
-                            <a>
-                                {{ $t("page_course_view_details") }}
-                                <i class="icofont-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
 
 
     </div>
@@ -177,7 +120,7 @@ import ApiService from '@/services/api.service';
 
 const router = useRouter();
 const store = CoursePostStore()
-let course = await store.fetchCourse();
+
 
 const SelectCourse = async (item) => {
     const id = item.course_id;
@@ -224,4 +167,6 @@ if(store.formsearchcourse.page != 1){
         width: 100%;
     }   
 }
+
+
 </style>

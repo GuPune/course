@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-2">
       <div class="course__text">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" @change="selectshowdata($event)">
                                             <option  value="5" selected="">5</option>
                                             <option value="10">10</option>
                                             <option value="20">20</option>
@@ -63,6 +63,14 @@ const searchData = async () => {
   store.formsearchcourse.page = 1;
   await store.fetchCourse()
 };
+
+const selectshowdata = async (ev) => {
+  
+  store.formsearchcourse.per_page = ev.target.value;
+  await store.fetchCourse()
+};
+
+
 </script>
 
 <style scoped>

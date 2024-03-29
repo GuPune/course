@@ -37,28 +37,11 @@
   </div>
 
 
-   <div class="coursearea sp_top_100 sp_bottom_100">
+   <div>
             <div class="container">
                 <div class="row my-4">
-                    <p>Courses | attended</p>
-                    <div class="d-flex gap-4 justify-content-center">
-                        <div class="card" style="width: 18rem;">
-                            <img src="../../public/img/course01.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">C :  Cargo truck, total weight from 3,500 to 7,500 kilograms</p>
-                                <p class="mb-0">ອ່ານແລ້ວ: 55/150 <span class="text-success">(36.67 %)</span></p>
-                                <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສູດ: {{ new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear() }}</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="../../public/img/course02.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">B : Car with four-wheels, total weight not exceed 3500kg, not more than 9 seats including driver</p>
-                                <p class="mb-0">ອ່ານແລ້ວ: 120/120 <span class="text-success">(100.00 %)</span></p>
-                                <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສູດ: {{ new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear() }}</p>
-                            </div>
-                        </div>
-                    </div>
+                  <p style="font-size:20px">Courses | attended</p>
+                <HistoryCourse></HistoryCourse>
                 </div>
                 <div class="row">
                     <CourseSel></CourseSel>
@@ -74,16 +57,21 @@
   import Search from '@/components/layout/SearchCourse.vue';
   import CourseAll from '@/components/layout/Courseall.vue';
   import CourseSel from '@/components/layout/CourseSel.vue';
+  import HistoryCourse from '@/components/layout/HistoryCourse.vue';
+import { CoursePostStore } from '@/stores/course';
 
-
-  
-  definePageMeta({
+definePageMeta({
   middleware: "auth", // this should match the name of the file inside the middleware directory
 });
 
 
 const auth = useAuthStore();
-const profile = await auth.getProfile();
+const router = useRouter();
+const store = CoursePostStore()
+store.user_id = auth.user_id;
+let course = await store.fetchCourse();
+let history = await store.fetchCourseHistory();
+
 
   </script>
   
