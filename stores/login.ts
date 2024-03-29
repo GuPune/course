@@ -37,6 +37,7 @@ export const useLogin = defineStore({
     user_type: 3,
     user_phone: "",
     user_password: "",
+    user_prefrix:"",
     active: 1,
     user_confirmPassword: "",
   },
@@ -120,7 +121,7 @@ export const useLogin = defineStore({
 
       try {
         const send = await ApiService.put('/user/verify_otp', otp).then(response => {
-       console.log(response);
+
           if(response.status === 200){
             const user_reset = localStorage.setItem('user_reset', this.user_id)
             return true;
@@ -142,7 +143,7 @@ export const useLogin = defineStore({
       const otpconfirm = this.otp.join('');
       this.formotp = { otp_code: otpconfirm, user_id: this.user_id };
  
-console.log(this.formotp);
+
       try {
         const data = await ApiService.put('/user/verify_otp', this.formotp).then(response => {
           if(response.status == 200){
@@ -166,11 +167,13 @@ console.log(this.formotp);
         user_lastname: this.formnewpassword.user_lastname,
         user_email: this.formnewpassword.user_email,
         user_password: this.formreset.user_password,
+        user_prefrix: this.formnewpassword.user_prefrix,
         user_type:3,
         active:1}; 
 
         try {
           const data = await ApiService.put('/user/update/' + this.user_id, resetpass).then(response => {
+            console.log(response);
             if(response.status === 200){
               return true;
             }else{
@@ -182,7 +185,7 @@ console.log(this.formotp);
           return false;
         }
       
-     return true;
+
     },
 
 
@@ -200,6 +203,7 @@ console.log(this.formotp);
       this.formnewpassword.user_email = response.data.user_email
       this.formnewpassword.user_type = response.data.user_type
       this.formnewpassword.user_phone = response.data.user_phone
+      this.formnewpassword.user_prefrix = response.data.user_prefrix
       this.formnewpassword.active = 1
             return true;
           }

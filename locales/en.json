@@ -242,7 +242,7 @@
   "changepassword_confirm":"Change Password Confirm",
   "changepassword_old_re":"Password Old Valid",
   "changepassword_new_re":"Password New Valid",
-  "changepassword_confirm_re":"Password Confirm Valid",
+  "changepassword_confirm_re":"* ກະລຸນາ ເລືອກໃຊ້ລະຫັດຜ່ານທີ່ຜູ້ອື່ນເດົາໄດ້ຢາກ, ແລະ ຕ້ອງມີຄວາມຍາວຢ່າງນ້ອຍ 6 ຕົວອັກສອນ",
   "backtocourse":"Back To Course",
   "lesson_t":"Lesson",
   "lesson_q":"Question",
