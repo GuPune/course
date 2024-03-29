@@ -220,7 +220,7 @@
   "form_login_user":"Username ຕ້ອງມີຢ່າງໜ້ອຍ 1 ຕົວອັກສອນ",
   "form_login_pass":"Password ຕ້ອງມີຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ",
   "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
-  "form_reset_pass_otp":"OTP code ພາກສະຫນາມແມ່ນຕ້ອງການ",
+  "form_reset_pass_otp":"OTP code ຕ້ອງມີຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ",
 
   "form_register_fname":"ຊື່ ຕ້ອງມີຢ່າງໜ້ອຍ 1 ຕົວອັກສອນ",
   "form_register_lname":"ນາມ​ສະ​ກຸນ ຕ້ອງມີຢ່າງໜ້ອຍ 1 ຕົວອັກສອນ",

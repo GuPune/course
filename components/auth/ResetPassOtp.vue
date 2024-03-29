@@ -29,24 +29,17 @@
                     maxlength="1"  /> 
                     <input class="m-2 text-center form-control rounded"  type="text" id="input5" ref="input5"   v-model="store.otp[4]" @input="moveFocus(5)"
                     maxlength="1"  /> 
-                    <input class="m-2 text-center form-control rounded"  type="text" id="input6"   ref="input6"   v-model="store.otp[5]"  @input="send()"
+                    <input class="m-2 text-center form-control rounded"  type="text" id="input6"   ref="input6"   v-model="store.otp[5]"  @input="sendotp()"
                     maxlength="1"  /> 
                 </div>
 
-                <span v-if="locale == 'la'">
+          
+
+             <span v-if="!store.otpisactive">
               <span
               class="text-xs text-red-500"
               style="color: red"
-              v-if="v$.otp.$error"
-              >{{ $t("form_reset_pass_otp") }}</span
-            >
-            
-            </span>
-            <span v-if="locale == 'en'">
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.otp.$error"
+           
               >{{ $t("form_reset_pass_otp") }}</span
             >         
             </span>
@@ -55,7 +48,7 @@
                             </div>
                             <br>
              <div class="col-12">
-                                <div class="text-center" >
+                                <div class="text-center"  @click="getotp()">
                                     <p class="mb-0">ບໍ່ໄດ້ຮັບລະຫັດ ? <a href="javascript:void(0);" class="text-warning">ສົ່ງໃໝ່ອີກຄັ້ງ</a></p>
                                 </div>
                             </div>
@@ -116,16 +109,26 @@ const reset = async () => {
 };
 
 const getotp = async () => {
-let otp = await store.getOtp();
+let otp = await store.getOtpResetpassword();
 };
 
 const sendotp = async () => {
-  v$.value.$validate();
-  if (!v$.value.$error) {
  
-    let sendotp = await store.verifyOTP();
- 
-    if(sendotp === true){
+     for (let i = 0; i < store.otp.length; i++) {
+        if(store.otp[i] == ''){
+            store.otpisactive = false;
+            break;
+        }
+       store.otpisactive = true;
+    }
+    if(store.otpisactive == true){
+
+
+
+        let sendotp = await store.ResetverifyOTP();
+
+      
+    if(sendotp == true){
       router.push("/newspassword");
     }else {
 
@@ -137,9 +140,14 @@ const sendotp = async () => {
 
     }
 
+
+    }
+
+  
+
    // router.push("/newspassword");
 
-  }
+
 };
 
 
@@ -159,9 +167,9 @@ const confirm = async () => {
       Swal.showLoading()
     },
   });
-     let send = await verifyOTP();
+     let send = await ResetverifyOTP();
      if(send == true){
-let profile = await auth.getProfile()
+//let profile = await auth.getProfile()
 let updatestatus = await auth.UpdateProfileafterOtp()
 
 

@@ -222,7 +222,7 @@
   "form_login_user":"Username must have at least 6 characters",
   "form_login_pass":"Password must have at least 6 characters",
   "form_reset_pass":"field is required",
-  "form_reset_pass_otp":"OTP code field is required",
+  "form_reset_pass_otp":"OTP code must have at least 6 character",
 
   "form_register_fname":"First Name  must have at least 1 characters",
   "form_register_lname":"Last Name  must have at least 1 characters",

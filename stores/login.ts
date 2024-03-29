@@ -102,6 +102,14 @@ export const useLogin = defineStore({
       return true;
     },
 
+    async getOtpResetpassword() {
+      const data = await ApiService.get('/user/otp/' + this.user_id).then(response => {
+    
+      });
+      return true;
+    },
+
+
     async verifyOTP() {
   
       const otp  = { otp_code: this.formreset.otp, user_id: this.user_id}; 
@@ -112,7 +120,7 @@ export const useLogin = defineStore({
 
       try {
         const send = await ApiService.put('/user/verify_otp', otp).then(response => {
-       
+       console.log(response);
           if(response.status === 200){
             const user_reset = localStorage.setItem('user_reset', this.user_id)
             return true;
@@ -134,7 +142,7 @@ export const useLogin = defineStore({
       const otpconfirm = this.otp.join('');
       this.formotp = { otp_code: otpconfirm, user_id: this.user_id };
  
-
+console.log(this.formotp);
       try {
         const data = await ApiService.put('/user/verify_otp', this.formotp).then(response => {
           if(response.status == 200){
