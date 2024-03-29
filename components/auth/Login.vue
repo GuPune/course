@@ -336,7 +336,7 @@ const rules = computed(() => {
     username: {
       required: helpers.withMessage("The Username field is required", required),
       //   email: helpers.withMessage('Invalid email format', email),
-      minLength: minLength(4),
+      minLength: minLength(1),
     },
     password: {
       required: helpers.withMessage("The password field is required", required),
