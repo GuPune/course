@@ -810,11 +810,11 @@ const filterInput = async (event) => {
         return;
       }
       if (stores.form.user_phone.charAt(0) !== '2') {
-        stores.form.user_phone = stores.form.user_phone.substring(0, stores.form.user_phone.length - 1);
+        stores.form.user_phone = "";
         return;
       } 
       if ((stores.form.user_phone.charAt(1) !== '') && (stores.form.user_phone.charAt(1) !== '0')) {
-       stores.form.user_phone = stores.form.user_phone.substring(0, stores.form.user_phone.length - 1);
+       stores.form.user_phone = "2";
         return;
       } 
   stores.form.user_phone = event.target.value.replace(/\D/g, "");
