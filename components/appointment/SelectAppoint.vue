@@ -133,9 +133,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-definePageMeta({
-  middleware: "auth", // this should match the name of the file inside the middleware directory
-});
+
 
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { storeToRefs } from "pinia";

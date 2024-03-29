@@ -325,7 +325,7 @@ import {
   helpers,
 } from "@vuelidate/validators";
 import { useI18n } from "vue-i18n";
-
+import Swal from "sweetalert2";
 
 const router = useRouter();
 const store = useLogin();
@@ -368,7 +368,15 @@ const Hideaside = async () => {
 };
 
 const goToMenu = async (meun) => {
+  //      Swal.fire({
+  //   allowEscapeKey: false,
+  //   allowOutsideClick: false,
+  //   didOpen: () => {
+  //     Swal.showLoading()
+  //   },
+  // });
   router.push(meun);
+  //  setTimeout(() => Swal.close(), 500);
 };
 
 

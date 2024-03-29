@@ -117,14 +117,24 @@ import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course';
 import ApiService from '@/services/api.service';
-
+import Swal from "sweetalert2";
 const router = useRouter();
 const store = CoursePostStore()
 
 
 const SelectCourse = async (item) => {
+         Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+
+
     const id = item.course_id;
     router.push({ path: '/course-detail/' + id })
+     setTimeout(() => Swal.close(), 500);
 };
 
 const { getisActiveCourse } = storeToRefs(store);

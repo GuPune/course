@@ -59,11 +59,18 @@
   import CourseSel from '@/components/layout/CourseSel.vue';
   import HistoryCourse from '@/components/layout/HistoryCourse.vue';
 import { CoursePostStore } from '@/stores/course';
-
+import Swal from "sweetalert2";
 definePageMeta({
   middleware: "auth", // this should match the name of the file inside the middleware directory
 });
 
+     Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
 
 const auth = useAuthStore();
 const router = useRouter();
@@ -71,7 +78,7 @@ const store = CoursePostStore()
 store.user_id = auth.user_id;
 let course = await store.fetchCourse();
 let history = await store.fetchCourseHistory();
-
+ setTimeout(() => Swal.close(), 500);
 
   </script>
   

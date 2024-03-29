@@ -51,6 +51,8 @@ export const CoursePostStore = defineStore({
     total_lesson:null,
     total_filter_lesson:null,
     total_page_lesson:null,
+    total_page_history:null,
+    total_filter_history:null,
     cs_id:null,
     group:[],
     history:[],
@@ -89,9 +91,7 @@ export const CoursePostStore = defineStore({
       this.listcourse = response.data.data
       this.total_filter = response.data.total_filter
       this.limit_page = response.data.limit_page
-
    //  this.fetchlesson();
-  
      });
      return true;
     } catch (error) {
@@ -104,6 +104,10 @@ export const CoursePostStore = defineStore({
     try {
     const data = await ApiService.post('/course/learn/history/'+this.user_id, this.formsearchcoursestory).then(response => {
   this.history = response.data.data
+  this.total_page_history = response.data.total_page
+  this.total_filter_history = response.data.total_filter
+
+
      });
      return true;
     } catch (error) {
