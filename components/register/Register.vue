@@ -167,7 +167,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_name.$error"
-                    >{{ $t("form_register_users") }}</span
+                    >{{ $t("form_login_user") }}</span
                   >
                 </span>
 
@@ -176,7 +176,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_name.$error"
-                    >{{ $t("form_register_users") }}</span
+                    >{{ $t("form_login_user") }}</span
                   >
                 </span>
               </div>
@@ -221,7 +221,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_password.$error"
-                    >{{ $t("form_register_pass") }}</span
+                    >{{ $t("form_login_pass") }}</span
                   >
                 </span>
 
@@ -230,7 +230,7 @@
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_password.$error"
-                    >{{ $t("form_register_pass") }}</span
+                    >{{ $t("form_login_pass") }}</span
                   >
                 </span>
               </div>
@@ -771,7 +771,7 @@ const rules = computed(() => {
     user_phone: {
       required: helpers.withMessage("The tel field is required", required),
 
-      minLength: minLength(6),
+      minLength: minLength(10),
     },
     user_confirmPassword: {
       required: helpers.withMessage(
