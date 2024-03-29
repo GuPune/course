@@ -45,7 +45,7 @@
                         <span> {{ $t("appointmentxx") }} </span>
                       </a>
                     </li>
-                    <li>
+                    <li @click="goToMenu('/result')">
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
                         <span> {{ $t("exam_results") }} </span>
