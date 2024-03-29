@@ -41,6 +41,9 @@ import { useAuthStore } from '@/stores/auth'; // import the auth store we just c
 import { useRoute } from 'vue-router'
 
 
+  definePageMeta({
+  middleware: "auth", // this should match the name of the file inside the middleware directory
+});
 
 
 const router = useRouter();

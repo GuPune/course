@@ -12,7 +12,7 @@
         <div class="login__heading">
   
           <p class="login__description">
-            {{ $t("changepassword_title1") }}
+            {{ $t("changepassword_title1UserLogin") }}
             <a
               href="#"
               data-bs-toggle="modal"

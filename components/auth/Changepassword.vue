@@ -139,7 +139,12 @@
                 </span>
               </div>
             </div>
-     
+      <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+               
+                    >{{ $t("changepassword_confirm_re") }}</span
+                  >
               
           </div>
       <br>

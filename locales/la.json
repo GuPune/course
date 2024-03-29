@@ -235,6 +235,7 @@
   "changepassword":"ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ",
   "changepassword_title":"ຕັ້ງລະຫັດຜ່ານໃໝ່",
   "changepassword_title1":"ຢືນຢັນ ລະຫັດ OTP ສຳເລັດ, ກະລຸນາໃສ່ລະຫັດຜ່ານໃໝ່",
+  "changepassword_title1UserLogin":"ກະລຸນາໃສ່ລະຫັດຜ່ານໃໝ່",
   "changepassword_old":"ປ່ຽນລະຫັດຜ່ານເກົ່າ",
   "changepassword_new":"ປ່ຽນລະຫັດຜ່ານໃໝ່",
   "changepassword_confirm":"ຢືນຢັນລະຫັດໃຫມ່",
