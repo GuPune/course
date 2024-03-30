@@ -15,6 +15,8 @@ export const CoursePostStore = defineStore({
     coursecategories:[],
     listcourse:[],
     lessonlist:[],
+    total_page:0,
+    limit_page:0,
     pdf:[],
     lesson:[],
     total:null,
@@ -91,6 +93,7 @@ export const CoursePostStore = defineStore({
       this.listcourse = response.data.data
       this.total_filter = response.data.total_filter
       this.limit_page = response.data.limit_page
+      console.log(response);
    //  this.fetchlesson();
      });
      return true;

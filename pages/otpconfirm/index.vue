@@ -104,7 +104,7 @@ const confirm = async () => {
      if(send == true){
 let profile = await auth.getProfile()
 let updatestatus = await auth.UpdateProfileafterOtp()
-console.log(updatestatus);
+
 
  await setTimeout(() => Swal.close(), 500);
 await Swal.fire({

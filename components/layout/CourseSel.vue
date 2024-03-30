@@ -4,12 +4,12 @@
     <div class="row">
     <div class="col-md-8">
       <div class="course__text">
-                                <p>Showing 1-3 of 54 Results</p>
+                                <p>Showing 1- {{store.limit_page}} of {{store.total}} Results</p>
                             </div>
     </div>
     <div class="col-md-2">
       <div class="course__text">
-        <input type="text" placeholder="ຫຼັກສູດຄົ້ນຫາ" v-model="store.formsearchcourse.search"  @keyup="searchData" class="form-control" >
+        <input type="text" placeholder="ຄົ້ນຫາ ຫຼັກສູກ ..." v-model="store.formsearchcourse.search"  @keyup="searchData" class="form-control" >
                             </div>
     </div>
     <div class="col-md-2">
