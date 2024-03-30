@@ -58,7 +58,17 @@
                       id="accordionExample"
                     >
                       <div class="accordion-item" style="padding: 5px;background-color: #F5F5F5;">
-                        <span style="font-size: 20px;font-weight: 400;">  -------------------------------------- </span>
+                        <div style="text-align: center;">
+                          <span style="font-size: 20px;"> Congratuations, You have completed the last lesson of the Course :</span>
+                        </div>
+               
+<br>
+
+
+<div style="text-align: center;">
+                          <span style="font-size: 24px;font-weight: 400;"> A : Two-wheels motocycle, engine not exceed 125cc</span>
+
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -66,7 +76,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <div class="text-center p-3 mb-3">
-      <p class="fs-3">Arealdy Read: 99 / 100 <span class="text-success">(99.00%)</span></p>
+      <p class="fs-3">Arealdy Read: {{stores.learned}} / {{stores.total_lesson_progress}} <span class="text-success">({{stores.progress}}%)</span></p>
     </div>
 
     <div class="d-flex gap-3 justify-content-center flex-wrap">
@@ -100,17 +110,22 @@ definePageMeta({
   });
 
 
-  onMounted(() => {
-const localStorageValue = ref('')
-localStorageValue.value = localStorage.getItem('course_id')
-if(localStorageValue.value == null){
-  router.push("/course");
-}
-    });
 const auth = useAuthStore();
 const router = useRouter();
 const store = CoursePostStore()
 store.user_id = auth.user_id;
+const stores = CoursePostStore();
+
+onMounted(() => {
+const localStorageValue = ref('')
+localStorageValue.value = localStorage.getItem('course_id')
+if(localStorageValue.value == null){
+  router.push("/course");
+  return false;
+}
+let progress =  store.progersslesson(localStorageValue.value);
+    });
+
 
  setTimeout(() => Swal.close(), 500);
 

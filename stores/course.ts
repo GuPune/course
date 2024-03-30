@@ -160,10 +160,10 @@ export const CoursePostStore = defineStore({
       }
     },
     async progersslesson(id){
-  
+
       try {
         const data = await ApiService.get('/course/learn/status?user_id='+this.user_id+'&course_id='+id+'').then(response => {
-      
+          console.log(response);
      if(response.status == 200){
    this.learning_status = response.data.learning_status;
 this.learned = response.data.learned;
