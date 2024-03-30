@@ -103,19 +103,15 @@ export const CoursePostStore = defineStore({
     }
     },
     async fetchCourseHistory() {
-  
     try {
     const data = await ApiService.post('/course/learn/history/'+this.user_id, this.formsearchcoursestory).then(response => {
   this.history = response.data.data
   this.total_page_history = response.data.total_page
   this.total_filter_history = response.data.total_filter
-
-
      });
      return true;
     } catch (error) {
-   
-
+   return false;
     }
     },
     async fetchCourseall() {

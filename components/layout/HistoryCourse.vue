@@ -38,7 +38,7 @@ import Swal from "sweetalert2";
 
 const router = useRouter();
 const store = CoursePostStore()
-let course = await store.fetchCourse();
+
 
 const SelectCourse = async (item) => {
       Swal.fire({
