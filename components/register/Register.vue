@@ -873,11 +873,12 @@ const register = async () => {
   v$.value.$validate();
     if (!v$.value.$error) {
      const regis = await regsiter(formDataregister); // call authenticateUser and pass the user object
-     if(regis == true){
+
+     if(regis == 200){
        await Swal.fire({
     position: 'top-end',
     icon: 'success',
-    title: 'ສະໝັກສະມາຊິກສຳເລັດແລ້ວ.',
+    title: 'ລົງທະບຽນສຳເລັດແລ້ວ.',
     showConfirmButton: false,
     timer: 1500
   })
@@ -893,10 +894,18 @@ const register = async () => {
   await ResetForm();
   //  router.push('/verifyconfirm');
    router.push('/otpconfirm');
+     }else if(regis == 204){
+      Swal.fire({
+          title: 'ລົງທະບຽນ ບໍ່ສຳເລັດ!',
+          text: 'ບັນຊີນີ້ມີຢູ່ແລ້ວ!',
+          icon: 'error',
+
+        });
+
      }else{
       Swal.fire({
-          title: 'Unsuccessful!',
-          text: 'Unsuccessful registration!',
+          title: 'ຕິດຕໍ່ເຈົ້າຫນ້າທີ່!',
+          text: 'ລົງທະບຽນ ບໍ່ສຳເລັດ!',
           icon: 'error',
 
         });

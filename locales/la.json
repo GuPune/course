@@ -227,7 +227,7 @@
   "form_register_users":"ຊື່ຜູ້ໃຊ້ ຕ້ອງລະບຸຂໍ້ມູນ",
   "form_register_phone":"ເບີໂທ  ຕ້ອງມີຢ່າງໜ້ອຍ 10 ຕົວອັກສອນ",
   "form_register_pass":"ລະຫັດຜ່ານ ຕ້ອງລະບຸຂໍ້ມູນ",
-  "form_register_pass_con":"Password ຕ້ອງມີຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ",
+  "form_register_pass_con":"ຕ້ອງມີຊ່ອງໃສ່ລະຫັດດຽວກັນ",
   "than":"ທ້າວ",
   "nang":"ນາງ ",
   "form_name_title":"ຄຳນຳໜ້າ",
