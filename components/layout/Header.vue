@@ -156,7 +156,7 @@
                           <a @click="GotoPage('/changepassword')"><i class="icofont-edit"></i><span style="font-size: 14px;">  {{ $t("changepassword") }}</span></a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/profile')"> <i class="icofont-ui-v-card"></i><span style="font-size: 13px;"> {{ $t("mylicense") }}</span></a>
+                          <a @click="GotoPage('/profile')"> <i class="icofont-ui-v-card"></i><span style="font-size: 14px;"> {{ $t("mylicense") }}</span></a>
                         </li>
                         <!-- <li>
                           <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
