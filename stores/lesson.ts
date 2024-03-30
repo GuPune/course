@@ -28,6 +28,7 @@ export const LessonStore = defineStore({
     },
     previous_cg_id:0,
     next_cg_id:0,
+    next_group:0,
     prevs:0,
     nexts:0,
     isYoutube:false,
@@ -138,6 +139,7 @@ this.previous_lesson = response.data.previous_lesson
  this.curent_couse_group = response.data.curent_couse_group;
  this.course_read = response.data.course;
  this.previous_group = response.data.course;
+ this.next_group = (Object.keys(response.data.next_couse_group).length);
  
  
 
@@ -280,6 +282,7 @@ try {
  this.next_couse_group = response.data.next_couse_group;
  this.curent_couse_group = response.data.curent_couse_group;
  this.previous_couse_group = response.data.previous_couse_group;
+ this.next_group = (Object.keys(response.data.next_couse_group).length);
             });
            
                 },

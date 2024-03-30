@@ -285,6 +285,8 @@
     </div>
   </div>
   <br>
+{{ store.next_group }}
+{{ store.nexts }}
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
       <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
@@ -480,6 +482,7 @@ const prev = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
+
   
 if(store.prevs == 0){
   console.log('0')
@@ -543,12 +546,13 @@ const next = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
-
+  if((store.next_group == 0) && (store.nexts == 0)){
+    const cour = localStorage.setItem('course_id', store.course_read.course_id)
+    router.push('/course-detail/success');
+   return false;
+  }
 
 if(store.nexts == 0){
-
-
-
   router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
