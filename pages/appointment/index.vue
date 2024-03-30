@@ -161,7 +161,7 @@ const confirmreve = async () => {
     store.popupconfirm = false;
     Swal.fire({
       title: "Unsuccessful!",
-      text: "Unsuccessful Booking!",
+      text: "ບັນທຶກການຈອງບໍ່ສຳເລັດ!",
       icon: "error",
     });
   }

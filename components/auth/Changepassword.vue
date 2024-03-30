@@ -232,7 +232,7 @@ if(savepassword === true){
   await Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Change Password successfully",
+      title: "ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ ສໍາເລັດ",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -248,7 +248,7 @@ router.push("/login");
   await Swal.fire({
       position: "top-end",
       icon: "error",
-      title: "Change Password unsuccessfully",
+      title: "ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ ບໍ່ສຳເລັດ",
       showConfirmButton: false,
       timer: 1500,
     });

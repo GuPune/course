@@ -154,7 +154,7 @@ if(updatepassword === true)
     await Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Change Password successfully",
+      title: "ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ ສໍາເລັດ",
       showConfirmButton: false,
       timer: 1500,
     });
