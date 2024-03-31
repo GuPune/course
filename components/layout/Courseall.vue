@@ -71,14 +71,14 @@
                     </div>
                     <div class="gridarea__bottom p-0">
                         <div class="gridarea__bottom__left">
-                            <div class="gridarea__star ms-2 pe-2 border-end">
-                                ຈຳນວນໝວດວິຊາ:   5 
+                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_course_group">
+                                ຈຳນວນໝວດວິຊາ:
                                  {{ item.total_course_group }}
                             </div>
-                            <div class="gridarea__star ms-2 pe-2 border-end">
+                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_lesson > -1">
                                 ຈຳນວນບົດຮຽນ:  {{ item.total_lesson }}
                             </div>
-                            <div class="gridarea__star ms-2 pe-2 border-end">
+                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_video > -1">
                                 ຈຳນວນ Video:  {{ item.total_video }}
                             </div>
                         </div>
