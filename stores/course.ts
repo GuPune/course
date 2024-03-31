@@ -163,15 +163,17 @@ export const CoursePostStore = defineStore({
 
       try {
         const data = await ApiService.get('/course/learn/status?user_id='+this.user_id+'&course_id='+id+'').then(response => {
-        
+        console.log(response);
      if(response.status == 200){
    this.learning_status = response.data.learning_status;
 this.learned = response.data.learned;
 this.total_lesson_progress = response.data.total_lesson;
 this.progress = response.data.progress;
 this.last_date = response.data.last_date;
-
 this.last_course = response.data.last_course
+this.last_course_group = response.data.last_course_group
+this.last_lesson = response.data.last_lesson
+
      }else {
 this.learning_status = false;
 this.learned = 0;

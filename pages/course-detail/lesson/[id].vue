@@ -285,11 +285,9 @@
     </div>
   </div>
   <br>
-{{ store.next_group }}
-{{ store.nexts }}
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
-      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
+      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()" v-if="(store.prevs_group != 0) || (store.prevs != 0)"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
       <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="next()">Next<span aria-hidden="true">&raquo;</span></button>
     </div>
 <br>
@@ -485,21 +483,23 @@ const prev = async () => {
 
   
 if(store.prevs == 0){
-  console.log('0')
-
+ 
   router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
     course_id: store.course_read.course_id,
     cg_id: store.previous_couse_group.cg_id,
-    cs_id: store.previous_lesson.cs_id,
+    cs_id: route.query.cs_id,
   }
       })
-      store.formsearchlearing.course_id = store.previous_lesson.course_id
-      store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
-      store.formsearchlearing.cs_id = store.previous_lesson.cs_id
 
-      let prev = await store.fetchCoursereadPrev();
+
+
+     store.formsearchlearing.course_id = store.course_read.course_id
+     store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
+     store.formsearchlearing.cs_id = route.query.cs_id
+
+     let prev = await store.fetchCoursereadPrev();
   
 }else{
     router.push({
@@ -519,21 +519,7 @@ if(store.prevs == 0){
       let prev = await store.fetchCoursereadPrev();
 }
 
-  // router.push({
-  //       path: '/course-detail/lesson/' + store.previous_lesson.course_id,
-  //       query: {
-  //   course_id: store.previous_lesson.course_id,
-  //   cg_id: store.previous_lesson.cg_id,
-  //   cs_id: store.previous_lesson.cs_id,
-  // }
-  //     })
 
-
-  //     store.formsearchlearing.course_id = store.previous_lesson.course_id
-  //     store.formsearchlearing.cg_id = store.previous_lesson.cg_id
-  //     store.formsearchlearing.cs_id = store.previous_lesson.cs_id
-
-  //     let next = await store.fetchCoursereadPrev();
 
 }
 const next = async () => {

@@ -110,10 +110,11 @@
               </div>
               <p class="mb-0">ອ່ານແລ້ວ: {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success">({{store.progress}}%)</span></p>
               <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສຸດ : {{store.last_date}}</p>
-              <p class="mb-0" @click=lastlesson()>ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
+              <p class="mb-0" @click=lastlesson(store.last_course_group,store.last_lesson)>ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
             </div>
           </div>
         </div>
+
 
         <div class="row" v-if="store.course_lesson">
           <div class="blog__details__content__wraper">
@@ -179,75 +180,7 @@
 
                         </button>
                       </h2>
-                      <!-- <div
-                        :id="'collapseOne-' + index"
-                        class="accordion-collapse collapse p-4"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample"
-                      >
-                        <div class="row" style="padding: 5px">
-                          <div
-                            class="col-lg-3 d-flex justify-content-center align-items-center"
-                          >
-                            <div class="single__expart__teacher">
-                              <div class="teacher__img mb-0" v-if="x.cs_cover">
-                            
-                                <img
-                                  :src="coverimage(x.cs_cover)"
-                                  alt="Image"
-                                  style="width: 120px; height: 120px"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-9 col--30">
-                            <div
-                              class="author__content"
-                              style="margin: 30px 0"
-                            >
-                              <div class="author__text row">
-                                <div class="col-lg-3 col-md-4">
-                                  <p class="fs-4 fw-bold mb-0">
-                                    {{ $t("page_course_last_lesson") }} {{ index + 1 }}
-                                  </p>
-                                </div>
-                                <div class="col-lg-9 col-md-8">
-                                  <p class="fs-4 fw-bold mb-0">
-                                    <a href="#">{{ x.cs_name }} </a>
-                                  </p>
-                                </div>
-                              </div>
-                              <div class="author__text row">
-                                <div class="col-lg-3 col-md-4">
-                                  <p class="mb-0">{{ $t("page_course_last_description") }}</p>
-                                </div>
-                                <div class="col-lg-9 col-md-8">
-                                  <p class="mb-0">{{ x.cs_description }}</p>
-                                </div>
-                              </div>
-                              <hr />
-                              <div class="author__text row">
-                                <div class="col-lg-3 col-md-4">
-                                  <p class="mb-0">{{ $t("page_course_user_create") }}</p>
-                                </div>
-                                <div class="col-lg-9 col-md-8">
-                                  <p class="mb-0">{{ x.user_create }}</p>
-                                </div>
-                              </div>
-                              <div class="author__text row">
-                                <div class="col-lg-3 col-md-4">
-                                  <p class="mb-0">{{ $t("page_course_date") }}</p>
-                                </div>
-                                <div class="col-lg-9 col-md-8">
-                                  <p class="mb-0">
-                                    {{ coverttime(x.crt_date) }}
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> -->
+        
                     </div>
                   </div>
                 </div>
@@ -317,7 +250,18 @@ window.open(im, '_blank');
 
 
 
-const lastlesson = async () => {
+const lastlesson = async (group,lesson) => {
+
+  
+  router.push({
+        path: '/course-detail/lesson/' + router.currentRoute.value.params.id,
+        query: {
+    course_id: router.currentRoute.value.params.id,
+    cg_id: group.cg_id,
+    cs_id: lesson.cs_id,
+
+  }
+      })
 
 }
 
