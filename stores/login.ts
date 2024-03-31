@@ -173,7 +173,7 @@ export const useLogin = defineStore({
 
         try {
           const data = await ApiService.put('/user/update/' + this.user_id, resetpass).then(response => {
-            console.log(response);
+          
             if(response.status === 200){
               return true;
             }else{
