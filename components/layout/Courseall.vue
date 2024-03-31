@@ -73,12 +73,13 @@
                         <div class="gridarea__bottom__left">
                             <div class="gridarea__star ms-2 pe-2 border-end">
                                 ຈຳນວນໝວດວິຊາ:   5 
+                                 {{ item.total_course_group }}
                             </div>
                             <div class="gridarea__star ms-2 pe-2 border-end">
-                                ຈຳນວນບົດຮຽນ:  150
+                                ຈຳນວນບົດຮຽນ:  {{ item.total_lesson }}
                             </div>
                             <div class="gridarea__star ms-2 pe-2 border-end">
-                                ຈຳນວນ Video:  4
+                                ຈຳນວນ Video:  {{ item.total_video }}
                             </div>
                         </div>
                         <div class="gridarea__details btn btn-info detailBtn" @click="SelectCourse(item)">
