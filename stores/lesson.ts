@@ -31,6 +31,7 @@ export const LessonStore = defineStore({
     next_group:0,
     prevs:0,
     nexts:0,
+    total_lesson_lean:0,
     isYoutube:false,
     seconds: 0,
     timer: null,
@@ -140,7 +141,7 @@ this.previous_lesson = response.data.previous_lesson
  this.course_read = response.data.course;
  this.previous_group = response.data.course;
  this.next_group = (Object.keys(response.data.next_couse_group).length);
- 
+ this.total_lesson_lean = response.data.total_lesson
  this.previous_couse_group = response.data.previous_couse_group;
  this.prevs_group = (Object.keys(response.data.previous_couse_group).length);
 

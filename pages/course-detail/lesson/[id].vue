@@ -324,21 +324,12 @@ if(lesson_id === false){
   router.push("/course");
   
 }
+if(store.total_lesson_lean == 0){
+  router.push("/course");
+}
  let course = await store.fetchCourseCode(route.query.course_id);
  setTimeout(() => Swal.close(), 500);
-// if (process.client) {
-//    Swal.fire({
-//     allowEscapeKey: false,
-//     allowOutsideClick: false,
-//     didOpen: () => {
-//       Swal.showLoading()
-//     },
-//   });
-//  let lesson_id = await store.fetchCourseread(route.query);
-//  let course = await store.fetchCourseCode(route.query.course_id);
-//   window.addEventListener("resize", () => loadEdit(), store.isYoutube == false);
-//   setTimeout(() => Swal.close(), 500);
-// }
+
 
 async function loadEdit() {
   store.isYoutube = false;
