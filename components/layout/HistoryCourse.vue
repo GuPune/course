@@ -1,7 +1,7 @@
 <template>
     
-                   <div class="d-flex gap-4 justify-content-center onmou">
-                        <div class="card" style="width: 18rem;"  v-for="(item, index ) in store.history"  :key="item.course_id"  @click="SelectCourse(item)">
+                   <div class="row justify-content-center onmou">
+                        <div class="col-12 col-sm-6 col-md-3" style="width: 18rem;"  v-for="(item, index ) in store.history"  :key="item.course_id"  @click="SelectCourse(item)">
                             <img :src="coverimage(item.course_cover)"  class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">{{item.course_remark_a}}</p>
