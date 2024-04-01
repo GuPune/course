@@ -49,6 +49,7 @@ import { useRoute } from 'vue-router'
 const router = useRouter();
 
 
+const auth = useAuthStore()
 
 
 

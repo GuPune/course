@@ -43,7 +43,8 @@
                   <p style="font-size:20px">Courses | attended</p>
                 <HistoryCourse></HistoryCourse>
                 </div>
-                <div class="row">
+                <div class="row my-4">
+                    <p style="font-size:20px">Available Courses</p>
                     <CourseSel></CourseSel>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <CourseAll></CourseAll>

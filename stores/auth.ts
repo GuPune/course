@@ -550,13 +550,26 @@ if(this.dltcard){
 
        try {
         const data = await ApiService.put('/user/change_password/' + id,this.changepassword).then(response => {
-
-
        return true
 
         });
 
       
+        return data
+      } catch (error) {
+        return false;
+      }
+       
+      },
+
+
+      async ChangepasswordNew() {
+      
+       try {
+        const data = await ApiService.put('/user/change_password/' + this.user_id,this.changepassword).then(response => {
+       return true
+        });
+
         return data
       } catch (error) {
         return false;

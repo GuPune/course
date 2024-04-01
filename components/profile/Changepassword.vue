@@ -220,7 +220,7 @@ const savechangepassword = async () => {
   v$.value.$validate();
 
   if (!v$.value.$error) {
-let savepassword = await stores.Changepassword();
+let savepassword = await stores.ChangepasswordNew();
 
 if(savepassword === true){
   await Swal.fire({
