@@ -76,6 +76,11 @@ const auth = useAuthStore();
 const router = useRouter();
 const store = CoursePostStore()
 store.user_id = auth.user_id;
+
+
+    store.formsearchcourse.page = 1;
+    store.formsearchcourse.per_page = 5;
+    store.formsearchcourse.search = '';
 let course = await store.fetchCourse();
 let history = await store.fetchCourseHistory();
  setTimeout(() => Swal.close(), 500);
