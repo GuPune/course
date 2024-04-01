@@ -272,7 +272,7 @@
                   </div>
 
                 
-                  <div v-if="locale == 'la'">
+                  <!-- <div v-if="locale == 'la'">
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
@@ -288,9 +288,9 @@
                 
                     >Only mobile numbers</span
                   >
-                 </div>
+                 </div> -->
         
-                  <div v-if="locale == 'la'">
+                  <!-- <div v-if="locale == 'la'">
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
@@ -315,7 +315,7 @@
                     v-if="v$.user_phone.$error"
                     >{{ $t("profile_alert_phone") }}</span
                   >
-                 </div>
+                 </div> -->
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
