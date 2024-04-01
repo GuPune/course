@@ -37,11 +37,9 @@
                       </a>
                     </li>
                     <li  @click="goToMenu('/appointment')">
-                      <!-- <nuxt-link to="/appointment">
-                        {{ $t("appointmentxx") }}
-                      </nuxt-link> -->
+                
                       <a class="headerarea__has__dropdown cursor-pointer">
-                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        
                         <span> {{ $t("appointmentxx") }} </span>
                       </a>
                     </li>
@@ -240,10 +238,24 @@
                 <li class="menu-item-has-children">
                   <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link>
                 </li>
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/appointment">{{
-                    $t("appointmentxx")
-                  }}</nuxt-link>
+               
+
+                <li  @click="goToMenu('/appointment')">
+                
+                <a class="headerarea__has__dropdown cursor-pointer">
+                  
+                  <span> {{ $t("appointmentxx") }} </span>
+                </a>
+              </li>
+                  <li class="menu-item-has-children">
+                  <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link>
+                </li>
+
+                <li @click="goToMenu('/result')">
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        <span> {{ $t("exam_results") }} </span>
+                      </a>
                 </li>
               </ul>
             </nav>
