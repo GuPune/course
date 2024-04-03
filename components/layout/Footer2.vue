@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-xl-2 col-lg-2  col-md-4 col-sm-12" data-aos="fade-up">
                         <div class="d-flex justify-content-center">
-                            <a href="" class="btn btn-success">Download App</a>
+                            <a href="https://play.google.com/store/apps/details?id=link.mpwt.dotsmart&hl=en-TH" class="btn btn-success">Download App</a>
                         </div>
                     </div>
                 </div>
