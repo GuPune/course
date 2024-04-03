@@ -183,7 +183,7 @@
         <div class="container-fluid mob_menu_wrapper">
           <div class="row align-items-center">
             <div class="col-6">
-              <div class="mobile-logo">
+              <div class="mobile-logo"  @click="goToMenu('/')">
                 <a class="logo__dark" href="#"><img src="/img/logo/logo_3.png" alt="logo" /></a>
               </div>
             </div>

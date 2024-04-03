@@ -7,7 +7,7 @@
                         <div class="footerarea__inner footerarea__about__us">
                             <div class="footerarea__heading">
                                 <h3>ກົມຂົນສົ່ງ, ກະຊວງ​ໂຍທາທິການແລະ​ຂົນສົ່ງ</h3>
-                                <img src="/img/logo/LogoPWT.png" alt="logo" width="120" />
+                                <img src="../../public/LogoPWT.png" alt="logo" width="120" />
                             </div>
                             <div class="footerarea__heading">
                                 <h3>Sponsored and Supported by:</h3>
