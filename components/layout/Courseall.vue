@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="gridarea__details btn btn-info detailBtn" @click="SelectCourse(item)">
-                            <a>
+                            <a >
                                 ເລິ່ມຮຽນ
                                 <i class="icofont-arrow-right"></i>
                             </a>

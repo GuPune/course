@@ -5,7 +5,7 @@
                             <img :src="coverimage(item.course_cover)"  class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">{{item.course_remark_a}}</p>
-                                <p class="mb-0">ອ່ານແລ້ວ: {{item.learned}}/{{item.total_lesson}} <span class="text-success">({{item.progress}}%)</span></p>
+                                <p class="mb-0">ອ່ານແລ້ວ: {{item.learned}}/{{item.total_lesson}} <span class="text-success" >({{item.progress}}%)</span></p>
                                 <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສູດ: {{ item.last_date }}</p>
                             </div>
                         </div>
