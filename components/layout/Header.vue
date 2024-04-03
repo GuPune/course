@@ -18,7 +18,7 @@
                   <ul>
                     
                     <li @click="goToMenu('/')" >
-                      <a class="headerarea__has__dropdown cursor-pointer">
+                      <a class="headerarea__has__dropdown cursor-pointer" href="http://information.iddriver.com"  target="_blank">
                         <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
                         <!-- <span> {{ $t("home") }} </span> -->
                         <span> {{ $t("news") }}</span>
