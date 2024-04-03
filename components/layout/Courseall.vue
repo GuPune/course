@@ -60,8 +60,8 @@
                      <a><img :src="coverimage(item.course_cover)" alt="grid"></a>
                 </div>
                 <div class="gridarea__content">
-                    <div class="gridarea__heading">
-                        <h3><a> {{ item.course_remark_a }}</a></h3>
+                    <div class="gridarea__heading"  >
+                        <h3  ><a style="color: #0AA7FF;"> {{ item.course_remark_a }}</a></h3>
                     </div>
                     <div class="gridarea__price">
         
@@ -71,14 +71,14 @@
                     </div>
                     <div class="gridarea__bottom p-0">
                         <div class="gridarea__bottom__left">
-                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_course_group">
+                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_course_group" style="color: #0AA7FF;">
                                 ຈຳນວນໝວດວິຊາ:
                                  {{ item.total_course_group }}
                             </div>
-                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_lesson > -1">
+                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_lesson > -1"  style="color: #0AA7FF;">
                                 ຈຳນວນບົດຮຽນ:  {{ item.total_lesson }}
                             </div>
-                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_video > -1">
+                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_video > -1"  style="color: #0AA7FF;">
                                 ຈຳນວນ Video:  {{ item.total_video }}
                             </div>
                         </div>
