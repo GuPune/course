@@ -10,7 +10,7 @@
           <div class="col-xl-12">
               <div class="breadcrumb__content__wraper" data-aos="fade-up">
                   <div class="breadcrumb__title">
-                      <h2 class="heading">{{ $t("page_course") }}</h2>
+                    <span style="font-size: 24px;font-weight: 400;"> {{ $t("page_course") }}</span>
                   </div>
                   <div class="breadcrumb__inner">
                       <ul>
