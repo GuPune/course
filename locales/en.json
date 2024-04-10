@@ -6,25 +6,15 @@
   "exam": "Theory Test",
   "appointmentxx": "Appointment",
   "exam_results": "Exam Results",
-  "message": "嗨 i18n !!",
-  "article": {
-    "title": "快速上手",
-    "info": "Vue I18n 是 Vue.js 的多語系插件"
-  },
-  "EN": "英",
-  "ZH": "中",
-  "logo": "商標",
   "login": "Login",
   "register":"Register",
   "username": "Username",
-  "or": "Or",
   "password": "Password",
   "confirmpassword": "Confirm Password",
   "email": "Email",
   "tel": "Phone",
   "fname": "First Name",
   "lname": "Last Name",
-  "acc": "acc",
   "singup_title": "Register",
   "singup_longtitle": "Already have an account? Log In",
   "button_register": "Register",
@@ -52,14 +42,12 @@
   "table_time": "Period",
   "table_action": "Manage",
   "table_action_cancel": "Cancel",
-
   "result_id": "Index",
   "result_score": "Score",
   "result_type": "Type of Exam",
   "result_status": "Status",
   "result_details": "Details",
   "result_time": "Time",
-
   "result": "Result",
   "resultall": "Resultall",
   "historyall": "Historyall",
@@ -68,7 +56,6 @@
   "page_exam": "Exam",
   "page_appoint": "Appointment",
   "logout": " Log Out",
-
   "page_register": "Register",
   "page_register_login": "You don't have a login account yet. ?",
   "page_register_acc": "Accept the terms and privacy policy.",
@@ -80,7 +67,6 @@
   "page_exam_bt": "Start Exam",
   "page_course_code": "Code",
   "page_course_view_details": "See more details",
-
   "page_course_view_show": "Show Record All",
   "page_exam_course": "Exam",
   "page_exam_answer": "Answers",
@@ -101,9 +87,7 @@
   "page_test5":"5. When starting the test, the system will count the time immediately.",
   "page_test6":"6. In the case of pressing to change page The system will stop the practice exam time for you. and can return to practice",
   "page_close":"Close",
-
   "page_exam_course_eq":"Exam : ",
-
   "page_exam_report":"Course",
   "page_exam_report_details":"Exam details",
   "page_exam_report_update":"Latest update :",
@@ -128,16 +112,13 @@
   "page_profile_type_test_y":"Theory",
   "page_profile_typepage_profile_type_test_n":"Practice",
   "page_profile_bt_pic":"Upload",
-
   "page_type_test_pass":"Pass",
   "page_type_test_fail":"Fail",
   "page_no_data":"No data Result",
-
   "page_exam_report_index":"No.",
   "page_exam_report_day_test":"Exam date",
   "page_exam_report_total_add":"Average (100%)",
   "page_exam_report_total_score":"Score",
-
   "page_profile_iden":"ID Card :",
   "page_profile_day":"Birthday :",
   "page_profile_village":"Village :",
@@ -148,7 +129,6 @@
   "page_profile_confirm":"Verify your identity",
   "page_profile_no_confirm":"I haven't verified my identity yet.",
   "page_profile_type_dlt":"Driver's license type",
-
   "page_verify_iden":"ID Card",
   "page_user_village":"Village",
   "page_verify_day":"Birthday",
@@ -158,13 +138,11 @@
   "page_verify_display_image":"Image display here:",
   "page_verify_step1":" 1-Step Verification",
   "page_verify_step2":" Step Verification",
-  
   "page_verify_step3":"OTP ไม่ถูกต้อง รึ กรอกไม่ครบ",
   "page_verify_step4":" 2-Step Verification",
   "page_verify_one_time":"Enter the code for verification.",
   "send_to":"sent to",
   "page_verify_save":"Confirm",
-
   "page_app_search_type":"Appointment type",
   "page_app_search_date":"Date",
   "page_app_search_round":"All Round",
@@ -173,7 +151,6 @@
   "page_app_search_round_t":"Round",
   "page_app_search_round_full":"Full",
   "page_app_search_not_round":"There are no appointments.",
-
   "page_app_search_app":"Appointment round",
   "theory":"Theory",
   "practice":"Practice",
@@ -223,7 +200,6 @@
   "form_login_pass":"Password must have at least 6 characters",
   "form_reset_pass":"field is required",
   "form_reset_pass_otp":"OTP code must have at least 6 character",
-
   "form_register_fname":"First Name  must have at least 1 characters",
   "form_register_lname":"Last Name  must have at least 1 characters",
   "form_register_users":"Usernam field is required",

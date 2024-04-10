@@ -41,7 +41,7 @@
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': store.selectchoice == ins }"
                     style="border-style: groove;" id="choice-card">
                     <div id="choice">
-                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
                       <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins)">{{ a.ec_name }}</span>
                        <div class="force-overflow"></div>

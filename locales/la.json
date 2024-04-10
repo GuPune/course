@@ -6,25 +6,15 @@
   "exam": "ແບບທົດສອບ",
   "appointmentxx": "ນັດໝາຍ",
   "exam_results": "ຜົນການສອບເສັງ",
-  "message": "嗨 i18n !!",
-  "article": {
-    "title": "快速上手",
-    "info": "Vue I18n 是 Vue.js 的多語系插件"
-  },
-  "EN": "英",
-  "ZH": "中",
-  "logo": "商標",
   "login": "ເຂົ້າ​ສູ່​ລະ​ບົບ",
   "register":"ສະໝັກສະມາຊິກ",
   "username": "Username",
-  "or": "ຫຼື",
   "password": "ລະຫັດຜ່ານ",
   "confirmpassword": "ລະຫັດຜ່ານ ອີກຄັ້ງ",
   "email": "ອີເມວ",
   "tel": "ເບີ​ໂທ",
   "fname": "ຊື່",
   "lname": "ນາມສະກຸນ",
-  "acc": "acc",
   "singup_title": "ລົງທະບຽນ",
   "singup_longtitle": "ມີບັນຊີຢູ່ແລ້ວບໍ? ເຂົ້າ​ສູ່​ລະ​ບົບ",
   "button_register": "ສະໝັກສະມາຊິກ",
@@ -52,14 +42,12 @@
   "table_time": "ໄລຍະເວລາ",
   "table_action": "ຈັດການ",
   "table_action_cancel": "ຍົກເລີກການນັດໝາຍ",
-
   "result_id": "ເລກ",
   "result_score": "ຄະແນນ",
   "result_type": "ປະເພດການສອບເສັງ",
   "result_status": "ສະຖານະ",
   "result_details": "ລາຍລະອຽດ",
   "result_time": "ເວລາ",
-
   "result": "ຜົນການສອບເສັງ",
   "resultall": "ຜົນ​ການ​ທົດ​ສອບ​ທັງ​ຫມົດ​",
   "historyall": "ປະຫວັດການສອບເສັງທັງໝົດ",
@@ -79,7 +67,6 @@
   "page_exam_bt": "ເຂົ້າສູ່ແບບທົດສອບ",
   "page_course_code": "ລະຫັດ",
   "page_course_view_details": "ເບິ່ງລາຍລະອຽດເພີ່ມເຕີມ",
-
   "page_course_view_show": "ສະແດງຂໍ້ມູນ ທັງໝົດ",
   "page_exam_course": "ຫຼັກສູດ",
   "page_exam_answer": "ຄໍາຕອບທົດສອບ",
@@ -125,16 +112,13 @@
   "page_profile_type_test_y":"ທິດສະດີ",
   "page_profile_typepage_profile_type_test_n":"ປະຕິບັດ",
   "page_profile_bt_pic":"ຖືກຕ້ອງ",
-
   "page_type_test_pass":"ຜ່ານ",
   "page_type_test_fail":"ບໍ່ຜ່ານ",
   "page_no_data":"ບໍ່ມີຂໍ້ມູນການສອບເສັງ",
-
   "page_exam_report_index":"ເວ​ລາ",
   "page_exam_report_day_test":"ວັນທີສອບເສັງ",
   "page_exam_report_total_add":"ຄະແນນສະເລ່ຍ(100%)",
   "page_exam_report_total_score":"ຄະແນນທີ່ໄດ້ຮັບ",
-
   "page_profile_iden":"ເລກບັດປະຈຳຕົວ :",
   "page_profile_village":"ບ້ານ :",
   "page_profile_day":"ວັນເດືອນປີເກີດ :",
@@ -145,7 +129,6 @@
   "page_profile_confirm":"ຢືນຢັນຕົວຕົນຂອງທ່ານ",
   "page_profile_no_confirm":"ບໍ່ໄດ້ຢັ້ງຢືນຕົວຕົນ",
   "page_profile_type_dlt":"ປະເພດໃບຂັບຂີ່",
-
   "page_verify_iden":"ໝາຍເລກບັດປະຈຳຕົວ",
   "page_user_village":"ບ້ານ",
   "page_verify_day":"ວັນເດືອນປີເກີດ",
@@ -155,13 +138,11 @@
   "page_verify_display_image":"ສະແດງຮູບທີ່ນີ້:",
   "page_verify_step1":" 1-ຂັ້ນຕອນການຢືນຢັນ",
   "page_verify_step2":" ຂັ້ນຕອນການຢືນຢັນ",
-  
   "page_verify_step3":"OTP ບໍ່ຖືກຕ້ອງ ຫຼື? ບໍ່ສົມບູນ",
   "page_verify_step4":" 2-ຂັ້ນຕອນການຢືນຢັນ",
   "page_verify_one_time":"ກະລຸນາໃສ່ລະຫັດຜ່ານຄັ້ງດຽວ",
   "send_to":"ຖືກ​ສົ່ງ​ໄປ",
   "page_verify_save":"ຢືນຢັນ",
-
   "page_app_search_type":"ປະເພດນັດໝາຍ",
   "page_app_search_date":"ວັນທີ",
   "page_app_search_round":"ຕະຫຼອດ",
@@ -170,7 +151,6 @@
   "page_app_search_round_t":"ເວລາ",
   "page_app_search_round_full":"ເຕັມ",
   "page_app_search_not_round":"ບໍ່ມີການນັດໝາຍ.",
-
   "page_app_search_app":"ຊອກຫາເວລານັດໝາຍ",
   "theory":"ທິດສະດີ",
   "practice":"ປະຕິບັດໄດ້",
@@ -220,7 +200,6 @@
   "form_login_pass":"Password ຕ້ອງມີຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ",
   "form_reset_pass":"ພາກສະຫນາມແມ່ນຕ້ອງການ",
   "form_reset_pass_otp":"OTP code ຕ້ອງມີຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ",
-
   "form_register_fname":"ຊື່ ຕ້ອງມີຢ່າງໜ້ອຍ 1 ຕົວອັກສອນ",
   "form_register_lname":"ນາມ​ສະ​ກຸນ ຕ້ອງມີຢ່າງໜ້ອຍ 1 ຕົວອັກສອນ",
   "form_register_users":"ຊື່ຜູ້ໃຊ້ ຕ້ອງລະບຸຂໍ້ມູນ",
@@ -242,7 +221,6 @@
   "changepassword_new_re":"ໃສ່ລະຫັດຜ່ານໃໝ່.",
   "changepassword_confirm_re":"* ກະລຸນາ ເລືອກໃຊ້ລະຫັດຜ່ານທີ່ຜູ້ອື່ນເດົາໄດ້ຢາກ, ແລະ ຕ້ອງມີຄວາມຍາວຢ່າງນ້ອຍ 6 ຕົວອັກສອນ",
   "backtocourse":"ກັບໄປທີ່ບົດຮຽນຫຼັກ",
-  
   "lesson_t":"ບົດຮຽນ",
   "lesson_q":"ຄຳຖາມ",
   "lesson_a":"ຄໍາຕອບ",
