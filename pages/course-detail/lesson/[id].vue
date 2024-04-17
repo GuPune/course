@@ -67,14 +67,13 @@
         </div>
       </div>
     </div>
-
         <div style="background-color: var(--dotColor);" v-if="store.curent_lesson">
       <div class="container py-3">
         <div class="row">
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
-                <span style="font-size: 24px;">{{ store.course_curent.course_code }} {{ store.curent_lesson.cg_name }}</span>
+                <span style="font-size: 24px;">{{ store.course_curent.course_name }} ,{{ $t("course_lesson_group_title") }} {{ store.curent_lesson.cg_name }}</span>
               </div>
             </div>
           </div>
@@ -470,22 +469,7 @@ function coverttime(date) {
 }
 
 
-// const prev = async () => {
-//     Swal.fire({
-//     allowEscapeKey: false,
-//     allowOutsideClick: false,
-//     didOpen: () => {
-//       Swal.showLoading()
-//     },
-//   });
 
-// if(store.selelesson != 1){
-// store.selelesson--;
-// await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
-// await setTimeout(() => Swal.close(), 500);
-// }
-// setTimeout(() => Swal.close(), 500);
-// };
 
 
 const prev = async () => {

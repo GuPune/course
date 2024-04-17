@@ -273,15 +273,8 @@ const choose = async (x,y,z,index) => {
   storelesson.formlean.course_id = x
   storelesson.formlean.user_id = auth.user_id
 
-////////////////////////////  insert log
-let updatelog = await storelesson.updateLogCourse();
 
-if(updatelog == true){
-  //////ไปต่อ
- // router.push("/course-detail/lesson/"+y);
-//  router.push({ path: '/course-detail/lesson/' + y })
-
-  router.push({
+    router.push({
         path: '/course-detail/lesson/' + x,
         query: {
     course_id: x,
@@ -291,10 +284,22 @@ if(updatelog == true){
   }
       })
 
-  // router.push({ path: '/course-detail/lesson/' + id })
-}else {
+////////////////////////////  insert log
+//let updatelog = await storelesson.updateLogCourse();
 
-}
+// if(updatelog == true){
+//   router.push({
+//         path: '/course-detail/lesson/' + x,
+//         query: {
+//     course_id: x,
+//     cg_id: z,
+//     cs_id: y,
+//   }
+//       })
+
+// }else {
+
+// }
 
 }
 
