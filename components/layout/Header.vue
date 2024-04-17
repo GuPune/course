@@ -246,15 +246,17 @@
           <div class="mobile-navigation">
             <nav>
               <ul class="mobile-menu">
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/">{{ $t("home") }}</nuxt-link>
+                <li class="menu-item-has-children"  @click="goToMenu('/')">
+                 <span> {{ $t("news") }}</span>
                 </li>
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link>
+                <li class="menu-item-has-children"  @click="goToMenu('/course')">
+                
+                      <span> {{ $t("courses") }} </span>
                 </li>
 
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link>
+                <li class="menu-item-has-children"  @click="goToMenu('/exam')">
+                
+                   <span> {{ $t("exam") }}</span>
                 </li>
                
 
@@ -280,41 +282,34 @@
           </div>
         </div>
         <div class="mobile-curr-lang-wrap">
-
-
-          <!-- <div class="single-mobile-curr-lang">
-                        <a class="mobile-currency-active" href="#">Currency <i class="icofont-thin-down"></i></a>
-                        <div class="lang-curr-dropdown curr-dropdown-active">
-                            <ul>
-                                <li><a href="#">USD</a></li>
-                                <li><a href="#">EUR</a></li>
-                                <li><a href="#">Real</a></li>
-                                <li><a href="#">BDT</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-
           <div class="single-mobile-curr-lang">
-
-
             <div class="btn-group">
-
               <a class="mobile-language-active" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ $t("head_choose_lan") }} <i
                   class="icofont-thin-down"></i></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" @click="changeLocale('la')">{{ $t("lan_loas") }}</a></li>
                 <li><a class="dropdown-item" href="#" @click="changeLocale('en')">{{ $t("lan_eng") }}</a></li>
-
-
               </ul>
             </div>
           </div>
+
+          
           <div v-if="authenticated">
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/profile')">{{ $t("account") }}</a></li>
+             <li> 
+                          <a @click="GotoPage('/profile')"> <span >  {{ $t("account_details") }}</span></a>
+                        </li>
+
             </div>
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/history')">{{ $t("history") }}</a></li>
+                <li>
+                          <a @click="GotoPage('/changepassword')"><span >  {{ $t("changepassword") }}</span></a>
+                        </li>
+            </div>
+             <div class="single-mobile-curr-lang">
+            <li>
+                          <a @click="GotoPage('/profile')"> <span > {{ $t("mylicense") }}</span></a>
+                        </li>
             </div>
             <div class="single-mobile-curr-lang">
               <li><a @click="Logout()">{{ $t("logout") }}</a></li>
@@ -388,7 +383,7 @@ const Logout = async () => {
 };
 
 const Showaside = async () => {
- 
+
   store.isActiveBar = !store.isActiveBar;
   // store.isActiveBar = false;
 };
@@ -405,6 +400,8 @@ const goToMenu = async (meun) => {
   //     Swal.showLoading()
   //   },
   // });
+
+  store.isActiveBar = false;
   router.push(meun);
   //  setTimeout(() => Swal.close(), 500);
 };
