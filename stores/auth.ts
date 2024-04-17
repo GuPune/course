@@ -202,7 +202,7 @@ export const useAuthStore = defineStore('auth', {
           this.user_id = data.value.user_id;
 
 
-          await this.getProfile() ;
+     await this.getProfile() ;
           await this.displaycard();
           await this.getDltAlert();
          return true;
@@ -294,7 +294,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async getProfile() {
-      const router = useRouter();
+  
       this.formcard.idcard_back = ''
       this.formcard.idcard_front = ''
 

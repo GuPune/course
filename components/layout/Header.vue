@@ -12,7 +12,7 @@
               </div>
             </div>
 
-            <div class="col-xl-6 col-lg-6 main_menu_wrap" >
+            <div class="col-xl-6 col-lg-6 main_menu_wrap" v-if="authenticated">
               <div class="headerarea__main__menu">
                 <nav>
                   <ul>
@@ -45,10 +45,28 @@
                     </li>
                     <li @click="goToMenu('/result')">
                       <a class="headerarea__has__dropdown cursor-pointer">
-                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                    
                         <span> {{ $t("exam_results") }} </span>
                       </a>
                     </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+                 <div class="col-xl-6 col-lg-6 main_menu_wrap" v-if="!authenticated">
+              <div class="headerarea__main__menu">
+                <nav style="text-align: justify;padding-left: 75px;">
+                  <ul>
+                    
+                    <li @click="goToMenu('/')" >
+                      <a class="headerarea__has__dropdown cursor-pointer" href="http://information.iddriver.com"  target="_blank">
+                        <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
+                        <!-- <span> {{ $t("home") }} </span> -->
+                        <span> {{ $t("news") }}</span>
+                      </a>
+                    </li>
+                  
                   </ul>
                 </nav>
               </div>

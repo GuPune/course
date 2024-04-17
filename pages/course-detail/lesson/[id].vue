@@ -4,7 +4,7 @@
 <template>
   <div>
     <div>
-      <div class="breadcrumbarea">
+      <!-- <div class="breadcrumbarea">
       <div class="container" v-if="store.curent_lesson">
         <div class="row">
           <div class="col-xl-12">
@@ -41,10 +41,8 @@
           alt="photo"
         />
       </div>
-    </div>
+    </div> -->
       <div class="container">
-
-
         <div class="row" v-if="store.curent_lesson">
           <div class="col-xl-12 col-lg-12">
             <div
@@ -58,15 +56,25 @@
               >
                 <div class="course__button"></div>
               </div>
-
               <div
                 class="course__details__tab__wrapper aos-init"
                 data-aos="fade-up"
               >
-              
-           
 
-             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div style="background-color: var(--dotColor);" v-if="store.curent_lesson">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+              <div class="breadcrumb__title">
+                <span style="font-size: 24px;">{{ store.course_curent.course_code }} {{ store.curent_lesson.cg_name }}</span>
               </div>
             </div>
           </div>
@@ -87,6 +95,26 @@
          
               <!-- <img :src="coverimage(store.data.cs_cover)" alt="blog"> -->
             </div>
+
+                  <div class="row">
+                  <div class="col-xl-12">
+                    <ul class="nav course__tap__wrap" id="myTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="single__tab__link active"
+                          data-bs-toggle="tab"
+                          data-bs-target="#projects__one"
+                          type="button"
+                          aria-selected="true"
+                          role="tab"
+                          @click="backlearning(router.currentRoute.value.params.id)"
+                        >
+                        {{ $t("backtocourse") }}
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
             <div class="blog__details__content__wraper">
               <div
                 class="course__button__wraper aos-init aos-animate"
@@ -362,7 +390,6 @@ const updateWidth = async () => {
 
 
 const start = async () => {
-
   if (!store.timer) {
     store.timer = setInterval(updateMillea, 1000);
       }

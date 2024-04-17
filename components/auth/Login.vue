@@ -345,7 +345,7 @@ const login = async () => {
   });
     let login = await authenticateUser(formData);
     if (login === true) {
-      const profile = await useError.getProfile();
+    //  const profile = await useError.getProfile();
    setTimeout(() => Swal.close(), 500);
 if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive') || (useError.formdetail.verify_account == 'phone_unactive')) {
   router.push("/otpconfirm");
