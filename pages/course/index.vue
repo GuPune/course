@@ -3,7 +3,7 @@
 
 <template>
     <div>
-      <div class="breadcrumbarea">
+      <!-- <div class="breadcrumbarea">
   
   <div class="container">
       <div class="row">
@@ -22,6 +22,8 @@
           </div>
       </div>
   </div>
+
+  
   
   <div class="shape__icon__2">
                 <img class=" shape__icon__img shape__icon__img__1" src="../../assets/img/herobanner/herobanner__1.png"
@@ -34,17 +36,36 @@
                     alt="photo">
             </div>
   
-  </div>
+  </div> -->
 
-
+    <div style="background-color: var(--dotColor);">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+              <div class="breadcrumb__title">
+                  <span style="font-size: 24px;font-weight: 400;"> {{ $t("page_course") }}</span>
+              </div>
+              
+              <div class="breadcrumb__inner">
+                <ul>
+                  <li><a href="#">{{ $t("home") }}</a></li>
+                  <li>{{ $t("page_course") }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
    <div>
             <div class="container">
-                <div class="row my-4">
-                  <p style="font-size:20px">Courses | attended</p>
+                <div class="row my-4"  v-if="store.total_page_history > 0">
+                  <p style="font-size:20px"> {{ $t("page_course_attended") }} | {{ $t("page_attended") }} </p>
                 <HistoryCourse></HistoryCourse>
                 </div>
                 <div class="row my-4">
-                    <p style="font-size:20px">Available Courses</p>
+                    <p style="font-size:20px">{{ $t("page_course_available") }}</p>
                     <CourseSel></CourseSel>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <CourseAll></CourseAll>
@@ -77,7 +98,7 @@ const auth = useAuthStore();
 const router = useRouter();
 const store = CoursePostStore()
 store.user_id = auth.user_id;
-
+let profile = await auth.getProfile()
 
     store.formsearchcourse.page = 1;
     store.formsearchcourse.per_page = 5;

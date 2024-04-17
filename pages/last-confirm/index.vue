@@ -50,7 +50,7 @@ const confirm = async () => {
     if(store.otpisactive == true){
      let send = await verifyOTP();
      if(send == true){
-        router.push('/');
+        router.push('/course');
      }else {
         store.otpisactive = false;
      }

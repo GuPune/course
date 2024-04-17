@@ -11,23 +11,26 @@ const auth = useAuthStore();
 
 const router = useRouter();
 
-if(auth.authenticated){
-  const profile = await auth.getProfile();
-  if((auth.formdetail.verify_account == null) || (auth.formdetail.verify_account == 'unactive') || (auth.formdetail.verify_account == 'phone_unactive')) {
-  router.push("/otpconfirm");
-}else {
- // router.push("/");
-}
-if(profile === false){
-  await auth.logUserOut()
-}
-}
+
+  router.push("/course");
+
+// if(auth.authenticated){
+//   const profile = await auth.getProfile();
+//   if((auth.formdetail.verify_account == null) || (auth.formdetail.verify_account == 'unactive') || (auth.formdetail.verify_account == 'phone_unactive')) {
+//   router.push("/otpconfirm");
+// }else {
+ 
+// }
+// if(profile === false){
+//   await auth.logUserOut()
+// }
+// }
 
 
 </script>
 <template>
   <div>
-    <Banner></Banner>
+    <!-- <Banner></Banner> -->
           <!-- <Populer></Populer>
   <Course></Course>
   <Contact></Contact>

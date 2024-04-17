@@ -108,7 +108,7 @@ const login = async () => {
   if (!v$.value.$error) {
     await authenticateUser(formData); 
       if (authenticated) {
-        router.push('/');
+        router.push('/course');
       }
   }
    

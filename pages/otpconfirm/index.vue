@@ -123,7 +123,7 @@ store.otp[2] = '';
 store.otp[3] = '';
 store.otp[4] = '';
 store.otp[5] = '';
-       router.push('/');
+       router.push('/course');
      }else {
         store.otpisactive = false;
           setTimeout(() => Swal.close(), 500);

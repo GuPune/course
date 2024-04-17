@@ -311,22 +311,6 @@ const formData = reactive({
   confirmPassword: null,
 });
 
-// onMounted(() => {
-//  this.select2 = $(this.$el)
-//       .find('select')
-//       .select2({
-//         placeholder: "xxx",
-       
-//         data: store.options
-//       })
-//       .on('select2:select select2:unselect', ev => {
-//         this.$emit('update:modelValue', this.select2.val());
-//         this.$emit('select', ev['params']['data']);
-//       });
-//     this.setValue(this.modelValue);
- 
-// });
-
 
 
 
@@ -366,7 +350,7 @@ const login = async () => {
 if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive') || (useError.formdetail.verify_account == 'phone_unactive')) {
   router.push("/otpconfirm");
 }else {
-  router.push("/");
+  router.push("/course");
 }
       
     //  router.push("/verifyconfirm");
