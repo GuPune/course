@@ -1,74 +1,46 @@
 <template>
   <div>
-    <div class="breadcrumbarea">
-      <div class="container">
+   
+      <div style="background-color: var(--dotColor);">
+      <div class="container py-3">
         <div class="row">
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
-                
-                <span style="font-size: 24px;font-weight: 400;"> {{ $t("page_appoint") }}</span>
+                  <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_exam_appoint_title") }}</span>
               </div>
-              <div class="breadcrumb__inner">
-                <ul>
-                  <li><a href="#">{{ $t("home") }}</a></li>
-                  <li>{{ $t("page_appoint") }}</li>
-                </ul>
-              </div>
+              
+        
             </div>
           </div>
         </div>
       </div>
-
-      <div class="shape__icon__2">
-        <img class="shape__icon__img shape__icon__img__1" src="../../assets/img/herobanner/herobanner__1.png"
-          alt="photo" />
-        <img class="shape__icon__img shape__icon__img__2" src="../../assets/img/herobanner/herobanner__2.png"
-          alt="photo" />
-        <img class="shape__icon__img shape__icon__img__3" src="../../assets/img/herobanner/herobanner__3.png"
-          alt="photo" />
-        <img class="shape__icon__img shape__icon__img__4" src="../../assets/img/herobanner/herobanner__4.png"
-          alt="photo" />
-      </div>
-    </div>
-    <nav class="navbar bg-body-tertiary nav-search">
-      <div class="container-fluid nav-container row justify-content-center py-2 gy-2">
-        <div class="col-2 nav-item" style="min-width: 150px;">
-          <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type"
-            @change="findApp()">
-            <option value="1">
-           {{ $t("theory") }}
-            </option>
-            <option value="2">
-          {{ $t("practice") }}
-            </option>
-          </select>
-        </div>
-        <div class="col-4 nav-item" style="min-width: 150px;" @change="findApp()">
-          <select class="form-control" v-model="store.form.dlt_code">
-            <option v-for="(item, index) in store.dlt" :key="item.dlt_code" :value="item.dlt_code">
-           {{ item.dlt_description_loas }}
-            </option>
-          </select>
-        </div>
-      
-      </div>
-    </nav>
-
-    <div class="container">
-      <div class="mt-4 d-flex gap-4 overflow-x-scroll p-2 scrollContainer">
-        <div class="dateCard" v-for="(event, index) in store.event">
-          <p class="mb-0 btn" @click="findEvent(event.event)">{{ event.event }}</p>
-        </div>
-
-      </div>
     </div>
 
-    <SelectAppoint></SelectAppoint>
+        <div class="container py-3 py-md-4 py-lg-5 appcontent">
+        <div class="row">
+         <div class="col-12 col-sm-12 col-lg-9" style="align-self: self-end;">
+          <span>{{ $t("page_exam_appoint_current") }}</span>
+        </div>
+  <div class="col-12 col-sm-12 col-lg-3">
+         <button class="btn btn-primary" style="width: 100%;background-color: rgb(42, 176, 229);border-radius: 0px;" @click="goToMenu('/appointment/make')">Add New Appointment</button>
+        </div>
 
-  
+        </div>
+
+      <article >
+      <CurrentApp></CurrentApp>
+
+        <section>
+        <br><br>
+        <span> {{ $t("page_exam_appoint_pass") }}</span>
+       <PassApp></PassApp>
+        </section>
+      </article>
+    </div>
+   
   </div>
-  <div class="modal" v-if="store.popupconfirm">
+  <!-- <div class="modal" v-if="store.popupconfirm">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
 
@@ -89,7 +61,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 <script lang="ts" setup>
 definePageMeta({
@@ -114,7 +86,8 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import moment from "moment";
 import Swal from "sweetalert2";
-import SelectAppoint from '@/components/appointment/SelectAppoint.vue';
+import CurrentApp from '@/components/appointment/CurrentApp.vue';
+import PassApp from '@/components/appointment/PassApp.vue';
 import { useI18n } from "vue-i18n";
 const { locale, setLocale } = useI18n();
 
@@ -237,7 +210,10 @@ const findEvent = async (item) => {
 };
 
 
-
+  const router = useRouter();
+  const goToMenu = async (meun) => {
+    router.push(meun);
+  };
 
 const format_start = (date) => {
   store.form.date_event = moment(date).format("YYYY-MM-DD");

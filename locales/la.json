@@ -241,5 +241,8 @@
   "confirm_answer":"ຢືນຢັນຄໍາຕອບ",
   "page_exam_report_stat":"ສະຖານະ",
   "page_exam_report_status_pass":"ສໍາເລັດ",
-  "page_exam_report_status_faill":"ບໍ່​ສໍາ​ເລັດ"
+  "page_exam_report_status_faill":"ບໍ່​ສໍາ​ເລັດ",
+  "page_exam_appoint_title":"Exam Appointments",
+  "page_exam_appoint_current":"Your current appointment to take driving exam:",
+  "page_exam_appoint_pass":"Your past appointments:"
 }
