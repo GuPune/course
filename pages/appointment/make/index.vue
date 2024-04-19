@@ -60,13 +60,14 @@
               <p><b>Location: Savanakhet</b></p>
             </div>
 
+   <div class="col-12 col-md-12 py-2">
+              <p class="text-nowrap mb-0 align-self-center">Please select your preferred time.</p>
+              
+            </div>
             <div class="col-12 col-md-12 py-2">
               <p class="text-nowrap mb-0 align-self-center">Type:</p>
               <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected   v-for="(item, index) in store.dlt" >{{item.dlt_description_english}}</option>
               </select>
             </div>
 
@@ -98,36 +99,41 @@
   </div>
 
   <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p class="fs-5">
-            You have not fulfilled requirement to have learned at least 50% of
-            the e-learning lessons yet. please go back to learn first.
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            <i class="icofont-double-left"></i> Back
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
 </template>
 <script lang="ts" setup>
+
+ import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
+import { storeToRefs } from "pinia";
+import { defineComponent } from "vue";
+import { AppointmentsStore } from "@/stores/appointment";
+import {
+  required,
+  email,
+  sameAs,
+  minLength,
+  helpers,
+} from "@vuelidate/validators";
+import Datepicker from "vuejs3-datepicker";
+import { useVuelidate } from "@vuelidate/core";
+import { useRoute } from "vue-router";
+
+import moment from "moment";
+import Swal from "sweetalert2";
+import CurrentApp from '@/components/appointment/CurrentApp.vue';
+import PassApp from '@/components/appointment/PassApp.vue';
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
+
+
+
+const auth = useAuthStore();
+const store = AppointmentsStore();
+const route = useRoute();
 </script>
+
+
 <style>
 .appcontent {
   min-height: 400px;
