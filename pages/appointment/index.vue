@@ -40,28 +40,7 @@
     </div>
    
   </div>
-  <!-- <div class="modal" v-if="store.popupconfirm">
-    <div class="modal-content" id="deleteConformationLabel">
-      <div class="modal-header">
 
-        <h5 class="modal-title" id="exampleModalLabel">{{ $t("page_app_resve_t") }}</h5>
-
-      </div>
-      <div class="modal-body">
-        <p class="">
-          {{ $t("page_app_resve_s") }}
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" data-bs-dismiss="modal" @click="closeModal">
-          {{ $t("close") }}
-        </button>
-        <button type="button" class="btn btn-danger" data-remove="task" @click="confirmreve()">
-          {{ $t("confirm") }}
-        </button>
-      </div>
-    </div>
-  </div> -->
 </template>
 <script lang="ts" setup>
 definePageMeta({
@@ -112,7 +91,7 @@ const goToMenu = async () => {
 
 
 </script>
-<style>
+<style scoped>
 button {
   margin-top: 10px;
 }

@@ -87,7 +87,7 @@ const chartOptions = ref({
 
 </script>
 
-<style>
+<style scoped>
 .xt3e5 {
   padding: 30px 50px 10px 10px;
 }

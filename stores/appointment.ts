@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import ApiService from '../services/api.service';
-
+import moment from 'moment';
 
 export const AppointmentsStore = defineStore({
   id: 'appointments',
@@ -159,9 +159,10 @@ export const AppointmentsStore = defineStore({
 
     async saverevs() {
       const savereve = {user_id:this.user_id,ap_id:this.ap_id}
+ console.log(savereve);
       try {
         const data = await ApiService.post('/appointment/reserve/create', savereve).then(response => {
-     
+   
         });
         return true
       } catch (error) {
@@ -196,12 +197,19 @@ export const AppointmentsStore = defineStore({
       const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       this.timestamp = date;
      this.reservepass = [];
+
 for (var i = 0; i < this.reserve.length; i++) {
-  if(this.reserve[i] > this.timestamp){
-    this.reservepass.push(this.reserve[i])
-  }else {
-    this.reservefisrt.push(this.reserve[i])
-  }
+  
+
+  let e = moment(this.reserve[i].appointment_detail.ap_date_start).format("YYYY-MM-DD");
+
+console.log(e);
+console.log(this.today);
+  // if(e > this.timestamp){
+  //   console.log('if');
+  // }else {
+  //   console.log('else');
+  // }
 }
     },
 
@@ -255,18 +263,17 @@ for (var i = 0; i < this.reserve.length; i++) {
 
             try {
         const data = await ApiService.post('/appointment/list', appdata).then(response => {
-        
+   
           if (response.data.length > 0) {
             this.appgroup = response.data;
+           this.ap_id = response.data[0].ap_id
+         
             let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)
             let learn = this.ap_learnlist.find(x => x.value === parseInt(this.form.ap_learn_type))
             this.appointment.dlt_des = dltlist?.dlt_description;
             this.appointment.dlt_des_en = dltlist?.dlt_description_english;
             this.appointment.dlt_des_la = dltlist?.dlt_description_loas;
             this.appointment.ap_learn = learn.ap_learn;
-
-
-    
 
             return true
           } else {

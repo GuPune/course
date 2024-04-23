@@ -240,7 +240,7 @@ const format_app = (item) => {
 };
 
 </script>
-<style>
+<style scoped>
 button {
   margin-top: 10px;
 }

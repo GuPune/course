@@ -2,7 +2,7 @@
    <div>
    
            <section class="px-4 py-3 border my-4"  v-if="store.reservefisrt.lenght > 0">
-            {{ store.reservefisrt }}
+        
           <div class="row">
               <div class="col-12 col-md-6"
                       >
@@ -59,7 +59,7 @@ const coverdlt = (code) => {
 };
 
 </script>
-<style>
+<style scoped>
 button {
   margin-top: 10px;
 }
