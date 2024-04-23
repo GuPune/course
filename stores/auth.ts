@@ -202,7 +202,7 @@ export const useAuthStore = defineStore('auth', {
           this.user_id = data.value.user_id;
 
 
-          await this.getProfile() ;
+     await this.getProfile() ;
           await this.displaycard();
           await this.getDltAlert();
          return true;
@@ -294,7 +294,7 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async getProfile() {
-      const router = useRouter();
+  
       this.formcard.idcard_back = ''
       this.formcard.idcard_front = ''
 
@@ -350,7 +350,7 @@ this.formcard.user_id = response.data.user_id
   return profile
 } catch (error) {
 
-  console.log('false',error);
+
 //  router.push('/maintenance');
  return false;
  
@@ -546,12 +546,10 @@ if(this.dltcard){
 
       async Changepassword() {
        
-  
+        const id = localStorage.getItem('user_reset')
 
        try {
-        const data = await ApiService.put('/user/change_password/' + this.user_id,this.changepassword).then(response => {
-
-
+        const data = await ApiService.put('/user/change_password/' + id,this.changepassword).then(response => {
        return true
 
         });
@@ -564,9 +562,24 @@ if(this.dltcard){
        
       },
 
+
+      async ChangepasswordNew() {
+      
+       try {
+        const data = await ApiService.put('/user/change_password/' + this.user_id,this.changepassword).then(response => {
+       return true
+        });
+
+        return data
+      } catch (error) {
+        return false;
+      }
+       
+      },
+
       async getOtp() {
         const data = await ApiService.get('/user/otp/' + this.user_id).then(response => {
-    console.log(response);
+  
         });
         return true;
       },
@@ -583,8 +596,27 @@ if(this.dltcard){
      
       },
 
+      async UpdateProfileafterOtp() {
 
+const update = {verify_account:"system_active",identification_number:this.formdetail.identification_number,
+  user_img:this.formdetail.user_img,
+  user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
+  location_id:this.formdetail.location.id,country_id:this.formdetail.country.country_id,user_id:this.formuser.user_id,user_village:this.formdetail.user_village};
   
+
+  try {
+    const data = await ApiService.post('/user/detail/create', update).then(response => {
+      if(response.status === 200){
+        return true;
+      }else{
+        return false;
+      }
+    });
+    return data
+  } catch (error) {
+    return false;
+  }
+      }
   },
 });
 

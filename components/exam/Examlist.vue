@@ -35,7 +35,7 @@
                             <div class="gridarea__heading">
                                 <h3><a>{{ item.em_name }}</a></h3>
                             </div>
-                            <div class="gridarea__bottom">
+                            <!-- <div class="gridarea__bottom">
 
                                 <a>
                                     <div class="gridarea__small__img">
@@ -50,7 +50,7 @@
                                     
                                     <span>({{ item.total_question }})</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="gridarea__bottom">
                                 <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item)">
                                     {{ $t("page_exam_bt") }}</button>
@@ -61,7 +61,7 @@
 
             </div>
 
-                     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page > 0">
+                     <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page > 1">
                             <ul class="main__page__pagination">
                                 <li @click="pred()"><a href="#"><i class="icofont-double-left"></i></a></li>
                                 <li  v-for="page in store.total_page" :key="page"  @click="setCurrentPageclick(page)">

@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
-                        <Register></Register>
+                        <CheckVerify></CheckVerify>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
 
 <script setup>
 
-
+import CheckVerify from '@/components/verify/CheckVerify.vue';
 import Register from '@/components/verify/Register.vue';
 import Loading from '@/components/button/loading.vue';
 
@@ -40,7 +40,7 @@ import { useAuthStore } from '@/stores/auth'; // import the auth store we just c
 import { useRoute } from 'vue-router'
 import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
  definePageMeta({
-  middleware: 'verify' // this should match the name of the file inside the middleware directory 
+  middleware: 'vrdls' // this should match the name of the file inside the middleware directory 
 })
 const auth = useAuthStore()
 await auth.getProfile()

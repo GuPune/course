@@ -2,13 +2,18 @@
 
 
 <template>
+
     <div id="app">
+
+
         <div class="container height-100 d-flex justify-content-center align-items-center">
+        
             <div class="position-relative">
+                <div class="header" style="background-color: yellow;text-align: center;font-size: 20px;">ລືມລະຫັດຜ່ານ, ຂໍຕັ້ງລະຫັດຜ່ານໃໝ່, ຢືນຢັນ OTP</div>
                 <div class="card p-2 text-center">
-                    {{ $t("page_verify_step2") }}
-                    <h6>{{ $t("page_verify_one_time") }} <br> </h6>
-                    <div> <span>{{ $t("send_to") }}</span> <small>{{auth.formuser.user_phone}}</small> </div>
+                    ກະລຸນາໃສ່ລະຫັດ OTP 6 ຕົວເລກ ທີ່ຖືກສົ່ງໄປເບີໂທຂອງທ່ານ 
+                    <!-- <h6>{{ $t("page_verify_one_time") }} <br> </h6> -->
+                    <div> <span>ໄດ້ສົ່ງໄປທີ່ເບີ</span> <small>{{auth.formuser.user_phone}}</small> </div>
                     <span class="text-xs text-red-500" style="color:red"
         v-if="store.otpisactive == false">{{ $t("page_verify_step3") }}</span>
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
@@ -27,12 +32,15 @@
                         maxlength="1"  /> 
                     </div>
                     
-                <div class="mt-4"> 
-                    <button class="btn btn-secondary w-100" @click="confirm()">{{ $t("page_verify_save") }}</button>
-                 </div>
+                    <br>
+
+                 <div class="col-12">
+                    <button class="btn" style="width: 30%;background-color: aqua;" @click="confirm()"><span style="color: white;">ຢືນຢັນ</span></button>
+                                </div>
+                                <br>
                  <div class="col-12">
                                     <div class="text-center"  @click="sendotp()">
-                                        <p class="mb-0">ບໍ່ໄດ້ຮັບລະຫັດ ? <a href="javascript:void(0);" class="text-warning">ສົ່ງຄືນ</a></p>
+                                        <p class="mb-0">ບໍ່ໄດ້ຮັບລະຫັດ ? <a href="javascript:void(0);" class="text-warning">ສົ່ງໃໝ່ອີກຄັ້ງ</a></p>
                                     </div>
                                 </div>
              
@@ -70,6 +78,7 @@ const input1 = ref(null);
     const input6 = ref(null);
 
 const store = VerifyStore()
+store.user_id = value
 const { setOTP } = VerifyStore();
 const { verifyOTP } = VerifyStore();
 
@@ -93,7 +102,10 @@ const confirm = async () => {
   });
      let send = await verifyOTP();
      if(send == true){
-await auth.getProfile()
+let profile = await auth.getProfile()
+let updatestatus = await auth.UpdateProfileafterOtp()
+
+
  await setTimeout(() => Swal.close(), 500);
 await Swal.fire({
     position: "top-end",
@@ -111,7 +123,7 @@ store.otp[2] = '';
 store.otp[3] = '';
 store.otp[4] = '';
 store.otp[5] = '';
-       router.push('/');
+       router.push('/course');
      }else {
         store.otpisactive = false;
           setTimeout(() => Swal.close(), 500);
@@ -157,10 +169,10 @@ body {
 }
 
 .card {
-    width: 400px;
+    width: 500px;
     border: none;
     height: 300px;
-    box-shadow: 0px 5px 20px 0px #bd9aba;
+    /* box-shadow: 0px 5px 20px 0px #bd9aba; */
     z-index: 1;
     display: flex;
     justify-content: center;

@@ -61,6 +61,7 @@ this.formsearchcourse.search = '';
       this.total = response.data.total;
       this.total_page = response.data.total_page;
       this.total_filter = response.data.total_filter;
+
      });
     return true
     } catch (error) {

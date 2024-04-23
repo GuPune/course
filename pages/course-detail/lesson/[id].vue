@@ -2,10 +2,48 @@
 
 
 <template>
-  <div v-if="store.data.course_id">
+  <div>
     <div>
+      <!-- <div class="breadcrumbarea">
+      <div class="container" v-if="store.curent_lesson">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+             
+              <div class="breadcrumb__inner">
+                <ul>
+                <span style="font-size: 24px;">{{ store.course_curent.course_code }} {{ store.curent_lesson.cg_name }}</span>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shape__icon__2">
+        <img
+          class="shape__icon__img shape__icon__img__1"
+          src="../../../assets/img/herobanner/herobanner__1.png"
+          alt="photo"
+        />
+        <img
+          class="shape__icon__img shape__icon__img__2"
+          src="../../../assets/img/herobanner/herobanner__2.png"
+          alt="photo"
+        />
+        <img
+          class="shape__icon__img shape__icon__img__3"
+          src="../../../assets/img/herobanner/herobanner__3.png"
+          alt="photo"
+        />
+        <img
+          class="shape__icon__img shape__icon__img__4"
+          src="../../../assets/img/herobanner/herobanner__4.png"
+          alt="photo"
+        />
+      </div>
+    </div> -->
       <div class="container">
-        <div class="row" v-if="store.data">
+        <div class="row" v-if="store.curent_lesson">
           <div class="col-xl-12 col-lg-12">
             <div
               class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
@@ -18,12 +56,46 @@
               >
                 <div class="course__button"></div>
               </div>
-
               <div
                 class="course__details__tab__wrapper aos-init"
                 data-aos="fade-up"
               >
-                <div class="row">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div style="background-color: var(--dotColor);" v-if="store.curent_lesson">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+              <div class="breadcrumb__title">
+                <span style="font-size: 24px;">{{ store.course_curent.course_name }} ,{{ $t("course_lesson_group_title") }} {{ store.curent_lesson.cg_name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div >
+    <div class="coursearea ">
+      <div class="container">
+        <div class="row" v-if="store.course_curent">
+          <div class="col-xl-12 col-lg-12">
+            <div
+              class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
+              data-aos="fade-up"
+            >
+         
+              <!-- <img :src="coverimage(store.data.cs_cover)" alt="blog"> -->
+            </div>
+
+                  <div class="row">
                   <div class="col-xl-12">
                     <ul class="nav course__tap__wrap" id="myTab" role="tablist">
                       <li class="nav-item" role="presentation">
@@ -34,7 +106,7 @@
                           type="button"
                           aria-selected="true"
                           role="tab"
-                          @click="backlearning(store.data.course_id)"
+                          @click="backlearning(router.currentRoute.value.params.id)"
                         >
                         {{ $t("backtocourse") }}
                         </button>
@@ -42,146 +114,6 @@
                     </ul>
                   </div>
                 </div>
-                <div
-                  class="tab-content tab__content__wrapper"
-                  id="myTabContent" v-if="store.data.cs_cover"
-                >
-                  <div
-                    class="tab-pane fade active show"
-                    id="projects__two"
-                    role="tabpanel"
-                    aria-labelledby="projects__two"
-                  >
-                    <div
-                      class="accordion content__cirriculum__wrap"
-                      id="accordionExample"
-                    >
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                          <button
-                            class="accordion-button collapsed mt-0"
-                            type="button"
-                            style="background-color: #7e7ec3"
-                          >
-                             {{ $t("lesson_t") }}
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseOne"
-                          class="accordion-collapse collapse p-4 show"
-                          aria-labelledby="headingOne"
-                          data-bs-parent="#accordionExample"
-                        >
-                   
-
-                          <div class="row" style="padding: 5px">
-                            <div class="single__expart__teacher">
-                              <div
-                                class="teacher__img mb-0"
-                                v-if="store.data.cs_cover"
-                              >
-                                <img
-                                  :src="coverimage(store.data.cs_cover)"
-                                  alt="Image"
-                                  class="responsive"
-                                />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="row" style="padding: 5px">
-                          
-                            <div class="col-lg-12 col--30">
-                              <div
-                                class="author__content"
-                                style="margin: 30px 0"
-                              >
-                             
-
-                                <hr />
-                               
-                                <div class="author__text row">
-                                  <div class="col-lg-3 col-md-4">
-                                    <p class="mb-0">
-                                      {{ $t("page_course_date") }}
-                                    </p>
-                                  </div>
-                                  <div class="col-lg-9 col-md-8">
-                                    <p class="mb-0">
-                                      {{ coverttime(store.data.crt_date) }}
-                                    </p>
-                                  </div>
-                                </div>
-                        
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="tab-content tab__content__wrapper"
-                  id="myTabContent" v-if="store.data.cs_video"
-                >
-                  <div
-                    class="tab-pane fade active show"
-                    id="projects__two"
-                    role="tabpanel"
-                    aria-labelledby="projects__two"
-                  >
-                    <div
-                      class="accordion content__cirriculum__wrap"
-                      id="accordionExample"
-                    >
-                      <div class="accordion-item">
-                      
-                        <div
-                          id="collapseOne"
-                          class="accordion-collapse collapse p-4 show"
-                          aria-labelledby="headingOne"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div
-                            class="row justify-content-center"
-                            v-if="store.data.cs_video"
-                          >
-                            <div v-if="store.isYoutube == true" class="ifra">
-                              <YouTube
-                                :src="store.data.cs_video"
-                                :width="store.windowWidth"
-                                @ready="onReady"
-                                @playing="handlePlaying"
-                                ref="youtube"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div v-else>
-    <div class="coursearea sp_bottom_100">
-      <div class="container">
-        <div class="row" v-if="store.data">
-          <div class="col-xl-12 col-lg-12">
-            <div
-              class="blogarae__img__2 course__details__img__2 aos-init aos-animate"
-              data-aos="fade-up"
-            >
-              <!-- <img :src="coverimage(store.data.cs_cover)" alt="blog"> -->
-            </div>
             <div class="blog__details__content__wraper">
               <div
                 class="course__button__wraper aos-init aos-animate"
@@ -206,21 +138,22 @@
                   >
                     <div
                       class="accordion content__cirriculum__wrap"
-                      id="accordionExample"
+                      id="accordionExample" v-if="store.curent_lesson.cs_name"
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                           <button
                             class="accordion-button collapsed mt-0"
                             type="button"
-                            style="background-color: #7e7ec3"
+                            style="background-color: #F5F5F5"
                           >
-                            {{ store.data.cs_name }}
+                           
+                            <span style="font-size: 20px;font-weight: 400;">   {{ store.curent_lesson.cs_name }}</span>
                           </button>
                         </h2>
                         <div
                           id="collapseOne"
-                          class="accordion-collapse collapse p-4 show"
+                          class="accordion-collapse collapse p-4"
                           aria-labelledby="headingOne"
                           data-bs-parent="#accordionExample"
                         >
@@ -231,7 +164,7 @@
                                 <div class="author__text row">
                                   <div class="col-lg-12 col-md-4">
                                     <p class="fs-4 fw-bold mb-0">
-                                      ບໍ່ມີບົດຮຽນສໍາລັບການນີ້
+                                      {{ store.curent_lesson.cs_description }}
                                     </p>
                                   </div>
                                   <div class="col-lg-9 col-md-8">
@@ -239,8 +172,6 @@
                                   </div>
                                 </div>
                             </div>
-                           
-                     
                           </div>
                         </div>
                       </div>
@@ -248,89 +179,145 @@
                   </div>
                 </div>
               </div>
+              <div
+                  class="tab-content tab__content__wrapper"
+                  id="myTabContent" v-if="store.curent_lesson.cs_cover"
+                >
+                  <div
+                    class="tab-pane fade active show"
+                    id="projects__two"
+                    role="tabpanel"
+                    aria-labelledby="projects__two"
+                  >
+                    <div
+                      class="accordion content__cirriculum__wrap"
+                      id="accordionExample"
+                    >
+                      <div class="accordion-item">
+                       
+                        <div
+                          id="collapseOne"
+                          class="accordion-collapse collapse p-4 show"
+                          aria-labelledby="headingOne"
+                          data-bs-parent="#accordionExample"
+                        >
+                   
+
+                          <div class="row" style="padding: 5px">
+                            <div class="single__expart__teacher">
+                              <div
+                                class="teacher__img mb-0"
+                                v-if="store.curent_lesson.cs_cover"
+                              >
+                                <img
+                                  :src="coverimage(store.curent_lesson.cs_cover)"
+                                  alt="Image"
+                                 style="height: 212px;width: 259px;"
+                                  class="responsive"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row" style="padding: 5px">
+                          
+                            <div class="col-lg-12 col--30">
+                              <div
+                                class="author__content"
+                                style="margin: 30px 0"
+                              >
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <div
+                  class="tab-content tab__content__wrapper"
+                  id="myTabContent" v-if="store.curent_lesson.cs_video"
+                >
+                  <div
+                    class="tab-pane fade active show"
+                    id="projects__two"
+                    role="tabpanel"
+                    aria-labelledby="projects__two"
+                  >
+                    <div
+                      class="accordion content__cirriculum__wrap"
+                      id="accordionExample"
+                    >
+                      <div class="accordion-item">
+                      
+                        <div
+                          id="collapseOne"
+                          class="accordion-collapse collapse p-4 show"
+                          aria-labelledby="headingOne"
+                          data-bs-parent="#accordionExample"
+                        >
+                          <div
+                            class="row justify-content-center"
+                            v-if="store.curent_lesson.cs_video"
+                          >
+                            <div v-if="store.isYoutube == true" class="ifra">
+                              <YouTube
+                                :src="store.curent_lesson.cs_video"
+                                :width="store.windowWidth"
+                                @ready="onReady"
+                                @playing="handlePlaying"
+                                ref="youtube"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div
+                  class="tab-content tab__content__wrapper"
+                  id="myTabContent" v-if="store.curent_lesson.cs_description"
+                >
+                  <div
+                    class="tab-pane fade active show"
+                    id="projects__two"
+                    role="tabpanel"
+                    aria-labelledby="projects__two"
+                  >
+                    <div
+                      class="accordion content__cirriculum__wrap"
+                      id="accordionExample"
+                    >
+                      <div class="accordion-item" style="padding: 5px;background-color: #F5F5F5;">
+                      
+                        <span style="font-size: 20px;font-weight: 400;">   {{ store.curent_lesson.cs_description }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+ <span style="color:#11901E" v-if="store.learning_status">ອ່ານແລ້ວ</span>
+                
             </div>
+
+            
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container" v-if="store.data.course_id">
-    <!-- <hr class="mb-5">
-    <div class="my-4">
-      <h1 class="text-center">
-        FAQ
-      </h1>
-    </div> -->
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-
-       <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-       <!-- {{ $t("lesson_q") }} : {{ store.data.cs_name }} ? -->
-       {{ store.data.cs_name }}
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-      <div class="accordion-body">
-        <!-- {{ $t("lesson_a") }} : {{ store.data.cs_description }} -->
-        {{ store.data.cs_description }}
-      </div>
-    </div>
-  </div>
-    </div>
-
-
-
-
-
-  </div>
   <br>
-  <div class="container" v-if="store.data.course_id">
-          <div class="row">
-    <div class="col-xl-12 col-lg-12">
-      <!-- <div class="pagination-no_spacing">
-        <ul class="pagination" style="justify-content: center;">
 
-          <li @click="prev()"> <a href="javascript:void(0);" class="prev"  ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="feather feather-chevron-left">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg></a>
-          </li>
-         
-            
-          <li><a href="javascript:void(0);">{{store.selelesson}}</a></li>
-       
-          <li><a href="javascript:void(0);"> / </a></li>
-          <li><a href="javascript:void(0);">{{store.total}}</a></li>
-          <li @click="next()"> <a href="javascript:void(0);" class="next" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="feather feather-chevron-right">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg></a>
-          </li>
-        </ul>
-      </div> -->
-      <nav aria-label="Page navigation example">
-        <ul class="pagination" style="justify-content: center;">
-          <li class="page-item" @click="prev()">
-            <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="javascript:void(0);">{{store.selelesson}} / {{store.total}}</a></li>
-          <li class="page-item" @click="next()">
-            <a class="page-link" href="javascript:void(0);" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-   
+  <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="prev()" v-if="(store.prevs_group != 0) || (store.prevs != 0)"><span aria-hidden="true">&laquo;</span><span>Back</span></button>
+      <button class="btn" style="background-color: #2AB0E5;width: 10%;" @click="next()">Next<span aria-hidden="true">&raquo;</span></button>
     </div>
-  </div>
- </div>
+<br>
 
   
 </template>
@@ -352,26 +339,24 @@ const route = useRoute();
 const profile = await auth.getProfile();
 
 store.user_id = auth.user_id;
-
-
-//let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
-
-// if (lesson_id == true) {
-//   store.updateLogCourse();
-// } else {
-// }
-if (process.client) {
-   Swal.fire({
+Swal.fire({
     allowEscapeKey: false,
     allowOutsideClick: false,
     didOpen: () => {
       Swal.showLoading()
     },
   });
- let lesson_id = await store.fetchCourse(router.currentRoute.value.params.id);
-  window.addEventListener("resize", () => loadEdit(), store.isYoutube == false);
-  setTimeout(() => Swal.close(), 500);
+let lesson_id = await store.fetchCourseread(route.query);
+if(lesson_id === false){
+  router.push("/course");
+  
 }
+if(store.total_lesson_lean == 0){
+  router.push("/course");
+}
+ let course = await store.fetchCourseCode(route.query.course_id);
+ setTimeout(() => Swal.close(), 500);
+
 
 async function loadEdit() {
   store.isYoutube = false;
@@ -404,7 +389,6 @@ const updateWidth = async () => {
 
 
 const start = async () => {
-
   if (!store.timer) {
     store.timer = setInterval(updateMillea, 1000);
       }
@@ -417,11 +401,11 @@ const stop = async () => {
 };
 
 const updateMillea = async () => {
- //let time = setInterval(updateMille, 1000);
- store.seconds++;
- if(store.seconds > 5){
-  stop();
-      }
+
+//  store.seconds++;
+//  if(store.seconds > 5){
+//   stop();
+//       }
 };
 
 const reset = async () => {
@@ -459,6 +443,7 @@ const onPlay = (id) => {
 };
 
 const backlearning = (couse_id) => {
+
   router.push("/course-detail/" + couse_id);
 };
 
@@ -484,45 +469,137 @@ function coverttime(date) {
 }
 
 
+
+
+
 const prev = async () => {
-    Swal.fire({
+  Swal.fire({
     allowEscapeKey: false,
     allowOutsideClick: false,
     didOpen: () => {
       Swal.showLoading()
     },
   });
+  await setTimeout(() => Swal.close(), 500);
 
-if(store.selelesson != 1){
-store.selelesson--;
-await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
-await setTimeout(() => Swal.close(), 500);
+
+  
+if(store.prevs == 0){
+ 
+  router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.course_read.course_id,
+    cg_id: store.previous_couse_group.cg_id,
+    cs_id: route.query.cs_id,
+  }
+      })
+
+
+
+     store.formsearchlearing.course_id = store.course_read.course_id
+     store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
+     store.formsearchlearing.cs_id = route.query.cs_id
+
+     let prev = await store.fetchCoursereadPrev();
+  
+}else{
+    router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.course_read.course_id,
+    cg_id: store.previous_lesson.cg_id,
+    cs_id: store.previous_lesson.cs_id,
+  }
+      })
+
+
+      store.formsearchlearing.course_id = store.previous_lesson.course_id
+      store.formsearchlearing.cg_id = store.previous_lesson.cg_id
+      store.formsearchlearing.cs_id = store.previous_lesson.cs_id
+
+      let prev = await store.fetchCoursereadPrev();
 }
-setTimeout(() => Swal.close(), 500);
-// store.selelesson--;
-// await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
-};
+
+
+
+}
 const next = async () => {
-      Swal.fire({
+  Swal.fire({
     allowEscapeKey: false,
     allowOutsideClick: false,
     didOpen: () => {
       Swal.showLoading()
     },
   });
-  stop();
-  reset();
-start();
-if(store.selelesson != store.total){
-store.selelesson++;
-await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
+  await setTimeout(() => Swal.close(), 500);
+
+  if((store.next_group == 0) && (store.nexts == 0)){
+    const cour = localStorage.setItem('course_id', store.course_read.course_id)
+    router.push('/course-detail/success');
+   return false;
+  }
+
+if(store.nexts == 0){
+  router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.course_read.course_id,
+    cg_id: store.next_couse_group.cg_id,
+    cs_id: store.curent_lesson.cs_id,
+  }
+      })
 
 
-await setTimeout(() => Swal.close(), 500);
+      store.formsearchlearing.course_id = store.course_read.course_id
+      store.formsearchlearing.cg_id = store.next_couse_group.cg_id
+      store.formsearchlearing.cs_id = store.curent_lesson.cs_id
+   
+   let next = await store.fetchCoursereadNext();
+  
+}else {
+
+  router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.next_lesson.course_id,
+    cg_id: store.curent_couse_group.cg_id,
+    cs_id: store.next_lesson.cs_id,
+  }
+      })
+
+      store.formsearchlearing.course_id = store.next_lesson.course_id
+      store.formsearchlearing.cg_id = store.next_lesson.cg_id
+      store.formsearchlearing.cs_id = store.next_lesson.cs_id
+   
+   let next = await store.fetchCoursereadNext();
+
 }
-await setTimeout(() => Swal.close(), 500);
 
-};
+
+    
+}
+// cost next = async () => {
+//       Swal.fire({
+//     allowEscapeKey: false,
+//     allowOutsideClick: false,
+//     didOpen: () => {
+//       Swal.showLoading()
+//     },
+//   });
+//   stop();
+//   reset();
+// start();
+// if(store.selelesson != store.total){
+// store.selelesson++;
+// await store.fetchCourseLessonSelect(router.currentRoute.value.params.id);
+
+
+// await setTimeout(() => Swal.close(), 500);
+// }
+// await setTimeout(() => Swal.close(), 500);
+
+// };
 </script>
 
 <style>
@@ -533,10 +610,10 @@ await setTimeout(() => Swal.close(), 500);
   object-fit: cover;
 }
 
-.responsive {
+/* .responsive {
   width: 100%;
   height: auto;
-}
+} */
 
 .containerxxx {
   position: relative;

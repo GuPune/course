@@ -6,7 +6,144 @@
     role="tabpanel"
     aria-labelledby="projects__one"
   >
-    <div class="col-xl-8 col-md-8 offset-md-2">
+  <div class="col-xl-8 col-md-8 offset-md-2">
+  <div class="card">
+  <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;">    ເຂົ້າສູ່ລະບົບ</div>
+  <div>
+    <div class="loginarea__wraper">
+        <div class="login__heading">
+        
+          <p class="login__description" style="font-size: 18px;">
+            <span>ຖ້າທ່ານຍັງບໍ່ທັນມີບັນຊີ, ກະລະນຸ</span>   <span @click="goToPage('/register')" style="color:#0AA7FF;">ລົງທະບຽນ</span>
+        
+            
+          </p>
+        </div>
+        <form    @submit.prevent="login"> 
+          <div class="login__form">
+            <label class="form__label">Username / ເບີໂທ</label>
+            <input
+              class="common__login__input"
+              type="text"
+              placeholder="Username / ເບີໂທ"
+              v-model="formData.username"
+              :class="{
+                'border-red-500 focus:border-red-500': v$.username.$error,
+                'border-[#42d392] ': !v$.username.$invalid,
+              }"
+              @change="v$.username.$touch"
+              autocomplete="off"
+              @input="filterInputUser"
+              maxlength="20"
+            />
+
+            <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ $t("form_login_user") }}</span
+            >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ $t("form_login_user") }}</span
+            >
+                      
+            </span>
+             <span v-if="locale == 'th'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ $t("form_login_user") }}</span
+            >
+              
+            </span>
+          </div>
+          <div class="login__form">
+            <label class="form__label">{{ $t("password") }}</label>
+            <input
+              class="common__login__input"
+              type="password"
+              placeholder="ລະຫັດຜ່ານ"
+              v-model="formData.password"
+              id="password"
+              name="password"
+              :class="{
+                ' border-red-500 focus:border-red-500': v$.password.$error,
+                'border-[#42d392]': !v$.password.$invalid,
+              }"
+              @change="v$.password.$touch"
+              @input="filterInputUserPass"
+              maxlength="20"
+            />
+      
+            <span v-if="locale == 'la'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.password.$error"
+              >{{ $t("form_login_pass") }}</span
+            >
+            
+            </span>
+            <span v-if="locale == 'en'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.password.$error"
+              >{{ $t("form_login_pass") }}</span
+            >
+                      
+            </span>
+             <span v-if="locale == 'th'">
+              <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.password.$error"
+              
+              >{{ $t("form_login_pass") }}</span
+            >
+              
+            </span>
+          
+          </div>
+  <br>
+          <div class="login__heading">
+        
+        <button  class="btn"  type="submit" style="width: 30%;background-color: #2AB0E5;color: white;border: none; border-radius:0px;">{{ $t("log_on_title") }}</button>
+  </div>
+
+        <!-- <div class="col-12">
+          <div class="login__button" @click="login()" style="text-align: center;background-color: #0AA7FF;">
+            <button type="button" class="btn" style="color: white;">{{ $t("log_on_title") }}</button>
+          </div>
+        </div>
+ -->
+
+        
+        </form>
+
+      </div>
+
+    
+  </div>
+
+</div>
+
+
+<div style="padding: 10px;"> 
+     <div id="emailHelp" class="form-text" @click="goToPage('/resetpassword')"><span style="color:  #0AA7FF;">Forget your password ?</span>
+    </div>
+  </div>
+</div>
+<br>
+    <!-- <div class="col-xl-8 col-md-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
           <h5 class="login__title">{{ $t("login") }}</h5>
@@ -114,24 +251,20 @@
             <a class="default__button">{{ $t("log_on_title") }}</a>
           </div>
         </form>
-        <!--   
-                                      <div class="login__social__option">
-                                          <p>or Log-in with</p>
-  
-                                
-                                      </div>
-                                      <div class="login__button"  @click="login()">
-                                              <a class="default__button" style="width: 100%;">OTP</a>
-                                          </div>
-   -->
+
       </div>
 
-       <!-- <v-select v-model="store.selectedOption" :options="store.books" label="title"></v-select>
-
-       {{store.selectedOption}} -->
-    </div>
+    </div> -->
   </div>
 </template>
+
+<style scoped>
+::placeholder {
+  color: #B9B9A8;
+}
+
+
+</style>
 <script setup>
 
 import "vue-select/dist/vue-select.css";
@@ -178,22 +311,6 @@ const formData = reactive({
   confirmPassword: null,
 });
 
-// onMounted(() => {
-//  this.select2 = $(this.$el)
-//       .find('select')
-//       .select2({
-//         placeholder: "xxx",
-       
-//         data: store.options
-//       })
-//       .on('select2:select select2:unselect', ev => {
-//         this.$emit('update:modelValue', this.select2.val());
-//         this.$emit('select', ev['params']['data']);
-//       });
-//     this.setValue(this.modelValue);
- 
-// });
-
 
 
 
@@ -203,7 +320,7 @@ const rules = computed(() => {
     username: {
       required: helpers.withMessage("The Username field is required", required),
       //   email: helpers.withMessage('Invalid email format', email),
-      minLength: minLength(4),
+      minLength: minLength(1),
     },
     password: {
       required: helpers.withMessage("The password field is required", required),
@@ -228,12 +345,12 @@ const login = async () => {
   });
     let login = await authenticateUser(formData);
     if (login === true) {
-      const profile = await useError.getProfile();
+    //  const profile = await useError.getProfile();
    setTimeout(() => Swal.close(), 500);
 if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_account == 'unactive') || (useError.formdetail.verify_account == 'phone_unactive')) {
-  router.push("/verifyconfirm");
+  router.push("/otpconfirm");
 }else {
-  router.push("/");
+  router.push("/course");
 }
       
     //  router.push("/verifyconfirm");
@@ -250,4 +367,29 @@ if((useError.formdetail.verify_account == null) || (useError.formdetail.verify_a
   //  v$.value.$validate();
   //await authenticateUser(formData); // call authenticateUser and pass the user object
 };
+
+const goToPage = async (e) => {
+  router.push(e);
+}
+
+const filterInputUser = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        formData.username = formData.username.substring(0, formData.username.length - 1);
+        return;
+      }
+      formData.username = event.target.value.replace(/[!@#$%^&*(),.?":{}|<>]/g, '');
+};
+
+
+const filterInputUserPass = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        formData.password = formData.password.substring(0, formData.password.length - 1);
+        return;
+      }
+ 
+};
+
+
 </script>

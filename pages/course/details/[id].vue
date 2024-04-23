@@ -25,29 +25,17 @@
           </div>
       </div>
   </div>
-  
-  <!-- <div class="shape__icon__2">
-      <img class=" shape__icon__img shape__icon__img__1" src="img/herobanner/herobanner__1.png" alt="photo">
-      <img class=" shape__icon__img shape__icon__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
-      <img class=" shape__icon__img shape__icon__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
-      <img class=" shape__icon__img shape__icon__img__4" src="img/herobanner/herobanner__5.png" alt="photo">
-  </div>
-   -->
+
   </div>
 
 
    <div class="coursearea sp_top_100 sp_bottom_100">
             <div class="container">
+       
                 <div class="row">
                     <div class="col-xl-12">
              <CourseSel></CourseSel>
-
                     </div>
-                    <!-- <div class="col-xl-3 col-lg-3 col-md-4 col-12">
-                      <Search></Search>
-                      
-                    </div> -->
-
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
 
                         <CourseAll></CourseAll>

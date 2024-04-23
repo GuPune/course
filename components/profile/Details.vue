@@ -259,7 +259,9 @@
         
             <div class="mt-4 gridarea__wraper gridarea__wraper__2 gridarea__course__list aos-init aos-animate grid_detail" data-aos="fade-up">
               <div class="gridarea__img mb-5">
-                <a><img :src="coverimage(store.formdetail.user_img)" alt="grid"></a>
+                <a v-if="store.formdetail.user_img"><img :src="coverimage(store.formdetail.user_img)" alt="grid"></a>
+                <a v-else><img src="../../public/images/users/avatar-1.jpg" alt="grid"></a>
+              
               </div>
               <button class="changeImg btn btn-info"  @click="changeFile" :disabled="store.isDisabled">
                 <span v-if="locale == 'la'">{{ $t("page_profile_bt_pic") }}</span>

@@ -15,14 +15,16 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     authenticated.value = true; // update the state to authenticated
     const checkveri = await ApiService.get('/user/get/'+user_id.value);
    if(Object.keys(checkveri.data.detail).length === 0){
+
     verify.value = false;
     return navigateTo('/verifyconfirm');
   }else {
     if(checkveri.data.detail.verify_account == 'system_active') {
       verify.value = true;
     }else{
+   
       verify.value = false;
-      return navigateTo('/profile');
+      return navigateTo('/verifyconfirm');
     }
   }
   }

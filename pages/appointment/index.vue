@@ -1,390 +1,83 @@
 <template>
   <div>
-    <div class="breadcrumbarea">
-      <div class="container">
+   
+      <div style="background-color: var(--dotColor);">
+      <div class="container py-3">
         <div class="row">
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
-                <h2 class="heading">{{ $t("page_appoint") }}</h2>
+                  <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_exam_appoint_title") }}</span>
               </div>
-              <div class="breadcrumb__inner">
-                <ul>
-                  <li><a href="#">{{ $t("home") }}</a></li>
-                  <li>{{ $t("page_appoint") }}</li>
-                </ul>
-              </div>
+              
+        
             </div>
           </div>
         </div>
       </div>
-
-      <div class="shape__icon__2">
-        <img class="shape__icon__img shape__icon__img__1" src="../../assets/img/herobanner/herobanner__1.png"
-          alt="photo" />
-        <img class="shape__icon__img shape__icon__img__2" src="../../assets/img/herobanner/herobanner__2.png"
-          alt="photo" />
-        <img class="shape__icon__img shape__icon__img__3" src="../../assets/img/herobanner/herobanner__3.png"
-          alt="photo" />
-        <img class="shape__icon__img shape__icon__img__4" src="../../assets/img/herobanner/herobanner__4.png"
-          alt="photo" />
-      </div>
-    </div>
-    <nav class="navbar bg-body-tertiary nav-search">
-      <div class="container-fluid nav-container row justify-content-center py-2 gy-2">
-        <!-- <div class="col-2 nav-item" style="min-width: 150px;">
-          <VueDatePicker v-model="store.form.date_event" :format="format_start" required></VueDatePicker>
-          <label for="startDate">Start Date</label>
-        </div> -->
-        <div class="col-2 nav-item" style="min-width: 150px;">
-          <!-- <label for="startDate">Start Date</label> -->
-
-          <select class="form-select" aria-label="Default select example" v-model="store.form.ap_learn_type"
-            @change="findApp()">
-            <option value="1">
-              <span v-if="locale == 'la'">{{ $t("theory") }}</span>
-              <span v-if="locale == 'en'">{{ $t("theory") }}</span>
-              <span v-if="locale == 'th'">{{ $t("theory") }}</span>
-            </option>
-            <option value="2">
-              <span v-if="locale == 'la'">{{ $t("practice") }}</span>
-              <span v-if="locale == 'en'">{{ $t("practice") }}</span>
-              <span v-if="locale == 'th'">{{ $t("practice") }}</span>
-            </option>
-          </select>
-        </div>
-        <div class="col-4 nav-item" style="min-width: 150px;" @change="findApp()">
-          <select class="form-control" v-model="store.form.dlt_code">
-            <option v-for="(item, index) in store.dlt" :key="item.dlt_code" :value="item.dlt_code">
-              <span v-if="locale == 'la'">{{ item.dlt_description_loas }}</span>
-              <span v-if="locale == 'en'">{{ item.dlt_description_english }}</span>
-              <span v-if="locale == 'th'">{{ item.dlt_description }}</span>
-            </option>
-          </select>
-        </div>
-        <!-- <div class="col-auto nav-item">
-          <button type="button" class="btn btn-primary mt-0" @click="find()">
-            {{ $t("page_app_search_app") }}
-          </button>
-        </div> -->
-      </div>
-    </nav>
-
-    <div class="container">
-      <div class="mt-4 d-flex gap-4 overflow-x-scroll p-2 scrollContainer">
-        <div class="dateCard" v-for="(event, index) in store.event">
-          <p class="mb-0 btn" @click="findEvent(event.event)">{{ event.event }}</p>
-        </div>
-
-      </div>
     </div>
 
-    <SelectAppoint></SelectAppoint>
+        <div class="container py-3 py-md-4 py-lg-5 appcontent">
+        <div class="row">
+         <div class="col-12 col-sm-12 col-lg-9" style="align-self: self-end;">
+          <span>{{ $t("page_appoint_current") }}</span>
+        </div>
+  <div class="col-12 col-sm-12 col-lg-3">
+         <button class="btn btn-primary" style="width: 100%;background-color: rgb(42, 176, 229);border-radius: 0px;" @click="goToMenu()">Add New Appointment</button>
+        </div>
 
-    <!-- Type Card -->
+        </div>
 
-    <!-- <div class="container mb-5">
-    <div class="row type-row">
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A รถจักรยานยนต์สองล้อ เครื่องยนต์ไม่เกิน 125 cc.</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A1 รถจักรยานยนต์สองล้อ เครื่องยนต์ 125 cc. ขึ้นไป</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A2 รถสามล้อส่วนตัว, รถสองล้อ และรถสามล้อโดยสาร</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท A3 รถแทรกเตอร์แบบมีล้อ และรถปราบดิน</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท B รถยนต์ที่น้าหนักรวมน้อยกว่า 3,500 กิโลกรัม ไม่เกิน 9 ที่นั่ง รวมผู้ขับรถ</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท C รถขนส่งสินค้าน้าหนักรวมตั้งแต่ 3,500 ถึง 7,500 กิโลกรัม</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท C1 รถขนส่งสินค้าน้าหนักรวมตั้งแต่ 7,500 ถึง 15,000 กิโลกรัม</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท C2 รถขนส่งสินค้า น้าหนักรวม 15,000 กิโลกรัม ขึ้นไป</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card d-flex flex-row type-card">
-          <div class="type-image">
-          </div>
-          <div class="type-detail">
-            <ul>
-              <li style="margin-right: 20px;">12/11/66 To 30/11/66</li>
-              <li>Total: 6 Event</li>
-            </ul>
-            <h5 style="margin: 0px;">ใบอนุญาตขับรถประเภท D รถขนส่งผู้โดยสาร ประเภท 4 ล้อขึ้นไป ไม่เกิน 15 ที่นั่ง</h5>
-          </div>
-        </div>
-      </div>
+      <article >
+      <CurrentApp></CurrentApp>
+        <section>
+        <br><br>
+        <span> {{ $t("page_appoint_pass") }}</span>
+       <PassApp></PassApp>
+        </section>
+      </article>
     </div>
-  </div> -->
-
-    <!-- End Type Card -->
-
+   
   </div>
-  <div class="modal" v-if="store.popupconfirm">
-    <div class="modal-content" id="deleteConformationLabel">
-      <div class="modal-header">
 
-        <h5 class="modal-title" id="exampleModalLabel">{{ $t("page_app_resve_t") }}</h5>
-
-      </div>
-      <div class="modal-body">
-        <p class="">
-          {{ $t("page_app_resve_s") }}
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" data-bs-dismiss="modal" @click="closeModal">
-          {{ $t("close") }}
-        </button>
-        <button type="button" class="btn btn-danger" data-remove="task" @click="confirmreve()">
-          {{ $t("confirm") }}
-        </button>
-      </div>
-    </div>
-  </div>
 </template>
 <script lang="ts" setup>
 definePageMeta({
-  middleware: "suc", // this should match the name of the file inside the middleware directory
+  middleware: "auth", // this should match the name of the file inside the middleware directory
 });
 
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { AppointmentsStore } from "@/stores/appointment";
-import {
-  required,
-  email,
-  sameAs,
-  minLength,
-  helpers,
-} from "@vuelidate/validators";
-import Datepicker from "vuejs3-datepicker";
-import { useVuelidate } from "@vuelidate/core";
-import { useRoute } from "vue-router";
-import VueDatePicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import moment from "moment";
-import Swal from "sweetalert2";
-import SelectAppoint from '@/components/appointment/SelectAppoint.vue';
+
+import CurrentApp from '@/components/appointment/CurrentApp.vue';
+import PassApp from '@/components/appointment/PassApp.vue';
 import { useI18n } from "vue-i18n";
 const { locale, setLocale } = useI18n();
 
 
 const auth = useAuthStore();
 const store = AppointmentsStore();
-const route = useRoute();
+const router = useRouter();
 const profile = await auth.getProfile();
-store.form.date_event = moment().startOf('month').format('YYYY-MM-DD');
-await store.fetchApppoint()
-const { FormSearch } = storeToRefs(store);
-
-
-const date = ref(new Date());
 
 
 
-
-const choose = async (item) => {
-  const profile = await auth.SelectProfile(item);
-};
 store.user_id = auth.user_id;
 
+
 await store.fetchApppointRes();
-const closeModal = async () => {
-  store.popupconfirm = false;
+await store.fetchApppointResCalulat();
+
+
+const goToMenu = async () => {
+  router.push('/appointment/make');
 };
 
 
-const confirmreve = async () => {
-  let data = await store.saverevs();
-
-  if (data == true) {
-    store.popupconfirm = false;
-    await Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "ບັນທຶກການຈອງສຳເລັດແລ້ວ",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    await store.fetchApppoint()
-    await store.fetchApppointRes();
-  } else {
-    store.popupconfirm = false;
-    Swal.fire({
-      title: "Unsuccessful!",
-      text: "Unsuccessful Booking!",
-      icon: "error",
-    });
-  }
-};
-
-
-const rules = computed(() => {
-  return {
-    em_code: {
-      required: helpers.withMessage("Exam code field is required", required),
-      minLength: minLength(1),
-    },
-    em_name: {
-      required: helpers.withMessage("Exam Name field is required", required),
-      minLength: minLength(1),
-    },
-    em_description: {
-      required: helpers.withMessage(
-        "Exam Description field is required",
-        required
-      ),
-      minLength: minLength(1),
-    },
-    em_random_amount: {
-      required: helpers.withMessage("Exam Amount field is required", required),
-      minLength: minLength(1),
-    },
-    em_time: {
-      pattern: /^(2[0-3]|[0-1]?[\d]):[0-5][\d]:[0-5][\d]$/,
-      required: helpers.withMessage("em_time", required),
-    },
-  };
-});
-
-const v$ = useVuelidate(rules, FormSearch);
-
-const find = async () => {
-  store.fetchApppoint();
-
-};
-
-const findApp = async () => {
-  Swal.fire({
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    didOpen: () => {
-      Swal.showLoading()
-    },
-  });
-  let data = await store.fetchApppoint();
-  if (data == true) {
-    setTimeout(() => Swal.close(), 500);
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Contact Admin',
-      showCancelButton: false, // There won't be any cancel button
-      showConfirmButton: false // There won't be any confirm button
-    })
-
-  }
-};
-
-
-
-const findEvent = async (item) => {
-
-  store.form.date_event = item
-
-  store.fetchApppointEvent();
-
-};
-
-
-
-
-const format_start = (date) => {
-  store.form.date_event = moment(date).format("YYYY-MM-DD");
-  return moment(date).format("YYYY-MM-DD");
-};
 </script>
-<style>
+<style scoped>
 button {
   margin-top: 10px;
 }

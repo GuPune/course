@@ -10,7 +10,8 @@
                                       <!-- <span>Education Solution</span> -->
                                   </div>
                                   <div class="herobannerarea__title__heading__2 herobannerarea__title__heading__3">
-                                      <h2>{{ $t("banner") }}</h2>
+
+                                      <span style="font-size: 40px;font-weight: 400;"> {{ $t("banner") }}</span>
                                   </div>
                               </div>
   

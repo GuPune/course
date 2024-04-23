@@ -3,14 +3,15 @@
 
 <template>
     <div>
-      <div class="breadcrumbarea">
+      <!-- <div class="breadcrumbarea">
   
   <div class="container">
       <div class="row">
           <div class="col-xl-12">
               <div class="breadcrumb__content__wraper" data-aos="fade-up">
                   <div class="breadcrumb__title">
-                      <h2 class="heading">{{ $t("page_exam") }}</h2>
+                      
+                      <span style="font-size: 24px;font-weight: 400;"> {{ $t("page_exam") }}</span>
                   </div>
                   <div class="breadcrumb__inner">
                       <ul>
@@ -34,7 +35,28 @@
                     alt="photo">
             </div>
   
-  </div>
+  </div> -->
+
+    <div style="background-color: var(--dotColor);">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+              <div class="breadcrumb__title">
+                  <span style="font-size: 24px;font-weight: 400;"> {{ $t("page_exam") }}</span>
+              </div>
+              
+              <div class="breadcrumb__inner">
+                <!-- <ul>
+                  <li><a href="#">{{ $t("home") }}</a></li>
+                  <li>{{ $t("page_exam") }}</li>
+                </ul> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
    <div class="coursearea sp_top_100 sp_bottom_100">
             <div class="container">
                 <div class="row">

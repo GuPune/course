@@ -5,38 +5,68 @@
         <div class="container desktop__menu__wrapper">
           <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-6">
-              <div class="headerarea__left">
-                <div class="headerarea__left__logo">
-                  <img src="/img/logo/logo_3.png" alt="logo" width="140" height="100" />
+              <div class="headerarea__left justify-content-center">
+                <div class="headerarea__left__logo" @click="goToMenu('/')">
+                  <img src="/img/logo/logo_4.png" alt="logo" width="120" />
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-6 col-lg-6 main_menu_wrap">
+            <div class="col-xl-6 col-lg-6 main_menu_wrap" v-if="authenticated">
               <div class="headerarea__main__menu">
                 <nav>
                   <ul>
-                    <li>
-                      <a class="headerarea__has__dropdown">
-                        <nuxt-link to="/">{{ $t("home") }}</nuxt-link>
-                        <div></div>
+                    
+                    <li @click="goToMenu('/')" >
+                      <a class="headerarea__has__dropdown cursor-pointer" href="http://information.iddriver.com"  target="_blank">
+                        <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
+                        <!-- <span> {{ $t("home") }} </span> -->
+                        <span> {{ $t("news") }}</span>
                       </a>
                     </li>
-                    <li>
-                      <a class="headerarea__has__dropdown">
-                        <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link>
+                    <li @click="goToMenu('/course')"  >
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link> -->
+                        <span> {{ $t("courses") }} </span>
                       </a>
                     </li>
-                    <li>
-                      <a class="headerarea__has__dropdown">
-                        <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link>
+                    <li @click="goToMenu('/exam')">
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        <span> {{ $t("exam") }} </span>
                       </a>
                     </li>
-                    <li>
-                      <nuxt-link to="/appointment">
-                        {{ $t("appointmentxx") }}
-                      </nuxt-link>
+                    <li  @click="goToMenu('/appointment')">
+                
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        
+                        <span> {{ $t("appointmentxx") }} </span>
+                      </a>
                     </li>
+                    <li @click="goToMenu('/result')">
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                    
+                        <span> {{ $t("exam_results") }} </span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+                 <div class="col-xl-6 col-lg-6 main_menu_wrap" v-if="!authenticated">
+              <div class="headerarea__main__menu">
+                <nav style="text-align: justify;padding-left: 75px;">
+                  <ul>
+                    
+                    <li @click="goToMenu('/')" >
+                      <a class="headerarea__has__dropdown cursor-pointer" href="http://information.iddriver.com"  target="_blank">
+                        <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
+                        <!-- <span> {{ $t("home") }} </span> -->
+                        <span> {{ $t("news") }}</span>
+                      </a>
+                    </li>
+                  
                   </ul>
                 </nav>
               </div>
@@ -71,28 +101,7 @@
 
               <div class="headerarea__main__menu .headerarea__login headerarea__right" v-if="authenticated">
 
-                <!-- <div class="">
-                  <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                      class="bi bi-bell-fill" viewBox="0 0 16 16" id="noti-bell">
-                      <path
-                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
-                    </svg>
-                  </a>
-            
-                  <div class="header__right__dropdown__wrapper" v-if="authenticated">
-                   
-                    <div class="header__right__dropdown__inner"  v-for="(item, index) in useError.mydltcardExp"
-                      :key="item.ap_id">
-                 
-                      <div class="single__header__right__dropdown">
-                        <div class="header__right__dropdown__content">
-                          <a > ใกล้วันหมดอายุใบขับขี่ประเภท {{ item.dlt_code }} วันที่หมดคือ {{ item.expiry_date }}</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+             
                 <nav>
                   <ul>
                     
@@ -122,10 +131,10 @@
                  
                       <a class="headerarea__has__dropdown headerarea__login" href="#" id="headBadge" style="
                           padding: 8px 15px;
-                          border: 1px solid var(--borderColor1);
-                        ">
                         
-                        <i class="icofont-heart-alt"></i> {{ $t("account") }}
+                        ">
+                       
+                        <i class="icofont-users"></i> {{ $t("account") }}  <i class="icofont-arrow-down"></i>
                         <div v-if="useError.formdetail.verify_account == 'system_active'">
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
                           id="badgeSpan" >
@@ -156,28 +165,31 @@
 
                       </a>
                       <ul class="headerarea__submenu">
-                        <li>
-                          <a @click="GotoPage('/profile')">{{ $t("account") }}</a>
+                        <li> 
+                          <a @click="GotoPage('/profile')"><i class="icofont-memory-card"></i> <span style="font-size: 14px;">  {{ $t("account_details") }}</span></a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/changepassword')">{{ $t("changepassword") }}</a>
+                          <a @click="GotoPage('/changepassword')"><i class="icofont-edit"></i><span style="font-size: 14px;">  {{ $t("changepassword") }}</span></a>
                         </li>
                         <li>
+                          <a @click="GotoPage('/profile')"> <i class="icofont-ui-v-card"></i><span style="font-size: 14px;"> {{ $t("mylicense") }}</span></a>
+                        </li>
+                        <!-- <li>
                           <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
                         </li>
                         <li>
                           <a @click="GotoPage('/history')">{{ $t("history") }}</a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                           <a @click="GotoPage('/result')">{{ $t("result") }}</a>
-                        </li>
+                        </li> -->
                         <!-- <li  v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/resultall')">{{ $t("resultall") }}</a>
                         </li>
                          <li v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/historyall')">{{ $t("historyall") }}</a>
                         </li> -->
-                        <li><a @click="Logout()">{{ $t("logout") }}</a></li>
+                        <li><a @click="Logout()"> <i class="icofont-sign-out"></i><span style="font-size: 14px;">  {{ $t("logout") }} </span></a></li>
                       </ul>
                     </li>
                   </ul>
@@ -189,7 +201,7 @@
         <div class="container-fluid mob_menu_wrapper">
           <div class="row align-items-center">
             <div class="col-6">
-              <div class="mobile-logo">
+              <div class="mobile-logo"  @click="goToMenu('/')">
                 <a class="logo__dark" href="#"><img src="/img/logo/logo_3.png" alt="logo" /></a>
               </div>
             </div>
@@ -234,61 +246,70 @@
           <div class="mobile-navigation">
             <nav>
               <ul class="mobile-menu">
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/">{{ $t("home") }}</nuxt-link>
+                <li class="menu-item-has-children"  @click="goToMenu('/')">
+                 <span> {{ $t("news") }}</span>
                 </li>
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link>
+                <li class="menu-item-has-children"  @click="goToMenu('/course')">
+                
+                      <span> {{ $t("courses") }} </span>
                 </li>
 
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children"  @click="goToMenu('/exam')">
+                
+                   <span> {{ $t("exam") }}</span>
+                </li>
+               
+
+                <li  @click="goToMenu('/appointment')">
+                
+                <a class="headerarea__has__dropdown cursor-pointer">
+                  
+                  <span> {{ $t("appointmentxx") }} </span>
+                </a>
+              </li>
+                  <li class="menu-item-has-children">
                   <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link>
                 </li>
-                <li class="menu-item-has-children">
-                  <nuxt-link to="/appointment">{{
-                    $t("appointmentxx")
-                  }}</nuxt-link>
+
+                <li @click="goToMenu('/result')">
+                      <a class="headerarea__has__dropdown cursor-pointer">
+                        <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
+                        <span> {{ $t("exam_results") }} </span>
+                      </a>
                 </li>
               </ul>
             </nav>
           </div>
         </div>
         <div class="mobile-curr-lang-wrap">
-
-
-          <!-- <div class="single-mobile-curr-lang">
-                        <a class="mobile-currency-active" href="#">Currency <i class="icofont-thin-down"></i></a>
-                        <div class="lang-curr-dropdown curr-dropdown-active">
-                            <ul>
-                                <li><a href="#">USD</a></li>
-                                <li><a href="#">EUR</a></li>
-                                <li><a href="#">Real</a></li>
-                                <li><a href="#">BDT</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-
           <div class="single-mobile-curr-lang">
-
-
             <div class="btn-group">
-
               <a class="mobile-language-active" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ $t("head_choose_lan") }} <i
                   class="icofont-thin-down"></i></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" @click="changeLocale('la')">{{ $t("lan_loas") }}</a></li>
                 <li><a class="dropdown-item" href="#" @click="changeLocale('en')">{{ $t("lan_eng") }}</a></li>
-
-
               </ul>
             </div>
           </div>
+
+          
           <div v-if="authenticated">
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/profile')">{{ $t("account") }}</a></li>
+             <li> 
+                          <a @click="GotoPage('/profile')"> <span >  {{ $t("account_details") }}</span></a>
+                        </li>
+
             </div>
             <div class="single-mobile-curr-lang">
-              <li><a @click="GotoPage('/history')">{{ $t("history") }}</a></li>
+                <li>
+                          <a @click="GotoPage('/changepassword')"><span >  {{ $t("changepassword") }}</span></a>
+                        </li>
+            </div>
+             <div class="single-mobile-curr-lang">
+            <li>
+                          <a @click="GotoPage('/profile')"> <span > {{ $t("mylicense") }}</span></a>
+                        </li>
             </div>
             <div class="single-mobile-curr-lang">
               <li><a @click="Logout()">{{ $t("logout") }}</a></li>
@@ -329,7 +350,7 @@ import {
   helpers,
 } from "@vuelidate/validators";
 import { useI18n } from "vue-i18n";
-
+import Swal from "sweetalert2";
 
 const router = useRouter();
 const store = useLogin();
@@ -362,7 +383,7 @@ const Logout = async () => {
 };
 
 const Showaside = async () => {
- 
+
   store.isActiveBar = !store.isActiveBar;
   // store.isActiveBar = false;
 };
@@ -370,6 +391,21 @@ const Showaside = async () => {
 const Hideaside = async () => {
   store.isActiveBar = false;
 };
+
+const goToMenu = async (meun) => {
+  //      Swal.fire({
+  //   allowEscapeKey: false,
+  //   allowOutsideClick: false,
+  //   didOpen: () => {
+  //     Swal.showLoading()
+  //   },
+  // });
+
+  store.isActiveBar = false;
+  router.push(meun);
+  //  setTimeout(() => Swal.close(), 500);
+};
+
 
 const GotoPage = (item) => {
   router.push(item);
@@ -383,6 +419,10 @@ const changeLocale = (newLocale) => {
 </script>
 
 <style>
+
+.cursor-pointer{
+  cursor: pointer;
+}
 #headBadge>#badgeSpan>#badgeText {
   display: none;
   transition: all 1s;

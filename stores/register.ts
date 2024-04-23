@@ -43,17 +43,23 @@ export const RegisterStore = defineStore({
       try {
         const data = await ApiService.post('/user/create', this.form).then(response => {
           if (response.data == "") {
+            
             return false;
           } else {
-            return true;
+            return 200;
           }
         });
         return data
       } catch (error) {
-        return false;
-      } finally {
 
-      }
+
+        if(error.response){
+          return 204;
+        }else {
+          return 502;
+        }
+      
+      } 
 
     },
 
@@ -72,10 +78,7 @@ this.form.accp = null;
     },
 
     async FitterString(value) {
-
       const filteredValue = value.replace(/[^\w\s]/gi, '');
-   console.log(filteredValue);
-
     }
   }
 })

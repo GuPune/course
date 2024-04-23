@@ -6,11 +6,13 @@
     aria-labelledby="projects__one"
   >
     <div class="col-xl-8 offset-md-2">
+      <div class="card">
+      <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;"> {{ $t("changepassword_title") }}</div>
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">{{ $t("changepassword_title") }}</h5>
+  
           <p class="login__description">
-            {{ $t("changepassword_title") }}
+            {{ $t("changepassword_title1UserLogin") }}
             <a
               href="#"
               data-bs-toggle="modal"
@@ -19,7 +21,7 @@
           </p>
         </div>
 
-        <form action="#">
+        <form>
           <div class="row">
             <div class="col-xl-12">
               <div class="login__form">
@@ -39,6 +41,7 @@
                   }"
                   @change="v$.curent_password.$touch"
                   autocomplete="off"
+                  @input="filterInputPassCurrent"
                 />
 
                 <span v-if="locale == 'la'">
@@ -77,6 +80,7 @@
                   }"
                   @change="v$.new_password.$touch"
                   autocomplete="off"
+                  @input="filterInputPassCurrentNew"
                 />
                 <span v-if="locale == 'la'">
                   <span
@@ -114,6 +118,7 @@
                   }"
                   @change="v$.confirm_new_password.$touch"
                   autocomplete="off"
+                  @input="filterInputPassCurrentNewCon"
                 />
                 <span v-if="locale == 'la'">
                   <span
@@ -134,16 +139,16 @@
                 </span>
               </div>
             </div>
-         
-          </div>
 
-         
-
-          <div class="login__button" @click="savechangepassword()">
-            <a class="default__button">{{ $t("singup_title") }}</a>
           </div>
+      <br>
+   
         </form>
+        <div class="col-12" style="text-align: center">
+                <button class="btn" style="width: 30%;background-color: #2AB0E5;" @click="savechangepassword()"><span style="color: white;">{{ $t("singup_title") }}</span></button>
+                            </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -175,9 +180,6 @@ const stores = useAuthStore();
 
 
 
-
-
-
 const { getFormChangepassword } = storeToRefs(stores);
 
 
@@ -188,14 +190,14 @@ const rules = computed(() => {
         "Field is required",
         required
       ),
-      minLength: minLength(1),
+      minLength: minLength(6),
     },
     new_password: {
       required: helpers.withMessage(
         "Field is required",
         required
       ),
-      minLength: minLength(1),
+      minLength: minLength(6),
     },
     confirm_new_password: {
       required: helpers.withMessage(
@@ -218,24 +220,29 @@ const savechangepassword = async () => {
   v$.value.$validate();
 
   if (!v$.value.$error) {
-let savepassword = await stores.Changepassword();
+let savepassword = await stores.ChangepasswordNew();
 
 if(savepassword === true){
   await Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Change Password successfully",
+      title: "ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ ສໍາເລັດ",
       showConfirmButton: false,
       timer: 1500,
     });
     v$.value.$reset();
+
+
     await stores.ResetFormPassword();
+
+localStorage.removeItem('user_reset')
+router.push("/login");
 }else {
 
   await Swal.fire({
       position: "top-end",
       icon: "error",
-      title: "Change Password unsuccessfully",
+      title: "ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ ບໍ່ສຳເລັດ",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -246,6 +253,30 @@ if(savepassword === true){
 }
  
 }
+
+const filterInputPassCurrent = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.changepassword.curent_password = stores.changepassword.curent_password.substring(0, stores.changepassword.curent_password.length - 1);
+        return;
+      }
+};
+
+const filterInputPassCurrentNew = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.changepassword.new_password = stores.changepassword.new_password.substring(0, stores.changepassword.new_password.length - 1);
+        return;
+      }
+};
+
+const filterInputPassCurrentNewCon = async (event) => {
+  const key = event.data;
+      if (event.data === ' ') {
+        stores.changepassword.confirm_new_password = stores.changepassword.confirm_new_password.substring(0, stores.changepassword.confirm_new_password.length - 1);
+        return;
+      }
+};
 
 
   

@@ -9,8 +9,8 @@
               <div class="container">
                   <div class="row">
                                  <div class="col-xl-8 col-md-8 offset-md-2" data-aos="fade-up" v-if="store.isAlertFindUser">
-                                    <div class="alert alert-danger" role="alert">
-                                  ไม่มี Account นี้
+                                    <div class="alert alert-danger" role="alert" style="text-align: center;">
+                                      ບໍ່ສາມາດຊອກຫາບັນຊີໄດ້
                             </div>
                         </div>
                       <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
@@ -27,6 +27,7 @@
   
               </div>
           </div>
+          <br>
     </div>
   </template>
 
@@ -57,6 +58,7 @@ const store = useLogin()
 
 store.isResetPassword = true;
 store.isResetPasswordOTP = false;
+store.isAlertFindUser = false
 store.formreset.otp = null;
 store.formreset.user = null;
 const rules = computed(() => {
@@ -73,13 +75,7 @@ const rules = computed(() => {
   };
 });
 
-
-
-
-
-
 </script>
-
 
 
 <style scoped>

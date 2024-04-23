@@ -228,7 +228,7 @@ const register = async () => {
   showConfirmButton: false,
   timer: 1500
 })
-router.push('/');
+router.push('/course');
    }else{
     Swal.fire({
         title: 'Unsuccessful!',

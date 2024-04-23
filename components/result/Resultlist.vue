@@ -98,10 +98,7 @@ const format = (item) => {
 };
 
 const covertdtl = (x) => {
-
-
   let item = store.dlt.filter((o) => o.dlt_code == x);
-
   return item[0];
 };
 </script>
