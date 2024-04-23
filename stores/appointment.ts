@@ -8,6 +8,8 @@ export const AppointmentsStore = defineStore({
     appgroup: [],
     reserve: [],
     event:[],
+    reservepass:[],
+    reservefisrt:[],
     tooltipText: 'This is a tooltip',
     isShowApp: false,
     loadingApp:false,
@@ -15,6 +17,7 @@ export const AppointmentsStore = defineStore({
     isShowNoApp: false,
     popupconfirm: false,
     popupcancelapp: false,
+    disabledselect:true,
     apdel_id:null,
     ardel_id:null,
     ap_id:null,
@@ -24,15 +27,16 @@ export const AppointmentsStore = defineStore({
       ap_learn: null,
     },
     form: {
-      date_event:null,
-      ap_learn_type: 1,
-      dlt_code: 'A1'
+      date_event:0,
+      ap_learn_type: 2,
+      dlt_code:''
     },
     formdel: {
     user_id:null,
     ap_id:null
     },
     date: null,
+    dlt_code:'A1',
     ap_learnlist: [
       {
         value: 1,
@@ -145,6 +149,9 @@ export const AppointmentsStore = defineStore({
     IsPopup: (state) => {
       return state.popupconfirm;
     },
+    getformapp: (state) => {
+      return state.form;
+    },
     
 
   },
@@ -158,7 +165,6 @@ export const AppointmentsStore = defineStore({
         });
         return true
       } catch (error) {
-        
         return false;
       }
 
@@ -169,10 +175,9 @@ export const AppointmentsStore = defineStore({
       try {
         const data = await ApiService.get('/appointment/reserve/get/'+this.user_id).then(response => {
         if(response.data){
+          response.data.sort((a, b) => (a.id > b.id ? 1 : -1));
           this.reserve = response.data
-
-          return true;
-          
+          return true; 
         }else {
           return true;
         }
@@ -185,12 +190,25 @@ export const AppointmentsStore = defineStore({
 
     },
 
+    async fetchApppointResCalulat() {
+
+      const today = new Date();
+      const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      this.timestamp = date;
+     this.reservepass = [];
+for (var i = 0; i < this.reserve.length; i++) {
+  if(this.reserve[i] > this.timestamp){
+    this.reservepass.push(this.reserve[i])
+  }else {
+    this.reservefisrt.push(this.reserve[i])
+  }
+}
+    },
+
     async fetchApppoint() {
-      // const appdata = {
-      //   date_event: this.form.date_event,
-      //   ap_learn_type: this.form.ap_learn_type,
-      //   dlt_code: this.form.dlt_code
-      // }
+
+      
+  
          try {
         const data = await ApiService.get('/appointment/event/?ap_learn_type='+ this.form.ap_learn_type+'&dlt_code='+this.form.dlt_code+'').then(response => {
           this.event = response.data

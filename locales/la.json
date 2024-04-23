@@ -58,7 +58,28 @@
   "course_lesson_group_title": "ໝວດວິຊາ",
   "page_course_one": "ລາຍລະອຽດ ຫຼັກສູດ",
   "page_exam": "ແບບທົດສອບ",
+  "page_exam_appoint_title":"ນັດສອບເສັງ",
   "page_appoint": "ນັດໝາຍ",
+
+  "page_exam_appoint_pass":"Your past appointments:",
+  "page_appoint_make": "ເຮັດການນັດໝາຍ",
+  "page_appoint_current": "ການນັດໝາຍປັດຈຸບັນຂອງທ່ານເພື່ອສອບເສັງຂັບລົດ",
+  "page_appoint_type_code": "ປະເພດ :",
+  "page_appoint_full_name": "Full name",
+  "page_appoint_passpost": "Citizen ID / Passport Number",
+  "page_appoint_location": "Location:  Savanakhet",
+  "page_appoint_note": "Note: Please bring your Citizen ID / Passport",
+  "page_appoint_pass":"ການນັດໝາຍທີ່ຜ່ານມາຂອງເຈົ້າ:",
+  "page_appoint_time_label":"ເວລານັດໝາຍ:",
+  "page_appoint_type_label":"ປະເພດ:",
+  "page_appoint_type_label_select_dlt":"ເລືອກ",
+  "page_appoint_type_label_select_event":"ເລືອກ",
+  "page_appoint_label":"ກະລຸນາເລືອກເວລາທີ່ທ່ານຕ້ອງການ.",
+  "page_appoint_reve_dlt_alert": "ເລືອກປະເພດ DLT",
+  "page_appoint_reve_events_alert":"ເລືອກມື້",
+  "page_appoint_back_list":"Back to Appointment list",
+  "page_appoint_save_app":"Submit",
+  "page_appoint_reve_detail_title":"ຂໍ້ມູນທີ່ຈະໃຊ້ສໍາລັບການນັດໝາຍແມ່ນ:",
   "logout": " ອອກ​ຈາກ​ລະ​ບົບ",
   "page_register": "ລົງທະບຽນ ບັນຊີນຳໃຊ້",
   "page_register_login": "ທ່ານຍັງບໍ່ມີບັນຊີເຂົ້າສູ່ລະບົບເທື່ອ ?",
@@ -241,8 +262,7 @@
   "confirm_answer":"ຢືນຢັນຄໍາຕອບ",
   "page_exam_report_stat":"ສະຖານະ",
   "page_exam_report_status_pass":"ສໍາເລັດ",
-  "page_exam_report_status_faill":"ບໍ່​ສໍາ​ເລັດ",
-  "page_exam_appoint_title":"Exam Appointments",
-  "page_exam_appoint_current":"Your current appointment to take driving exam:",
-  "page_exam_appoint_pass":"Your past appointments:"
+  "page_exam_report_status_faill":"ບໍ່​ສໍາ​ເລັດ"
+
+
 }

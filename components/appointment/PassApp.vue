@@ -1,16 +1,16 @@
 <template>
    <div>
-   
-             <div class="d-flex justify-content-center">
+
+             <div class="d-flex justify-content-center" v-if="store.reservepass">
             <table class="table table-bordered">
-              <tbody>
+              <tbody  v-for="(item, index) in store.reservepass"
+                      :key="item.ap_id">
                 <tr>
-                  <td class="px-5">03/03/2024 8:00 for Class: A, @ Savannakhet Appointment</td>
+                  <td class="px-5">{{ dayforma(item.udp_date) }},for Type: {{ item.appointment_detail.dlt_code }}, @ Savannakhet Appointment</td>
                 </tr>
               </tbody>
             </table>
           </div>
-   
   </div>
 </template>
 <script lang="ts" setup>
@@ -40,6 +40,15 @@ const { locale, setLocale } = useI18n();
 const auth = useAuthStore();
 const store = AppointmentsStore();
 const route = useRoute();
+
+
+// const coverdlt = (code) => {
+//   let dt = store.dlt.find((item) => item.dlt_code == code );
+//   return dt.dlt_description_english
+// };
+const dayforma = (day) => {
+  return moment(day).format("DD/MM/yyyy HH:mm");
+};
 
 
 </script>

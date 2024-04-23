@@ -20,7 +20,7 @@
         <div class="container py-3 py-md-4 py-lg-5 appcontent">
         <div class="row">
          <div class="col-12 col-sm-12 col-lg-9" style="align-self: self-end;">
-          <span>{{ $t("page_exam_appoint_current") }}</span>
+          <span>{{ $t("page_appoint_current") }}</span>
         </div>
   <div class="col-12 col-sm-12 col-lg-3">
          <button class="btn btn-primary" style="width: 100%;background-color: rgb(42, 176, 229);border-radius: 0px;" @click="goToMenu('/appointment/make')">Add New Appointment</button>
@@ -33,7 +33,7 @@
 
         <section>
         <br><br>
-        <span> {{ $t("page_exam_appoint_pass") }}</span>
+        <span> {{ $t("page_appoint_pass") }}</span>
        <PassApp></PassApp>
         </section>
       </article>
@@ -94,131 +94,23 @@ const { locale, setLocale } = useI18n();
 
 const auth = useAuthStore();
 const store = AppointmentsStore();
-const route = useRoute();
+const router = useRouter();
 const profile = await auth.getProfile();
-store.form.date_event = moment().startOf('month').format('YYYY-MM-DD');
-await store.fetchApppoint()
-const { FormSearch } = storeToRefs(store);
-
-
-const date = ref(new Date());
 
 
 
-
-const choose = async (item) => {
-  const profile = await auth.SelectProfile(item);
-};
 store.user_id = auth.user_id;
 
+
 await store.fetchApppointRes();
-const closeModal = async () => {
-  store.popupconfirm = false;
+await store.fetchApppointResCalulat();
+
+
+const goToMenu = async () => {
+  router.push('/appointment/make');
 };
 
 
-const confirmreve = async () => {
-  let data = await store.saverevs();
-
-  if (data == true) {
-    store.popupconfirm = false;
-    await Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "ບັນທຶກການຈອງສຳເລັດແລ້ວ",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    await store.fetchApppoint()
-    await store.fetchApppointRes();
-  } else {
-    store.popupconfirm = false;
-    Swal.fire({
-      title: "Unsuccessful!",
-      text: "ບັນທຶກການຈອງບໍ່ສຳເລັດ!",
-      icon: "error",
-    });
-  }
-};
-
-
-const rules = computed(() => {
-  return {
-    em_code: {
-      required: helpers.withMessage("Exam code field is required", required),
-      minLength: minLength(1),
-    },
-    em_name: {
-      required: helpers.withMessage("Exam Name field is required", required),
-      minLength: minLength(1),
-    },
-    em_description: {
-      required: helpers.withMessage(
-        "Exam Description field is required",
-        required
-      ),
-      minLength: minLength(1),
-    },
-    em_random_amount: {
-      required: helpers.withMessage("Exam Amount field is required", required),
-      minLength: minLength(1),
-    },
-    em_time: {
-      pattern: /^(2[0-3]|[0-1]?[\d]):[0-5][\d]:[0-5][\d]$/,
-      required: helpers.withMessage("em_time", required),
-    },
-  };
-});
-
-const v$ = useVuelidate(rules, FormSearch);
-
-const find = async () => {
-  store.fetchApppoint();
-
-};
-
-const findApp = async () => {
-  Swal.fire({
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    didOpen: () => {
-      Swal.showLoading()
-    },
-  });
-  let data = await store.fetchApppoint();
-  if (data == true) {
-    setTimeout(() => Swal.close(), 500);
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Contact Admin',
-      showCancelButton: false, // There won't be any cancel button
-      showConfirmButton: false // There won't be any confirm button
-    })
-
-  }
-};
-
-
-
-const findEvent = async (item) => {
-
-  store.form.date_event = item
-
-  store.fetchApppointEvent();
-
-};
-
-
-  const router = useRouter();
-  const goToMenu = async (meun) => {
-    router.push(meun);
-  };
-
-const format_start = (date) => {
-  store.form.date_event = moment(date).format("YYYY-MM-DD");
-  return moment(date).format("YYYY-MM-DD");
-};
 </script>
 <style>
 button {

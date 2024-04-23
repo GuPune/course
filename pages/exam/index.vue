@@ -47,10 +47,10 @@
               </div>
               
               <div class="breadcrumb__inner">
-                <ul>
+                <!-- <ul>
                   <li><a href="#">{{ $t("home") }}</a></li>
                   <li>{{ $t("page_exam") }}</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           </div>

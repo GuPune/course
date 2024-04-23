@@ -1,20 +1,22 @@
 <template>
    <div>
    
-           <section class="px-4 py-3 border my-4">
+           <section class="px-4 py-3 border my-4"  v-if="store.reservefisrt.lenght > 0">
+            {{ store.reservefisrt }}
           <div class="row">
-              <div class="col-12 col-md-6">
-                <p class="mb-0"><b>02/03/2024 8:00</b></p>
-                <p><b>Type A - </b> Two-wheels motocycle engine not exceed 125 cc</p>
+              <div class="col-12 col-md-6"
+                      >
+                <!-- <p class="mb-0"><b>{{ dayforma(store.reservefisrt.udp_date) }}</b></p>
+                <p><b>{{ $t("page_appoint_type_code") }} </b> {{ coverdlt(store.reservefisrt.appointment_detail.dlt_code) }}</p>
         
-                <p><b>Full name : Mr. Somsak Jangdaboud</b></p>
-                <p><b>Citizen ID / Passport Number: 1234567890123</b></p>
-                <p><b>Location:  Savanakhet</b></p>
+                <p><b>{{ $t("page_appoint_full_name") }} : {{ auth.formuser.user_prefrix }}. {{ auth.formuser.user_firstname }} {{ auth.formuser.user_lastname }}</b></p>
+                <p><b>{{ $t("page_appoint_passpost") }}: 1234567890123</b></p>
+                <p><b>{{ $t("page_appoint_location") }}</b></p> -->
                 
               </div>
       
           </div>
-          <p>Note: Please bring your Citizen ID / Passport,</p>
+          <p>{{ $t("page_appoint_note") }},</p>
         </section>
    
   </div>
@@ -47,6 +49,14 @@ const auth = useAuthStore();
 const store = AppointmentsStore();
 const route = useRoute();
 
+const dayforma = (day) => {
+  return moment(day).format("DD/MM/yyyy HH:mm");
+};
+
+const coverdlt = (code) => {
+  let dt = store.dlt.find((item) => item.dlt_code == code );
+  return dt.dlt_description_english
+};
 
 </script>
 <style>
