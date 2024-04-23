@@ -159,10 +159,10 @@ export const AppointmentsStore = defineStore({
 
     async saverevs() {
       const savereve = {user_id:this.user_id,ap_id:this.ap_id}
- console.log(savereve);
+
       try {
         const data = await ApiService.post('/appointment/reserve/create', savereve).then(response => {
-   
+          console.log(response);
         });
         return true
       } catch (error) {
@@ -178,6 +178,7 @@ export const AppointmentsStore = defineStore({
         if(response.data){
           response.data.sort((a, b) => (a.id > b.id ? 1 : -1));
           this.reserve = response.data
+     
           return true; 
         }else {
           return true;
@@ -192,23 +193,24 @@ export const AppointmentsStore = defineStore({
     },
 
     async fetchApppointResCalulat() {
-
+this.reservefisrt = []
       const today = new Date();
       const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       this.timestamp = date;
      this.reservepass = [];
 
 for (var i = 0; i < this.reserve.length; i++) {
-  
-
-  let e = moment(this.reserve[i].appointment_detail.ap_date_start).format("YYYY-MM-DD");
-
+  let e = moment(this.reserve[i].appointment_detail.ap_date_start).format("YYYY-M-DD");
 
 var myDatestart = Date.parse(e);
-var myDateNow = Date.parse(today);
+var myDateNow = Date.parse(date);
+
+console.log(myDatestart);
+console.log(myDateNow);
 
   if(myDatestart > myDateNow){
     this.reservefisrt.push(this.reserve[i])
+
   }else {
 
     this.reservepass.push(this.reserve[i])

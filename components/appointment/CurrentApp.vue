@@ -1,16 +1,18 @@
 <template>
    <div v-if="store.reservefisrt" >
  
-           <section class="px-4 py-3 border my-4" v-for="(item, index) in store.reservefisrt">
+           <section class="px-4 py-3 border my-4" v-for="(item, index) in store.reservefisrt" :key="index">
+    
           <div class="row">
 
               <div class="col-12 col-md-6"
                       >
-                <p class="mb-0"><b>{{ dayforma(item.udp_date) }}</b></p>
+                
+                <p class="mb-0"><b>{{ dayforma(item.appointment_detail.ap_date_start) }}</b></p>
                 <p><b>{{ $t("page_appoint_type_code") }} </b> {{ coverdlt(item.appointment_detail.dlt_code) }}</p>
         
                 <p><b>{{ $t("page_appoint_full_name") }} : {{ auth.formuser.user_prefrix }}. {{ auth.formuser.user_firstname }} {{ auth.formuser.user_lastname }}</b></p>
-                <p><b>{{ $t("page_appoint_passpost") }}: 1234567890123</b></p>
+                <p><b>{{ $t("page_appoint_passpost") }}:  {{ auth.formdetail.identification_number}}</b></p>
                 <p><b>{{ $t("page_appoint_location") }}</b></p>
                 
               </div>
@@ -28,18 +30,10 @@ import { useAuthStore } from "@/stores/auth"; // import the auth store we just c
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { AppointmentsStore } from "@/stores/appointment";
-import {
-  required,
-  email,
-  sameAs,
-  minLength,
-  helpers,
-} from "@vuelidate/validators";
-import Datepicker from "vuejs3-datepicker";
-import { useVuelidate } from "@vuelidate/core";
+
+
 import { useRoute } from "vue-router";
-import VueDatePicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
+
 import moment from "moment";
 import Swal from "sweetalert2";
 import { useI18n } from "vue-i18n";

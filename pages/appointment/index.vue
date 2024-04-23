@@ -23,14 +23,13 @@
           <span>{{ $t("page_appoint_current") }}</span>
         </div>
   <div class="col-12 col-sm-12 col-lg-3">
-         <button class="btn btn-primary" style="width: 100%;background-color: rgb(42, 176, 229);border-radius: 0px;" @click="goToMenu('/appointment/make')">Add New Appointment</button>
+         <button class="btn btn-primary" style="width: 100%;background-color: rgb(42, 176, 229);border-radius: 0px;" @click="goToMenu()">Add New Appointment</button>
         </div>
 
         </div>
 
       <article >
       <CurrentApp></CurrentApp>
-
         <section>
         <br><br>
         <span> {{ $t("page_appoint_pass") }}</span>
@@ -51,20 +50,7 @@ import { useAuthStore } from "@/stores/auth"; // import the auth store we just c
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { AppointmentsStore } from "@/stores/appointment";
-import {
-  required,
-  email,
-  sameAs,
-  minLength,
-  helpers,
-} from "@vuelidate/validators";
-import Datepicker from "vuejs3-datepicker";
-import { useVuelidate } from "@vuelidate/core";
-import { useRoute } from "vue-router";
-import VueDatePicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
-import moment from "moment";
-import Swal from "sweetalert2";
+
 import CurrentApp from '@/components/appointment/CurrentApp.vue';
 import PassApp from '@/components/appointment/PassApp.vue';
 import { useI18n } from "vue-i18n";
