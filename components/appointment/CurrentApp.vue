@@ -1,17 +1,17 @@
 <template>
-   <div>
-   
-           <section class="px-4 py-3 border my-4"  v-if="store.reservefisrt.lenght > 0">
-        
+   <div v-if="store.reservefisrt" >
+ 
+           <section class="px-4 py-3 border my-4" v-for="(item, index) in store.reservefisrt">
           <div class="row">
+
               <div class="col-12 col-md-6"
                       >
-                <!-- <p class="mb-0"><b>{{ dayforma(store.reservefisrt.udp_date) }}</b></p>
-                <p><b>{{ $t("page_appoint_type_code") }} </b> {{ coverdlt(store.reservefisrt.appointment_detail.dlt_code) }}</p>
+                <p class="mb-0"><b>{{ dayforma(item.udp_date) }}</b></p>
+                <p><b>{{ $t("page_appoint_type_code") }} </b> {{ coverdlt(item.appointment_detail.dlt_code) }}</p>
         
                 <p><b>{{ $t("page_appoint_full_name") }} : {{ auth.formuser.user_prefrix }}. {{ auth.formuser.user_firstname }} {{ auth.formuser.user_lastname }}</b></p>
                 <p><b>{{ $t("page_appoint_passpost") }}: 1234567890123</b></p>
-                <p><b>{{ $t("page_appoint_location") }}</b></p> -->
+                <p><b>{{ $t("page_appoint_location") }}</b></p>
                 
               </div>
       

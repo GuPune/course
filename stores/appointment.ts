@@ -203,13 +203,16 @@ for (var i = 0; i < this.reserve.length; i++) {
 
   let e = moment(this.reserve[i].appointment_detail.ap_date_start).format("YYYY-MM-DD");
 
-console.log(e);
-console.log(this.today);
-  // if(e > this.timestamp){
-  //   console.log('if');
-  // }else {
-  //   console.log('else');
-  // }
+
+var myDatestart = Date.parse(e);
+var myDateNow = Date.parse(today);
+
+  if(myDatestart > myDateNow){
+    this.reservefisrt.push(this.reserve[i])
+  }else {
+
+    this.reservepass.push(this.reserve[i])
+  }
 }
     },
 
