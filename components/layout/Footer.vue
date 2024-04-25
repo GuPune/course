@@ -33,7 +33,7 @@
                                         <a href="#" style="color: black;">  {{ $t("footerlong_title_contact_tel") }}</a>
                                     </li>
                                     <li>
-                                        <a href="#" style="color: black;"> {{ $t("footerlong_title_contact_email") }}</a>
+                                        <a href="#" style="color: black;"> {{ $t("footerlong_title_contact_email") }} depttransportlaos@gmail.com</a>
                                     </li>
                                     <li>
                                         <a href="https://dot-smart.mpwt.gov.la/#/contact-us" style="color: black;" target="_blank"><i class="icofont-google-map"></i> {{ $t("footerlong_title_contact_location") }}</a>
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row py-3">
                 <div class="col-12 col-xl-7 col-lg-7 text-center text-lg-start">
-                    <p class="mb-0 text-dark"> {{ $t("footer_copyright") }}</p>
+                    <p class="mb-0 text-dark"> {{ $t("footer_copyright") }} @ {{ $t("footer_copyright_last") }} </p>
                 </div>
                 <div class="col-12 col-xl-5 col-lg-5 text-center text-lg-end">
                     <p class="mb-0 text-dark">Developed by: <a href="https://www.datacom.la/" target='_BLANK' className='text-primary'>Datacom Co.,Ltd</a> & <a href="https://iddrives.co.th/web/" className='text-primary' target='_BLANK'>ID Drives Co., Ltd</a></p>

@@ -274,7 +274,8 @@
   "footerlong_title_contact_tel":"Tel: 856-21 412250",
   "footerlong_title_contact_location":"Open location on Map",
   "footerlong_title_contact_depart":"Department of Transport Laos",
-  "footerlong_title_contact_email":"Email: depttransportlaos@gmail.com",
-  "footer_copyright":"Copyright @ Department of Transport, Ministry of Public Works and Transport, Lao PDR"
+  "footerlong_title_contact_email":"Email:",
+  "footer_copyright":"Copyright",
+  "footer_copyright_last":"Department of Transport, Ministry of Public Works and Transport, Lao PDR"
 
 }
