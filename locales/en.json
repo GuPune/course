@@ -266,6 +266,15 @@
   "confirm_answer":"Confirm Answer",
   "page_exam_report_stat":"Status",
   "page_exam_report_status_pass":"Success",
-  "page_exam_report_status_faill":"Fail"
+  "page_exam_report_status_faill":"Fail",
+  "footerlong_title":"ກົມຂົນສົ່ງ, ກະຊວງ​ໂຍທາທິການແລະ​ຂົນສົ່ງ",
+  "footerlong_title_spon":"Sponsored and Supported by:",
+  "footerlong_title_contact1":"ຕິດ​ຕໍ່​ພວກ​ເຮົາ",
+  "footerlong_title_contact_add":"Department of Transport, Lane Xang Avenue, Xaysettha district, Vientiane Capital, Lao PDR",
+  "footerlong_title_contact_tel":"Tel: 856-21 412250",
+  "footerlong_title_contact_location":"Open location on Map",
+  "footerlong_title_contact_depart":"Department of Transport Laos",
+  "footerlong_title_contact_email":"Email: depttransportlaos@gmail.com",
+  "footer_copyright":"Copyright @ Department of Transport, Ministry of Public Works and Transport, Lao PDR"
 
 }

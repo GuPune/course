@@ -1,140 +1,70 @@
 <template>
-    <div class="footerarea" style="margin-top: 5%;">
+    <div class="footerarea" style="background-color: white;">
         <div class="container">
-
-
-            <div class="footerarea__wrapper footerarea__wrapper__2">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" data-aos="fade-up">
+            <div class="footerarea__wrapper footerarea__wrapper__2 py-5">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12" data-aos="fade-up">
                         <div class="footerarea__inner footerarea__about__us">
                             <div class="footerarea__heading">
-                                <h3>ກ່ຽວ​ກັບ​ພວກ​ເຮົາ</h3>
+                                <h3 style="color: black;">{{ $t("footerlong_title") }}</h3>
+                                <img src="../../public/LogoPWT.png" alt="logo" width="120" />
                             </div>
-                            <div class="footerarea__content">
-                                <p>
-                                    ກະຊວງໂຍທາທິການ ແລະ ຂົນສົ່ງ ຂຽນຫຍໍ້: “ຍ. ທ. ຂ” ຂຽນເປັນພາສາຝຣັ່ງ: Ministère de Travaux
-                                    Public et de Transports (ຂຽນຫຍໍ້: MTPT) ແມ່ນກົງຈັກຂອງລັດຖະບານ, ມີພາລະບົດບາດ
-                                    ເປັນເສນາທິການໃຫ້ແກ່ລັດຖະບານ ໃນການຄຸ້ມຄອງມະຫາພາກ ກ່ຽວກັບຂະແໜງການຄົມມະນາຄົມ, ຂົນສົ່ງ
-                                    ທາງບົກ, ທາງນ້ຳ, ທາງອາກາດ, ທາງລົດໄຟ, ການເຄຫາສະຖານ, ຜັງເມືອງ ແລະ ນ້ຳປະປາ ໃນຂອບເຂດ
-                                    ທົ່ວປະເທດ.
-
-                                </p>
+                            <div class="footerarea__heading">
+                                <h3 style="color: black;">{{ $t("footerlong_title_spon") }}</h3>
+                                <div class="d-flex gap-4">
+                                    <img src="/img/logo/ursf2.jpg" width='110' alt="img" />
+                                    <img src="/img/logo/escap.png" width='130' alt="img" />
+                                </div>
                             </div>
-               
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3  col-md-6 col-sm-6" data-aos="fade-up">
+                    <div class="col-xl-5 col-lg-5  col-md-6 col-sm-12 col-12" data-aos="fade-up">
                         <div class="footerarea__inner">
-                            <div class="footerarea__heading">
-                                <h3>ຕິດ​ຕໍ່​ພວກ​ເຮົາ</h3>
+                            <div class="footerarea__heading" >
+                                <h3>{{ $t("footerlong_title_contact1") }}</h3>
                             </div>
-                            <div class="footerarea__list">
+
+                            <div class="footerarea__list" >
                                 <ul>
                                     <li>
-
-                                        <a href="#">ກະຊວງໂຍທາທິການ ແລະ ຂົນສົ່ງ, ສປປ ລາວ</a>
+                                        <a href="#" style="color: black;">{{ $t("footerlong_title_contact_add") }}</a>
                                     </li>
                                     <li>
-                                        <a href="#">ແຟັກ: 856-21 412250</a>
+                                        <a href="#" style="color: black;">  {{ $t("footerlong_title_contact_tel") }}</a>
                                     </li>
                                     <li>
-                                        <a href="#">856-21 412255 , ສາຍດ່ວນ 1518</a>
+                                        <a href="#" style="color: black;"> {{ $t("footerlong_title_contact_email") }}</a>
                                     </li>
-
+                                    <li>
+                                        <a href="https://dot-smart.mpwt.gov.la/#/contact-us" style="color: black;" target="_blank"><i class="icofont-google-map"></i> {{ $t("footerlong_title_contact_location") }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/people/ກົມຂົນສົ່ງ-ກຊ-ຍທຂ/61557172274093/" target="_blank" style="color: black;"><i class="icofont-facebook"></i> {{ $t("footerlong_title_contact_depart") }}</a>
+                                    </li>
                                 </ul>
                             </div>
-
-
                         </div>
                     </div>
-
-                    <div class="col-xl-2 col-lg-2  col-md-6 col-sm-6" data-aos="fade-up">
-                        <div class="footerarea__inner">
-                            <div class="footerarea__heading">
-                                <h3>ເມນູຕ່າງໆ</h3>
-                            </div>
-                            <div class="footerarea__list">
-                                <ul>
-                                    <li>
-                                        <nuxt-link to="/course">{{ $t("courses") }}
-
-                                        </nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link to="/exam">
-                                            {{ $t("exam") }}
-                                        </nuxt-link>
-
-                                    </li>
-                                    <li>
-                                        <nuxt-link to="/appointment">
-                                            {{ $t("appointmentxx") }}
-                                        </nuxt-link>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-
-
+                    <div class="col-xl-2 col-lg-2  col-md-4 col-sm-12" data-aos="fade-up">
+                        <div class="d-flex justify-content-center">
+                            <a href="https://play.google.com/store/apps/details?id=link.mpwt.dotsmart&hl=en-TH" class="btn btn-success" target="_blank" style="color: black;background-color: #FEF301;">Download App</a>
                         </div>
                     </div>
-                    <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
-                        <div class="footerarea__inner footerarea__padding__left">
-                            <div class="footerarea__heading">
-                                <h3>ข่าวล่าสุด</h3>
-                            </div>
-                            <div class="footerarea__list">
-                                <ul>
-                                    <li>
-                                        <a href="http://information.iddriver.com/#/blog">Ui Ux Design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Web Development</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Business Strategy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Softwere Development</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Business English</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                        </div>
-                    </div> -->
-
                 </div>
             </div>
-            <div class="footerarea__copyright__wrapper footerarea__copyright__wrapper__2">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3">
-                        <div class="copyright__logo">
-                            <img src="/img/logo/logo_3.png" alt="logo" width="140" height="100" />
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="footerarea__copyright__content footerarea__copyright__content__2">
-                            <p>Copyright © <span>2023</span> by All Rights Reserved.</p>
-                        </div>
-                    </div>
-                    <!-- <div class="col-xl-3 col-lg-3">
-                        <div class="footerarea__icon footerarea__icon__2">
-                            <ul>
-                                <li><a href="//facebook.com"><i class="icofont-facebook"></i></a></li>
-                                <li><a href="//twitter.com"><i class="icofont-twitter"></i></a></li>
-                                <li><a href="//vimeo.com"><i class="icofont-vimeo"></i></a></li>
-                                <li><a href="//linkedin.com"><i class="icofont-linkedin"></i></a></li>
-                                <li><a href="//skype.com"><i class="icofont-skype"></i></a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-
+        </div>
     </div>
-</div></template>
+    
+    <div style="background-color: #FEF301;">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-12 col-xl-7 col-lg-7 text-center text-lg-start">
+                    <p class="mb-0 text-dark"> {{ $t("footer_copyright") }}</p>
+                </div>
+                <div class="col-12 col-xl-5 col-lg-5 text-center text-lg-end">
+                    <p class="mb-0 text-dark">Developed by: <a href="https://www.datacom.la/" target='_BLANK' className='text-primary'>Datacom Co.,Ltd</a> & <a href="https://iddrives.co.th/web/" className='text-primary' target='_BLANK'>ID Drives Co., Ltd</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
