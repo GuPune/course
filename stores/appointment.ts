@@ -162,7 +162,7 @@ export const AppointmentsStore = defineStore({
 
       try {
         const data = await ApiService.post('/appointment/reserve/create', savereve).then(response => {
-          console.log(response);
+        
         });
         return true
       } catch (error) {
@@ -205,8 +205,7 @@ for (var i = 0; i < this.reserve.length; i++) {
 var myDatestart = Date.parse(e);
 var myDateNow = Date.parse(date);
 
-console.log(myDatestart);
-console.log(myDateNow);
+
 
   if(myDatestart > myDateNow){
     this.reservefisrt.push(this.reserve[i])

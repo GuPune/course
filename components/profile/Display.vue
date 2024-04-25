@@ -20,7 +20,7 @@
                     <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)">
                       <div class="row typecard">
                         <div class="col-2" id="type"><a>{{item.dlt_code}}</a></div>
-                        <div class="col-10" id="typedes"><a>{{item.dlt_description}}</a></div>
+                        <div class="col-10" id="typedes"><a>{{item.dlt_description_loas}}</a></div>
                       </div>
                     </li>
                   </ul>

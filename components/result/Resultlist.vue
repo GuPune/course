@@ -88,6 +88,7 @@ import { useI18n } from "vue-i18n";
 const { locale, setLocale } = useI18n();
 
 const store = ResultStore();
+const storeapp = AppointmentsStore();
 
 const router = useRouter();
 
@@ -98,7 +99,7 @@ const format = (item) => {
 };
 
 const covertdtl = (x) => {
-  let item = store.dlt.filter((o) => o.dlt_code == x);
+  let item = storeapp.dlt.filter((o) => o.dlt_code == x);
   return item[0];
 };
 </script>
