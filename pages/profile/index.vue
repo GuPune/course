@@ -12,7 +12,7 @@
             <div class="contact__section" data-aos="fade-up">
               <div class="container">
                 <div class="row"  v-if="auth.formdetail.verify_account !== 'system_active'">   
-                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="single__contact pcard">
                       <div class="contact__icon">
                         <svg
@@ -41,7 +41,7 @@
                   </div>
                
                   <div
-                    class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"
+                    class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"
                     @click="choose('details')"
                   >
                     <div class="single__contact pcard">
@@ -81,7 +81,7 @@
                   </div>
 
                   <div
-                    class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"
+                    class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"
                     @click="choose('iden')"
                   >
                     <div class="single__contact pcard">
@@ -108,7 +108,7 @@
                     </div>
                   </div>
 
-                  <div
+                  <!-- <div
                     class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"
                     @click="choose('idcard')"
                   >
@@ -134,7 +134,7 @@
                         <h5>{{ $t("profile_idcard") }}</h5>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
 
 
@@ -245,7 +245,7 @@
             <Profilelist v-if="auth.selectProfile === 'profile'"></Profilelist>
             <Details v-if="auth.selectProfile === 'details'"></Details>
             <Display v-if="auth.selectProfile === 'iden'"></Display>
-            <IDcard v-if="(auth.selectProfile === 'idcard')"  ></IDcard>
+            <!-- <IDcard v-if="(auth.selectProfile === 'idcard')"  ></IDcard> -->
           </div>
         </div>
       </div>

@@ -254,7 +254,7 @@
                     <input
                       type="text"
                       name="subject"
-                      placeholder="554xxxxx"
+                      placeholder="20XXXXXXXX"
                       v-model="store.formuser.user_phone"
                    :disabled="store.isDisabled"
                          :class="{
@@ -264,7 +264,7 @@
                       }"
                       @change="v$.user_phone.$touch"
                       autocomplete="off"
-                      maxlength="8"
+                      maxlength="10"
                     />
                     <div class="contact__icon">
                       <i class="icofont-ui-call"></i>
@@ -327,7 +327,7 @@
                       v-model="store.formuser.user_type_name"
                       disabled
 
-                    
+                
                     />
                     <div class="contact__icon">
                       <i class="icofont-edit"></i>
@@ -355,6 +355,8 @@
                     >
                     {{ $t("bt_edit") }}
                     </button>
+
+                    
                   </div>
                 </div>
               </div>

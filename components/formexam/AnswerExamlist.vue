@@ -28,7 +28,7 @@
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-boxes"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_total") }}  <br> <span style="font-size: 28px; font-weight: bold;">{{store.total}} ข้อ</span> </p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_total") }}  <br> <span style="font-size: 28px; font-weight: bold;">{{store.total}}</span> </p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>

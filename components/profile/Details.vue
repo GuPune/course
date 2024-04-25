@@ -48,12 +48,12 @@
                       @change="v$.identification_number.$touch"
                       autocomplete="off"
                       maxlength="13" 
-                      :disabled="store.isDisabled"
+                   
 
                       @input="onInput"
 
                   >
-                   
+                  <!-- :disabled="store.isDisabled" -->
                   </div>
             </div>
 
@@ -79,8 +79,9 @@
                     >{{ $t("form_d_bird") }}</span
                   >
                 </span>
+                <!-- :disabled="store.isDisabled" -->
                   <div class="contact__input__wraper">
-                    <input type="date" class="form-control col" v-model="store.formdetail.user_birthday" :disabled="store.isDisabled"
+                    <input type="date" class="form-control col" v-model="store.formdetail.user_birthday"
                   :class="{
                         'border-red-500 focus:border-red-500':
                           v$.user_birthday.$error,
@@ -128,9 +129,10 @@
                       @change="v$.user_village.$touch"
                       autocomplete="off"
                       maxlength="20" 
-                      :disabled="store.isDisabled"
+                     
 
                   >
+                  <!-- :disabled="store.isDisabled" -->
                   
                   </div>
             </div>
@@ -158,8 +160,9 @@
                     >{{ $t("form_d_add") }}</span
                   >
                 </span>
+                <!-- :disabled="store.isDisabled" -->
                   <div class="contact__input__wraper">
-                    <textarea v-model="store.formdetail.user_address" class="form-control col" :disabled="store.isDisabled"
+                    <textarea v-model="store.formdetail.user_address" class="form-control col" 
                   :class="{
                         'border-red-500 focus:border-red-500':
                           v$.user_address.$error,
@@ -263,7 +266,8 @@
                 <a v-else><img src="../../public/images/users/avatar-1.jpg" alt="grid"></a>
               
               </div>
-              <button class="changeImg btn btn-info"  @click="changeFile" :disabled="store.isDisabled">
+              <!-- :disabled="store.isDisabled" -->
+              <button class="changeImg btn btn-info"  @click="changeFile" >
                 <span v-if="locale == 'la'">{{ $t("page_profile_bt_pic") }}</span>
                 <span v-if="locale == 'en'">{{ $t("page_profile_bt_pic") }}</span>
               </button>
@@ -303,10 +307,17 @@
                 </div>
 
                 <div class="gridarea__list row border-bottom pb-2">
-                  <button v-if="
+                  <!-- <button v-if="
                         store.formdetail.verify_account !== 'system_active' ??
                         disabled
                       "
+                      type="button"
+                      class="btn btn-primary mt-0" @click="update()">
+                      {{ $t("bt_edit") }}
+                    </button> -->
+
+
+                    <button 
                       type="button"
                       class="btn btn-primary mt-0" @click="update()">
                       {{ $t("bt_edit") }}
