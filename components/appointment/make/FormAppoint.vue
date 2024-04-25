@@ -202,17 +202,17 @@ const saverer = async () => {
 let save = await store.saverevs()
 
 if(save === true){
-  await Swal.fire({
-  icon: 'success',
-  title: 'Appoint Success',
-  showConfirmButton: false,
-  timer: 1500
-})
+//   await Swal.fire({
+//   icon: 'success',
+//   title: 'Appoint Success',
+//   showConfirmButton: false,
+//   timer: 1500
+// })
 await router.push('/appointment');
 }else {
     await Swal.fire({
   icon: 'error',
-  title: 'Appoint Unsuccessful',
+  title: 'This appointment already exists.',
   showConfirmButton: false,
   timer: 2000
 })
