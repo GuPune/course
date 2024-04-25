@@ -3,25 +3,9 @@
 
 <template>
     <div>
-      <div class="breadcrumbarea">
-  
-  <div class="container">
-      <div class="row">
-          <div class="col-xl-12">
-              <div class="breadcrumb__content__wraper" data-aos="fade-up">
-                  <div class="breadcrumb__title">
-                      <h2 class="heading">{{ $t("page_course") }}</h2>
-                  </div>
-                  <div class="breadcrumb__inner">
-                      <ul>
-                          <li><a>{{ $t("home") }}</a></li>
-                          <li>{{ $t("page_course") }}</li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+      <!-- <div class="breadcrumbarea">
+
+
   
   <div class="shape__icon__2">
                 <img class=" shape__icon__img shape__icon__img__1" src="../../../assets/img/herobanner/herobanner__1.png"
@@ -34,9 +18,23 @@
                     alt="photo">
             </div>
   
-  </div>
+  </div> -->
 
-
+  <div style="background-color: var(--dotColor);">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+              <div class="breadcrumb__title" v-if="stores.last_course">
+                  <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_course_last_leaning_end") }} {{ stores.last_course.course_code }}</span>
+              </div>
+              
+        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
    <div>
             <div class="container">
                 <div class="row my-4">
@@ -59,14 +57,16 @@
                     >
                       <div class="accordion-item" style="padding: 5px;background-color: #F5F5F5;">
                         <div style="text-align: center;">
-                          <span style="font-size: 20px;"> Congratuations, You have completed the last lesson of the Course :</span>
+                          <span style="font-size: 20px;"> {{ $t("page_course_congrat") }}</span>
                         </div>
                
 <br>
 
+                <!-- {{ stores.last_course.course_remark_a }} {{ stores.last_course.course_name }} -->
 
-<div style="text-align: center;">
-                          <span style="font-size: 24px;font-weight: 400;"> A : Two-wheels motocycle, engine not exceed 125cc</span>
+<div style="text-align: center;" v-if="stores.last_course">
+                          <span style="font-size: 24px;font-weight: 400;" v-if="locale == 'la'"> {{ stores.last_course.course_name }}</span>
+                          <span style="font-size: 24px;font-weight: 400;" v-if="locale == 'en'"> {{ stores.last_course.course_remark_a }}</span>
 
                         </div>
                       </div>
@@ -76,12 +76,12 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                         <div class="text-center p-3 mb-3">
-      <p class="fs-3">Arealdy Read: {{stores.learned}} / {{stores.total_lesson_progress}} <span class="text-success">({{stores.progress}}%)</span></p>
+      <p class="fs-3">{{ $t("page_course_last_leaning__read_end") }}: {{stores.learned}} / {{stores.total_lesson_progress}} <span class="text-success">({{stores.progress}}%)</span></p>
     </div>
 
-    <div class="d-flex gap-3 justify-content-center flex-wrap">
-      <button class="btn btn-primary" @click="GotoPage('/course');">Go Back to Course List</button>
-      <button class="btn" style="background-color: var(--dotColor);" @click="GotoPage('/exam')">Try doing the theory Test for Course A</button>
+    <div class="d-flex gap-3 justify-content-center flex-wrap" v-if="stores.last_course">
+      <button class="btn btn-primary" @click="GotoPage('/course');">{{ $t("page_course_last_leaning_go_back") }}</button>
+      <button class="btn" style="background-color: var(--dotColor);" @click="GotoPage('/exam')">{{ $t("page_course_last_leaning_try_course") }} {{ stores.last_course.course_code }}</button>
     </div>
                     </div>
                 </div>
@@ -97,6 +97,8 @@
   import HistoryCourse from '@/components/layout/HistoryCourse.vue';
 import { CoursePostStore } from '@/stores/course';
 import Swal from "sweetalert2";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 definePageMeta({
   middleware: "auth", // this should match the name of the file inside the middleware directory
 });
