@@ -207,7 +207,7 @@ var myDateNow = Date.parse(date);
 
 
 
-  if(myDatestart > myDateNow){
+  if(myDatestart >= myDateNow){
     this.reservefisrt.push(this.reserve[i])
 
   }else {
