@@ -28,7 +28,7 @@
     
       <div class="container">
         <div class="col-12 col-sm-12 col-lg-3">
-         <button class="btn btn-warning button-cour" style="border-radius: 0px;" >Back to All courses</button>
+         <button class="btn btn-warning button-cour" style="border-radius: 0px;" @click="gotoCourse()" >Back to All courses</button>
         </div>
         <br>
         <div class="row" v-if="store.course_lesson">
@@ -234,6 +234,11 @@ window.open(im, '_blank');
 
 
 
+
+
+const gotoCourse = async () => {
+  router.push('/course');
+}
 const lastlesson = async (group,lesson) => {
 
   
