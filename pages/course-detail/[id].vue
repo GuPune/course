@@ -22,8 +22,15 @@
       </div>
     </div>
   </div>
-    <div class="coursearea sp_top_100">
+
+
+    <div class="coursearea sp_top_20">
+    
       <div class="container">
+        <div class="col-12 col-sm-12 col-lg-3">
+         <button class="btn btn-warning button-cour" style="border-radius: 0px;" >Back to All courses</button>
+        </div>
+        <br>
         <div class="row" v-if="store.course_lesson">
           <div class="col-xl-4 col-lg-4">
             <div class="blogarae__img__2 course__details__img__2 aos-init aos-animate" data-aos="fade-up">
@@ -56,21 +63,22 @@
               <table class="my-3" v-if="store.condition.length > 0">
                 <thead>
                   <tr>
-                    <th class="px-2">ໝວດວິຊາ</th>
-                    <th class="px-2">ຈຳນວນບົດຮຽນ</th>
-                    <th class="px-2">ຈຳນວນ ຄຳຖາມເສັງ</th>
+                    <th class="px-2"  rowspan="2">ໝວດວິຊາ</th>
+                    <th class="px-2"  rowspan="2" style="width: 30%;"></th>
+                    <th class="px-2"  rowspan="2">ຈຳນວນ ຄຳຖາມເສັງ</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr   v-for="(item, index) in store.condition"
                       :key="item.id">
                     <td>{{item.cg_name}}</td>
-                    <td class="text-center">{{item.cc_value_a}}</td>
+                    <td class="text-center" style="width: 30%;"></td>
                     <td class="text-center">{{item.cc_value_b}}</td>
                   </tr>
                   <tr class="border-top border-black">
+                    <!-- {{store.lesson_total_all}} -->
                     <td></td>
-                    <td class="text-center">{{store.lesson_total_all}}</td>
+                    <td class="text-center" style="width: 30%;"></td>
                     <td class="text-center">{{store.lesson_total_in_course}}</td>
                   </tr>
                 </tbody>
@@ -306,6 +314,9 @@ function coverttime(date) {
   object-fit: cover;
 }
 
+.button-cour {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0), 0 6px 20px 0 rgba(0,0,0,0.5);
+}
 .containerxxx {
   position: relative;
   width: 100%;
