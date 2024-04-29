@@ -167,7 +167,7 @@ Default CSS
 }
 
 body {
-  font-family: var(--bodyFont);
+  font-family: "Phetsarath OT";
   background-color: var(--bodyBg);
   font-size: 16px;
   font-weight: 400;

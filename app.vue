@@ -45,10 +45,10 @@ useHead({
   ],
   link: [
       { rel: 'icon', type: 'image/png', href: '/LogoPWT.png' },
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://db.onlinewebfonts.com/c/938a9833b7244d806eca3349487c68ba?family=Phetsarath+OT',
-      // },
+      {
+        rel: 'stylesheet',
+        href: 'https://db.onlinewebfonts.com/c/938a9833b7244d806eca3349487c68ba?family=Phetsarath+OT',
+      },
       // You can add other link tags here
     ]
 })
