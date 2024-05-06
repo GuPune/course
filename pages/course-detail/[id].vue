@@ -12,7 +12,7 @@
           <div class="breadcrumb__content__wraper" data-aos="fade-up">
             <div class="breadcrumb__title">
             
-              <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_course_one") }} : {{ store.course_lesson.course_code }}</span>
+              <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_course_one") }} : {{ store.course_lesson.course_code }} - {{ store.course_lesson.course_name }}</span>
             </div>
             <div class="breadcrumb__inner">
            
@@ -28,7 +28,7 @@
     
       <div class="container">
         <div class="col-12 col-sm-12 col-lg-3">
-         <button class="btn btn-warning button-cour" style="border-radius: 0px;" @click="gotoCourse()" >Back to All courses</button>
+         <button class="btn btn-warning button-cour" style="border-radius: 0px;" @click="gotoCourse()" ><span class="icofont-arrow-left"/> {{$t('back_to_all_courses')}}</button>
         </div>
         <br>
         <div class="row" v-if="store.course_lesson">
@@ -49,7 +49,9 @@
               class="aos-init aos-animate"
               data-aos="fade-up"
             >
-              <h3>{{ store.course_lesson.course_remark_a }}</h3>
+              <h3>
+                {{store.course_lesson.course_code}} - {{ locale=='la' ? store.course_lesson.course_name : store.course_lesson.course_remark_a}}
+              </h3>
             </div>
 
             <div
@@ -57,15 +59,15 @@
               data-aos="fade-up"
             >
               <p class="mb-0">{{ store.course_lesson.course_description }}</p>
-              <p class="fw-bold mb-0">ເງືອນໄຂສອບເສັງທິດສະດີ:</p>
-        
+              <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
               <p>{{ store.course_lesson.course_remark_b }}</p>
+
               <table class="my-3" v-if="store.condition.length > 0">
                 <thead>
                   <tr>
-                    <th class="px-2"  rowspan="2">ໝວດວິຊາ</th>
+                    <th class="px-2"  rowspan="2">{{$t('course_subject')}}</th>
                     <th class="px-2"  rowspan="2" style="width: 30%;"></th>
-                    <th class="px-2"  rowspan="2">ຈຳນວນ ຄຳຖາມເສັງ</th>
+                    <th class="px-2"  rowspan="2">{{$t('num_exam_question')}}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,16 +87,18 @@
               </table>
 
               <div class="d-flex gap-2" v-if="store.pdf.length > 0">
-                <p class="mb-0">ເອກະສານແນບ:</p>
+                <p class="mb-0">{{$t('attach_file')}}:</p>
                 <div  v-for="(item, index) in store.pdf"
                       :key="item.id">
-                <i class="icofont-file-pdf"></i><span style="color: #0AA7FF;cursor: pointer;"  @click="readpdf(item.cd_path)" > Download {{ store.item }} </span>
+                      <span style="color: #0AA7FF;cursor: pointer;"  @click="readpdf(item.cd_path)" > <i class="icofont-file-pdf"></i> {{$t('download')}} {{ store.item }} </span>
                 </div>
                
               </div>
-              <p class="mb-0">ອ່ານແລ້ວ: {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success">({{store.progress}}%)</span></p>
-              <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສຸດ : {{store.last_date}}</p>
-              <p class="mb-0" @click=lastlesson(store.last_course_group,store.last_lesson)>ບົດຮຽນອ່ານຫຼ້າສຸດ : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
+              <div v-if="store.lesson.length > 0" > 
+              <p class="mb-0">{{$t('already_read')}} : {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success">({{store.progress}}%)</span></p>
+              <p class="mb-0">{{$t('last_read_time')}} : {{store.last_date}}</p>
+              <p class="mb-0" @click=lastlesson(store.last_course_group,store.last_lesson)>{{$t('last_read_lesson')}} : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -105,27 +109,28 @@
             <div
               class="course__details__tab__wrapper aos-init"
               data-aos="fade-up"
+              v-if="store.lesson.length > 0" 
             >
               <div class="row">
                 <div class="col-xl-12">
                   <ul class="nav course__tap__wrap" id="myTab" role="tablist">
                     <li class="nav-item d-flex gap-2" role="presentation">
                       <button
-                        class="single__tab__link active p-2 rounded"
+                        class="single__tab__link active p-2 rounded "
                         data-bs-toggle="tab"
                         data-bs-target="#projects__one"
                         type="button"
                         aria-selected="true"
                         role="tab"
                       >
-                        <i class="icofont-book-alt"></i>ບົດຮຽນ
+                        <i class="icofont-book-alt"></i>{{$t('lesson')}}
                       </button>
-                      <p class="align-self-center mb-0">Note: Click on the lesson title to start reading</p>
+                      <p class="align-self-center mb-0">{{$t('note_click_lesson_to_learn')}}</p>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div  v-if="store.lesson.length > 0"  v-for="(y, index) in store.lesson" style="padding: 10px;">
+              <div   v-for="(y, index) in store.lesson" style="padding: 10px;">
 
                 <div 
                 class="tab-content tab__content__wrapper px-md-4 py-3"
@@ -133,7 +138,7 @@
                 style="background-color: #F5F5F5;"   
               >
 
-                <h5 class="fw-bold">ໝວດວິຊາ: {{y.cg_name}}</h5>
+                <h5 class="fw-bold">{{$t('course_subject')}}: {{y.cg_name}}</h5>
               
                 <div 
                   class="tab-pane fade active show px-md-4"
@@ -154,10 +159,7 @@
                           type="button"
                         >
                           <div class="d-flex justify-content-between w-100">
-                            <div style="color: #0AA7FF;" :class="{ 'true-class': true }" v-if="x.learning_status == 'true'">
-                              {{ index + 1 }}.  {{x.cs_name}}   
-                            </div>
-                            <div style="color: #0AA7FF;" :class="{ 'true-class': false }"  v-else>
+                            <div style="color: #0AA7FF;" :class="{ 'notread-class': (x.learning_status == 'true'? false : true) }" >
                               {{ index + 1 }}.  {{x.cs_name}}   
                             </div>
                           </div>
@@ -204,6 +206,9 @@ import { defineComponent } from "vue";
 import { CoursePostStore } from "@/stores/course";
 import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
+
 const router = useRouter();
 const store = CoursePostStore();
 const storelesson = LessonStore();
@@ -329,9 +334,8 @@ function coverttime(date) {
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 
-.true-class {
+.notread-class {
   /* CSS styles for the 'true-class' */
-  color: red;
   font-weight: bold;
 }
 

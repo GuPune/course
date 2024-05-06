@@ -9,149 +9,19 @@
   <div class="card">
   <div class="card-header " style="background-color: #FEF301;text-align: center;font-size: 24px;">{{ $t("page_register") }}</div>
   <div>
-    <div class="loginarea__wraper">
-        <div class="login__heading">
-          
-          <p class="login__description">
-   
-            <a
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#registerModal"
-            ></a>
-          </p>
-        </div>
+    <div class="loginarea__wraper pt-1 pb-3">
 
         <form action="#">
           <div class="row">
-           
-            <div class="col-xl-2">
-              <div class="login__form">
-                <label class="form__label"
-                  >{{ $t("form_name_title") }}<span style="color: red"> * </span></label
-                >
-
-                <select
-                  class="common__login__input"
-                  aria-label="Default select example"
-                  v-model="stores.form.user_prefrix"
-                >
-                  <option selected :value="null" disabled>
-                    {{ $t("choose") }}
-                  </option>
-                  <option value="ທ້າວ">{{ $t("than") }}</option>
-                  <option value="ນາງ">{{ $t("nang") }}</option>
-                </select>
-
-                <span v-if="locale == 'la'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_prefrix.$error"
-                    >{{ $t("choose") }}</span
-                  >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_prefrix.$error"
-                    >{{ $t("choose") }}</span
-                  >
-                </span>
-              </div>
-            </div>
-            <div class="col-xl-5">
-              <div class="login__form">
-                <label class="form__label"
-                  >{{ $t("fname") }}</label
-                >
-
-                <input
-                  class="common__login__input"
-                  type="text"
-                  placeholder="ຊື່​"
-                  v-model="stores.form.user_firstname"
-                  maxlength="20" 
-                  :class="{
-                    'border-red-500 focus:border-red-500':
-                      v$.user_firstname.$error,
-                    'border-[#42d392] ': !v$.user_firstname.$invalid,
-                  }"
-                  @change="v$.user_firstname.$touch" 
-                  @input="filterInputFirstname"
-                  autocomplete="off"
-                />
-
-                <span v-if="locale == 'la'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_firstname.$error"
-                    >{{ $t("form_register_fname") }}</span
-                  >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_firstname.$error"
-                    >{{ $t("form_register_fname") }}</span
-                  >
-                </span>
-              </div>
-            </div>
-            <div class="col-xl-5">
-              <div class="login__form">
-                <label class="form__label"
-                  >{{ $t("lname") }}</label
-                >
-                <input
-                  class="common__login__input"
-                  type="text"
-                  placeholder="ນາມ​ສະ​ກຸນ"
-                  v-model="stores.form.user_lastname"
-                  :class="{
-                    'border-red-500 focus:border-red-500':
-                      v$.user_lastname.$error,
-                    'border-[#42d392] ': !v$.user_lastname.$invalid,
-                  }"
-                  @change="v$.user_lastname.$touch"
-                  autocomplete="off"
-                  maxlength="20" 
-                  @input="filterInputLasttname"
-                />
-                <span v-if="locale == 'la'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_lastname.$error"
-                    >{{ $t("form_register_lname") }}</span
-                  >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_lastname.$error"
-                    >{{ $t("form_register_lname") }}</span
-                  >
-                </span>
-              </div>
-            </div>
             <div class="col-xl-12">
               <div class="login__form">
                 <label class="form__label"
-                  >{{ $t("username")
-                  }}</label
+                  >{{ $t("username")}}</label
                 >
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="ເລືອກຊື່ຜູ້ໃຊ້ username ທີ່ບໍ່ຊ້ຳ"
+                  :placeholder="$t('username_placeholder')"
                   v-model="stores.form.user_name"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_name.$error,
@@ -197,13 +67,12 @@
             <div class="col-xl-12">
               <div class="login__form">
                 <label class="form__label"
-                  >{{ $t("password")
-                  }}</label
+                  >{{ $t("password")}}</label
                 >
                 <input
                   class="common__login__input"
                   type="password"
-                  placeholder="ລະຫັດຜ່ານ ຢ່າງນ້ອຍ 6 ຕົວອັກສອນ"
+                  :placeholder="$t('password_placeholder')"
                   v-model="stores.form.user_password"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -216,35 +85,23 @@
                   @input="filterInputUserPass"
                 />
 
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_password.$error"
                     >{{ $t("form_login_pass") }}</span
                   >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_password.$error"
-                    >{{ $t("form_login_pass") }}</span
-                  >
-                </span>
               </div>
             </div>
             <div class="col-xl-12">
               <div class="login__form">
                 <label class="form__label"
-                  >{{ $t("confirmpassword")
-                  }}</label
+                  >{{ $t("confirmpassword")}}</label
                 >
                 <input
                   class="common__login__input"
                   type="password"
-                  placeholder="ໃສ່ລະຫັດຜ່ານ ອີກຄັ້ງ"
+                  :placeholder="$t('confirmpassword_placeholder')"
                   v-model="stores.form.user_confirmPassword"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -256,26 +113,99 @@
                   maxlength="20" 
                 />
 
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_confirmPassword.$error"
                     >{{ $t("form_register_pass_con") }}</span
                   >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_confirmPassword.$error"
-                    >{{ $t("form_register_pass_con") }}</span
-                  >
-                </span>
               </div>
             </div>
-          </div>
+            <div class="col-xl-2">
+              <div class="login__form">
+                <label class="form__label"
+                  >{{ $t("form_name_title") }}</label
+                >
+                <select
+                  class="common__login__input px-2"
+                  aria-label="Default select example"
+                  v-model="stores.form.user_prefrix"
+                  
+                >
+                  <option selected :value="null" disabled>
+                    {{ $t("choose") }}
+                  </option>
+                  <option value="ທ້າວ">{{ $t("than") }}</option>
+                  <option value="ນາງ">{{ $t("nang") }}</option>
+                </select>
+
+
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_prefrix.$error"
+                    >{{ $t("choose") }}</span
+                  >
+              </div>
+            </div>
+            <div class="col-xl-5">
+              <div class="login__form">
+                <label class="form__label"
+                  >{{ $t("fname") }}</label
+                >
+                <input
+                  class="common__login__input"
+                  type="text"
+                  :placeholder="$t('fname')"
+                  v-model="stores.form.user_firstname"
+                  maxlength="20" 
+                  :class="{
+                    'border-red-500 focus:border-red-500':
+                      v$.user_firstname.$error,
+                    'border-[#42d392] ': !v$.user_firstname.$invalid,
+                  }"
+                  @change="v$.user_firstname.$touch" 
+                  @input="filterInputFirstname"
+                  autocomplete="off"
+                />
+
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_firstname.$error"
+                    >{{ $t("form_register_fname") }}</span
+                  >
+                
+              </div>
+            </div>
+            <div class="col-xl-5">
+              <div class="login__form">
+                <label class="form__label"
+                  >{{ $t("lname") }}</label
+                >
+                <input
+                  class="common__login__input"
+                  type="text"
+                  :placeholder="$t('lname')"
+                  v-model="stores.form.user_lastname"
+                  :class="{
+                    'border-red-500 focus:border-red-500':
+                      v$.user_lastname.$error,
+                    'border-[#42d392] ': !v$.user_lastname.$invalid,
+                  }"
+                  @change="v$.user_lastname.$touch"
+                  autocomplete="off"
+                  maxlength="20" 
+                  @input="filterInputLasttname"
+                />
+                  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.user_lastname.$error"
+                    >{{ $t("form_register_lname") }}</span
+                  >
+              </div>
+            </div>
 
           <div class="col-xl-12">
               <div class="login__form">
@@ -285,7 +215,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="20XXXXXXXX"
+                  :placeholder="$t('tel_placeholder')"
                   v-model="stores.form.user_phone"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.user_phone.$error,
@@ -296,28 +226,19 @@
                   autocomplete="off"
                   @input="filterInput"
                 />
-                <span style="color: red;font-size: 14px;"> * ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ. (ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ) ລະບົບຈະສົ່ງລະຫັດ ເພື່ອຢືນຢັນເບີໂທ  </span>
+                <span style="color: grey;font-size: 14px;">{{ $t('tel_desc') }}</span>
    
               </div>
-              <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_phone.$error"
                     >{{ $t("form_register_phone") }}</span
                   >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_phone.$error"
-                    >{{ $t("form_register_phone") }}</span
-                  >
-                </span>
-              
             </div>
+          </div>
+
+          
 
           <div
             class="login__form d-flex justify-content-between flex-wrap gap-2"
@@ -329,7 +250,7 @@
                 v-model="stores.form.accp"
               />
           
-              <span >ຂ້າພະເຈົ້າຍ້ອມຮັບ</span> <span style="color: #0AA7FF;"> Term and Policy </span>
+              {{ $t('accept_the_term') }} &nbsp; <a href="http://dot-smart.mpwt.gov.la/#/policy" target="_blank"> {{ $t('term_and_policy') }}</a>
               <!-- {{ $t("page_register_acc") }}  -->
             </div>
           </div>
@@ -338,13 +259,7 @@
             style="color: red"
             v-if="v$.accp.$error"
           >
-            <span v-if="locale == 'la'">
               {{ $t("page_register_acc") }}
-            </span>
-
-            <span v-if="locale == 'en'">
-              {{ $t("page_register_acc") }}
-            </span>
           </span>
 
           <div class="login__button" @click="register()" style="
@@ -720,7 +635,8 @@ import {
 } from "@vuelidate/validators";
 import Swal from "sweetalert2";
 import { useI18n } from "vue-i18n";
-const { locale, setLocale } = useI18n();
+const { locale, setLocale , t} = useI18n();
+
 
 const router = useRouter();
 const store = useLogin();
@@ -878,7 +794,7 @@ const register = async () => {
        await Swal.fire({
     position: 'top-end',
     icon: 'success',
-    title: 'ລົງທະບຽນສຳເລັດແລ້ວ.',
+    title: t('msg_register_success'),
     showConfirmButton: false,
     timer: 1500
   })
@@ -896,16 +812,16 @@ const register = async () => {
    router.push('/otpconfirm');
      }else if(regis == 204){
       Swal.fire({
-          title: 'ລົງທະບຽນ ບໍ່ສຳເລັດ!',
-          text: 'ບັນຊີນີ້ມີຢູ່ແລ້ວ!',
+          title:  t('msg_register_fail'),
+          text:  t('msg_account_info_exist'),
           icon: 'error',
 
         });
 
      }else{
       Swal.fire({
-          title: 'ຕິດຕໍ່ເຈົ້າຫນ້າທີ່!',
-          text: 'ລົງທະບຽນ ບໍ່ສຳເລັດ!',
+        title:  t('msg_register_fail'),
+          text:  t('msg_error_try_again_or_contact_staff'),
           icon: 'error',
 
         });

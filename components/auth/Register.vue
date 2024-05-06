@@ -4,7 +4,7 @@
     <div class="col-xl-8 offset-md-2">
       <div class="loginarea__wraper">
         <div class="login__heading">
-          <h5 class="login__title">Sing Up</h5>
+          <h5 class="login__title">Sign Up</h5>
           <p class="login__description">Already have an account? <a href="#" data-bs-toggle="modal"
               data-bs-target="#registerModal">Log In</a></p>
         </div>

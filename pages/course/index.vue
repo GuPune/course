@@ -60,10 +60,10 @@
     </div>
    <div>
             <div class="container">
-                <div class="row my-4"  v-if="store.total_page_history > 0">
-                  <p style="font-size:20px"> {{ $t("page_course_attended") }} | {{ $t("page_attended") }} </p>
+                <!-- <div class="row my-4"  v-if="store.total_page_history > 0">
+                  <p style="font-size:20px"> {{ $t("page_course_attended") }}</p>
                 <HistoryCourse></HistoryCourse>
-                </div>
+                </div> -->
                 <div class="row my-4">
                     <p style="font-size:20px">{{ $t("page_course_available") }}</p>
                     <CourseSel></CourseSel>

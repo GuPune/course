@@ -9183,3 +9183,11 @@ Dark Mode
 .is_dark .blogsidebar__content__wraper__2 .recent__list li .recent__img .recent__number span {
   color: var(--blackColor);
 }/*# sourceMappingURL=style.css.map */
+
+.text-right{
+  text-align: right;
+}
+
+input::placeholder {
+  opacity: 0.5 !important;
+}

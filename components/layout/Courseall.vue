@@ -9,8 +9,6 @@
                     <div class="gridarea__wraper gridarea__wraper__2">
                         <div class="gridarea__img">
                             <a><img :src="coverimage(item.course_cover)" alt="grid" width="340" height="212"></a>
-              
-
                         </div>
                         <div class="gridarea__content">
                             <div class="gridarea__list">
@@ -55,36 +53,38 @@
 
         </div>
 
-            <div class="gridarea__wraper gridarea__wraper__1 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in store.listcourse" @click="SelectCourse(item)">
+            <div class="gridarea__wraper gridarea__wraper__1 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in store.listcourse" 
+            >
                 <div class="gridarea__img">
-                     <a><img :src="coverimage(item.course_cover)" alt="grid"></a>
+                     <span  @click="SelectCourse(item)" class="cursor-pointer"><img :src="coverimage(item.course_cover)" alt="grid"></span>
                 </div>
                 <div class="gridarea__content">
                     <div class="gridarea__heading"  >
-                        <h3  ><a style="color: #0AA7FF;"> {{ item.course_remark_a }}</a></h3>
+                        <h3 @click="SelectCourse(item)" class="cursor-pointer" style="color:var(--themeBlue)">
+                        {{item.course_code}} - {{ locale=='la' ? item.course_name : item.course_remark_a}}</h3>
                     </div>
                     <div class="gridarea__price">
         
                         <p style="font-size:12px">    {{ item.course_description }}</p>
-                        <p class="fw-bold mb-0">ເງືອນໄຂສອບເສັງທິດສະດີ:</p>
+                        <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
                         <p class="mb-0">    {{ item.course_remark_b }}</p>
                     </div>
                     <div class="gridarea__bottom p-0">
                         <div class="gridarea__bottom__left">
                             <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_course_group" style="color: #0AA7FF;">
-                                ຈຳນວນໝວດວິຊາ:
+                                {{$t('num_subject')}}:
                                  {{ item.total_course_group }}
                             </div>
                             <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_lesson > -1"  style="color: #0AA7FF;">
-                                ຈຳນວນບົດຮຽນ:  {{ item.total_lesson }}
+                                {{$t('num_lesson')}}:  {{ item.total_lesson }}
                             </div>
                             <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_video > -1"  style="color: #0AA7FF;">
-                                ຈຳນວນ Video:  {{ item.total_video }}
+                                {{$t('num_video')}}:  {{ item.total_video }}
                             </div>
                         </div>
                         <div class="gridarea__details btn btn-info detailBtn" @click="SelectCourse(item)">
                             <a >
-                                ເລິ່ມຮຽນ
+                                {{$t('start_learning')}}
                                 <i class="icofont-arrow-right"></i>
                             </a>
                         </div>
@@ -121,7 +121,10 @@ import { CoursePostStore } from '@/stores/course';
 import ApiService from '@/services/api.service';
 import Swal from "sweetalert2";
 const router = useRouter();
-const store = CoursePostStore()
+const store = CoursePostStore();
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
+
 
 
 const SelectCourse = async (item) => {

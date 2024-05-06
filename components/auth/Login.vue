@@ -8,24 +8,19 @@
   >
   <div class="col-xl-8 col-md-8 offset-md-2">
   <div class="card">
-  <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;">    ເຂົ້າສູ່ລະບົບ</div>
+  <div class="card-header" style="background-color: #FEF301;text-align: center;font-size: 24px;">   {{ $t('login') }}</div>
   <div>
     <div class="loginarea__wraper">
         <div class="login__heading">
         
-          <p class="login__description" style="font-size: 18px;">
-            <span>ຖ້າທ່ານຍັງບໍ່ທັນມີບັນຊີ, ກະລະນຸ</span>   <span @click="goToPage('/register')" style="color:#0AA7FF;">ລົງທະບຽນ</span>
-        
-            
-          </p>
         </div>
         <form    @submit.prevent="login"> 
           <div class="login__form">
-            <label class="form__label">Username / ເບີໂທ</label>
+            <label class="form__label">{{ $t("username_phone") }} </label>
             <input
               class="common__login__input"
               type="text"
-              placeholder="Username / ເບີໂທ"
+              :placeholder="$t('username_phone_placeholder')"
               v-model="formData.username"
               :class="{
                 'border-red-500 focus:border-red-500': v$.username.$error,
@@ -36,41 +31,20 @@
               @input="filterInputUser"
               maxlength="20"
             />
+            <span
+              class="text-xs text-red-500"
+              style="color: red"
+              v-if="v$.username.$error"
+              >{{ $t("form_login_user") }}</span>
 
-            <span v-if="locale == 'la'">
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.username.$error"
-              >{{ $t("form_login_user") }}</span
-            >
-            
-            </span>
-            <span v-if="locale == 'en'">
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.username.$error"
-              >{{ $t("form_login_user") }}</span
-            >
-                      
-            </span>
-             <span v-if="locale == 'th'">
-              <span
-              class="text-xs text-red-500"
-              style="color: red"
-              v-if="v$.username.$error"
-              >{{ $t("form_login_user") }}</span
-            >
-              
-            </span>
+           
           </div>
           <div class="login__form">
             <label class="form__label">{{ $t("password") }}</label>
             <input
               class="common__login__input"
               type="password"
-              placeholder="ລະຫັດຜ່ານ"
+              :placeholder="$t('password')"
               v-model="formData.password"
               id="password"
               name="password"
@@ -116,7 +90,7 @@
   <br>
           <div class="login__heading">
         
-        <button  class="btn"  type="submit" style="width: 30%;background-color: #2AB0E5;color: white;border: none; border-radius:0px;">{{ $t("log_on_title") }}</button>
+        <button  class="btn"  type="submit" style="width: 30%;background-color: #2AB0E5;color: white;border: none; border-radius:0px;">{{ $t("login") }}</button>
   </div>
 
         <!-- <div class="col-12">
@@ -137,9 +111,12 @@
 </div>
 
 
-<div style="padding: 10px;"> 
-     <div id="emailHelp" class="form-text" @click="goToPage('/resetpassword')"><span style="color:  #0AA7FF;">Forget your password ?</span>
-    </div>
+<div class="row" style="padding: 20px;"> 
+  <div class="login__description col-6" >
+        <span>{{ $t('singup_longtitle') }}</span>   <a href="/register" >{{ $t('register') }}</a>
+  </div>
+
+     <a id="emailHelp" class="col-6 text-right" href="/resetpassword">{{ $t('forget_pass') }}</a> 
   </div>
 </div>
 <br>

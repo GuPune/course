@@ -18,7 +18,7 @@
                   <ul>
                     
                     <li @click="goToMenu('/')" >
-                      <a class="headerarea__has__dropdown cursor-pointer" href="http://information.iddriver.com"  target="_blank">
+                      <a class="headerarea__has__dropdown cursor-pointer" href="http://dot-smart.mpwt.gov.la"  target="_blank">
                         <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
                         <!-- <span> {{ $t("home") }} </span> -->
                         <span> {{ $t("news") }}</span>
@@ -54,7 +54,7 @@
               </div>
             </div>
 
-                 <div class="col-xl-6 col-lg-6 main_menu_wrap" v-if="!authenticated">
+                 <div class="col-xl-7 col-lg-6 main_menu_wrap" v-if="!authenticated">
               <div class="headerarea__main__menu">
                 <nav style="text-align: justify;padding-left: 75px;">
                   <ul>
@@ -75,21 +75,21 @@
               <div class="headerarea__right">
                 <div class="headerarea__left__logo">
                   <div style="padding-top: 3px; text-wrap: nowrap" class="pull-right">
-                    <a style="padding-left: 10px; padding-right: 10px" @click="changeLocale('en')">
-                      <img src="../../assets/eng.png" alt="My Image" />
+                    <a class="px-3 cursor-pointer" @click="changeLocale('en')">
+                      <img src="../../assets/eng.png" alt="Eng" />
                     </a>
                     <!-- <a @click="changeLocale('th')">
                       <img src="../../assets/thai.png" alt="My Image" />
                     </a> -->
-                    <a style="padding-left: 10px; padding-right: 10px" @click="changeLocale('la')">
-                      <img src="../../assets/la.png" alt="My Image" />
+                    <a class="px-3 cursor-pointer" @click="changeLocale('la')">
+                      <img src="../../assets/la.png" alt="Lao" />
                     </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-3 col-lg-3 col-md-6">
+            <div class="col-xl-2 col-lg-3 col-md-6">
               <div class="headerarea__right" v-if="!authenticated">
                 <div class="headerarea__login">
                   <nuxt-link to="/login">{{ $t("login") }}</nuxt-link>
@@ -287,8 +287,8 @@
               <a class="mobile-language-active" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ $t("head_choose_lan") }} <i
                   class="icofont-thin-down"></i></a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" @click="changeLocale('la')">{{ $t("lan_loas") }}</a></li>
-                <li><a class="dropdown-item" href="#" @click="changeLocale('en')">{{ $t("lan_eng") }}</a></li>
+                <li><a class="dropdown-item cursor-pointer" href="#" @click="changeLocale('la')">ລາວ</a></li>
+                <li><a class="dropdown-item cursor-pointer" href="#" @click="changeLocale('en')">English</a></li>
               </ul>
             </div>
           </div>
