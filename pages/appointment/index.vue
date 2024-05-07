@@ -9,8 +9,6 @@
               <div class="breadcrumb__title">
                   <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_exam_appoint_title") }}</span>
               </div>
-              
-        
             </div>
           </div>
         </div>
@@ -18,21 +16,23 @@
     </div>
 
         <div class="container py-3 py-md-4 py-lg-5 appcontent">
+         
         <div class="row">
-         <div class="col-12 col-sm-12 col-lg-9" style="align-self: self-end;">
-          <span>{{ $t("page_appoint_current") }}</span>
+          <div class="col-12 col-sm-12 col-lg-9" style="align-self: self-end;">
         </div>
-  <div class="col-12 col-sm-12 col-lg-3">
+          <div class="col-12 col-sm-12 col-lg-3">
          <button class="btn btn-primary" style="width: 100%;background-color: rgb(42, 176, 229);border-radius: 0px;" @click="goToMenu()">Add New Appointment</button>
         </div>
+        
+      </div>
 
-        </div>
-
+        
       <article >
+        <h3>{{ $t("page_appoint_current") }}</h3>
       <CurrentApp></CurrentApp>
         <section>
         <br><br>
-        <span> {{ $t("page_appoint_pass") }}</span>
+        <h3> {{ $t("page_appoint_pass") }}</h3>
        <PassApp></PassApp>
         </section>
       </article>

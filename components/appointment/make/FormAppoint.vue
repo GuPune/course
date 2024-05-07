@@ -16,7 +16,7 @@
                 class="btn btn-success btn-appi"
                 style="border-radius: 0px;background-color: #2AB0E5;" @click="GotoPage()"
               >
-              {{ $t("page_appoint_back_list") }}
+              &laquo; {{ $t("page_appoint_back_list") }}
               </button>
             </div>
           
@@ -31,14 +31,14 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-md-12">
-              <p>{{ $t("page_appoint_reve_detail_title") }}</p>
+              <p class="mb-0">{{ $t("page_appoint_reve_detail_title") }}</p>
 
-              <p><b>{{ $t("page_appoint_full_name") }} : {{auth.formuser.user_prefrix}} {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</b></p>
-              <p><b>{{ $t("page_appoint_passpost") }}: <span v-if="auth.formdetail.identification_number"> {{auth.formdetail.identification_number}}</span></b></p>
-              <p><b>{{ $t("page_appoint_location") }}</b></p>
+              <p class="mb-0"><b>{{ $t("page_appoint_full_name") }} : {{auth.formuser.user_prefrix}} {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</b></p>
+              <p class="mb-0"><b>{{ $t("page_appoint_passpost") }} : <span v-if="auth.formdetail.identification_number"> {{auth.formdetail.identification_number}}</span></b></p>
+              <p class="mb-0"><b>{{ $t("page_appoint_location") }} : Savannakhet</b></p>
             </div>
 
-   <div class="col-12 col-md-12 py-2">
+            <div class="col-12 col-md-12 py-2">
               <p class="text-nowrap mb-0 align-self-center">{{ $t("page_appoint_label") }}</p>
               
             </div>
@@ -58,23 +58,14 @@
                 </option>
               </select>
 
-              <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.dlt_code.$error"
                     >{{ $t("page_appoint_reve_dlt_alert") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.dlt_code.$error"
-                    >{{ $t("page_appoint_reve_dlt_alert") }}</span
-                  >
-                </span>
+               
             </div>
 
             <div class="col-12 col-md-12 py-2">
@@ -83,26 +74,17 @@
               </p>
               <select class="form-select" aria-label="Default select example"  :disabled="store.disabledselect" v-model="store.form.date_event"  @change="selectevent($event)" >
                 <option selected disabled :value="0">{{ $t("page_appoint_type_label_select_event") }}</option>
-                <option  v-for="(item, index) in store.event">{{item.event}}</option>
+                <option  v-for="(item, index) in store.event">{{item.event}} 08:00</option>
               </select>
 
-              <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.date_event.$error"
                     >{{ $t("page_appoint_reve_events_alert") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.date_event.$error"
-                    >{{ $t("page_appoint_reve_events_alert") }}</span
-                  >
-                </span>
+                
             </div>
 
             <div class="col-12 col-md-12 py-2" style="text-align: center">
@@ -110,7 +92,7 @@
                 class="btn btn-success"
                 style="width: 50%; border-radius: 0px" @click="saverer()"
               >
-              {{ $t("page_appoint_save_app") }}
+              {{ $t("page_appoint_save_app") }} &raquo;
               </button>
             </div>
           </div>
@@ -144,7 +126,7 @@
  import moment from "moment";
  import Swal from "sweetalert2";
  import { useI18n } from "vue-i18n";
- const { locale, setLocale } = useI18n();
+ const { locale, setLocale, t } = useI18n();
  
  const auth = useAuthStore();
 const store = AppointmentsStore();
@@ -154,12 +136,12 @@ const { getformapp } = storeToRefs(store);
 const rules = computed(() => {
   return {
     dlt_code: {
-      required: helpers.withMessage('The email field is required', required),
+      required: helpers.withMessage('The dtl_code is required', required),
     //   email: helpers.withMessage('Invalid email format', email),
       minLength: minLength(0),
     },
     date_event: {
-      required: helpers.withMessage('The password field is required', required),
+      required: helpers.withMessage('The time field is required', required),
       minLength: minLength(6),
     },
   };
@@ -199,24 +181,24 @@ const saverer = async () => {
   v$.value.$validate();
   if (!v$.value.$error) {
 
-let save = await store.saverevs()
+  let save = await store.saverevs()
 
-if(save === true){
-//   await Swal.fire({
-//   icon: 'success',
-//   title: 'Appoint Success',
-//   showConfirmButton: false,
-//   timer: 1500
-// })
-await router.push('/appointment');
-}else {
-    await Swal.fire({
-  icon: 'error',
-  title: 'This appointment already exists.',
-  showConfirmButton: false,
-  timer: 2000
-})
-}
+  if(save === true){
+  //   await Swal.fire({
+  //   icon: 'success',
+  //   title: 'Appoint Success',
+  //   showConfirmButton: false,
+  //   timer: 1500
+  // })
+  await router.push('/appointment');
+  }else {
+      await Swal.fire({
+    icon: 'error',
+    title: t('page_appoint_msg_appointment_type_exist'),
+    showConfirmButton: false,
+    timer: 3000
+  })
+  }
 
 //await router.push('/appointment');
 

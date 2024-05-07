@@ -5,20 +5,19 @@
     
           <div class="row">
 
-              <div class="col-12 col-md-6"
+              <div class="col-12 "
                       >
                 
                 <p class="mb-0"><b>{{ dayforma(item.appointment_detail.ap_date_start) }}</b></p>
-                <p><b>{{ $t("page_appoint_type_code") }} </b> {{ coverdlt(item.appointment_detail.dlt_code) }}</p>
-        
-                <p><b>{{ $t("page_appoint_full_name") }} : {{ auth.formuser.user_prefrix }}. {{ auth.formuser.user_firstname }} {{ auth.formuser.user_lastname }}</b></p>
-                <p><b>{{ $t("page_appoint_passpost") }}:  {{ auth.formdetail.identification_number}}</b></p>
-                <p><b>{{ $t("page_appoint_location") }}</b></p>
+                <p class="mb-0"><b>{{ $t("page_appoint_type_code") }} </b> {{ coverdlt(item.appointment_detail.dlt_code) }}</p>
+                <p class="mb-0"><b>{{ $t("page_appoint_full_name") }} : {{ auth.formuser.user_prefrix }}. {{ auth.formuser.user_firstname }} {{ auth.formuser.user_lastname }}</b></p>
+                <p class="mb-0"><b>{{ $t("page_appoint_passpost") }} :  {{ auth.formdetail.identification_number}}</b></p>
+                <p class="mb-0"><b>{{ $t("page_appoint_location") }} : Savannakhet</b></p>
                 
               </div>
       
           </div>
-          <p>{{ $t("page_appoint_note") }},</p>
+          <p class="pt-3" style="font-size:0.8rem;">{{ $t("page_appoint_note") }},</p>
         </section>
    
   </div>

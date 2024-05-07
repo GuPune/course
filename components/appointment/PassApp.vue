@@ -1,17 +1,18 @@
 <template>
-   <div>
 
-             <div class="d-flex justify-content-center" v-if="store.reservepass">
+          <div class="d-flex justify-content-center" v-if="store.reservepass && store.reservepass.length>0">
             <table class="table table-bordered">
               <tbody  v-for="(item, index) in store.reservepass"
                       :key="item.ap_id">
                 <tr>
-                  <td class="px-5">{{ dayforma(item.udp_date) }},for Type: {{ item.appointment_detail.dlt_code }}, @ Savannakhet Appointment</td>
+                  <td class="px-5">{{ dayforma(item.udp_date) }}, for Type: {{ item.appointment_detail.dlt_code }}, @ Savannakhet</td>
                 </tr>
               </tbody>
             </table>
           </div>
-  </div>
+          <div v-else>
+            <div class="border p-3">{{ $t('msg_no_data') }}</div>
+          </div>
 </template>
 <script lang="ts" setup>
 
