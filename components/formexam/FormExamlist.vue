@@ -12,7 +12,7 @@
                 <div class="row">
                   <div class="col-xl-10 col-lg-10 col-sm-6">
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                      <i class="icofont-book-alt"></i> {{ $t("page_exam_course_eq") }}{{ store.exam.em_name }}
+                      <i class="icofont-book-alt"></i> {{ $t("page_exam_report") }} : {{ store.exam.em_name }}
                     </h4>
                     <div class="timerCountdown">
                       <p class="timeText">{{ store.hours }} : {{ store.minutes }} : {{store.seconds }}</p>
@@ -26,11 +26,9 @@
                 </div>
        
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name">
-                
 
-                      <div id="้howto">
-              
-                      <span id="้howto-text"  class="scrollbar">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : {{ x.eq_name }}</span>
+                      <div id="howto">
+                      <span id="howto-text"  class="scrollbar" style="font-weight: bold;">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : {{ x.eq_name }}</span>
                        <div class="force-overflow"></div>
                         <span v-if="x.eq_image"  @click="imagemodal(x.eq_image)">     <img :src="coverimage(x.eq_image)" alt="sidbar"  width="80" height="100"/></span>
                     </div>
@@ -39,8 +37,8 @@
                 
                 <div class="course__details__wraper aos-init aos-animate " data-aos="fade-up" id="choice-container">
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': store.selectchoice == ins }"
-                    style="border-style: groove;" id="choice-card">
-                    <div id="choice">
+                    style="border-style: groove;" id="choice-card" >
+                    <div id="choice" class="cursor-pointer">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
                       <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins)">{{ a.ec_name }}</span>
@@ -86,28 +84,29 @@
                       <div class="recent__date">
                         <a>{{ $t("page_exam_name") }}: {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</a>
                       </div>
-                      <div class="recent__date">
+                      <!-- <div class="recent__date">
                         <a>{{ $t("page_exam_code") }} {{ $t("page_exam_person") }}:  {{auth.formdetail.identification_number}}</a>
                       </div>
                       <div class="recent__date">
                         <a>{{ $t("page_exam_status") }}: {{ $t("page_exam_report_test") }}</a>
-                      </div>
+                      </div> -->
                     </div>
                   </li>
                 </ul>
                 <div class="populer__tag__list">
                   <ul>
-                    <li style="width: 47%" @click="example();" class="exma"><a>{{ $t("page_exam_t") }}</a></li>
-                    <li style="width: 47%" class="send" @click="send();"><a>{{ $t("page_exam_send") }}</a></li>
+                    <li style="width: 47%" @click="example();" class="exma cursor-pointer"><a >{{ $t("page_exam_t") }}</a></li>
+                    <li style="width: 47%" class="send cursor-pointer " @click="send();">
+                      <a >{{ $t("page_exam_send") }} </a></li>
                   </ul>
                 </div>
                 <hr />
                 <div class="row">
                   <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
-                    {{ $t("page_exam_report_cho1") }} {{ index + 1 }}
+                    {{ $t("page_exam_report_cho1") }} {{ index + 1 }} : 
                     <li v-for="(a, index) in x.choices">
                       <span style="color: red" v-if="a.ec_id == x.ec_id">
-                        {{ a.ec_index }}
+                        {{ choices[a.ec_index]  }}
                       </span>
                     </li>
                   </div>
@@ -124,19 +123,19 @@
   <div v-if="getisConfirm" class="modal">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">{{ $t("page_exam_report_del_t") }}</h4>
+        <h4 class="modal-title" id="myModalLabel">{{ $t("page_exam_report_submit_t") }}</h4>
       </div>
       
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-12">
-            <p>{{ $t("page_exam_report_del_de") }}</p>
+            <p>{{ $t("page_exam_report_submit_de") }}</p>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="Hide()">{{ $t("page_exam_report_del_close") }}</button>
-        <button type="button" class="btn btn-danger" @click="Confirm()">{{ $t("page_exam_report_del_confirm") }}</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="Hide()">{{ $t("page_exam_report_submit_close") }}</button>
+        <button type="button" class="btn btn-danger" @click="Confirm()">{{ $t("page_exam_report_submit_confirm") }}</button>
       </div>
     </div>
   </div>
@@ -164,6 +163,7 @@ const { Previod } = ExamTestPostStore(); //Action
 
 const router = useRouter();
 
+const choices = ['', 'ກ', 'ຂ', 'ຄ', 'ງ'];
 
 
 function image(i) {
@@ -315,7 +315,7 @@ function coverimage(i) {
 }
 
 
-#้howto {
+#howto {
   border-radius: 20px;
   padding: 10px 10px 15px 15px;
   background-color: white;
@@ -324,7 +324,7 @@ function coverimage(i) {
   transition-duration: 0.4s;
   display: flex;
   width: 100%;
-  #้howto-text {
+  #howto-text {
     width: 100%;
   }
 }

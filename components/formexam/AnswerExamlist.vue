@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent"  v-if="store.exam_complete == 1">
+    <div class="tab-content tab__content__wrapper with__sidebar__content py-5" id="myTabContent"  v-if="store.exam_complete == 1">
     <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
       role="tabpanel" aria-labelledby="projects__one">
       <div class="row">
@@ -13,8 +13,7 @@
                 <div class="contact__text">
                   <div class="d-flex justify-content-between flex-wrap">
                   
-                    <h1> <i class="icofont-book-alt" ></i>{{ $t("page_exam_course_eq") }} {{store.exam.em_name}} </h1>
-                    <div class="btnRestart"><button type="button" class="btn btn-success mt-0 w-100"  @click="reset()">{{ $t("page_exam_report_begin") }}</button></div>
+                    <h2> <i class="icofont-book-alt" ></i>{{ $t("page_exam_report") }} : {{store.exam.em_name}} </h2>
                   </div>
                   <br>
                   <!-- <div class="contact__email">
@@ -22,22 +21,27 @@
                   </div> -->
 
                   <div class="course-info" id="dis-pc">
-                    <div class="contact__email d-flex">
+                    <!-- <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-database-fill"></i></div>
                       <p style="font-size: 20px;">{{ $t("page_exam_report_code") }} <br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_code}}</span></p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-boxes"></i></div>
                       <p style="font-size: 20px;">{{ $t("page_exam_report_total") }}  <br> <span style="font-size: 28px; font-weight: bold;">{{store.total}}</span> </p>
+                    </div> -->
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-check-circle"></i></div>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span>
+                        <span v-if="store.exam.em_measure <= store.ec_score" style="color:green" class="px-4">{{ $t('page_type_test_pass') }}</span>
+                        <span v-if="store.exam.em_measure > store.ec_score" style="color:red"  class="px-4">{{ $t('page_type_test_fail') }}</span>
+                        
+                      </p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.exam.em_time}}</span></p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.exam.em_time}}</span></p>
                     </div>
-                    <div class="contact__email d-flex">
-                      <div class="icon"><i class="bi bi-check-circle"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
-                    </div>
+                    
                   </div>
 
                   <div class="course-info"  id="dis-mobile">
@@ -50,15 +54,17 @@
               </div>
             </div>
           </div>
+          <div class="btnRestart" style="text-align: center;"><button type="button" class="btn btn-success mt-0 w-50"  @click="reset()"><i class="icofont-redo"></i> {{ $t("page_exam_report_begin") }}</button></div>
+
           <hr>
 
  
               <h4 class="mb-5">{{ $t("page_exam_report_ans") }}</h4>
               <div v-if="store.examination">
              
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up">
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="howto">
                   <ul style="width: 100%">
-                    <h4 class="mb-0"> {{ $t("page_exam_report_cho") }} {{ store.answer_ind + 1 }} {{ store.examination[store.answer_ind].eq_name }} </h4>
+                    <h4 class="mb-0"> {{ $t("page_exam_report_cho1") }} {{ store.answer_ind + 1 }} : {{ store.examination[store.answer_ind].eq_name }} </h4>
                   </ul>
                 </div>
 
@@ -69,7 +75,7 @@
                   
                    <div v-if="(a.ec_index == store.examination[store.answer_ind].eq_answer)">
                     <div  class="answer-choice-currect" v-if="(a.ec_id == store.examination[store.answer_ind].ec_id) && (a.ec_index == store.examination[store.answer_ind].eq_answer)">
-                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
                     
@@ -78,7 +84,7 @@
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
                     <div  class="answer-choice-success" v-else>
-                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
@@ -89,7 +95,7 @@
 
                   <div v-else>
                     <div  class="answer-choice-danger"  v-if="(a.ec_id == store.examination[store.answer_ind].ec_id)">
-                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
@@ -98,7 +104,7 @@
                     </div>
                     
                     <div  class="answer-choice" v-else="(a.ec_id != store.examination[store.answer_ind].ec_id)">
-                      <li id="card-index">{{ ins + 1 }}.</li>
+                      <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
                       <span class="choice-text">{{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
@@ -115,13 +121,13 @@
         <ul class="pagination" style="justify-content: center;">
           <li class="page-item" @click="ans_prev()">
             <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
+              <span aria-hidden="true">&laquo;&laquo;</span>
             </a>
           </li>
           <li class="page-item"><a class="page-link" href="javascript:void(0);">{{ store.answer_ind + 1 }} / {{ store.examination.length }}</a></li>
           <li class="page-item" @click="ans_next()">
             <a class="page-link" href="javascript:void(0);" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
+              <span aria-hidden="true">&raquo;&raquo;</span>
             </a>
           </li>
         </ul>
@@ -441,5 +447,15 @@ function coverttime(date) {
 #dis-pc {
   display: none;
 }
+}
+#howto {
+  border-radius: 20px;
+  padding: 10px 10px 15px 15px;
+  background-color: white;
+  color: black;
+  border: 2px solid #040604;
+  transition-duration: 0.4s;
+  display: flex;
+  width: 100%;
 }
 </style>

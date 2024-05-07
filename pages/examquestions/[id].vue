@@ -21,18 +21,21 @@
   <div v-if="GetopenModal" class="modal">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">วิธีทำ</h4>
+        <h4 class="modal-title" id="myModalLabel">{{ $t("page_exam_t") }}</h4>
       </div>
       <div class="modal-body">
         <div class="row">
 
           <div class="col-xs-12">
-            {{ $t("page_test1") }}<br>
-            {{ $t("page_test2") }}<br>
+            {{ $t("page_test1") }} <b>{{  store.exam.em_name }}</b><br>
+            {{ $t("page_test2", {"exam_q": store.exam.em_random_amount, "exam_time": store.exam.em_random_amount, "exam_n": store.exam.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
             {{ $t("page_test5") }} <br>
             {{ $t("page_test6") }}<br>
+            {{ $t("page_test7") }}<br>
+            {{ $t("page_test8") }}<br>
+            {{ $t("page_test9") }}<br>
           </div>
 
         </div>
@@ -54,15 +57,16 @@
         <div class="row">
 
           <div class="col-xs-12 howtoText">
-
-
             <!-- <img src="image_system/navigate.PNG" style='height:100%; width:100%;' /> -->
-            {{ $t("page_test1") }}<br>
-            {{ $t("page_test2") }}<br>
+            {{ $t("page_test1") }} <b>{{  store.exam.em_name }}</b><br>
+            {{ $t("page_test2", {"exam_q": store.exam.em_random_amount, "exam_time": store.exam.em_random_amount, "exam_n": store.exam.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
             {{ $t("page_test5") }} <br>
             {{ $t("page_test6") }}<br>
+            {{ $t("page_test7") }}<br>
+            {{ $t("page_test8") }}<br>
+            {{ $t("page_test9") }}<br>
           </div>
 
 
