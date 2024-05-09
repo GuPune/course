@@ -4,18 +4,18 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <div class="table-responsive shadow-sm rounded">
             <table class="table table-hover mb-0" v-if="store.resultall.length > 0">
-              <thead class="table-dark" >
+              <thead class="table-light" >
                 <tr>
                   <th scope="col" style="text-align: center">{{ $t("result_id") }}</th>
                   <th scope="col" style="text-align: center">{{ $t("result_score") }}</th>
                   <th scope="col" style="text-align: center">{{ $t("result_type") }}</th>
                  
                   <th scope="col" style="text-align: center">{{ $t("result_details") }}</th>
-                  <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
+                  <th scope="col" style="text-align: center">{{ $t("result_time") }}</th>
                   <th scope="col" style="text-align: center">{{ $t("result_status") }}</th>
                 </tr>
               </thead>
-              <tbody v-if="store.resultall.length > 0">
+              <tbody >
                 <tr v-for="(item, index) in store.resultall">
                   <th scope="row" style="text-align: center">
                     {{ index + 1 }}
@@ -25,49 +25,41 @@
                   </td>
                   <td style="text-align: center" v-if="item.mr_learn_type">
                     <span v-if="item.mr_learn_type == 1">{{ $t("page_profile_type_test_y") }}</span>
-                    <span v-else>{{ $t("page_profile_typepage_profile_type_test_n") }}</span>
+                    <span v-else>{{ $t("page_profile_type_test_n") }}</span>
                   </td>
                   <td>
                   
-            <span v-if="locale == 'la'">
-              {{
-                covertdtl(item.dlt_code).dlt_description_loas
-              }}</span
-            >
-            <span v-if="locale == 'en'">
-              {{
-                covertdtl(item.dlt_code)
-                  .dlt_description_english
-              }}</span
-            >
-          </td>
+                  <span v-if="locale == 'la'">
+                    {{ item.dlt_code }} -
+                    {{
+                      covertdtl(item.dlt_code).dlt_description_loas
+                    }}</span
+                  >
+                  <span v-if="locale == 'en'">
+                    {{ item.dlt_code }} -
+                    {{
+                      covertdtl(item.dlt_code).dlt_description_english
+                    }}</span
+                  >
+                </td>
 
                     <td style="text-align: center">
                     {{ format(item.crt_date) }}
                   </td>
                   <td style="text-align: center">
-                      <span v-if="item.mr_status == 'pass'">{{ $t("page_type_test_pass") }}</span>
-                    <span v-else>{{ $t("page_type_test_fail") }}</span>
-                  </td>
-                </tr>
-              </tbody>
-              <tbody v-else>
-                <tr>
-                  <td colspan="6" class="center" style="text-align: center">
-                    {{ $t("page_no_data") }}
+                      <span v-if="item.mr_status == 'pass'" class="badge badge-success" style="background-color: green; font-size: 1.1rem;">{{ $t("page_type_test_pass") }}</span>
+                    <span v-else  class="badge badge-danger"  style="background-color: red;font-size: 1.1rem;">{{ $t("page_type_test_fail") }}</span>
                   </td>
                 </tr>
               </tbody>
             </table>
 
 
-                   <table class="table table-hover mb-0" v-else>
-              <thead class="table-dark" >
-                <tr>
-                  <th scope="col" style="text-align: center"> {{ $t("page_no_data") }} </th>
-                </tr>
-              </thead>
-            </table>
+            <div v-else>
+              <div class="border p-3" style="text-align: center;" >{{ $t('page_no_data') }}</div>
+            </div>
+
+             
           </div>
         </div>
 

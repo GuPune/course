@@ -1,13 +1,11 @@
 <template>
-  <!-- .contact__section__end -->
-
 
   <!-- contact__form__start -->
-  <div class="contact__from__wraper sp_bottom_100">
+  <div class="contact__from__wraper ">
     <div class="container">
       <div class="row">
         <div class="col-xl-12">
-          <div class="contact__form__inner" v-if="store.mydtla.length > 0">
+          <div class="contact__form__inner p-5" v-if="store.mydtla.length > 0">
             <div class="row">
               <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                 <div class="contact__form__heading text-center">
@@ -15,12 +13,12 @@
                   <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
                 </div>
                 <div class="blogsidebar__content__wraper__2">
-                  <h4 class="sidebar__title">{{ $t("page_profile_type_dlt") }}</h4>
+                  <h4 class="">{{ $t("page_profile_type_dlt") }}</h4>
                   <ul class="categorie__list">
-                    <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)">
+                    <li   v-for="(item, index) in store.mydtla" :key="item.dlt_code"  @click="SelectDtl(index)" class="cursor-pointer">
                       <div class="row typecard">
                         <div class="col-2" id="type"><a>{{item.dlt_code}}</a></div>
-                        <div class="col-10" id="typedes"><a>{{item.dlt_description_loas}}</a></div>
+                        <div class="col-10" id="typedes"><a>{{locale=='la'? item.dlt_description_loas : item.dlt_description_english}}</a></div>
                       </div>
                     </li>
                   </ul>
@@ -46,6 +44,9 @@
               </div>
             </div>
           </div>
+          <div v-else>
+            <div class="border p-3 m-5" style="text-align: center;">{{ $t('msg_no_data') }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -55,6 +56,9 @@
 import { ref, computed, watch } from 'vue'
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
+
 
 import { useAuthStore } from '@/stores/auth';
 import ApiService from '@/services/api.service';

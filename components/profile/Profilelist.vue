@@ -6,9 +6,9 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-12">
-          <div class="contact__form__inner">
+          <div class="contact__form__inner p-5">
             <div class="contact__form__heading" data-aos="fade-up">
-              <h3>{{ $t("account_proFile_User") }}</h3>
+              <h4>{{ $t("account_proFile_User") }}</h4>
 
 
               <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
@@ -25,57 +25,35 @@
                   <div class="contact__input__wraper">
                  
                     <select
-                  class="ceslr"
-                  aria-label="Default select example"
-                  v-model="store.formuser.user_prefrix"
-                  :disabled="store.isDisabled"
-                >
-              
-                  <option disabled>
-                    {{ $t("choose") }}
-                  </option>
-                  <option value="ທ້າວ">{{ $t("than") }}</option>
-                  <option value="ນາງ">{{ $t("nang") }}</option>
-                </select>
-
-                   
+                      class="ceslr form-control"
+                      aria-label="Default select example"
+                      v-model="store.formuser.user_prefrix"
+                      :disabled="store.isDisabled"
+                    >
+                  
+                      <option disabled>
+                        {{ $t("choose") }}
+                      </option>
+                      <option value="ທ້າວ">{{ $t("than") }}</option>
+                      <option value="ນາງ">{{ $t("nang") }}</option>
+                    </select>
                   </div>
-       
-
-                  <div v-if="locale == 'la'">
+                  
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_prefrix.$error"
-                    >{{ $t("profile_alert_name") }}</span
+                    >{{ $t("profile_alert_title") }}</span
                   >
-                 </div>
-
-                 <div v-if="locale == 'th'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_prefrix.$error"
-                    >{{ $t("profile_alert_name") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_prefrix.$error"
-                    >{{ $t("profile_alert_name") }}</span
-                  >
-                 </div>
                 </div>
                 <div class="col-xl-5" data-aos="fade-up">
                   <div class="contact__input__wraper">
                  
                     <input
                       type="text"
+                      class="form-control"
                       name="subject"
-                      placeholder="ຊື່​ແທ້"
+                      :placeholder="$t('fname')"
                       v-model="store.formuser.user_firstname"
                   
                            :class="{
@@ -85,53 +63,29 @@
                       }"
                       @change="v$.user_firstname.$touch"
                       autocomplete="off"
-                      maxlength="10" 
- :disabled="store.isDisabled"
+                      maxlength="100" 
+                   :disabled="store.isDisabled"
         
                     />
-                    <div class="contact__icon">
-                      <i class="icofont-businessman"></i>
                     </div>
-                  </div>
-       
 
-                  <div v-if="locale == 'la'">
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_firstname.$error"
                     >{{ $t("profile_alert_name") }}</span
                   >
-                 </div>
-
-                 <div v-if="locale == 'th'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_firstname.$error"
-                    >{{ $t("profile_alert_name") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_firstname.$error"
-                    >{{ $t("profile_alert_name") }}</span
-                  >
-                 </div>
                 </div>
 
                 <div class="col-xl-5" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <input
                       type="text"
+                      class="form-control"
                       name="phone"
-                      placeholder="ນາມ​ສະ​ກຸນ"
+                      :placeholder="$t('lname')"
                       v-model="store.formuser.user_lastname"
                     :disabled="store.isDisabled"
-
                          :class="{
                         'border-red-500 focus:border-red-500':
                           v$.user_lastname.$error,
@@ -141,47 +95,26 @@
                       autocomplete="off"
                       maxlength="10"
                     />
-                    <div class="contact__icon">
-                      <i class="icofont-businessman"></i>
-                    </div>
+                   
                   </div>
           
 
-                  <div v-if="locale == 'la'">
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_lastname.$error"
                     >{{ $t("profile_alert_lname") }}</span
                   >
-                 </div>
-
-                 <div v-if="locale == 'th'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_lastname.$error"
-                    >{{ $t("profile_alert_lname") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_lastname.$error"
-                    >{{ $t("profile_alert_lname") }}</span
-                  >
-                 </div>
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <input
                       type="text"
+                      class="form-control"
                       name="con_name"
                       id="con_name"
-                      placeholder="ຊື່ຜູ້ໃຊ້*"
+                      :placeholder="$t('username')"
                       v-model="store.formuser.user_name"
                      :disabled="store.isDisabled"
                      @input="filterInputUser"
@@ -198,43 +131,23 @@
                       <i class="icofont-businessman"></i>
                     </div>
                   </div>
-                
 
-                  <div v-if="locale == 'la'">
                     <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_name.$error"
                     >{{ $t("profile_alert_usersname") }}</span
                   >
-                 </div>
-
-                 <div v-if="locale == 'th'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_name.$error"
-                    >{{ $t("profile_alert_usersname") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_name.$error"
-                    >{{ $t("profile_alert_usersname") }}</span
-                  >
-                 </div>
                 </div>
 
                 <div class="col-xl-6" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <input
                       type="text"
+                      class="form-control"
                       name="con_email"
                       id="con_email"
-                      placeholder="ອີເມວ*"
+                      :placeholder="$t('email')"
                       v-model="store.formuser.user_email"
                   :disabled="store.isDisabled"
                   maxlength="30"
@@ -253,6 +166,7 @@
                   <div class="contact__input__wraper">
                     <input
                       type="text"
+                      class="form-control"
                       name="subject"
                       placeholder="20XXXXXXXX"
                       v-model="store.formuser.user_phone"
@@ -272,58 +186,14 @@
                   </div>
 
                 
-                  <!-- <div v-if="locale == 'la'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-             
-                    >* ພຽງ​ແຕ່​ເບີ​ໂທລະ​ສັບ​ມື​ຖື​ </span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                
-                    >Only mobile numbers</span
-                  >
-                 </div> -->
-        
-                  <!-- <div v-if="locale == 'la'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_phone.$error"
-                    >{{ $t("profile_alert_phone") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'th'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_phone.$error"
-                    >{{ $t("profile_alert_phone") }}</span
-                  >
-                 </div>
-
-                 <div v-if="locale == 'en'">
-                    <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_phone.$error"
-                    >{{ $t("profile_alert_phone") }}</span
-                  >
-                 </div> -->
                 </div>
 
-                <div class="col-xl-6" data-aos="fade-up">
+                <!-- <div class="col-xl-6" data-aos="fade-up">
                   <div class="contact__input__wraper">
                     <input
                       type="text"
                       name="Text"
-                      placeholder="Enter Your Phone"
+                      placeholder="user type"
                       v-model="store.formuser.user_type_name"
                       disabled
 
@@ -334,16 +204,16 @@
                     </div>
                   </div>
              
-                </div>
+                </div> -->
 
 
                 <div class="col-xl-12" data-aos="fade-up">
                   <div class="contact__button">
                     <!-- <div class="col-auto nav-item">
-          <button type="button" class="btn btn-primary mt-0" @click="find()">
-            {{ $t("page_app_search_app") }}
-          </button>
-        </div> -->
+                    <button type="button" class="btn btn-primary mt-0" @click="find()">
+                      {{ $t("page_app_search_app") }}
+                    </button>
+                  </div> -->
                     <button
                       type="button"
                       class="btn btn-primary mt-0"
@@ -355,8 +225,13 @@
                     >
                     {{ $t("bt_edit") }}
                     </button>
-
                     
+                    <div v-else>
+                      <p>
+                        {{ $t('note_edit_profile') }}
+                      </p>
+                    </div>
+
                   </div>
                 </div>
               </div>

@@ -11,14 +11,6 @@
       <div class="loginarea__wraper">
         <div class="login__heading">
   
-          <p class="login__description">
-            {{ $t("changepassword_title1UserLogin") }}
-            <a
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#registerModal"
-            ></a>
-          </p>
         </div>
 
         <form>
@@ -32,7 +24,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="ລະຫັດຜ່ານເກົ່າ"
+                  :placeholder="$t('changepassword_old')"
                   v-model="stores.changepassword.curent_password"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -44,23 +36,12 @@
                   @input="filterInputPassCurrent"
                 />
 
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.curent_password.$error"
                     >{{ $t("changepassword_old_re") }}</span
                   >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.curent_password.$error"
-                    >{{ $t("changepassword_old_re") }}</span
-                  >
-                </span>
               </div>
             </div>
             <div class="col-xl-12">
@@ -71,7 +52,7 @@
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="ລະຫັດຜ່ານໃໝ່"
+                  :placeholder="$t('changepassword_new')"
                   v-model="stores.changepassword.new_password"
                   :class="{
                     'border-red-500 focus:border-red-500':
@@ -82,35 +63,23 @@
                   autocomplete="off"
                   @input="filterInputPassCurrentNew"
                 />
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.new_password.$error"
                     >{{ $t("changepassword_new_re") }}</span
                   >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.new_password.$error"
-                    >{{ $t("changepassword_new_re") }}</span
-                  >
-                </span>
               </div>
             </div>
             <div class="col-xl-12">
               <div class="login__form">
                 <label class="form__label"
-                  >{{ $t("changepassword_confirm")
-                  }}<span style="color: red"> * </span></label
+                  >{{ $t("changepassword_confirm")}}<span style="color: red"> * </span></label
                 >
                 <input
                   class="common__login__input"
                   type="text"
-                  placeholder="ຢືນຢັນລະຫັດຜ່ານ"
+                  :placeholder="$t('changepassword_confirm')"
                   v-model="stores.changepassword.confirm_new_password"
                   :class="{
                     'border-red-500 focus:border-red-500': v$.confirm_new_password.$error,
@@ -120,23 +89,13 @@
                   autocomplete="off"
                   @input="filterInputPassCurrentNewCon"
                 />
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.confirm_new_password.$error"
                     >{{ $t("changepassword_confirm_re") }}</span
                   >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.confirm_new_password.$error"
-                    >{{ $t("changepassword_confirm_re") }}</span
-                  >
-                </span>
+              
               </div>
             </div>
 
@@ -145,7 +104,8 @@
    
         </form>
         <div class="col-12" style="text-align: center">
-                <button class="btn" style="width: 30%;background-color: #2AB0E5;" @click="savechangepassword()"><span style="color: white;">{{ $t("singup_title") }}</span></button>
+                <button class="btn" style="width: 30%;background-color: #2AB0E5;" @click="savechangepassword()">
+                  <span style="color: white;">{{ $t("bt_save") }}</span></button>
                             </div>
       </div>
     </div>

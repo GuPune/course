@@ -1,9 +1,19 @@
-
-
-
 <template>
   <div>
-
+    <div style="background-color: var(--dotColor);">
+      <div class="container py-2 ">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb__content__wraper" data-aos="fade-up">
+              <div class="breadcrumb__title">
+              </div>
+              <div class="breadcrumb__inner">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="coursearea">
       <div class="container-xxl">
         <div class="row">

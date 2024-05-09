@@ -42,7 +42,7 @@
           <span>{{ $t("page_profile_type_test_y") }}</span>
             </li>
               <li v-else>
-          <span>{{ $t("page_profile_typepage_profile_type_test_n") }}</span>
+          <span>{{ $t("page_profile_type_test_n") }}</span>
             </li>
           </td>
           <td style="text-align: center">

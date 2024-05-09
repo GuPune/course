@@ -21,19 +21,19 @@
                       <a class="headerarea__has__dropdown cursor-pointer" href="http://dot-smart.mpwt.gov.la"  target="_blank">
                         <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
                         <!-- <span> {{ $t("home") }} </span> -->
-                        <span> {{ $t("news") }}</span>
+                        <span>{{ $t("news_page") }}</span>
                       </a>
                     </li>
                     <li @click="goToMenu('/course')"  >
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/course">{{ $t("courses") }}</nuxt-link> -->
-                        <span> {{ $t("courses") }} </span>
+                        <span>{{ $t("courses") }}</span>
                       </a>
                     </li>
                     <li @click="goToMenu('/exam')">
                       <a class="headerarea__has__dropdown cursor-pointer">
                         <!-- <nuxt-link to="/exam">{{ $t("exam") }}</nuxt-link> -->
-                        <span> {{ $t("exam") }} </span>
+                        <span>{{ $t("theory_test") }}</span>
                       </a>
                     </li>
                     <li  @click="goToMenu('/appointment')">
@@ -60,10 +60,10 @@
                   <ul>
                     
                     <li @click="goToMenu('/')" >
-                      <a class="headerarea__has__dropdown cursor-pointer" href="http://information.iddriver.com"  target="_blank">
+                      <a class="headerarea__has__dropdown cursor-pointer" href="http://dot-smart.mpwt.gov.la"  target="_blank">
                         <!-- <nuxt-link to="/">{{ $t("home") }}</nuxt-link> -->
                         <!-- <span> {{ $t("home") }} </span> -->
-                        <span> {{ $t("news") }}</span>
+                        <span> {{ $t("news_page") }}</span>
                       </a>
                     </li>
                   
@@ -100,12 +100,11 @@
               </div>
 
               <div class="headerarea__main__menu .headerarea__login headerarea__right" v-if="authenticated">
-
              
                 <nav>
                   <ul>
                     
-                    <li class="me-5">
+                    <li class="me-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                         class="bi bi-bell-fill " viewBox="0 0 16 16" id="noti-bell">
                         <path
@@ -120,7 +119,8 @@
                           <div class="single__header__right__dropdown">
                             <NuxtLink to="/profile">  
                             <div class="header__right__dropdown__content">
-                              <a > {{ $t("head_alert") }} <span class="text-danger">{{ item.dlt_code }}</span> {{ $t("head_alert_day_out") }} <span class="text-danger">{{ item.expiry_date }}</span></a>
+                              <a > {{ $t("head_alert") }} <span class="text-danger">{{ item.dlt_code }}</span> {{ $t("head_alert_day_out") }} 
+                                <span class="text-danger">{{ item.expiry_date }}</span></a>
                             </div>
                           </NuxtLink>
                           </div>
@@ -166,13 +166,13 @@
                       </a>
                       <ul class="headerarea__submenu">
                         <li> 
-                          <a @click="GotoPage('/profile')"><i class="icofont-memory-card"></i> <span style="font-size: 14px;">  {{ $t("account_details") }}</span></a>
+                          <a @click="GotoPage('/profile')" Class="cursor-pointer"><i class="icofont-memory-card"></i> <span style="font-size: 14px;">  {{ $t("account_details") }}</span></a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/changepassword')"><i class="icofont-edit"></i><span style="font-size: 14px;">  {{ $t("changepassword") }}</span></a>
+                          <a @click="GotoPage('/changepassword')" Class="cursor-pointer"><i class="icofont-edit"></i> <span style="font-size: 14px;">  {{ $t("changepassword") }}</span></a>
                         </li>
                         <li>
-                          <a @click="GotoPage('/profile')"> <i class="icofont-ui-v-card"></i><span style="font-size: 14px;"> {{ $t("mylicense") }}</span></a>
+                          <a @click="GotoPage('/profile')" Class="cursor-pointer"> <i class="icofont-ui-v-card"></i> <span style="font-size: 14px;"> {{ $t("mylicense") }}</span></a>
                         </li>
                         <!-- <li>
                           <a @click="GotoPage('/historyappoint')">{{ $t("historyappoint") }}</a>
@@ -189,7 +189,7 @@
                          <li v-if="useError.formuser.user_type != 3">
                           <a @click="GotoPage('/historyall')">{{ $t("historyall") }}</a>
                         </li> -->
-                        <li><a @click="Logout()"> <i class="icofont-sign-out"></i><span style="font-size: 14px;">  {{ $t("logout") }} </span></a></li>
+                        <li><a @click="Logout()"  Class="cursor-pointer"> <i class="icofont-sign-out"></i> <span style="font-size: 14px;">  {{ $t("logout") }} </span></a></li>
                       </ul>
                     </li>
                   </ul>
@@ -408,6 +408,7 @@ const goToMenu = async (meun) => {
 
 
 const GotoPage = (item) => {
+  store.isActiveBar = false;
   router.push(item);
 };
 

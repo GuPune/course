@@ -9,10 +9,9 @@
       
       <div class="row">
         <div class="col-xl-12">
-          <div class="contact__form__inner">
+          <div class="contact__form__inner p-5">
             <div class="contact__form__heading" data-aos="fade-up">
-              <h3 class="text-center">{{ $t("account_proFile_Info") }}</h3>
-              <!-- <p>Your email address will not be published. Required fields are marked * </p> -->
+              <h4>{{ $t("account_proFile_Info") }}</h4>
             </div>
 
             <div class="col-xl-12">
@@ -20,23 +19,13 @@
                   >{{ $t("page_profile_iden") }}<span style="color: red"> * </span>
                 </label>
 
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.identification_number.$error"
                     >{{ $t("form_d_iden") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.identification_number.$error"
-                    >{{ $t("form_d_iden") }}</span
-                  >
-                </span>
                   <div class="contact__input__wraper">
                     <input type="text" class="form-control col" 
                   v-model="store.formdetail.identification_number"
@@ -45,11 +34,10 @@
                           v$.identification_number.$error,
                         'border-[#42d392] ': !v$.identification_number.$invalid,
                       }"
+                      :disabled="store.isDisabled"
                       @change="v$.identification_number.$touch"
                       autocomplete="off"
-                      maxlength="13" 
-                   
-
+                      maxlength="20" 
                       @input="onInput"
 
                   >
@@ -59,26 +47,15 @@
 
             <div class="col-xl-12">
               <label class="form__label"
-                  >{{ $t("page_profile_day") }}<span style="color: red"> * </span>
+                  >{{ $t("page_profile_dob") }}<span style="color: red"> * </span>
                 </label>
-
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_birthday.$error"
-                    >{{ $t("form_d_bird") }}</span
+                    >{{ $t("form_d_dob") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_birthday.$error"
-                    >{{ $t("form_d_bird") }}</span
-                  >
-                </span>
                 <!-- :disabled="store.isDisabled" -->
                   <div class="contact__input__wraper">
                     <input type="date" class="form-control col" v-model="store.formdetail.user_birthday"
@@ -87,79 +64,27 @@
                           v$.user_birthday.$error,
                         'border-[#42d392] ': !v$.user_birthday.$invalid,
                       }"
+                      :disabled="store.isDisabled"
                       @change="v$.user_birthday.$touch"
                       autocomplete="off"
-                      maxlength="13" 
+                      maxlength="10" 
                   >
-                   
                   </div>
             </div>
 
 
             <div class="col-xl-12">
               <label class="form__label"
-                  >{{ $t("page_profile_village") }}<span style="color: red"> * </span>
+                  >{{ $t("page_profile_address") }}<span style="color: red"> * </span>
                 </label>
 
-                <span v-if="locale == 'la'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_village.$error"
-                    >{{ $t("form_d_vil") }}</span
-                  >
-                </span>
-
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_village.$error"
-                    >{{ $t("form_d_vil") }}</span
-                  >
-                </span>
-                  <div class="contact__input__wraper">
-                    <input type="text" class="form-control col" 
-                  v-model="store.formdetail.user_village"
-                  :class="{
-                        'border-red-500 focus:border-red-500':
-                          v$.user_village.$error,
-                        'border-[#42d392] ': !v$.user_village.$invalid,
-                      }"
-                      @change="v$.user_village.$touch"
-                      autocomplete="off"
-                      maxlength="20" 
-                     
-
-                  >
-                  <!-- :disabled="store.isDisabled" -->
-                  
-                  </div>
-            </div>
-
-
-            <div class="col-xl-12">
-              <label class="form__label"
-                  >{{ $t("page_profile_add_2") }}<span style="color: red"> * </span>
-                </label>
-
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_address.$error"
                     >{{ $t("form_d_add") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.user_address.$error"
-                    >{{ $t("form_d_add") }}</span
-                  >
-                </span>
                 <!-- :disabled="store.isDisabled" -->
                   <div class="contact__input__wraper">
                     <textarea v-model="store.formdetail.user_address" class="form-control col" 
@@ -168,94 +93,107 @@
                           v$.user_address.$error,
                         'border-[#42d392] ': !v$.user_address.$invalid,
                       }"
+                      :disabled="store.isDisabled"
                       @change="v$.user_address.$touch"
                       autocomplete="off"
                       maxlength="200" 
+                      style="height: 100px;"
+                      :placeholder="$t('address_placeholder')"
                   ></textarea>
                 
                   </div>
             </div>
 
-
-            <div class="col-xl-12 mt-4">
+            <div class="col-xl-12">
               <label class="form__label"
-                  >{{ $t("page_profile_add_1") }}<span style="color: red"> * </span>
+                  >{{ $t("page_profile_vil") }}<span style="color: red"> * </span>
                 </label>
 
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.location.$error"
-                    >{{ $t("page_verify_zip") }}</span
+                    v-if="v$.user_village.$error"
+                    >{{ $t("form_d_vil") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
-                  <span
-                    class="text-xs text-red-500"
-                    style="color: red"
-                    v-if="v$.location.$error"
-                    >{{ $t("page_verify_zip") }}</span
-                  >
-                </span>
                   <div class="contact__input__wraper">
-                    <!-- <select class="form-control col" v-if="store.zipcode" v-model="store.formdetail.location_id" :disabled="store.isDisabled">
-    <option   v-for="(zipcode, index) in store.zipcode" :key="zipcode.id" :value="zipcode.id">{{zipcode.zipcode_name}} - {{ zipcode.amphur_name }}</option>
-    </select> -->
-
-    
-                
+                    <input type="text" class="form-control col" 
+                    :disabled="store.isDisabled"
+                  v-model="store.formdetail.user_village"
+                  :class="{
+                        'border-red-500 focus:border-red-500':
+                          v$.user_village.$error,
+                        'border-[#42d392] ': !v$.user_village.$invalid,
+                      }"
+                      @change="v$.user_village.$touch"
+                      autocomplete="off"
+                      maxlength="100" 
+                  >
+                  <!-- :disabled="store.isDisabled" -->
+                  
                   </div>
             </div>
 
-            <v-select :disabled="store.isDisabled"
-  v-model="store.formdetail.location"
-    :options="store.zipcode"
-    label="zipcode_name" 
-    @input="changedLabelZip"
-     placeholder="ເລືອກ"
-  ></v-select>
+
+            
 
 
             <div class="col-xl-12 mt-4">
               <label class="form__label"
-                  >{{ $t("page_profile_zip") }}<span style="color: red"> * </span>
+                  >{{ $t("page_profile_district") }}<span style="color: red"> * </span>
                 </label>
 
-                <span v-if="locale == 'la'">
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.country.$error"
-                    >{{ $t("form_d_cou") }}</span
+                    v-if="v$.location.$error"
+                    >{{ $t("form_d_district") }}</span
                   >
-                </span>
 
-                <span v-if="locale == 'en'">
+                 
+                <v-select :disabled="store.isDisabled"
+                  v-model="store.formdetail.location"
+                    :options="store.zipcode"
+                    @input="changedLabelZip"
+                    :placeholder="$t('choose')"
+                    label="zipcode_name"
+                  >
+                  <template #option="{ zipcode_name, province_name }">
+                    <b>{{ zipcode_name }} </b> - <em>{{ province_name }}</em>
+                  </template>
+                </v-select>
+            </div>
+            <!-- label="zipcode_name"  -->
+
+            
+
+
+            <div class="col-xl-12 mt-4">
+              <label class="form__label"
+                  >{{ $t("page_profile_nationality") }}<span style="color: red"> * </span>
+                </label>
+
                   <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.country.$error"
                     >{{ $t("form_d_cou") }}</span
                   >
-                </span>
+
                   <div class="contact__input__wraper">
                     <!-- <select class="form-control col" v-if="store.country" v-model="store.formdetail.country_id" :disabled="store.isDisabled">
     <option   v-for="(country, x) in store.country" :key="country.country_id" :value="country.country_id">{{country.country_name_eng}}</option>
     </select> -->
-
-                
                   </div>
-            </div>
 
-            <v-select :disabled="store.isDisabled"
-  v-model="store.formdetail.country"
-    :options="store.country"
-    label="country_name_eng"
-    @input="changedLabelCounrt"
-     placeholder="ເລືອກ"
-  ></v-select>
+                    <v-select :disabled="store.isDisabled"
+                  v-model="store.formdetail.country"
+                    :options="store.country"
+                    label="country_name_eng"
+                    @input="changedLabelCounrt"
+                    :placeholder="$t('choose')"
+                  ></v-select>
+            </div>
 
  
 
@@ -268,45 +206,39 @@
               </div>
               <!-- :disabled="store.isDisabled" -->
               <button class="changeImg btn btn-info"  @click="changeFile" >
-                <span v-if="locale == 'la'">{{ $t("page_profile_bt_pic") }}</span>
-                <span v-if="locale == 'en'">{{ $t("page_profile_bt_pic") }}</span>
+                {{ $t("page_profile_bt_pic") }}
               </button>
               <input type="file" ref="fileInput" style="display: none;">
      
-              <div class="gridarea__content w-100 p-0">
+              
+            </div>
+
+            <div class="gridarea__content w-100 p-0">
                 <div class="gridarea__list row ">
                   <p class="col fw-bold">{{ $t("page_profile_status") }}</p>
 
-
                   <div class="col " v-if="store.formdetail.verify_account == 'phone_active'">
                     <span class="badge text-bg-success">
-
-
-                      <span v-if="locale == 'la'">{{ $t("phone_active") }}</span>
-                      <span v-if="locale == 'en'">{{ $t("phone_active") }}</span>
-                      <span v-if="locale == 'th'">{{ $t("phone_active") }}</span>
+                      {{ $t("phone_active") }}
                     </span>
                   </div>
                   <div class="col " v-if="store.formdetail.verify_account == 'system_unactive'">
                     <span class="badge text-bg-success">
-
-                      <span v-if="locale == 'la'">{{ $t("system_unactive") }}</span>
-                      <span v-if="locale == 'en'">{{ $t("system_unactive") }}</span>
-                      <span v-if="locale == 'th'">{{ $t("system_unactive") }}</span>
+                      {{ $t("system_unactive") }}
                     </span>
                   </div>
                   <div class="col " v-if="store.formdetail.verify_account == 'system_active'">
                     <span class="badge text-bg-success">
-
-
-                      <span v-if="locale == 'la'">{{ $t("system_active") }}</span>
-                      <span v-if="locale == 'en'">{{ $t("system_active") }}</span>
-                      <span v-if="locale == 'th'">{{ $t("system_active") }}</span>
+                      {{ $t("system_active") }}
                     </span>
                   </div>
                 </div>
 
-                <div class="gridarea__list row border-bottom pb-2">
+                
+
+              </div>
+
+              <div class="gridarea__list row  pb-0 pt-5">
                   <!-- <button v-if="
                         store.formdetail.verify_account !== 'system_active' ??
                         disabled
@@ -316,17 +248,26 @@
                       {{ $t("bt_edit") }}
                     </button> -->
 
-
-                    <button 
+                    <button
                       type="button"
-                      class="btn btn-primary mt-0" @click="update()">
-                      {{ $t("bt_edit") }}
+                      class="btn btn-primary mt-0"
+                      @click="update()"
+                      v-if="
+                        store.formdetail.verify_account !== 'system_active' ??
+                        disabled
+                      "
+                    >
+                    {{ $t("bt_save") }}
                     </button>
+                    
+                    <div v-else>
+                      <p>
+                        {{ $t('note_edit_profile') }}
+                      </p>
+                    </div>
+
+
                 </div>
-
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -387,7 +328,7 @@ const rules = computed(() => {
       minLength: minLength(1),
     },
     location: {
-      required: helpers.withMessage("Select Country field is required", required),
+      required: helpers.withMessage("Select location field is required", required),
       minLength: minLength(1),
     },
     user_village: {

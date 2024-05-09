@@ -11,7 +11,7 @@
             </table>
           </div>
           <div v-else>
-            <div class="border p-3">{{ $t('msg_no_data') }}</div>
+            <div class="border p-3" style="text-align: center;">{{ $t('msg_no_data') }}</div>
           </div>
 </template>
 <script lang="ts" setup>
