@@ -28,10 +28,15 @@
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name">
 
                       <div id="howto">
-                      <span id="howto-text"  class="scrollbar" style="font-weight: bold;">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : {{ x.eq_name }}</span>
-                       <div class="force-overflow"></div>
-                        <span v-if="x.eq_image"  @click="imagemodal(x.eq_image)">     <img :src="coverimage(x.eq_image)" alt="sidbar"  width="80" height="100"/></span>
+                      <div id="howto-text"  class="" style="font-weight: bold;">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : {{ x.eq_name }}</div>
+
+                      <div v-if="x.eq_image"  @click="imagemodal(x.eq_image)" class="cursor-pointer"> 
+                        <img :src="coverimage(x.eq_image)" alt="sidbar"  height="200"/>
+                      </div>
+                       
                     </div>
+
+                    
                 </div>
 
                 
@@ -41,9 +46,11 @@
                     <div id="choice" class="cursor-pointer">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins)">{{ a.ec_name }}</span>
+                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins)">{{choices[ins+1]}}. {{ a.ec_name }}</span>
                        <div class="force-overflow"></div>
-                        <span v-if="a.ec_image" @click="imagemodal(a.ec_image)"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="100"/></span>
+                        <span v-if="a.ec_image" @click="imagemodal(a.ec_image)"> 
+                          <img :src="coverimage(a.ec_image)" alt="sidbar"  height="100"/>
+                        </span>
                     </div>
                   </ul>
                 </div>
@@ -322,7 +329,7 @@ function coverimage(i) {
   color: black;
   border: 2px solid #040604;
   transition-duration: 0.4s;
-  display: flex;
+  /* display: flex; */
   width: 100%;
   #howto-text {
     width: 100%;

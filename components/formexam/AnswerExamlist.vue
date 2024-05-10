@@ -62,10 +62,13 @@
               <h4 class="mb-5">{{ $t("page_exam_report_ans") }}</h4>
               <div v-if="store.examination">
              
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="howto">
-                  <ul style="width: 100%">
+                <div class=" aos-init aos-animate" data-aos="fade-up" id="howto">
                     <h4 class="mb-0"> {{ $t("page_exam_report_cho1") }} {{ store.answer_ind + 1 }} : {{ store.examination[store.answer_ind].eq_name }} </h4>
-                  </ul>
+
+                      <div v-if="store.examination[store.answer_ind].eq_image"  > 
+                        <img :src="coverimage(store.examination[store.answer_ind].eq_image)" alt="sidbar"  height="200"/>
+                      </div>
+                       
                 </div>
 
 
@@ -77,7 +80,7 @@
                     <div  class="answer-choice-currect" v-if="(a.ec_id == store.examination[store.answer_ind].ec_id) && (a.ec_index == store.examination[store.answer_ind].eq_answer)">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
                     
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-check-circle-fill"></i>
@@ -86,7 +89,7 @@
                     <div  class="answer-choice-success" v-else>
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -97,7 +100,7 @@
                     <div  class="answer-choice-danger"  v-if="(a.ec_id == store.examination[store.answer_ind].ec_id)">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-x-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -106,7 +109,7 @@
                     <div  class="answer-choice" v-else="(a.ec_id != store.examination[store.answer_ind].ec_id)">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>
@@ -161,6 +164,8 @@ const { countDownTimer } = ExamTestPostStore(); //Action
 
 const router = useRouter();
 store.answer_ind = 0;
+const choices = ['', 'ກ', 'ຂ', 'ຄ', 'ງ'];
+
 
 function image(i) {
   let im =  ApiService.image(i);
@@ -455,7 +460,7 @@ function coverttime(date) {
   color: black;
   border: 2px solid #040604;
   transition-duration: 0.4s;
-  display: flex;
+  /* display: flex; */
   width: 100%;
 }
 </style>
