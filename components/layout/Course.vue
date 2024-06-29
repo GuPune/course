@@ -47,7 +47,10 @@
                           
                         </div>
                         <div class="gridarea__heading">
-                            <h3><a>{{ item.course_name }}</a></h3>
+                            <h3><a>
+
+                                {{ locale=='la' ? item.course_name_lo : item.course_name_eng}}
+                            </a></h3>
                         </div>
                      
                         <div class="gridarea__bottom">
@@ -79,7 +82,8 @@ import { storeToRefs } from 'pinia';
 import { defineComponent } from 'vue';
 import { CoursePostStore } from '@/stores/course'; // import the auth store we just created
 import  ApiService  from '@/services/api.service';
-
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 const store = CoursePostStore()
 store.fetchCourse()
 

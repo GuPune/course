@@ -136,21 +136,18 @@ this.previous_lesson = response.data.previous_lesson
 
  this.prevs = (Object.keys(response.data.previous_lesson).length);
  this.nexts = (Object.keys(response.data.next_lesson).length);
+ console.log(Object.keys(response.data.next_lesson).length);
  this.next_couse_group = response.data.next_couse_group;
  this.curent_couse_group = response.data.curent_couse_group;
  this.course_read = response.data.course;
+ console.log(response.data.course);
  this.previous_group = response.data.course;
  this.next_group = (Object.keys(response.data.next_couse_group).length);
  this.total_lesson_lean = response.data.total_lesson
  this.previous_couse_group = response.data.previous_couse_group;
  this.prevs_group = (Object.keys(response.data.previous_couse_group).length);
 
-// this.next_cg_id = (Object.keys(response.data.next_cg_id).length);
 
-
-// if(Object.keys(response.data.curent_lesson).length == 0){
-// return false;
-// }
 return true;
     
       });

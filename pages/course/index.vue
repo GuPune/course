@@ -103,8 +103,9 @@ let profile = await auth.getProfile()
     store.formsearchcourse.page = 1;
     store.formsearchcourse.per_page = 5;
     store.formsearchcourse.search = '';
+    store.formsearchcourse.active_include = [1];
 let course = await store.fetchCourse();
-let history = await store.fetchCourseHistory();
+//let history = await store.fetchCourseHistory();
  setTimeout(() => Swal.close(), 500);
 
   </script>

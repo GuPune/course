@@ -73,7 +73,7 @@
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
-                <span style="font-size: 24px; font-weight:bold;">{{store.course_curent.course_code}} - {{ store.course_curent.course_name }} / {{ $t("course_subject") }}: {{ store.curent_lesson.cg_name }}</span>
+                <span style="font-size: 24px; font-weight:bold;">{{store.course_curent.course_code}} - {{ locale=='la' ? store.course_curent.course_name_lo : store.course_curent.course_name_eng}} / {{ $t("course_subject") }}:   {{ locale=='la' ? store.curent_lesson.cg_name_lo : store.curent_lesson.cg_name_eng}}</span>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@
                   >
                     <div
                       class="accordion content__cirriculum__wrap"
-                      id="accordionExample" v-if="store.curent_lesson.cs_name"
+                      id="accordionExample" v-if="store.curent_lesson.cs_name_lo"
                     >
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -148,8 +148,8 @@
                             type="button"
                             style="background-color: #F5F5F5"
                           >
-                            <span style="font-size: 20px;font-weight:bold;padding-right:10px;" v-if="store.curent_lesson.cs_name.trim().endsWith('?')">{{ $t('question') }} : </span>
-                            <span style="font-size: 20px;font-weight: bold;">{{ store.curent_lesson.cs_name }}</span>
+                            <span style="font-size: 20px;font-weight:bold;padding-right:10px;" v-if="store.curent_lesson.cs_name_lo.trim().endsWith('?')">{{ $t('question') }} : </span>
+                            <span style="font-size: 20px;font-weight: bold;">{{ store.curent_lesson.cs_name_lo }}</span>
                           </button>
                         </h2>
                         <div
@@ -295,15 +295,13 @@
                       id="accordionExample"
                     >
                       <div class="accordion-item" style="padding: 15px; background-color: #F5F5F5;">
-                        <span style="font-size: 20px;font-weight:bold;" v-if="store.curent_lesson.cs_name.trim().endsWith('?')">{{ $t('answer') }} : </span>
+                        <span style="font-size: 20px;font-weight:bold;" v-if="store.curent_lesson.cs_name_lo.trim().endsWith('?')">{{ $t('answer') }} : </span>
                         <span style="font-size: 20px;font-weight: 400;"> {{ store.curent_lesson.cs_description }}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-             <!-- <span style="color:#11901E" v-if="store.learning_status"> ອ່ານແລ້ວ</span> -->
-                
             </div>
 
             
@@ -333,6 +331,8 @@ import { LessonStore } from "@/stores/lesson";
 import ApiService from "@/services/api.service";
 import YouTube from "vue3-youtube";
 import Swal from "sweetalert2";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 const router = useRouter();
 const store = LessonStore();
 const youtubeWidth = ref(620);
@@ -536,6 +536,7 @@ const next = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
+  console.log(store.nexts);
   if((store.next_group == 0) && (store.nexts == 0)){
     const cour = localStorage.setItem('course_id', store.course_read.course_id)
     router.push('/course-detail/success');
@@ -564,13 +565,13 @@ if(store.nexts == 0){
   router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
-    course_id: store.next_lesson.course_id,
+    course_id: store.course_read.course_id,
     cg_id: store.curent_couse_group.cg_id,
     cs_id: store.next_lesson.cs_id,
   }
       })
-
-      store.formsearchlearing.course_id = store.next_lesson.course_id
+  
+      store.formsearchlearing.course_id = store.course_read.course_id
       store.formsearchlearing.cg_id = store.next_lesson.cg_id
       store.formsearchlearing.cs_id = store.next_lesson.cs_id
    

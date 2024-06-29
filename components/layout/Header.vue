@@ -36,13 +36,13 @@
                         <span>{{ $t("theory_test") }}</span>
                       </a>
                     </li>
-                    <li  @click="goToMenu('/appointment')">
+                    <!-- <li  @click="goToMenu('/appointment')">
                 
                       <a class="headerarea__has__dropdown cursor-pointer">
                         
                         <span> {{ $t("appointmentxx") }} </span>
                       </a>
-                    </li>
+                    </li> -->
                     <li @click="goToMenu('/result')">
                       <a class="headerarea__has__dropdown cursor-pointer">
                     

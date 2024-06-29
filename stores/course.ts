@@ -29,6 +29,7 @@ export const CoursePostStore = defineStore({
       page: 1,
       per_page: 4,
       search: '',
+      active_include: [1],
     },
     user_id:null,
     total_filter:0,
@@ -87,6 +88,7 @@ export const CoursePostStore = defineStore({
       this.coursecategories = []
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
+  
       this.total = response.data.total
       this.total_page = response.data.total_page
       this.coursecategories = response.data.data 
@@ -286,9 +288,7 @@ this.last_course = null
     async getcondition(id) {
 
       const data = await ApiService.get('/course/condition/list/?course_id=' + id).then(response => {
-
-
-        this.condition = response.data.data;
+        this.condition = response.data;
         this.lesson_total_all = response.data.sum_val_a;
         this.lesson_total_in_course = response.data.sum_val_b;
       

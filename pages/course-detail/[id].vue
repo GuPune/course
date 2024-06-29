@@ -73,12 +73,12 @@
                 <tbody>
                   <tr   v-for="(item, index) in store.condition"
                       :key="item.id">
-                    <td>{{item.cg_name}}</td>
+                    <td>{{ locale=='la' ? item.cg_name_lo : item.cg_name_eng}}</td>
                     <td class="text-center" style="width: 30%;"></td>
-                    <td class="text-center">{{item.cc_value_b}}</td>
+                    <td class="text-center">{{item.total_question}}</td>
                   </tr>
                   <tr class="border-top border-black">
-                    <!-- {{store.lesson_total_all}} -->
+               
                     <td></td>
                     <td class="text-center" style="width: 30%;"></td>
                     <td class="text-center">{{store.lesson_total_in_course}}</td>
@@ -138,7 +138,10 @@
                 style="background-color: #F5F5F5;"   
               >
 
-                <h5 class="fw-bold">{{$t('course_subject')}}: {{y.cg_name}}</h5>
+                <h5 class="fw-bold">{{$t('course_subject')}}: 
+                
+                  {{ locale=='la' ? y.cg_name_lo : y.cg_name_eng}} {{ y }}
+                </h5>
               
                 <div 
                   class="tab-pane fade active show px-md-4"
@@ -158,9 +161,10 @@
                           class="accordion-button collapsed mt-0"
                           type="button"
                         >
+                      
                           <div class="d-flex justify-content-between w-100">
                             <div style="color: #0AA7FF;" :class="{ 'notread-class': (x.learning_status == 'true'? false : true) }" >
-                              {{ index + 1 }}.  {{x.cs_name}}   
+                              {{ index + 1 }}.   {{ locale=='la' ? x.cs_name_lo : x.cs_name_eng}}   {{ y.cg_id }}
                             </div>
                           </div>
 

@@ -23,7 +23,9 @@
                                 </ul>
                             </div>
                             <div class="gridarea__heading">
-                                <h3><a>{{ item.course_name }}</a></h3>
+                                <h3><a>
+                                    {{ locale=='la' ? item.course_name_lo : item.course_name_eng}}
+                                  </a></h3>
                             </div>
            
                             <div class="gridarea__bottom">
@@ -61,10 +63,9 @@
                 <div class="gridarea__content">
                     <div class="gridarea__heading"  >
                         <h3 @click="SelectCourse(item)" class="cursor-pointer" style="color:var(--themeBlue)">
-                        {{item.course_code}} - {{ locale=='la' ? item.course_name : item.course_remark_a}}</h3>
+                        {{item.course_code}} - {{ locale=='la' ? item.course_name_lo : item.course_name_eng}}</h3>
                     </div>
                     <div class="gridarea__price">
-        
                         <p style="font-size:12px">    {{ item.course_description }}</p>
                         <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
                         <p class="mb-0">    {{ item.course_remark_b }}</p>
