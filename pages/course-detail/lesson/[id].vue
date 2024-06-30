@@ -484,26 +484,26 @@ const prev = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
-
+console.log(store.prevs);
   
 if(store.prevs == 0){
  
-  router.push({
-        path: '/course-detail/lesson/' + store.course_read.course_id,
-        query: {
-    course_id: store.course_read.course_id,
-    cg_id: store.previous_couse_group.cg_id,
-    cs_id: route.query.cs_id,
-  }
-      })
+  // router.push({
+  //       path: '/course-detail/lesson/' + store.course_read.course_id,
+  //       query: {
+  //   course_id: store.course_read.course_id,
+  //   cg_id: store.previous_couse_group.cg_id,
+  //   cs_id: route.query.cs_id,
+  // }
+  //     })
 
 
 
-     store.formsearchlearing.course_id = store.course_read.course_id
-     store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
-     store.formsearchlearing.cs_id = route.query.cs_id
+  //    store.formsearchlearing.course_id = store.course_read.course_id
+  //    store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
+  //    store.formsearchlearing.cs_id = route.query.cs_id
 
-     let prev = await store.fetchCoursereadPrev();
+  //    let prev = await store.fetchCoursereadPrev();
   
 }else{
     router.push({
@@ -514,9 +514,13 @@ if(store.prevs == 0){
     cs_id: store.previous_lesson.cs_id,
   }
       })
+console.log(store.course_read.course_id);
+console.log(store.previous_lesson.cg_id);
+console.log(store.previous_lesson.cs_id);
 
 
-      store.formsearchlearing.course_id = store.previous_lesson.course_id
+
+      store.formsearchlearing.course_id = store.course_read.course_id
       store.formsearchlearing.cg_id = store.previous_lesson.cg_id
       store.formsearchlearing.cs_id = store.previous_lesson.cs_id
 
@@ -536,14 +540,16 @@ const next = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
-  console.log(store.nexts);
+  ///////////สิ้นสุด//////////
   if((store.next_group == 0) && (store.nexts == 0)){
+  
     const cour = localStorage.setItem('course_id', store.course_read.course_id)
     router.push('/course-detail/success');
    return false;
   }
 
 if(store.nexts == 0){
+  console.log('if');
   router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
@@ -561,7 +567,7 @@ if(store.nexts == 0){
    let next = await store.fetchCoursereadNext();
   
 }else {
-
+console.log('elese');
   router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
