@@ -56,7 +56,7 @@
 
             <div
               class="course__details__paragraph aos-init aos-animate"
-              data-aos="fade-up"
+              data-aos="fade-up" v-if="store.condition"
             >
               <p class="mb-0">{{ store.course_lesson.course_description }}</p>
               <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
@@ -140,7 +140,7 @@
 
                 <h5 class="fw-bold">{{$t('course_subject')}}: 
                 
-                  {{ locale=='la' ? y.cg_name_lo : y.cg_name_eng}} {{ y }}
+                  {{ locale=='la' ? y.cg_name_lo : y.cg_name_eng}} 
                 </h5>
               
                 <div 
@@ -163,7 +163,7 @@
                         >
                       
                           <div class="d-flex justify-content-between w-100">
-                            <div style="color: #0AA7FF;" :class="{ 'notread-class': (x.learning_status == 'true'? false : true) }" >
+                            <div style="color: #0AA7FF;" :class="{ 'notread-class': (x.learning_status == 'false'? false : true) }" >
                               {{ index + 1 }}.   {{ locale=='la' ? x.cs_name_lo : x.cs_name_eng}}   {{ y.cg_id }}
                             </div>
                           </div>
@@ -223,10 +223,10 @@ store.user_id = auth.user_id
 
 // let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
-let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
+ let lesson_id = await store.fetchCourseLessId(router.currentRoute.value.params.id);
 let progress = await store.progersslesson(router.currentRoute.value.params.id);
 let getpdf = await store.getpdflesson(router.currentRoute.value.params.id);
-let condition = await store.getcondition(router.currentRoute.value.params.id);
+ let condition = await store.getcondition(router.currentRoute.value.params.id);
 
 const setCurrentPageLesson = async (page) => {
 

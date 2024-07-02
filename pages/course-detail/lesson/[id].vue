@@ -484,7 +484,7 @@ const prev = async () => {
   });
   await setTimeout(() => Swal.close(), 500);
 
-console.log(store.prevs);
+
   
 if(store.prevs == 0){
  
@@ -514,11 +514,6 @@ if(store.prevs == 0){
     cs_id: store.previous_lesson.cs_id,
   }
       })
-console.log(store.course_read.course_id);
-console.log(store.previous_lesson.cg_id);
-console.log(store.previous_lesson.cs_id);
-
-
 
       store.formsearchlearing.course_id = store.course_read.course_id
       store.formsearchlearing.cg_id = store.previous_lesson.cg_id

@@ -37,8 +37,8 @@
         <div class="row">
 
           <div class="col-xs-12">
-            {{ $t("page_test1") }} <b>{{  store.exam.em_name }}</b><br>
-            {{ $t("page_test2", {"exam_q": store.exam.em_random_amount, "exam_time": store.exam.em_random_amount, "exam_n": store.exam.em_measure}) }}<br>
+            {{ $t("page_test1") }} <b>{{  store.exammain.em_name }}</b><br>
+            {{ $t("page_test2", {"exam_q": store.exammain.em_random_amount, "exam_time": store.exammain.em_random_amount, "exam_n": store.exammain.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
             {{ $t("page_test5") }} <br>
@@ -68,8 +68,8 @@
 
           <div class="col-xs-12 howtoText">
             <!-- <img src="image_system/navigate.PNG" style='height:100%; width:100%;' /> -->
-            {{ $t("page_test1") }} <b>{{  store.exam.em_name }}</b><br>
-            {{ $t("page_test2", {"exam_q": store.exam.em_random_amount, "exam_time": store.exam.em_random_amount, "exam_n": store.exam.em_measure}) }}<br>
+            {{ $t("page_test1") }} <b>{{  store.exammain.em_name }}</b><br>
+            {{ $t("page_test2", {"exam_q": store.exammain.em_random_amount, "exam_time": store.exammain.em_random_amount, "exam_n": store.exammain.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
             {{ $t("page_test5") }} <br>
@@ -138,16 +138,17 @@ store.formsearchtest.user_id = auth.user_id
 store.updatetest.user_id = auth.user_id
 store.updatetime.user_id = auth.user_id
 
-await storeexam.fetchExam()
+await store.fetchExamMainId(route.params.id)
 
 //await storeexam.CheckDataNull()
 
 
-let fitter = await store.setECid(route.params.id);
+let fitter = await store.fetchSetECid(route.params.id);
 
 if (fitter == true) {
+  
 await store.fetchExamTest();
-await store.fetchExamTest();
+// await store.fetchExamTest();
 }
 if (fitter == false) {
    navigateTo('/exam');
@@ -162,6 +163,7 @@ if (fitter == false) {
 
 await setTimeout(() => {
   store.GetTime();
+
 }, 500)
 
 const HideModal = async () => {
@@ -190,7 +192,7 @@ const computedProperty = computed(() => {
 
 watch(computedProperty, (time) => {   //// countime
   if (time == 0) {
-
+    
     Same()
   }
 })

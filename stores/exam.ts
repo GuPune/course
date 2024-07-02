@@ -12,7 +12,7 @@ export const ExamPostStore = defineStore({
     listexam:[],
     listexamqu:[],
     examquest:[],
-    listttt:[],
+    listmain:[],
     counting:false,
     ind:0,
     seconds:"",
@@ -22,7 +22,17 @@ export const ExamPostStore = defineStore({
       page: 1,
       per_page: 50,
       search: '',
+      active_include: [1]
     },
+    exammain:[],
+    formsearchexam: {
+      page: 1,
+      per_page: 50,
+      search: ''
+    },
+
+
+
   }),
   getters: {
     getisActiveCourse: (state) => {
@@ -57,17 +67,49 @@ this.formsearchcourse.search = '';
     async fetchExam() {
     try {
     const data = await ApiService.post('/exam/main/list', this.formsearchcourse).then(response => {
+   
       this.listexam = response.data.data;
       this.total = response.data.total;
       this.total_page = response.data.total_page;
       this.total_filter = response.data.total_filter;
-
      });
+ 
     return true
     } catch (error) {
     return false;
     } 
     },
+
+    async fetchExamList() {
+
+      for (var i = 0, len = this.listexam.length; i < len; i++) {
+        // console.log(this.listexam);
+      //   const data = await ApiService.post('/exam/main/list/'+this.listexam[i].course_id, this.formsearchexam).then(response => {
+         
+      //     this.listexam[i].em_measure = [];
+      //     this.listexam[i].em_time = [];
+  
+      
+      //     if(response.data.data){
+      //       this.listexam[i].em_measure = response.data.data[0].em_measure;
+      //       this.listexam[i].em_time = response.data.data[0].em_time;
+      //       this.listexam[i].em_cover = response.data.data[0].em_cover;
+      //       this.listexam[i].em_name = response.data.data[0].em_name;
+      //       this.listexam[i].em_id = response.data.data[0].em_id;
+      //     }
+        
+      //  });
+    } 
+
+    return true;
+ 
+
+      },
+
+
+      
+
+
     async setCurrentPage(page) {
       this.formsearchcourse.page = page
     },
@@ -96,27 +138,28 @@ this.formsearchcourse.search = '';
          this.listexamqu[i].answer = null;
    arr.push(this.listexamqu[i]);
       }
+     
   
-  this.listttt = [];
-  this.listttt.push(this.listexamqu[0])
+  this.listmain = [];
+  this.listmain.push(this.listexamqu[0])
     },
     async Updatechoice(choices,eq_id) {
 let obj = this.listexamqu.find(item => item.eq_id === eq_id).answer;
-this.listttt[0].answer = choices
+this.listmain[0].answer = choices
     },
 
     async Next(index) {
       this.ind++
-      this.listttt = [];
-      this.listttt.push(this.listexamqu[this.ind])
+      this.listmain = [];
+      this.listmain.push(this.listexamqu[this.ind])
       let obj = this.listexamqu.find(item => item.eq_id === index);
     },
     async Previod(index) {
 
 this.ind--;
 
-this.listttt = [];
-this.listttt.push(this.listexamqu[this.ind])
+this.listmain = [];
+this.listmain.push(this.listexamqu[this.ind])
 let obj = this.listexamqu.find(item => item.eq_id === index);
 
 
@@ -129,13 +172,7 @@ let obj = this.listexamqu.find(item => item.eq_id === index);
     async countDownTimer () {
 
   
-   
-     
-      // const totalMinutes = dateInn + this.timerCount;
-      // this.seconds = totalMinutes % 60;
-      // console.log('dateInMillisecs',dateInMillisecs);
-      // console.log('dateInMillisxxxxxxxxecs', totalMinutes);
-   
+  
 
       if (this.timerCount > 0) {
         await setTimeout(() => {

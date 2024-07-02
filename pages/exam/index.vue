@@ -94,6 +94,7 @@ const auth = useAuthStore()
 const store = ExamPostStore()
 await store.Resetfetch()
 await store.fetchExam()
+//await store.fetchExamList()
 
 
 

@@ -140,7 +140,7 @@ export const CoursePostStore = defineStore({
     this.course_id = id;
       try {
         const data = await ApiService.get('/course/get/' + id).then(response => {
-       
+       console.log(response);
        this.course_lesson = response.data
 
         });
@@ -155,6 +155,7 @@ export const CoursePostStore = defineStore({
       this.lesson = [];
       try {
         const data = await ApiService.get('/course/get/option/'+id+'?user_id='+this.user_id).then(response => {
+          console.log(response);
      this.lesson = response.data;
         });  
       } catch (error) {

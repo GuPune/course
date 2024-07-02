@@ -25,15 +25,19 @@
                             <div class="gridarea__list">
                                 <ul>
                                     <li>
-                                        <i class="icofont-book-alt"></i> {{ item.em_random_amount }} {{ $t('page_exam_report_cho') }} 
+                                        <i class="icofont-book-alt"></i> {{ item.total_exam }} {{ $t('page_exam_report_cho') }} 
                                     </li>
                                     <li>
-                                        <i class="icofont-clock-time"></i> {{ item.em_time }}
+                                        <i class="icofont-clock-time"></i>   -
+                                        {{ item.em_time }}
                                     </li>
                                 </ul>
                             </div>
                             <div class="gridarea__heading">
-                                <h3><a>{{ item.em_name }}</a></h3>
+                                <h3><a>
+                                    {{ locale=='la' ? item.em_name_lo : item.em_name_eng}}
+
+                                </a></h3>
                             </div>
                             <!-- <div class="gridarea__bottom">
 
@@ -86,6 +90,8 @@ import { CoursePostStore } from '@/stores/course';
   import { ExamTestPostStore } from '@/stores/examtest';
 import  ApiService  from '@/services/api.service';
 import Swal from "sweetalert2";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const router = useRouter();
 const store = ExamPostStore()
@@ -95,9 +101,12 @@ const { getisActiveCourse } = storeToRefs(store);
 const searchData = async () => {
     store.formsearchcourse.page = 1
   await store.fetchExam()
+  await store.fetchExamList()
 };
 const GotoExam = async (item) => {
-if(item.total_question == 0){
+
+   
+if(item.total_exam == 0){
     Swal.fire({
         title: 'ບໍ່ມີການສອບເສັງ!',
         text: 'ລໍຖ້າພະນັກງານເພີ່ມເຕີມ!',
@@ -107,13 +116,15 @@ if(item.total_question == 0){
 }else {
     await store.ind == 0;
 storeTest.ind = 0;
-  router.push({ name: 'examquestions-id', params: { id: item.em_id }});
+
+ router.push({ name: 'examquestions-id', params: { id: item.em_id }});
 
 }
 
 };
 function image(i) {
-  let im =  ApiService.image(i);
+ let im =  ApiService.image(i);
+
   return im;
 }
 
@@ -121,12 +132,14 @@ function image(i) {
 const setCurrentPageclick = async (page) => {
  await store.setCurrentPage(page)
  await store.fetchExam()
+ await store.fetchExamList()
 };
 
 const next = async () => {
     if(store.total_page != store.formsearchcourse.page){
         store.formsearchcourse.page = store.formsearchcourse.page + 1
 await store.fetchExam()
+await store.fetchExamList()
     }
 
 
@@ -139,6 +152,7 @@ await store.fetchExam()
 if(store.formsearchcourse.page != 1){
     store.formsearchcourse.page = store.formsearchcourse.page - 1
     await store.fetchExam()
+    await store.fetchExamList()
 }
  };
 </script>

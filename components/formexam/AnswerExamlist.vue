@@ -13,7 +13,7 @@
                 <div class="contact__text">
                   <div class="d-flex justify-content-between flex-wrap">
                   
-                    <h2> <i class="icofont-book-alt" ></i>{{ $t("page_exam_report") }} : {{store.exam.em_name}} </h2>
+                    <h2> <i class="icofont-book-alt" ></i>{{ $t("page_exam_report") }} : {{store.exammain.em_name_lo}} </h2>
                   </div>
                   <br>
                   <!-- <div class="contact__email">
@@ -32,14 +32,14 @@
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-check-circle"></i></div>
                       <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span>
-                        <span v-if="store.exam.em_measure <= store.ec_score" style="color:green" class="px-4">{{ $t('page_type_test_pass') }}</span>
-                        <span v-if="store.exam.em_measure > store.ec_score" style="color:red"  class="px-4">{{ $t('page_type_test_fail') }}</span>
+                        <span v-if="store.exammain.em_measure <= store.ec_score" style="color:green" class="px-4">{{ $t('page_type_test_pass') }}</span>
+                        <span v-if="store.exammain.em_measure > store.ec_score" style="color:red"  class="px-4">{{ $t('page_type_test_fail') }}</span>
                         
                       </p>
                     </div>
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.exam.em_time}}</span></p>
+                      <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.exammain.em_time}}</span></p>
                     </div>
                     
                   </div>
@@ -61,16 +61,14 @@
  
               <h4 class="mb-5">{{ $t("page_exam_report_ans") }}</h4>
               <div v-if="store.examination">
-             
                 <div class=" aos-init aos-animate" data-aos="fade-up" id="howto">
-                    <h4 class="mb-0"> {{ $t("page_exam_report_cho1") }} {{ store.answer_ind + 1 }} : {{ store.examination[store.answer_ind].eq_name }} </h4>
+                    <h4 class="mb-0"> {{ $t("page_exam_report_cho1") }} {{ store.answer_ind + 1 }} : {{ store.examination[store.answer_ind].eq_name_eng }} </h4>
 
                       <div v-if="store.examination[store.answer_ind].eq_image"  > 
                         <img :src="coverimage(store.examination[store.answer_ind].eq_image)" alt="sidbar"  height="200"/>
                       </div>
                        
                 </div>
-
 
                 <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" id="answer-container" >
                   <ul v-for="(a, ins) in store.examination[store.answer_ind].choices"  style="border-style: groove;" 
@@ -80,7 +78,7 @@
                     <div  class="answer-choice-currect" v-if="(a.ec_id == store.examination[store.answer_ind].ec_id) && (a.ec_index == store.examination[store.answer_ind].eq_answer)">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name_lo }}</span>
                     
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-check-circle-fill"></i>
@@ -89,7 +87,7 @@
                     <div  class="answer-choice-success" v-else>
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name_lo }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -100,7 +98,7 @@
                     <div  class="answer-choice-danger"  v-if="(a.ec_id == store.examination[store.answer_ind].ec_id)">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name_lo }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <i class="bi bi-x-circle-fill"></i>
                       <!-- <hr v-if="number % 2 === 0" /> -->
@@ -109,7 +107,7 @@
                     <div  class="answer-choice" v-else="(a.ec_id != store.examination[store.answer_ind].ec_id)">
                       <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name }}</span>
+                      <span class="choice-text">{{choices[ins+1]}}. {{ a.ec_name_lo }}</span>
                       <span v-if="a.ec_image"> <img :src="coverimage(a.ec_image)" alt="sidbar"  width="80" height="80"/></span>
                       <!-- <hr v-if="number % 2 === 0" /> -->
                     </div>

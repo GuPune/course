@@ -7,28 +7,32 @@
         <div class="blogarea__2">
           <div class="row">
             <div class="col-xl-8 col-lg-8">
-              <div class="blog__details__content__wraper" v-if="store.listttt" v-for="(x, index) in store.listttt">
-               
+              <div class="blog__details__content__wraper" v-if="store.listmain" v-for="(x, index) in store.listmain">
+          
                 <div class="row">
                   <div class="col-xl-10 col-lg-10 col-sm-6">
                     <h4 class="sidebar__title aos-init aos-animate" data-aos="fade-up">
-                      <i class="icofont-book-alt"></i> {{ $t("page_exam_report") }} : {{ store.exam.em_name }}
+                      <i class="icofont-book-alt"></i> {{ $t("page_exam_report") }} :    {{ locale=='la' ? store.exammain.em_name_lo : store.exammain.em_name_eng}}
                     </h4>
                     <div class="timerCountdown">
                       <p class="timeText">{{ store.hours }} : {{ store.minutes }} : {{store.seconds }}</p>
                     </div>
                   </div>
                   <div class="col-xl-2 col-lg-2 col-sm-6">
-                    <h6>
+                    <!-- <h6>
                       {{ store.ind + 1 }} / {{ store.total }}
-                    </h6>
+                    </h6> -->
                   </div>
                 </div>
        
-                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name">
+                <div class="course__details__wraper aos-init aos-animate" data-aos="fade-up" v-if="x.eq_name_eng">
 
                       <div id="howto">
-                      <div id="howto-text"  class="" style="font-weight: bold;">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : {{ x.eq_name }}</div>
+                      <div id="howto-text"  class="" style="font-weight: bold;">{{ $t("page_exam_report_cho1") }} {{ store.ind + 1 }} : 
+                        
+                  
+                        {{ locale=='la' ? x.eq_name_lo : x.eq_name_eng}}
+                      </div>
 
                       <div v-if="x.eq_image"  @click="imagemodal(x.eq_image)" class="cursor-pointer"> 
                         <img :src="coverimage(x.eq_image)" alt="sidbar"  height="200"/>
@@ -44,9 +48,13 @@
                   <ul v-for="(a, ins) in x.choices" v-bind:class="{ 'sec-l': store.selectchoice == ins }"
                     style="border-style: groove;" id="choice-card" >
                     <div id="choice" class="cursor-pointer">
-                      <!-- <li id="card-index">{{ ins + 1 }}.</li> -->
                       <hr />
-                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins)">{{choices[ins+1]}}. {{ a.ec_name }}</span>
+         
+                      <span id="choice-text"  class="scrollbar" @click="choosechoice(a.ec_id, index,ins,x.cache_id)">{{choices[ins+1]}}.
+                        
+                    
+                        {{ locale=='la' ? a.ec_name_lo : a.ec_name_eng}}
+                      </span>
                        <div class="force-overflow"></div>
                         <span v-if="a.ec_image" @click="imagemodal(a.ec_image)"> 
                           <img :src="coverimage(a.ec_image)" alt="sidbar"  height="100"/>
@@ -54,12 +62,7 @@
                     </div>
                   </ul>
                 </div>
-                <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
-                  <ul class="main__page__pagination">
-                    <li @click="previodd(x.eq_id)"><a><i class="icofont-double-left"></i></a></li>
-                    <li @click="nextt(x.eq_id)"><a><i class="icofont-double-right"></i></a></li>
-                  </ul>
-                </div> -->
+    
                
                 <div class="submitExam">
                   <button class="full-width-button submitExamBtn" style="background-color:chocolate" @click="updatecho()" v-if="store.selectchoice != null">{{ $t("confirm_answer") }}</button>
@@ -157,6 +160,8 @@ import { defineComponent } from "vue";
 
 import { ExamTestPostStore } from '@/stores/examtest';
 import ApiService from '@/services/api.service';
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const auth = useAuthStore()
 
@@ -178,15 +183,18 @@ function image(i) {
   return im;
 }
 
-const choosechoice = async (choices, index,ins) => {
+const choosechoice = async (choices, index,ins,cache_id) => {
   store.selectchoice = ins;
   store.selectec_id = choices;
+  store.updatetest.ec_id = choices
+  store.updatetest.cache_id = cache_id
 
 };
 
 const updatecho = async () => {
-  let upchoice = await Updatechoice(store.selectec_id);
- await store.fetchExamTest();
+
+let upchoice = await Updatechoice();
+await store.fetchExamTest();
 }
 
 const example = async () => {
@@ -212,7 +220,7 @@ const Hide = async () => {
   store.isconfirm = false;
 };
 const Confirm = async () => {
-    let send = await store.sendexam();
+  let send = await store.sendexam();
   await store.fetchExamTest();
   store.isconfirm = false;
 };

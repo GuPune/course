@@ -15,6 +15,7 @@ export const ExamTestPostStore = defineStore({
     isActiveCourse: true,
     isActive: false,
     examination: [],
+    exammain:[],
     listttt: [],
     isconfirm: false,
     isstart:true,
@@ -35,19 +36,18 @@ export const ExamTestPostStore = defineStore({
       page: 1,
       per_page: 50,
       clear_cach: 0,
-      em_id: null,
+      course_id: null,
       user_id: null,
     },
     updatetest: {
       ec_id: null,
-      user_id: null,
+      cache_id: null,
     },
     formsearex_id:{
 page:1,
 per_page:50,
 search:"",
     },
-
     updatetime: {
       et_time: null,
       em_id: null,
@@ -80,6 +80,7 @@ search:"",
       this.updatetime.em_id = id;
       this.formsearchtest.em_id = parseInt(id);
       const Exam = ExamPostStore();
+     
       const Ex = Exam.listexam.filter(item => item.em_id == id);
  
       if (Ex.length != 0) {
@@ -90,6 +91,41 @@ search:"",
         return false;
       }
     },
+
+
+    // setECid2(id) { 
+    //   this.updatetime.em_id = parseInt(id);
+    //   this.formsearchtest.course_id = parseInt(id);
+    //   return true
+ 
+    // },
+
+    fetchSetECid(id) {
+      try {
+      const data = ApiService.get('/exam/main/get/'+id).then(response => {
+
+
+
+ if(response.status == 200){
+  this.exammain = response.data
+  this.updatetime.em_id = parseInt(id);
+  this.formsearchtest.course_id = parseInt(id);
+  return true
+ }else {
+  return false;
+ }
+
+       });
+   
+       return data;
+      } catch (error) {
+      return false;
+      } 
+      },
+
+
+    
+
     async CheckDataNull(item) {
 
       if(item.length == 0){
@@ -139,25 +175,41 @@ search:"",
       }
     },
 
+    async fetchExamMainId(id) {
+      try {
+      const data = await ApiService.get('/exam/main/get/'+id).then(response => {
+
+ this.exammain = response.data
+       });
+   
+      return true
+      } catch (error) {
+      return false;
+      } 
+      },
+
+
     async ResetExam() {
       this.ind = 0;
       this.answer_ind = 0;
       this.formsearchtest.clear_cach = 1;
       this.isstart = true;
-    
+
       await this.clearTimer()
       const data = await ApiService.post('/exam/start/render', this.formsearchtest);
-       this.updatetime.et_time = this.exam.em_time
+       this.updatetime.et_time = this.exammain.em_time
       const updatetime = await ApiService.post('/exam/time/render',this.updatetime)
      await this.GetTime();
-    // await this.countDownTimer();
+    
      return true;
     },
 
 
     async sendexam() {
+      this.updatetime.course_id = this.exammain.course_id 
+      await this.clearTimer()
       const data = await ApiService.post('/exam/result/render', this.updatetime).then(response => {
-    
+
          });
          return true;
   
@@ -166,11 +218,13 @@ search:"",
     async fetchExamTest() {
       this.formsearchtest.clear_cach = 0;
       this.selectchoice = null;
+      
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
-        
+     
           this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
+      
           this.CheckDataNull(this.examination.length)
           if(response.data.exam_complete == 1){
             this.isstart = false;
@@ -187,8 +241,7 @@ search:"",
           this.ec_score = score;
 
           }
-         this.fetchExamquest()
-        // this.GetTime()
+      this.fetchExamquest()
         });
         return true
       } catch (error) {
@@ -206,19 +259,20 @@ search:"",
     
       }
      
-      this.listttt = [];
-      this.listttt.push(this.examination[this.ind])
+     this.listmain = [];
+     this.listmain.push(this.examination[this.ind])
+
   
  
     },
 
     async GetTime() {
-   
+    
       try {
         const data = await ApiService.get('/exam/time/?em_id='+ this.updatetime.em_id +'&user_id='+this.updatetest.user_id+'').then(rep => {
       
           if(rep.data == ''){
-            const timeParts = this.exam.em_time.split(':')
+            const timeParts = this.exammain.em_time.split(':')
         
             const hours = parseInt(timeParts[0], 10);
             const minutes = parseInt(timeParts[1], 10);
@@ -232,7 +286,9 @@ search:"",
               const seconds = parseInt(timeParts[2], 10);
               this.timerCount = hours * 3600 + minutes * 60 + seconds;
               this.toHoursAndMinutes(this.timerCount) ///แปลงเวลา
-          }      
+          }    
+          
+        
         });
         return true
       } catch (error) {
@@ -258,13 +314,13 @@ search:"",
       }
     },
 
-    async Updatechoice(choices) {
-      this.updatetest.ec_id = choices
+    async Updatechoice() {
+   
+  
       try {
         const data = await ApiService.post('/exam/send/render', this.updatetest).then(response => {
           const getAll = ApiService.post('/exam/start/render', this.formsearchtest).then(rep => {
             if(rep.data.exam_complete == 1){
-            
               this.sendexam();
             }
           })
@@ -279,14 +335,14 @@ search:"",
 
     async Next(index) {
       this.ind++
-      this.listttt = [];
-      this.listttt.push(this.examination[this.ind])
+      this.listmain = [];
+      this.listmain.push(this.examination[this.ind])
       let obj = this.examination.find(item => item.eq_id === index);
     },
     async Previod(index) {
       this.ind--;
-      this.listttt = [];
-      this.listttt.push(this.examination[this.ind])
+      this.listmain = [];
+      this.listmain.push(this.examination[this.ind])
       let obj = this.examination.find(item => item.eq_id === index);
 
     },
@@ -340,7 +396,10 @@ search:"",
       const result = new Date(this.timerCount * 1000)
   .toISOString()
   .slice(11, 19);
+
   this.updatetime.et_time = result;
+  this.updatetime.er_use_time = result;
+  
       if (this.timeoutId) {
      this.UpdateTime();
         clearTimeout(this.timeoutId);
