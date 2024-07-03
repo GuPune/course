@@ -50,7 +50,7 @@
               data-aos="fade-up"
             >
               <h3>
-                {{store.course_lesson.course_code}} - {{ locale=='la' ? store.course_lesson.course_name : store.course_lesson.course_remark_a}}
+                {{store.course_lesson.course_code}} - {{ locale=='la' ? store.course_lesson.course_name_lo : store.course_lesson.course_name_eng}}
               </h3>
             </div>
 
@@ -163,7 +163,7 @@
                         >
                       
                           <div class="d-flex justify-content-between w-100">
-                            <div style="color: #0AA7FF;" :class="{ 'notread-class': (x.learning_status == 'false'? false : true) }" >
+                            <div style="color: #0AA7FF;" :class="{ 'notread-class': (x.learning_status == 'true'? false : true) }" >
                               {{ index + 1 }}.   {{ locale=='la' ? x.cs_name_lo : x.cs_name_eng}}   {{ y.cg_id }}
                             </div>
                           </div>

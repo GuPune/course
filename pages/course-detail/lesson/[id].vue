@@ -487,37 +487,40 @@ const prev = async () => {
 
   
 if(store.prevs == 0){
- 
-  // router.push({
-  //       path: '/course-detail/lesson/' + store.course_read.course_id,
-  //       query: {
-  //   course_id: store.course_read.course_id,
-  //   cg_id: store.previous_couse_group.cg_id,
-  //   cs_id: route.query.cs_id,
-  // }
-  //     })
 
+  router.push({
+        path: '/course-detail/lesson/' + store.course_read.course_id,
+        query: {
+    course_id: store.course_read.course_id,
+    cg_id: store.previous_couse_group.cg_id,
+    cs_id: route.query.cs_id,
+  }
+      })
 
+      console.log('if',store.previous_couse_group.cg_id);
 
-  //    store.formsearchlearing.course_id = store.course_read.course_id
-  //    store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
-  //    store.formsearchlearing.cs_id = route.query.cs_id
+     store.formsearchlearing.course_id = store.course_read.course_id
+     store.formsearchlearing.cg_id = store.previous_couse_group.cg_id
+     store.formsearchlearing.cs_id = route.query.cs_id
 
-  //    let prev = await store.fetchCoursereadPrev();
+     let prev = await store.fetchCoursereadPrev();
   
 }else{
+  console.log('else');
     router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
     course_id: store.course_read.course_id,
-    cg_id: store.previous_lesson.cg_id,
+    cg_id: store.curent_couse_group.cg_id,
     cs_id: store.previous_lesson.cs_id,
   }
       })
-
+   
       store.formsearchlearing.course_id = store.course_read.course_id
-      store.formsearchlearing.cg_id = store.previous_lesson.cg_id
+      store.formsearchlearing.cg_id = store.curent_couse_group.cg_id
       store.formsearchlearing.cs_id = store.previous_lesson.cs_id
+
+      
 
       let prev = await store.fetchCoursereadPrev();
 }
