@@ -12,7 +12,12 @@
           <div class="breadcrumb__content__wraper" data-aos="fade-up">
             <div class="breadcrumb__title">
             
-              <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_course_one") }} : {{ store.course_lesson.course_code }} - {{ store.course_lesson.course_name }}</span>
+              <span style="font-size: 24px;font-weight: 400;">  {{ $t("page_course_one") }} :
+             
+                {{ store.course_lesson.course_code }} - 
+        
+                {{ locale=='la' ? store.course_lesson.course_name_lo : store.course_lesson.course_name_eng}}
+              </span>
             </div>
             <div class="breadcrumb__inner">
            
@@ -95,7 +100,7 @@
                
               </div>
               <div v-if="store.lesson.length > 0" > 
-              <p class="mb-0">{{$t('already_read')}} : {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success">({{store.progress}}%)</span></p>
+              <p class="mb-0">{{$t('already_read')}} : {{store.learned}} / {{store.total_lesson_progress}}  <span class="text-success" v-if="store.progress !== 'NaN'">({{store.progress}}%)</span></p>
               <p class="mb-0">{{$t('last_read_time')}} : {{store.last_date}}</p>
               <p class="mb-0" @click=lastlesson(store.last_course_group,store.last_lesson)>{{$t('last_read_lesson')}} : <span style="color:  #0AA7FF;cursor: pointer;">ກ່ອນຈະຊີງຂຶ້ນໜ້າລົດຄັນອື່ນ ຜູ່ຂັບຂີ່ຕ້ອງຄໍານຶງເຖິງຫຍັງແດ່?</span></p>
               </div>
@@ -250,16 +255,18 @@ const gotoCourse = async () => {
 }
 const lastlesson = async (group,lesson) => {
 
-  
+
+
   router.push({
         path: '/course-detail/lesson/' + router.currentRoute.value.params.id,
         query: {
     course_id: router.currentRoute.value.params.id,
     cg_id: group.cg_id,
     cs_id: lesson.cs_id,
-
   }
       })
+
+     
 
 }
 

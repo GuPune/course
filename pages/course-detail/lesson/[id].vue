@@ -340,6 +340,9 @@ const auth = useAuthStore();
 const route = useRoute();
 const profile = await auth.getProfile();
 
+// const storet = CoursePostStore();
+// storet.progersslesson(router.currentRoute.value.params.id);
+
 store.user_id = auth.user_id;
 Swal.fire({
     allowEscapeKey: false,

@@ -72,7 +72,7 @@
                     </div>
                     <div class="gridarea__bottom p-0">
                         <div class="gridarea__bottom__left">
-                            <div class="gridarea__star ms-2 pe-2 border-end" v-if="item.total_course_group" style="color: #0AA7FF;">
+                            <div class="gridarea__star ms-2 pe-2 border-end" style="color: #0AA7FF;">
                                 {{$t('num_subject')}}:
                                  {{ item.total_course_group }}
                             </div>

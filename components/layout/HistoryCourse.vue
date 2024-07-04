@@ -4,7 +4,7 @@
                         <div class="col-12 col-sm-6 col-md-3" style="width: 18rem;"  v-for="(item, index ) in store.history"  :key="item.course_id"  @click="SelectCourse(item)">
                             <img :src="coverimage(item.course_cover)"  class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text">{{item.course_remark_a}}</p>
+                                <p class="card-text">{{item.course_code}} : {{item.course_name_lo}}</p>
                                 <p class="mb-0">ອ່ານແລ້ວ: {{item.learned}}/{{item.total_lesson}} <span class="text-success" >({{item.progress}}%)</span></p>
                                 <p class="mb-0">ເຂົ້າເບິ່ງຫຼ້າສູດ: {{ item.last_date }}</p>
                             </div>
