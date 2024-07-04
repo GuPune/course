@@ -128,7 +128,7 @@ export const LessonStore = defineStore({
         return false
       }
 
-      const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
+      const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'&sort=desc').then(response => {
         console.log(response.data);
 this.curent_lesson = response.data.curent_lesson
 this.next_lesson = response.data.next_lesson
@@ -271,7 +271,7 @@ try {
           async fetchCoursereadNext() {
             
         
-            const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
+            const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'&sort=asc').then(response => {
           
        this.curent_lesson = response.data.curent_lesson
        this.next_lesson = response.data.next_lesson
@@ -296,7 +296,7 @@ try {
                 async fetchCoursereadPrev() {
 
                   console.log(this.formsearchlearing);
-                  const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'').then(response => {
+                  const learing = await ApiService.get('course/lesson/list/learn/q?course_id='+this.formsearchlearing.course_id+'&cg_id='+this.formsearchlearing.cg_id+'&user_id='+this.formsearchlearing.user_id+'&cs_id='+this.formsearchlearing.cs_id+'&sort=desc').then(response => {
                  console.log(response.data);
                     this.curent_lesson = response.data.curent_lesson
                     this.next_lesson = response.data.next_lesson
