@@ -101,7 +101,7 @@ const { getisActiveCourse } = storeToRefs(store);
 const searchData = async () => {
     store.formsearchcourse.page = 1
   await store.fetchExam()
-  await store.fetchExamList()
+ // await store.fetchExamList()
 };
 const GotoExam = async (item) => {
 
@@ -132,27 +132,24 @@ function image(i) {
 const setCurrentPageclick = async (page) => {
  await store.setCurrentPage(page)
  await store.fetchExam()
- await store.fetchExamList()
+ //await store.fetchExamList()
 };
 
 const next = async () => {
     if(store.total_page != store.formsearchcourse.page){
         store.formsearchcourse.page = store.formsearchcourse.page + 1
 await store.fetchExam()
-await store.fetchExamList()
+//await store.fetchExamList()
     }
 
 
  };
 
  const pred = async () => {
-// store.formsearchcourse.page = store.formsearchcourse.page - 1
-//await store.fetchCourse()
-
 if(store.formsearchcourse.page != 1){
     store.formsearchcourse.page = store.formsearchcourse.page - 1
     await store.fetchExam()
-    await store.fetchExamList()
+   // await store.fetchExamList()
 }
  };
 </script>
