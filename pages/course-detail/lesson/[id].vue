@@ -304,19 +304,19 @@
 
   <div class="d-flex gap-3 justify-content-center flex-wrap">
     <button
-      class="btn"
-      style="background-color: #2ab0e5; width: 10%"
+      class="btn bt-qutr-prev"
+    
       @click="prev()"
       v-if="store.prevs_group != 0 || store.prevs != 0"
     >
-      <span aria-hidden="true">&laquo;</span><span>Back</span>
+      <span class="quit" aria-hidden="true">&laquo;</span><span class="quit">Back</span>
     </button>
     <button
-      class="btn"
-      style="background-color: #2ab0e5; width: 10%"
+      class="btn bt-qutr-next"
+ 
       @click="next()"
     >
-      Next<span aria-hidden="true">&raquo;</span>
+       <span class="quit">Next</span><span aria-hidden="true" class="quit">&raquo;</span>
     </button>
   </div>
   <br />
@@ -521,6 +521,7 @@ const next = async () => {
   }
 
   if (store.nexts == 0) {
+
     router.push({
       path: "/course-detail/lesson/" + store.course_read.course_id,
       query: {
@@ -575,6 +576,19 @@ const next = async () => {
 </script>
 
 <style>
+
+.quit {
+  font-size: 20px; /* ขนาดฟอนต์จะเป็น 2% ของความกว้างของหน้าจอ */
+}
+
+.bt-qutr-prev{
+  background-color: #2ab0e5; width: 10%;
+}
+.bt-qutr-next{
+  background-color: #2ab0e5; width: 10%;
+}
+
+
 .blogarae__img__2 > img {
   max-height: 430cm;
   object-fit: cover;
@@ -612,7 +626,23 @@ const next = async () => {
   .author__text {
     margin-bottom: 10px;
   }
+
+  .quit {
+  font-size: 18px;
 }
+.bt-qutr-prev{
+  
+  background-color: #2ab0e5; width: 30%;
+}
+
+.bt-qutr-next{
+  background-color: #2ab0e5; width: 30%;
+}
+
+
+}
+
+
 
 .youtube-embed {
   position: relative;

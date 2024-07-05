@@ -154,6 +154,7 @@
   "page_test7":"7. The timer will start immediatly after you click “Start the test”. When time is up, the system will auto submit all answers. Unanswered questions will receive 0 score.",
   "page_test8":"8. After submitted, the system will auto give the score, display the result, and keep the record. you may check your answers again.",
   "page_test9":"9. While taking the test, please do not go to other page",
+  "page_theory_test":"Theory Test for Course",
 
   
   "page_close":"Close",

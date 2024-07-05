@@ -429,7 +429,7 @@ if(this.dltcard){
         const zipcode = await ApiService.post('/master_data/zipcode', this.formszipcode)
         if (zipcode.data.data) {
           
-          console.log(zipcode.data);
+         
           this.zipcode = zipcode.data.data
    
         } else {

@@ -6,6 +6,11 @@
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
               <div class="breadcrumb__title">
+        
+
+         
+                
+                {{ $t("page_theory_test") }} {{  store.exammain.em_code }} : {{ locale=='la' ? store.exammain.em_name_lo : store.exammain.em_name_eng}}
               </div>
               <div class="breadcrumb__inner">
               </div>
@@ -13,11 +18,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+    <br>
     <div class="coursearea">
       <div class="container-xxl">
         <div class="row">
           <div class="col-xl-12">
+            
             <!-- <FormExamFitter></FormExamFitter> -->
           </div>
           <div class="col-xl-12 col-lg-12 col-md-12 col-12" v-if="store.examination.length > 0">
@@ -37,7 +44,7 @@
         <div class="row">
 
           <div class="col-xs-12">
-            {{ $t("page_test1") }} <b>{{  store.exammain.em_name }}</b><br>
+            {{ $t("page_test1") }} <b>{{ locale=='la' ? store.exammain.em_name_lo : store.exammain.em_name_eng}}</b><br>
             {{ $t("page_test2", {"exam_q": store.exammain.em_random_amount, "exam_time": store.exammain.em_random_amount, "exam_n": store.exammain.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
@@ -68,7 +75,7 @@
 
           <div class="col-xs-12 howtoText">
             <!-- <img src="image_system/navigate.PNG" style='height:100%; width:100%;' /> -->
-            {{ $t("page_test1") }} <b>{{  store.exammain.em_name }}</b><br>
+            {{ $t("page_test1") }} <b>{{ locale=='la' ? store.exammain.em_name_lo : store.exammain.em_name_eng}}</b><br>
             {{ $t("page_test2", {"exam_q": store.exammain.em_random_amount, "exam_time": store.exammain.em_random_amount, "exam_n": store.exammain.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
@@ -124,6 +131,8 @@ import { onMounted, onUnmounted } from 'vue';
 import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 import ApiService from '@/services/api.service';
 import Swal from "sweetalert2";
+import { useI18n } from "vue-i18n";
+const { locale, setLocale } = useI18n();
 
 const auth = useAuthStore()
 const storeexam = ExamPostStore()

@@ -25,7 +25,7 @@
                             <div class="gridarea__list">
                                 <ul>
                                     <li>
-                                        <i class="icofont-book-alt"></i> {{ item.total_exam }} {{ $t('page_exam_report_cho') }} 
+                                        <i class="icofont-book-alt"></i> {{ item.total_question }} {{ $t('page_exam_report_cho') }} 
                                     </li>
                                     <li>
                                         <i class="icofont-clock-time"></i>   -
@@ -39,22 +39,7 @@
 
                                 </a></h3>
                             </div>
-                            <!-- <div class="gridarea__bottom">
-
-                                <a>
-                                    <div class="gridarea__small__img">
-                                        <img src="../../assets/img/grid/grid_small_1.jpg" alt="grid">
-                                        <div class="gridarea__small__content">
-                                            <h6>{{ item.user_create }}</h6>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <div class="gridarea__star">
-                                    
-                                    <span>({{ item.total_question }})</span>
-                                </div>
-                            </div> -->
+                          
                             <div class="gridarea__bottom">
                                 <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item)">
                                     {{ $t("page_exam_bt") }}</button>
