@@ -51,18 +51,19 @@
                 <div style="text-align: center" v-if="stores.last_course">
                   <span
                     style="font-size: 24px; font-weight: 400"
-                    v-if="locale == 'la'"
+                
                   >
-                    {{ stores.last_course.course_code }} -
-                    {{ stores.last_course.course_name }}</span
+                  {{ stores.last_course.course_code }} -
+                
+                    
+                    {{
+                    locale == "la"
+                      ? store.last_course.course_name_lo
+                      : store.last_course.course_name_eng
+                  }}
+                    </span
                   >
-                  <span
-                    style="font-size: 24px; font-weight: 400"
-                    v-if="locale == 'en'"
-                  >
-                    {{ stores.last_course.course_code }} -
-                    {{ stores.last_course.course_remark_a }}</span
-                  >
+                
                 </div>
               </div>
             </div>

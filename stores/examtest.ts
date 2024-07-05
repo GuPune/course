@@ -176,16 +176,15 @@ search:"",
     },
 
     async fetchExamMainId(id) {
-      try {
-      const data = await ApiService.get('/exam/main/get/'+id).then(response => {
-
- this.exammain = response.data
-       });
+//       try {
+//       const data = await ApiService.get('/exam/main/get/'+id).then(response => {
+//  this.exammain = response.data
+//        });
    
-      return true
-      } catch (error) {
-      return false;
-      } 
+//       return true
+//       } catch (error) {
+//       return false;
+//       } 
       },
 
 

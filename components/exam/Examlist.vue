@@ -90,21 +90,30 @@ const searchData = async () => {
 };
 const GotoExam = async (item) => {
 
-   
-if(item.total_exam == 0){
-    Swal.fire({
-        title: 'ບໍ່ມີການສອບເສັງ!',
-        text: 'ລໍຖ້າພະນັກງານເພີ່ມເຕີມ!',
-        icon: 'error',
-      });
+//    console.log(item);
+// if(item.total_exam == 0){
+//     Swal.fire({
+//         title: 'ບໍ່ມີການສອບເສັງ!',
+//         text: 'ລໍຖ້າພະນັກງານເພີ່ມເຕີມ!',
+//         icon: 'error',
+//       });
 
-}else {
-    await store.ind == 0;
+// }else {
+//     await store.ind == 0;
+// storeTest.ind = 0;
+
+//  router.push({ name: 'examquestions-id', params: { id: item.em_id }});
+
+
+
+ 
+// }
+
+
+await store.ind == 0;
 storeTest.ind = 0;
 
- router.push({ name: 'examquestions-id', params: { id: item.em_id }});
-
-}
+router.push({ name: 'examquestions-id', params: { id: item.em_id }});
 
 };
 function image(i) {

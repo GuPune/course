@@ -147,7 +147,7 @@ store.formsearchtest.user_id = auth.user_id
 store.updatetest.user_id = auth.user_id
 store.updatetime.user_id = auth.user_id
 
-await store.fetchExamMainId(route.params.id)
+// await store.fetchExamMainId(route.params.id)
 
 //await storeexam.CheckDataNull()
 
@@ -155,7 +155,6 @@ await store.fetchExamMainId(route.params.id)
 let fitter = await store.fetchSetECid(route.params.id);
 
 if (fitter == true) {
-  
 await store.fetchExamTest();
 // await store.fetchExamTest();
 }
