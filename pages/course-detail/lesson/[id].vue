@@ -154,6 +154,7 @@
                                   <p class="fs-4 fw-bold mb-0">
                                     {{ store.curent_lesson.cs_description }}
                                   </p>
+
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   <p class="fs-4 fw-bold mb-0"></p>
@@ -280,7 +281,7 @@
                       class="accordion-item"
                       style="padding: 15px; background-color: #f5f5f5"
                     >
-                      <span
+                      <!-- <span
                         style="font-size: 20px; font-weight: bold"
                         v-if="
                           store.curent_lesson.cs_name_lo.trim().endsWith('?')
@@ -289,7 +290,9 @@
                       </span>
                       <span style="font-size: 20px; font-weight: 400">
                         {{ store.curent_lesson.cs_description }}</span
-                      >
+                      > -->
+
+                      <div v-html="store.curent_lesson.cs_description"></div>
                     </div>
                   </div>
                 </div>
