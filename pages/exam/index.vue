@@ -28,24 +28,15 @@
    <div class="coursearea sp_top_100 sp_bottom_100">
             <div class="container">
                 <div class="row">
-                    <!-- <div class="col-xl-12">
-                    <ExamFitter></ExamFitter>
-                    </div> -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                        <Examlist></Examlist>
-                        <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
-                            <ul class="main__page__pagination">
-                                <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class="icofont-double-right"></i></a></li>
-                            </ul>
-                        </div> -->
+                      
+                        <ExamNew></ExamNew>
                     </div>
                 </div>
             </div>
         </div>
+
+        
     </div>
   </template>
   <script lang="ts" setup>
@@ -54,6 +45,8 @@
 })
   import Examlist from '@/components/exam/Examlist.vue';
   import ExamFitter from '@/components/exam/ExamFitter.vue';
+  import ExamNew from '@/components/exam/ExamNew.vue';
+   
   import { ExamPostStore } from '@/stores/exam';
   import { useAuthStore } from '@/stores/auth'; // import the auth store we just created
 const auth = useAuthStore()

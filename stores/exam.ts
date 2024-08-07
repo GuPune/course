@@ -66,7 +66,8 @@ this.formsearchcourse.search = '';
 
     async fetchExam() {
     try {
-    const data = await ApiService.post('/exam/main/list', this.formsearchcourse).then(response => {
+    const data = await ApiService.post('/exam/main/list', this.formsearchexam).then(response => {
+      console.log(response);
       this.listexam = response.data.data;
       this.total = response.data.total;
       this.total_page = response.data.total_page;
