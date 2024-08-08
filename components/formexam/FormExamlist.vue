@@ -40,13 +40,13 @@
                     </div>
                   </li>
                 </ul>
-                <div class="populer__tag__list">
+                <!-- <div class="populer__tag__list">
                   <ul>
                     <li style="width: 47%" @click="example();" class="exma cursor-pointer"><a >{{ $t("page_exam_t") }}</a></li>
                     <li style="width: 47%" class="send cursor-pointer " @click="send();">
                       <a >{{ $t("page_exam_send") }} </a></li>
                   </ul>
-                </div>
+                </div> -->
                 <hr />
                 <div class="row">
                   <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
@@ -56,6 +56,14 @@
                         {{ choices[a.ec_index]  }}
                       </span>
                     </li>
+                  </div>
+                </div>
+
+                   <div class="row">
+                  <div class="col-12">
+                   
+                                 <button class="full-width-button submitExamBtn" style="background-color:green" @click="send();">ສົ່ງ</button>
+
                   </div>
                 </div>
               </div>
