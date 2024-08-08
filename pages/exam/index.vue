@@ -27,9 +27,13 @@
     </div>
    <div class="coursearea sp_top_100 sp_bottom_100">
             <div class="container">
+              <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                     <ExamHistory></ExamHistory>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                      
                         <ExamNew></ExamNew>
                     </div>
                 </div>
@@ -45,6 +49,8 @@
 })
   import Examlist from '@/components/exam/Examlist.vue';
   import ExamFitter from '@/components/exam/ExamFitter.vue';
+  import ExamHistory from '@/components/exam/ExamHistory.vue';
+
   import ExamNew from '@/components/exam/ExamNew.vue';
    
   import { ExamPostStore } from '@/stores/exam';

@@ -41,8 +41,10 @@
                 </div>
                 <div class="gridarea__content cxf">
                     <div class="gridarea__heading"  >
-                        <h3 @click="SelectCourse(item)" class="cursor-pointer" >
-                        {{item.dlt_code}} - {{ locale=='la' ? item.em_name_lo : item.em_name_eng}}</h3>
+                        <span @click="SelectCourse(item)" class="forsg">
+                  
+                        {{item.dlt_code}} - {{ locale=='la' ? item.em_name_lo : item.em_name_eng}}
+                        </span>
                     </div>
                     <div class="gridarea__price">
                      
@@ -50,7 +52,7 @@
                         <p class="mb-0">  </p>
                     </div>
                     <div class="gridarea__bottom">
-                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 30%;" @click="GotoExam(item)">
+                                <button type="button" class="btn btn-primary btn-sm btn-block bt-svt-all" @click="GotoExam(item)">
                                     {{ $t("page_exam_bt") }} </button>
                             </div>
          
@@ -180,13 +182,44 @@ if(store.formsearchcourse.page != 1){
     .detailBtn {
         width: 100%;
     }   
-}
+    .bt-svt-all {
+    width: 100%;
+    }
+
 .xdg {
+  width: 100%!important;
+   height:100%!important;
+}
+}
+
+
+@media only screen and (min-width: 992px) {
+    .xdg {
   width: 140px!important;
    height:140px!important;
 }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    .xdg {
+  width: 140px!important;
+   height:140px!important;
+}
+}
+
+
+
+
+
 .cxf {
 width: 100%!important;
 }
+
+.forsg{
+    font-weight: bold;
+    font-size: clamp(1rem, 1.8vw, 2rem); /* Responsive font size with limits */
+}
+
 
 </style>

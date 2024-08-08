@@ -301,7 +301,7 @@ const rules = computed(() => {
     },
     password: {
       required: helpers.withMessage("The password field is required", required),
-      minLength: minLength(6),
+      minLength: minLength(5),
     },
   };
 });
