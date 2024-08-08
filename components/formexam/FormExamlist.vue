@@ -6,6 +6,60 @@
       <div class="row">
         <div class="blogarea__2">
           <div class="row">
+            <div class="col-xl-4 col-lg-4">
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate exam-timmer" data-aos="fade-up">
+                <ul class="course__details__populer__list">
+                  <li>
+                    <p style="color: #cf1111;">{{ $t("page_exam_report_remain1") }} {{ store.hours }} {{ $t("page_exam_report_remain2") }} {{ store.minutes }} {{ $t("page_exam_report_remain3") }} {{
+                      store.seconds }} {{ $t("page_exam_report_remain4") }} </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
+                <ul class="recent__list">
+                  <li>
+                    
+                    <div class="recent__img">
+                      <a href="#" v-if="auth.formdetail.user_img">
+                         <img :src="coverimage(auth.formdetail.user_img )" alt="sidbar" id="user-icon"  width="80" height="100"/>
+                      </a>
+                      <a href="#" v-else>
+                         <img src="../../public/images/users/avatar-1.jpg" alt="sidbar" id="user-icon"  width="80" height="100"/>
+                      </a>
+                    </div>
+                    <div class="recent__text">
+                      <div class="recent__date">
+                        <a>{{ $t("page_exam_name") }}: {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</a>
+                      </div>
+                      <!-- <div class="recent__date">
+                        <a>{{ $t("page_exam_code") }} {{ $t("page_exam_person") }}:  {{auth.formdetail.identification_number}}</a>
+                      </div>
+                      <div class="recent__date">
+                        <a>{{ $t("page_exam_status") }}: {{ $t("page_exam_report_test") }}</a>
+                      </div> -->
+                    </div>
+                  </li>
+                </ul>
+                <div class="populer__tag__list">
+                  <ul>
+                    <li style="width: 47%" @click="example();" class="exma cursor-pointer"><a >{{ $t("page_exam_t") }}</a></li>
+                    <li style="width: 47%" class="send cursor-pointer " @click="send();">
+                      <a >{{ $t("page_exam_send") }} </a></li>
+                  </ul>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
+                    {{ $t("page_exam_report_cho1") }} {{ index + 1 }} : 
+                    <li v-for="(a, index) in x.choices">
+                      <span style="color: red" v-if="a.ec_id == x.ec_id">
+                        {{ choices[a.ec_index]  }}
+                      </span>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="col-xl-8 col-lg-8">
               <div class="blog__details__content__wraper" v-if="store.listmain" v-for="(x, index) in store.listmain">
           
@@ -69,60 +123,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-4 col-lg-4">
-              <div class="blogsidebar__content__wraper__2 aos-init aos-animate exam-timmer" data-aos="fade-up">
-                <ul class="course__details__populer__list">
-                  <li>
-                    <p style="color: #cf1111;">{{ $t("page_exam_report_remain1") }} {{ store.hours }} {{ $t("page_exam_report_remain2") }} {{ store.minutes }} {{ $t("page_exam_report_remain3") }} {{
-                      store.seconds }} {{ $t("page_exam_report_remain4") }} </p>
-                  </li>
-                </ul>
-              </div>
-              <div class="blogsidebar__content__wraper__2 aos-init aos-animate" data-aos="fade-up">
-                <ul class="recent__list">
-                  <li>
-                    
-                    <div class="recent__img">
-                      <a href="#" v-if="auth.formdetail.user_img">
-                         <img :src="coverimage(auth.formdetail.user_img )" alt="sidbar" id="user-icon"  width="80" height="100"/>
-                      </a>
-                      <a href="#" v-else>
-                         <img src="../../public/images/users/avatar-1.jpg" alt="sidbar" id="user-icon"  width="80" height="100"/>
-                      </a>
-                    </div>
-                    <div class="recent__text">
-                      <div class="recent__date">
-                        <a>{{ $t("page_exam_name") }}: {{auth.formuser.user_firstname}} {{auth.formuser.user_lastname}}</a>
-                      </div>
-                      <!-- <div class="recent__date">
-                        <a>{{ $t("page_exam_code") }} {{ $t("page_exam_person") }}:  {{auth.formdetail.identification_number}}</a>
-                      </div>
-                      <div class="recent__date">
-                        <a>{{ $t("page_exam_status") }}: {{ $t("page_exam_report_test") }}</a>
-                      </div> -->
-                    </div>
-                  </li>
-                </ul>
-                <div class="populer__tag__list">
-                  <ul>
-                    <li style="width: 47%" @click="example();" class="exma cursor-pointer"><a >{{ $t("page_exam_t") }}</a></li>
-                    <li style="width: 47%" class="send cursor-pointer " @click="send();">
-                      <a >{{ $t("page_exam_send") }} </a></li>
-                  </ul>
-                </div>
-                <hr />
-                <div class="row">
-                  <div class="col-6" v-if="store.examination" v-for="(x, index) in store.examination">
-                    {{ $t("page_exam_report_cho1") }} {{ index + 1 }} : 
-                    <li v-for="(a, index) in x.choices">
-                      <span style="color: red" v-if="a.ec_id == x.ec_id">
-                        {{ choices[a.ec_index]  }}
-                      </span>
-                    </li>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>

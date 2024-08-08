@@ -1,4 +1,28 @@
 <template>
+
+    <div class="row" style="padding-bottom:10px;">
+    <div class="col-md-8">
+      <div class="course__text">
+                            
+                                <h4>{{$t('page_course_available_exam')}}</h4>
+                            </div>
+    </div>
+    <div class="col-md-2">
+      <div class="course__text">
+        <input type="text" :placeholder="$t('search_course_placeholder')" class="form-control" >
+                            </div>
+    </div>
+    <div class="col-md-2">
+      <div class="course__text">
+        <select class="form-select" aria-label="Default select example" >
+                                            <option  value="5" selected="">5</option>
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                          </select>
+                            </div>
+    </div>
+  </div>
     <div class="tab-content tab__content__wrapper with__sidebar__content" id="myTabContent">
         <div class="tab-pane fade" v-bind:class="{ active: getisActiveCourse, show: getisActiveCourse }" id="projects__one"
             role="tabpanel" aria-labelledby="projects__one">
@@ -11,22 +35,23 @@
 
             <div class="gridarea__wraper gridarea__wraper__1 gridarea__course__list" data-aos="fade-up" v-for="(item, index ) in store.listexam" 
             >
-                <div class="gridarea__img">
-                     <span  @click="SelectCourse(item)" class="cursor-pointer"><img :src="coverimage(item.em_cover)" alt="grid"></span>
+                <div class="gridarea__img xdg">
+                     <span  @click="SelectCourse(item)" class="cursor-pointer">
+                     <img :src="coverimage(item.em_cover)" alt="grid"></span>
                 </div>
-                <div class="gridarea__content">
+                <div class="gridarea__content cxf">
                     <div class="gridarea__heading"  >
-                        <h3 @click="SelectCourse(item)" class="cursor-pointer" style="color:var(--themeBlue)">
+                        <h3 @click="SelectCourse(item)" class="cursor-pointer" >
                         {{item.dlt_code}} - {{ locale=='la' ? item.em_name_lo : item.em_name_eng}}</h3>
                     </div>
                     <div class="gridarea__price">
-                        <p style="font-size:12px">    {{ item.em_description }}</p>
+                     
                         <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
                         <p class="mb-0">  </p>
                     </div>
                     <div class="gridarea__bottom">
-                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 100%;" @click="GotoExam(item)">
-                                    {{ $t("page_exam_bt") }}</button>
+                                <button type="button" class="btn btn-primary btn-sm btn-block" style="width: 30%;" @click="GotoExam(item)">
+                                    {{ $t("page_exam_bt") }} </button>
                             </div>
          
                 </div>
@@ -148,12 +173,20 @@ if(store.formsearchcourse.page != 1){
 
 </script>
 
-<style>
+<style scoped>
+
+
 @media screen and (max-width: 767px) {
     .detailBtn {
         width: 100%;
     }   
 }
-
+.xdg {
+  width: 140px!important;
+   height:140px!important;
+}
+.cxf {
+width: 100%!important;
+}
 
 </style>

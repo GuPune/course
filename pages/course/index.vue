@@ -25,6 +25,15 @@
     </div>
    <div>
             <div class="container">
+
+                <div class="row my-4">
+                    <p style="font-size:20px">{{ $t("page_course_attended") }}</p>
+                 
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <HistoryCourse></HistoryCourse>
+                    </div>
+                </div>
+
                 <div class="row my-4">
                     <p style="font-size:20px">{{ $t("page_course_available") }}</p>
                     <CourseSel></CourseSel>
@@ -66,7 +75,7 @@ let profile = await auth.getProfile()
     store.formsearchcourse.search = '';
     store.formsearchcourse.active_include = [1];
 let course = await store.fetchCourse();
-//let history = await store.fetchCourseHistory();
+let history = await store.fetchCourseHistory();
  setTimeout(() => Swal.close(), 500);
 
   </script>

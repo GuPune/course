@@ -107,6 +107,7 @@ export const CoursePostStore = defineStore({
     async fetchCourseHistory() {
     try {
     const data = await ApiService.post('/course/learn/history/'+this.user_id, this.formsearchcoursestory).then(response => {
+    
   this.history = response.data.data
   this.total_page_history = response.data.total_page
   this.total_filter_history = response.data.total_filter
@@ -155,9 +156,7 @@ export const CoursePostStore = defineStore({
       this.lesson = [];
       try {
         const data = await ApiService.get('/course/get/option/'+id+'?user_id='+this.user_id).then(response => {
-     
      this.lesson = response.data;
-
         });  
       } catch (error) {
    
