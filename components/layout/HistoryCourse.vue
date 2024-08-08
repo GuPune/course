@@ -11,9 +11,7 @@
                         </div>
                    
                     </div>
-                    
                         <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_page_history > 0">
-                            
                             <ul class="main__page__pagination">
                                 <li >Page : </li>
                                 <li @click="pred()"><a href="#"><i class="icofont-double-left"></i></a></li>
@@ -23,7 +21,6 @@
                                     <a  href="#" v-else>{{page}}
                                     </a>
                                 </li>
-                            
                                 <li  @click="next()"><a href="#"><i class="icofont-double-right"></i></a></li>
                             </ul>
                         </div>
