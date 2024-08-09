@@ -8,6 +8,8 @@
             <div class="col-xl-12 col-lg-12">
               <div class="blog__details__content__wraper" >
                 <div class="row">
+
+               
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div>
                 <div class="contact__text">
@@ -31,34 +33,72 @@
                     </div> -->
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-check-circle"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span>
+                      <p style="font-size: 24px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.ec_score}} ໃນ {{store.total}}</span>
                         <span v-if="store.exammain.em_measure <= store.ec_score" style="color:green" class="px-4">{{ $t('page_type_test_pass') }}</span>
                         <span v-if="store.exammain.em_measure > store.ec_score" style="color:red"  class="px-4">{{ $t('page_type_test_fail') }}</span>
                         
                       </p>
                     </div>
+                
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-alarm-fill"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_time") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.exammain.em_time}}</span></p>
+                      <p style="font-size: 24px;">{{ $t("page_exam_report_time_all") }}   {{store.timeall.em_time}} <br> <span style="font-size: 24px;">{{ $t("page_exam_report_time_use") }}  {{store.timeall.er_use_time}}</span></p>
+                    </div>
+
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-boxes"></i></div>
+                      <p style="font-size: 24px;">{{ $t("page_exam_report_time_create") }}   <br>{{store.timeall.er_start_time}} <br>
+          </p>
                     </div>
                     
                   </div>
 
+                  
+
                   <div class="course-info"  id="dis-mobile">
+               
+
                     <div class="contact__email d-flex">
                       <div class="icon"><i class="bi bi-check-circle"></i></div>
-                      <p style="font-size: 20px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 28px; font-weight: bold;">{{store.ec_score}} / {{store.total}}</span></p>
+                      <p style="font-size: 24px;">{{ $t("page_exam_report_score") }}<br> <span style="font-size: 24px; font-weight: bold;">{{store.ec_score}} ໃນ {{store.total}}</span>
+                        <span v-if="store.exammain.em_measure <= store.ec_score" style="color:green" class="px-4">{{ $t('page_type_test_pass') }}</span>
+                        <span v-if="store.exammain.em_measure > store.ec_score" style="color:red"  class="px-4">{{ $t('page_type_test_fail') }}</span>
+                        
+                      </p>
+                    </div>
+<br>
+<div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-alarm-fill"></i></div>
+                      <p style="font-size: 24px;">{{ $t("page_exam_report_time_all") }}   {{store.timeall.em_time}} <br> <span style="font-size: 24px;">{{ $t("page_exam_report_time_use") }}  {{store.timeall.er_use_time}}</span></p>
+                    </div>
+                    <br>
+                    <div class="contact__email d-flex">
+                      <div class="icon"><i class="bi bi-boxes"></i></div>
+                      <p style="font-size: 24px;">{{ $t("page_exam_report_time_create") }}   <br>{{store.timeall.er_start_time}} <br>
+          </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="btnRestart" style="text-align: center;"><button type="button" class="btn btn-success mt-0 w-50"  @click="reset()"><i class="icofont-redo"></i> {{ $t("page_exam_report_begin") }}</button></div>
+          <div class="row">
+    <div class="col-sm">
+      <div class="btnRestart" style="text-align: center;"><button type="button" class="btn btn-primary mt-0 w-50"  @click="openanser()"><i class="icofont-redo"></i> {{ $t("page_exam_report_begin1") }}</button></div>
 
+    </div>
+    <div class="col-sm">
+      <div class="btnRestart" style="text-align: center;"><button type="button" class="btn btn-primary mt-0 w-50"  @click="backToTheort()"><i class="icofont-redo"></i> {{ $t("page_exam_report_begin2") }}</button></div>
+
+    </div>
+    <div class="col-sm">
+      <div class="btnRestart" style="text-align: center;"><button type="button" class="btn btn-primary mt-0 w-50"  @click="reset()"><i class="icofont-redo"></i> {{ $t("page_exam_report_begin3") }}</button></div>
+
+    </div>
+  </div>
           <hr>
 
- 
+ <div v-if="store.AnswerOp">
               <h4 class="mb-5">{{ $t("page_exam_report_ans") }}</h4>
               <div v-if="store.examination">
                 <div class=" aos-init aos-animate" data-aos="fade-up" id="howto">
@@ -133,6 +173,7 @@
           </li>
         </ul>
       </nav>
+    </div>
               </div>
             </div>
           </div>
@@ -179,6 +220,17 @@ await nextt(index);
 const example = async () => {
 store.isActive = true;
 };
+
+
+const openanser = async () => {
+store.AnswerOp = !store.AnswerOp
+};
+
+const backToTheort = async () => {
+
+router.push("/exam");
+};
+
 
 const send = async () => {
   let send = await store.sendexam();
@@ -231,6 +283,7 @@ function coverimage(i) {
     let im =  ApiService.image(i);
   return im;
 }
+
 
 function coverttime(date) {
   const datetime = new Date(date);
@@ -418,7 +471,7 @@ function coverttime(date) {
   color: aqua;
 }
 @media (min-width: 1080px) {
-  .course-info { grid-template-columns: repeat(4, 1fr); }
+  .course-info { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 1080px) {
   .course-info { grid-template-columns: repeat(2, 1fr); }

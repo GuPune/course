@@ -5,8 +5,10 @@ export const ExamTestPostStore = defineStore({
   state: () => ({
     timerEnabled: true,
     timerCount: 0,
+    timerCountFull:0,
     exam_complete:null,
     PopupImage:false,
+    AnswerOp:false,
     image:"",
     selectchoice:null,
     selectec_id:null,
@@ -54,6 +56,10 @@ search:"",
       user_id: null,
       timerCount: null,
       isComplate: false,
+    },
+    timeall:{
+      time_use:"",
+      time_all:""
     }
   }),
 
@@ -110,6 +116,7 @@ search:"",
   this.exammain = response.data
   this.updatetime.em_id = parseInt(id);
   this.formsearchtest.course_id = parseInt(id);
+
   return true
  }else {
   return false;
@@ -132,6 +139,8 @@ search:"",
         this.isstart = false;
       }
     },
+
+
 
 
 //     async setECid(id) { 
@@ -207,8 +216,9 @@ search:"",
     async sendexam() {
       this.updatetime.course_id = this.exammain.course_id 
       await this.clearTimer()
-      const data = await ApiService.post('/exam/result/render', this.updatetime).then(response => {
 
+      const data = await ApiService.post('/exam/result/render', this.updatetime).then(response => {
+         this.GetTime();
          });
          return true;
   
@@ -220,16 +230,20 @@ search:"",
       
       try {
         const data = await ApiService.post('/exam/start/render', this.formsearchtest).then(response => {
-     
+    
           this.exam_complete = response.data.exam_complete
           this.examination = response.data.data;
-      
+
           this.CheckDataNull(this.examination.length)
           if(response.data.exam_complete == 1){
             this.isstart = false;
+
+            this.HistoryExamUser();
+         
           }
   
           this.total = response.data.data.length
+
           this.maxNext = response.data.data.length - 1
           var score = 0;
          for (var i = 0; i < this.examination.length; i++) {
@@ -269,8 +283,9 @@ search:"",
     
       try {
         const data = await ApiService.get('/exam/time/?em_id='+ this.updatetime.em_id +'&user_id='+this.updatetest.user_id+'').then(rep => {
-      
+
           if(rep.data == ''){
+          
             const timeParts = this.exammain.em_time.split(':')
         
             const hours = parseInt(timeParts[0], 10);
@@ -279,12 +294,17 @@ search:"",
             this.timerCount = hours * 3600 + minutes * 60 + seconds;
             this.toHoursAndMinutes(this.timerCount) ///แปลงเวลา
           }else{
+           
              const timeParts = rep.data.et_time.split(':');
               const hours = parseInt(timeParts[0], 10);
               const minutes = parseInt(timeParts[1], 10);
               const seconds = parseInt(timeParts[2], 10);
               this.timerCount = hours * 3600 + minutes * 60 + seconds;
+             
+       
+       
               this.toHoursAndMinutes(this.timerCount) ///แปลงเวลา
+    //    this.ChangetoHoursAndMinutes(this.timerCount) ///แปลงเวลา   
           }    
           
         
@@ -392,13 +412,14 @@ search:"",
     },
     clearTimer() {
   //   this.isstart = true;
+  
       const result = new Date(this.timerCount * 1000)
   .toISOString()
   .slice(11, 19);
 
   this.updatetime.et_time = result;
-  this.updatetime.er_use_time = result;
-  
+ // this.updatetime.er_use_time = result;
+this.CheckEndErTime(this.timerCount);
       if (this.timeoutId) {
      this.UpdateTime();
         clearTimeout(this.timeoutId);
@@ -411,15 +432,115 @@ search:"",
     },
 
     async toHoursAndMinutes() {
-    
       const totalMinutes = Math.floor(this.timerCount / 60);
       this.seconds = this.timerCount % 60;
       this.hours = Math.floor(totalMinutes / 60);
       this.minutes = totalMinutes % 60;
-
       return true;
+    },
+
+    async CheckEndErTime(id) {
+      const timeParts = this.exammain.em_time.split(':')
+        
+      const hours = parseInt(timeParts[0], 10);
+      const minutes = parseInt(timeParts[1], 10);
+      const seconds = parseInt(timeParts[2], 10);
+      this.timerCountFull = hours * 3600 + minutes * 60 + seconds;
+
+
+      let avvvv = this.timerCountFull - id;
+
+const result = new Date(avvvv * 1000)
+.toISOString()
+.slice(11, 19);
+
+
+
+this.updatetime.er_use_time = result;
+
+      
+
+    },
+  
+
+    async ChangetoHoursAndMinutes(id) {
+
+
+
+
+const timeParts = this.exammain.em_time.split(':')
+        
+const hours = parseInt(timeParts[0], 10);
+const minutes = parseInt(timeParts[1], 10);
+const seconds = parseInt(timeParts[2], 10);
+this.timerCountFull = hours * 3600 + minutes * 60 + seconds;
+
+
+let avvvv = this.timerCountFull - id;
+
+const result = new Date(avvvv * 1000)
+.toISOString()
+.slice(11, 19);
+
+
+const natee = Math.floor((this.timerCountFull - id) / 60);
+const winatee = avvvv % 60;
+const formattedTime = `${String(natee).padStart(2, '0')}:${String(winatee).padStart(2, '0')}`;
+
+
+const natee1 = Math.floor((this.timerCountFull) / 60);
+const winatee1 = this.timerCountFull % 60;
+const formattedTime1 = `${String(natee1).padStart(2, '0')}:${String(winatee1).padStart(2, '0')}`;
+
+
+this.timeall.time_all = formattedTime1
+
+this.timeall.time_use = formattedTime
+
+
+
+
+    },
+
+    async HistoryExamUser() {
+
+      try {
+        const data = ApiService.get('/exam/history/?course_id='+this.formsearchtest.course_id+'&user_id='+this.updatetest.user_id).then(response => {
+  
+
+
+  this.timeall.em_time = this.ChangeFormate(response.data[0].em_time);
+  this.timeall.er_start_time = response.data[0].er_start_time
+  this.timeall.er_use_time = this.ChangeFormate(response.data[0].er_use_time)
+ 
+         });
+     
+         return data;
+        } catch (error) {
+        return false;
+        } 
+
+    },
+   ChangeFormate(time) {
+      const timeParts = time.split(':')
+        
+      const hours = parseInt(timeParts[0], 10);
+      const minutes = parseInt(timeParts[1], 10);
+      const seconds = parseInt(timeParts[2], 10);
+      let timea = hours * 3600 + minutes * 60 + seconds;
+  
+      
+
+      const natee1 = Math.floor((timea) / 60);
+const winatee1 = timea % 60;
+const formattedTime1 = `${String(natee1).padStart(2, '0')}:${String(winatee1).padStart(2, '0')}`;
+
+return formattedTime1;
+
 
     }
+
+    
 
   },
 

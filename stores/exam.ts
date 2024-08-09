@@ -10,6 +10,7 @@ export const ExamPostStore = defineStore({
     isActiveCourse:true,  
     isActive:false, 
     listexam:[],
+    user_id:[],
     listexamqu:[],
     examquest:[],
     listmain:[],
@@ -30,6 +31,7 @@ export const ExamPostStore = defineStore({
       per_page: 50,
       search: ''
     },
+    history:[],
 
 
 
@@ -64,10 +66,24 @@ this.formsearchcourse.per_page = 6;
 this.formsearchcourse.search = '';
     },
 
+    async HistoryByUserExam() {
+
+      try {
+        const data = await ApiService.get('/exam/history/?course_id=0&user_id='+this.user_id).then(response => {
+  this.history = response.data
+
+         });
+     
+        return true
+        } catch (error) {
+        return false;
+        } 
+
+    },
+
     async fetchExam() {
     try {
     const data = await ApiService.post('/exam/main/list', this.formsearchexam).then(response => {
-   
       this.listexam = response.data.data;
       this.total = response.data.total;
       this.total_page = response.data.total_page;

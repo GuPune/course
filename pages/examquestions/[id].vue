@@ -155,7 +155,9 @@ store.updatetime.user_id = auth.user_id
 let fitter = await store.fetchSetECid(route.params.id);
 
 if (fitter == true) {
+  
 await store.fetchExamTest();
+
 // await store.fetchExamTest();
 }
 if (fitter == false) {
@@ -173,6 +175,10 @@ await setTimeout(() => {
   store.GetTime();
 
 }, 500)
+
+// await setTimeout(() => {
+//   store.CheckEndErTime();
+// }, 500)
 
 const HideModal = async () => {
   store.isActive = false;

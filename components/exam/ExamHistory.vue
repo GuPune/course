@@ -1,43 +1,35 @@
 <template>
-    <div>
-        <h5>Theory Test History</h5>        
+    <div v-if="store.history.length > 0">
+
+        <h5>{{ $t("page_theory_test_his") }}</h5>        
        <table class="table">
   <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>ສຳລັບຫຼັກສູດ</th>
-      <th>ຜົນຄະແນນ</th>
-      <th>ຜ່ານ? </th>
-      <th> ເວລາກຳນົດ (ນາທີ)  </th>
-      <th> ເວລາໃຊ້ຈິງ(ນາທີ)       </th>
-      <th> ເວລາໄດ້ຜົນ </th>
+      <th>{{ $t("page_theory_test_div") }}</th>
+      <th>{{ $t("page_theory_test_score") }}</th>
+      <th>{{ $t("page_theory_test_pass") }}</th>
+      <th>{{ $t("page_theory_test_time_test") }}</th>
+      <th>{{ $t("page_theory_test_time_user") }}</th>
+      <th>{{ $t("page_theory_test_time_at") }} </th>
     </tr>
-  </thead>
+  </thead>  
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td> B : Car with four-wheels</td>
-      <td> 23 / 25  </td>
-      <td> ຜ່ານ</td>
-      <td>25:00</td>
-      <td> 22:58</td>
-      <td> 2024-03-01 18:23:22 </td>
+    <tr v-for="(item, index) in store.history" :key="index">
+      <th scope="row">{{index + 1}}</th>
+      <td>  {{item.dlt_code}} : {{item.course_name_lo}}</td>
+      <td> {{item.er_score_total}} /  {{item.er_question_total}}  </td>
+      <td> {{item.status}} </td>
+      <td>{{item.em_time}}</td>
+      <td> {{item.er_use_time}}</td>
+      <td>{{item.er_start_time}} </td>
     </tr>
-
-    <tr>
-      <th scope="row">2</th>
-      <td> B : Car with four-wheels</td>
-      <td> 23 / 25  </td>
-      <td> ຜ່ານ</td>
-      <td>25:00</td>
-      <td> 22:58</td>
-      <td> 2024-03-01 18:23:22 </td>
-    </tr>
-  
   </tbody>
 </table>
 
     </div>
+
+
 </template>
 
 
