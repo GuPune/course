@@ -28,9 +28,7 @@
    <div class="coursearea sp_top_100 sp_bottom_100">
             <div class="container">
               <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                     <ExamHistory></ExamHistory>
-                    </div>
+                <ExamHistory></ExamHistory>
                 </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
