@@ -70,6 +70,7 @@ this.formsearchcourse.search = '';
 
       try {
         const data = await ApiService.get('/exam/history/?course_id=0&user_id='+this.user_id).then(response => {
+        
   this.historys = response.data
 
          });

@@ -57,10 +57,11 @@ const auth = useAuthStore()
 
 
 const store = ExamPostStore()
+store.user_id = auth.user_id;
 await store.Resetfetch()
 await store.fetchExam()
 await store.HistoryByUserExam()
-store.user_id = auth.user_id;
+
 //await store.fetchExamList()
 
 
