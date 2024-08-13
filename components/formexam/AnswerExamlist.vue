@@ -24,7 +24,13 @@
                           <h2>
                             <i class="icofont-book-alt"></i
                             >{{ $t("page_exam_report") }} :
-                            {{ store.exammain.em_name_lo }}
+                           
+
+                            {{
+                    locale == "la"
+                      ? store.exammain.em_name_lo
+                      : store.exammain.em_name_eng
+                  }}
                           </h2>
                         </div>
                         <br />
@@ -367,7 +373,7 @@ import { defineComponent } from "vue";
 
 import { ExamTestPostStore } from "@/stores/examtest";
 import ApiService from "@/services/api.service";
-
+import { useI18n } from "vue-i18n";
 const store = ExamTestPostStore();
 const { getisActiveCourse } = storeToRefs(store);
 
@@ -375,7 +381,7 @@ const { Updatechoice } = ExamTestPostStore(); //Action
 const { Next } = ExamTestPostStore(); //Action
 const { Previod } = ExamTestPostStore(); //Action
 const { countDownTimer } = ExamTestPostStore(); //Action
-
+const { locale, setLocale } = useI18n();
 const router = useRouter();
 store.answer_ind = 0;
 const choices = ["", "ກ", "ຂ", "ຄ", "ງ"];

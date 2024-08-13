@@ -92,7 +92,7 @@
   "page_course_one": "Course Detail",
   "page_course_attended": "Course I attended",
   "page_course_available": "Available Courses",
-  "page_course_available_exam": "ແບບທົດສອບ ທັງໝົດ",
+  "page_course_available_exam": "Theory Test for Course All",
   "page_course_new": "New Courses",
   "page_course_congrat": "Congratuations, You have completed the last lesson of the Course :",
   "page_course_last_leaning_end": "Course :",
@@ -168,15 +168,15 @@
   
   "page_close":"Close",
   "page_exam_course_eq":"Course",
-  "page_exam_report":"Test",
+  "page_exam_report":"Theory Test",
   "page_exam_report_details":"Test details",
   "page_exam_report_update":"Latest update :",
   "page_exam_report_code":"Course code :",
   "page_exam_report_total":"Number of question :",
   "page_exam_report_time":"Test time :",
-  "page_exam_report_time_all":"ເວລາທີ່ກຳນົດ :",
-  "page_exam_report_time_use":"ເວລາທີ່ໃຊ້ :",
-  "page_exam_report_time_create":"ເວລາໄດ້ຜົນ :",
+  "page_exam_report_time_all":"Specified time:",
+  "page_exam_report_time_use":"Time used :",
+  "page_exam_report_time_create":"Time worked:",
   "page_exam_report_score":"Score :",
   "page_exam_report_ans":"Test Answers",
   "page_exam_report_cho":"Q",
@@ -348,6 +348,12 @@
   "footer_copyright":"Copyright",
   "footer_copyright_last":"Department of Transport, Ministry of Public Works and Transport, Lao PDR",
   "footer_dev_by": "Developed by",
+
+
+  "exam_if_me1": "There are",
+  "exam_if_me2": "questions set",
+  "exam_if_me3": "minute, Correct answer at least",
+  "exam_if_me4": "clause",
 
   "": ""
 }

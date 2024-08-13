@@ -17,7 +17,9 @@
   <tbody>
     <tr v-for="(item, index) in store.paginatedData" :key="index">
       <th scope="row">{{index + 1}}</th>
-      <td>  {{item.dlt_code}} : {{item.course_name_lo}}</td>
+      <td>  {{item.dlt_code}} : 
+        {{ locale=='la' ? item.course_name_lo : item.course_name_eng}}
+      </td>
       <td> {{item.er_score_total}} /  {{item.er_question_total}}  </td>
       <td> 
         <span v-if="item.status == 'fail'" style="color: red;">{{ $t("page_exam_report_status_fail") }}</span>
