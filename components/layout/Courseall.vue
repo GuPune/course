@@ -69,7 +69,7 @@
                         <p style="font-size:12px">    {{ item.course_description }}</p>
                         <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
                         <p class="mb-0">   
-                            {{ $t("exam_if_me1") }} {{ findexam(item.course_id).total_question }} {{ $t("exam_if_me2") }} {{ findexam(item.course_id).em_time }} {{ $t("exam_if_me3") }} {{ findexam(item.course_id).em_measure }} {{ $t("exam_if_me4") }}
+                            {{ $t("exam_if_me1") }} {{ findexam(item.course_id).total_question }} {{ $t("exam_if_me2") }} {{ ChangeFormate(findexam(item.course_id).em_time) }} {{ $t("exam_if_me3") }} {{ findexam(item.course_id).em_measure }} {{ $t("exam_if_me4") }}
 
                         </p>
                     </div>
@@ -183,6 +183,25 @@ if(store.formsearchcourse.page != 1){
 let sttt = store.exam.find(item => item.course_id === Number(id));
 return sttt;
  };
+
+ const ChangeFormate = (item) => {
+  const timeParts = item.split(':')
+        
+        const hours = parseInt(timeParts[0], 10);
+        const minutes = parseInt(timeParts[1], 10);
+        const seconds = parseInt(timeParts[2], 10);
+        let timea = hours * 3600 + minutes * 60 + seconds;
+    
+        
+  
+        const natee1 = Math.floor((timea) / 60);
+  const winatee1 = timea % 60;
+  const formattedTime1 = `${String(natee1).padStart(2, '0')}:${String(winatee1).padStart(2, '0')}`;
+
+  
+  return formattedTime1;
+};
+
 
 </script>
 

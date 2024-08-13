@@ -48,7 +48,7 @@
                     </div>
                     <div class="gridarea__price">
                      
-                        <p class="fw-bold mb-0"> {{ $t("exam_if_me1") }} {{ item.total_question }} {{ $t("exam_if_me2") }} {{ item.em_time }} {{ $t("exam_if_me3") }} {{ item.em_measure }} {{ $t("exam_if_me4") }} </p>
+                        <p class="fw-bold mb-0"> {{ $t("exam_if_me1") }} {{ item.total_question }} {{ $t("exam_if_me2") }} {{ ChangeFormate(item.em_time) }} {{ $t("exam_if_me3") }} {{ item.em_measure }} {{ $t("exam_if_me4") }} </p>
                         <p class="mb-0">  </p>
                     </div>
                     <div class="gridarea__bottom">
@@ -182,6 +182,25 @@ await store.fetchExam()
   store.formsearchexam.per_page = ev.target.value;
   await store.fetchExam()
 };
+
+const ChangeFormate = (item) => {
+  const timeParts = item.split(':')
+        
+        const hours = parseInt(timeParts[0], 10);
+        const minutes = parseInt(timeParts[1], 10);
+        const seconds = parseInt(timeParts[2], 10);
+        let timea = hours * 3600 + minutes * 60 + seconds;
+    
+        
+  
+        const natee1 = Math.floor((timea) / 60);
+  const winatee1 = timea % 60;
+  const formattedTime1 = `${String(natee1).padStart(2, '0')}:${String(winatee1).padStart(2, '0')}`;
+
+  
+  return formattedTime1;
+};
+
  
 
 </script>

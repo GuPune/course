@@ -45,7 +45,7 @@
 
           <div class="col-xs-12">
             {{ $t("page_test1") }} <b>{{ locale=='la' ? store.exammain.em_name_lo : store.exammain.em_name_eng}}</b><br>
-            {{ $t("page_test2", {"exam_q": store.exammain.em_random_amount, "exam_time": store.exammain.em_random_amount, "exam_n": store.exammain.em_measure}) }}<br>
+            {{ $t("page_test2", {"exam_q": store.exammain.total_question, "exam_time": ChangeFormate(store.exammain.em_time), "exam_n": store.exammain.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
             {{ $t("page_test5") }} <br>
@@ -74,9 +74,10 @@
         <div class="row">
 
           <div class="col-xs-12 howtoText">
+        
             <!-- <img src="image_system/navigate.PNG" style='height:100%; width:100%;' /> -->
             {{ $t("page_test1") }} <b>{{ locale=='la' ? store.exammain.em_name_lo : store.exammain.em_name_eng}}</b><br>
-            {{ $t("page_test2", {"exam_q": store.exammain.em_random_amount, "exam_time": store.exammain.em_random_amount, "exam_n": store.exammain.em_measure}) }}<br>
+            {{ $t("page_test2", {"exam_q": store.exammain.total_question, "exam_time": ChangeFormate(store.exammain.em_time), "exam_n": store.exammain.em_measure}) }}<br>
             {{ $t("page_test3") }} <br>
             {{ $t("page_test4") }} <br>
             {{ $t("page_test5") }} <br>
@@ -196,6 +197,24 @@ const Start = async () => {
     store.countDownTimer();
   }, 500)
 
+};
+
+const ChangeFormate = (item) => {
+  const timeParts = item.split(':')
+        
+        const hours = parseInt(timeParts[0], 10);
+        const minutes = parseInt(timeParts[1], 10);
+        const seconds = parseInt(timeParts[2], 10);
+        let timea = hours * 3600 + minutes * 60 + seconds;
+    
+        
+  
+        const natee1 = Math.floor((timea) / 60);
+  const winatee1 = timea % 60;
+  const formattedTime1 = `${String(natee1).padStart(2, '0')}:${String(winatee1).padStart(2, '0')}`;
+
+  
+  return formattedTime1;
 };
 
 const computedProperty = computed(() => {

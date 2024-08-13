@@ -148,7 +148,7 @@
                         class="btn btn-primary mt-0"
                         @click="openanser()"
                       >
-                        <i class="icofont-redo"></i>
+                        <i class="icofont-eye-open"></i>
                         {{ $t("page_exam_report_begin1") }}
                       </button>
                     </div>
@@ -160,7 +160,7 @@
                         class="btn btn-primary mt-0"
                         @click="backToTheort()"
                       >
-                        <i class="icofont-redo"></i>
+                        <i class="icofont-list"></i>
                         {{ $t("page_exam_report_begin2") }}
                       </button>
                     </div>
@@ -172,7 +172,7 @@
                         class="btn btn-primary mt-0"
                         @click="reset()"
                       >
-                        <i class="icofont-redo"></i>
+                        <i class="icofont-loop"></i>
                         {{ $t("page_exam_report_begin3") }}
                       </button>
                     </div>

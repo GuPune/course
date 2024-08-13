@@ -73,7 +73,7 @@
             >
               <p class="mb-0">{{ store.course_lesson.course_description }}</p>
               <p class="fw-bold mb-0">{{ $t("condition_for_theory_exam") }}:</p>
-              <p> {{ $t("exam_if_me1") }} {{ store.exam.total_question }} {{ $t("exam_if_me2") }} {{ store.exam.em_time }} {{ $t("exam_if_me3") }} {{ store.exam.em_measure }} {{ $t("exam_if_me4") }}</p>
+              <p> {{ $t("exam_if_me1") }} {{ store.exam.total_question }} {{ $t("exam_if_me2") }} {{ ChangeFormate(store.exam.em_time) }} {{ $t("exam_if_me3") }} {{ store.exam.em_measure }} {{ $t("exam_if_me4") }}</p>
 
               <table class="my-3" v-if="store.condition.length > 0">
                 <thead>
@@ -339,6 +339,25 @@ const choose = async (x, y, z, index) => {
 
   // }
 };
+
+const ChangeFormate = (item) => {
+  const timeParts = item.split(':')
+        
+        const hours = parseInt(timeParts[0], 10);
+        const minutes = parseInt(timeParts[1], 10);
+        const seconds = parseInt(timeParts[2], 10);
+        let timea = hours * 3600 + minutes * 60 + seconds;
+    
+        
+  
+        const natee1 = Math.floor((timea) / 60);
+  const winatee1 = timea % 60;
+  const formattedTime1 = `${String(natee1).padStart(2, '0')}:${String(winatee1).padStart(2, '0')}`;
+
+  
+  return formattedTime1;
+};
+
 
 function coverimage(i) {
   let im = ApiService.image(i);
