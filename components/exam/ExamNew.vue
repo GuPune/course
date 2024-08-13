@@ -9,12 +9,12 @@
     </div>
     <div class="col-md-2">
       <div class="course__text">
-        <input type="text" :placeholder="$t('search_course_placeholder')" class="form-control" >
+        <input type="text" :placeholder="$t('search_course_placeholder')" class="form-control"  @keyup="findataexam" v-model="store.formsearchexam.search">
                             </div>
     </div>
     <div class="col-md-2">
       <div class="course__text">
-        <select class="form-select" aria-label="Default select example" >
+        <select class="form-select" aria-label="Default select example" @change="selectshowdata($event)" >
                                             <option  value="5" selected="">5</option>
                                             <option value="10">10</option>
                                             <option value="20">20</option>
@@ -173,7 +173,16 @@ if(store.formsearchcourse.page != 1){
 }
  };
 
+ const findataexam = async () => {
+await store.fetchExam()
+ }
 
+
+ const selectshowdata = async (ev) => {
+  store.formsearchexam.per_page = ev.target.value;
+  await store.fetchExam()
+};
+ 
 
 </script>
 
