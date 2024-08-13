@@ -43,7 +43,7 @@ export const CoursePostStore = defineStore({
       per_page: 5,
       search: '',
     },
-
+    exam:[],
     selectlesson_form_menu_less: {
       per_page: 5,
       total_page: 0,
@@ -151,6 +151,22 @@ export const CoursePostStore = defineStore({
       }
     
     },
+
+    async fetchCourseIdExam(id){
+      this.course_id = id;
+        try {
+          const data = await ApiService.get('/exam/main/get/' + id).then(response => {
+         this.exam = response.data
+  
+          });
+          return true
+        } catch (error) {
+  
+        }
+      
+      },
+
+    
     
     async fetchCourseLessId(id){
       this.lesson = [];
@@ -288,7 +304,8 @@ this.last_course = null
     },
     async getcondition(id) {
 
-      const data = await ApiService.get('/course/condition/list/?course_id=' + id).then(response => {
+      const data = await ApiService.get('/course/cluster/get/' + id).then(response => {
+        console.log(response);
         this.condition = response.data;
         this.lesson_total_all = response.data.sum_val_a;
         this.lesson_total_in_course = response.data.sum_val_b;

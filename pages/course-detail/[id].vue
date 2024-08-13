@@ -69,17 +69,20 @@
             <div
               class="course__details__paragraph aos-init aos-animate"
               data-aos="fade-up"
-              v-if="store.condition"
+             
             >
               <p class="mb-0">{{ store.course_lesson.course_description }}</p>
               <p class="fw-bold mb-0">{{ $t("condition_for_theory_exam") }}:</p>
-              <p>{{ store.course_lesson.course_remark_b }}</p>
+              <p> {{ $t("exam_if_me1") }} {{ store.exam.total_question }} {{ $t("exam_if_me2") }} {{ store.exam.em_time }} {{ $t("exam_if_me3") }} {{ store.exam.em_measure }} {{ $t("exam_if_me4") }}</p>
 
               <table class="my-3" v-if="store.condition.length > 0">
                 <thead>
                   <tr>
                     <th class="px-2" rowspan="2">{{ $t("course_subject") }}</th>
                     <th class="px-2" rowspan="2" style="width: 30%"></th>
+                    <th class="px-2" rowspan="2">
+                      {{ $t("num_exam_lesson") }}
+                    </th>
                     <th class="px-2" rowspan="2">
                       {{ $t("num_exam_question") }}
                     </th>
@@ -92,7 +95,9 @@
                     </td>
                     <td class="text-center" style="width: 30%"></td>
                     <td class="text-center">{{ item.total_lesson }}</td>
+                    <td class="text-center">{{ item.cg_amount_random }}</td>
                   </tr>
+                  
                   <tr class="border-top border-black">
                     <td></td>
                     <td class="text-center" style="width: 30%"></td>
@@ -269,6 +274,7 @@ store.user_id = auth.user_id;
 
 // let course = await store.fetchCourse();
 let course_id = await store.fetchCourseId(router.currentRoute.value.params.id);
+let exam_id = await store.fetchCourseIdExam(router.currentRoute.value.params.id);
 let lesson_id = await store.fetchCourseLessId(
   router.currentRoute.value.params.id
 );

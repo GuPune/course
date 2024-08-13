@@ -44,6 +44,7 @@
   "back_to_all_courses" : "ກັບໄປໜ້າຫຼັກສູດທັງໝົດ",
   "course_subject" : "ໝວດວິຊາ",
   "num_exam_question" : "ຈຳນວນ ຄຳຖາມເສັງ",
+  "num_exam_lesson" : "ຈຳນວນ ບົດຮຽນ",
   "attach_file" : "ເອກະສານແນບ",
   "already_read" : "ອ່ານແລ້ວ",
   "last_read_time" : "ເວລາເຂົ້າອ່ານຫຼ້າສຸດ",
@@ -67,6 +68,12 @@
   "table_history_report": "ບົດລາຍງານສະຖິຕິ - ຜົນການສອບເສັງ",
   "table_history_button": "ເບິ່ງສະຖິຕິແບບທົດສອບ",
   "report_exam": "ບົດລາຍງານສະຖິຕິ",
+
+  "exam_if_me1": "ມີ",
+  "exam_if_me2": "ຄຳຖາມ ກຳນົດເວລາ",
+  "exam_if_me3": "ນາທີ, ຕ້ອງຕອບຖືກຢ່າງນ້ອຍ",
+  "exam_if_me4": "ຂໍ້",
+  
   "historyappoint": "ປະຫວັດການນັດໝາຍ",
   "table_id": "ເລກ",
   "table_dlt": "ປະເພດລົດ",

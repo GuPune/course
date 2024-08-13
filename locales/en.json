@@ -44,6 +44,7 @@
   "back_to_all_courses" : "Back to all courses",
   "course_subject" : "Course Subject",
   "num_exam_question" : "# Exam question",
+  "num_exam_lesson" : "# Lesson",
   "attach_file" : "Attach File",
   "already_read" : "Already Read",
   "last_read_time" : "Last read time",

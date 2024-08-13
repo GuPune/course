@@ -32,6 +32,8 @@ export const ExamPostStore = defineStore({
       search: ''
     },
     historys:[],
+    currentPage: 1,
+    itemsPerPage: 5,
 
 
 
@@ -45,6 +47,15 @@ export const ExamPostStore = defineStore({
     GetopenModal: (state) => {
       return state.isActive;
     },
+
+    totalPages(state) {
+      return Math.ceil(state.historys.length / state.itemsPerPage);
+    },
+    paginatedData(state) {
+      const start = (state.currentPage - 1) * state.itemsPerPage;
+      const end = start + state.itemsPerPage;
+      return state.historys.slice(start, end);
+    },
   
   
    
@@ -52,6 +63,17 @@ export const ExamPostStore = defineStore({
 
 
   actions: {
+
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
     async toggleActiveClass() {
       if (!this.isActiveCourse) {
         this.isActiveCourse = true;

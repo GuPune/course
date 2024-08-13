@@ -48,7 +48,7 @@
                     </div>
                     <div class="gridarea__price">
                      
-                        <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
+                        <p class="fw-bold mb-0"> {{ $t("exam_if_me1") }} {{ item.total_question }} {{ $t("exam_if_me2") }} {{ item.em_time }} {{ $t("exam_if_me3") }} {{ item.em_measure }} {{ $t("exam_if_me4") }} </p>
                         <p class="mb-0">  </p>
                     </div>
                     <div class="gridarea__bottom">
@@ -62,6 +62,8 @@
 
 
     </div>
+
+    
 
 
     <!-- <div class="main__pagination__wrapper" data-aos="fade-up"  v-if="store.total_filter > store.limit_page">
