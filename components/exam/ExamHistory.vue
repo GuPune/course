@@ -64,7 +64,7 @@
               <a href="#" aria-controls="zero-config" data-dt-idx="1" tabindex="0" class="page-link" style="
     color: black;
 "
-              >
+               @click="Find(page)" >
             
               <span v-if="store.currentPage == page" style="color: red;"> {{ page }}</span>
               <span v-else style="color: black;"> {{ page }}</span>
@@ -110,6 +110,10 @@ const Next = async () => {
 };
 const Pred = async () => {
   await store.prevPage();
+};
+
+const Find = async (page) => {
+store.currentPage = page;
 };
 
 

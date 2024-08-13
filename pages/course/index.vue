@@ -75,7 +75,10 @@ let profile = await auth.getProfile()
     store.formsearchcourse.search = '';
     store.formsearchcourse.active_include = [1];
 let course = await store.fetchCourse();
+;
 let history = await store.fetchCourseHistory();
+let exam = await store.fetchCourseExam();
+
  setTimeout(() => Swal.close(), 500);
 
   </script>

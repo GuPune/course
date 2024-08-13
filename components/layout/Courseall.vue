@@ -68,8 +68,13 @@
                     <div class="gridarea__price">
                         <p style="font-size:12px">    {{ item.course_description }}</p>
                         <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
-                        <p class="mb-0">    {{ item.course_remark_b }}</p>
+                        <p class="mb-0">   
+                            {{ $t("exam_if_me1") }} {{ findexam(item.course_id).total_question }} {{ $t("exam_if_me2") }} {{ findexam(item.course_id).em_time }} {{ $t("exam_if_me3") }} {{ findexam(item.course_id).em_measure }} {{ $t("exam_if_me4") }}
+
+                        </p>
                     </div>
+              
+                  
                     <div class="gridarea__bottom p-0">
                         <div class="gridarea__bottom__left">
                             <div class="gridarea__star ms-2 pe-2 border-end" style="color: #0AA7FF;">
@@ -173,7 +178,11 @@ if(store.formsearchcourse.page != 1){
 }
  };
 
+ const findexam = (id) => {
 
+let sttt = store.exam.find(item => item.course_id === Number(id));
+return sttt;
+ };
 
 </script>
 

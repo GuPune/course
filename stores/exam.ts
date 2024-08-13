@@ -69,6 +69,9 @@ export const ExamPostStore = defineStore({
         this.currentPage--;
       }
     },
+    findPage(id) {
+      this.currentPage == id;
+    },
     nextPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;

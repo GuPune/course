@@ -64,6 +64,11 @@ export const CoursePostStore = defineStore({
       per_page: 50,
       search: '',
     },
+    formsearchexam:{
+      page: 1,
+      per_page: 150,
+      search: '',
+    },
 
   }),
   getters: {
@@ -104,6 +109,21 @@ export const CoursePostStore = defineStore({
 
     }
     },
+    async fetchCourseExam() {
+
+      try {
+        const data = await ApiService.post('/exam/main/list', this.formsearchexam).then(response => {
+    this.exam = response.data.data
+       //  this.fetchlesson();
+         });
+         return true;
+        } catch (error) {
+       
+    
+        }
+    },
+
+    
     async fetchCourseHistory() {
     try {
     const data = await ApiService.post('/course/learn/history/'+this.user_id, this.formsearchcoursestory).then(response => {
