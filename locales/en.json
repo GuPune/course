@@ -158,12 +158,12 @@
   "page_test9":"9. While taking the test, please do not go to other page",
   "page_theory_test_his":"Theory Test for Course",
   "page_theory_test":"Theory Test for Course",
-  "page_theory_test_div":"ສຳລັບຫຼັກສູດ",
-  "page_theory_test_score":"ຜົນຄະແນນ",
-  "page_theory_test_pass":"ຜ່ານ?",
-  "page_theory_test_time_test":"ເວລາກຳນົດ (ນາທີ)",
-  "page_theory_test_time_user":"ເວລາໃຊ້ຈິງ(ນາທີ)",
-  "page_theory_test_time_at":"ເວລາໄດ້ຜົນ",
+  "page_theory_test_div":"Name",
+  "page_theory_test_score":"Score",
+  "page_theory_test_pass":"Status?",
+  "page_theory_test_time_test":"Specified time(minute)",
+  "page_theory_test_time_user":"Time used(minute)",
+  "page_theory_test_time_at":"Time worked",
 
   
   "page_close":"Close",
