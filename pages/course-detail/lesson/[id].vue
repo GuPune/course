@@ -593,7 +593,7 @@ if(store.nexts == 0){
    let next = await store.fetchCoursereadNext();
   
 }else {
-console.log('elese');
+
   router.push({
         path: '/course-detail/lesson/' + store.course_read.course_id,
         query: {
