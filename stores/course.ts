@@ -24,6 +24,7 @@ export const CoursePostStore = defineStore({
       page: 1,
       per_page: 5,
       search: '',
+      active_include: [1],
     },
     formsearchcoursestory: {
       page: 1,
