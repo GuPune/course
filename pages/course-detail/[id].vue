@@ -73,7 +73,7 @@
             >
               <p class="mb-0">{{ store.course_lesson.course_description }}</p>
               <p class="fw-bold mb-0">{{ $t("condition_for_theory_exam") }}:</p>
-              <p> {{ $t("exam_if_me1") }} {{ store.exam.total_question }} {{ $t("exam_if_me2") }} {{ ChangeFormate(store.exam.em_time) }} {{ $t("exam_if_me3") }} {{ store.exam.em_measure }} {{ $t("exam_if_me4") }}</p>
+              <p> {{ $t("exam_if_me1") }} {{ store.exam.total_question }} {{ $t("exam_if_me2") }} {{ store.exam.em_time }} {{ $t("exam_if_me3") }} {{ store.exam.em_measure }} {{ $t("exam_if_me4") }}</p>
 
               <table class="my-3" v-if="store.condition.length > 0">
                 <thead>
