@@ -127,14 +127,14 @@
                :placeholder="$t('exp_update_acc_pehol')"
                ></VueDatePicker>
 
-                          <span
+              
+            </div>
+                     <span
                     class="text-xs text-red-500"
                     style="color: red"
                     v-if="v$.user_village.$error"
                     >{{ $t("form_d_vil") }}</span
                   >
-            </div>
-            
           </div>
 
           <div class="col-xl-12">
@@ -201,16 +201,24 @@
               <label class="form__label">{{
                 $t("prov_update_acc_label")
               }}</label>
-              <select
+              <!-- <select
                 class="common__login__input px-2"
                 aria-label="Default select example"
               >
                 <option selected :value="null" disabled>
                   {{ $t("choose") }}
                 </option>
-                <option value="ທ້າວ">{{ $t("than") }}</option>
-                <option value="ນາງ">{{ $t("nang") }}</option>
-              </select>
+               <option  v-for="(item, index) in store.zipcode">{{item.zipcode_name}} - {{item.province_name}}</option>
+              </select> -->
+
+                             <v-select
+
+    :options="store.zipcode"
+    label="item_data"
+    @input="changedLabel"
+     placeholder="ເລືອກ"
+     
+  ></v-select>
             </div>
           </div>
 
@@ -226,8 +234,7 @@
                 <option selected :value="null" disabled>
                   {{ $t("choose") }}
                 </option>
-                <option value="ທ້າວ">{{ $t("than") }}</option>
-                <option value="ນາງ">{{ $t("nang") }}</option>
+              <option  v-for="(item, index) in store.country">{{item}}</option>
               </select>
             </div>
           </div>
@@ -375,7 +382,12 @@ await store.Country();
 
 
 
+onMounted(() => {
+      store.zipcode.map(function (x){
+      return x.item_data = x.zipcode_name + ' - ' + x.province_name;
+    });
 
+    });
 const rules = computed(() => {
   return {
       user_prefrix: {

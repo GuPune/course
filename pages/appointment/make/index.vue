@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <p class="card-text fs-5">{{ $t("text_update_profile1") }}</p>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary"  @click="GotoPage('/appointment/account')">{{ $t("bt_update_pro") }}</button>
+                        <button class="btn btn-primary"  @click="GotoPage('/profile/account')">{{ $t("bt_update_pro") }}</button>
                     </div>
                 </div>
             </div>
