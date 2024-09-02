@@ -34,11 +34,15 @@
             <div class="d-flex gap-2 w-75">
                 <p class="text-nowrap mb-0 align-self-center">Class Type:</p>
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected disabled >Open this select menu</option>
+                    <option   v-for="(item, index) in store.dlttype">{{item.dlt_code}} : {{item.dlt_name_lo}}</option>
+             
                 </select>
+
+                <!-- <select class="form-select" aria-label="Default select example"  :disabled="store.disabledselect" v-model="store.form.date_event"  @change="selectevent($event)" >
+                <option selected disabled :value="0">{{ $t("page_appoint_type_label_select_event") }}</option>
+                <option  v-for="(item, index) in store.event">{{item.event}} 08:00</option>
+              </select> -->
             </div>
             <div class="d-flex justify-content-center my-3 w-25">
                 <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Next <i class="icofont-double-right"></i></button>
@@ -63,8 +67,24 @@
     </div>
 </template>
 <script lang="ts" setup>
+import { AppointmentsStore } from '@/stores/appointment';
+import Swal from "sweetalert2";
+definePageMeta({
+middleware: "auth", // this should match the name of the file inside the middleware directory
+});
+
+
+
+const auth = useAuthStore();
+const router = useRouter();
+const store = AppointmentsStore()
+store.user_id = auth.user_id;
+
+await store.getdrivinglicense_type();
+
 
 </script>
+
 <style>
 .appcontent{
   min-height: 400px;

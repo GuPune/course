@@ -47,6 +47,7 @@ export const AppointmentsStore = defineStore({
         ap_learn: "ปฏิบัติ"
       }
     ],
+    dlttype: [],
     dlt: [
       {
         dlt_code: "A",
@@ -219,8 +220,7 @@ var myDateNow = Date.parse(date);
 
     async fetchApppoint() {
 
-      
-  
+    
          try {
         const data = await ApiService.get('/appointment/event/?ap_learn_type='+ this.form.ap_learn_type+'&dlt_code='+this.form.dlt_code+'').then(response => {
           this.event = response.data
@@ -236,26 +236,6 @@ var myDateNow = Date.parse(date);
         return false;
       }
       
-      // try {
-      //   const data = await ApiService.post('/appointment/list', appdata).then(response => {
-      //     if (response.data.length > 0) {
-      //       this.appgroup = response.data;
-      //       let dltlist = this.dlt.find(x => x.dlt_code === this.form.dlt_code)
-      //       let learn = this.ap_learnlist.find(x => x.value === parseInt(this.form.ap_learn_type))
-      //       this.appointment.dlt_des = dltlist?.dlt_description;
-      //       this.appointment.ap_learn = learn.ap_learn;
-
-      //       return true
-      //     } else {
-      //       this.appgroup = [];
-      //       return false
-      //     }
-      //   });
-      //   return data
-
-      // } catch (error) {
-      //   return false;
-      // }
     },
     async fetchApppointEvent() {
 
@@ -311,6 +291,23 @@ var myDateNow = Date.parse(date);
       this.ardel_id = ar
       this.formdel.ap_id = ap
       this.popupcancelapp = true;
+    },
+
+    async getdrivinglicense_type() {
+
+
+      try {
+        const data = await ApiService.get('/master_data/drivinglicense_type').then(response => {
+      this.dlttype = response.data
+
+          return true
+        });
+        return data
+
+      } catch (error) {
+        return false;
+      }
+  
     },
 
 
