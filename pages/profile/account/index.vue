@@ -532,7 +532,7 @@ function coverimage(i) {
 const update = async () => {
 
 // await store.UpdateDetails();
-
+return false;
  v$.value.$validate();
 if (!v$.value.$error) {
 let  updateprofile = await store.UpdateAddVeriry();

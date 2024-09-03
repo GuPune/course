@@ -92,7 +92,7 @@ export const CoursePostStore = defineStore({
 
     async fetchCourse() {
       this.coursecategories = []
-      console.log(this.formsearchcourse);
+ 
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
       this.total = response.data.total
