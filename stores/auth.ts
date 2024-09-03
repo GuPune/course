@@ -98,7 +98,20 @@ export const useAuthStore = defineStore('auth', {
       curent_password:null,
       new_password:null,
       confirm_new_password:null,
-    }
+    },
+    formaddprove: {
+      full_name: '',
+      first_name: '',
+      last_name: '',
+      user_prefrix: '',
+      identification_number: '',
+      user_birthday: '',
+      expire: '',
+      user_village: '',
+      user_address: '',
+      location_id: null,
+      country_id: 33,
+    },
   }),
   getters: {
     load(state) {
@@ -112,6 +125,9 @@ export const useAuthStore = defineStore('auth', {
     },
     getFormDetails(state) {
       return state.formdetail;
+    },
+    getFormProve(state) {
+      return state.formaddprove;
     },
     
     getFormChangepassword(state) {
@@ -501,13 +517,10 @@ if(this.dltcard){
       },
 
       async Changepassword() {
-       
         const id = localStorage.getItem('user_reset')
-
        try {
         const data = await ApiService.put('/user/change_password/' + id,this.changepassword).then(response => {
        return true
-
         });
 
       
@@ -572,7 +585,13 @@ const update = {verify_account:"system_active",identification_number:this.formde
   } catch (error) {
     return false;
   }
-      }
+      },
+
+
+      async UpdateAddVeriry() {
+      console.log('update');
+       
+      },
   },
 });
 

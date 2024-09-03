@@ -27,11 +27,12 @@
           <div class="col-xl-2">
             <div class="login__form">
               <label class="form__label">{{ $t("form_name_title") }}</label>
+       
               <select
                 class="common__login__input px-2"
-                aria-label="Default select example"
+                aria-label="Default select example" v-model="store.formaddprove.user_prefrix"
               >
-                <option selected :value="null" disabled>
+                <option selected value="" disabled>
                   {{ $t("choose") }}
                 </option>
                 <option value="ທ້າວ">{{ $t("than") }}</option>
@@ -40,7 +41,7 @@
               <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.first_name.$error"
+                    v-if="v$.user_prefrix.$error"
                     >{{ $t("profile_alert_title") }}</span
                   >
             </div>
@@ -53,6 +54,12 @@
                 type="text"
                 :placeholder="$t('fname')"
                 maxlength="20"
+                 v-model="store.formaddprove.first_name"
+                 :class="{
+                    'border-red-500 focus:border-red-500': v$.first_name.$error,
+                    'border-[#42d392] ': !v$.first_name.$invalid,
+                  }"
+                  @change="v$.first_name.$touch"
               />
                 <span
                     class="text-xs text-red-500"
@@ -70,6 +77,12 @@
                 type="text"
                 :placeholder="$t('lname')"
                 maxlength="20"
+                v-model="store.formaddprove.last_name"
+                 :class="{
+                    'border-red-500 focus:border-red-500': v$.last_name.$error,
+                    'border-[#42d392] ': !v$.last_name.$invalid,
+                  }"
+                  @change="v$.last_name.$touch"
               />
                   <span
                     class="text-xs text-red-500"
@@ -88,6 +101,12 @@
                 class="common__login__input"
                 type="text"
                 :placeholder="$t('full_name_update_acc_pehol')"
+                v-model="store.formaddprove.full_name"
+                 :class="{
+                    'border-red-500 focus:border-red-500': v$.full_name.$error,
+                    'border-[#42d392] ': !v$.full_name.$invalid,
+                  }"
+                  @change="v$.full_name.$touch"
               />
               <span
                     class="text-xs text-red-500"
@@ -107,6 +126,13 @@
                 class="common__login__input"
                 type="text"
                 :placeholder="$t('passport_update_acc_pehol')"
+
+                v-model="store.formaddprove.identification_number"
+                 :class="{
+                    'border-red-500 focus:border-red-500': v$.identification_number.$error,
+                    'border-[#42d392] ': !v$.identification_number.$invalid,
+                  }"
+                  @change="v$.identification_number.$touch"
               />
 
                    <span
@@ -124,6 +150,8 @@
                 >{{ $t("exp_update_acc_label") }}
               </label>
      <VueDatePicker
+
+     v-model="store.formaddprove.expire"  :enable-time-picker="false"
                :placeholder="$t('exp_update_acc_pehol')"
                ></VueDatePicker>
 
@@ -132,8 +160,8 @@
                      <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.user_village.$error"
-                    >{{ $t("form_d_vil") }}</span
+                    v-if="v$.expire.$error"
+                    >{{ $t("form_d_exp") }}</span
                   >
           </div>
 
@@ -143,14 +171,15 @@
                 >{{ $t("bird_update_acc_label") }}
               </label>
       
-               <VueDatePicker
+               <VueDatePicker type="date"
+                 v-model="store.formaddprove.user_birthday"  :enable-time-picker="false"
                :placeholder="$t('bird_update_acc_pehol')"
                ></VueDatePicker>
                         <span
                     class="text-xs text-red-500"
                     style="color: red"
-                    v-if="v$.user_village.$error"
-                    >{{ $t("form_d_vil") }}</span
+                    v-if="v$.user_birthday.$error"
+                    >{{ $t("form_d_bird") }}</span
                   >
             </div>
           </div>
@@ -164,6 +193,13 @@
                 class="common__login__input"
                 type="text"
                 :placeholder="$t('add_update_acc_pehol')"
+
+                v-model="store.formaddprove.user_address"
+                 :class="{
+                    'border-red-500 focus:border-red-500': v$.user_address.$error,
+                    'border-[#42d392] ': !v$.user_address.$invalid,
+                  }"
+                  @change="v$.user_address.$touch"
               />
 
           
@@ -186,6 +222,13 @@
                 class="common__login__input"
                 type="text"
                 :placeholder="$t('home_update_acc_pehol')"
+
+                v-model="store.formaddprove.user_village"
+                 :class="{
+                    'border-red-500 focus:border-red-500': v$.user_village.$error,
+                    'border-[#42d392] ': !v$.user_village.$invalid,
+                  }"
+                  @change="v$.user_village.$touch"
               />
                <span
                     class="text-xs text-red-500"
@@ -215,10 +258,16 @@
 
     :options="store.zipcode"
     label="item_data"
-    @input="changedLabel"
+
      placeholder="ເລືອກ"
-     
+     v-model="store.formaddprove.location_id" 
   ></v-select>
+  <span
+                    class="text-xs text-red-500"
+                    style="color: red"
+                    v-if="v$.location_id.$error"
+                    >{{ $t("form_d_district") }}</span
+                  >
             </div>
           </div>
 
@@ -227,14 +276,14 @@
               <label class="form__label">{{
                 $t("cou_update_acc_label")
               }}</label>
-              <select
+              <select v-model="store.formaddprove.country_id"
                 class="common__login__input px-2"
-                aria-label="Default select example"
+                aria-label="Default select example"  disabled
               >
                 <option selected :value="null" disabled>
                   {{ $t("choose") }}
                 </option>
-              <option  v-for="(item, index) in store.country">{{item}}</option>
+              <option  v-for="(item, index) in store.country" :value="item.country_id">{{item.country_name_eng}}</option>
               </select>
             </div>
           </div>
@@ -374,7 +423,7 @@ definePageMeta({
 const store = useAuthStore();
 
 const router = useRouter();
-const { getFormDetails } = storeToRefs(store);
+const { getFormProve } = storeToRefs(store);
 
 await store.Zipcode();
 await store.Country();
@@ -425,11 +474,8 @@ const rules = computed(() => {
       ),
       minLength: minLength(5),
     },
-    country: {
-      required: helpers.withMessage("Select Country field is required", required),
-      minLength: minLength(1),
-    },
-    location: {
+
+    location_id: {
       required: helpers.withMessage("Select location field is required", required),
       minLength: minLength(1),
     },
@@ -454,11 +500,21 @@ const rules = computed(() => {
         required,
       ),
     },
+    expire: {
+      required: helpers.withMessage(
+        "expire field is required",
+        required,
+      ),
+    },
+
+
+    
 
 
   };
 });
-const v$ = useVuelidate(rules, getFormDetails);
+
+const v$ = useVuelidate(rules, getFormProve);
 
 function coverimage(i) {
   let result = i.slice(0, 6);
@@ -476,16 +532,15 @@ const update = async () => {
 // await store.UpdateDetails();
 
  v$.value.$validate();
-
 if (!v$.value.$error) {
-
-    Swal.fire({
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    didOpen: () => {
-      Swal.showLoading()
-    },
-  });
+await store.UpdateAddVeriry();
+  //   Swal.fire({
+  //   allowEscapeKey: false,
+  //   allowOutsideClick: false,
+  //   didOpen: () => {
+  //     Swal.showLoading()
+  //   },
+  // });
 
  
 }

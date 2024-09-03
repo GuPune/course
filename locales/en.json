@@ -216,6 +216,9 @@
   "form_d_first_name":"ກະລຸນາໃສ່ຊື່",
   "form_d_last_name":"ກະລຸນາໃສ່ເລກນາມສະກຸນ",
   "form_d_iden":"Please fill in ID Card or Passport number",
+  "form_d_exp":"ກະລຸນາໃສ່ ວັນໝົດອາຍຸຂອງບັດ",
+  "form_d_bird":"ກະລຸນາໃສ່ ວັນເດືອນປີເກີດ",
+
   "form_d_dob":"Please fill in Date of birth",
   "form_d_add":"Please fill in Address",
   "form_d_vil":"Please fill in Village",
