@@ -35,6 +35,7 @@ export const useAuthStore = defineStore('auth', {
       user_type_name:null,
       user_password:null,
       user_prefrix:null,
+      user_full_name:null
     },
     mydtla: [],
     dltcard:[],
@@ -286,6 +287,7 @@ try {
       this.formuser.user_id = response.data.user_id
       this.formuser.user_type_name = type?.user_type_name
       this.formuser.user_prefrix = response.data.user_prefrix
+      this.formuser.user_full_name = response.data.user_full_name
 
       const isEmptyObj = !Object.keys(response.data.detail).length;
 if(isEmptyObj == false){
@@ -301,6 +303,7 @@ if(isEmptyObj == false){
   this.formdetail.user_village = response.data.detail.user_village
 this.formdetail.country.country_id = response.data.detail?.country_id
 this.formdetail.location.id = response.data.detail?.location_id
+this.formdetail.exp_date = response.data.detail?.exp_date
 }
 
 if(response.data.card != null){
@@ -567,7 +570,7 @@ if(this.dltcard){
 
       async UpdateProfileafterOtp() {
 
-const update = {verify_account:"system_active",identification_number:this.formdetail.identification_number,
+const update = {verify_account:"phone_active",identification_number:this.formdetail.identification_number,
   user_img:this.formdetail.user_img,
   user_birthday:this.formdetail.user_birthday,user_address:this.formdetail.user_address,
   location_id:this.formdetail.location.id,country_id:this.formdetail.country.country_id,user_id:this.formuser.user_id,user_village:this.formdetail.user_village};
@@ -586,12 +589,70 @@ const update = {verify_account:"system_active",identification_number:this.formde
     return false;
   }
       },
-
-
-      async UpdateAddVeriry() {
-      console.log('update');
+      async ManageProfile() {
+       this.formaddprove.first_name = this.formuser.user_firstname
+       this.formaddprove.last_name = this.formuser.user_lastname
+       this.formaddprove.user_prefrix = this.formuser.user_prefrix
+       this.formaddprove.user_birthday = this.formdetail.user_birthday
+       this.formaddprove.identification_number = this.formdetail.identification_number
+       this.formaddprove.user_address = this.formdetail.user_address
+       this.formaddprove.user_village = this.formdetail.user_village
+       this.formaddprove.location_id = this.formdetail.location_id
+       this.formaddprove.full_name = this.formuser.user_full_name
+       this.formaddprove.expire = this.formdetail.exp_date
+      
+       
+      //  this.formdetail.user_birthday = response.data.detail.user_birthday
+      //  this.formdetail.user_address = response.data.detail.user_address
+      //  this.formdetail.location = response.data.detail.location
+      //  this.formdetail.country = response.data.detail.country
+      //  this.formdetail.location_id = response.data.detail.location_id
+      //  this.formdetail.country_id = response.data.detail.country_id
+      //  this.formdetail.user_village = response.data.detail.user_village
        
       },
+
+      async UpdateAddVeriry() {
+        this.formaddprove.user_id = this.user_id
+      try {
+        const data = await ApiService.post('/user/update/before', this.formaddprove).then(response => {
+       
+       if(response.status == 200){
+        return true;
+       }
+       if(response.status == 204){
+        return false;
+       }
+
+     
+        });
+      return data;
+      } catch (error) {
+        return false;
+      }
+       
+      },
+      async UpdateCheckAddVeriry() {
+        try {
+          const data = await ApiService.post('/user/detail/verify', this.formaddprove).then(response => {
+         
+         if(response.status == 200){
+          return true;
+         }
+         if(response.status == 204){
+          return false;
+         }
+  
+       
+          });
+        return data;
+        } catch (error) {
+          return false;
+        }
+      }
+
+ 
+      
   },
 });
 

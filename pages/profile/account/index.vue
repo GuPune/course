@@ -260,7 +260,8 @@
     label="item_data"
 
      placeholder="ເລືອກ"
-     v-model="store.formaddprove.location_id" 
+     v-model="store.formaddprove.location_id"
+     :reduce="item_data => item_data.id" 
   ></v-select>
   <span
                     class="text-xs text-red-500"
@@ -427,8 +428,9 @@ const { getFormProve } = storeToRefs(store);
 
 await store.Zipcode();
 await store.Country();
+await store.ManageProfile();
 
-
+console.log(store.formuser);
 
 
 onMounted(() => {
@@ -533,7 +535,20 @@ const update = async () => {
 
  v$.value.$validate();
 if (!v$.value.$error) {
-await store.UpdateAddVeriry();
+let  updateprofile = await store.UpdateAddVeriry();
+if(updateprofile == true){
+      Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+  
+ let save = await store.UpdateCheckAddVeriry();
+ console.log(save);
+ setTimeout(() => Swal.close(), 500);
+}
   //   Swal.fire({
   //   allowEscapeKey: false,
   //   allowOutsideClick: false,
