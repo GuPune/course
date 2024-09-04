@@ -317,6 +317,9 @@
   "msg_account_info_exist" : "Username or Phone number already been used.",
   "msg_error_try_again_or_contact_staff" : "An error has occured, please try again later, if the problem persist, please contact our staff",
   
+  "pass_update_fail" : "Upload Image Passpost",
+  "real_update_fail" : "Upload Real Image",
+
 
   "than":"Mr.",
   "nang":"Ms.",

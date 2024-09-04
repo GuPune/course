@@ -180,7 +180,7 @@
                     >*</span
                   >
               </label>
-     <VueDatePicker
+     <VueDatePicker  :format="format"
 
      v-model="store.formaddprove.expire"  :enable-time-picker="false"
                :placeholder="$t('exp_update_acc_pehol')"
@@ -207,7 +207,7 @@
                   >
               </label>
       
-               <VueDatePicker type="date"
+               <VueDatePicker  :format="format"
                  v-model="store.formaddprove.user_birthday"  :enable-time-picker="false"
                :placeholder="$t('bird_update_acc_pehol')"
                ></VueDatePicker>
@@ -616,7 +616,14 @@ function coverimage(i) {
     return i;
   }
 }
+const date = ref(new Date());
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
+  return `${day}/${month}/${year}`;
+}
 
 const update = async () => {
 
@@ -626,16 +633,14 @@ const update = async () => {
 
  if(!store.image_pas){
   Swal.fire({
-          title:  t('msg_register_fail'),
-          text:  t('msg_account_info_exist'),
+          title:  t('pass_update_fail'),
           icon: 'error',
         });
 return false;
  }
  if(!store.image_real){
   Swal.fire({
-          title:  t('msg_register_fail'),
-          text:  t('msg_account_info_exist'),
+          title:  t('real_update_fail'),
           icon: 'error',
         });
   return false;

@@ -320,6 +320,8 @@
   "msg_account_info_exist" : "Username ຫຼື ເບີໂທ ໄດ້ມີການລົງທະບຽນແລ້ວ.",
   "msg_error_try_again_or_contact_staff" : "ເກີດມີບັນຫາ ກະລຸນາລໍຖ້າຊົ່ວຄາວແລະລອງໃໝ່ອີກຄັ້ງ, ຖ້າຍັງເປັນອີກກະລຸນາຕິດຕໍ່ເຈົ້າໜ້າທີ່",
 
+  "pass_update_fail" : "Upload Image Passpost",
+  "real_update_fail" : "Upload Real Image",
 
   "than":"ທ້າວ",
   "nang":"ນາງ ",
