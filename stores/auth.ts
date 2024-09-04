@@ -113,6 +113,10 @@ export const useAuthStore = defineStore('auth', {
       location_id: null,
       country_id: 33,
     },
+    passpost_image:'',
+    image_pas:'',
+    real_image:'',
+    image_real:''
   }),
   getters: {
     load(state) {
@@ -614,6 +618,12 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
 
       async UpdateAddVeriry() {
         this.formaddprove.user_id = this.user_id
+        this.formaddprove.passpost_image = this.image_pas
+        this.formaddprove.real_image = this.image_real
+
+        console.log(JSON.stringify(this.formaddprove));
+
+
       try {
         const data = await ApiService.post('/user/update/before', this.formaddprove).then(response => {
        
@@ -649,7 +659,47 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
         } catch (error) {
           return false;
         }
+      },
+
+
+      async UploadImage() {
+
+     if (this.passpost_image) {
+      let formData = new FormData();
+      formData.append('files', this.passpost_image);
+      try {
+        const data = await ApiService.upload('/media_file/upload/file', formData);
+        this.image_pas = data.data[0].path
+   
+        return true;
+      } catch (error) {
+        return false;
       }
+    }
+
+   
+      },
+
+
+      
+      async UploadImage2() {
+
+   
+       if (this.real_image) {
+      
+         let formDatas = new FormData();
+         formDatas.append('files', this.real_image);
+         try {
+           const data = await ApiService.upload('/media_file/upload/file', formDatas);
+           this.image_real = data.data[0].path
+         
+           return true;
+         } catch (error) {
+           return false;
+         }
+       }
+      
+         },
 
  
       
