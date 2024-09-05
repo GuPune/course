@@ -656,7 +656,7 @@ if(updateprofile == true){
     },
   });
   
-// let save = await store.UpdateCheckAddVeriry();
+let save = await store.UpdateCheckAddVeriry();
 
 
 
