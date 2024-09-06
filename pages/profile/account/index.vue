@@ -655,6 +655,9 @@ if(updateprofile == true){
       Swal.showLoading()
     },
   });
+
+
+  
   
 let save = await store.UpdateCheckAddVeriry();
 
