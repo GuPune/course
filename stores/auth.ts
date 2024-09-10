@@ -24,6 +24,7 @@ export const useAuthStore = defineStore('auth', {
     imagelist_font:null,
     imagelist_back:null,
     mydltcardExp:[],
+    comment:[],
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -37,6 +38,7 @@ export const useAuthStore = defineStore('auth', {
       user_prefrix:null,
       user_full_name:null
     },
+    profile_by_one:[],
     mydtla: [],
     dltcard:[],
     mydltcard:[],
@@ -72,7 +74,10 @@ export const useAuthStore = defineStore('auth', {
       per_page: 200,
       search: '',
     },
-  
+    formsearchUser:{
+      user_id:null,
+      user_search_id:null
+    },
     type:[
       {
         user_type: 1,
@@ -333,6 +338,22 @@ this.formcard.user_id = response.data.user_id
  
 }
     },
+
+    async fetchUsersByOne() {
+      this.formsearchUser.user_id = this.user_id;
+      const data = await ApiService.post('/user/list/get/profile', this.formsearchUser).then(response => {
+   this.profile_by_one = response.data;
+
+    });
+  },  
+
+  async fetchUsersByOneComment() {
+    this.formsearchUser.user_search_id = this.user_id;
+    const data = await ApiService.post('/user/list/get/comment', this.formsearchUser).then(response => {
+ this.comment = response.data.data;
+ console.log(this.comment);
+  });
+}, 
 
 
     async SelectProfile(item) {
@@ -621,7 +642,6 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
         this.formaddprove.passpost_image = this.image_pas
         this.formaddprove.real_image = this.image_real
 
-        console.log(JSON.stringify(this.formaddprove));
 
 
       try {
