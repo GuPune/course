@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-xl-12">
             <div class="breadcrumb__content__wraper" data-aos="fade-up">
-              <div class="breadcrumb__title">Account Detail</div>
+              <h3 class="heading">Account Detail</h3>
               <div class="breadcrumb__inner"></div>
             </div>
           </div>
@@ -25,11 +25,18 @@
             <div class="contact__section" data-aos="fade-up">
               <div class="container">
                 <div class="row">
-                  <div class="col-12 col-sm-6 col-xl-6 col-lg-6">
+                  <div class="col-12 col-sm-6 col-xl-6 col-lg-6 your-element">
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-7">
                         <div class="blog__details__content__wraper">
-                          <div >
+                          <div  v-if="auth.profile_by_one[0].user_img">
+                            <img
+                              :src="coverimage(auth.profile_by_one[0].user_img)"
+                              alt="blog"   width="300" height="250"
+                            />
+
+                          </div>
+                          <div  v-else>
                             <img
                               src="../../assets/img/person-avatar.jpg"
                               alt="blog"
@@ -40,18 +47,18 @@
                       </div>
 
                       <div class="col-12 col-sm-12 col-md-5">
-                        <button type="button" class="btn btn-primary">
-                          Upload
-                        </button>
-                      </div>
-                  
+                        <span>
+         <input type="file" ref="fileInputFont" style="display: none;">
+ <button class="changeImg btn btn-primary"  @click="changeFont" >
+  Upload Picture
+       </button>
+       </span>
+             </div>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-lg"
                         >
-                      
-                     
                           {{ auth.profile_by_one[0].user_prefrix }} {{ auth.profile_by_one[0].user_firstname }} {{ auth.profile_by_one[0].user_lastname }}
                         </label>
                       </div>
@@ -63,14 +70,7 @@
                         {{ auth.profile_by_one[0].user_full_name }}
                         </label>
                       </div>
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <label
-                          for="company-name"
-                          class="col-sm-12 col-form-label col-form-label-lg"
-                        >
-                          Username: {{ auth.profile_by_one[0].user_name }}
-                        </label>
-                      </div>
+                  <br>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="col-12 col-sm-6 col-xl-12 col-lg-12">
                           <div class="row">
@@ -146,6 +146,33 @@
                           </div>
                         </div>
                       </div>
+
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-lg"
+                        >
+                          Username: {{ auth.profile_by_one[0].user_name }}
+                        </label>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-sm"
+                        >
+                        Last login: 2024-03-01 18:22:23
+                        </label>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-sm"
+                        >
+                        Last Data update: 2024-03-01 18:22:23
+                        </label>
+                      </div>
                     </div>
                   </div>
 
@@ -159,11 +186,11 @@
                             >
                             ສະຖານະ:
                             
-                            <span v-if="auth.profile_by_one[0].verify_account = 'phone_active'" style="color: yellowgreen;"> ຢືນຢັນ OTP ສໍາເລັດ  </span>
+                            <span v-if="auth.profile_by_one[0].verify_account == 'phone_active'" style="color: #FFA927;"> ຢືນຢັນ OTP ສໍາເລັດ  </span>
                           
-                            <span v-else-if="auth.profile_by_one[0].verify_account = 'phone_unactive'" style="color: red;"> ຢືນຢັນ OTP ບໍ່ຖືກຕ້ອງ  </span>
-                            <span v-else-if="auth.profile_by_one[0].verify_account = 'system_active'" style="color: green;"> ຢືນຢັນຕົວຕົນແລ້ວ  </span>
-                            <span v-else-if="auth.profile_by_one[0].verify_account = 'system_unactive'" style="color: red;"> ຢືນຢັນຂໍ້ມູນທີ່ບໍ່ຖືກຕ້ອງ  </span>
+                            <span v-else-if="auth.profile_by_one[0].verify_account == 'phone_unactive'" style="color: red;"> ຢືນຢັນ OTP ບໍ່ຖືກຕ້ອງ  </span>
+                            <span v-else-if="auth.profile_by_one[0].verify_account == 'system_active'" style="color: green;"> ຢືນຢັນຕົວຕົນແລ້ວ  </span>
+                            <span v-else-if="auth.profile_by_one[0].verify_account == 'system_unactive'" style="color: red;"> ຢືນຢັນຂໍ້ມູນທີ່ບໍ່ຖືກຕ້ອງ  </span>
                             </label>
                             
                       </div>
@@ -314,7 +341,6 @@
                     </div>
 <br>
 
-                    
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
@@ -325,18 +351,23 @@
                             </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6">
-                        <label
+                        <label  v-for="(item, index) in auth.comment"
+                      :key="item.ap_id"
                               for="company-name"
                               class="col-sm-12 col-form-label col-form-label-md"
                             >
-                            -ເວລາຖ່າຍຮູບ ບໍ່ໃຫ້ປິດໜ້າ
+                            {{item.comment_details}}
                             </label>
-                            <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            -ເລກບັດປະຈຳຕົວ ທີ່ພິມມາບໍ່ກົງກັບ ເລກໃນບັດ
-                            </label>
+                      
+                      </div>
+
+
+                      
+                    </div>
+  <!-- v-if="auth.profile_by_one[0].status == 'N' || auth.profile_by_one[0].status == '' " -->
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-lg-12" @click="MyAddprove()" v-if="auth.profile_by_one[0].status == 'N' || auth.profile_by_one[0].status == '' ">
+                        <button type="button" class="btn btn-primary" style="width: 100%;">ສົ່ງຂ້ມູນ ເພື່ອຢືນຢັນຕົວຕົນ</button>
                       </div>
                     </div>
                   </div>
@@ -354,7 +385,7 @@
                   <div class="col-12 col-sm-12 col-xl-12 col-lg-12">
                     <label
                       for="company-name"
-                      class="col-sm-12 col-form-label col-form-label-sm"
+                      class="col-sm-12 col-form- label col-form-label-sm"
                     >
                       Last login: 2024-03-01 18:22:23
                     </label>
@@ -388,16 +419,59 @@ import { defineComponent } from "vue";
 import { HistoryStore } from "@/stores/history";
 import ApiService from '@/services/api.service';
 import { useRoute } from "vue-router";
+import Swal from "sweetalert2";
 const auth = useAuthStore();
 
-const route = useRoute();
 
 
+const router = useRouter();
 
 await auth.fetchUsersByOne();
 await auth.fetchUsersByOneComment();
 
-console.log(auth.profile_by_one[0]);
+onMounted(() => {
+  // fileInputFont.value.addEventListener('change', changeFileFont);
+
+  
+   
+ });
+
+
+const fileInputFont = ref(null);
+
+
+const changeFont = () => {
+
+// Trigger a click event on the file input element
+fileInputFont.value.click();
+};
+
+
+const changeFileFont = async (event) => {
+  var inputs = event.target;
+  const file = event.target.files[0];
+
+  if (file && file.type.startsWith('image/')) {
+    auth.user_image = inputs.files[0];
+   await auth.UploadProfile();
+   await auth.UpdateProfileImage();
+   await auth.fetchUsersByOne();
+  } else {
+
+    Swal.fire({
+
+      text: 'Upload File Image Only!',
+      icon: 'error',
+
+    });
+
+  }
+};
+
+const MyAddprove = async () => {
+router.push("/profile/account");
+}
+
 
 function coverimage(i) {
   let im = ApiService.image(i);
@@ -405,7 +479,13 @@ function coverimage(i) {
 }
 
 </script>
-<style>
+<style scoped>
+
+
+.your-element {
+  border-right: 2px solid rgb(241, 241, 241);
+}
+
 .modal {
   position: fixed;
   top: 0;

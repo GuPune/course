@@ -7,14 +7,7 @@
             <div class="breadcrumb__title">
               <h3 class="heading">Update Account Detail</h3>
             </div>
-            <div class="breadcrumb__inner">
-              <ul>
-                <li>
-                  <a href="#">{{ $t("home") }}</a>
-                </li>
-                <li>{{ $t("page_appoint") }}</li>
-              </ul>
-            </div>
+         
           </div>
         </div>
       </div>
@@ -220,6 +213,7 @@
             </div>
           </div>
 
+          
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
@@ -513,12 +507,30 @@ const store = useAuthStore();
 const router = useRouter();
 const { getFormProve } = storeToRefs(store);
 
+
+
 await store.Zipcode();
 await store.Country();
 await store.ManageProfile();
+if(store.formdetail.status == 'W'){
+  Swal.fire({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  });
+  router.push('/profile');
+  setTimeout(() => Swal.close(), 500);
+
+
+  
+}
+
 
 
 onMounted(() => {
+
   fileInputFont.value.addEventListener('change', changeFileFont);
   fileInputBack.value.addEventListener('change', changeFileBack);
   
@@ -664,6 +676,8 @@ let save = await store.UpdateCheckAddVeriry();
 
 
  setTimeout(() => Swal.close(), 500);
+
+ router.push('/profile');
 }
   //   Swal.fire({
   //   allowEscapeKey: false,

@@ -4,6 +4,7 @@ import { useEnvStore } from '@/stores/env'
 import ApiService from '../services/api.service';
 import Cookies from 'js-cookie';
 import { useRouter } from 'vue-router';
+import moment from "moment";
 
 interface UserPayloadInterface {
   username: string;
@@ -51,7 +52,11 @@ export const useAuthStore = defineStore('auth', {
       location:null,
       country:null,
       user_village:"",
+      passpost_image:"",
+      real_image:"",
+      status:"",
     },
+    user_image:"",
     formdtl: {
       front_img: "",
       back_img: "",
@@ -77,6 +82,10 @@ export const useAuthStore = defineStore('auth', {
     formsearchUser:{
       user_id:null,
       user_search_id:null
+    },
+    formProfileImage:{
+      user_id:null,
+      user_image:null
     },
     type:[
       {
@@ -313,13 +322,19 @@ if(isEmptyObj == false){
 this.formdetail.country.country_id = response.data.detail?.country_id
 this.formdetail.location.id = response.data.detail?.location_id
 this.formdetail.exp_date = response.data.detail?.exp_date
+this.formdetail.status = response.data.detail?.status
+
+
+this.formdetail.passpost_image = response.data.detail?.passpost_image
+this.formdetail.real_image = response.data.detail?.real_image
+
 }
 
-if(response.data.card != null){
-this.formcard.idcard_back = response.data.card.idcard_back
-this.formcard.idcard_front = response.data.card.idcard_front
-this.formcard.user_id = response.data.user_id
-}
+// if(response.data.card != null){
+// this.formcard.idcard_back = response.data.card.idcard_back
+// this.formcard.idcard_front = response.data.card.idcard_front
+// this.formcard.user_id = response.data.user_id
+// }
 
    // this.displaycard();
 
@@ -340,9 +355,13 @@ this.formcard.user_id = response.data.user_id
     },
 
     async fetchUsersByOne() {
+      this.profile_by_one = [];
       this.formsearchUser.user_id = this.user_id;
       const data = await ApiService.post('/user/list/get/profile', this.formsearchUser).then(response => {
    this.profile_by_one = response.data;
+
+
+
 
     });
   },  
@@ -351,7 +370,6 @@ this.formcard.user_id = response.data.user_id
     this.formsearchUser.user_search_id = this.user_id;
     const data = await ApiService.post('/user/list/get/comment', this.formsearchUser).then(response => {
  this.comment = response.data.data;
- console.log(this.comment);
   });
 }, 
 
@@ -625,7 +643,18 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
        this.formaddprove.location_id = this.formdetail.location_id
        this.formaddprove.full_name = this.formuser.user_full_name
        this.formaddprove.expire = this.formdetail.exp_date
+       this.formaddprove.status = this.formdetail.status
+
+       this.image_pas = this.formdetail.passpost_image
+       this.image_real = this.formdetail.real_image
+
+    
       
+       this.formdetail.passpost_image = this.formdetail.passpost_image
+this.formdetail.real_image = this.formdetail.real_image
+
+
+
        
       //  this.formdetail.user_birthday = response.data.detail.user_birthday
       //  this.formdetail.user_address = response.data.detail.user_address
@@ -663,6 +692,14 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
        
       },
       async UpdateCheckAddVeriry() {
+
+
+        const currentDate = new Date(this.formaddprove.expire);
+      
+        const date_start = await this.changeFormate(currentDate)
+
+        this.formaddprove.expire = date_start
+        
         try {
           const data = await ApiService.post('/user/detail/verify', this.formaddprove).then(response => {
          
@@ -680,7 +717,16 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
           return false;
         }
       },
+      async changeFormate(a) {
 
+        if (a) {
+         
+
+          return moment(a).format("YYYY-MM-DD");
+         }
+      },
+
+      
 
       async UploadImage() {
 
@@ -720,6 +766,39 @@ const update = {verify_account:"phone_active",identification_number:this.formdet
        }
       
          },
+
+
+         async UploadProfile() {
+          if (this.user_image) {
+            let formDatas = new FormData();
+            formDatas.append('files', this.user_image);
+            try {
+              const data = await ApiService.upload('/media_file/upload/file', formDatas);
+              this.formProfileImage.user_image = data.data[0].path
+          
+              return true;
+            } catch (error) {
+              return false;
+            }
+          }
+         
+            },
+
+            async UpdateProfileImage() {
+        
+
+              this.formProfileImage.user_id = this.user_id;
+              try {
+                const data = await ApiService.post('/user/update/profile/image', this.formProfileImage).then(response => {
+ 
+
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+     
+            },
 
  
       
