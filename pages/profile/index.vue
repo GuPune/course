@@ -175,21 +175,21 @@
                         </label>
                       </div>
 
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12" v-if="auth.login_last[0]">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-sm"
                         >
-                          Last login: 2024-03-01 18:22:23
+                          Last login: {{auth.login_last[0].login_date}}
                         </label>
                       </div>
 
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="col-12 col-sm-12 col-md-12 col-lg-12"  v-if="auth.update_last[0]">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-sm"
                         >
-                          Last Data update: 2024-03-01 18:22:23
+                          Last Data update:  {{auth.update_last[0].update_data}}
                         </label>
                       </div>
                     </div>
@@ -580,6 +580,11 @@ const router = useRouter();
 
 await auth.fetchUsersByOne();
 await auth.fetchUsersByOneComment();
+
+await auth.UpdateLogData();
+await auth.UpdateLogLogin();
+
+
 const { getFormChangeTel } = storeToRefs(auth);
 onMounted(() => {
   fileInputFont.value.addEventListener("change", changeFileFont);
@@ -611,7 +616,8 @@ const changeFileFont = async (event) => {
     auth.user_image = inputs.files[0];
     await auth.UploadProfile();
     await auth.UpdateProfileImage();
-    await auth.fetchUsersByOne();
+   // await auth.fetchUsersByOne();
+    await auth.UpdateLogDataInsert()
   } else {
     Swal.fire({
       text: "Upload File Image Only!",

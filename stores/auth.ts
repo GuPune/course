@@ -63,6 +63,8 @@ export const useAuthStore = defineStore('auth', {
       real_image:"",
       status:"",
     },
+    login_last:[],
+    update_last:[],
     user_image:"",
     formdtl: {
       front_img: "",
@@ -370,10 +372,14 @@ this.formdetail.real_image = response.data.detail?.real_image
     },
 
     async fetchUsersByOne() {
+   
       this.profile_by_one = [];
       this.formsearchUser.user_id = this.user_id;
       const data = await ApiService.post('/user/list/get/profile', this.formsearchUser).then(response => {
    this.profile_by_one = response.data;
+   this.user_image = response.data[0].user_img;
+ 
+
     });
   },  
 
@@ -781,6 +787,7 @@ this.formdetail.real_image = this.formdetail.real_image
             try {
               const data = await ApiService.upload('/media_file/upload/file', formDatas);
               this.formProfileImage.user_image = data.data[0].path
+              this.profile_by_one[0].user_img = data.data[0].path
           
               return true;
             } catch (error) {
@@ -791,13 +798,10 @@ this.formdetail.real_image = this.formdetail.real_image
             },
 
             async UpdateProfileImage() {
-        
-
+      
               this.formProfileImage.user_id = this.user_id;
               try {
                 const data = await ApiService.post('/user/update/profile/image', this.formProfileImage).then(response => {
- 
-
                 });
               return data;
               } catch (error) {
@@ -875,11 +879,39 @@ this.mod_otp_change = true;
 
             },
 
-            async UpdateLogData() {
+
+            async UpdateLogDataInsert() {
               this.formlog.user_id = this.user_id;
               try {
                 const data = await ApiService.post('/user/updatedata/log',this.formlog).then(response => {
-                  
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+
+            },
+
+
+            async UpdateLogData() {
+              this.formlog.user_id = this.user_id;
+              try {
+                const data = await ApiService.post('/user/log/updatedata',this.formlog).then(response => {
+                this.update_last = response.data
+            
+                console.log(response);
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+
+            },
+            async UpdateLogLogin() {
+              this.formlog.user_id = this.user_id;
+              try {
+                const data = await ApiService.post('/user/log/login',this.formlog).then(response => {
+                  this.login_last = response.data
         
                 });
               return data;
