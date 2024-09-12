@@ -477,9 +477,7 @@ router.push("/profile/account");
 
 
 function coverimage(i) {
-  
   let im = ApiService.image(i);
-  console.log(im);
   return im;
 }
 
