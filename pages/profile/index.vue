@@ -377,7 +377,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-xl-12">
             <div class="contact__section" data-aos="fade-up">
               <div class="container">
@@ -402,7 +402,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
