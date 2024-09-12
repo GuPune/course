@@ -302,7 +302,7 @@
                     </div>
 
 
-                    <div class="row">
+                    <div class="row" v-if="auth.profile_by_one[0].passpost_imag">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
                               for="company-name"
@@ -341,7 +341,7 @@
                     </div>
 <br>
 
-                    <div class="row">
+                    <div class="row"  v-if="auth.comment">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
                               for="company-name"
