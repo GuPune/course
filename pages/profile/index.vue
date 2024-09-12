@@ -85,7 +85,7 @@
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="col-12 col-sm-6 col-xl-12 col-lg-12">
                           <div class="row">
-                            <div class="col-12 col-sm-12 col-md-2">
+                            <div class="col-3 col-sm-12 col-md-2">
                               <label
                                 for="company-name"
                                 class="col-sm-12 col-form-label col-form-label-lg"
@@ -93,7 +93,7 @@
                                 ເບີໂທ:
                               </label>
                             </div>
-                            <div class="col-12 col-sm-12 col-md-5">
+                            <div class="col-6 col-sm-12 col-md-5">
                               <label
                                 for="company-name"
                                 class="col-sm-12 col-form-label col-form-label-lg"
@@ -106,7 +106,7 @@
                               </label>
                             </div>
                             <div
-                              class="col-12 col-sm-12 col-md-3"
+                              class="col-3 col-sm-12 col-md-3"
                               style="color: green"
                             >
                               <label
@@ -121,7 +121,7 @@
                                 type="button"
                                 class="btn btn-primary"
                                 @click="ModalChangeTel()"
-                              >
+                             style="width: 100%;">
                                 ປ່ຽນ
                               </button>
                             </div>
@@ -130,8 +130,9 @@
                       </div>
 
                       <div class="col-12 col-sm-6 col-xl-12 col-lg-12">
+                        <br>
                         <div class="row">
-                          <div class="col-12 col-sm-12 col-md-2">
+                          <div class="col-3 col-sm-12 col-md-2">
                             <label
                               for="company-name"
                               class="col-sm-12 col-form-label col-form-label-lg"
@@ -139,7 +140,7 @@
                               ອີເມລ:
                             </label>
                           </div>
-                          <div class="col-12 col-sm-12 col-md-5">
+                          <div class="col-6 col-sm-12 col-md-5">
                             <label
                               for="company-name"
                               class="col-sm-12 col-form-label col-form-label-lg"
@@ -148,25 +149,27 @@
                             </label>
                           </div>
                           <div
-                            class="col-12 col-sm-12 col-md-3"
+                            class="col-3 col-sm-12 col-md-3"
                             style="color: red"
                           >
                             <label
                               for="company-name"
                               class="col-sm-12 col-form-label col-form-label-lg"
                             >
-                              ບໍ່ທັນຢືນຢັນ
+                              ບໍ່ຢືນຢັນ
                             </label>
                           </div>
                           <div class="col-12 col-sm-12 col-md-2">
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary"    style="width: 100%;">
                               ປ່ຽນ
                             </button>
                           </div>
                         </div>
                       </div>
 
+
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <br>
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-lg"
@@ -175,23 +178,7 @@
                         </label>
                       </div>
 
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-12" v-if="auth.login_last[0]">
-                        <label
-                          for="company-name"
-                          class="col-sm-12 col-form-label col-form-label-sm"
-                        >
-                          Last login: {{auth.login_last[0].login_date}}
-                        </label>
-                      </div>
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-12"  v-if="auth.update_last[0]">
-                        <label
-                          for="company-name"
-                          class="col-sm-12 col-form-label col-form-label-sm"
-                        >
-                          Last Data update:  {{auth.update_last[0].update_data}}
-                        </label>
-                      </div>
+            
                     </div>
                   </div>
 
@@ -246,7 +233,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -254,7 +241,7 @@
                           ເລກບັດປະຈຳຕົວ / Passport:
                         </label>
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -265,7 +252,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -273,7 +260,7 @@
                           ວັນໝົດອາຍຸຂອງບັດ:
                         </label>
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -284,7 +271,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -292,7 +279,7 @@
                           ວັນເດືອນປີເກີດ:
                         </label>
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -302,7 +289,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -310,7 +297,7 @@
                           ສັນຊາດ:
                         </label>
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -321,7 +308,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -329,7 +316,7 @@
                           ທີ່ຢູ່ປັດຈຸບັນ:
                         </label>
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-6 col-sm-12 col-md-6">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
@@ -413,10 +400,7 @@
                       <div
                         class="col-12 col-sm-12 col-lg-12"
                         @click="MyAddprove()"
-                        v-if="
-                          auth.profile_by_one[0].verify_account == 'phone_active' ||
-                          auth.profile_by_one[0].verify_account == 'system_unactive'
-                        "
+                        v-if="(((auth.profile_by_one[0].verify_account == 'phone_active') || (auth.profile_by_one[0].verify_account == 'system_unactive')) && ((auth.profile_by_one[0].status == '') || (auth.profile_by_one[0].status == 'N')))"
                       >
                         <button
                           type="button"
@@ -434,32 +418,34 @@
           </div>
         </div>
 
-        <!-- <div class="row">
+    
+
+        <div class="row">
           <div class="col-xl-12">
             <div class="contact__section" data-aos="fade-up">
               <div class="container">
-                <div class="row">
-                  <div class="col-12 col-sm-12 col-xl-12 col-lg-12">
+                <div class="row" >
+                  <div class="col-12 col-sm-12 col-xl-12 col-lg-12" v-if="auth.login_last[0]">
                     <label
                       for="company-name"
                       class="col-sm-12 col-form- label col-form-label-sm"
                     >
-                      Last login: 2024-03-01 18:22:23
+                      Last login: {{auth.login_last[0].login_date}}
                     </label>
                   </div>
-                  <div class="col-12 col-sm-12 col-xl-12 col-lg-12">
+                  <div class="col-12 col-sm-12 col-xl-12 col-lg-12"  v-if="auth.update_last[0]">
                     <label
                       for="company-name"
                       class="col-sm-12 col-form-label col-form-label-sm"
                     >
-                      Last Data update: 2024-03-02 14:22:11
+                      Last Data update: {{auth.update_last[0].update_data}}
                     </label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -502,6 +488,8 @@
       </div>
     </div>
   </div>
+
+  
 
   <div class="modal" v-if="auth.mod_otp_change">
     <div class="modal-content" id="deleteConformationLabel">
