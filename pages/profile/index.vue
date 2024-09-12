@@ -28,7 +28,9 @@
                   <div class="col-12 col-sm-6 col-xl-6 col-lg-6 your-element">
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-7">
+                    
                         <div class="blog__details__content__wraper">
+                       
                           <div  v-if="auth.profile_by_one[0].user_img">
                             <img
                               :src="coverimage(auth.profile_by_one[0].user_img)"
@@ -302,7 +304,7 @@
                     </div>
 
 
-                    <div class="row" v-if="auth.profile_by_one[0].passpost_imag">
+                    <div class="row" v-if="auth.profile_by_one[0].passpost_image">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
                               for="company-name"
@@ -323,12 +325,13 @@
                        
                       </div>
                     </div>
+                    <br>
 
-                    <div class="row">
+                    <div class="row" v-if="auth.profile_by_one[0].real_image">
                       <div class="col-12 col-sm-12 col-md-6">
                   
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6" v-if="auth.profile_by_one[0].real_image">
+                      <div class="col-12 col-sm-12 col-md-6">
                         <div class="form-group row">
                   <img
                       :src="coverimage(auth.profile_by_one[0].real_image)"
@@ -430,7 +433,7 @@ await auth.fetchUsersByOne();
 await auth.fetchUsersByOneComment();
 
 onMounted(() => {
-  // fileInputFont.value.addEventListener('change', changeFileFont);
+ fileInputFont.value.addEventListener('change', changeFileFont);
 
   
    
@@ -474,7 +477,9 @@ router.push("/profile/account");
 
 
 function coverimage(i) {
+  
   let im = ApiService.image(i);
+  console.log(im);
   return im;
 }
 
