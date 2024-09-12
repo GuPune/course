@@ -341,7 +341,7 @@
                     </div>
 <br>
 
-                    <div class="row"  v-if="auth.comment">
+                    <div class="row"  v-if="auth.comment.length > 0">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
                               for="company-name"
