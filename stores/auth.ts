@@ -18,6 +18,8 @@ export const useAuthStore = defineStore('auth', {
     selectProfile:'profile',
     verify: false,
     loading: false,
+    otp_confirm:false,
+    Isotpconfirm:false,
     alert :false,
     user_id :null,
     isDisabled:false,
@@ -26,6 +28,8 @@ export const useAuthStore = defineStore('auth', {
     imagelist_back:null,
     mydltcardExp:[],
     comment:[],
+    mod_otp_change:false,
+    mod_change_tel:false,
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -38,6 +42,9 @@ export const useAuthStore = defineStore('auth', {
       user_password:null,
       user_prefrix:null,
       user_full_name:null
+    },
+    formlog:{
+      user_id:null
     },
     profile_by_one:[],
     mydtla: [],
@@ -114,6 +121,10 @@ export const useAuthStore = defineStore('auth', {
       new_password:null,
       confirm_new_password:null,
     },
+    formachangtel: {
+      changeiden:'',
+      otp_code:'',
+    },
     formaddprove: {
       full_name: '',
       first_name: '',
@@ -152,6 +163,10 @@ export const useAuthStore = defineStore('auth', {
     getFormChangepassword(state) {
       return state.changepassword;
     },
+    getFormChangeTel(state) {
+      return state.formachangtel;
+    },
+
 
     
   },
@@ -359,10 +374,6 @@ this.formdetail.real_image = response.data.detail?.real_image
       this.formsearchUser.user_id = this.user_id;
       const data = await ApiService.post('/user/list/get/profile', this.formsearchUser).then(response => {
    this.profile_by_one = response.data;
-
-
-
-
     });
   },  
 
@@ -379,13 +390,9 @@ this.formdetail.real_image = response.data.detail?.real_image
     } ,  
     async displaycard() {
       const mydlt = [];
-  
       try {
         const data = await ApiService.get('/dlt_card/list/?user_id=' + this.user_id).then(response => {
           this.dltcard = response.data;
-
-         
-
           if (response.data.length > 0) {
             let a = this.dltcard[0];
             this.formdtl.front_img = a.front_img
@@ -720,8 +727,7 @@ this.formdetail.real_image = this.formdetail.real_image
       async changeFormate(a) {
 
         if (a) {
-         
-
+        
           return moment(a).format("YYYY-MM-DD");
          }
       },
@@ -800,8 +806,89 @@ this.formdetail.real_image = this.formdetail.real_image
      
             },
 
- 
-      
+
+            async CheckTel() {
+              if(this.formachangtel.changeiden == this.profile_by_one[0].user_phone){
+                return false;
+              }
+              return true;
+            },
+            async CheckTelData() {
+this.formachangtel.user_id = this.user_id;
+              try {
+                const data = await ApiService.post('/user/changetel', this.formachangtel).then(response => {
+return response.data.status
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+          
+            },
+
+            async GetOtpTel() {
+
+              try {
+                const data = await ApiService.post('/user/change/otp/'+this.formachangtel.changeiden, this.formachangtel).then(response => {
+this.formachangtel.otp_code = response.data.otp_code
+return true;
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+
+            },
+
+            async SwitchModal() {
+this.mod_change_tel = false;
+this.mod_otp_change = true;
+            },
+
+            async VerityOtpTel() {
+              try {
+                const data = await ApiService.put('/user/verify_otp',this.formachangtel).then(response => {
+                  if(response.status === 204){
+                    //  let saveuser =  this.SaveUserVerify()
+                      return false;
+                    }else {
+                      return true;
+                    }
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+
+            },
+
+            async UpdateTel() {
+              try {
+                const data = await ApiService.post('/user/update/changetel',this.formachangtel).then(response => {
+                  
+        
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+
+            },
+
+            async UpdateLogData() {
+              this.formlog.user_id = this.user_id;
+              try {
+                const data = await ApiService.post('/user/updatedata/log',this.formlog).then(response => {
+                  
+        
+                });
+              return data;
+              } catch (error) {
+                return false;
+              }
+
+            },
+
   },
 });
 

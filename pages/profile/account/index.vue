@@ -673,7 +673,7 @@ if(updateprofile == true){
   
 let save = await store.UpdateCheckAddVeriry();
 
-
+await store.UpdateLogData()
 
  setTimeout(() => Swal.close(), 500);
 

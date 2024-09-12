@@ -28,17 +28,17 @@
                   <div class="col-12 col-sm-6 col-xl-6 col-lg-6 your-element">
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-7">
-                    
                         <div class="blog__details__content__wraper">
-                       
-                          <div  v-if="auth.profile_by_one[0].user_img">
+                        
+                          <div v-if="auth.profile_by_one[0].user_img">
                             <img
                               :src="coverimage(auth.profile_by_one[0].user_img)"
-                              alt="blog"   width="300" height="250"
+                              alt="blog"
+                              width="300"
+                              height="250"
                             />
-
                           </div>
-                          <div  v-else>
+                          <div v-else>
                             <img
                               src="../../assets/img/person-avatar.jpg"
                               alt="blog"
@@ -50,18 +50,27 @@
 
                       <div class="col-12 col-sm-12 col-md-5">
                         <span>
-         <input type="file" ref="fileInputFont" style="display: none;">
- <button class="changeImg btn btn-primary"  @click="changeFont" >
-  Upload Picture
-       </button>
-       </span>
-             </div>
+                          <input
+                            type="file"
+                            ref="fileInputFont"
+                            style="display: none"
+                          />
+                          <button
+                            class="changeImg btn btn-primary"
+                            @click="changeFont"
+                          >
+                            Upload Picture
+                          </button>
+                        </span>
+                      </div>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-lg"
                         >
-                          {{ auth.profile_by_one[0].user_prefrix }} {{ auth.profile_by_one[0].user_firstname }} {{ auth.profile_by_one[0].user_lastname }}
+                          {{ auth.profile_by_one[0].user_prefrix }}
+                          {{ auth.profile_by_one[0].user_firstname }}
+                          {{ auth.profile_by_one[0].user_lastname }}
                         </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -69,10 +78,10 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-lg"
                         >
-                        {{ auth.profile_by_one[0].user_full_name }}
+                          {{ auth.profile_by_one[0].user_full_name }}
                         </label>
                       </div>
-                  <br>
+                      <br />
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="col-12 col-sm-6 col-xl-12 col-lg-12">
                           <div class="row">
@@ -89,7 +98,11 @@
                                 for="company-name"
                                 class="col-sm-12 col-form-label col-form-label-lg"
                               >
-                              856{{ auth.profile_by_one[0].user_phone }}
+                                {{
+                                  chtelformate(
+                                    auth.profile_by_one[0].user_phone
+                                  )
+                                }}
                               </label>
                             </div>
                             <div
@@ -104,7 +117,11 @@
                               </label>
                             </div>
                             <div class="col-12 col-sm-12 col-md-2">
-                              <button type="button" class="btn btn-primary">
+                              <button
+                                type="button"
+                                class="btn btn-primary"
+                                @click="ModalChangeTel()"
+                              >
                                 ປ່ຽນ
                               </button>
                             </div>
@@ -127,7 +144,7 @@
                               for="company-name"
                               class="col-sm-12 col-form-label col-form-label-lg"
                             >
-                            {{ auth.profile_by_one[0].user_email }}
+                              {{ auth.profile_by_one[0].user_email }}
                             </label>
                           </div>
                           <div
@@ -163,7 +180,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-sm"
                         >
-                        Last login: 2024-03-01 18:22:23
+                          Last login: 2024-03-01 18:22:23
                         </label>
                       </div>
 
@@ -172,205 +189,242 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-sm"
                         >
-                        Last Data update: 2024-03-01 18:22:23
+                          Last Data update: 2024-03-01 18:22:23
                         </label>
                       </div>
                     </div>
                   </div>
 
                   <div class="col-12 col-lg-6 col-xl-6">
-                 
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-12">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-lg"
-                            >
-                            ສະຖານະ:
-                            
-                            <span v-if="auth.profile_by_one[0].verify_account == 'phone_active'" style="color: #FFA927;"> ຢືນຢັນ OTP ສໍາເລັດ  </span>
-                          
-                            <span v-else-if="auth.profile_by_one[0].verify_account == 'phone_unactive'" style="color: red;"> ຢືນຢັນ OTP ບໍ່ຖືກຕ້ອງ  </span>
-                            <span v-else-if="auth.profile_by_one[0].verify_account == 'system_active'" style="color: green;"> ຢືນຢັນຕົວຕົນແລ້ວ  </span>
-                            <span v-else-if="auth.profile_by_one[0].verify_account == 'system_unactive'" style="color: red;"> ຢືນຢັນຂໍ້ມູນທີ່ບໍ່ຖືກຕ້ອງ  </span>
-                            </label>
-                            
-                      </div>
-              
-                    </div>
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-lg"
+                        >
+                          ສະຖານະ:
 
-                    <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
-                        <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ເລກບັດປະຈຳຕົວ / Passport: 
-                            </label>
-                      </div>
-                      <div class="col-12 col-sm-12 col-md-6">
-                        <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            {{ auth.profile_by_one[0].identification_number }}
-                            </label>
-                      </div>
-                    </div>
+                          <span
+                            v-if="
+                              auth.profile_by_one[0].verify_account ==
+                              'phone_active'
+                            "
+                            style="color: #ffa927"
+                          >
+                            ຢືນຢັນ OTP ສໍາເລັດ
+                          </span>
 
-                
-
-                    <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
-                        <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ວັນໝົດອາຍຸຂອງບັດ: 
-                            </label>
-                      </div>
-                      <div class="col-12 col-sm-12 col-md-6">
-                        <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            {{ auth.profile_by_one[0].exp_date }}
-                            </label>
+                          <span
+                            v-else-if="
+                              auth.profile_by_one[0].verify_account ==
+                              'phone_unactive'
+                            "
+                            style="color: red"
+                          >
+                            ຢືນຢັນ OTP ບໍ່ຖືກຕ້ອງ
+                          </span>
+                          <span
+                            v-else-if="
+                              auth.profile_by_one[0].verify_account ==
+                              'system_active'
+                            "
+                            style="color: green"
+                          >
+                            ຢືນຢັນຕົວຕົນແລ້ວ
+                          </span>
+                          <span
+                            v-else-if="
+                              auth.profile_by_one[0].verify_account ==
+                              'system_unactive'
+                            "
+                            style="color: red"
+                          >
+                            ຢືນຢັນຂໍ້ມູນທີ່ບໍ່ຖືກຕ້ອງ
+                          </span>
+                        </label>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ວັນເດືອນປີເກີດ:
-                            </label>
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ເລກບັດປະຈຳຕົວ / Passport:
+                        </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            {{ auth.profile_by_one[0].user_birthday }}
-                            </label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12 col-sm-12 col-md-6">
-                        <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ສັນຊາດ:
-                            </label>
-                      </div>
-                      <div class="col-12 col-sm-12 col-md-6">
-                        <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ລາວ
-                            </label>
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          {{ auth.profile_by_one[0].identification_number }}
+                        </label>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ທີ່ຢູ່ປັດຈຸບັນ:
-                            </label>
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ວັນໝົດອາຍຸຂອງບັດ:
+                        </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            {{ auth.profile_by_one[0].user_address }}
-                            </label>
-                            <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                          
-                            {{ auth.profile_by_one[0].zipcode_name }} - {{ auth.profile_by_one[0].province_name }}
-                            </label>
-                       
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          {{ auth.profile_by_one[0].exp_date }}
+                        </label>
                       </div>
                     </div>
 
-
-                    <div class="row" v-if="auth.profile_by_one[0].passpost_image">
+                    <div class="row">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ຮູບ:
-                            </label>
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ວັນເດືອນປີເກີດ:
+                        </label>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          {{ auth.profile_by_one[0].user_birthday }}
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-6">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ສັນຊາດ:
+                        </label>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ລາວ
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-6">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ທີ່ຢູ່ປັດຈຸບັນ:
+                        </label>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          {{ auth.profile_by_one[0].user_address }}
+                        </label>
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          {{ auth.profile_by_one[0].zipcode_name }} -
+                          {{ auth.profile_by_one[0].province_name }}
+                        </label>
+                      </div>
+                    </div>
+
+                    <div
+                      class="row"
+                      v-if="auth.profile_by_one[0].passpost_image"
+                    >
+                      <div class="col-12 col-sm-12 col-md-6">
+                        <label
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ຮູບ:
+                        </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6">
                         <div class="form-group row">
-                  <img
-                        :src="coverimage(auth.profile_by_one[0].passpost_image)"
-                    class="img-fluid"
-                    width="80"
-                    height="80"
-                  />
-                </div>
-                       
+                          <img
+                            :src="
+                              coverimage(auth.profile_by_one[0].passpost_image)
+                            "
+                            class="img-fluid"
+                            width="80"
+                            height="80"
+                          />
+                        </div>
                       </div>
                     </div>
-                    <br>
+                    <br />
 
                     <div class="row" v-if="auth.profile_by_one[0].real_image">
-                      <div class="col-12 col-sm-12 col-md-6">
-                  
-                      </div>
+                      <div class="col-12 col-sm-12 col-md-6"></div>
                       <div class="col-12 col-sm-12 col-md-6">
                         <div class="form-group row">
-                  <img
-                      :src="coverimage(auth.profile_by_one[0].real_image)"
-                    class="img-fluid"
-                    width="80"
-                    height="80"
-                  />
-                </div>
+                          <img
+                            :src="coverimage(auth.profile_by_one[0].real_image)"
+                            class="img-fluid"
+                            width="80"
+                            height="80"
+                          />
+                        </div>
                       </div>
                     </div>
-<br>
+                    <br />
 
-                    <div class="row"  v-if="auth.comment.length > 0">
+                    <div class="row" v-if="auth.comment.length > 0">
                       <div class="col-12 col-sm-12 col-md-6">
                         <label
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            ຄຳເຫັນ:
-                            </label>
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          ຄຳເຫັນ:
+                        </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6">
-                        <label  v-for="(item, index) in auth.comment"
-                      :key="item.ap_id"
-                              for="company-name"
-                              class="col-sm-12 col-form-label col-form-label-md"
-                            >
-                            {{item.comment_details}}
-                            </label>
-                      
+                        <label
+                          v-for="(item, index) in auth.comment"
+                          :key="item.ap_id"
+                          for="company-name"
+                          class="col-sm-12 col-form-label col-form-label-md"
+                        >
+                          {{ item.comment_details }}
+                        </label>
                       </div>
-
-
-                      
                     </div>
-  <!-- v-if="auth.profile_by_one[0].status == 'N' || auth.profile_by_one[0].status == '' " -->
+                    <!-- v-if="auth.profile_by_one[0].status == 'N' || auth.profile_by_one[0].status == '' " -->
                     <div class="row">
-                      <div class="col-12 col-sm-12 col-lg-12" @click="MyAddprove()" v-if="auth.profile_by_one[0].status == 'N' || auth.profile_by_one[0].status == '' ">
-                        <button type="button" class="btn btn-primary" style="width: 100%;">ສົ່ງຂ້ມູນ ເພື່ອຢືນຢັນຕົວຕົນ</button>
+                      <div
+                        class="col-12 col-sm-12 col-lg-12"
+                        @click="MyAddprove()"
+                        v-if="
+                          auth.profile_by_one[0].status == 'N' ||
+                          auth.profile_by_one[0].status == ''
+                        "
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          style="width: 100%"
+                        >
+                          ສົ່ງຂ້ມູນ ເພື່ອຢືນຢັນຕົວຕົນ
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -409,82 +463,262 @@
       </div>
     </div>
   </div>
+
+  <div class="modal" v-if="auth.mod_change_tel">
+    <div class="modal-content" id="deleteConformationLabel">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">ປ່ຽນເບີໂທລະສັບ ?</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label"
+            >ເບີໂທລະສັບ ໃໝ່ :</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="20xxxxxxxx"
+            maxlength="10"
+            v-model="auth.formachangtel.changeiden"
+            autocomplete="off"
+            @input="filterInput"
+            @change="v$.changeiden.$touch"
+          />
+        </div>
+
+        <span
+          class="text-xs text-red-500"
+          style="color: red"
+          v-if="v$.changeiden.$error"
+          >* ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ.
+          (ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ)</span
+        >
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" @click="CheckTel()">
+          ບັນທຶກ ແລະ ສົ່ງລະຫັດຢືນຢັນ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" v-if="auth.mod_otp_change">
+    <div class="modal-content" id="deleteConformationLabel">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">ປ່ຽນເບີໂທລະສັບ ?</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-12 col-form-label" style="text-align: center;"
+            >ກະລຸນາໃສ່ລະຫັດ OTP 6 ຕົວເລກ ທີ່ຖືກສົ່ງໄປເບີໂທຂອງທ່ານ 
+            ໄດ້ສົ່ງໄປທີ່ເບີ:  <span> 856{{ auth.formachangtel.changeiden }}</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="20xxxxxxxx"
+            maxlength="10"
+            v-model="auth.formachangtel.otp_code"
+          />
+          <span v-if="auth.Isotpconfirm"
+          class="text-xs text-red-500"
+          style="color: red"
+         
+          >* ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ.
+          (ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ)</span
+        >
+        </div>
+<br>
+
+<div class="form-group row">
+      <button type="button" class="btn btn-primary" @click="SaveOTP()">
+      ຢືນຢັນ
+    </button>
+    </div>
+    <br>
+        <div class="form-group row">
+ 
+
+          <label for="inputEmail3" class="col-sm-12 col-form-label" style="text-align: center;"
+            >
+            ບໍ່ໄດ້ຮັບລະຫັດ? ສົ່ງໃໝ່ອີກຄັ້ງ
+            </label
+          >
+        </div>
+      </div>
+
+     
+
+    
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
 definePageMeta({
   middleware: "auth", // this should match the name of the file inside the middleware directory
 });
 
-
 import { useAuthStore } from "@/stores/auth"; // import the auth store we just created
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import { HistoryStore } from "@/stores/history";
-import ApiService from '@/services/api.service';
+import ApiService from "@/services/api.service";
 import { useRoute } from "vue-router";
+import { useVuelidate } from "@vuelidate/core";
+import {
+  required,
+  email,
+  sameAs,
+  minLength,
+  helpers,
+} from "@vuelidate/validators";
 import Swal from "sweetalert2";
 const auth = useAuthStore();
-
-
 
 const router = useRouter();
 
 await auth.fetchUsersByOne();
 await auth.fetchUsersByOneComment();
-
+const { getFormChangeTel } = storeToRefs(auth);
 onMounted(() => {
- fileInputFont.value.addEventListener('change', changeFileFont);
+  fileInputFont.value.addEventListener("change", changeFileFont);
+});
 
-  
-   
- });
+const rules = computed(() => {
+  return {
+    changeiden: {
+      required: helpers.withMessage("The tel field is required", required),
+      minLength: minLength(9),
+    },
+  };
+});
 
+const v$ = useVuelidate(rules, getFormChangeTel);
 
 const fileInputFont = ref(null);
 
-
 const changeFont = () => {
-
-// Trigger a click event on the file input element
-fileInputFont.value.click();
+  // Trigger a click event on the file input element
+  fileInputFont.value.click();
 };
-
 
 const changeFileFont = async (event) => {
   var inputs = event.target;
   const file = event.target.files[0];
 
-  if (file && file.type.startsWith('image/')) {
+  if (file && file.type.startsWith("image/")) {
     auth.user_image = inputs.files[0];
-   await auth.UploadProfile();
-   await auth.UpdateProfileImage();
-   await auth.fetchUsersByOne();
+    await auth.UploadProfile();
+    await auth.UpdateProfileImage();
+    await auth.fetchUsersByOne();
   } else {
-
     Swal.fire({
-
-      text: 'Upload File Image Only!',
-      icon: 'error',
-
+      text: "Upload File Image Only!",
+      icon: "error",
     });
-
   }
 };
 
 const MyAddprove = async () => {
-router.push("/profile/account");
-}
+  router.push("/profile/account");
+};
 
+const Reload = async () => {
+  await auth.fetchUsersByOne();
+  await auth.fetchUsersByOneComment();
+};
+
+const filterInput = async (event) => {
+  // stores.form.user_phone = event.target.value.replace(/\D/g, "");
+
+  const key = event.data;
+  if (event.data === " ") {
+    auth.formachangtel.changeiden = auth.formachangtel.changeiden.substring(
+      0,
+      auth.formachangtel.changeiden.length - 1
+    );
+    return;
+  }
+  if (auth.formachangtel.changeiden.charAt(0) !== "2") {
+    auth.formachangtel.changeiden = "";
+    return;
+  }
+  if (
+    auth.formachangtel.changeiden.charAt(1) !== "" &&
+    auth.formachangtel.changeiden.charAt(1) !== "0"
+  ) {
+    auth.formachangtel.changeiden = "2";
+    return;
+  }
+  auth.formachangtel.changeiden = event.target.value.replace(/\D/g, "");
+};
+
+const ModalChangeTel = async (event) => {
+  auth.mod_change_tel = true;
+};
+const ModalChangeTelClose = async (event) => {
+  auth.mod_change_tel = false;
+};
+
+const CheckTel = async (event) => {
+  v$.value.$validate();
+  if (!v$.value.$error) {
+    let checktel = await auth.CheckTel();
+    if (checktel == false) {
+      await Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "This number is your current number!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      let checkteldata = await auth.CheckTelData();
+      if (checkteldata == false) {
+        await Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "This number is already active!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        await auth.GetOtpTel();
+        await auth.SwitchModal();
+        //   auth.mod_otp_change = true;
+      }
+    }
+  }
+};
+
+const SaveOTP = async (event) => {
+  let otpconfirm = await auth.VerityOtpTel();
+  if (otpconfirm == true) {
+    
+    let updatetel = await auth.UpdateTel();
+    
+    await auth.UpdateLogData();
+    auth.Isotpconfirm = false;
+    auth.mod_otp_change = false;
+    auth.profile_by_one[0].user_phone = auth.formachangtel.changeiden;
+
+  } else {
+    auth.Isotpconfirm = true;
+  }
+};
 
 function coverimage(i) {
   let im = ApiService.image(i);
   return im;
 }
 
+function chtelformate(te) {
+  let tel = "825 " + te;
+  return tel;
+}
 </script>
 <style scoped>
-
-
 .your-element {
   border-right: 2px solid rgb(241, 241, 241);
 }
