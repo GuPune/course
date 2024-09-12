@@ -414,8 +414,8 @@
                         class="col-12 col-sm-12 col-lg-12"
                         @click="MyAddprove()"
                         v-if="
-                          auth.profile_by_one[0].status == 'N' ||
-                          auth.profile_by_one[0].status == ''
+                          auth.profile_by_one[0].verify_account == 'phone_active' ||
+                          auth.profile_by_one[0].verify_account == 'system_unactive'
                         "
                       >
                         <button
