@@ -328,10 +328,10 @@
                       <div class="col-12 col-sm-12 col-md-6">
                   
                       </div>
-                      <div class="col-12 col-sm-12 col-md-6">
+                      <div class="col-12 col-sm-12 col-md-6" v-if="auth.profile_by_one[0].real_image">
                         <div class="form-group row">
                   <img
-                      :src="coverimage(auth.profile_by_one[0].passpost_image)"
+                      :src="coverimage(auth.profile_by_one[0].real_image)"
                     class="img-fluid"
                     width="80"
                     height="80"
