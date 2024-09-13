@@ -59,7 +59,8 @@
                             class="changeImg btn btn-primary"
                             @click="changeFont"
                           >
-                            Upload Picture
+                          {{$t('profile_button_upload')}}
+                            
                           </button>
                         </span>
                       </div>
@@ -90,7 +91,7 @@
                                 for="company-name"
                                 class="col-sm-12 col-form-label col-form-label-lg"
                               >
-                                ເບີໂທ:
+                              {{$t('profile_tel')}}
                               </label>
                             </div>
                             <div class="col-6 col-sm-12 col-md-5">
@@ -122,7 +123,7 @@
                                 class="btn btn-primary"
                                 @click="ModalChangeTel()"
                              style="width: 100%;">
-                                ປ່ຽນ
+                             {{$t('profile_button_changetel')}}
                               </button>
                             </div>
                           </div>
@@ -130,14 +131,14 @@
                       </div>
 
                       <div class="col-12 col-sm-6 col-xl-12 col-lg-12">
-                        <br>
+                       
                         <div class="row">
                           <div class="col-3 col-sm-12 col-md-2">
                             <label
                               for="company-name"
                               class="col-sm-12 col-form-label col-form-label-lg"
                             >
-                              ອີເມລ:
+                            {{$t('profile_email')}}
                             </label>
                           </div>
                           <div class="col-6 col-sm-12 col-md-5">
@@ -160,21 +161,22 @@
                             </label>
                           </div>
                           <div class="col-12 col-sm-12 col-md-2">
-                            <button type="button" class="btn btn-primary"    style="width: 100%;">
-                              ປ່ຽນ
-                            </button>
+                            <!-- <button type="button" class="btn btn-primary"    style="width: 100%;">
+                              {{$t('profile_button_changeemail')}}
+                              
+                            </button> -->
                           </div>
                         </div>
                       </div>
 
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <br>
+                    
                         <label
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-lg"
                         >
-                          Username: {{ auth.profile_by_one[0].user_name }}
+                        {{$t('profile_usersname')}} {{ auth.profile_by_one[0].user_name }}
                         </label>
                       </div>
 
@@ -189,7 +191,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-lg"
                         >
-                          ສະຖານະ:
+                   {{$t('profile_status_label')}}
 
                           <span
                             v-if="
@@ -238,7 +240,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
                         >
-                          ເລກບັດປະຈຳຕົວ / Passport:
+                          {{$t('profile_passport')}}
                         </label>
                       </div>
                       <div class="col-6 col-sm-12 col-md-6">
@@ -257,7 +259,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
                         >
-                          ວັນໝົດອາຍຸຂອງບັດ:
+                         {{$t('profile_passport_exp')}}
                         </label>
                       </div>
                       <div class="col-6 col-sm-12 col-md-6">
@@ -276,7 +278,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
                         >
-                          ວັນເດືອນປີເກີດ:
+                        {{$t('profile_birthday')}}
                         </label>
                       </div>
                       <div class="col-6 col-sm-12 col-md-6">
@@ -294,7 +296,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
                         >
-                          ສັນຊາດ:
+                         {{$t('profile_coutr')}}
                         </label>
                       </div>
                       <div class="col-6 col-sm-12 col-md-6">
@@ -313,7 +315,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
                         >
-                          ທີ່ຢູ່ປັດຈຸບັນ:
+                        {{$t('profile_address')}}
                         </label>
                       </div>
                       <div class="col-6 col-sm-12 col-md-6">
@@ -342,7 +344,7 @@
                           for="company-name"
                           class="col-sm-12 col-form-label col-form-label-md"
                         >
-                          ຮູບ:
+                        {{$t('profile_image')}}
                         </label>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6">
@@ -453,12 +455,12 @@
   <div class="modal" v-if="auth.mod_change_tel">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">ປ່ຽນເບີໂທລະສັບ ?</h1>
+        <h1 class="modal-title" id="exampleModalLabel">{{$t('profile_tel_change_new')}}</h1>
       </div>
       <div class="modal-body">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-4 col-form-label"
-            >ເບີໂທລະສັບ ໃໝ່ :</label
+            >{{$t('profile_tel_change_new_label')}}</label
           >
           <input
             type="text"
@@ -475,59 +477,129 @@
         <span
           class="text-xs text-red-500"
           style="color: red"
-          v-if="v$.changeiden.$error"
-          >* ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ.
-          (ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ)</span
+    
+          >{{$t('profile_button_change_tel_alert')}}</span
         >
       </div>
       <div class="modal-footer">
 
         <button type="button" class="btn btn-primary" @click="CheckTel()">
-          ບັນທຶກ ແລະ ສົ່ງລະຫັດຢືນຢັນ
+       
+          {{$t('profile_button_change_select_tel')}}
         </button>
       </div>
     </div>
   </div>
 
-  
 
-  <div class="modal" v-if="auth.mod_otp_change">
+  
+  <div class="modal" v-if="auth.mod_change_email">
     <div class="modal-content" id="deleteConformationLabel">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">ປ່ຽນເບີໂທລະສັບ ?</h1>
+        <h1 class="modal-title" id="exampleModalLabel">{{$t('profile_labe_email')}}</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label"
+            >{{$t('profile_labe_email_text')}}</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            placeholder="XXXX@XXXXXX.XX"
+            maxlength="30"
+            v-model="auth.email"
+            autocomplete="off"
+             
+          />
+        </div>
+
+        <span v-if="auth.changeformemail"
+          class="text-xs text-red-500"
+          style="color: red"
+    
+          >{{$t('profile_button_change_email_alert_formate')}}</span
+        >
+        <span v-if="auth.chaeckemailtaken"
+          class="text-xs text-red-500"
+          style="color: red"
+    
+          >{{$t('profile_button_change_email_alert_same')}}</span
+        >
+
+        <span v-if="auth.changeemailvalid"
+          class="text-xs text-red-500"
+          style="color: red"
+    
+          >{{$t('profile_button_change_email_alert_valid')}}</span
+        >
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" @click="CheckEmail()">
+       
+          {{$t('profile_button_change_select_tel')}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" v-if="auth.mod_otp_change_email">
+    <div class="modal-content" id="deleteConformationLabel">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">{{$t('profile_labe_otp')}}</h1>
       </div>
       <div class="modal-body">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-12 col-form-label" style="text-align: center;"
-            >ກະລຸນາໃສ່ລະຫັດ OTP 6 ຕົວເລກ ທີ່ຖືກສົ່ງໄປເບີໂທຂອງທ່ານ 
-            ໄດ້ສົ່ງໄປທີ່ເບີ:  <span> 856{{ auth.formachangtel.changeiden }}</span></label
+            >{{$t('profile_labe_otp_text')}}
+              <span> 856{{ auth.formachangtel.changeiden }}</span></label
           >
-          <input
-            type="text"
-            class="form-control"
-            placeholder="20xxxxxxxx"
-            maxlength="10"
-            v-model="auth.formachangtel.otp_code"
-          />
-          <span v-if="auth.Isotpconfirm"
+     
+        </div>
+
+        <div class="form-group d-flex justify-content-center">
+          <div class="otp-inputs">
+            <input
+            class="otp-input" type="text" v-model="auth.otp[0]" @input="moveFocus(1)" ref="input1"   @click="preventDoubleClick"
+                            maxlength="1"  />
+                             <input class="otp-input" v-model="auth.otp[1]" @input="moveFocus(2)" ref="input2" @click="preventDoubleClick"
+                            type="text" id="input2" maxlength="1"  /> 
+                            <input class="otp-input"
+                           type="text" id="input3" maxlength="1"    v-model="auth.otp[2]" @input="moveFocus(3)" ref="input3" @click="preventDoubleClick"/>
+                             <input class="otp-input"  type="text" id="input4"  v-model="auth.otp[3]" @input="moveFocus(4)" ref="input4"  @click="preventDoubleClick"
+                        maxlength="1"  /> 
+                        <input class="otp-input"  type="text" id="input5"  v-model="auth.otp[4]" @input="moveFocus(5)" ref="input5"  @click="preventDoubleClick"
+                        maxlength="1"  /> 
+                        <input class="otp-input"  type="text" id="input6"  v-model="auth.otp[5]"  ref="input6"  
+                        maxlength="1" @click="preventDoubleClick" /> 
+    </div>
+
+ 
+        
+              </div>
+              <span v-if="auth.Isotpconfirm"
           class="text-xs text-red-500"
           style="color: red"
          
-          >* ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ.
-          (ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ)</span
+          >{{$t('profile_labe_otp_alert_min2')}}</span
         >
-        </div>
+
+              <span v-if="auth.otpisactivechange == false" 
+          class="text-xs text-red-500"
+          style="color: red"
+         
+          >{{$t('profile_labe_otp_alert_min1')}}</span
+        >
 <br>
 
 <div class="form-group row">
       <button type="button" class="btn btn-primary" @click="SaveOTP()">
-      ຢືນຢັນ
+        {{$t('profile_labe_otp_save')}}
     </button>
     </div>
     <br>
         <div class="form-group row">
- 
-
           <label for="inputEmail3" class="col-sm-12 col-form-label" style="text-align: center;"
             >
             ບໍ່ໄດ້ຮັບລະຫັດ? ສົ່ງໃໝ່ອີກຄັ້ງ
@@ -535,10 +607,73 @@
           >
         </div>
       </div>
+    </div>
+  </div>
+  
 
+  <div class="modal" v-if="auth.mod_otp_change">
+    <div class="modal-content" id="deleteConformationLabel">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">{{$t('profile_labe_otp')}}</h1>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-12 col-form-label" style="text-align: center;"
+            >{{$t('profile_labe_otp_text')}}
+              <span> 856{{ auth.formachangtel.changeiden }}</span></label
+          >
      
+        </div>
 
-    
+        <div class="form-group d-flex justify-content-center">
+          <div class="otp-inputs">
+            <input
+            class="otp-input" type="text" v-model="auth.otp[0]" @input="moveFocus(1)" ref="input1"   @click="preventDoubleClick"
+                            maxlength="1"  />
+                             <input class="otp-input" v-model="auth.otp[1]" @input="moveFocus(2)" ref="input2" @click="preventDoubleClick"
+                            type="text" id="input2" maxlength="1"  /> 
+                            <input class="otp-input"
+                           type="text" id="input3" maxlength="1"    v-model="auth.otp[2]" @input="moveFocus(3)" ref="input3" @click="preventDoubleClick"/>
+                             <input class="otp-input"  type="text" id="input4"  v-model="auth.otp[3]" @input="moveFocus(4)" ref="input4"  @click="preventDoubleClick"
+                        maxlength="1"  /> 
+                        <input class="otp-input"  type="text" id="input5"  v-model="auth.otp[4]" @input="moveFocus(5)" ref="input5"  @click="preventDoubleClick"
+                        maxlength="1"  /> 
+                        <input class="otp-input"  type="text" id="input6"  v-model="auth.otp[5]"  ref="input6"  
+                        maxlength="1" @click="preventDoubleClick" /> 
+    </div>
+
+ 
+        
+              </div>
+              <span v-if="auth.Isotpconfirm"
+          class="text-xs text-red-500"
+          style="color: red"
+         
+          >{{$t('profile_labe_otp_alert_min2')}}</span
+        >
+
+              <span v-if="auth.otpisactivechange == false" 
+          class="text-xs text-red-500"
+          style="color: red"
+         
+          >{{$t('profile_labe_otp_alert_min1')}}</span
+        >
+<br>
+
+<div class="form-group row">
+      <button type="button" class="btn btn-primary" @click="SaveOTP()">
+        {{$t('profile_labe_otp_save')}}
+    </button>
+    </div>
+    <br>
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-12 col-form-label" style="text-align: center;"
+            >
+            ບໍ່ໄດ້ຮັບລະຫັດ? ສົ່ງໃໝ່ອີກຄັ້ງ
+            </label
+          >
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -562,6 +697,11 @@ import {
   helpers,
 } from "@vuelidate/validators";
 import Swal from "sweetalert2";
+import { ref } from 'vue';
+
+
+const inputRef = ref(null)
+const otp = ref(['', '', '', '', '', ''])
 const auth = useAuthStore();
 
 const router = useRouter();
@@ -573,7 +713,17 @@ await auth.UpdateLogData();
 await auth.UpdateLogLogin();
 
 
+
+
 const { getFormChangeTel } = storeToRefs(auth);
+
+const input1 = ref(null);
+    const input2 = ref(null);
+    const input3 = ref(null);
+    const input4 = ref(null);
+    const input5 = ref(null);
+    const input6 = ref(null);
+
 onMounted(() => {
   fileInputFont.value.addEventListener("change", changeFileFont);
 });
@@ -618,6 +768,34 @@ const MyAddprove = async () => {
   router.push("/profile/account");
 };
 
+
+const moveFocus = (next) => {
+      if (next === 1) {
+        
+        input2.value.focus();
+        input2.value.select()  
+      } else if (next === 2) {
+        input3.value.focus();
+        input3.value.select()  
+      } else if (next === 3) {
+        input4.value.focus();
+        input4.value.select(); 
+      } else if (next === 4) {
+        input5.value.focus();
+        input5.value.select();
+      } else if (next === 5) {
+        input6.value.focus();
+        input6.value.select();
+      }
+};
+const preventDoubleClick = (event) => {
+  // ป้องกันการเลือกข้อความเมื่อคลิกสองครั้ง
+
+  event.target.select()  // เลือกข้อความทั้งหมดใน input
+
+}
+
+
 const Reload = async () => {
   await auth.fetchUsersByOne();
   await auth.fetchUsersByOneComment();
@@ -655,6 +833,47 @@ const ModalChangeTelClose = async (event) => {
   auth.mod_change_tel = false;
 };
 
+
+
+const CheckEmail = async (event) => {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ 
+
+  ///////////////////เช็ค ค่าว่างก่อน
+  if(auth.email == ''){
+    auth.changeemailvalid = true;
+    auth.chaeckemailtaken = false;
+    auth.changeformemail = false;
+    return false;
+  }
+
+
+ ///////////////////เช็ค Foramte
+  if (!emailPattern.test(auth.email)) {
+   auth.changeformemail = true;
+   auth.changeemailvalid = false;
+    auth.chaeckemailtaken = false;
+   return false;
+  }
+
+
+  let checkemail = await auth.CheckEmail();
+  if (checkemail == false) {
+   auth.changeformemail = false;
+   auth.changeemailvalid = false;
+    auth.chaeckemailtaken = true;
+   return false;
+  }else {
+    auth.changeformemail = false;
+    auth.changeemailvalid = false;
+    auth.chaeckemailtaken = false;
+
+    auth.mod_otp_change_email = true;
+    auth.mod_change_email = false;
+  }
+
+  
+}
 const CheckTel = async (event) => {
   v$.value.$validate();
   if (!v$.value.$error) {
@@ -680,6 +899,7 @@ const CheckTel = async (event) => {
       } else {
         await auth.GetOtpTel();
         await auth.SwitchModal();
+        input1.value.focus();
         //   auth.mod_otp_change = true;
       }
     }
@@ -687,7 +907,17 @@ const CheckTel = async (event) => {
 };
 
 const SaveOTP = async (event) => {
-  let otpconfirm = await auth.VerityOtpTel();
+
+
+  for (let i = 0; i < auth.otp.length; i++) {
+        if(auth.otp[i] == ''){
+          auth.otpisactivechange = false;
+            break;
+        }
+        auth.otpisactivechange = true;
+    }
+    if (auth.otpisactivechange == true) {
+      let otpconfirm = await auth.VerityOtpTel();
   if (otpconfirm == true) {
     
     let updatetel = await auth.UpdateTel();
@@ -700,6 +930,9 @@ const SaveOTP = async (event) => {
   } else {
     auth.Isotpconfirm = true;
   }
+
+    }
+
 };
 
 function coverimage(i) {
@@ -740,5 +973,31 @@ button {
 }
 .pcard {
   cursor: pointer;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.otp-input {
+  width: 50px;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .modal-content {
+  background-color: white;
+  padding: 20px;
+  width: 80%;
+}
 }
 </style>

@@ -26,10 +26,16 @@ export const useAuthStore = defineStore('auth', {
     imagelist:null,
     imagelist_font:null,
     imagelist_back:null,
+    otpisactivechange: true,
+    changeformemail: false,
+    chaeckemailtaken: false,
+    changeemailvalid: false,
     mydltcardExp:[],
     comment:[],
     mod_otp_change:false,
+    mod_otp_change_email:false,
     mod_change_tel:false,
+    mod_change_email:false,
     formuser:{
       user_email:null,
       user_firstname:null,
@@ -65,6 +71,7 @@ export const useAuthStore = defineStore('auth', {
     },
     login_last:[],
     update_last:[],
+    otp: ["", "", "", "", "", ""], // Array to store OTP digits
     user_image:"",
     formdtl: {
       front_img: "",
@@ -127,6 +134,7 @@ export const useAuthStore = defineStore('auth', {
       changeiden:'',
       otp_code:'',
     },
+    email:'',
     formaddprove: {
       full_name: '',
       first_name: '',
@@ -827,7 +835,6 @@ return response.data.status
               } catch (error) {
                 return false;
               }
-          
             },
 
             async GetOtpTel() {
@@ -850,6 +857,7 @@ this.mod_otp_change = true;
             },
 
             async VerityOtpTel() {
+              this.formachangtel.otp_code = this.otp.join('');
               try {
                 const data = await ApiService.put('/user/verify_otp',this.formachangtel).then(response => {
                   if(response.status === 204){
@@ -863,7 +871,6 @@ this.mod_otp_change = true;
               } catch (error) {
                 return false;
               }
-
             },
 
             async UpdateTel() {
@@ -920,6 +927,20 @@ this.mod_otp_change = true;
               }
 
             },
+
+            async CheckEmail() {
+              this.formachangtel.user_id = this.user_id;
+              this.formachangtel.email = this.email;
+                            try {
+                              const data = await ApiService.post('/user/checkemail', this.formachangtel).then(response => {
+                                console.log(this.formachangtel);
+              return response.data.status
+                              });
+                            return data;
+                            } catch (error) {
+                              return false;
+                            }
+                          },
 
   },
 });

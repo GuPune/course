@@ -371,5 +371,36 @@
   "full_name_update_acc_pehol": "Full English Name",
 
 
+  "profile_status_label": "Status:",
+  "profile_passport": "Passport:",
+  "profile_passport_exp": "Passport Exp:",
+  "profile_birthday": "Birthday:",
+  "profile_coutr": "County:",
+  "profile_address": "Address:",
+  "profile_image": "Image:",
+  "profile_usersname": "Username:",
+  "profile_email": "Email:",
+  "profile_tel": " Phone:",
+  "profile_tel_change_new":"Change Number Phone ?",
+  "profile_tel_change_new_label":"New Munmber Phone :",
+  "profile_button_upload": "Upload Picture",
+  "profile_button_changetel": " Change ",
+  "profile_button_changeemail": " Change ",
+  "profile_button_change_select_tel": "Save and OTP Confirm",
+  "profile_button_change_tel_alert": "* ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ.(ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ)",
+"profile_labe_otp": " ປ່ຽນເບີໂທລະສັບ ? ",
+"profile_labe_otp_text": " ກະລຸນາໃສ່ລະຫັດ OTP 6 ຕົວເລກ ທີ່ຖືກສົ່ງໄປເບີໂທຂອງທ່ານ ໄດ້ສົ່ງໄປທີ່ເບີ ",
+"profile_labe_otp_alert": " * ກະລຸນາພິມເບີໂທໃນຮູບແບບເລິ່ມຕົ້ນດ້ວຍ 20 ຕາມດ້ວຍເລກແປດໂຕ. kkk (ໃຊ້ໄດ້ສະເພາະເບີມືຖືຂອງລາວ)",
+"profile_labe_otp_alert_min1": " * ກະລຸນາໃສ່ລະຫັດ OTP 6 ຕົວເລກ",
+"profile_labe_otp_alert_min2": " * ກະລຸນາໃສ່ລະຫັດ OTP 6 ບໍ່ຖືກຕ້ອງ",
+"profile_labe_otp_save": "Confirm",
+
+"profile_labe_email": " ປ່ຽນອີເມວ ? ",
+"profile_labe_email_text": " ອີເມວ ໃໝ່ ",
+"profile_button_change_email_alert_formate": "* CheckFormate Email",
+"profile_button_change_email_alert_same": "* Email already taken",
+"profile_button_change_email_alert_valid": "*changeemailvalid",
+
   "": ""
 }
+

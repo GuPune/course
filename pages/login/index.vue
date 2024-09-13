@@ -130,13 +130,10 @@ const v$ = useVuelidate(rules, formData);
 
 const login = async () => {
 
-
-
     v$.value.$validate();
   if (!v$.value.$error) {
     await authenticateUser(formData); 
       if (authenticated) {
-       
         router.push('/course');
       }
   }
