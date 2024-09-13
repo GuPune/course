@@ -103,7 +103,7 @@
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
-                >{{ $t("full_name_update_acc_label") }}
+                >{{ $t('form_approve_full_name') }}
                 <span
                     class="text-xs text-red-500"
                     style="color: red"
@@ -134,7 +134,7 @@
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
-                >{{ $t("passport_update_acc_label") }}<span
+                >{{ $t('form_approve_passport') }}<span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -166,7 +166,7 @@
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
-                >{{ $t("exp_update_acc_label") }}<span
+                >{{ $t('form_approve_passport_exp') }}<span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -192,7 +192,7 @@
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
-                >{{ $t("bird_update_acc_label") }}<span
+                >{{ $t('form_approve_birth_day') }}<span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -217,7 +217,7 @@
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
-                >{{ $t("add_update_acc_label") }}<span
+                >{{ $t('form_approve_address') }}<span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -251,7 +251,7 @@
           <div class="col-xl-12 mt-3">
             <div class="login__form">
               <label class="form__label"
-                >{{ $t("home_update_acc_label") }} <span
+                >{{ $t('form_approve_vil') }}<span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -281,9 +281,7 @@
 
           <div class="col-xl-12 mt-3">
             <div class="login__form">
-              <label class="form__label">{{
-                $t("prov_update_acc_label")
-              }} <span
+              <label class="form__label">{{ $t('form_approve_prov') }} <span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -319,9 +317,7 @@
 
           <div class="col-xl-12 mt-3">
             <div class="login__form">
-              <label class="form__label">{{
-                $t("cou_update_acc_label")
-              }}</label>
+              <label class="form__label">{{ $t('form_approve_cou') }}</label>
               <select v-model="store.formaddprove.country_id"
                 class="common__login__input px-2 form-control"
                 aria-label="Default select example"  disabled
@@ -362,7 +358,7 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
-              <span>ຮູບບັດ / Passport <span
+              <span>{{ $t('form_approve_pass_image') }} <span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -406,7 +402,7 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
-                 <span>ຮູບຕົວຈິງ</span><span
+                 <span>{{ $t('form_approve_real_image') }}</span><span
                     class="text-xs text-red-500"
                     style="color: red"
                 
@@ -458,7 +454,7 @@
               border-radius: 0px;
             "
           >
-            {{ $t("singup_title") }}
+          {{ $t('form_approve_save') }}
           </button>
         </div>
       

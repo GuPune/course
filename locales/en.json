@@ -401,6 +401,19 @@
 "profile_button_change_email_alert_same": "* Email already taken",
 "profile_button_change_email_alert_valid": "*changeemailvalid",
 
+"form_approve_full_name": "Full Name",
+"form_approve_passport": "Passport",
+"form_approve_passport_exp": "Passport Exp",
+"form_approve_birth_day": "Birthday",
+"form_approve_address": "*Address",
+"form_approve_vil": "Village",
+"form_approve_prov": "ເມືອງ - ແຂວງ",
+"form_approve_cou": "Country",
+"form_approve_pass_image": "Passport Image",
+"form_approve_real_image": "Real Image",
+"form_approve_save": "Send",
+
+
   "": ""
 }
 
