@@ -502,7 +502,7 @@ const store = useAuthStore();
 
 const router = useRouter();
 const { getFormProve } = storeToRefs(store);
-
+const auth = useAuthStore();
 
 
 await store.Zipcode();
@@ -655,6 +655,8 @@ return false;
   }
 if (!v$.value.$error) {
 let  updateprofile = await store.UpdateAddVeriry();
+auth.formlog.des = 'Update Profile';
+await auth.UpdateLogDataInsert()
 if(updateprofile == true){
       Swal.fire({
     allowEscapeKey: false,
@@ -664,8 +666,6 @@ if(updateprofile == true){
     },
   });
 
-
-  
   
 let save = await store.UpdateCheckAddVeriry();
 

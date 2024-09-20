@@ -889,6 +889,9 @@ this.mod_otp_change = true;
 
             async UpdateLogDataInsert() {
               this.formlog.user_id = this.user_id;
+              this.formlog.user_admin = this.user_id;
+              this.formlog.type = 2;
+              
               try {
                 const data = await ApiService.post('/user/updatedata/log',this.formlog).then(response => {
                 });

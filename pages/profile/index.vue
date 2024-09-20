@@ -755,6 +755,7 @@ const changeFileFont = async (event) => {
     await auth.UploadProfile();
     await auth.UpdateProfileImage();
    // await auth.fetchUsersByOne();
+   auth.formlog.des = 'Update Image Profile';
     await auth.UpdateLogDataInsert()
   } else {
     Swal.fire({
