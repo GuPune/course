@@ -894,6 +894,7 @@ this.mod_otp_change = true;
               
               try {
                 const data = await ApiService.post('/user/updatedata/log',this.formlog).then(response => {
+                  console.log(response);
                 });
               return data;
               } catch (error) {
