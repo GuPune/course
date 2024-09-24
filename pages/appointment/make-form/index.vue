@@ -70,7 +70,19 @@
         <p>Note: For information about standard procedure to get driving license, please click here: <span><a href="" class="text-primary">Driving license prodedure</a></span></p>
     </div>
 </template>
-<script lang="ts" setup>
+<script  setup>
+import { useAuthStore } from '@/stores/auth';
+   definePageMeta({
+  middleware: 'auth' // this should match the name of the file inside the middleware directory 
+})
+
+const auth = useAuthStore();
+  const router = useRouter();
+  if(auth.formdetail.verify_account == 'system_active'){
+    router.push('/appointment/make-form');
+   }else {
+    router.push('/appointment/make');
+   }
 
 </script>
 <style>

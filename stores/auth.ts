@@ -894,7 +894,7 @@ this.mod_otp_change = true;
               
               try {
                 const data = await ApiService.post('/user/updatedata/log',this.formlog).then(response => {
-                  console.log(response);
+                 
                 });
               return data;
               } catch (error) {
@@ -910,7 +910,7 @@ this.mod_otp_change = true;
                 const data = await ApiService.post('/user/log/updatedata',this.formlog).then(response => {
                 this.update_last = response.data
             
-                console.log(response);
+              
                 });
               return data;
               } catch (error) {
@@ -937,7 +937,7 @@ this.mod_otp_change = true;
               this.formachangtel.email = this.email;
                             try {
                               const data = await ApiService.post('/user/checkemail', this.formachangtel).then(response => {
-                                console.log(this.formachangtel);
+                              
               return response.data.status
                               });
                             return data;

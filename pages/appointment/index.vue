@@ -27,7 +27,7 @@
           <p>You do not have any appointment to take driving exam yet.</p>
         </section>
         <section>
-          <button class="btn btn-primary" @click="goToMenu('/appointment/make')">Add New Appointment</button>
+          <button class="btn btn-primary" @click="goToMenu()">Add New Appointment</button>
         </section>
       </article>
       <!-- <article >
@@ -71,13 +71,26 @@
         <p>Note: For information about standard procedure to get driving license, please click here: <span><a href="" class="text-primary">Driving license prodedure</a></span></p>
     </div>
 </template>
+
 <script  setup>
+import { useAuthStore } from '@/stores/auth';
    definePageMeta({
   middleware: 'auth' // this should match the name of the file inside the middleware directory 
 })
+
+const auth = useAuthStore();
   const router = useRouter();
-  const goToMenu = async (meun) => {
-    router.push(meun);
+
+ await auth.getProfile() 
+ 
+  const goToMenu = async () => {
+
+   if(auth.formdetail.verify_account == 'system_active'){
+    router.push('/appointment/make-form');
+   }else {
+    router.push('/appointment/make');
+   }
+  //  router.push(meun);
   };
 </script>
 <style>
