@@ -95,6 +95,7 @@ export const CoursePostStore = defineStore({
  
     try {
     const data = await ApiService.post('/course/list', this.formsearchcourse).then(response => {
+      console.log(response);
       this.total = response.data.total
       this.total_page = response.data.total_page
       this.coursecategories = response.data.data 

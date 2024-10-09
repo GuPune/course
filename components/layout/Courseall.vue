@@ -68,7 +68,7 @@
                     <div class="gridarea__price">
                         <p style="font-size:12px">    {{ item.course_description }}</p>
                         <p class="fw-bold mb-0">{{$t('condition_for_theory_exam')}}:</p>
-                        <p class="mb-0" v-if="store.exam.length > 0">   
+                        <p class="mb-0" v-if="item.course_id.total_question">   
                             {{ $t("exam_if_me1") }} {{ findexam(item.course_id).total_question }} {{ $t("exam_if_me2") }} {{ ChangeFormate(findexam(item.course_id).em_time) }} {{ $t("exam_if_me3") }} {{ findexam(item.course_id).em_measure }} {{ $t("exam_if_me4") }}
 
                         </p>
